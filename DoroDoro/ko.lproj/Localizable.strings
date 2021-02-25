@@ -5,3 +5,7 @@
   Created by Jinwoo Kim on 2/25/21.
   
 */
+
+"TABBAR_SEARCH_VIEW_CONTROLLER_TITLE" = "검색";
+
+"TABBAR_FAVORITES_VIEW_CONTROLLER_TITLE" = "즐겨찾기";

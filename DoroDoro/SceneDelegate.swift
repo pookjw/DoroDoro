@@ -9,6 +9,7 @@ import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
+    public weak var mainTabBarController: MainTabBarController? = nil
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene: UIWindowScene = (scene as? UIWindowScene) else {
@@ -17,8 +18,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = .init(windowScene: windowScene)
         
-        let vc: ViewController = .init()
-        window?.rootViewController = vc
+        let mainTabBarController: MainTabBarController = .init()
+        self.mainTabBarController = mainTabBarController
+        window?.rootViewController = mainTabBarController
         window?.makeKeyAndVisible()
     }
 }

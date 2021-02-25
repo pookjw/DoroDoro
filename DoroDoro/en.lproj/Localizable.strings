@@ -5,3 +5,7 @@
   Created by Jinwoo Kim on 2/25/21.
   
 */
+
+"TABBAR_SEARCH_VIEW_CONTROLLER_TITLE" = "Search";
+
+"TABBAR_FAVORITES_VIEW_CONTROLLER_TITLE" = "Favorites";
