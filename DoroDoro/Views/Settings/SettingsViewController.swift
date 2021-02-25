@@ -1,5 +1,5 @@
 //
-//  FavoritesViewController.swift
+//  SettingsViewController.swift
 //  DoroDoro
 //
 //  Created by Jinwoo Kim on 2/25/21.
@@ -7,9 +7,9 @@
 
 import UIKit
 
-final class FavoritesViewController: UIViewController {
+class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemOrange
+        view.backgroundColor = .systemPink
     }
 }

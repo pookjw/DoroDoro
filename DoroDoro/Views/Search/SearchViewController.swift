@@ -16,9 +16,11 @@ final class SearchViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemTeal
         
-        APIService.shared.requestEvent
-            .subscribe(onNext: { print($0) })
-            .disposed(by: disposeBag)
-        APIService.shared.request(keyword: "미아동")
+//        APIService.shared.addrLinkEvent.subscribe(onNext: { print($0.common) })
+//            .disposed(by: disposeBag)
+//        APIService.shared.requestAddrLink(keyword: "성수동")
+        
+        APIService.shared.addrEngEvent.subscribe(onNext: { print($0.juso) }).disposed(by: disposeBag)
+        APIService.shared.requestAddrEng(keyword: "성수동")
     }
 }

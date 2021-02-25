@@ -31,10 +31,19 @@
 		F378B74F25E7EEDB00FCE546 /* DoroDoroWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = F378B74B25E7EED900FCE546 /* DoroDoroWidget.intentdefinition */; };
 		F378B75025E7EEDB00FCE546 /* DoroDoroWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = F378B74B25E7EED900FCE546 /* DoroDoroWidget.intentdefinition */; };
 		F378B75325E7EEDB00FCE546 /* DoroDoroWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F378B74325E7EED900FCE546 /* DoroDoroWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F378B76F25E7F0B700FCE546 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B76E25E7F0B700FCE546 /* SettingsViewController.swift */; };
+		F378B77625E7F17A00FCE546 /* AddrLinkCommonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B77525E7F17A00FCE546 /* AddrLinkCommonData.swift */; };
+		F378B77D25E7F18900FCE546 /* AddrLinkJusoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B77C25E7F18900FCE546 /* AddrLinkJusoData.swift */; };
+		F378B78425E7F45600FCE546 /* AddrLinkApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B78325E7F45600FCE546 /* AddrLinkApiError.swift */; };
+		F378B79025E7FAE500FCE546 /* AddrLinkResultsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B78F25E7FAE500FCE546 /* AddrLinkResultsData.swift */; };
 		F3AAE29925E7D06700D666BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AAE29825E7D06700D666BD /* AppDelegate.swift */; };
 		F3AAE29B25E7D06700D666BD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AAE29A25E7D06700D666BD /* SceneDelegate.swift */; };
 		F3AAE2A225E7D06800D666BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3AAE2A125E7D06800D666BD /* Assets.xcassets */; };
 		F3AAE2A525E7D06800D666BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3AAE2A325E7D06800D666BD /* LaunchScreen.storyboard */; };
+		F3F4FAF025E8080D0077FCB5 /* AddrEngCommonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F4FAEF25E8080D0077FCB5 /* AddrEngCommonData.swift */; };
+		F3F4FAF725E8082F0077FCB5 /* AddrEngJusoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F4FAF625E8082F0077FCB5 /* AddrEngJusoData.swift */; };
+		F3F4FAFE25E809CD0077FCB5 /* AddrEngResultsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F4FAFD25E809CD0077FCB5 /* AddrEngResultsData.swift */; };
+		F3F4FB0A25E80A040077FCB5 /* AddrEngApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F4FB0925E80A040077FCB5 /* AddrEngApiError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -141,12 +150,21 @@
 		F378B74C25E7EEDB00FCE546 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F378B74E25E7EEDB00FCE546 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F378B75425E7EEDB00FCE546 /* DoroDoroWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DoroDoroWidgetExtension.entitlements; sourceTree = "<group>"; };
+		F378B76E25E7F0B700FCE546 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		F378B77525E7F17A00FCE546 /* AddrLinkCommonData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrLinkCommonData.swift; sourceTree = "<group>"; };
+		F378B77C25E7F18900FCE546 /* AddrLinkJusoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrLinkJusoData.swift; sourceTree = "<group>"; };
+		F378B78325E7F45600FCE546 /* AddrLinkApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrLinkApiError.swift; sourceTree = "<group>"; };
+		F378B78F25E7FAE500FCE546 /* AddrLinkResultsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrLinkResultsData.swift; sourceTree = "<group>"; };
 		F3AAE29525E7D06700D666BD /* DoroDoro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoroDoro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3AAE29825E7D06700D666BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F3AAE29A25E7D06700D666BD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		F3AAE2A125E7D06800D666BD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F3AAE2A425E7D06800D666BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F3AAE2A625E7D06800D666BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F3F4FAEF25E8080D0077FCB5 /* AddrEngCommonData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrEngCommonData.swift; sourceTree = "<group>"; };
+		F3F4FAF625E8082F0077FCB5 /* AddrEngJusoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrEngJusoData.swift; sourceTree = "<group>"; };
+		F3F4FAFD25E809CD0077FCB5 /* AddrEngResultsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrEngResultsData.swift; sourceTree = "<group>"; };
+		F3F4FB0925E80A040077FCB5 /* AddrEngApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrEngApiError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -268,6 +286,8 @@
 		F378B72025E7DC8E00FCE546 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				F378B76B25E7F08700FCE546 /* AddrLinkData */,
+				F378B76C25E7F08E00FCE546 /* AddrEngData */,
 				F378B72225E7DE1000FCE546 /* Keys.swift */,
 				F378B72825E7E26900FCE546 /* APIService.swift */,
 			);
@@ -280,6 +300,7 @@
 				F378B70025E7D86F00FCE546 /* TabBar */,
 				F378B6F525E7D82400FCE546 /* Search */,
 				F378B70725E7D8AF00FCE546 /* Favorites */,
+				F378B76D25E7F0A200FCE546 /* Settings */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -293,6 +314,44 @@
 				F378B74E25E7EEDB00FCE546 /* Info.plist */,
 			);
 			path = DoroDoroWidget;
+			sourceTree = "<group>";
+		};
+		F378B76B25E7F08700FCE546 /* AddrLinkData */ = {
+			isa = PBXGroup;
+			children = (
+				F378B77525E7F17A00FCE546 /* AddrLinkCommonData.swift */,
+				F378B77C25E7F18900FCE546 /* AddrLinkJusoData.swift */,
+				F378B78325E7F45600FCE546 /* AddrLinkApiError.swift */,
+				F378B78F25E7FAE500FCE546 /* AddrLinkResultsData.swift */,
+			);
+			path = AddrLinkData;
+			sourceTree = "<group>";
+		};
+		F378B76C25E7F08E00FCE546 /* AddrEngData */ = {
+			isa = PBXGroup;
+			children = (
+				F3F4FAEF25E8080D0077FCB5 /* AddrEngCommonData.swift */,
+				F3F4FAF625E8082F0077FCB5 /* AddrEngJusoData.swift */,
+				F3F4FB0925E80A040077FCB5 /* AddrEngApiError.swift */,
+				F3F4FAFD25E809CD0077FCB5 /* AddrEngResultsData.swift */,
+			);
+			path = AddrEngData;
+			sourceTree = "<group>";
+		};
+		F378B76D25E7F0A200FCE546 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				F378B76E25E7F0B700FCE546 /* SettingsViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		F378B79625E8005100FCE546 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F378B72025E7DC8E00FCE546 /* API */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		F3AAE28C25E7D06700D666BD = {
@@ -326,7 +385,7 @@
 			isa = PBXGroup;
 			children = (
 				F378B72125E7DD7500FCE546 /* Views */,
-				F378B72025E7DC8E00FCE546 /* API */,
+				F378B79625E8005100FCE546 /* Models */,
 				F378B6A225E7D13E00FCE546 /* DoroDoro.entitlements */,
 				F3AAE29825E7D06700D666BD /* AppDelegate.swift */,
 				F3AAE29A25E7D06700D666BD /* SceneDelegate.swift */,
@@ -605,14 +664,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3F4FB0A25E80A040077FCB5 /* AddrEngApiError.swift in Sources */,
 				F378B6FB25E7D83F00FCE546 /* SearchViewController.swift in Sources */,
+				F3F4FAFE25E809CD0077FCB5 /* AddrEngResultsData.swift in Sources */,
 				F378B72325E7DE1000FCE546 /* Keys.swift in Sources */,
 				F3AAE29925E7D06700D666BD /* AppDelegate.swift in Sources */,
+				F378B77625E7F17A00FCE546 /* AddrLinkCommonData.swift in Sources */,
 				F378B70225E7D88A00FCE546 /* MainTabBarController.swift in Sources */,
+				F3F4FAF025E8080D0077FCB5 /* AddrEngCommonData.swift in Sources */,
+				F378B79025E7FAE500FCE546 /* AddrLinkResultsData.swift in Sources */,
+				F378B78425E7F45600FCE546 /* AddrLinkApiError.swift in Sources */,
 				F378B75025E7EEDB00FCE546 /* DoroDoroWidget.intentdefinition in Sources */,
 				F378B70925E7D8C600FCE546 /* FavoritesViewController.swift in Sources */,
+				F3F4FAF725E8082F0077FCB5 /* AddrEngJusoData.swift in Sources */,
 				F3AAE29B25E7D06700D666BD /* SceneDelegate.swift in Sources */,
 				F378B72925E7E26900FCE546 /* APIService.swift in Sources */,
+				F378B77D25E7F18900FCE546 /* AddrLinkJusoData.swift in Sources */,
+				F378B76F25E7F0B700FCE546 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
