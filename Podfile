@@ -7,6 +7,7 @@ target 'DoroDoro' do
   pod 'RxSwift', '6.1.0'
   pod 'RxCocoa', '6.1.0'
   pod 'RxDataSources', '~> 5.0.0'
+  pod 'RxAlamofire'
   pod 'SnapKit', '~> 5.0.1'
 
   # Pods for DoroDoro
