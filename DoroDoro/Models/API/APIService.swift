@@ -22,7 +22,7 @@ final class APIService {
         // 도로명주소 요청
         RxAlamofire.requestData(.get,
                                 addrLinkApiURL,
-                                parameters: ["confmKey": AddrLinkApiKey,
+                                parameters: ["confmKey": Keys.addrLinkApiKey,
                                              "currentPage": currentPage,
                                              "countPerPage": countPerPage,
                                              "keyword": keyword,
@@ -41,7 +41,7 @@ final class APIService {
                                countPerPage: Int = 1) {
         RxAlamofire.requestData(.get,
                                 addrEngApi,
-                                parameters: ["confmKey": AddrEngApiKey,
+                                parameters: ["confmKey": Keys.addrEngApiKey,
                                              "currentPage": currentPage,
                                              "countPerPage": countPerPage,
                                              "keyword": keyword,

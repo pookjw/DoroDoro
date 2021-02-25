@@ -9,14 +9,18 @@ iOS/macOS/tvOS/watchOS용 도로명 및 영문주소 검색 어플
 ```swift
 import Foundation
 
-/// 도로명주소 API
-public let AddrLinkApiKey: String = "<API_KEY>"
+/// API Keys
+public struct Keys {
+    /// 도로명주소 API
+    static public let addrLinkApiKey: String = "<API_KEY>"
+    
+    /// 영문주소 API
+    static public let addrEngApiKey: String = "<API_KEY>"
+    
+    /// 좌표제공 API
+    static public let addrCoordApiKey: String = "<API_KEY>"
+}
 
-/// 영문주소 API
-public let AddrEngApiKey: String = "<API_KEY>"
-
-/// 좌표제공 API
-public let AddrCoordApiKey: String = "<API_KEY>"
 ```
 
 API Key 발급은 [도로명주소 개발자센터](https://www.juso.go.kr/addrlink/main.do?cPath=99MM)에서 하실 수 있습니다.
