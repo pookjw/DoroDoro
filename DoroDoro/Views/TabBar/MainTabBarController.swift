@@ -9,7 +9,7 @@ import UIKit
 
 final class MainTabBarController: UITabBarController {
     public weak var searchVC: SearchViewController? = nil
-    public weak var favoritesVC: FavoritesViewController? = nil
+    public weak var bookmarkVC: BookmarkViewController? = nil
     public weak var settingsVC: SettingsViewController? = nil
     
     override func viewDidLoad() {
@@ -19,23 +19,23 @@ final class MainTabBarController: UITabBarController {
     
     private func configureViewControllers() {
         let searchVC: SearchViewController = .init()
-        let favoritesVC: FavoritesViewController = .init()
+        let bookmarkVC: BookmarkViewController = .init()
         let settingsVC: SettingsViewController = .init()
         self.searchVC = searchVC
-        self.favoritesVC = favoritesVC
+        self.bookmarkVC = bookmarkVC
         self.settingsVC = settingsVC
         
         
         searchVC.tabBarItem = .init(title: Localizable.TABBAR_SEARCH_VIEW_CONTROLLER_TITLE.string,
                                     image: UIImage(systemName: "magnifyingglass"),
                                     tag: 0)
-        favoritesVC.tabBarItem = .init(title: Localizable.TABBAR_FAVORITES_VIEW_CONTROLLER_TITLE.string,
-                                       image: UIImage(systemName: "star.fill"),
+        bookmarkVC.tabBarItem = .init(title: Localizable.TABBAR_BOOKMARK_VIEW_CONTROLLER_TITLE.string,
+                                       image: UIImage(systemName: "bookmark"),
                                        tag: 1)
         settingsVC.tabBarItem = .init(title: Localizable.TABBAR_SETTINGS_VIEW_CONTROLLER_TITLE.string,
-                                       image: UIImage(systemName: "gear"),
+                                       image: UIImage(systemName: "gearshape"),
                                        tag: 2)
         
-        setViewControllers([searchVC, favoritesVC, settingsVC], animated: false)
+        setViewControllers([searchVC, bookmarkVC, settingsVC], animated: false)
     }
 }
