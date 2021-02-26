@@ -34,7 +34,6 @@ final class APIService {
                                              "resultType": "json"])
             .withUnretained(self)
             .subscribe(onNext: { (obj, response) in
-                
                 guard response.0.statusCode == 200 else {
                     obj.addrLinkErrorEvent.onNext(.responseError)
                     return
@@ -53,6 +52,16 @@ final class APIService {
                     return
                 }
                 
+                guard decoded.results.juso != nil else {
+                    obj.addrLinkErrorEvent.onNext(.unknownError)
+                    return
+                }
+                
+                guard !decoded.results.juso.isEmpty else {
+                    obj.addrLinkErrorEvent.onNext(.noResults)
+                    return
+                }
+                
                 obj.addrLinkEvent.onNext(decoded.results)
             })
             .disposed(by: disposeBag)
@@ -61,7 +70,7 @@ final class APIService {
     public func requestAddrLink(keyword: String,
                                 currentPage: Int = 1,
                                 countPerPage: Int = 10,
-                                completion: @escaping ((AddrLinkResultsData?, Error?) -> Void)) {
+                                completion: @escaping ((AddrLinkResultsData?, AddrLinkApiError?) -> Void)) {
         AF.request(addrLinkApiURL,
                    method: .get,
                    parameters: ["confmKey": Keys.addrLinkApiKey,
@@ -70,10 +79,38 @@ final class APIService {
                                 "keyword": keyword,
                                 "resultType": "json"])
             .response(queue: DispatchQueue.global(qos: .background)) { response in
+                guard response.response?.statusCode == 200 else {
+                    completion(nil, .responseError)
+                    return
+                }
+                
+                guard let data: Data = response.data else {
+                    completion(nil, .responseError)
+                    return
+                }
+                
                 let decoder: JSONDecoder = .init()
                 
-                // TODO
-                let decoded: _AddrLinkData = try! decoder.decode(_AddrLinkData.self, from: response.data!)
+                guard let decoded: _AddrLinkData = try? decoder.decode(_AddrLinkData.self, from: data) else {
+                    completion(nil, .jsonError)
+                    return
+                }
+                
+                if let resultError: AddrLinkApiError = AddrLinkApiError(rawValue: decoded.results.common.errorCode),
+                   resultError != .normal {
+                    completion(nil, resultError)
+                    return
+                }
+                
+                guard decoded.results.juso != nil else {
+                    completion(nil, .unknownError)
+                    return
+                }
+                
+                guard !decoded.results.juso.isEmpty else {
+                    completion(nil, .noResults)
+                    return
+                }
                 
                 completion(decoded.results, nil)
             }
@@ -81,9 +118,9 @@ final class APIService {
     
     public func requestAddrLink(keyword: String,
                                 currentPage: Int = 1,
-                                countPerPage: Int = 10) -> (AddrLinkResultsData?, Error?) {
+                                countPerPage: Int = 10) -> (AddrLinkResultsData?, AddrLinkApiError?) {
         let semaphore = DispatchSemaphore(value: 0)
-        var result: (AddrLinkResultsData?, Error?) = (nil, nil)
+        var result: (AddrLinkResultsData?, AddrLinkApiError?) = (nil, nil)
 
         AF.request(addrLinkApiURL,
                    method: .get,
@@ -93,13 +130,45 @@ final class APIService {
                                 "keyword": keyword,
                                 "resultType": "json"])
             .response(queue: DispatchQueue.global(qos: .background)) { [weak semaphore] response in
-                let decoder: JSONDecoder = .init()
-
-                // TODO
-                let decoded: _AddrLinkData = try! decoder.decode(_AddrLinkData.self, from: response.data!)
-                result.0 = decoded.results
                 
-                semaphore?.signal()
+                defer {
+                    semaphore?.signal()
+                }
+                
+                guard response.response?.statusCode == 200 else {
+                    result = (nil, .responseError)
+                    return
+                }
+                
+                guard let data: Data = response.data else {
+                    result = (nil, .responseError)
+                    return
+                }
+                
+                let decoder: JSONDecoder = .init()
+                
+                guard let decoded: _AddrLinkData = try? decoder.decode(_AddrLinkData.self, from: data) else {
+                    result = (nil, .jsonError)
+                    return
+                }
+                
+                if let resultError: AddrLinkApiError = AddrLinkApiError(rawValue: decoded.results.common.errorCode),
+                   resultError != .normal {
+                    result = (nil, resultError)
+                    return
+                }
+                
+                guard decoded.results.juso != nil else {
+                    result = (nil, .unknownError)
+                    return
+                }
+                
+                guard !decoded.results.juso.isEmpty else {
+                    result = (nil, .noResults)
+                    return
+                }
+                
+                result = (decoded.results, nil)
             }
         
         semaphore.wait()
@@ -121,10 +190,34 @@ final class APIService {
                                              "resultType": "json"])
             .withUnretained(self)
             .subscribe(onNext: { (obj, response) in
+                guard response.0.statusCode == 200 else {
+                    obj.addrEngErrorEvent.onNext(.responseError)
+                    return
+                }
+                
                 let decoder: JSONDecoder = .init()
                 
-                // TODO
-                let decoded: _AddrEngData = try! decoder.decode(_AddrEngData.self, from: response.1)
+                guard let decoded: _AddrEngData = try? decoder.decode(_AddrEngData.self, from: response.1) else {
+                    obj.addrEngErrorEvent.onNext(.jsonError)
+                    return
+                }
+                
+                if let resultError: AddrEngApiError = AddrEngApiError(rawValue: decoded.results.common.errorCode),
+                   resultError != .normal {
+                    obj.addrEngErrorEvent.onNext(resultError)
+                    return
+                }
+                
+                guard decoded.results.juso != nil else {
+                    obj.addrEngErrorEvent.onNext(.unknownError)
+                    return
+                }
+                
+                guard !decoded.results.juso.isEmpty else {
+                    obj.addrEngErrorEvent.onNext(.noResults)
+                    return
+                }
+                
                 obj.addrEngEvent.onNext(decoded.results)
             })
             .disposed(by: disposeBag)
@@ -133,7 +226,7 @@ final class APIService {
     public func requestAddrEng(keyword: String,
                                 currentPage: Int = 1,
                                 countPerPage: Int = 10,
-                                completion: @escaping ((AddrEngResultsData?, Error?) -> Void)) {
+                                completion: @escaping ((AddrEngResultsData?, AddrEngApiError?) -> Void)) {
         AF.request(addrEngApiURL,
                    method: .get,
                    parameters: ["confmKey": Keys.addrEngApiKey,
@@ -142,10 +235,38 @@ final class APIService {
                                 "keyword": keyword,
                                 "resultType": "json"])
             .response(queue: DispatchQueue.global(qos: .background)) { response in
+                guard response.response?.statusCode == 200 else {
+                    completion(nil, .responseError)
+                    return
+                }
+                
+                guard let data: Data = response.data else {
+                    completion(nil, .responseError)
+                    return
+                }
+                
                 let decoder: JSONDecoder = .init()
                 
-                // TODO
-                let decoded: _AddrEngData = try! decoder.decode(_AddrEngData.self, from: response.data!)
+                guard let decoded: _AddrEngData = try? decoder.decode(_AddrEngData.self, from: data) else {
+                    completion(nil, .jsonError)
+                    return
+                }
+                
+                if let resultError: AddrEngApiError = AddrEngApiError(rawValue: decoded.results.common.errorCode),
+                   resultError != .normal {
+                    completion(nil, resultError)
+                    return
+                }
+                
+                guard decoded.results.juso != nil else {
+                    completion(nil, .unknownError)
+                    return
+                }
+                
+                guard !decoded.results.juso.isEmpty else {
+                    completion(nil, .noResults)
+                    return
+                }
                 
                 completion(decoded.results, nil)
             }
@@ -153,9 +274,9 @@ final class APIService {
     
     public func requestAddrEng(keyword: String,
                                 currentPage: Int = 1,
-                                countPerPage: Int = 10) -> (AddrEngResultsData?, Error?) {
+                                countPerPage: Int = 10) -> (AddrEngResultsData?, AddrEngApiError?) {
         let semaphore = DispatchSemaphore(value: 0)
-        var result: (AddrEngResultsData?, Error?) = (nil, nil)
+        var result: (AddrEngResultsData?, AddrEngApiError?) = (nil, nil)
 
         AF.request(addrEngApiURL,
                    method: .get,
@@ -165,13 +286,45 @@ final class APIService {
                                 "keyword": keyword,
                                 "resultType": "json"])
             .response(queue: DispatchQueue.global(qos: .background)) { [weak semaphore] response in
-                let decoder: JSONDecoder = .init()
-
-                // TODO
-                let decoded: _AddrEngData = try! decoder.decode(_AddrEngData.self, from: response.data!)
-                result.0 = decoded.results
                 
-                semaphore?.signal()
+                defer {
+                    semaphore?.signal()
+                }
+                
+                guard response.response?.statusCode == 200 else {
+                    result = (nil, AddrEngApiError.responseError)
+                    return
+                }
+                
+                guard let data: Data = response.data else {
+                    result = (nil, AddrEngApiError.responseError)
+                    return
+                }
+                
+                let decoder: JSONDecoder = .init()
+                
+                guard let decoded: _AddrEngData = try? decoder.decode(_AddrEngData.self, from: data) else {
+                    result = (nil, AddrEngApiError.jsonError)
+                    return
+                }
+                
+                if let resultError: AddrEngApiError = AddrEngApiError(rawValue: decoded.results.common.errorCode),
+                   resultError != .normal {
+                    result = (nil, resultError)
+                    return
+                }
+                
+                guard decoded.results.juso != nil else {
+                    result = (nil, AddrEngApiError.unknownError)
+                    return
+                }
+                
+                guard !decoded.results.juso.isEmpty else {
+                    result = (nil, .noResults)
+                    return
+                }
+                
+                result = (decoded.results, nil)
             }
         
         semaphore.wait()

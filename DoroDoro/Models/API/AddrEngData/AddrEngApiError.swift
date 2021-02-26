@@ -77,6 +77,9 @@ public enum AddrEngApiError: String, Error {
     /// JSON 파싱 에러
     case jsonError
     
+    /// 결과 없을 경우 에러
+    case noResults
+    
     /// 알 수 없는 에러
     case unknownError
 }

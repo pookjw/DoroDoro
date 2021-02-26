@@ -27,6 +27,7 @@ public enum Localizable: String {
     case ADDR_LINK_API_ERROR_TOO_MANY_RESULTS
     case ADDR_LINK_API_ERROR_RESPONSE
     case ADDR_LINK_API_ERROR_JSON_PARSE
+    case ADDR_LINK_API_ERROR_NO_RESULTS
     case ADDR_LINK_API_ERROR_UNKNOWN
     case ADDR_ENG_API_ERROR_NORMAL
     case ADDR_ENG_API_ERROR_SYSTEM_ERROR
@@ -43,6 +44,7 @@ public enum Localizable: String {
     case ADDR_ENG_API_ERROR_TOO_MANY_RESULTS
     case ADDR_ENG_API_ERROR_RESPONSE
     case ADDR_ENG_API_ERROR_JSON_PARSE
+    case ADDR_ENG_API_ERROR_NO_RESULTS
     case ADDR_ENG_API_ERROR_UNKNOWN
     
     public var string: String {

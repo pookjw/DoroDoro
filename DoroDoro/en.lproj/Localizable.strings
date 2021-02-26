@@ -64,6 +64,9 @@
 "ADDR_LINK_API_ERROR_JSON_PARSE" = "Failed to parse the results.";
 
 /* */
+"ADDR_LINK_API_ERROR_NO_RESULTS" = "No results.";
+
+/* */
 "ADDR_LINK_API_ERROR_UNKNOWN" = "An unknown error occured.";
 
 /* */
@@ -110,6 +113,9 @@
 
 /* */
 "ADDR_ENG_API_ERROR_JSON_PARSE" = "Failed to parse the results.";
+
+/* */
+"ADDR_ENG_API_ERROR_NO_RESULTS" = "No results.";
 
 /* */
 "ADDR_ENG_API_ERROR_UNKNOWN" = "An unknown error occured.";

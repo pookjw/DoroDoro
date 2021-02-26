@@ -64,6 +64,9 @@
 "ADDR_LINK_API_ERROR_JSON_PARSE" = "검색 결과 분석에 오류가 발생했습니다.";
 
 /* */
+"ADDR_LINK_API_ERROR_NO_RESULTS" = "결과 없음";
+
+/* */
 "ADDR_LINK_API_ERROR_UNKNOWN" = "알 수 없는 오류가 발생했습니다.";
 
 /* */
@@ -110,6 +113,9 @@
 
 /* */
 "ADDR_ENG_API_ERROR_JSON_PARSE" = "검색 결과 분석에 오류가 발생했습니다.";
+
+/* */
+"ADDR_ENG_API_ERROR_NO_RESULTS" = "결과 없음";
 
 /* */
 "ADDR_ENG_API_ERROR_UNKNOWN" = "알 수 없는 오류가 발생했습니다.";
