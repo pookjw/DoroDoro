@@ -18,9 +18,16 @@ final class SearchViewController: UIViewController {
         
 //        APIService.shared.addrLinkEvent.subscribe(onNext: { print($0.common) })
 //            .disposed(by: disposeBag)
-//        APIService.shared.requestAddrLink(keyword: "성수동")
+//        APIService.shared.requestAddrLinkEvent(keyword: "성수동")
         
-        APIService.shared.addrEngEvent.subscribe(onNext: { print($0.juso) }).disposed(by: disposeBag)
-        APIService.shared.requestAddrEng(keyword: "성수동")
+//        APIService.shared.addrEngEvent.subscribe(onNext: { print($0.juso) }).disposed(by: disposeBag)
+//        APIService.shared.requestAddrEngEvent(keyword: "성수동")
+        
+//        APIService.shared.requestAddrEng(keyword: "성수동") { (result, error) in
+//            print(result.juso)
+//        }
+        
+        let result = APIService.shared.requestAddrEng(keyword: "성수동")
+        print(result.0?.juso)
     }
 }
