@@ -16,9 +16,11 @@ final class SearchViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemTeal
         
-//        APIService.shared.addrLinkEvent.subscribe(onNext: { print($0.common) })
-//            .disposed(by: disposeBag)
-//        APIService.shared.requestAddrLinkEvent(keyword: "성수동")
+        APIService.shared.addrLinkEvent.subscribe(onNext: { print($0.common) })
+            .disposed(by: disposeBag)
+        APIService.shared.addrLinkErrorEvent.subscribe(onNext: { print($0.localizedDescription) })
+            .disposed(by: disposeBag)
+        APIService.shared.requestAddrLinkEvent(keyword: "333")
         
 //        APIService.shared.addrEngEvent.subscribe(onNext: { print($0.juso) }).disposed(by: disposeBag)
 //        APIService.shared.requestAddrEngEvent(keyword: "성수동")
@@ -27,7 +29,7 @@ final class SearchViewController: UIViewController {
 //            print(result.juso)
 //        }
         
-        let result = APIService.shared.requestAddrEng(keyword: "성수동")
-        print(result.0?.juso)
+//        let result = APIService.shared.requestAddrEng(keyword: "성수동")
+//        print(result.0?.juso)
     }
 }

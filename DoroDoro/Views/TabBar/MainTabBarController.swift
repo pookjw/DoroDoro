@@ -25,13 +25,14 @@ final class MainTabBarController: UITabBarController {
         self.favoritesVC = favoritesVC
         self.settingsVC = settingsVC
         
-        searchVC.tabBarItem = .init(title: NSLocalizedString("TABBAR_SEARCH_VIEW_CONTROLLER_TITLE", comment: "검색"),
+        
+        searchVC.tabBarItem = .init(title: Localizable.TABBAR_SEARCH_VIEW_CONTROLLER_TITLE.string,
                                     image: UIImage(systemName: "magnifyingglass"),
                                     tag: 0)
-        favoritesVC.tabBarItem = .init(title: NSLocalizedString("TABBAR_FAVORITES_VIEW_CONTROLLER_TITLE", comment: "즐겨찾기"),
+        favoritesVC.tabBarItem = .init(title: Localizable.TABBAR_FAVORITES_VIEW_CONTROLLER_TITLE.string,
                                        image: UIImage(systemName: "star.fill"),
                                        tag: 1)
-        settingsVC.tabBarItem = .init(title: NSLocalizedString("TABBAR_SETTINGS_VIEW_CONTROLLER_TITLE", comment: "설정"),
+        settingsVC.tabBarItem = .init(title: Localizable.TABBAR_SETTINGS_VIEW_CONTROLLER_TITLE.string,
                                        image: UIImage(systemName: "gear"),
                                        tag: 2)
         

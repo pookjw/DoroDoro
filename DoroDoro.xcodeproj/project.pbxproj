@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E8BA96083B64A362F17AAFEA /* Pods_DoroDoro.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E86CEB0C5A70206FB9CE710D /* Pods_DoroDoro.framework */; };
+		F3444C9C25E8B1BB00A0706F /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3444C9B25E8B1BB00A0706F /* Localizable.swift */; };
 		F378B6B125E7D69300FCE546 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F378B6B325E7D69300FCE546 /* Localizable.strings */; };
 		F378B6BE25E7D71C00FCE546 /* DoroDoroTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B6BD25E7D71C00FCE546 /* DoroDoroTests.swift */; };
 		F378B6CF25E7D77100FCE546 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F378B6CD25E7D77100FCE546 /* Interface.storyboard */; };
@@ -117,6 +118,7 @@
 		6D85A13F60C3E781DFBC61E7 /* Pods-DoroDoro.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoroDoro.release.xcconfig"; path = "Target Support Files/Pods-DoroDoro/Pods-DoroDoro.release.xcconfig"; sourceTree = "<group>"; };
 		86D49FB34CCC715324E29809 /* Pods-DoroDoro.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoroDoro.debug.xcconfig"; path = "Target Support Files/Pods-DoroDoro/Pods-DoroDoro.debug.xcconfig"; sourceTree = "<group>"; };
 		E86CEB0C5A70206FB9CE710D /* Pods_DoroDoro.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoroDoro.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F3444C9B25E8B1BB00A0706F /* Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
 		F378B6A225E7D13E00FCE546 /* DoroDoro.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DoroDoro.entitlements; sourceTree = "<group>"; };
 		F378B6AA25E7D5ED00FCE546 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		F378B6AD25E7D64F00FCE546 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -226,6 +228,14 @@
 				6D85A13F60C3E781DFBC61E7 /* Pods-DoroDoro.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		F3444C9A25E8B1A700A0706F /* Localizable */ = {
+			isa = PBXGroup;
+			children = (
+				F3444C9B25E8B1BB00A0706F /* Localizable.swift */,
+			);
+			path = Localizable;
 			sourceTree = "<group>";
 		};
 		F378B6BC25E7D71C00FCE546 /* DoroDoroTests */ = {
@@ -349,6 +359,7 @@
 		F378B79625E8005100FCE546 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F3444C9A25E8B1A700A0706F /* Localizable */,
 				F378B72025E7DC8E00FCE546 /* API */,
 			);
 			path = Models;
@@ -680,6 +691,7 @@
 				F3AAE29B25E7D06700D666BD /* SceneDelegate.swift in Sources */,
 				F378B72925E7E26900FCE546 /* APIService.swift in Sources */,
 				F378B77D25E7F18900FCE546 /* AddrLinkJusoData.swift in Sources */,
+				F3444C9C25E8B1BB00A0706F /* Localizable.swift in Sources */,
 				F378B76F25E7F0B700FCE546 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

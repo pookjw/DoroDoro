@@ -6,8 +6,110 @@
   
 */
 
+/* */
 "TABBAR_SEARCH_VIEW_CONTROLLER_TITLE" = "검색";
 
+/* */
 "TABBAR_FAVORITES_VIEW_CONTROLLER_TITLE" = "즐겨찾기";
 
+/* */
 "TABBAR_SETTINGS_VIEW_CONTROLLER_TITLE" = "설정";
+
+/* */
+"ERROR_CONTACT_TO_DEVELOPER" = "개발자에게 문의해 주세요.";
+
+/* */
+"ADDR_LINK_API_ERROR_NORMAL" = "정상입니다.";
+
+/* */
+"ADDR_LINK_API_ERROR_SYSTEM_ERROR" = "시스템 오류가 발생했습니다.";
+
+/* */
+"ADDR_LINK_API_ERROR_UNAUTHORIZED_API_KEY" = "승인되지 않은 API Key 입니다.";
+
+/* */
+"ADDR_LINK_API_ERROR_EMPTY_KEYWORD" = "검색어가 비어 있습니다.";
+
+/* */
+"ADDR_LINK_API_ERROR_DEFICIENT_KEYWORD" = "주소를 상세히 입력해 주시기 바랍니다.";
+
+/* */
+"ADDR_LINK_API_ERROR_TOO_SHORT_KEYWORD" = "검색어는 두 글자 이상 입력되어야 합니다.";
+
+/* */
+"ADDR_LINK_API_ERROR_WRONG_KEYWORD" = "숫자만으로는 검색할 수 없습니다.";
+
+/* */
+"ADDR_LINK_API_ERROR_TOO_LONG_KEYWORD" = "검색어가 너무 깁니다.";
+
+/* */
+"ADDR_LINK_API_ERROR_TOO_LONG_INTEGER_KEYWORD" = "검색어에 포함된 숫자가 너무 깁니다.";
+
+/* */
+"ADDR_LINK_API_ERROR_KEYWORD_ONLY_CONTAINS_SPECIAL_CHARACTER" = "특수문자와 숫자만으로 이루어진 검색어는 검색할 수 없습니다.";
+
+/* */
+"ADDR_LINK_API_ERROR_KEYWORD_COTAINS_SQL_RESERVED_CHARACTER" = "검색어에 특수문자 ( %,=,>,<,[,] )는 포함할 수 없습니다.";
+
+/* */
+"ADDR_LINK_API_ERROR_EXPIRED_KEY" = "API Key가 만료되었습니다.";
+
+/* */
+"ADDR_LINK_API_ERROR_TOO_MANY_RESULTS" = "검색 결과가 너무 많습니다.";
+
+/* */
+"ADDR_LINK_API_ERROR_RESPONSE" = "서버 통신에 실패했습니다.";
+
+/* */
+"ADDR_LINK_API_ERROR_JSON_PARSE" = "검색 결과 분석에 오류가 발생했습니다.";
+
+/* */
+"ADDR_LINK_API_ERROR_UNKNOWN" = "알 수 없는 오류가 발생했습니다.";
+
+/* */
+"ADDR_ENG_API_ERROR_NORMAL" = "정상입니다.";
+
+/* */
+"ADDR_ENG_API_ERROR_SYSTEM_ERROR" = "시스템 오류가 발생했습니다.";
+
+/* */
+"ADDR_ENG_API_ERROR_UNAUTHORIZED_API_KEY" = "승인되지 않은 API Key 입니다.";
+
+/* */
+"ADDR_ENG_API_ERROR_EMPTY_KEYWORD" = "검색어가 비어 있습니다.";
+
+/* */
+"ADDR_ENG_API_ERROR_DEFICIENT_KEYWORD" = "주소를 상세히 입력해 주시기 바랍니다.";
+
+/* */
+"ADDR_ENG_API_ERROR_TOO_SHORT_KEYWORD" = "검색어는 두 글자 이상 입력되어야 합니다.";
+
+/* */
+"ADDR_ENG_API_ERROR_WRONG_KEYWORD" = "숫자만으로는 검색할 수 없습니다.";
+
+/* */
+"ADDR_ENG_API_ERROR_TOO_LONG_KEYWORD" = "검색어가 너무 깁니다.";
+
+/* */
+"ADDR_ENG_API_ERROR_TOO_LONG_INTEGER_KEYWORD" = "검색어에 포함된 숫자가 너무 깁니다.";
+
+/* */
+"ADDR_ENG_API_ERROR_KEYWORD_ONLY_CONTAINS_SPECIAL_CHARACTER" = "특수문자와 숫자만으로 이루어진 검색어는 검색할 수 없습니다.";
+
+/* */
+"ADDR_ENG_API_ERROR_KEYWORD_COTAINS_SQL_RESERVED_CHARACTER" = "검색어에 특수문자 ( %,=,>,<,[,] )는 포함할 수 없습니다.";
+
+/* */
+"ADDR_ENG_API_ERROR_EXPIRED_KEY" = "API Key가 만료되었습니다.";
+
+/* */
+"ADDR_ENG_API_ERROR_TOO_MANY_RESULTS" = "검색 결과가 너무 많습니다.";
+
+/* */
+"ADDR_ENG_API_ERROR_RESPONSE" = "서버 통신에 실패했습니다.";
+
+/* */
+"ADDR_ENG_API_ERROR_JSON_PARSE" = "검색 결과 분석에 오류가 발생했습니다.";
+
+/* */
+"ADDR_ENG_API_ERROR_UNKNOWN" = "알 수 없는 오류가 발생했습니다.";

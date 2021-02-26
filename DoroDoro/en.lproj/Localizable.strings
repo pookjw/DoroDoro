@@ -6,8 +6,110 @@
   
 */
 
+/* */
 "TABBAR_SEARCH_VIEW_CONTROLLER_TITLE" = "Search";
 
+/* */
 "TABBAR_FAVORITES_VIEW_CONTROLLER_TITLE" = "Favorites";
 
+/* */
 "TABBAR_SETTINGS_VIEW_CONTROLLER_TITLE" = "Settings";
+
+/* */
+"ERROR_CONTACT_TO_DEVELOPER" = "Contact to developer.";
+
+/* */
+"ADDR_LINK_API_ERROR_NORMAL" = "It's normal.";
+
+/* */
+"ADDR_LINK_API_ERROR_SYSTEM_ERROR" = "A system error occured.";
+
+/* */
+"ADDR_LINK_API_ERROR_UNAUTHORIZED_API_KEY" = "Unauthorized API Key.";
+
+/* */
+"ADDR_LINK_API_ERROR_EMPTY_KEYWORD" = "Keyword is empty.";
+
+/* */
+"ADDR_LINK_API_ERROR_DEFICIENT_KEYWORD" = "Please enter a detailed keyowrd.";
+
+/* */
+"ADDR_LINK_API_ERROR_TOO_SHORT_KEYWORD" = "Please enter a keyword at least 2 characters.";
+
+/* */
+"ADDR_LINK_API_ERROR_WRONG_KEYWORD" = "Don't write a keyword that only contains number.";
+
+/* */
+"ADDR_LINK_API_ERROR_TOO_LONG_KEYWORD" = "Keyword is too long.";
+
+/* */
+"ADDR_LINK_API_ERROR_TOO_LONG_INTEGER_KEYWORD" = "Keyword contains too long numbers.";
+
+/* */
+"ADDR_LINK_API_ERROR_KEYWORD_ONLY_CONTAINS_SPECIAL_CHARACTER" = "Don't write a keyword that only contains number or special character.";
+
+/* */
+"ADDR_LINK_API_ERROR_KEYWORD_COTAINS_SQL_RESERVED_CHARACTER" = "Dont write a keyword that contains special characters ( %,=,>,<,[,] ).";
+
+/* */
+"ADDR_LINK_API_ERROR_EXPIRED_KEY" = "API Key has been expired.";
+
+/* */
+"ADDR_LINK_API_ERROR_TOO_MANY_RESULTS" = "Too many search results.";
+
+/* */
+"ADDR_LINK_API_ERROR_RESPONSE" = "Failed to commuticate with server.";
+
+/* */
+"ADDR_LINK_API_ERROR_JSON_PARSE" = "Failed to parse the results.";
+
+/* */
+"ADDR_LINK_API_ERROR_UNKNOWN" = "An unknown error occured.";
+
+/* */
+"ADDR_ENG_API_ERROR_NORMAL" = "It's normal.";
+
+/* */
+"ADDR_ENG_API_ERROR_SYSTEM_ERROR" = "A system error occured.";
+
+/* */
+"ADDR_ENG_API_ERROR_UNAUTHORIZED_API_KEY" = "Unauthorized API Key.";
+
+/* */
+"ADDR_ENG_API_ERROR_EMPTY_KEYWORD" = "Keyword is empty.";
+
+/* */
+"ADDR_ENG_API_ERROR_DEFICIENT_KEYWORD" = "Please enter a detailed keyowrd.";
+
+/* */
+"ADDR_ENG_API_ERROR_TOO_SHORT_KEYWORD" = "Please enter a keyword at least 2 characters.";
+
+/* */
+"ADDR_ENG_API_ERROR_WRONG_KEYWORD" = "Don't write a keyword that only contains number.";
+
+/* */
+"ADDR_ENG_API_ERROR_TOO_LONG_KEYWORD" = "Keyword is too long.";
+
+/* */
+"ADDR_ENG_API_ERROR_TOO_LONG_INTEGER_KEYWORD" = "Keyword contains too long numbers.";
+
+/* */
+"ADDR_ENG_API_ERROR_KEYWORD_ONLY_CONTAINS_SPECIAL_CHARACTER" = "Don't write a keyword that only contains number or special character.";
+
+/* */
+"ADDR_ENG_API_ERROR_KEYWORD_COTAINS_SQL_RESERVED_CHARACTER" = "Dont write a keyword that contains special characters ( %,=,>,<,[,] ).";
+
+/* */
+"ADDR_ENG_API_ERROR_EXPIRED_KEY" = "API Key has been expired.";
+
+/* */
+"ADDR_ENG_API_ERROR_TOO_MANY_RESULTS" = "Too many search results.";
+
+/* */
+"ADDR_ENG_API_ERROR_RESPONSE" = "Failed to commuticate with server.";
+
+/* */
+"ADDR_ENG_API_ERROR_JSON_PARSE" = "Failed to parse the results.";
+
+/* */
+"ADDR_ENG_API_ERROR_UNKNOWN" = "An unknown error occured.";

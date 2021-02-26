@@ -34,10 +34,25 @@ final class APIService {
                                              "resultType": "json"])
             .withUnretained(self)
             .subscribe(onNext: { (obj, response) in
+                
+                guard response.0.statusCode == 200 else {
+                    obj.addrLinkErrorEvent.onNext(.responseError)
+                    return
+                }
+                
                 let decoder: JSONDecoder = .init()
                 
-                // TODO
-                let decoded: _AddrLinkData = try! decoder.decode(_AddrLinkData.self, from: response.1)
+                guard let decoded: _AddrLinkData = try? decoder.decode(_AddrLinkData.self, from: response.1) else {
+                    obj.addrLinkErrorEvent.onNext(.jsonError)
+                    return
+                }
+                
+                if let resultError: AddrLinkApiError = AddrLinkApiError(rawValue: decoded.results.common.errorCode),
+                   resultError != .normal {
+                    obj.addrLinkErrorEvent.onNext(resultError)
+                    return
+                }
+                
                 obj.addrLinkEvent.onNext(decoded.results)
             })
             .disposed(by: disposeBag)

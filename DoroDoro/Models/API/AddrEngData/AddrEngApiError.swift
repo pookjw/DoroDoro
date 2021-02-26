@@ -54,12 +54,12 @@ public enum AddrEngApiError: String, Error {
     /// Can not search special characters + numbers.
     ///
     /// - 조치방법 : 특수문자+숫자만으로는 검색이 불가능 합니다.
-    case onlySpecialCharacterKeyword = "E0012"
+    case keywordOnlyContainsSpecialCharacter = "E0012"
     
     /// Can not search SQL & special characters(%,=,>,<,[,]).
     ///
     /// - 조치방법 : SQL예약어 또는 특수문자를 제거 후 검색합니다.
-    case containsReservedCharacterKeyword = "E0013"
+    case keywordContainsSQLReservedCharacter = "E0013"
     
     /// The authorization key preiod has expired.
     ///
@@ -70,10 +70,54 @@ public enum AddrEngApiError: String, Error {
     ///
     /// - 조치방법 : 검색결과가 9천건이 초과하는 검색은 불가합니다.
     case tooManyResults = "E0015"
+    
+    /// Response 에러
+    case responseError
+    
+    /// JSON 파싱 에러
+    case jsonError
+    
+    /// 알 수 없는 에러
+    case unknownError
 }
 
 extension AddrEngApiError: LocalizedError {
     public var errorDescription: String? {
-        return nil
+        switch self {
+        case .normal:
+            return Localizable.ADDR_ENG_API_ERROR_NORMAL.string
+        case .systemError:
+            return Localizable.ADDR_ENG_API_ERROR_SYSTEM_ERROR.string
+        case .unauthorizedApiKey:
+            return Localizable.ADDR_ENG_API_ERROR_UNAUTHORIZED_API_KEY.string
+        case .emptyKeyword:
+            return Localizable.ADDR_ENG_API_ERROR_EMPTY_KEYWORD.string
+        case .deficientKeyword:
+            return Localizable.ADDR_ENG_API_ERROR_DEFICIENT_KEYWORD.string
+        case .tooShortKeyword:
+            return Localizable.ADDR_ENG_API_ERROR_TOO_SHORT_KEYWORD.string
+        case .wrongKeyword:
+            return Localizable.ADDR_ENG_API_ERROR_WRONG_KEYWORD.string
+        case .tooLongKeyword:
+            return Localizable.ADDR_ENG_API_ERROR_TOO_LONG_KEYWORD.string
+        case .tooLongIntegerKeyword:
+            return Localizable.ADDR_ENG_API_ERROR_TOO_LONG_INTEGER_KEYWORD.string
+        case .keywordOnlyContainsSpecialCharacter:
+            return Localizable.ADDR_ENG_API_ERROR_KEYWORD_ONLY_CONTAINS_SPECIAL_CHARACTER.string
+        case .keywordContainsSQLReservedCharacter:
+            return Localizable.ADDR_ENG_API_ERROR_KEYWORD_COTAINS_SQL_RESERVED_CHARACTER.string
+        case .expiredApiKey:
+            return Localizable.ADDR_ENG_API_ERROR_EXPIRED_KEY.string
+        case .tooManyResults:
+            return Localizable.ADDR_ENG_API_ERROR_TOO_MANY_RESULTS.string
+        case .responseError:
+            return Localizable.ADDR_ENG_API_ERROR_RESPONSE.string
+        case .jsonError:
+            return Localizable.ADDR_ENG_API_ERROR_JSON_PARSE.string
+        case .unknownError:
+            return Localizable.ADDR_ENG_API_ERROR_UNKNOWN.string
+        default:
+            return self.rawValue
+        }
     }
 }
