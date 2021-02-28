@@ -6,7 +6,7 @@
 //
 
 import XCTest
-import RxSwift
+import Combine
 @testable import DoroDoro
 
 final internal class DoroDoroAPIErrorTests: XCTestCase {
@@ -17,21 +17,21 @@ final internal class DoroDoroAPIErrorTests: XCTestCase {
     // MARK: - 도로명주소 API 요청 오류 테스트
     
     internal func testRequestAddrLinkEvent() {
-        let disposeBag: DisposeBag = .init()
+        var cancellableBag: Set<AnyCancellable> = .init()
         let expactation: XCTestExpectation = .init(description: "Requesting... (\(#function))")
         
         APIService.shared.addrLinkEvent
-            .subscribe(onNext: { result in
+            .sink(receiveValue: { result in
                 XCTFail()
             })
-            .disposed(by: disposeBag)
+            .store(in: &cancellableBag)
         
         APIService.shared.addrLinkErrorEvent
-            .subscribe(onNext: { error in
+            .sink(receiveValue: { error in
                 XCTAssertEqual(error, .noResults)
                 expactation.fulfill()
             })
-            .disposed(by: disposeBag)
+            .store(in: &cancellableBag)
         
         APIService.shared.requestAddrLinkEvent(keyword: "썽쑤똥")
         
@@ -60,21 +60,21 @@ final internal class DoroDoroAPIErrorTests: XCTestCase {
     // MARK: - 영문주소 API 요청 오류 테스트
     
     internal func testRequestAddrEngEvent() {
-        let disposeBag: DisposeBag = .init()
+        var cancellableBag: Set<AnyCancellable> = .init()
         let expectation: XCTestExpectation = .init(description: "Requesting... (\(#function))")
         
         APIService.shared.addrEngEvent
-            .subscribe(onNext: { result in
+            .sink(receiveValue: { result in
                 XCTFail()
             })
-            .disposed(by: disposeBag)
+            .store(in: &cancellableBag)
         
         APIService.shared.addrEngErrorEvent
-            .subscribe(onNext: { error in
+            .sink(receiveValue: { error in
                 XCTAssertEqual(error, .tooLongIntegerKeyword)
                 expectation.fulfill()
             })
-            .disposed(by: disposeBag)
+            .store(in: &cancellableBag)
         
         APIService.shared.requestAddrEngEvent(keyword: "성수동1278720170270")
         

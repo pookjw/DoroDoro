@@ -6,17 +6,16 @@
 //
 
 import Foundation
-import RxSwift
-import RxAlamofire
+import Combine
 import Alamofire
 
 final class APIService {
     // MARK: - Public Properties
     static public let shared: APIService = .init()
-    public let addrLinkEvent: PublishSubject<AddrLinkResultsData> = .init()
-    public let addrEngEvent: PublishSubject<AddrEngResultsData> = .init()
-    public let addrLinkErrorEvent: PublishSubject<AddrLinkApiError> = .init()
-    public let addrEngErrorEvent: PublishSubject<AddrEngApiError> = .init()
+    public let addrLinkEvent: PassthroughSubject<AddrLinkResultsData, Never> = .init()
+    public let addrEngEvent: PassthroughSubject<AddrEngResultsData, Never> = .init()
+    public let addrLinkErrorEvent: PassthroughSubject<AddrLinkApiError, Never> = .init()
+    public let addrEngErrorEvent: PassthroughSubject<AddrEngApiError, Never> = .init()
     
     // MARK: - Public Methods
     
@@ -24,47 +23,49 @@ final class APIService {
     public func requestAddrLinkEvent(keyword: String,
                                 currentPage: Int = 1,
                                 countPerPage: Int = 10) {
-        // 도로명주소 요청
-        RxAlamofire.requestData(.get,
-                                addrLinkApiURL,
-                                parameters: ["confmKey": Keys.addrLinkApiKey,
-                                             "currentPage": currentPage,
-                                             "countPerPage": countPerPage,
-                                             "keyword": keyword,
-                                             "resultType": "json"])
-            .withUnretained(self)
-            .subscribe(onNext: { (obj, response) in
-                guard response.0.statusCode == 200 else {
-                    obj.addrLinkErrorEvent.onNext(.responseError)
+        AF.request(addrLinkApiURL,
+                   method: .get,
+                   parameters: ["confmKey": Keys.addrLinkApiKey,
+                                "currentPage": currentPage,
+                                "countPerPage": countPerPage,
+                                "keyword": keyword,
+                                "resultType": "json"])
+            .response(queue: DispatchQueue.global(qos: .background)) { [weak self] response in
+                guard response.response?.statusCode == 200 else {
+                    self?.addrLinkErrorEvent.send(.responseError)
+                    return
+                }
+                
+                guard let data: Data = response.data else {
+                    self?.addrLinkErrorEvent.send(.responseError)
                     return
                 }
                 
                 let decoder: JSONDecoder = .init()
                 
-                guard let decoded: _AddrLinkData = try? decoder.decode(_AddrLinkData.self, from: response.1) else {
-                    obj.addrLinkErrorEvent.onNext(.jsonError)
+                guard let decoded: _AddrLinkData = try? decoder.decode(_AddrLinkData.self, from: data) else {
+                    self?.addrLinkErrorEvent.send(.jsonError)
                     return
                 }
                 
                 if let resultError: AddrLinkApiError = AddrLinkApiError(rawValue: decoded.results.common.errorCode),
                    resultError != .normal {
-                    obj.addrLinkErrorEvent.onNext(resultError)
+                    self?.addrLinkErrorEvent.send(resultError)
                     return
                 }
                 
                 guard decoded.results.juso != nil else {
-                    obj.addrLinkErrorEvent.onNext(.unknownError)
+                    self?.addrLinkErrorEvent.send(.unknownError)
                     return
                 }
                 
                 guard !decoded.results.juso.isEmpty else {
-                    obj.addrLinkErrorEvent.onNext(.noResults)
+                    self?.addrLinkErrorEvent.send(.noResults)
                     return
                 }
                 
-                obj.addrLinkEvent.onNext(decoded.results)
-            })
-            .disposed(by: disposeBag)
+                self?.addrLinkEvent.send(decoded.results)
+            }
     }
     
     public func requestAddrLink(keyword: String,
@@ -181,46 +182,49 @@ final class APIService {
     public func requestAddrEngEvent(keyword: String,
                                currentPage: Int = 1,
                                countPerPage: Int = 1) {
-        RxAlamofire.requestData(.get,
-                                addrEngApiURL,
-                                parameters: ["confmKey": Keys.addrEngApiKey,
-                                             "currentPage": currentPage,
-                                             "countPerPage": countPerPage,
-                                             "keyword": keyword,
-                                             "resultType": "json"])
-            .withUnretained(self)
-            .subscribe(onNext: { (obj, response) in
-                guard response.0.statusCode == 200 else {
-                    obj.addrEngErrorEvent.onNext(.responseError)
+        AF.request(addrEngApiURL,
+                   method: .get,
+                   parameters: ["confmKey": Keys.addrEngApiKey,
+                                "currentPage": currentPage,
+                                "countPerPage": countPerPage,
+                                "keyword": keyword,
+                                "resultType": "json"])
+            .response(queue: DispatchQueue.global(qos: .background)) { [weak self] response in
+                guard response.response?.statusCode == 200 else {
+                    self?.addrEngErrorEvent.send(.responseError)
+                    return
+                }
+                
+                guard let data: Data = response.data else {
+                    self?.addrEngErrorEvent.send(.responseError)
                     return
                 }
                 
                 let decoder: JSONDecoder = .init()
                 
-                guard let decoded: _AddrEngData = try? decoder.decode(_AddrEngData.self, from: response.1) else {
-                    obj.addrEngErrorEvent.onNext(.jsonError)
+                guard let decoded: _AddrEngData = try? decoder.decode(_AddrEngData.self, from: data) else {
+                    self?.addrEngErrorEvent.send(.jsonError)
                     return
                 }
                 
                 if let resultError: AddrEngApiError = AddrEngApiError(rawValue: decoded.results.common.errorCode),
                    resultError != .normal {
-                    obj.addrEngErrorEvent.onNext(resultError)
+                    self?.addrEngErrorEvent.send(resultError)
                     return
                 }
                 
                 guard decoded.results.juso != nil else {
-                    obj.addrEngErrorEvent.onNext(.unknownError)
+                    self?.addrEngErrorEvent.send(.unknownError)
                     return
                 }
                 
                 guard !decoded.results.juso.isEmpty else {
-                    obj.addrEngErrorEvent.onNext(.noResults)
+                    self?.addrEngErrorEvent.send(.noResults)
                     return
                 }
                 
-                obj.addrEngEvent.onNext(decoded.results)
-            })
-            .disposed(by: disposeBag)
+                self?.addrEngEvent.send(decoded.results)
+            }
     }
     
     public func requestAddrEng(keyword: String,
@@ -335,7 +339,6 @@ final class APIService {
     // MARK: - Private Properties
     private let addrLinkApiURL: URL = URL(string: "https://www.juso.go.kr/addrlink/addrLinkApi.do")!
     private let addrEngApiURL: URL = URL(string: "https://www.juso.go.kr/addrlink/addrEngApi.do")!
-    private var disposeBag: DisposeBag = .init()
     
     // MARK: - Private Methods
     private init() {
