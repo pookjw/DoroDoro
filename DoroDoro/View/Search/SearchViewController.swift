@@ -11,16 +11,11 @@ import SnapKit
 import CRRefresh
 
 final class SearchViewController: UIViewController {
-    typealias DataSource = UICollectionViewDiffableDataSource<SearchHeaderItem, SearchResultItem>
-    typealias Snapshot = NSDiffableDataSourceSnapshot<SearchHeaderItem, SearchResultItem>
-    
-    private weak var collectionView: UICollectionView! = nil
-    private weak var searchController: UISearchController! = nil
+    private weak var collectionView: UICollectionView? = nil
+    private weak var searchController: UISearchController? = nil
     private weak var slackLoadingAnimator: SlackLoadingAnimator? = nil
-    private var viewModel: SearchViewModel!
+    private var viewModel: SearchViewModel? = nil
     private var cancellableBag: Set<AnyCancellable> = .init()
-    private var currentPage: Int = 1
-    private var searchedText: String? = nil
     
     private var inputText: String? {
         return searchController?.searchBar.searchTextField.text
@@ -37,7 +32,7 @@ final class SearchViewController: UIViewController {
     
     private func configureViewModel() {
         viewModel = .init()
-        viewModel.dataSource = makeDataSource()
+        viewModel?.dataSource = makeDataSource()
     }
     
     private func configureAttributes() {
@@ -67,7 +62,7 @@ final class SearchViewController: UIViewController {
         let slackLoadingAnimator: SlackLoadingAnimator = .init()
         self.slackLoadingAnimator = slackLoadingAnimator
         collectionView.cr.addFootRefresh(animator: slackLoadingAnimator) { [weak self] in
-            self?.viewModel.requestNextPageIfAvailable()
+            self?.viewModel?.requestNextPageIfAvailable()
         }
     }
     
@@ -80,8 +75,10 @@ final class SearchViewController: UIViewController {
         navigationItem.hidesSearchBarWhenScrolling = false
     }
     
-    private func makeDataSource() -> DataSource {
-        let dataSource: DataSource = .init(collectionView: collectionView) { [weak self] (collectionView, indexPath, result) -> UICollectionViewCell? in
+    private func makeDataSource() -> SearchViewModel.DataSource {
+        guard let collectionView: UICollectionView = collectionView else { return .init() }
+        
+        let dataSource: SearchViewModel.DataSource = .init(collectionView: collectionView) { [weak self] (collectionView, indexPath, result) -> UICollectionViewCell? in
             guard let self = self else { return nil }
             return collectionView.dequeueConfiguredReusableCell(using: self.getResultCellRegisteration(), for: indexPath, item: result)
         }
@@ -90,7 +87,7 @@ final class SearchViewController: UIViewController {
             guard let self = self else { return nil }
             
             if elementKind == UICollectionView.elementKindSectionHeader {
-                return self.collectionView.dequeueConfiguredReusableSupplementary(using: self.getHeaderCellRegisteration(), for: indexPath)
+                return self.collectionView?.dequeueConfiguredReusableSupplementary(using: self.getHeaderCellRegisteration(), for: indexPath)
             }
 
             return nil
@@ -110,9 +107,9 @@ final class SearchViewController: UIViewController {
     
     private func getHeaderCellRegisteration() -> UICollectionView.SupplementaryRegistration<UICollectionViewListCell> {
         return .init(elementKind: UICollectionView.elementKindSectionHeader) { [weak self] (cell, elementKind, indexPath) in
-            guard let self = self else { return }
+            guard let dataSource: SearchViewModel.DataSource = self?.viewModel?.dataSource else { return }
             
-            let headerItem: SearchHeaderItem = self.viewModel.dataSource.snapshot().sectionIdentifiers[indexPath.section]
+            let headerItem: SearchHeaderItem = dataSource.snapshot().sectionIdentifiers[indexPath.section]
             
             var configuration: UIListContentConfiguration = cell.defaultContentConfiguration()
             configuration.text = headerItem.title
@@ -128,7 +125,7 @@ final class SearchViewController: UIViewController {
             })
             .store(in: &cancellableBag)
         
-        viewModel.refreshedEvent
+        viewModel?.refreshedEvent
             .sink(receiveValue: { [weak self] hasMoreData in
                 self?.collectionView?.cr.endLoadingMore()
                 
@@ -156,7 +153,7 @@ extension SearchViewController: UISearchBarDelegate {
         searchController?.dismiss(animated: true, completion: nil)
         if let text: String = searchBar.text,
            !text.isEmpty {
-            viewModel.searchEvent = text
+            viewModel?.searchEvent = text
         }
     }
 }

@@ -265,6 +265,22 @@
 			path = Entity;
 			sourceTree = "<group>";
 		};
+		F333B9C025EBDB3700F1915F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F333B9C125EBDB4200F1915F /* Search */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F333B9C125EBDB4200F1915F /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				F333B97A25EB7F0200F1915F /* SearchViewModel.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
 		F3444C9A25E8B1A700A0706F /* Localizable */ = {
 			isa = PBXGroup;
 			children = (
@@ -318,7 +334,6 @@
 			isa = PBXGroup;
 			children = (
 				F378B6FA25E7D83F00FCE546 /* SearchViewController.swift */,
-				F333B97A25EB7F0200F1915F /* SearchViewModel.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -350,7 +365,7 @@
 			path = API;
 			sourceTree = "<group>";
 		};
-		F378B72125E7DD7500FCE546 /* Views */ = {
+		F378B72125E7DD7500FCE546 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				F378B70025E7D86F00FCE546 /* TabBar */,
@@ -358,7 +373,7 @@
 				F378B70725E7D8AF00FCE546 /* Bookmark */,
 				F378B76D25E7F0A200FCE546 /* Settings */,
 			);
-			path = Views;
+			path = View;
 			sourceTree = "<group>";
 		};
 		F378B74825E7EED900FCE546 /* DoroDoroWidget */ = {
@@ -402,14 +417,14 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
-		F378B79625E8005100FCE546 /* Models */ = {
+		F378B79625E8005100FCE546 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				F333B98325EB88CD00F1915F /* Entity */,
 				F3444C9A25E8B1A700A0706F /* Localizable */,
 				F378B72025E7DC8E00FCE546 /* API */,
 			);
-			path = Models;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		F3AAE28C25E7D06700D666BD = {
@@ -444,8 +459,9 @@
 		F3AAE29725E7D06700D666BD /* DoroDoro */ = {
 			isa = PBXGroup;
 			children = (
-				F378B72125E7DD7500FCE546 /* Views */,
-				F378B79625E8005100FCE546 /* Models */,
+				F378B72125E7DD7500FCE546 /* View */,
+				F333B9C025EBDB3700F1915F /* ViewModel */,
+				F378B79625E8005100FCE546 /* Model */,
 				F378B6A225E7D13E00FCE546 /* DoroDoro.entitlements */,
 				F3AAE29825E7D06700D666BD /* AppDelegate.swift */,
 				F3AAE29A25E7D06700D666BD /* SceneDelegate.swift */,

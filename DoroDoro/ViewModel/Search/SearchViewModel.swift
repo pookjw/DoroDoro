@@ -9,11 +9,11 @@ import Foundation
 import UIKit
 import Combine
 
-final class SearchViewModel {
-    typealias DataSource = UICollectionViewDiffableDataSource<SearchHeaderItem, SearchResultItem>
-    typealias Snapshot = NSDiffableDataSourceSnapshot<SearchHeaderItem, SearchResultItem>
+final public class SearchViewModel {
+    public typealias DataSource = UICollectionViewDiffableDataSource<SearchHeaderItem, SearchResultItem>
+    public typealias Snapshot = NSDiffableDataSourceSnapshot<SearchHeaderItem, SearchResultItem>
     
-    public var dataSource: DataSource! = nil
+    public var dataSource: DataSource? = nil
     public var refreshedEvent: PassthroughSubject<Bool, Never> = .init()
     @Published public var searchEvent: String? = nil
     
@@ -44,7 +44,9 @@ final class SearchViewModel {
     private func updateResultItems(_ result: AddrLinkResultsData, text: String) {
         totalCount = Int(result.common.totalCount) ?? 1
         
-        var snapshot: Snapshot = dataSource.snapshot()
+        guard var snapshot: Snapshot = dataSource?.snapshot() else {
+            return
+        }
         
         let headerItem: SearchHeaderItem = {
             // 이미 기존에 생성된 Header가 있고, 1페이지가 아닌 경우 기존 Header를 그대로 쓴다.
@@ -69,7 +71,7 @@ final class SearchViewModel {
         }
         
         snapshot.appendItems(items, toSection: headerItem)
-        dataSource.apply(snapshot, animatingDifferences: true)
+        dataSource?.apply(snapshot, animatingDifferences: true)
         refreshedEvent.send(canLoadMore)
     }
     

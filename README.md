@@ -4,7 +4,7 @@ iOS/macOS/tvOS/watchOS용 도로명 및 영문주소 검색 어플
 
 ## API Key
 
-[gitignore](.gitignore)에 적혀 있다시피 API Key가 담긴 `Keys.swift` 파일은 Git에 업로드되지 않습니다. 따라서 아래와 같은 `Keys.swift` 파일을 [DoroDoro/Models/API](DoroDoro/Models/API)에 생성해 주셔야 합니다.
+[gitignore](.gitignore)에 적혀 있다시피 API Key가 담긴 `Keys.swift` 파일은 Git에 업로드되지 않습니다. 따라서 아래와 같은 `Keys.swift` 파일을 [DoroDoro/Model/API](DoroDoro/Model/API)에 생성해 주셔야 합니다.
 
 ```swift
 import Foundation

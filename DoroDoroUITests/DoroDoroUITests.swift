@@ -7,6 +7,6 @@
 
 import XCTest
 
-//class DoroDoroUITests: XCTestCase {
-//
-//}
+final internal class DoroDoroUITests: XCTestCase {
+
+}
