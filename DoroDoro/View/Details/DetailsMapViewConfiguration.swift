@@ -45,9 +45,24 @@ final fileprivate class _DetailsMapViewContentView: UIView, UIContentView {
         self.mapView = mapView
         addSubview(mapView)
         mapView.translatesAutoresizingMaskIntoConstraints = false
-        mapView.snp.remakeConstraints { make in
-            make.edges.equalToSuperview()
-            make.height.equalTo(300)
+        
+        if superview != nil {
+            translatesAutoresizingMaskIntoConstraints = false
+            
+            snp.remakeConstraints { make in
+                make.edges.equalToSuperview()
+                make.height.equalTo(300)
+            }
+            
+            mapView.snp.remakeConstraints { make in
+                make.edges.equalToSuperview()
+                
+            }
+        } else {
+            mapView.snp.remakeConstraints { make in
+                make.edges.equalToSuperview()
+                make.height.equalTo(300)
+            }
         }
         
         if let configuration: DetailsMapViewConfiguration = configuration as? DetailsMapViewConfiguration {

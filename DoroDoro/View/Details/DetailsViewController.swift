@@ -40,11 +40,7 @@ final internal class DetailsViewController: UIViewController {
     }
     
     private func configureCollectionView() {
-        // 이 View Controller에는 Section이 1개이므로 NSCollectionLayoutSection를 쓸 필요가 없다.
-        var layoutConfiguration: UICollectionLayoutListConfiguration = .init(appearance: .insetGrouped)
-        layoutConfiguration.headerMode = .supplementary
-        let layout: UICollectionViewCompositionalLayout = .list(using: layoutConfiguration)
-        
+        let layout: UICollectionViewCompositionalLayout = .init(sectionProvider: getSectionProvider())
         let collectionView: UICollectionView = .init(frame: .zero, collectionViewLayout: layout)
         self.collectionView = collectionView
         view.addSubview(collectionView)
@@ -53,7 +49,7 @@ final internal class DetailsViewController: UIViewController {
             make.edges.equalToSuperview()
         }
         
-        collectionView.backgroundColor = .systemBackground
+        collectionView.backgroundColor = collectionView.backgroundView?.backgroundColor
         collectionView.allowsSelection = false
         collectionView.delegate = self
     }
@@ -83,9 +79,28 @@ final internal class DetailsViewController: UIViewController {
             return nil
         }
         
-        
-        
         return dataSource
+    }
+    
+    private func getSectionProvider() -> UICollectionViewCompositionalLayoutSectionProvider {
+        return { (section: Int, layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
+//            guard let self = self else { return nil }
+//
+//            if let coordSectionIndex: Int = self.viewModel?.dataSource?.snapshot().sectionIdentifiers.firstIndex(where: { $0.itemType == .coord }),
+//               coordSectionIndex == section {
+//                let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+//                                                             heightDimension: .fractionalHeight(1.0))
+//                let item: NSCollectionLayoutItem = .init(layoutSize: itemSize)
+//                let groupSize: NSCollectionLayoutSize = .init(widthDimension: .fractionalWidth(1),
+//                                                              heightDimension: .absolute(300))
+//                let group: NSCollectionLayoutGroup = .horizontal(layoutSize: groupSize, subitems: [item])
+//                return NSCollectionLayoutSection(group: group)
+//            } else {
+                var configuration: UICollectionLayoutListConfiguration = .init(appearance: .insetGrouped)
+                configuration.headerMode = .supplementary
+                return NSCollectionLayoutSection.list(using: configuration, layoutEnvironment: layoutEnvironment)
+//            }
+        }
     }
     
     private func getInfoCellRegisteration() -> UICollectionView.CellRegistration<UICollectionViewListCell, DetailInfoItem> {
