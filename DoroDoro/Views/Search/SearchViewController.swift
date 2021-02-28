@@ -25,7 +25,6 @@ final class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
         configureAttributes()
         configureTableView()
         configureSearchController()
@@ -33,8 +32,10 @@ final class SearchViewController: UIViewController {
     }
     
     private func configureAttributes() {
+        view.backgroundColor = .systemBackground
         navigationController?.navigationBar.prefersLargeTitles = true
         title = Localizable.DORODORO.string
+        tabBarItem.title = Localizable.TABBAR_SEARCH_VIEW_CONTROLLER_TITLE.string
     }
     
     private func configureTableView() {
@@ -58,6 +59,7 @@ final class SearchViewController: UIViewController {
     private func configureSearchController() {
         let searchController: UISearchController = .init(searchResultsController: nil)
         self.searchController = searchController
+        searchController.obscuresBackgroundDuringPresentation = false
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
     }
@@ -130,9 +132,6 @@ final class SearchViewController: UIViewController {
             })
             .store(in: &cancellableBag)
     }
-    
-//    private func showErrorAlert<T: RawRepresentable>(for error: T) where T.RawValue.Type == String.Type, T: Error {
-//    }
     
     private func showErrorAlert(for error: LocalizedError) {
         let alert: UIAlertController = .init(title: nil, message: error.errorDescription, preferredStyle: .alert)
