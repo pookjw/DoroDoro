@@ -7,7 +7,7 @@
 
 import Foundation
 
-internal struct AddrEngCommonData: Codable {
+internal struct AddrEngCommonData: Decodable {
     /// 총 검색 데이터수
     internal let totalCount: String
     

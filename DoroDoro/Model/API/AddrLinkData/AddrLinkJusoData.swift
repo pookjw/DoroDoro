@@ -7,7 +7,7 @@
 
 import Foundation
 
-internal struct AddrLinkJusoData: Codable {
+internal struct AddrLinkJusoData: Decodable {
     /// 전체 도로명주소
     internal let roadAddr: String
     
@@ -107,5 +107,15 @@ internal struct AddrLinkJusoData: Codable {
 extension AddrLinkJusoData: Equatable {
     static internal func == (lhs: AddrLinkJusoData, rhs: AddrLinkJusoData) -> Bool {
         return lhs.roadAddr == rhs.roadAddr
+    }
+}
+
+extension AddrLinkJusoData {
+    internal func convertToAddrCoordSearchData() -> AddrCoordSearchData {
+        return .init(admCd: admCd,
+                     rnMgtSn: rnMgtSn,
+                     udrtYn: udrtYn,
+                     buldMnnm: buldMnnm,
+                     buldSlno: buldSlno)
     }
 }

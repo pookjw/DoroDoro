@@ -15,6 +15,11 @@
 		F333B9F825EBFA1B00F1915F /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F333B9F725EBFA1B00F1915F /* DetailsViewController.swift */; };
 		F333BA0025EBFE1B00F1915F /* NSObject+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F333B9FF25EBFE1B00F1915F /* NSObject+Ext.swift */; };
 		F337B1BF25EBFF5700FB0B61 /* AddrCoordCommonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B1BE25EBFF5700FB0B61 /* AddrCoordCommonData.swift */; };
+		F337B1C725EC009400FB0B61 /* AddrCoordJusoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B1C625EC009400FB0B61 /* AddrCoordJusoData.swift */; };
+		F337B1CF25EC016800FB0B61 /* AddrCoordApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B1CE25EC016800FB0B61 /* AddrCoordApiError.swift */; };
+		F337B1D725EC02AD00FB0B61 /* AddrCoordResultsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B1D625EC02AD00FB0B61 /* AddrCoordResultsData.swift */; };
+		F337B1DF25EC03A400FB0B61 /* AddrCoordSearchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B1DE25EC03A400FB0B61 /* AddrCoordSearchData.swift */; };
+		F337B1EE25EC09F400FB0B61 /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B1ED25EC09F400FB0B61 /* DetailsViewModel.swift */; };
 		F3444C9C25E8B1BB00A0706F /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3444C9B25E8B1BB00A0706F /* Localizable.swift */; };
 		F3444CA925E8B82300A0706F /* DoroDoroUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3444CA825E8B82300A0706F /* DoroDoroUITests.swift */; };
 		F3444DCD25E8C4B300A0706F /* DoroDoroAPIErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3444DCC25E8C4B300A0706F /* DoroDoroAPIErrorTests.swift */; };
@@ -140,6 +145,11 @@
 		F333B9F725EBFA1B00F1915F /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		F333B9FF25EBFE1B00F1915F /* NSObject+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Ext.swift"; sourceTree = "<group>"; };
 		F337B1BE25EBFF5700FB0B61 /* AddrCoordCommonData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrCoordCommonData.swift; sourceTree = "<group>"; };
+		F337B1C625EC009400FB0B61 /* AddrCoordJusoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrCoordJusoData.swift; sourceTree = "<group>"; };
+		F337B1CE25EC016800FB0B61 /* AddrCoordApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrCoordApiError.swift; sourceTree = "<group>"; };
+		F337B1D625EC02AD00FB0B61 /* AddrCoordResultsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrCoordResultsData.swift; sourceTree = "<group>"; };
+		F337B1DE25EC03A400FB0B61 /* AddrCoordSearchData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrCoordSearchData.swift; sourceTree = "<group>"; };
+		F337B1ED25EC09F400FB0B61 /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
 		F3444C9B25E8B1BB00A0706F /* Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
 		F3444CA625E8B82300A0706F /* DoroDoroUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoroDoroUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3444CA825E8B82300A0706F /* DoroDoroUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoroDoroUITests.swift; sourceTree = "<group>"; };
@@ -275,6 +285,7 @@
 			isa = PBXGroup;
 			children = (
 				F333B9C125EBDB4200F1915F /* Search */,
+				F337B1EC25EC09E100FB0B61 /* Details */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -307,8 +318,20 @@
 			isa = PBXGroup;
 			children = (
 				F337B1BE25EBFF5700FB0B61 /* AddrCoordCommonData.swift */,
+				F337B1C625EC009400FB0B61 /* AddrCoordJusoData.swift */,
+				F337B1CE25EC016800FB0B61 /* AddrCoordApiError.swift */,
+				F337B1D625EC02AD00FB0B61 /* AddrCoordResultsData.swift */,
+				F337B1DE25EC03A400FB0B61 /* AddrCoordSearchData.swift */,
 			);
 			path = AddrCoordApi;
+			sourceTree = "<group>";
+		};
+		F337B1EC25EC09E100FB0B61 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				F337B1ED25EC09F400FB0B61 /* DetailsViewModel.swift */,
+			);
+			path = Details;
 			sourceTree = "<group>";
 		};
 		F3444C9A25E8B1A700A0706F /* Localizable */ = {
@@ -818,15 +841,19 @@
 				F333B9F825EBFA1B00F1915F /* DetailsViewController.swift in Sources */,
 				F3AAE29925E7D06700D666BD /* AppDelegate.swift in Sources */,
 				F333BA0025EBFE1B00F1915F /* NSObject+Ext.swift in Sources */,
+				F337B1C725EC009400FB0B61 /* AddrCoordJusoData.swift in Sources */,
+				F337B1EE25EC09F400FB0B61 /* DetailsViewModel.swift in Sources */,
 				F333B97B25EB7F0200F1915F /* SearchViewModel.swift in Sources */,
 				F378B77625E7F17A00FCE546 /* AddrLinkCommonData.swift in Sources */,
 				F378B70225E7D88A00FCE546 /* MainTabBarController.swift in Sources */,
+				F337B1DF25EC03A400FB0B61 /* AddrCoordSearchData.swift in Sources */,
 				F3F4FAF025E8080D0077FCB5 /* AddrEngCommonData.swift in Sources */,
 				F3309FF825EA8C5D0024DF7F /* Keys.swift in Sources */,
 				F378B79025E7FAE500FCE546 /* AddrLinkResultsData.swift in Sources */,
 				F378B78425E7F45600FCE546 /* AddrLinkApiError.swift in Sources */,
 				F378B75025E7EEDB00FCE546 /* DoroDoroWidget.intentdefinition in Sources */,
 				F333B98D25EB890C00F1915F /* SearchResultItem.swift in Sources */,
+				F337B1CF25EC016800FB0B61 /* AddrCoordApiError.swift in Sources */,
 				F333B9A725EB8FB600F1915F /* SearchHeaderItem.swift in Sources */,
 				F378B70925E7D8C600FCE546 /* BookmarksViewController.swift in Sources */,
 				F337B1BF25EBFF5700FB0B61 /* AddrCoordCommonData.swift in Sources */,
@@ -836,6 +863,7 @@
 				F378B77D25E7F18900FCE546 /* AddrLinkJusoData.swift in Sources */,
 				F3444C9C25E8B1BB00A0706F /* Localizable.swift in Sources */,
 				F378B76F25E7F0B700FCE546 /* SettingsViewController.swift in Sources */,
+				F337B1D725EC02AD00FB0B61 /* AddrCoordResultsData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

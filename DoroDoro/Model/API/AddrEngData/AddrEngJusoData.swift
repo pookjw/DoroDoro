@@ -7,7 +7,7 @@
 
 import Foundation
 
-internal struct AddrEngJusoData: Codable {
+internal struct AddrEngJusoData: Decodable {
     /// 영문 도로명주소
     internal let roadAddr: String
     
