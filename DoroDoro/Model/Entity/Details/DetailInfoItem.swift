@@ -9,8 +9,12 @@ import Foundation
 import UIKit
 
 internal struct DetailInfoItem: Hashable, Equatable {
-    internal let title: String
-    internal let subTitle: String
+    internal enum ItemType: Hashable {
+        case link(String, String)
+        case eng(String, String)
+        case coord(Double, Double)
+    }
+    internal let itemType: ItemType
     
     private let id = UUID()
     

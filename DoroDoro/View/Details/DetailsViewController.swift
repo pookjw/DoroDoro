@@ -54,6 +54,7 @@ final internal class DetailsViewController: UIViewController {
         }
         
         collectionView.backgroundColor = .systemBackground
+        collectionView.allowsSelection = false
         collectionView.delegate = self
     }
     
@@ -69,7 +70,7 @@ final internal class DetailsViewController: UIViewController {
         
         let dataSource: DetailsViewModel.DataSource = .init(collectionView: collectionView) { [weak self] (collectionView, indexPath, item) -> UICollectionViewCell? in
             guard let self = self else { return nil }
-            return collectionView.dequeueConfiguredReusableCell(using: self.getInfoCellRegiseration(), for: indexPath, item: item)
+            return collectionView.dequeueConfiguredReusableCell(using: self.getInfoCellRegisteration(), for: indexPath, item: item)
         }
         
         dataSource.supplementaryViewProvider = { [weak self] (collectionView, elementKind, indexPath) -> UICollectionReusableView? in
@@ -82,15 +83,27 @@ final internal class DetailsViewController: UIViewController {
             return nil
         }
         
+        
+        
         return dataSource
     }
     
-    private func getInfoCellRegiseration() -> UICollectionView.CellRegistration<UICollectionViewListCell, DetailInfoItem> {
+    private func getInfoCellRegisteration() -> UICollectionView.CellRegistration<UICollectionViewListCell, DetailInfoItem> {
         return .init { (cell, indexPath, item) in
-            var configuration: UIListContentConfiguration = cell.defaultContentConfiguration()
-            configuration.text = item.title
-            configuration.secondaryText = item.subTitle
-            cell.contentConfiguration = configuration
+            switch item.itemType {
+            case let .link(text, secondaryText):
+                var configuration: UIListContentConfiguration = cell.defaultContentConfiguration()
+                configuration.text = text
+                configuration.secondaryText = secondaryText
+                cell.contentConfiguration = configuration
+            case let .eng(text, secondaryText):
+                var configuration: UIListContentConfiguration = cell.defaultContentConfiguration()
+                configuration.text = text
+                configuration.secondaryText = secondaryText
+                cell.contentConfiguration = configuration
+            case let .coord(latitude, longitude):
+                cell.contentConfiguration = DetailsMapViewConfiguration(latitude: latitude, longitude: longitude)
+            }
         }
     }
     

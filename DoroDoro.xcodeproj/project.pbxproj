@@ -22,7 +22,7 @@
 		F337B1EE25EC09F400FB0B61 /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B1ED25EC09F400FB0B61 /* DetailsViewModel.swift */; };
 		F337B1F825EC0E0F00FB0B61 /* DetailInfoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B1F725EC0E0F00FB0B61 /* DetailInfoItem.swift */; };
 		F337B20025EC0E9600FB0B61 /* DetailHeaderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B1FF25EC0E9600FB0B61 /* DetailHeaderItem.swift */; };
-		F337B20825EC0EB200FB0B61 /* DetailMapItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B20725EC0EB200FB0B61 /* DetailMapItem.swift */; };
+		F33BAFAC25EC239500BC5772 /* DetailsMapViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BAFAB25EC239500BC5772 /* DetailsMapViewConfiguration.swift */; };
 		F3444C9C25E8B1BB00A0706F /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3444C9B25E8B1BB00A0706F /* Localizable.swift */; };
 		F3444CA925E8B82300A0706F /* DoroDoroUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3444CA825E8B82300A0706F /* DoroDoroUITests.swift */; };
 		F3444DCD25E8C4B300A0706F /* DoroDoroAPIErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3444DCC25E8C4B300A0706F /* DoroDoroAPIErrorTests.swift */; };
@@ -155,7 +155,7 @@
 		F337B1ED25EC09F400FB0B61 /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
 		F337B1F725EC0E0F00FB0B61 /* DetailInfoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInfoItem.swift; sourceTree = "<group>"; };
 		F337B1FF25EC0E9600FB0B61 /* DetailHeaderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHeaderItem.swift; sourceTree = "<group>"; };
-		F337B20725EC0EB200FB0B61 /* DetailMapItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMapItem.swift; sourceTree = "<group>"; };
+		F33BAFAB25EC239500BC5772 /* DetailsMapViewConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsMapViewConfiguration.swift; sourceTree = "<group>"; };
 		F3444C9B25E8B1BB00A0706F /* Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
 		F3444CA625E8B82300A0706F /* DoroDoroUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoroDoroUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3444CA825E8B82300A0706F /* DoroDoroUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoroDoroUITests.swift; sourceTree = "<group>"; };
@@ -316,6 +316,7 @@
 			isa = PBXGroup;
 			children = (
 				F333B9F725EBFA1B00F1915F /* DetailsViewController.swift */,
+				F33BAFAB25EC239500BC5772 /* DetailsMapViewConfiguration.swift */,
 			);
 			path = Details;
 			sourceTree = "<group>";
@@ -354,7 +355,6 @@
 			children = (
 				F337B1F725EC0E0F00FB0B61 /* DetailInfoItem.swift */,
 				F337B1FF25EC0E9600FB0B61 /* DetailHeaderItem.swift */,
-				F337B20725EC0EB200FB0B61 /* DetailMapItem.swift */,
 			);
 			path = Details;
 			sourceTree = "<group>";
@@ -874,11 +874,11 @@
 				F378B70225E7D88A00FCE546 /* MainTabBarController.swift in Sources */,
 				F337B1DF25EC03A400FB0B61 /* AddrCoordSearchData.swift in Sources */,
 				F3F4FAF025E8080D0077FCB5 /* AddrEngCommonData.swift in Sources */,
-				F337B20825EC0EB200FB0B61 /* DetailMapItem.swift in Sources */,
 				F3309FF825EA8C5D0024DF7F /* Keys.swift in Sources */,
 				F378B79025E7FAE500FCE546 /* AddrLinkResultsData.swift in Sources */,
 				F378B78425E7F45600FCE546 /* AddrLinkApiError.swift in Sources */,
 				F378B75025E7EEDB00FCE546 /* DoroDoroWidget.intentdefinition in Sources */,
+				F33BAFAC25EC239500BC5772 /* DetailsMapViewConfiguration.swift in Sources */,
 				F337B20025EC0E9600FB0B61 /* DetailHeaderItem.swift in Sources */,
 				F333B98D25EB890C00F1915F /* SearchResultItem.swift in Sources */,
 				F337B1CF25EC016800FB0B61 /* AddrCoordApiError.swift in Sources */,
