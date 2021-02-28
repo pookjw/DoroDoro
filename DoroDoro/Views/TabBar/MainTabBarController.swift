@@ -25,6 +25,7 @@ final class MainTabBarController: UITabBarController {
         self.bookmarkVC = bookmarkVC
         self.settingsVC = settingsVC
         
+        let searchNVC: UINavigationController = .init(rootViewController: searchVC)
         
         searchVC.tabBarItem = .init(title: Localizable.TABBAR_SEARCH_VIEW_CONTROLLER_TITLE.string,
                                     image: UIImage(systemName: "magnifyingglass"),
@@ -36,6 +37,6 @@ final class MainTabBarController: UITabBarController {
                                        image: UIImage(systemName: "gearshape"),
                                        tag: 2)
         
-        setViewControllers([searchVC, bookmarkVC, settingsVC], animated: false)
+        setViewControllers([searchNVC, bookmarkVC, settingsVC], animated: false)
     }
 }

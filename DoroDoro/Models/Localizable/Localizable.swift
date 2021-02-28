@@ -8,6 +8,7 @@
 import Foundation
 
 public enum Localizable: String {
+    case DORODORO
     case TABBAR_SEARCH_VIEW_CONTROLLER_TITLE
     case TABBAR_BOOKMARK_VIEW_CONTROLLER_TITLE
     case TABBAR_SETTINGS_VIEW_CONTROLLER_TITLE
