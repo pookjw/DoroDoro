@@ -7,11 +7,11 @@
 
 import Foundation
 
-public struct SearchResultItem: Hashable {
-    public let title: String
+internal struct SearchResultItem: Hashable {
+    internal let title: String
     private let id = UUID()
     
-    public static func == (lhs: SearchResultItem, rhs: SearchResultItem) -> Bool {
+    internal static func == (lhs: SearchResultItem, rhs: SearchResultItem) -> Bool {
         return lhs.id == rhs.id
     }
 }

@@ -7,12 +7,12 @@
 
 import UIKit
 
-final class MainTabBarController: UITabBarController {
-    public weak var searchVC: SearchViewController? = nil
-    public weak var bookmarksVC: BookmarksViewController? = nil
-    public weak var settingsVC: SettingsViewController? = nil
+final internal class MainTabBarController: UITabBarController {
+    internal weak var searchVC: SearchViewController? = nil
+    internal weak var bookmarksVC: BookmarksViewController? = nil
+    internal weak var settingsVC: SettingsViewController? = nil
     
-    override func viewDidLoad() {
+    override internal func viewDidLoad() {
         super.viewDidLoad()
         configureViewControllers()
     }

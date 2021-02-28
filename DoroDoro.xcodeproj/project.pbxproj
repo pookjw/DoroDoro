@@ -12,6 +12,9 @@
 		F333B97B25EB7F0200F1915F /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F333B97A25EB7F0200F1915F /* SearchViewModel.swift */; };
 		F333B98D25EB890C00F1915F /* SearchResultItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F333B98C25EB890C00F1915F /* SearchResultItem.swift */; };
 		F333B9A725EB8FB600F1915F /* SearchHeaderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F333B9A625EB8FB600F1915F /* SearchHeaderItem.swift */; };
+		F333B9F825EBFA1B00F1915F /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F333B9F725EBFA1B00F1915F /* DetailsViewController.swift */; };
+		F333BA0025EBFE1B00F1915F /* NSObject+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F333B9FF25EBFE1B00F1915F /* NSObject+Ext.swift */; };
+		F337B1BF25EBFF5700FB0B61 /* AddrCoordCommonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B1BE25EBFF5700FB0B61 /* AddrCoordCommonData.swift */; };
 		F3444C9C25E8B1BB00A0706F /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3444C9B25E8B1BB00A0706F /* Localizable.swift */; };
 		F3444CA925E8B82300A0706F /* DoroDoroUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3444CA825E8B82300A0706F /* DoroDoroUITests.swift */; };
 		F3444DCD25E8C4B300A0706F /* DoroDoroAPIErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3444DCC25E8C4B300A0706F /* DoroDoroAPIErrorTests.swift */; };
@@ -134,6 +137,9 @@
 		F333B97A25EB7F0200F1915F /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		F333B98C25EB890C00F1915F /* SearchResultItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultItem.swift; sourceTree = "<group>"; };
 		F333B9A625EB8FB600F1915F /* SearchHeaderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHeaderItem.swift; sourceTree = "<group>"; };
+		F333B9F725EBFA1B00F1915F /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		F333B9FF25EBFE1B00F1915F /* NSObject+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Ext.swift"; sourceTree = "<group>"; };
+		F337B1BE25EBFF5700FB0B61 /* AddrCoordCommonData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrCoordCommonData.swift; sourceTree = "<group>"; };
 		F3444C9B25E8B1BB00A0706F /* Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
 		F3444CA625E8B82300A0706F /* DoroDoroUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoroDoroUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3444CA825E8B82300A0706F /* DoroDoroUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoroDoroUITests.swift; sourceTree = "<group>"; };
@@ -284,8 +290,25 @@
 		F333B9D425EBF42200F1915F /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				F333B9FF25EBFE1B00F1915F /* NSObject+Ext.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		F333B9F025EBFA0100F1915F /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				F333B9F725EBFA1B00F1915F /* DetailsViewController.swift */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		F333BA0D25EBFF0D00F1915F /* AddrCoordApi */ = {
+			isa = PBXGroup;
+			children = (
+				F337B1BE25EBFF5700FB0B61 /* AddrCoordCommonData.swift */,
+			);
+			path = AddrCoordApi;
 			sourceTree = "<group>";
 		};
 		F3444C9A25E8B1A700A0706F /* Localizable */ = {
@@ -353,12 +376,12 @@
 			path = TabBar;
 			sourceTree = "<group>";
 		};
-		F378B70725E7D8AF00FCE546 /* Bookmark */ = {
+		F378B70725E7D8AF00FCE546 /* Bookmarks */ = {
 			isa = PBXGroup;
 			children = (
 				F378B70825E7D8C600FCE546 /* BookmarksViewController.swift */,
 			);
-			path = Bookmark;
+			path = Bookmarks;
 			sourceTree = "<group>";
 		};
 		F378B72025E7DC8E00FCE546 /* API */ = {
@@ -366,6 +389,7 @@
 			children = (
 				F378B76B25E7F08700FCE546 /* AddrLinkData */,
 				F378B76C25E7F08E00FCE546 /* AddrEngData */,
+				F333BA0D25EBFF0D00F1915F /* AddrCoordApi */,
 				F378B72825E7E26900FCE546 /* APIService.swift */,
 				F3309FF725EA8C5D0024DF7F /* Keys.swift */,
 			);
@@ -377,7 +401,8 @@
 			children = (
 				F378B70025E7D86F00FCE546 /* TabBar */,
 				F378B6F525E7D82400FCE546 /* Search */,
-				F378B70725E7D8AF00FCE546 /* Bookmark */,
+				F378B70725E7D8AF00FCE546 /* Bookmarks */,
+				F333B9F025EBFA0100F1915F /* Details */,
 				F378B76D25E7F0A200FCE546 /* Settings */,
 			);
 			path = View;
@@ -790,7 +815,9 @@
 				F3F4FB0A25E80A040077FCB5 /* AddrEngApiError.swift in Sources */,
 				F378B6FB25E7D83F00FCE546 /* SearchViewController.swift in Sources */,
 				F3F4FAFE25E809CD0077FCB5 /* AddrEngResultsData.swift in Sources */,
+				F333B9F825EBFA1B00F1915F /* DetailsViewController.swift in Sources */,
 				F3AAE29925E7D06700D666BD /* AppDelegate.swift in Sources */,
+				F333BA0025EBFE1B00F1915F /* NSObject+Ext.swift in Sources */,
 				F333B97B25EB7F0200F1915F /* SearchViewModel.swift in Sources */,
 				F378B77625E7F17A00FCE546 /* AddrLinkCommonData.swift in Sources */,
 				F378B70225E7D88A00FCE546 /* MainTabBarController.swift in Sources */,
@@ -802,6 +829,7 @@
 				F333B98D25EB890C00F1915F /* SearchResultItem.swift in Sources */,
 				F333B9A725EB8FB600F1915F /* SearchHeaderItem.swift in Sources */,
 				F378B70925E7D8C600FCE546 /* BookmarksViewController.swift in Sources */,
+				F337B1BF25EBFF5700FB0B61 /* AddrCoordCommonData.swift in Sources */,
 				F3F4FAF725E8082F0077FCB5 /* AddrEngJusoData.swift in Sources */,
 				F3AAE29B25E7D06700D666BD /* SceneDelegate.swift in Sources */,
 				F378B72925E7E26900FCE546 /* APIService.swift in Sources */,

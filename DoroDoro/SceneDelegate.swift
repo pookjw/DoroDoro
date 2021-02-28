@@ -7,11 +7,11 @@
 
 import UIKit
 
-class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-    var window: UIWindow?
-    public weak var mainTabBarController: MainTabBarController? = nil
+final internal class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+    internal var window: UIWindow?
+    internal weak var mainTabBarController: MainTabBarController? = nil
     
-    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+    internal func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene: UIWindowScene = (scene as? UIWindowScene) else {
             fatalError("Failed to get UIWindowScene")
         }

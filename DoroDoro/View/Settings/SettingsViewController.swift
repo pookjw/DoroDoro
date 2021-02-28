@@ -7,8 +7,8 @@
 
 import UIKit
 
-class SettingsViewController: UIViewController {
-    override func viewDidLoad() {
+final internal class SettingsViewController: UIViewController {
+    override internal func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemPink
     }

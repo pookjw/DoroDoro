@@ -10,7 +10,7 @@ import Combine
 import SnapKit
 import CRRefresh
 
-final class SearchViewController: UIViewController {
+final internal class SearchViewController: UIViewController {
     private weak var collectionView: UICollectionView? = nil
     private weak var searchController: UISearchController? = nil
     private weak var slackLoadingAnimator: SlackLoadingAnimator? = nil
@@ -21,13 +21,18 @@ final class SearchViewController: UIViewController {
         return searchController?.searchBar.searchTextField.text
     }
     
-    override func viewDidLoad() {
+    override internal func viewDidLoad() {
         super.viewDidLoad()
         configureAttributes()
         configureTableView()
         configureViewModel()
         configureSearchController()
         bind()
+    }
+    
+    override internal func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        animateForSelectedIndexPath(animated: animated)
     }
     
     private func configureViewModel() {
@@ -75,6 +80,22 @@ final class SearchViewController: UIViewController {
         navigationItem.hidesSearchBarWhenScrolling = false
     }
     
+    private func animateForSelectedIndexPath(animated: Bool) {
+        collectionView?.indexPathsForSelectedItems?.forEach { [weak self] indexPath in
+            if let coordinator: UIViewControllerTransitionCoordinator = self?.transitionCoordinator {
+                coordinator.animate(alongsideTransition: { context in
+                    self?.collectionView?.deselectItem(at: indexPath, animated: true)
+                }, completion: { context in
+                    if context.isCancelled {
+                        self?.collectionView?.selectItem(at: indexPath, animated: false, scrollPosition: .left)
+                    }
+                })
+            } else {
+                self?.collectionView?.deselectItem(at: indexPath, animated: animated)
+            }
+        }
+    }
+    
     private func makeDataSource() -> SearchViewModel.DataSource {
         guard let collectionView: UICollectionView = collectionView else { return .init() }
         
@@ -97,16 +118,11 @@ final class SearchViewController: UIViewController {
     }
     
     private func getResultCellRegisteration() -> UICollectionView.CellRegistration<UICollectionViewListCell, SearchResultItem> {
-        return .init { [weak self] (cell, indexPath, result) in
-            guard let self = self else { return }
+        return .init { (cell, indexPath, result) in
             var configuration: UIListContentConfiguration = cell.defaultContentConfiguration()
             configuration.text = result.title
             configuration.image = UIImage(systemName: "signpost.right")
             cell.contentConfiguration = configuration
-            
-//            let interaction: UIContextMenuInteraction = .init(delegate: self)
-//            cell.removeAllInteractions()
-//            cell.addInteraction(interaction)
         }
     }
     
@@ -150,6 +166,12 @@ final class SearchViewController: UIViewController {
         let doneAction: UIAlertAction = .init(title: Localizable.DONE.string, style: .default)
         alert.addAction(doneAction)
         present(alert, animated: true)
+    }
+    
+    private func pushToDetailsVC(item: SearchResultItem) {
+        let detailsVC: DetailsViewController = .init()
+        detailsVC.item = item
+        navigationController?.pushViewController(detailsVC, animated: true)
     }
 }
 
@@ -196,6 +218,9 @@ extension SearchViewController: UICollectionViewDelegate {
     }
     
     internal func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        guard let item: SearchResultItem = viewModel?.getResultItem(from: indexPath) else {
+            return
+        }
+        pushToDetailsVC(item: item)
     }
 }

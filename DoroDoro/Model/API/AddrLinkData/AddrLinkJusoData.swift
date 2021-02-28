@@ -7,105 +7,105 @@
 
 import Foundation
 
-public struct AddrLinkJusoData: Codable {
+internal struct AddrLinkJusoData: Codable {
     /// 전체 도로명주소
-    public let roadAddr: String
+    internal let roadAddr: String
     
     /// 도로명주소 (참고항목 제외)
-    public let roadAddrPart1: String
+    internal let roadAddrPart1: String
     
     /// 도로명주소 참고항목
-    public let roadAddrPart2: String?
+    internal let roadAddrPart2: String?
     
     /// 지번주소
-    public let jibunAddr: String
+    internal let jibunAddr: String
     
     /// 도로명주소(영문)
-    public let engAddr: String
+    internal let engAddr: String
     
     /// 우편번호
-    public let zipNo: String
+    internal let zipNo: String
     
     /// 행정구역코드
-    public let admCd: String
+    internal let admCd: String
     
     /// 도로명코드
-    public let rnMgtSn: String
+    internal let rnMgtSn: String
     
     /// 건물관리번호
-    public let bdMgtSn: String
+    internal let bdMgtSn: String
     
     /// 상세건물명
-    public let detBdNmList: String?
+    internal let detBdNmList: String?
     
     /// 건물명
-    public let bdNm: String?
+    internal let bdNm: String?
     
     /// 공동주택여부
     ///
     /// - `0`: 비공동주택
     /// - `1`: 공동주택
-    public let bdKdcd: String?
+    internal let bdKdcd: String?
     
     /// 시도명
-    public let siNm: String
+    internal let siNm: String
     
     /// 시군구명
-    public let sggNm: String
+    internal let sggNm: String
     
     /// 읍면동명
-    public let emdNm: String
+    internal let emdNm: String
     
     /// 법정리명
-    public let liNm: String?
+    internal let liNm: String?
     
     /// 도로명
-    public let rn: String
+    internal let rn: String
     
     /// 지하여부
     ///
     /// - `0` : 지상
     /// - `1` : 지하
-    public let udrtYn: String
+    internal let udrtYn: String
     
     /// 건물본번
-    public let buldMnnm: String
+    internal let buldMnnm: String
     
     /// 건물부번
-    public let buldSlno: String
+    internal let buldSlno: String
     
     /// 산여부
     ///
     /// - `0` : 대지
     /// - `1` : 산
-    public let mtYn: String
+    internal let mtYn: String
     
     /// 지번본번(번지)
-    public let lnbrMnnm: String
+    internal let lnbrMnnm: String
     
     /// 지번부번(호)
-    public let lnbrSlno: String
+    internal let lnbrSlno: String
     
     /// 읍면동일련번호
-    public let emdNo: String
+    internal let emdNo: String
     
     /// 변동이력여부
     ///
     /// - `0` : 현행 주소정보
     /// - `1` : 요청변수의 keyword(검색어)가 변동된 주소정보에서 검색된 정보
-    public let hstryYn: String?
+    internal let hstryYn: String?
     
     /// 관련지번
-    public let relJibun: String?
+    internal let relJibun: String?
     
     /// 관할주민센터 (참고정보)
     ///
     /// 참고정보이며, 실제와 다를 수 있습니다
-    public let hemdNm: String?
+    internal let hemdNm: String?
 }
 
 extension AddrLinkJusoData: Equatable {
-    static public func == (lhs: AddrLinkJusoData, rhs: AddrLinkJusoData) -> Bool {
+    static internal func == (lhs: AddrLinkJusoData, rhs: AddrLinkJusoData) -> Bool {
         return lhs.roadAddr == rhs.roadAddr
     }
 }

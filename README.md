@@ -10,15 +10,15 @@ iOS/macOS/tvOS/watchOS용 도로명 및 영문주소 검색 어플
 import Foundation
 
 /// API Keys
-public struct Keys {
+internal struct Keys {
     /// 도로명주소 API
-    static public let addrLinkApiKey: String = "<API_KEY>"
+    static internal let addrLinkApiKey: String = "<API_KEY>"
     
     /// 영문주소 API
-    static public let addrEngApiKey: String = "<API_KEY>"
+    static internal let addrEngApiKey: String = "<API_KEY>"
     
     /// 좌표제공 API
-    static public let addrCoordApiKey: String = "<API_KEY>"
+    static internal let addrCoordApiKey: String = "<API_KEY>"
 }
 
 ```

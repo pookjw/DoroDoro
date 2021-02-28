@@ -7,19 +7,19 @@
 
 import Foundation
 
-public struct AddrLinkCommonData: Codable {
+internal struct AddrLinkCommonData: Codable {
     /// 총 검색 데이터수
-    public let totalCount: String
+    internal let totalCount: String
     
     /// 페이지 번호
-    public let currentPage: String
+    internal let currentPage: String
     
     /// 페이지당 출력할 결과 Row 수
-    public let countPerPage: String
+    internal let countPerPage: String
     
     /// 에러 코드
-    public let errorCode: String
+    internal let errorCode: String
     
     /// 에러 메시지
-    public let errorMessage: String
+    internal let errorMessage: String
 }

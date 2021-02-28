@@ -7,8 +7,8 @@
 
 import UIKit
 
-final class BookmarksViewController: UIViewController {
-    override func viewDidLoad() {
+final internal class BookmarksViewController: UIViewController {
+    override internal func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemOrange
     }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum AddrLinkApiError: String, Error {
+internal enum AddrLinkApiError: String, Error {
     /// 정상
     case normal = "0"
     
@@ -85,7 +85,7 @@ public enum AddrLinkApiError: String, Error {
 }
 
 extension AddrLinkApiError: LocalizedError {
-    public var errorDescription: String? {
+    internal var errorDescription: String? {
         switch self {
         case .normal:
             return Localizable.ADDR_LINK_API_ERROR_NORMAL.string

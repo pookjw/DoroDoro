@@ -9,13 +9,13 @@ import Foundation
 import UIKit
 import Combine
 
-final public class SearchViewModel {
-    public typealias DataSource = UICollectionViewDiffableDataSource<SearchHeaderItem, SearchResultItem>
-    public typealias Snapshot = NSDiffableDataSourceSnapshot<SearchHeaderItem, SearchResultItem>
+final internal class SearchViewModel {
+    internal typealias DataSource = UICollectionViewDiffableDataSource<SearchHeaderItem, SearchResultItem>
+    internal typealias Snapshot = NSDiffableDataSourceSnapshot<SearchHeaderItem, SearchResultItem>
     
-    public var dataSource: DataSource? = nil
-    public var refreshedEvent: PassthroughSubject<Bool, Never> = .init()
-    @Published public var searchEvent: String? = nil
+    internal var dataSource: DataSource? = nil
+    internal var refreshedEvent: PassthroughSubject<Bool, Never> = .init()
+    @Published internal var searchEvent: String? = nil
     
     private var currentPage: Int = 1
     private var totalCount: Int = 1
@@ -26,11 +26,11 @@ final public class SearchViewModel {
     
     private var cancellableBag: Set<AnyCancellable> = .init()
     
-    public init() {
+    internal init() {
         bind()
     }
     
-    public func requestNextPageIfAvailable() {
+    internal func requestNextPageIfAvailable() {
         guard canLoadMore else {
             return
         }
@@ -41,7 +41,7 @@ final public class SearchViewModel {
         APIService.shared.requestAddrLinkEvent(keyword: text, currentPage: currentPage, countPerPage: 50)
     }
     
-    public func getResultItem(from indexPath: IndexPath) -> SearchResultItem? {
+    internal func getResultItem(from indexPath: IndexPath) -> SearchResultItem? {
         guard let items: [SearchResultItem] = dataSource?.snapshot().itemIdentifiers,
               items.count > indexPath.row else {
             return nil
@@ -49,7 +49,7 @@ final public class SearchViewModel {
         return items[indexPath.row]
     }
     
-    private func updateResultItems(_ result: AddrLinkResultsData, text: String) {
+    internal func updateResultItems(_ result: AddrLinkResultsData, text: String) {
         totalCount = Int(result.common.totalCount) ?? 1
         
         guard var snapshot: Snapshot = dataSource?.snapshot() else {

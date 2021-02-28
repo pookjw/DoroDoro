@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum Localizable: String {
+internal enum Localizable: String {
     case DORODORO
     case TABBAR_SEARCH_VIEW_CONTROLLER_TITLE
     case TABBAR_BOOKMARKS_VIEW_CONTROLLER_TITLE
@@ -54,7 +54,7 @@ public enum Localizable: String {
     case ADDR_ENG_API_ERROR_NO_RESULTS
     case ADDR_ENG_API_ERROR_UNKNOWN
     
-    public var string: String {
+    internal var string: String {
         NSLocalizedString(self.rawValue, comment: "")
     }
 }

@@ -9,18 +9,18 @@ import Foundation
 import Combine
 import Alamofire
 
-final class APIService {
-    // MARK: - Public Properties
-    static public let shared: APIService = .init()
-    public let addrLinkEvent: PassthroughSubject<AddrLinkResultsData, Never> = .init()
-    public let addrEngEvent: PassthroughSubject<AddrEngResultsData, Never> = .init()
-    public let addrLinkErrorEvent: PassthroughSubject<AddrLinkApiError, Never> = .init()
-    public let addrEngErrorEvent: PassthroughSubject<AddrEngApiError, Never> = .init()
+final internal class APIService {
+    // MARK: - Internal Properties
+    static internal let shared: APIService = .init()
+    internal let addrLinkEvent: PassthroughSubject<AddrLinkResultsData, Never> = .init()
+    internal let addrEngEvent: PassthroughSubject<AddrEngResultsData, Never> = .init()
+    internal let addrLinkErrorEvent: PassthroughSubject<AddrLinkApiError, Never> = .init()
+    internal let addrEngErrorEvent: PassthroughSubject<AddrEngApiError, Never> = .init()
     
-    // MARK: - Public Methods
+    // MARK: - Internal Methods
     
     // 도로명주소 요청 API
-    public func requestAddrLinkEvent(keyword: String,
+    internal func requestAddrLinkEvent(keyword: String,
                                 currentPage: Int = 1,
                                 countPerPage: Int = 10) {
         AF.request(addrLinkApiURL,
@@ -68,7 +68,7 @@ final class APIService {
             }
     }
     
-    public func requestAddrLink(keyword: String,
+    internal func requestAddrLink(keyword: String,
                                 currentPage: Int = 1,
                                 countPerPage: Int = 10,
                                 completion: @escaping ((AddrLinkResultsData?, AddrLinkApiError?) -> Void)) {
@@ -117,7 +117,7 @@ final class APIService {
             }
     }
     
-    public func requestAddrLink(keyword: String,
+    internal func requestAddrLink(keyword: String,
                                 currentPage: Int = 1,
                                 countPerPage: Int = 10) -> (AddrLinkResultsData?, AddrLinkApiError?) {
         let semaphore = DispatchSemaphore(value: 0)
@@ -179,7 +179,7 @@ final class APIService {
     
     // 영문주소 API
     
-    public func requestAddrEngEvent(keyword: String,
+    internal func requestAddrEngEvent(keyword: String,
                                currentPage: Int = 1,
                                countPerPage: Int = 1) {
         AF.request(addrEngApiURL,
@@ -227,7 +227,7 @@ final class APIService {
             }
     }
     
-    public func requestAddrEng(keyword: String,
+    internal func requestAddrEng(keyword: String,
                                 currentPage: Int = 1,
                                 countPerPage: Int = 10,
                                 completion: @escaping ((AddrEngResultsData?, AddrEngApiError?) -> Void)) {
@@ -276,7 +276,7 @@ final class APIService {
             }
     }
     
-    public func requestAddrEng(keyword: String,
+    internal func requestAddrEng(keyword: String,
                                 currentPage: Int = 1,
                                 countPerPage: Int = 10) -> (AddrEngResultsData?, AddrEngApiError?) {
         let semaphore = DispatchSemaphore(value: 0)
@@ -341,19 +341,7 @@ final class APIService {
     private let addrEngApiURL: URL = URL(string: "https://www.juso.go.kr/addrlink/addrEngApi.do")!
     
     // MARK: - Private Methods
-    private init() {
-        bind()
-    }
-    
-    private func bind() {
-//        Observable
-//            .zip(addrLinkEvent, addrEngEvent)
-//            .withUnretained(self)
-//            .subscribe(onNext: { (obj, result) in
-//                obj.requestEvent.onNext(result.0 + result.1)
-//            })
-//            .disposed(by: disposeBag)
-    }
+    private init() {}
 }
 
 fileprivate struct _AddrLinkData: Decodable {

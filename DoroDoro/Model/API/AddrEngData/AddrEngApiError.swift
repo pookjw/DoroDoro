@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum AddrEngApiError: String, Error {
+internal enum AddrEngApiError: String, Error {
     /// 정상
     case normal = "0"
     
@@ -85,7 +85,7 @@ public enum AddrEngApiError: String, Error {
 }
 
 extension AddrEngApiError: LocalizedError {
-    public var errorDescription: String? {
+    internal var errorDescription: String? {
         switch self {
         case .normal:
             return Localizable.ADDR_ENG_API_ERROR_NORMAL.string
