@@ -8,27 +8,36 @@
 import UIKit
 import Combine
 import SnapKit
+import CRRefresh
 
 final class SearchViewController: UIViewController {
-    private weak var collectionView: UICollectionView! = nil
-    private weak var searchController: UISearchController! = nil
-    private lazy var dataSource: DataSource = makeDataSource()
-    private let viewModel: SearchViewModel = .init()
-    private var cancellableBag: Set<AnyCancellable> = .init()
-    
-    private var inputText: String {
-        return searchController?.searchBar.searchTextField.text ?? ""
-    }
-    
     typealias DataSource = UICollectionViewDiffableDataSource<SearchHeaderItem, SearchResultItem>
     typealias Snapshot = NSDiffableDataSourceSnapshot<SearchHeaderItem, SearchResultItem>
+    
+    private weak var collectionView: UICollectionView! = nil
+    private weak var searchController: UISearchController! = nil
+    private weak var slackLoadingAnimator: SlackLoadingAnimator? = nil
+    private var viewModel: SearchViewModel!
+    private var cancellableBag: Set<AnyCancellable> = .init()
+    private var currentPage: Int = 1
+    private var searchedText: String? = nil
+    
+    private var inputText: String? {
+        return searchController?.searchBar.searchTextField.text
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureAttributes()
         configureTableView()
+        configureViewModel()
         configureSearchController()
         bind()
+    }
+    
+    private func configureViewModel() {
+        viewModel = .init()
+        viewModel.dataSource = makeDataSource()
     }
     
     private func configureAttributes() {
@@ -53,13 +62,20 @@ final class SearchViewController: UIViewController {
         }
         
         collectionView.backgroundColor = .systemBackground
+        collectionView.delegate = self
         
+        let slackLoadingAnimator: SlackLoadingAnimator = .init()
+        self.slackLoadingAnimator = slackLoadingAnimator
+        collectionView.cr.addFootRefresh(animator: slackLoadingAnimator) { [weak self] in
+            self?.viewModel.requestNextPageIfAvailable()
+        }
     }
     
     private func configureSearchController() {
         let searchController: UISearchController = .init(searchResultsController: nil)
         self.searchController = searchController
         searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.delegate = self
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
     }
@@ -96,7 +112,7 @@ final class SearchViewController: UIViewController {
         return .init(elementKind: UICollectionView.elementKindSectionHeader) { [weak self] (cell, elementKind, indexPath) in
             guard let self = self else { return }
             
-            let headerItem: SearchHeaderItem = self.dataSource.snapshot().sectionIdentifiers[indexPath.section]
+            let headerItem: SearchHeaderItem = self.viewModel.dataSource.snapshot().sectionIdentifiers[indexPath.section]
             
             var configuration: UIListContentConfiguration = cell.defaultContentConfiguration()
             configuration.text = headerItem.title
@@ -105,14 +121,6 @@ final class SearchViewController: UIViewController {
     }
     
     private func bind() {
-        APIService.shared.addrLinkEvent
-            .receive(on: DispatchQueue.main)
-            .sink(receiveValue: { [weak self] result in
-                guard let self = self else { return }
-                self.updateResultItems(result, text: self.inputText)
-            })
-            .store(in: &cancellableBag)
-        
         APIService.shared.addrLinkErrorEvent
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] error in
@@ -120,15 +128,17 @@ final class SearchViewController: UIViewController {
             })
             .store(in: &cancellableBag)
         
-        searchController
-            .searchBar
-            .searchTextField // UISearchTextField를 KVO해야 검색 버튼 눌렀을 때의 이벤트를 받아올 수 있다.
-            .publisher(for: \.text)
-            .sink(receiveValue: { [weak self] text in
-                guard let text: String = text, !text.isEmpty else { return }
-                APIService.shared.requestAddrLinkEvent(keyword: text, countPerPage: 100)
-                self?.searchController?.searchBar.resignFirstResponder()
-                self?.searchController?.dismiss(animated: true)
+        viewModel.refreshedEvent
+            .sink(receiveValue: { [weak self] hasMoreData in
+                self?.collectionView?.cr.endLoadingMore()
+                
+                if hasMoreData {
+                    self?.collectionView?.cr.resetNoMore()
+                    self?.slackLoadingAnimator?.isHidden = false
+                } else {
+                    self?.collectionView?.cr.noticeNoMoreData()
+                    self?.slackLoadingAnimator?.isHidden = true
+                }
             })
             .store(in: &cancellableBag)
     }
@@ -139,29 +149,20 @@ final class SearchViewController: UIViewController {
         alert.addAction(doneAction)
         present(alert, animated: true)
     }
-    
-    private func updateResultItems(_ result: AddrLinkResultsData, text: String) {
-        var snapshot: Snapshot = dataSource.snapshot()
-        
-        let headerItem: SearchHeaderItem = {
-            guard let headerItem: SearchHeaderItem = snapshot.sectionIdentifiers.first else {
-                let headerItem: SearchHeaderItem = .init(title: String(format: Localizable.RESULTS_FOR_ADDRESS.string, text))
-                snapshot.appendSections([headerItem])
-                return headerItem
-            }
-            return headerItem
-        }()
-        
-        let resultItem: [SearchResultItem] = snapshot.itemIdentifiers(inSection: headerItem)
-        
-        var items: [SearchResultItem] = []
-        result.juso.forEach { data in
-            let result: SearchResultItem = .init(title: data.roadAddr)
-            items.append(result)
+}
+
+extension SearchViewController: UISearchBarDelegate {
+    internal func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchController?.dismiss(animated: true, completion: nil)
+        if let text: String = searchBar.text,
+           !text.isEmpty {
+            viewModel.searchEvent = text
         }
-        
-        snapshot.deleteItems(resultItem)
-        snapshot.appendItems(items, toSection: headerItem)
-        dataSource.apply(snapshot, animatingDifferences: true)
+    }
+}
+
+extension SearchViewController: UICollectionViewDelegate {
+    internal func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        searchController?.searchBar.resignFirstResponder()
     }
 }

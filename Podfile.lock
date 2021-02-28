@@ -1,20 +1,24 @@
 PODS:
   - Alamofire (5.4.1)
+  - CRRefresh (1.1.3)
   - SnapKit (5.0.1)
 
 DEPENDENCIES:
   - Alamofire (~> 5.4.1)
+  - CRRefresh (~> 1.1.3)
   - SnapKit (~> 5.0.1)
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - CRRefresh
     - SnapKit
 
 SPEC CHECKSUMS:
   Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
+  CRRefresh: 1415d4ae06837fa7bb064c44f2e102f3ef517044
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: 9fdf20ab1db2a467784ced08329cc17e7fffd05d
+PODFILE CHECKSUM: fa39b6cca916c3bcc804756b12f6922a0b211cbc
 
 COCOAPODS: 1.10.1
