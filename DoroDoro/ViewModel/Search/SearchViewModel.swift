@@ -74,7 +74,7 @@ final internal class SearchViewModel {
         
         var items: [SearchResultItem] = []
         result.juso.forEach { data in
-            let result: SearchResultItem = .init(title: data.roadAddr)
+            let result: SearchResultItem = .init(linkJusoData: data)
             items.append(result)
         }
         

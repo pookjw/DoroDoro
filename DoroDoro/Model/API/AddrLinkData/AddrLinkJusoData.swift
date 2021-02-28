@@ -7,7 +7,7 @@
 
 import Foundation
 
-internal struct AddrLinkJusoData: Decodable {
+internal struct AddrLinkJusoData: Decodable, Hashable {
     /// 전체 도로명주소
     internal let roadAddr: String
     

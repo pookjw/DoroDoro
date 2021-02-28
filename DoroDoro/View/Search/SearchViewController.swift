@@ -24,14 +24,16 @@ final internal class SearchViewController: UIViewController {
     override internal func viewDidLoad() {
         super.viewDidLoad()
         configureAttributes()
-        configureTableView()
-        configureViewModel()
+        configureCollectionView()
         configureSearchController()
+        configureViewModel()
         bind()
     }
     
     override internal func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationItem.largeTitleDisplayMode = .always
+        navigationController?.navigationBar.prefersLargeTitles = true
         animateForSelectedIndexPath(animated: animated)
     }
     
@@ -42,12 +44,11 @@ final internal class SearchViewController: UIViewController {
     
     private func configureAttributes() {
         view.backgroundColor = .systemBackground
-        navigationController?.navigationBar.prefersLargeTitles = true
         title = Localizable.DORODORO.string
         tabBarItem.title = Localizable.TABBAR_SEARCH_VIEW_CONTROLLER_TITLE.string
     }
     
-    private func configureTableView() {
+    private func configureCollectionView() {
         // 이 View Controller에는 Section이 1개이므로 NSCollectionLayoutSection를 쓸 필요가 없다.
         var layoutConfiguration: UICollectionLayoutListConfiguration = .init(appearance: .insetGrouped)
         layoutConfiguration.headerMode = .supplementary
@@ -120,21 +121,22 @@ final internal class SearchViewController: UIViewController {
     private func getResultCellRegisteration() -> UICollectionView.CellRegistration<UICollectionViewListCell, SearchResultItem> {
         return .init { (cell, indexPath, result) in
             var configuration: UIListContentConfiguration = cell.defaultContentConfiguration()
-            configuration.text = result.title
+            configuration.text = result.linkJusoData.roadAddr
             configuration.image = UIImage(systemName: "signpost.right")
             cell.contentConfiguration = configuration
         }
     }
     
     private func getHeaderCellRegisteration() -> UICollectionView.SupplementaryRegistration<UICollectionViewListCell> {
-        return .init(elementKind: UICollectionView.elementKindSectionHeader) { [weak self] (cell, elementKind, indexPath) in
+        return .init(elementKind: UICollectionView.elementKindSectionHeader) { [weak self] (headerView, elementKind, indexPath) in
             guard let dataSource: SearchViewModel.DataSource = self?.viewModel?.dataSource else { return }
+            guard dataSource.snapshot().sectionIdentifiers.count > indexPath.section else { return }
             
             let headerItem: SearchHeaderItem = dataSource.snapshot().sectionIdentifiers[indexPath.section]
             
-            var configuration: UIListContentConfiguration = cell.defaultContentConfiguration()
+            var configuration: UIListContentConfiguration = headerView.defaultContentConfiguration()
             configuration.text = headerItem.title
-            cell.contentConfiguration = configuration
+            headerView.contentConfiguration = configuration
         }
     }
     
@@ -168,9 +170,10 @@ final internal class SearchViewController: UIViewController {
         present(alert, animated: true)
     }
     
-    private func pushToDetailsVC(item: SearchResultItem) {
+    private func pushToDetailsVC(linkJusoData: AddrLinkJusoData) {
         let detailsVC: DetailsViewController = .init()
-        detailsVC.item = item
+        detailsVC.loadViewIfNeeded()
+        detailsVC.setLinkJusoData(linkJusoData)
         navigationController?.pushViewController(detailsVC, animated: true)
     }
 }
@@ -221,6 +224,6 @@ extension SearchViewController: UICollectionViewDelegate {
         guard let item: SearchResultItem = viewModel?.getResultItem(from: indexPath) else {
             return
         }
-        pushToDetailsVC(item: item)
+        pushToDetailsVC(linkJusoData: item.linkJusoData)
     }
 }

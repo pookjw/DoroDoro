@@ -7,7 +7,7 @@
 
 import Foundation
 
-internal struct SearchHeaderItem: Hashable {
+internal struct SearchHeaderItem: Hashable, Equatable {
     internal var title: String
     
     internal let id = UUID()

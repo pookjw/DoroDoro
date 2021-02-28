@@ -20,6 +20,9 @@
 		F337B1D725EC02AD00FB0B61 /* AddrCoordResultsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B1D625EC02AD00FB0B61 /* AddrCoordResultsData.swift */; };
 		F337B1DF25EC03A400FB0B61 /* AddrCoordSearchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B1DE25EC03A400FB0B61 /* AddrCoordSearchData.swift */; };
 		F337B1EE25EC09F400FB0B61 /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B1ED25EC09F400FB0B61 /* DetailsViewModel.swift */; };
+		F337B1F825EC0E0F00FB0B61 /* DetailInfoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B1F725EC0E0F00FB0B61 /* DetailInfoItem.swift */; };
+		F337B20025EC0E9600FB0B61 /* DetailHeaderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B1FF25EC0E9600FB0B61 /* DetailHeaderItem.swift */; };
+		F337B20825EC0EB200FB0B61 /* DetailMapItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B20725EC0EB200FB0B61 /* DetailMapItem.swift */; };
 		F3444C9C25E8B1BB00A0706F /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3444C9B25E8B1BB00A0706F /* Localizable.swift */; };
 		F3444CA925E8B82300A0706F /* DoroDoroUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3444CA825E8B82300A0706F /* DoroDoroUITests.swift */; };
 		F3444DCD25E8C4B300A0706F /* DoroDoroAPIErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3444DCC25E8C4B300A0706F /* DoroDoroAPIErrorTests.swift */; };
@@ -150,6 +153,9 @@
 		F337B1D625EC02AD00FB0B61 /* AddrCoordResultsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrCoordResultsData.swift; sourceTree = "<group>"; };
 		F337B1DE25EC03A400FB0B61 /* AddrCoordSearchData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrCoordSearchData.swift; sourceTree = "<group>"; };
 		F337B1ED25EC09F400FB0B61 /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
+		F337B1F725EC0E0F00FB0B61 /* DetailInfoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInfoItem.swift; sourceTree = "<group>"; };
+		F337B1FF25EC0E9600FB0B61 /* DetailHeaderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHeaderItem.swift; sourceTree = "<group>"; };
+		F337B20725EC0EB200FB0B61 /* DetailMapItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMapItem.swift; sourceTree = "<group>"; };
 		F3444C9B25E8B1BB00A0706F /* Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
 		F3444CA625E8B82300A0706F /* DoroDoroUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoroDoroUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3444CA825E8B82300A0706F /* DoroDoroUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoroDoroUITests.swift; sourceTree = "<group>"; };
@@ -275,8 +281,8 @@
 		F333B98325EB88CD00F1915F /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				F333B98C25EB890C00F1915F /* SearchResultItem.swift */,
-				F333B9A625EB8FB600F1915F /* SearchHeaderItem.swift */,
+				F337B1F525EC0DC600FB0B61 /* Search */,
+				F337B1F625EC0DCE00FB0B61 /* Details */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -330,6 +336,25 @@
 			isa = PBXGroup;
 			children = (
 				F337B1ED25EC09F400FB0B61 /* DetailsViewModel.swift */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		F337B1F525EC0DC600FB0B61 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				F333B98C25EB890C00F1915F /* SearchResultItem.swift */,
+				F333B9A625EB8FB600F1915F /* SearchHeaderItem.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		F337B1F625EC0DCE00FB0B61 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				F337B1F725EC0E0F00FB0B61 /* DetailInfoItem.swift */,
+				F337B1FF25EC0E9600FB0B61 /* DetailHeaderItem.swift */,
+				F337B20725EC0EB200FB0B61 /* DetailMapItem.swift */,
 			);
 			path = Details;
 			sourceTree = "<group>";
@@ -836,6 +861,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3F4FB0A25E80A040077FCB5 /* AddrEngApiError.swift in Sources */,
+				F337B1F825EC0E0F00FB0B61 /* DetailInfoItem.swift in Sources */,
 				F378B6FB25E7D83F00FCE546 /* SearchViewController.swift in Sources */,
 				F3F4FAFE25E809CD0077FCB5 /* AddrEngResultsData.swift in Sources */,
 				F333B9F825EBFA1B00F1915F /* DetailsViewController.swift in Sources */,
@@ -848,10 +874,12 @@
 				F378B70225E7D88A00FCE546 /* MainTabBarController.swift in Sources */,
 				F337B1DF25EC03A400FB0B61 /* AddrCoordSearchData.swift in Sources */,
 				F3F4FAF025E8080D0077FCB5 /* AddrEngCommonData.swift in Sources */,
+				F337B20825EC0EB200FB0B61 /* DetailMapItem.swift in Sources */,
 				F3309FF825EA8C5D0024DF7F /* Keys.swift in Sources */,
 				F378B79025E7FAE500FCE546 /* AddrLinkResultsData.swift in Sources */,
 				F378B78425E7F45600FCE546 /* AddrLinkApiError.swift in Sources */,
 				F378B75025E7EEDB00FCE546 /* DoroDoroWidget.intentdefinition in Sources */,
+				F337B20025EC0E9600FB0B61 /* DetailHeaderItem.swift in Sources */,
 				F333B98D25EB890C00F1915F /* SearchResultItem.swift in Sources */,
 				F337B1CF25EC016800FB0B61 /* AddrCoordApiError.swift in Sources */,
 				F333B9A725EB8FB600F1915F /* SearchHeaderItem.swift in Sources */,

@@ -7,8 +7,8 @@
 
 import Foundation
 
-internal struct SearchResultItem: Hashable {
-    internal let title: String
+internal struct SearchResultItem: Hashable, Equatable {
+    internal let linkJusoData: AddrLinkJusoData
     private let id = UUID()
     
     internal static func == (lhs: SearchResultItem, rhs: SearchResultItem) -> Bool {
