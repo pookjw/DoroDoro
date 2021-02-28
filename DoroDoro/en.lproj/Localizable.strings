@@ -19,6 +19,12 @@
 "TABBAR_SETTINGS_VIEW_CONTROLLER_TITLE" = "Settings";
 
 /* */
+"DONE" = "Done";
+
+/* */
+"RESULTS_FOR_ADDRESS" = "Results for %@";
+
+/* */
 "ERROR_CONTACT_TO_DEVELOPER" = "Contact to developer.";
 
 /* */

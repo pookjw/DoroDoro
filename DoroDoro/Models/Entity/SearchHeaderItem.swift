@@ -8,6 +8,11 @@
 import Foundation
 
 public struct SearchHeaderItem: Hashable {
-    public let title: String
-    public let results: [SearchResultItem]
+    public var title: String
+    
+    private let id = UUID()
+    
+    public static func == (lhs: SearchHeaderItem, rhs: SearchHeaderItem) -> Bool {
+        return lhs.id == rhs.id
+    }
 }

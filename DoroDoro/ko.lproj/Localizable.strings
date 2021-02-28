@@ -19,6 +19,12 @@
 "TABBAR_SETTINGS_VIEW_CONTROLLER_TITLE" = "설정";
 
 /* */
+"DONE" = "완료";
+
+/* */
+"RESULTS_FOR_ADDRESS" = "%@에 대한 결과";
+
+/* */
 "ERROR_CONTACT_TO_DEVELOPER" = "개발자에게 문의해 주세요.";
 
 /* */
