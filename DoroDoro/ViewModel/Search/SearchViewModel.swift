@@ -41,6 +41,14 @@ final public class SearchViewModel {
         APIService.shared.requestAddrLinkEvent(keyword: text, currentPage: currentPage, countPerPage: 50)
     }
     
+    public func getResultItem(from indexPath: IndexPath) -> SearchResultItem? {
+        guard let items: [SearchResultItem] = dataSource?.snapshot().itemIdentifiers,
+              items.count > indexPath.row else {
+            return nil
+        }
+        return items[indexPath.row]
+    }
+    
     private func updateResultItems(_ result: AddrLinkResultsData, text: String) {
         totalCount = Int(result.common.totalCount) ?? 1
         

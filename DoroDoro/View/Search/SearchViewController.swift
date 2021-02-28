@@ -97,11 +97,16 @@ final class SearchViewController: UIViewController {
     }
     
     private func getResultCellRegisteration() -> UICollectionView.CellRegistration<UICollectionViewListCell, SearchResultItem> {
-        return .init { (cell, indexPath, result) in
+        return .init { [weak self] (cell, indexPath, result) in
+            guard let self = self else { return }
             var configuration: UIListContentConfiguration = cell.defaultContentConfiguration()
             configuration.text = result.title
             configuration.image = UIImage(systemName: "signpost.right")
             cell.contentConfiguration = configuration
+            
+//            let interaction: UIContextMenuInteraction = .init(delegate: self)
+//            cell.removeAllInteractions()
+//            cell.addInteraction(interaction)
         }
     }
     
@@ -161,5 +166,36 @@ extension SearchViewController: UISearchBarDelegate {
 extension SearchViewController: UICollectionViewDelegate {
     internal func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         searchController?.searchBar.resignFirstResponder()
+    }
+    
+    internal func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        guard let item: SearchResultItem = viewModel?.getResultItem(from: indexPath) else {
+            return nil
+        }
+        
+        let bookmarkAction = UIAction(title: Localizable.REMOVE_FROM_BOOKMARKS.string,
+                                image: UIImage(systemName: "bookmark.fill"),
+                                attributes: [.destructive]) { _ in
+            // Perform action
+        }
+        
+        let copyAction = UIAction(title: Localizable.COPY.string,
+                             image: UIImage(systemName: "doc.on.doc")) { action in
+            // Perform action
+        }
+        
+        let shareAction = UIAction(title: Localizable.SHARE.string,
+                              image: UIImage(systemName: "square.and.arrow.up")) { action in
+            // Perform action
+        }
+        
+        return UIContextMenuConfiguration(identifier: nil,
+                                          previewProvider: nil) { _ in
+            UIMenu(title: "Actions", children: [bookmarkAction, copyAction, shareAction])
+        }
+    }
+    
+    internal func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
     }
 }

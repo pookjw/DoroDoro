@@ -13,7 +13,7 @@
 "TABBAR_SEARCH_VIEW_CONTROLLER_TITLE" = "검색";
 
 /* */
-"TABBAR_BOOKMARK_VIEW_CONTROLLER_TITLE" = "책갈피";
+"TABBAR_BOOKMARKS_VIEW_CONTROLLER_TITLE" = "책갈피";
 
 /* */
 "TABBAR_SETTINGS_VIEW_CONTROLLER_TITLE" = "설정";
@@ -23,6 +23,18 @@
 
 /* */
 "RESULTS_FOR_ADDRESS" = "%@에 대한 결과";
+
+/* */
+"ADD_TO_BOOKMARKS" = "책갈피에 추가";
+
+/* */
+"REMOVE_FROM_BOOKMARKS" = "책갈피에서 삭제";
+
+/* */
+"COPY" = "복사";
+
+/* */
+"SHARE" = "공유";
 
 /* */
 "ERROR_CONTACT_TO_DEVELOPER" = "개발자에게 문의해 주세요.";

@@ -9,7 +9,7 @@ import UIKit
 
 final class MainTabBarController: UITabBarController {
     public weak var searchVC: SearchViewController? = nil
-    public weak var bookmarkVC: BookmarkViewController? = nil
+    public weak var bookmarksVC: BookmarksViewController? = nil
     public weak var settingsVC: SettingsViewController? = nil
     
     override func viewDidLoad() {
@@ -19,10 +19,10 @@ final class MainTabBarController: UITabBarController {
     
     private func configureViewControllers() {
         let searchVC: SearchViewController = .init()
-        let bookmarkVC: BookmarkViewController = .init()
+        let bookmarksVC: BookmarksViewController = .init()
         let settingsVC: SettingsViewController = .init()
         self.searchVC = searchVC
-        self.bookmarkVC = bookmarkVC
+        self.bookmarksVC = bookmarksVC
         self.settingsVC = settingsVC
         
         let searchNVC: UINavigationController = .init(rootViewController: searchVC)
@@ -30,13 +30,17 @@ final class MainTabBarController: UITabBarController {
         searchVC.tabBarItem = .init(title: Localizable.TABBAR_SEARCH_VIEW_CONTROLLER_TITLE.string,
                                     image: UIImage(systemName: "magnifyingglass"),
                                     tag: 0)
-        bookmarkVC.tabBarItem = .init(title: Localizable.TABBAR_BOOKMARK_VIEW_CONTROLLER_TITLE.string,
+        
+        bookmarksVC.tabBarItem = .init(title: Localizable.TABBAR_BOOKMARKS_VIEW_CONTROLLER_TITLE.string,
                                        image: UIImage(systemName: "bookmark"),
                                        tag: 1)
+        bookmarksVC.tabBarItem.selectedImage = UIImage(systemName: "bookmark.fill")
+        
         settingsVC.tabBarItem = .init(title: Localizable.TABBAR_SETTINGS_VIEW_CONTROLLER_TITLE.string,
                                        image: UIImage(systemName: "gearshape"),
                                        tag: 2)
+        settingsVC.tabBarItem.selectedImage = UIImage(systemName: "gearshape.fill")
         
-        setViewControllers([searchNVC, bookmarkVC, settingsVC], animated: false)
+        setViewControllers([searchNVC, bookmarksVC, settingsVC], animated: false)
     }
 }

@@ -13,7 +13,7 @@
 "TABBAR_SEARCH_VIEW_CONTROLLER_TITLE" = "Search";
 
 /* */
-"TABBAR_BOOKMARK_VIEW_CONTROLLER_TITLE" = "Bookmark";
+"TABBAR_BOOKMARKS_VIEW_CONTROLLER_TITLE" = "Bookmarks";
 
 /* */
 "TABBAR_SETTINGS_VIEW_CONTROLLER_TITLE" = "Settings";
@@ -23,6 +23,18 @@
 
 /* */
 "RESULTS_FOR_ADDRESS" = "Results for %@";
+
+/* */
+"ADD_TO_BOOKMARKS" = "Add to Bookmarks";
+
+/* */
+"REMOVE_FROM_BOOKMARKS" = "Remove from Bookmarks";
+
+/* */
+"COPY" = "Copy";
+
+/* */
+"SHARE" = "Share";
 
 /* */
 "ERROR_CONTACT_TO_DEVELOPER" = "Contact to developer.";
