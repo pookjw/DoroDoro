@@ -437,12 +437,19 @@
 			path = KakaoAddressData;
 			sourceTree = "<group>";
 		};
-		F33BB0E825ED03B500BC5772 /* Components */ = {
+		F33BB0E825ED03B500BC5772 /* Component */ = {
 			isa = PBXGroup;
 			children = (
 				F33BB0F425ED043400BC5772 /* SpinnerView.swift */,
 			);
-			path = Components;
+			path = Component;
+			sourceTree = "<group>";
+		};
+		F33BB0FC25ED096900BC5772 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Map;
 			sourceTree = "<group>";
 		};
 		F3444C9A25E8B1A700A0706F /* Localizable */ = {
@@ -533,12 +540,13 @@
 		F378B72125E7DD7500FCE546 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				F33BB0E825ED03B500BC5772 /* Components */,
+				F33BB0E825ED03B500BC5772 /* Component */,
 				F378B70025E7D86F00FCE546 /* TabBar */,
 				F378B6F525E7D82400FCE546 /* Search */,
 				F378B70725E7D8AF00FCE546 /* Bookmarks */,
 				F333B9F025EBFA0100F1915F /* Details */,
 				F378B76D25E7F0A200FCE546 /* Settings */,
+				F33BB0FC25ED096900BC5772 /* Map */,
 			);
 			path = View;
 			sourceTree = "<group>";

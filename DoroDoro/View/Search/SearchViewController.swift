@@ -223,6 +223,10 @@ extension SearchViewController: UICollectionViewDelegate {
             return nil
         }
         
+        guard let contextMenuLinkJusoData: AddrLinkJusoData = viewModel?.getResultItem(from: indexPath)?.linkJusoData else {
+            return nil
+        }
+        
         let bookmarkAction = UIAction(title: Localizable.REMOVE_FROM_BOOKMARKS.string,
                                 image: UIImage(systemName: "bookmark.fill"),
                                 attributes: [.destructive]) { _ in
@@ -239,9 +243,20 @@ extension SearchViewController: UICollectionViewDelegate {
             self?.share([text], sourceView: cell)
         }
         
+        viewModel?.contextMenuLinkJusoData = contextMenuLinkJusoData
+        
         return UIContextMenuConfiguration(identifier: nil,
                                           previewProvider: nil) { _ in
             UIMenu(title: "", children: [bookmarkAction, copyAction, shareAction])
+        }
+    }
+    
+    internal func collectionView(_ collectionView: UICollectionView, willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionCommitAnimating) {
+        animator.addAnimations { [weak self] in
+            if let data: AddrLinkJusoData = self?.viewModel?.contextMenuLinkJusoData {
+                self?.pushToDetailsVC(linkJusoData: data)
+            }
+            self?.viewModel?.contextMenuLinkJusoData = nil
         }
     }
     
