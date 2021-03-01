@@ -24,6 +24,9 @@ internal struct DetailsMapViewConfiguration: UIContentConfiguration {
 
 final fileprivate class _DetailsMapViewContentView: UIView, UIContentView {
     private weak var mapView: MKMapView? = nil
+    #if arch(arm64)
+    private weak var kakaoMapView: MTMapView? = nil
+    #endif
     
     fileprivate var configuration: UIContentConfiguration {
         didSet {
@@ -41,11 +44,36 @@ final fileprivate class _DetailsMapViewContentView: UIView, UIContentView {
     }
     
     private func configure() {
+        #if arch(arm64)
+        let kakaoMapView: MTMapView = .init()
+        self.kakaoMapView = kakaoMapView
+        addSubview(kakaoMapView)
+        kakaoMapView.translatesAutoresizingMaskIntoConstraints = false
+        if superview != nil {
+            translatesAutoresizingMaskIntoConstraints = false
+            
+            snp.remakeConstraints { make in
+                make.edges.equalToSuperview()
+                make.height.equalTo(300)
+            }
+            
+            kakaoMapView.snp.remakeConstraints { make in
+                make.edges.equalToSuperview()
+                
+            }
+        } else {
+            kakaoMapView.snp.remakeConstraints { make in
+                make.edges.equalToSuperview()
+                make.height.equalTo(300)
+            }
+        }
+        
+        kakaoMapView.isUserInteractionEnabled = false
+        #else
         let mapView: MKMapView = .init()
         self.mapView = mapView
         addSubview(mapView)
         mapView.translatesAutoresizingMaskIntoConstraints = false
-        
         if superview != nil {
             translatesAutoresizingMaskIntoConstraints = false
             
@@ -65,8 +93,7 @@ final fileprivate class _DetailsMapViewContentView: UIView, UIContentView {
             }
         }
         
-        if let configuration: DetailsMapViewConfiguration = configuration as? DetailsMapViewConfiguration {
-//            mapView.centerCoordinate = CLLocationCoordinate2D(latitude: configuration.latitude, longitude: configuration.longitude)
-        }
+        mapView.isUserInteractionEnabled = false
+        #endif
     }
 }

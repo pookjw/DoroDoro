@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,18 +16,34 @@
 		F333BA0025EBFE1B00F1915F /* NSObject+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F333B9FF25EBFE1B00F1915F /* NSObject+Ext.swift */; };
 		F337B1BF25EBFF5700FB0B61 /* AddrCoordCommonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B1BE25EBFF5700FB0B61 /* AddrCoordCommonData.swift */; };
 		F337B1C725EC009400FB0B61 /* AddrCoordJusoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B1C625EC009400FB0B61 /* AddrCoordJusoData.swift */; };
-		F337B1CF25EC016800FB0B61 /* AddrCoordApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B1CE25EC016800FB0B61 /* AddrCoordApiError.swift */; };
+		F337B1CF25EC016800FB0B61 /* AddrCoordAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B1CE25EC016800FB0B61 /* AddrCoordAPIError.swift */; };
 		F337B1D725EC02AD00FB0B61 /* AddrCoordResultsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B1D625EC02AD00FB0B61 /* AddrCoordResultsData.swift */; };
 		F337B1DF25EC03A400FB0B61 /* AddrCoordSearchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B1DE25EC03A400FB0B61 /* AddrCoordSearchData.swift */; };
 		F337B1EE25EC09F400FB0B61 /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B1ED25EC09F400FB0B61 /* DetailsViewModel.swift */; };
 		F337B1F825EC0E0F00FB0B61 /* DetailInfoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B1F725EC0E0F00FB0B61 /* DetailInfoItem.swift */; };
 		F337B20025EC0E9600FB0B61 /* DetailHeaderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B1FF25EC0E9600FB0B61 /* DetailHeaderItem.swift */; };
 		F33BAFAC25EC239500BC5772 /* DetailsMapViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BAFAB25EC239500BC5772 /* DetailsMapViewConfiguration.swift */; };
+		F33BAFBE25ECB85000BC5772 /* DaumMap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F33BAFBD25ECB85000BC5772 /* DaumMap.framework */; platformFilter = ios; };
+		F33BAFC825ECB88700BC5772 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F33BAFC725ECB88700BC5772 /* SystemConfiguration.framework */; };
+		F33BAFCA25ECB89600BC5772 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F33BAFC925ECB89600BC5772 /* CoreLocation.framework */; };
+		F33BAFCC25ECB89D00BC5772 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F33BAFCB25ECB89D00BC5772 /* QuartzCore.framework */; };
+		F33BAFCE25ECB8B400BC5772 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F33BAFCD25ECB8A900BC5772 /* libc++.tbd */; };
+		F33BAFD625ECB8C300BC5772 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F33BAFD525ECB8BC00BC5772 /* libxml2.tbd */; };
+		F33BAFDE25ECB8D100BC5772 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F33BAFDD25ECB8CB00BC5772 /* libsqlite3.tbd */; };
+		F33BB00525ECBAB700BC5772 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F33BB00425ECBAB700BC5772 /* Metal.framework */; };
+		F33BB03025ECC95200BC5772 /* KakaoAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB02F25ECC95200BC5772 /* KakaoAPIService.swift */; };
+		F33BB03925ECCD2E00BC5772 /* KakaoAddressResultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB03825ECCD2E00BC5772 /* KakaoAddressResultData.swift */; };
+		F33BB04725ECCD6100BC5772 /* KakaoAddressMetaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB04625ECCD6100BC5772 /* KakaoAddressMetaData.swift */; };
+		F33BB04F25ECCD6C00BC5772 /* KakaoAddressDocumentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB04E25ECCD6C00BC5772 /* KakaoAddressDocumentData.swift */; };
+		F33BB09F25ECD0C500BC5772 /* KakaoAddressAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB09E25ECD0C500BC5772 /* KakaoAddressAPIError.swift */; };
+		F33BB0A725ECD4C200BC5772 /* KakaoAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB0A625ECD4C200BC5772 /* KakaoAPITests.swift */; };
+		F33BB0B725ECD73D00BC5772 /* KakaoAddressAddressData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB0B625ECD73D00BC5772 /* KakaoAddressAddressData.swift */; };
+		F33BB0C525ECD76C00BC5772 /* KakaoAddressRoadAddressData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB0C425ECD76C00BC5772 /* KakaoAddressRoadAddressData.swift */; };
 		F3444C9C25E8B1BB00A0706F /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3444C9B25E8B1BB00A0706F /* Localizable.swift */; };
 		F3444CA925E8B82300A0706F /* DoroDoroUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3444CA825E8B82300A0706F /* DoroDoroUITests.swift */; };
-		F3444DCD25E8C4B300A0706F /* DoroDoroAPIErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3444DCC25E8C4B300A0706F /* DoroDoroAPIErrorTests.swift */; };
+		F3444DCD25E8C4B300A0706F /* AddrAPIErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3444DCC25E8C4B300A0706F /* AddrAPIErrorTests.swift */; };
 		F378B6B125E7D69300FCE546 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F378B6B325E7D69300FCE546 /* Localizable.strings */; };
-		F378B6BE25E7D71C00FCE546 /* DoroDoroAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B6BD25E7D71C00FCE546 /* DoroDoroAPITests.swift */; };
+		F378B6BE25E7D71C00FCE546 /* AddrAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B6BD25E7D71C00FCE546 /* AddrAPITests.swift */; };
 		F378B6CF25E7D77100FCE546 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F378B6CD25E7D77100FCE546 /* Interface.storyboard */; };
 		F378B6D125E7D77200FCE546 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F378B6D025E7D77200FCE546 /* Assets.xcassets */; };
 		F378B6D825E7D77200FCE546 /* DoroDoroWatch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F378B6D725E7D77200FCE546 /* DoroDoroWatch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -35,12 +51,12 @@
 		F378B6DF25E7D77200FCE546 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B6DE25E7D77200FCE546 /* ExtensionDelegate.swift */; };
 		F378B6E125E7D77200FCE546 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B6E025E7D77200FCE546 /* ComplicationController.swift */; };
 		F378B6E325E7D77300FCE546 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F378B6E225E7D77300FCE546 /* Assets.xcassets */; };
-		F378B6E725E7D77300FCE546 /* DoroDoroWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = F378B6CB25E7D77100FCE546 /* DoroDoroWatch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F378B6E725E7D77300FCE546 /* DoroDoroWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = F378B6CB25E7D77100FCE546 /* DoroDoroWatch.app */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F378B6FB25E7D83F00FCE546 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B6FA25E7D83F00FCE546 /* SearchViewController.swift */; };
 		F378B70225E7D88A00FCE546 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B70125E7D88A00FCE546 /* MainTabBarController.swift */; };
 		F378B70925E7D8C600FCE546 /* BookmarksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B70825E7D8C600FCE546 /* BookmarksViewController.swift */; };
 		F378B71425E7DAFF00FCE546 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F378B71625E7DAFF00FCE546 /* InfoPlist.strings */; };
-		F378B72925E7E26900FCE546 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B72825E7E26900FCE546 /* APIService.swift */; };
+		F378B72925E7E26900FCE546 /* AddrAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B72825E7E26900FCE546 /* AddrAPIService.swift */; };
 		F378B74525E7EED900FCE546 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F378B74425E7EED900FCE546 /* WidgetKit.framework */; };
 		F378B74725E7EED900FCE546 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F378B74625E7EED900FCE546 /* SwiftUI.framework */; };
 		F378B74A25E7EED900FCE546 /* DoroDoroWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B74925E7EED900FCE546 /* DoroDoroWidget.swift */; };
@@ -51,7 +67,7 @@
 		F378B76F25E7F0B700FCE546 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B76E25E7F0B700FCE546 /* SettingsViewController.swift */; };
 		F378B77625E7F17A00FCE546 /* AddrLinkCommonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B77525E7F17A00FCE546 /* AddrLinkCommonData.swift */; };
 		F378B77D25E7F18900FCE546 /* AddrLinkJusoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B77C25E7F18900FCE546 /* AddrLinkJusoData.swift */; };
-		F378B78425E7F45600FCE546 /* AddrLinkApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B78325E7F45600FCE546 /* AddrLinkApiError.swift */; };
+		F378B78425E7F45600FCE546 /* AddrLinkAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B78325E7F45600FCE546 /* AddrLinkAPIError.swift */; };
 		F378B79025E7FAE500FCE546 /* AddrLinkResultsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B78F25E7FAE500FCE546 /* AddrLinkResultsData.swift */; };
 		F3AAE29925E7D06700D666BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AAE29825E7D06700D666BD /* AppDelegate.swift */; };
 		F3AAE29B25E7D06700D666BD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AAE29A25E7D06700D666BD /* SceneDelegate.swift */; };
@@ -60,7 +76,7 @@
 		F3F4FAF025E8080D0077FCB5 /* AddrEngCommonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F4FAEF25E8080D0077FCB5 /* AddrEngCommonData.swift */; };
 		F3F4FAF725E8082F0077FCB5 /* AddrEngJusoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F4FAF625E8082F0077FCB5 /* AddrEngJusoData.swift */; };
 		F3F4FAFE25E809CD0077FCB5 /* AddrEngResultsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F4FAFD25E809CD0077FCB5 /* AddrEngResultsData.swift */; };
-		F3F4FB0A25E80A040077FCB5 /* AddrEngApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F4FB0925E80A040077FCB5 /* AddrEngApiError.swift */; };
+		F3F4FB0A25E80A040077FCB5 /* AddrEngAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F4FB0925E80A040077FCB5 /* AddrEngAPIError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -149,25 +165,43 @@
 		F333B9FF25EBFE1B00F1915F /* NSObject+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Ext.swift"; sourceTree = "<group>"; };
 		F337B1BE25EBFF5700FB0B61 /* AddrCoordCommonData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrCoordCommonData.swift; sourceTree = "<group>"; };
 		F337B1C625EC009400FB0B61 /* AddrCoordJusoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrCoordJusoData.swift; sourceTree = "<group>"; };
-		F337B1CE25EC016800FB0B61 /* AddrCoordApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrCoordApiError.swift; sourceTree = "<group>"; };
+		F337B1CE25EC016800FB0B61 /* AddrCoordAPIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrCoordAPIError.swift; sourceTree = "<group>"; };
 		F337B1D625EC02AD00FB0B61 /* AddrCoordResultsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrCoordResultsData.swift; sourceTree = "<group>"; };
 		F337B1DE25EC03A400FB0B61 /* AddrCoordSearchData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrCoordSearchData.swift; sourceTree = "<group>"; };
 		F337B1ED25EC09F400FB0B61 /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
 		F337B1F725EC0E0F00FB0B61 /* DetailInfoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInfoItem.swift; sourceTree = "<group>"; };
 		F337B1FF25EC0E9600FB0B61 /* DetailHeaderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHeaderItem.swift; sourceTree = "<group>"; };
 		F33BAFAB25EC239500BC5772 /* DetailsMapViewConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsMapViewConfiguration.swift; sourceTree = "<group>"; };
+		F33BAFBD25ECB85000BC5772 /* DaumMap.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DaumMap.framework; path = Frameworks/DaumMap.framework; sourceTree = "<group>"; };
+		F33BAFC525ECB87E00BC5772 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		F33BAFC725ECB88700BC5772 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
+		F33BAFC925ECB89600BC5772 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/System/Library/Frameworks/CoreLocation.framework; sourceTree = DEVELOPER_DIR; };
+		F33BAFCB25ECB89D00BC5772 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
+		F33BAFCD25ECB8A900BC5772 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/usr/lib/libc++.tbd"; sourceTree = DEVELOPER_DIR; };
+		F33BAFD525ECB8BC00BC5772 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/usr/lib/libxml2.tbd; sourceTree = DEVELOPER_DIR; };
+		F33BAFDD25ECB8CB00BC5772 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/usr/lib/libsqlite3.tbd; sourceTree = DEVELOPER_DIR; };
+		F33BAFEB25ECB91900BC5772 /* DoroDoro-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DoroDoro-Bridging-Header.h"; sourceTree = "<group>"; };
+		F33BB00425ECBAB700BC5772 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/System/Library/Frameworks/Metal.framework; sourceTree = DEVELOPER_DIR; };
+		F33BB02F25ECC95200BC5772 /* KakaoAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoAPIService.swift; sourceTree = "<group>"; };
+		F33BB03825ECCD2E00BC5772 /* KakaoAddressResultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoAddressResultData.swift; sourceTree = "<group>"; };
+		F33BB04625ECCD6100BC5772 /* KakaoAddressMetaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoAddressMetaData.swift; sourceTree = "<group>"; };
+		F33BB04E25ECCD6C00BC5772 /* KakaoAddressDocumentData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoAddressDocumentData.swift; sourceTree = "<group>"; };
+		F33BB09E25ECD0C500BC5772 /* KakaoAddressAPIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoAddressAPIError.swift; sourceTree = "<group>"; };
+		F33BB0A625ECD4C200BC5772 /* KakaoAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoAPITests.swift; sourceTree = "<group>"; };
+		F33BB0B625ECD73D00BC5772 /* KakaoAddressAddressData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoAddressAddressData.swift; sourceTree = "<group>"; };
+		F33BB0C425ECD76C00BC5772 /* KakaoAddressRoadAddressData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoAddressRoadAddressData.swift; sourceTree = "<group>"; };
 		F3444C9B25E8B1BB00A0706F /* Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
 		F3444CA625E8B82300A0706F /* DoroDoroUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoroDoroUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3444CA825E8B82300A0706F /* DoroDoroUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoroDoroUITests.swift; sourceTree = "<group>"; };
 		F3444CAA25E8B82300A0706F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F3444DCC25E8C4B300A0706F /* DoroDoroAPIErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoroDoroAPIErrorTests.swift; sourceTree = "<group>"; };
+		F3444DCC25E8C4B300A0706F /* AddrAPIErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrAPIErrorTests.swift; sourceTree = "<group>"; };
 		F378B6A225E7D13E00FCE546 /* DoroDoro.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DoroDoro.entitlements; sourceTree = "<group>"; };
 		F378B6AA25E7D5ED00FCE546 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		F378B6AD25E7D64F00FCE546 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		F378B6B225E7D69300FCE546 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F378B6B425E7D69600FCE546 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F378B6BB25E7D71C00FCE546 /* DoroDoroTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoroDoroTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F378B6BD25E7D71C00FCE546 /* DoroDoroAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoroDoroAPITests.swift; sourceTree = "<group>"; };
+		F378B6BD25E7D71C00FCE546 /* AddrAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrAPITests.swift; sourceTree = "<group>"; };
 		F378B6BF25E7D71C00FCE546 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F378B6CB25E7D77100FCE546 /* DoroDoroWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoroDoroWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F378B6CE25E7D77100FCE546 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -184,7 +218,7 @@
 		F378B70825E7D8C600FCE546 /* BookmarksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksViewController.swift; sourceTree = "<group>"; };
 		F378B71525E7DAFF00FCE546 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F378B71B25E7DB0200FCE546 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		F378B72825E7E26900FCE546 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		F378B72825E7E26900FCE546 /* AddrAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrAPIService.swift; sourceTree = "<group>"; };
 		F378B74325E7EED900FCE546 /* DoroDoroWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DoroDoroWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		F378B74425E7EED900FCE546 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		F378B74625E7EED900FCE546 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -196,7 +230,7 @@
 		F378B76E25E7F0B700FCE546 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		F378B77525E7F17A00FCE546 /* AddrLinkCommonData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrLinkCommonData.swift; sourceTree = "<group>"; };
 		F378B77C25E7F18900FCE546 /* AddrLinkJusoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrLinkJusoData.swift; sourceTree = "<group>"; };
-		F378B78325E7F45600FCE546 /* AddrLinkApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrLinkApiError.swift; sourceTree = "<group>"; };
+		F378B78325E7F45600FCE546 /* AddrLinkAPIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrLinkAPIError.swift; sourceTree = "<group>"; };
 		F378B78F25E7FAE500FCE546 /* AddrLinkResultsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrLinkResultsData.swift; sourceTree = "<group>"; };
 		F3AAE29525E7D06700D666BD /* DoroDoro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoroDoro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3AAE29825E7D06700D666BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -207,7 +241,7 @@
 		F3F4FAEF25E8080D0077FCB5 /* AddrEngCommonData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrEngCommonData.swift; sourceTree = "<group>"; };
 		F3F4FAF625E8082F0077FCB5 /* AddrEngJusoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrEngJusoData.swift; sourceTree = "<group>"; };
 		F3F4FAFD25E809CD0077FCB5 /* AddrEngResultsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrEngResultsData.swift; sourceTree = "<group>"; };
-		F3F4FB0925E80A040077FCB5 /* AddrEngApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrEngApiError.swift; sourceTree = "<group>"; };
+		F3F4FB0925E80A040077FCB5 /* AddrEngAPIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrEngAPIError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -252,7 +286,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F33BAFBE25ECB85000BC5772 /* DaumMap.framework in Frameworks */,
+				F33BB00525ECBAB700BC5772 /* Metal.framework in Frameworks */,
+				F33BAFCE25ECB8B400BC5772 /* libc++.tbd in Frameworks */,
+				F33BAFCA25ECB89600BC5772 /* CoreLocation.framework in Frameworks */,
+				F33BAFDE25ECB8D100BC5772 /* libsqlite3.tbd in Frameworks */,
+				F33BAFCC25ECB89D00BC5772 /* QuartzCore.framework in Frameworks */,
 				E8BA96083B64A362F17AAFEA /* Pods_DoroDoro.framework in Frameworks */,
+				F33BAFD625ECB8C300BC5772 /* libxml2.tbd in Frameworks */,
+				F33BAFC825ECB88700BC5772 /* SystemConfiguration.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,6 +304,15 @@
 		6FBAAB16978957EF30DAB117 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F33BB00425ECBAB700BC5772 /* Metal.framework */,
+				F33BAFDD25ECB8CB00BC5772 /* libsqlite3.tbd */,
+				F33BAFD525ECB8BC00BC5772 /* libxml2.tbd */,
+				F33BAFCD25ECB8A900BC5772 /* libc++.tbd */,
+				F33BAFCB25ECB89D00BC5772 /* QuartzCore.framework */,
+				F33BAFC925ECB89600BC5772 /* CoreLocation.framework */,
+				F33BAFC725ECB88700BC5772 /* SystemConfiguration.framework */,
+				F33BAFC525ECB87E00BC5772 /* OpenGLES.framework */,
+				F33BAFBD25ECB85000BC5772 /* DaumMap.framework */,
 				E86CEB0C5A70206FB9CE710D /* Pods_DoroDoro.framework */,
 				F378B74425E7EED900FCE546 /* WidgetKit.framework */,
 				F378B74625E7EED900FCE546 /* SwiftUI.framework */,
@@ -326,7 +377,7 @@
 			children = (
 				F337B1BE25EBFF5700FB0B61 /* AddrCoordCommonData.swift */,
 				F337B1C625EC009400FB0B61 /* AddrCoordJusoData.swift */,
-				F337B1CE25EC016800FB0B61 /* AddrCoordApiError.swift */,
+				F337B1CE25EC016800FB0B61 /* AddrCoordAPIError.swift */,
 				F337B1D625EC02AD00FB0B61 /* AddrCoordResultsData.swift */,
 				F337B1DE25EC03A400FB0B61 /* AddrCoordSearchData.swift */,
 			);
@@ -359,6 +410,28 @@
 			path = Details;
 			sourceTree = "<group>";
 		};
+		F33BB02225ECC0DE00BC5772 /* KakaoAPI */ = {
+			isa = PBXGroup;
+			children = (
+				F33BB03725ECCCE100BC5772 /* KakaoAddressData */,
+				F33BB02F25ECC95200BC5772 /* KakaoAPIService.swift */,
+			);
+			path = KakaoAPI;
+			sourceTree = "<group>";
+		};
+		F33BB03725ECCCE100BC5772 /* KakaoAddressData */ = {
+			isa = PBXGroup;
+			children = (
+				F33BB03825ECCD2E00BC5772 /* KakaoAddressResultData.swift */,
+				F33BB04625ECCD6100BC5772 /* KakaoAddressMetaData.swift */,
+				F33BB04E25ECCD6C00BC5772 /* KakaoAddressDocumentData.swift */,
+				F33BB0B625ECD73D00BC5772 /* KakaoAddressAddressData.swift */,
+				F33BB0C425ECD76C00BC5772 /* KakaoAddressRoadAddressData.swift */,
+				F33BB09E25ECD0C500BC5772 /* KakaoAddressAPIError.swift */,
+			);
+			path = KakaoAddressData;
+			sourceTree = "<group>";
+		};
 		F3444C9A25E8B1A700A0706F /* Localizable */ = {
 			isa = PBXGroup;
 			children = (
@@ -379,8 +452,9 @@
 		F378B6BC25E7D71C00FCE546 /* DoroDoroTests */ = {
 			isa = PBXGroup;
 			children = (
-				F378B6BD25E7D71C00FCE546 /* DoroDoroAPITests.swift */,
-				F3444DCC25E8C4B300A0706F /* DoroDoroAPIErrorTests.swift */,
+				F378B6BD25E7D71C00FCE546 /* AddrAPITests.swift */,
+				F3444DCC25E8C4B300A0706F /* AddrAPIErrorTests.swift */,
+				F33BB0A625ECD4C200BC5772 /* KakaoAPITests.swift */,
 				F378B6BF25E7D71C00FCE546 /* Info.plist */,
 			);
 			path = DoroDoroTests;
@@ -432,16 +506,15 @@
 			path = Bookmarks;
 			sourceTree = "<group>";
 		};
-		F378B72025E7DC8E00FCE546 /* API */ = {
+		F378B72025E7DC8E00FCE546 /* AddrAPI */ = {
 			isa = PBXGroup;
 			children = (
 				F378B76B25E7F08700FCE546 /* AddrLinkData */,
 				F378B76C25E7F08E00FCE546 /* AddrEngData */,
 				F333BA0D25EBFF0D00F1915F /* AddrCoordApi */,
-				F378B72825E7E26900FCE546 /* APIService.swift */,
-				F3309FF725EA8C5D0024DF7F /* Keys.swift */,
+				F378B72825E7E26900FCE546 /* AddrAPIService.swift */,
 			);
-			path = API;
+			path = AddrAPI;
 			sourceTree = "<group>";
 		};
 		F378B72125E7DD7500FCE546 /* View */ = {
@@ -472,7 +545,7 @@
 			children = (
 				F378B77525E7F17A00FCE546 /* AddrLinkCommonData.swift */,
 				F378B77C25E7F18900FCE546 /* AddrLinkJusoData.swift */,
-				F378B78325E7F45600FCE546 /* AddrLinkApiError.swift */,
+				F378B78325E7F45600FCE546 /* AddrLinkAPIError.swift */,
 				F378B78F25E7FAE500FCE546 /* AddrLinkResultsData.swift */,
 			);
 			path = AddrLinkData;
@@ -483,7 +556,7 @@
 			children = (
 				F3F4FAEF25E8080D0077FCB5 /* AddrEngCommonData.swift */,
 				F3F4FAF625E8082F0077FCB5 /* AddrEngJusoData.swift */,
-				F3F4FB0925E80A040077FCB5 /* AddrEngApiError.swift */,
+				F3F4FB0925E80A040077FCB5 /* AddrEngAPIError.swift */,
 				F3F4FAFD25E809CD0077FCB5 /* AddrEngResultsData.swift */,
 			);
 			path = AddrEngData;
@@ -500,9 +573,11 @@
 		F378B79625E8005100FCE546 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F3309FF725EA8C5D0024DF7F /* Keys.swift */,
 				F333B98325EB88CD00F1915F /* Entity */,
 				F3444C9A25E8B1A700A0706F /* Localizable */,
-				F378B72025E7DC8E00FCE546 /* API */,
+				F378B72025E7DC8E00FCE546 /* AddrAPI */,
+				F33BB02225ECC0DE00BC5772 /* KakaoAPI */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -551,6 +626,7 @@
 				F3AAE2A625E7D06800D666BD /* Info.plist */,
 				F378B6B325E7D69300FCE546 /* Localizable.strings */,
 				F378B71625E7DAFF00FCE546 /* InfoPlist.strings */,
+				F33BAFEB25ECB91900BC5772 /* DoroDoro-Bridging-Header.h */,
 			);
 			path = DoroDoro;
 			sourceTree = "<group>";
@@ -832,8 +908,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F378B6BE25E7D71C00FCE546 /* DoroDoroAPITests.swift in Sources */,
-				F3444DCD25E8C4B300A0706F /* DoroDoroAPIErrorTests.swift in Sources */,
+				F378B6BE25E7D71C00FCE546 /* AddrAPITests.swift in Sources */,
+				F33BB0A725ECD4C200BC5772 /* KakaoAPITests.swift in Sources */,
+				F3444DCD25E8C4B300A0706F /* AddrAPIErrorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -860,14 +937,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F3F4FB0A25E80A040077FCB5 /* AddrEngApiError.swift in Sources */,
+				F3F4FB0A25E80A040077FCB5 /* AddrEngAPIError.swift in Sources */,
 				F337B1F825EC0E0F00FB0B61 /* DetailInfoItem.swift in Sources */,
 				F378B6FB25E7D83F00FCE546 /* SearchViewController.swift in Sources */,
 				F3F4FAFE25E809CD0077FCB5 /* AddrEngResultsData.swift in Sources */,
+				F33BB09F25ECD0C500BC5772 /* KakaoAddressAPIError.swift in Sources */,
 				F333B9F825EBFA1B00F1915F /* DetailsViewController.swift in Sources */,
+				F33BB0C525ECD76C00BC5772 /* KakaoAddressRoadAddressData.swift in Sources */,
 				F3AAE29925E7D06700D666BD /* AppDelegate.swift in Sources */,
+				F33BB03025ECC95200BC5772 /* KakaoAPIService.swift in Sources */,
 				F333BA0025EBFE1B00F1915F /* NSObject+Ext.swift in Sources */,
 				F337B1C725EC009400FB0B61 /* AddrCoordJusoData.swift in Sources */,
+				F33BB04725ECCD6100BC5772 /* KakaoAddressMetaData.swift in Sources */,
 				F337B1EE25EC09F400FB0B61 /* DetailsViewModel.swift in Sources */,
 				F333B97B25EB7F0200F1915F /* SearchViewModel.swift in Sources */,
 				F378B77625E7F17A00FCE546 /* AddrLinkCommonData.swift in Sources */,
@@ -876,18 +957,21 @@
 				F3F4FAF025E8080D0077FCB5 /* AddrEngCommonData.swift in Sources */,
 				F3309FF825EA8C5D0024DF7F /* Keys.swift in Sources */,
 				F378B79025E7FAE500FCE546 /* AddrLinkResultsData.swift in Sources */,
-				F378B78425E7F45600FCE546 /* AddrLinkApiError.swift in Sources */,
+				F378B78425E7F45600FCE546 /* AddrLinkAPIError.swift in Sources */,
 				F378B75025E7EEDB00FCE546 /* DoroDoroWidget.intentdefinition in Sources */,
 				F33BAFAC25EC239500BC5772 /* DetailsMapViewConfiguration.swift in Sources */,
 				F337B20025EC0E9600FB0B61 /* DetailHeaderItem.swift in Sources */,
+				F33BB0B725ECD73D00BC5772 /* KakaoAddressAddressData.swift in Sources */,
 				F333B98D25EB890C00F1915F /* SearchResultItem.swift in Sources */,
-				F337B1CF25EC016800FB0B61 /* AddrCoordApiError.swift in Sources */,
+				F337B1CF25EC016800FB0B61 /* AddrCoordAPIError.swift in Sources */,
 				F333B9A725EB8FB600F1915F /* SearchHeaderItem.swift in Sources */,
 				F378B70925E7D8C600FCE546 /* BookmarksViewController.swift in Sources */,
 				F337B1BF25EBFF5700FB0B61 /* AddrCoordCommonData.swift in Sources */,
 				F3F4FAF725E8082F0077FCB5 /* AddrEngJusoData.swift in Sources */,
+				F33BB04F25ECCD6C00BC5772 /* KakaoAddressDocumentData.swift in Sources */,
 				F3AAE29B25E7D06700D666BD /* SceneDelegate.swift in Sources */,
-				F378B72925E7E26900FCE546 /* APIService.swift in Sources */,
+				F33BB03925ECCD2E00BC5772 /* KakaoAddressResultData.swift in Sources */,
+				F378B72925E7E26900FCE546 /* AddrAPIService.swift in Sources */,
 				F378B77D25E7F18900FCE546 /* AddrLinkJusoData.swift in Sources */,
 				F3444C9C25E8B1BB00A0706F /* Localizable.swift in Sources */,
 				F378B76F25E7F0B700FCE546 /* SettingsViewController.swift in Sources */,
@@ -915,6 +999,7 @@
 		};
 		F378B6E625E7D77300FCE546 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
+			platformFilter = ios;
 			target = F378B6CA25E7D77100FCE546 /* DoroDoroWatch */;
 			targetProxy = F378B6E525E7D77300FCE546 /* PBXContainerItemProxy */;
 		};
@@ -1304,9 +1389,14 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_ENTITLEMENTS = DoroDoro/DoroDoro.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P53D29U9LJ;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
 				INFOPLIST_FILE = DoroDoro/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1316,6 +1406,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.pookjw.DoroDoro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "DoroDoro/DoroDoro-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1328,9 +1419,14 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_ENTITLEMENTS = DoroDoro/DoroDoro.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P53D29U9LJ;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
 				INFOPLIST_FILE = DoroDoro/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1340,6 +1436,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.pookjw.DoroDoro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "DoroDoro/DoroDoro-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

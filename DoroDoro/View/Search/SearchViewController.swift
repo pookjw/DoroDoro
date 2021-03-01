@@ -141,7 +141,7 @@ final internal class SearchViewController: UIViewController {
     }
     
     private func bind() {
-        APIService.shared.addrLinkErrorEvent
+        viewModel?.addrAPIService.linkErrorEvent
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] error in
                 self?.showErrorAlert(for: error)

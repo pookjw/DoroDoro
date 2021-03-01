@@ -50,7 +50,6 @@ final internal class DetailsViewController: UIViewController {
         }
         
         collectionView.backgroundColor = collectionView.backgroundView?.backgroundColor
-        collectionView.allowsSelection = false
         collectionView.delegate = self
     }
     
@@ -96,10 +95,14 @@ final internal class DetailsViewController: UIViewController {
 //                let group: NSCollectionLayoutGroup = .horizontal(layoutSize: groupSize, subitems: [item])
 //                return NSCollectionLayoutSection(group: group)
 //            } else {
-                var configuration: UICollectionLayoutListConfiguration = .init(appearance: .insetGrouped)
-                configuration.headerMode = .supplementary
-                return NSCollectionLayoutSection.list(using: configuration, layoutEnvironment: layoutEnvironment)
+//                var configuration: UICollectionLayoutListConfiguration = .init(appearance: .insetGrouped)
+//                configuration.headerMode = .supplementary
+//                return NSCollectionLayoutSection.list(using: configuration, layoutEnvironment: layoutEnvironment)
 //            }
+            
+            var configuration: UICollectionLayoutListConfiguration = .init(appearance: .insetGrouped)
+            configuration.headerMode = .supplementary
+            return NSCollectionLayoutSection.list(using: configuration, layoutEnvironment: layoutEnvironment)
         }
     }
     
@@ -118,6 +121,7 @@ final internal class DetailsViewController: UIViewController {
                 cell.contentConfiguration = configuration
             case let .coord(latitude, longitude):
                 cell.contentConfiguration = DetailsMapViewConfiguration(latitude: latitude, longitude: longitude)
+                
             }
         }
     }
@@ -139,5 +143,7 @@ final internal class DetailsViewController: UIViewController {
 }
 
 extension DetailsViewController: UICollectionViewDelegate {
-    
+    internal func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
+        return false
+    }
 }

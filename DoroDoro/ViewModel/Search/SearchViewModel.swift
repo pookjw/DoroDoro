@@ -13,6 +13,7 @@ final internal class SearchViewModel {
     internal typealias DataSource = UICollectionViewDiffableDataSource<SearchHeaderItem, SearchResultItem>
     internal typealias Snapshot = NSDiffableDataSourceSnapshot<SearchHeaderItem, SearchResultItem>
     
+    internal let addrAPIService: AddrAPIService = .init()
     internal var dataSource: DataSource? = nil
     internal var refreshedEvent: PassthroughSubject<Bool, Never> = .init()
     @Published internal var searchEvent: String? = nil
@@ -38,7 +39,7 @@ final internal class SearchViewModel {
         guard let text: String = searchEvent,
               !text.isEmpty else { return }
         currentPage += 1
-        APIService.shared.requestAddrLinkEvent(keyword: text, currentPage: currentPage, countPerPage: 50)
+        addrAPIService.requestLinkEvent(keyword: text, currentPage: currentPage, countPerPage: 50)
     }
     
     internal func getResultItem(from indexPath: IndexPath) -> SearchResultItem? {
@@ -90,11 +91,11 @@ final internal class SearchViewModel {
                 guard let text: String = text,
                       !text.isEmpty else { return }
                 self.currentPage = 1
-                APIService.shared.requestAddrLinkEvent(keyword: text, currentPage: self.currentPage, countPerPage: 50)
+                self.addrAPIService.requestLinkEvent(keyword: text, currentPage: self.currentPage, countPerPage: 50)
             })
             .store(in: &cancellableBag)
         
-        APIService.shared.addrLinkEvent
+        addrAPIService.linkEvent
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] result in
                 self?.updateResultItems(result, text: self?.searchEvent ?? "")

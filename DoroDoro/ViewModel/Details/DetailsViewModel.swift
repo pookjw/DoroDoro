@@ -13,6 +13,7 @@ final internal class DetailsViewModel {
     internal typealias DataSource = UICollectionViewDiffableDataSource<DetailHeaderItem, DetailInfoItem>
     internal typealias Snapshot = NSDiffableDataSourceSnapshot<DetailHeaderItem, DetailInfoItem>
     
+    internal let addrAPIService: AddrAPIService = .init()
     internal var dataSource: DataSource? = nil
     internal var linkJusoData: AddrLinkJusoData? = nil
     private var engJusoData: AddrEngJusoData? = nil
@@ -26,8 +27,8 @@ final internal class DetailsViewModel {
     internal func loadData() {
         updateJusoItems()
         if let linkJusoData: AddrLinkJusoData = linkJusoData {
-            APIService.shared.requestAddrEngEvent(keyword: linkJusoData.roadAddr)
-            APIService.shared.requestCoordEvent(data: linkJusoData.convertToAddrCoordSearchData())
+            addrAPIService.requestEngEvent(keyword: linkJusoData.roadAddr)
+            addrAPIService.requestCoordEvent(data:linkJusoData.convertToAddrCoordSearchData())
         }
     }
     
@@ -160,18 +161,18 @@ final internal class DetailsViewModel {
     }
     
     private func bind() {
-        APIService.shared.addrEngEvent
+        addrAPIService.engEvent
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] data in
-                self?.engJusoData = data.juso[0]
+                self?.engJusoData = data.juso.first
                 self?.updateEngItems()
             })
             .store(in: &cancellableBag)
         
-        APIService.shared.addrCoordEvent
+        addrAPIService.coordEvent
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] data in
-                self?.coordJusoData = data.juso[0]
+                self?.coordJusoData = data.juso.first
                 self?.updateCoordItems()
             })
             .store(in: &cancellableBag)
