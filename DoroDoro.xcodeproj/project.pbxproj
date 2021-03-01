@@ -41,6 +41,7 @@
 		F33BB0C525ECD76C00BC5772 /* KakaoAddressRoadAddressData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB0C425ECD76C00BC5772 /* KakaoAddressRoadAddressData.swift */; };
 		F33BB0D325ECE96C00BC5772 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB0D225ECE96C00BC5772 /* UIViewController+Ext.swift */; };
 		F33BB0F525ED043400BC5772 /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB0F425ED043400BC5772 /* SpinnerView.swift */; };
+		F33BB10425ED268D00BC5772 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB10325ED268D00BC5772 /* MapViewController.swift */; };
 		F3444C9C25E8B1BB00A0706F /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3444C9B25E8B1BB00A0706F /* Localizable.swift */; };
 		F3444CA925E8B82300A0706F /* DoroDoroUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3444CA825E8B82300A0706F /* DoroDoroUITests.swift */; };
 		F3444DCD25E8C4B300A0706F /* AddrAPIErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3444DCC25E8C4B300A0706F /* AddrAPIErrorTests.swift */; };
@@ -194,6 +195,7 @@
 		F33BB0C425ECD76C00BC5772 /* KakaoAddressRoadAddressData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoAddressRoadAddressData.swift; sourceTree = "<group>"; };
 		F33BB0D225ECE96C00BC5772 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		F33BB0F425ED043400BC5772 /* SpinnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerView.swift; sourceTree = "<group>"; };
+		F33BB10325ED268D00BC5772 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		F3444C9B25E8B1BB00A0706F /* Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
 		F3444CA625E8B82300A0706F /* DoroDoroUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoroDoroUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3444CA825E8B82300A0706F /* DoroDoroUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoroDoroUITests.swift; sourceTree = "<group>"; };
@@ -448,6 +450,7 @@
 		F33BB0FC25ED096900BC5772 /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				F33BB10325ED268D00BC5772 /* MapViewController.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -972,6 +975,7 @@
 				F337B1C725EC009400FB0B61 /* AddrCoordJusoData.swift in Sources */,
 				F33BB04725ECCD6100BC5772 /* KakaoAddressMetaData.swift in Sources */,
 				F337B1EE25EC09F400FB0B61 /* DetailsViewModel.swift in Sources */,
+				F33BB10425ED268D00BC5772 /* MapViewController.swift in Sources */,
 				F333B97B25EB7F0200F1915F /* SearchViewModel.swift in Sources */,
 				F378B77625E7F17A00FCE546 /* AddrLinkCommonData.swift in Sources */,
 				F378B70225E7D88A00FCE546 /* MainTabBarController.swift in Sources */,

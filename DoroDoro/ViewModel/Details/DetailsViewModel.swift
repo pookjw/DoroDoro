@@ -35,6 +35,30 @@ final internal class DetailsViewModel {
         return sectionIdentifiers[indexPath.section].itemType
     }
     
+    internal func getCoord(from indexPath: IndexPath) -> (latitude: Double, longitude: Double)? {
+        guard let sectionIdentifiers: [DetailHeaderItem] = dataSource?.snapshot().sectionIdentifiers else {
+            return nil
+        }
+        
+        guard sectionIdentifiers.count > indexPath.section else {
+            return nil
+        }
+        
+        guard let infoItems: [DetailInfoItem] = dataSource?.snapshot().itemIdentifiers(inSection: sectionIdentifiers[indexPath.section]) else {
+            return nil
+        }
+        
+        guard infoItems.count > indexPath.row else {
+            return nil
+        }
+        
+        if case let .map(latitude, longitude) = infoItems[indexPath.row].itemType {
+            return (latitude: latitude, longitude: longitude)
+        } else {
+            return nil
+        }
+    }
+    
     internal func loadData() {
         updateLinkItems()
         if let linkJusoData: AddrLinkJusoData = linkJusoData {

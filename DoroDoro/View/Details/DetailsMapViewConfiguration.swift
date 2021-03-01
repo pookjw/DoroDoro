@@ -25,7 +25,7 @@ internal struct DetailsMapViewConfiguration: UIContentConfiguration {
 final fileprivate class _DetailsMapViewContentView: UIView, UIContentView {
     private weak var mapView: MKMapView? = nil
     #if arch(arm64) || targetEnvironment(simulator)
-    private weak var kakaoMapView: MTMapView? = nil
+    private weak var daumMapView: MTMapView? = nil
     #endif
     
     fileprivate var configuration: UIContentConfiguration {
@@ -49,33 +49,36 @@ final fileprivate class _DetailsMapViewContentView: UIView, UIContentView {
         }
         
         #if arch(arm64) || targetEnvironment(simulator)
-        let kakaoMapView: MTMapView = .init()
-        self.kakaoMapView = kakaoMapView
-        addSubview(kakaoMapView)
-        kakaoMapView.translatesAutoresizingMaskIntoConstraints = false
-        if superview != nil {
-            translatesAutoresizingMaskIntoConstraints = false
-            
-            snp.remakeConstraints { make in
-                make.edges.equalToSuperview()
-                make.height.equalTo(300).priority(999)
-            }
-            
-            kakaoMapView.snp.remakeConstraints { make in
-                make.edges.equalToSuperview()
+        
+        if daumMapView == nil {
+            let daumMapView: MTMapView = .init()
+            self.daumMapView = daumMapView
+            addSubview(daumMapView)
+            daumMapView.translatesAutoresizingMaskIntoConstraints = false
+            if superview != nil {
+                translatesAutoresizingMaskIntoConstraints = false
                 
+                snp.remakeConstraints { make in
+                    make.edges.equalToSuperview()
+                    make.height.equalTo(300).priority(999)
+                }
+                
+                daumMapView.snp.remakeConstraints { make in
+                    make.edges.equalToSuperview()
+                    
+                }
+            } else {
+                daumMapView.snp.remakeConstraints { make in
+                    make.edges.equalToSuperview()
+                    make.height.equalTo(300).priority(999)
+                }
             }
-        } else {
-            kakaoMapView.snp.remakeConstraints { make in
-                make.edges.equalToSuperview()
-                make.height.equalTo(300).priority(999)
-            }
+            
+            daumMapView.isUserInteractionEnabled = false
         }
         
-        kakaoMapView.isUserInteractionEnabled = false
-        
         let mapPoint: MTMapPoint = .init(geoCoord: MTMapPointGeo(latitude: configuration.latitude, longitude: configuration.longitude))
-        kakaoMapView.setMapCenter(mapPoint, zoomLevel: 4, animated: false)
+        daumMapView?.setMapCenter(mapPoint, zoomLevel: 4, animated: false)
         
         #else
         let mapView: MKMapView = .init()
@@ -101,7 +104,11 @@ final fileprivate class _DetailsMapViewContentView: UIView, UIContentView {
             }
         }
         
-        mapView.isUserInteractionEnabled = false
+        mapView.isUserInteractionEnabled = true
+        mapView.isScrollEnabled = false
+        mapView.isPitchEnabled = false
+        mapView.isZoomEnabled = false
+        mapView.isRotateEnabled = false
         
         let coordinate: CLLocationCoordinate2D = .init(latitude: configuration.latitude, longitude: configuration.longitude)
         let region: MKCoordinateRegion = .init(center: coordinate, latitudinalMeters: 3000, longitudinalMeters: 3000)

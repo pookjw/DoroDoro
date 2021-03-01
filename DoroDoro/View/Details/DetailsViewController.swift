@@ -49,7 +49,7 @@ final internal class DetailsViewController: UIViewController {
         self.collectionView = collectionView
         view.addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.snp.makeConstraints { make in
+        collectionView.snp.remakeConstraints { make in
             make.edges.equalToSuperview()
         }
         
@@ -187,11 +187,26 @@ final internal class DetailsViewController: UIViewController {
             })
             .store(in: &cancellableBag)
     }
+    
+    private func presentMapView(corrd: (latitude: Double, longitude: Double)) {
+        let mapVC: MapViewController = .init()
+        mapVC.latitude = corrd.latitude
+        mapVC.longitude = corrd.longitude
+        let mapNVC: UINavigationController = .init(rootViewController: mapVC)
+        present(mapNVC, animated: true, completion: nil)
+    }
 }
 
 extension DetailsViewController: UICollectionViewDelegate {
     internal func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return false
+        return true
+    }
+    
+    internal func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let coord: (latitude: Double, longitude: Double) = viewModel?.getCoord(from: indexPath) else {
+            return
+        }
+        presentMapView(corrd: coord)
     }
     
     internal func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
