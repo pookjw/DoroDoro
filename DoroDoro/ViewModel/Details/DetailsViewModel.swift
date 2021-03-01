@@ -52,37 +52,32 @@ final internal class DetailsViewModel {
             }
         }()
         
-//        let items: [DetailInfoItem] = [
-//            .init(title: "전체 도로명주소", subTitle: linkJusoData.roadAddr),
-//            .init(title: "도로명주소", subTitle: linkJusoData.roadAddrPart1),
-//            .init(title: "도로명주소 참고항목", subTitle: linkJusoData.roadAddrPart2 ?? "(데이터 없음)"),
-//            .init(title: "지번주소", subTitle: linkJusoData.jibunAddr),
-//            .init(title: "우편번호", subTitle: linkJusoData.zipNo),
-//            .init(title: "행정구역코드", subTitle: linkJusoData.admCd),
-//            .init(title: "도로명코드", subTitle: linkJusoData.rnMgtSn),
-//            .init(title: "건물관리번호", subTitle: linkJusoData.bdMgtSn),
-//            .init(title: "상세건물명", subTitle: linkJusoData.detBdNmList ?? ""),
-//            .init(title: "건물명", subTitle: linkJusoData.bdNm ?? ""),
-//            .init(title: "공동주택여부", subTitle: linkJusoData.bdKdcd ?? ""),
-//            .init(title: "시도명", subTitle: linkJusoData.siNm),
-//            .init(title: "시군구명", subTitle: linkJusoData.sggNm),
-//            .init(title: "읍면동명", subTitle: linkJusoData.emdNm),
-//            .init(title: "법정리명", subTitle: linkJusoData.liNm ?? ""),
-//            .init(title: "도로명", subTitle: linkJusoData.rn),
-//            .init(title: "지하여부", subTitle: linkJusoData.udrtYn),
-//            .init(title: "건물본번", subTitle: linkJusoData.buldMnnm),
-//            .init(title: "건물부번", subTitle: linkJusoData.buldSlno),
-//            .init(title: "산여부", subTitle: linkJusoData.mtYn),
-//            .init(title: "지번본번(번지)", subTitle: linkJusoData.lnbrMnnm),
-//            .init(title: "지번부번(호)", subTitle: linkJusoData.lnbrSlno),
-//            .init(title: "읍면동일련번호", subTitle: linkJusoData.emdNo),
-//            .init(title: "변동이력여부", subTitle: linkJusoData.hstryYn ?? ""),
-//            .init(title: "관련지번", subTitle: linkJusoData.relJibun ?? ""),
-//            .init(title: "관할주민센터 (참고정보)", subTitle: linkJusoData.hemdNm ?? "")
-//        ]
-        
         let items: [DetailInfoItem] = [
-            .init(itemType: .link("", ""))
+            .init(itemType: .link("전체 도로명주소", wrappedNoData(linkJusoData.roadAddr))),
+            .init(itemType: .link("도로명주소", wrappedNoData(linkJusoData.roadAddrPart1))),
+            .init(itemType: .link("도로명주소 참고항목", wrappedNoData(linkJusoData.roadAddrPart2))),
+            .init(itemType: .link("지번주소", wrappedNoData(linkJusoData.jibunAddr))),
+            .init(itemType: .link("우편번호", wrappedNoData(linkJusoData.zipNo))),
+            .init(itemType: .link("행정구역코드", wrappedNoData(linkJusoData.admCd))),
+            .init(itemType: .link("도로명코드", wrappedNoData(linkJusoData.rnMgtSn))),
+            .init(itemType: .link("건물관리번호", wrappedNoData(linkJusoData.bdMgtSn))),
+            .init(itemType: .link("상세건물명", wrappedNoData(linkJusoData.detBdNmList))),
+            .init(itemType: .link("건물명", wrappedNoData(linkJusoData.bdNm))),
+            .init(itemType: .link("공동주택여부", wrappedBdKdcd(linkJusoData.bdKdcd))),
+            .init(itemType: .link("시도명", wrappedNoData(linkJusoData.siNm))),
+            .init(itemType: .link("시군구명", wrappedNoData(linkJusoData.sggNm))),
+            .init(itemType: .link("읍면동명", wrappedNoData(linkJusoData.emdNm))),
+            .init(itemType: .link("법정리명", wrappedNoData(linkJusoData.liNm))),
+            .init(itemType: .link("도로명", wrappedNoData(linkJusoData.rn))),
+            .init(itemType: .link("지하여부", wrappedUdrtYn(linkJusoData.udrtYn))),
+            .init(itemType: .link("건물본번", wrappedNoData(linkJusoData.buldMnnm))),
+            .init(itemType: .link("건물부번", wrappedNoData(linkJusoData.buldSlno))),
+            .init(itemType: .link("산여부", wrappedMtYn(linkJusoData.mtYn))),
+            .init(itemType: .link("지번본번(번지)", wrappedNoData(linkJusoData.lnbrMnnm))),
+            .init(itemType: .link("지번부번(호)", wrappedNoData(linkJusoData.lnbrSlno))),
+            .init(itemType: .link("읍면동일련번호", wrappedNoData(linkJusoData.emdNo))),
+            .init(itemType: .link("관련지번", wrappedNoData(linkJusoData.relJibun))),
+            .init(itemType: .link("관할주민센터(참고정보)", wrappedNoData(linkJusoData.hemdNm)))
         ]
         
         snapshot.appendItems(items, toSection: linkHeaderItem)
@@ -115,8 +110,13 @@ final internal class DetailsViewModel {
         }()
         
         let items: [DetailInfoItem] = [
-//            .init(title: "영문 도로명주소", subTitle: engJusoData.roadAddr)
-            .init(itemType: .eng("영문 도로명주소", engJusoData.roadAddr))
+            .init(itemType: .eng("영문 도로명주소", wrappedNoData(engJusoData.roadAddr))),
+            .init(itemType: .eng("영문 지번주소", wrappedNoData(engJusoData.jibunAddr))),
+            .init(itemType: .eng("영문 시도명", wrappedNoData(engJusoData.siNm))),
+            .init(itemType: .eng("영문 시군구명", wrappedNoData(engJusoData.sggNm))),
+            .init(itemType: .eng("영문 읍면동명", wrappedNoData(engJusoData.emdNm))),
+            .init(itemType: .eng("영문 법정리명", wrappedNoData(engJusoData.liNm))),
+            .init(itemType: .eng("영문 도로명", wrappedNoData(engJusoData.rn)))
         ]
         
         snapshot.appendItems(items, toSection: engHeaderItem)
@@ -160,6 +160,34 @@ final internal class DetailsViewModel {
         
         snapshot.appendItems(items, toSection: coordHeaderItem)
         dataSource?.apply(snapshot, animatingDifferences: false)
+    }
+    
+    private func wrappedNoData(_ text: String?) -> String {
+        guard let text: String = text else {
+            return Localizable.NO_DATA.string
+        }
+        return text.isEmpty ? Localizable.NO_DATA.string : text
+    }
+    
+    private func wrappedBdKdcd(_ bdKdcd: String?) -> String {
+        guard let bdKdcd: String = bdKdcd else {
+            return Localizable.NO_DATA.string
+        }
+        return (bdKdcd == "0") ? "비공동주택" : "공동주택"
+    }
+    
+    private func wrappedUdrtYn(_ udrtYn: String?) -> String {
+        guard let udrtYn: String = udrtYn else {
+            return Localizable.NO_DATA.string
+        }
+        return (udrtYn == "0") ? "지상" : "지하"
+    }
+    
+    private func wrappedMtYn(_ mtYn: String?) -> String {
+        guard let mtYn: String = mtYn else {
+            return Localizable.NO_DATA.string
+        }
+        return (mtYn == "0") ? "대지" : "산"
     }
     
     private func bind() {

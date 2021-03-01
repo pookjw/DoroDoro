@@ -22,6 +22,9 @@
 "DONE" = "Done";
 
 /* */
+"NO_DATA" = "(No data)";
+
+/* */
 "RESULTS_FOR_ADDRESS" = "Results for %@";
 
 /* */

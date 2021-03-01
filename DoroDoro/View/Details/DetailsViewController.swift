@@ -34,6 +34,7 @@ final internal class DetailsViewController: UIViewController {
     internal func setLinkJusoData(_ linkJusoData: AddrLinkJusoData) {
         viewModel?.linkJusoData = linkJusoData
         viewModel?.loadData()
+        title = linkJusoData.rn
     }
     
     private func configureAttributes() {

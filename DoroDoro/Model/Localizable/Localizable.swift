@@ -13,6 +13,7 @@ internal enum Localizable: String {
     case TABBAR_BOOKMARKS_VIEW_CONTROLLER_TITLE
     case TABBAR_SETTINGS_VIEW_CONTROLLER_TITLE
     case DONE
+    case NO_DATA
     case RESULTS_FOR_ADDRESS
     case ADD_TO_BOOKMARKS
     case REMOVE_FROM_BOOKMARKS
