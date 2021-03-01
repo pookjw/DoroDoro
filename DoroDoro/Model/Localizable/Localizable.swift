@@ -14,6 +14,7 @@ internal enum Localizable: String {
     case TABBAR_SETTINGS_VIEW_CONTROLLER_TITLE
     case MAP_VIEW_CONTROLLER_TITLE
     case DONE
+    case DISMISS
     case NO_DATA
     case RESULTS_FOR_ADDRESS
     case ADD_TO_BOOKMARKS

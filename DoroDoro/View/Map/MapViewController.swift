@@ -49,7 +49,7 @@ final internal class MapViewController: UIViewController {
         
         //
         
-        let doneBarButtonItem: UIBarButtonItem = .init(title: Localizable.DONE.string,
+        let doneBarButtonItem: UIBarButtonItem = .init(title: Localizable.DISMISS.string,
                                                        image: nil,
                                                        primaryAction: getDismissAction(),
                                                        menu: nil)
@@ -136,8 +136,12 @@ final internal class MapViewController: UIViewController {
                                                            style: .default) { [weak self] _ in
                                                             self?.openInSystemMapApp()
                                                            }
+                let dismissButton: UIAlertAction = .init(title: Localizable.DISMISS.string,
+                                                         style: .cancel,
+                                                         handler: nil)
                 alertVC.addAction(kakaoMapAction)
                 alertVC.addAction(systemMapAction)
+                alertVC.addAction(dismissButton)
                 
                 if let controller: UIPopoverPresentationController = alertVC.popoverPresentationController {
                     if let openMapAppBarButtonItem: UIBarButtonItem = self.openMapAppBarButtonItem {
