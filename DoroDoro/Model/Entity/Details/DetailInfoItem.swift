@@ -12,7 +12,7 @@ internal struct DetailInfoItem: Hashable, Equatable {
     internal enum ItemType: Hashable {
         case link(String, String)
         case eng(String, String)
-        case map(Double, Double)
+        case map(Double, Double, String)
     }
     internal let itemType: ItemType
     

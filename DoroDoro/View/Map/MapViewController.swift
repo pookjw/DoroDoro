@@ -11,17 +11,18 @@ import SnapKit
 
 final internal class MapViewController: UIViewController {
     internal enum MapType {
-        case apple, daum
+        case apple, kakao
     }
     
-    internal var mapType: MapType = .daum
+    internal var mapType: MapType = .kakao
+    internal var locationTitle: String? = nil
     
     // 서울 종로구 효자로 12
     internal var (latitude, longitude): (Double, Double) = (37.5765916191985, 126.974974825074)
     
     private weak var mapView: MKMapView? = nil
     #if arch(arm64) || targetEnvironment(simulator)
-    private weak var daumMapView: MTMapView? = nil
+    private weak var kakaoMapView: MTMapView? = nil
     #endif
     private weak var doneBarButtonItem: UIBarButtonItem? = nil
     private weak var openMapAppBarButtonItem: UIBarButtonItem? = nil
@@ -34,9 +35,9 @@ final internal class MapViewController: UIViewController {
         switch mapType {
         case .apple:
             configureAppleMapView()
-        case .daum:
+        case .kakao:
             #if arch(arm64) || targetEnvironment(simulator)
-            configureDaumMapView()
+            configureKakaoMapView()
             #else
             configureAppleMapView()
             #endif
@@ -76,21 +77,40 @@ final internal class MapViewController: UIViewController {
         let coordinate: CLLocationCoordinate2D = .init(latitude: latitude, longitude: longitude)
         let region: MKCoordinateRegion = .init(center: coordinate, latitudinalMeters: 300, longitudinalMeters: 300)
         mapView.setRegion(mapView.regionThatFits(region), animated: false)
+        
+        mapView.removeAnnotations(mapView.annotations)
+        let annotation: MKPointAnnotation = .init()
+        annotation.title = locationTitle
+        annotation.coordinate = coordinate
+        mapView.addAnnotation(annotation)
     }
     
     #if arch(arm64) || targetEnvironment(simulator)
-    private func configureDaumMapView() {
-        let daumMapView: MTMapView = .init()
-        self.daumMapView = daumMapView
-        view.addSubview(daumMapView)
-        daumMapView.translatesAutoresizingMaskIntoConstraints = false
-        
-        daumMapView.snp.remakeConstraints { make in
+    private func configureKakaoMapView() {
+        let kakaoMapView: MTMapView = .init()
+        self.kakaoMapView = kakaoMapView
+        view.addSubview(kakaoMapView)
+        kakaoMapView.translatesAutoresizingMaskIntoConstraints = false
+        kakaoMapView.snp.remakeConstraints { make in
             make.edges.equalToSuperview()
         }
         
-        let mapPoint: MTMapPoint = .init(geoCoord: MTMapPointGeo(latitude: latitude, longitude: longitude))
-        daumMapView.setMapCenter(mapPoint, zoomLevel: 1, animated: false)
+        let geoCoord: MTMapPointGeo = .init(latitude: latitude, longitude: longitude)
+        let mapPoint: MTMapPoint = .init(geoCoord: geoCoord)
+        kakaoMapView.setMapCenter(mapPoint, zoomLevel: -2, animated: false)
+        
+        //
+        
+        let pointItem: MTMapPOIItem = .init()
+        pointItem.markerType = .redPin
+        pointItem.mapPoint = mapPoint
+        if let locationtitle: String = locationTitle {
+            pointItem.itemName = locationtitle
+        }
+        pointItem.showDisclosureButtonOnCalloutBalloon = false
+        pointItem.markerSelectedType = .redPin
+        pointItem.showAnimationType = .noAnimation
+        kakaoMapView.add(pointItem)
     }
     #endif
     

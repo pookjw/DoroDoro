@@ -126,8 +126,8 @@ final internal class DetailsViewController: UIViewController {
                 configuration.text = text
                 configuration.secondaryText = secondaryText
                 cell.contentConfiguration = configuration
-            case let .map(latitude, longitude):
-                cell.contentConfiguration = DetailsMapViewConfiguration(latitude: latitude, longitude: longitude)
+            case let .map(latitude, longitude, title):
+                cell.contentConfiguration = DetailsMapViewConfiguration(latitude: latitude, longitude: longitude, title: title)
             }
         }
     }
@@ -159,11 +159,8 @@ final internal class DetailsViewController: UIViewController {
             switch headerItem.itemType {
             case .map:
                 var configuration: UIListContentConfiguration = footerView.defaultContentConfiguration()
-                #if arch(arm64) || targetEnvironment(simulator)
-                configuration.text = "Powered by KakaoMap"
-                #else
-                configuration.text = "Powered by Apple Map"
-                #endif
+                
+                configuration.text = "(번역필요) 행정안전부, 카카오에서 데이터를 제공했습니다."
                 configuration.textProperties.alignment = .center
                 footerView.contentConfiguration = configuration
             default:
@@ -188,10 +185,11 @@ final internal class DetailsViewController: UIViewController {
             .store(in: &cancellableBag)
     }
     
-    private func presentMapView(corrd: (latitude: Double, longitude: Double)) {
+    private func presentMapView(corrd: (latitude: Double, longitude: Double), title: String? = nil) {
         let mapVC: MapViewController = .init()
         mapVC.latitude = corrd.latitude
         mapVC.longitude = corrd.longitude
+        mapVC.locationTitle = title
         let mapNVC: UINavigationController = .init(rootViewController: mapVC)
         mapNVC.modalPresentationStyle = .fullScreen
         present(mapNVC, animated: true, completion: nil)
@@ -204,10 +202,15 @@ extension DetailsViewController: UICollectionViewDelegate {
     }
     
     internal func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let coord: (latitude: Double, longitude: Double) = viewModel?.getCoord(from: indexPath) else {
+        guard let item: DetailInfoItem = viewModel?.getInfoItem(from: indexPath) else {
             return
         }
-        presentMapView(corrd: coord)
+        
+        guard case let .map(latitude, longitude, title) = item.itemType else {
+            return
+        }
+        
+        presentMapView(corrd: (latitude: latitude, longitude: longitude), title: title)
     }
     
     internal func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {

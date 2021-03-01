@@ -25,17 +25,7 @@ final internal class DetailsViewModel {
         bind()
     }
     
-    internal func getSectionItemType(from indexPath: IndexPath) -> DetailHeaderItem.ItemType? {
-        guard let sectionIdentifiers: [DetailHeaderItem] = dataSource?.snapshot().sectionIdentifiers else {
-            return nil
-        }
-        guard sectionIdentifiers.count > indexPath.section else {
-            return nil
-        }
-        return sectionIdentifiers[indexPath.section].itemType
-    }
-    
-    internal func getCoord(from indexPath: IndexPath) -> (latitude: Double, longitude: Double)? {
+    internal func getInfoItem(from indexPath: IndexPath) -> DetailInfoItem? {
         guard let sectionIdentifiers: [DetailHeaderItem] = dataSource?.snapshot().sectionIdentifiers else {
             return nil
         }
@@ -52,11 +42,17 @@ final internal class DetailsViewModel {
             return nil
         }
         
-        if case let .map(latitude, longitude) = infoItems[indexPath.row].itemType {
-            return (latitude: latitude, longitude: longitude)
-        } else {
+        return infoItems[indexPath.row]
+    }
+    
+    internal func getSectionItemType(from indexPath: IndexPath) -> DetailHeaderItem.ItemType? {
+        guard let sectionIdentifiers: [DetailHeaderItem] = dataSource?.snapshot().sectionIdentifiers else {
             return nil
         }
+        guard sectionIdentifiers.count > indexPath.section else {
+            return nil
+        }
+        return sectionIdentifiers[indexPath.section].itemType
     }
     
     internal func loadData() {
@@ -191,7 +187,7 @@ final internal class DetailsViewModel {
         }()
         
         let items: [DetailInfoItem] = [
-            .init(itemType: .map(latitude, longitude))
+            .init(itemType: .map(latitude, longitude, addressDocumentData.address_name))
         ]
         
         snapshot.appendItems(items, toSection: coordHeaderItem)

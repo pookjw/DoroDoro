@@ -12,6 +12,7 @@ import SnapKit
 internal struct DetailsMapViewConfiguration: UIContentConfiguration {
     internal let latitude: Double
     internal let longitude: Double
+    internal let title: String
     
     internal func makeContentView() -> UIView & UIContentView {
         return _DetailsMapViewContentView(configuration: self)
@@ -27,7 +28,10 @@ final fileprivate class _DetailsMapViewContentView: UIView, UIContentView {
     
     fileprivate var configuration: UIContentConfiguration {
         didSet {
-            configure()
+            if mapView == nil {
+                configureMapView()
+            }
+            updateConfiguration()
         }
     }
     
@@ -40,44 +44,54 @@ final fileprivate class _DetailsMapViewContentView: UIView, UIContentView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func configure() {
+    private func configureMapView() {
+        let mapView: MKMapView = .init()
+        self.mapView = mapView
+        addSubview(mapView)
+        mapView.translatesAutoresizingMaskIntoConstraints = false
+        if superview != nil {
+            translatesAutoresizingMaskIntoConstraints = false
+            
+            snp.remakeConstraints { make in
+                make.edges.equalToSuperview()
+                make.height.equalTo(300).priority(999)
+            }
+            
+            mapView.snp.remakeConstraints { make in
+                make.edges.equalToSuperview()
+                
+            }
+        } else {
+            mapView.snp.remakeConstraints { make in
+                make.edges.equalToSuperview()
+                make.height.equalTo(300).priority(999)
+            }
+        }
+        
+        mapView.isUserInteractionEnabled = false
+        mapView.isScrollEnabled = false
+        mapView.isPitchEnabled = false
+        mapView.isZoomEnabled = false
+        mapView.isRotateEnabled = false
+    }
+    
+    private func updateConfiguration() {
+        guard let mapView: MKMapView = mapView else {
+            return
+        }
+        
         guard let configuration: DetailsMapViewConfiguration = configuration as? DetailsMapViewConfiguration else {
              return
         }
         
-        if mapView == nil {
-            let mapView: MKMapView = .init()
-            self.mapView = mapView
-            addSubview(mapView)
-            mapView.translatesAutoresizingMaskIntoConstraints = false
-            if superview != nil {
-                translatesAutoresizingMaskIntoConstraints = false
-                
-                snp.remakeConstraints { make in
-                    make.edges.equalToSuperview()
-                    make.height.equalTo(300).priority(999)
-                }
-                
-                mapView.snp.remakeConstraints { make in
-                    make.edges.equalToSuperview()
-                    
-                }
-            } else {
-                mapView.snp.remakeConstraints { make in
-                    make.edges.equalToSuperview()
-                    make.height.equalTo(300).priority(999)
-                }
-            }
-            
-            mapView.isUserInteractionEnabled = false
-            mapView.isScrollEnabled = false
-            mapView.isPitchEnabled = false
-            mapView.isZoomEnabled = false
-            mapView.isRotateEnabled = false
-        }
-        
         let coordinate: CLLocationCoordinate2D = .init(latitude: configuration.latitude, longitude: configuration.longitude)
         let region: MKCoordinateRegion = .init(center: coordinate, latitudinalMeters: 300, longitudinalMeters: 300)
-        mapView!.setRegion(mapView!.regionThatFits(region), animated: false)
+        mapView.setRegion(mapView.regionThatFits(region), animated: false)
+        
+        mapView.removeAnnotations(mapView.annotations)
+        let annotation: MKPointAnnotation = .init()
+        annotation.title = configuration.title
+        annotation.coordinate = coordinate
+        mapView.addAnnotation(annotation)
     }
 }
