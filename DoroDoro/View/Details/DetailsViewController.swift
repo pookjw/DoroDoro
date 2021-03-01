@@ -198,7 +198,10 @@ final internal class DetailsViewController: UIViewController {
 
 extension DetailsViewController: UICollectionViewDelegate {
     internal func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
+        guard let itemType: DetailHeaderItem.ItemType = viewModel?.getSectionItemType(from: indexPath) else {
+            return false
+        }
+        return itemType == .map
     }
     
     internal func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
