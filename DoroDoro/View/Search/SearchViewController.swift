@@ -70,6 +70,7 @@ final internal class SearchViewController: UIViewController {
         collectionView.cr.addFootRefresh(animator: slackLoadingAnimator) { [weak self] in
             self?.viewModel?.requestNextPageIfAvailable()
         }
+        slackLoadingAnimator.isHidden = true
     }
     
     private func configureSearchController() {
@@ -187,7 +188,12 @@ extension SearchViewController: UICollectionViewDelegate {
     }
     
     internal func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
-        guard let configuration: UIListContentConfiguration = collectionView.cellForItem(at: indexPath)?.contentConfiguration as? UIListContentConfiguration else {
+        
+        guard let cell: UICollectionViewCell = collectionView.cellForItem(at: indexPath) else {
+            return nil
+        }
+        
+        guard let configuration: UIListContentConfiguration = cell.contentConfiguration as? UIListContentConfiguration else {
             return nil
         }
         
@@ -207,8 +213,8 @@ extension SearchViewController: UICollectionViewDelegate {
         }
         
         let shareAction = UIAction(title: Localizable.SHARE.string,
-                              image: UIImage(systemName: "square.and.arrow.up")) { action in
-            // Perform action
+                              image: UIImage(systemName: "square.and.arrow.up")) { [weak self, weak cell] action in
+            self?.share([text], sourceView: cell)
         }
         
         return UIContextMenuConfiguration(identifier: nil,

@@ -14,4 +14,21 @@ extension UIViewController {
         alert.addAction(doneAction)
         present(alert, animated: true)
     }
+    
+    @discardableResult
+    internal func share(_ items: [Any], sourceView: UIView? = nil) -> UIActivityViewController {
+        let ac: UIActivityViewController = .init(activityItems: items, applicationActivities: nil)
+        
+        if let controller: UIPopoverPresentationController = ac.popoverPresentationController {
+            if let sourceView: UIView = sourceView {
+                controller.sourceView = sourceView
+            } else {
+                controller.sourceView = view
+                controller.sourceRect = CGRect(origin: view.center, size: .zero)
+            }
+        }
+        
+        present(ac, animated: true)
+        return ac
+    }
 }
