@@ -14,7 +14,7 @@ final internal class MapViewController: UIViewController {
         case apple, kakao
     }
     
-    internal var mapType: MapType = .apple
+    internal var mapType: MapType = .kakao
     internal var locationTitle: String? = nil
     
     // 서울 종로구 효자로 12

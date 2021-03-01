@@ -69,6 +69,9 @@
 		F33BB1BF25ED4E5700BC5772 /* daum_th_line.png in Resources */ = {isa = PBXBuildFile; fileRef = F33BB1A325ED4E5700BC5772 /* daum_th_line.png */; };
 		F33BB1C025ED4E5700BC5772 /* map_pin_shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = F33BB1A425ED4E5700BC5772 /* map_pin_shadow.png */; };
 		F33BB1C125ED4E5700BC5772 /* DaumMap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F33BB1A525ED4E5700BC5772 /* DaumMap.framework */; };
+		F33BB1FA25ED65B200BC5772 /* WelcomeBLTNPageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB1F925ED65B200BC5772 /* WelcomeBLTNPageItem.swift */; };
+		F33BB20625ED680D00BC5772 /* IntroBulletinManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB20525ED680D00BC5772 /* IntroBulletinManager.swift */; };
+		F33BB21C25ED6AB300BC5772 /* SearchGuideBLTNPageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB21B25ED6AB300BC5772 /* SearchGuideBLTNPageItem.swift */; };
 		F3444C9C25E8B1BB00A0706F /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3444C9B25E8B1BB00A0706F /* Localizable.swift */; };
 		F3444CA925E8B82300A0706F /* DoroDoroUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3444CA825E8B82300A0706F /* DoroDoroUITests.swift */; };
 		F3444DCD25E8C4B300A0706F /* AddrAPIErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3444DCC25E8C4B300A0706F /* AddrAPIErrorTests.swift */; };
@@ -268,6 +271,9 @@
 		F33BB1A325ED4E5700BC5772 /* daum_th_line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = daum_th_line.png; sourceTree = "<group>"; };
 		F33BB1A425ED4E5700BC5772 /* map_pin_shadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_pin_shadow.png; sourceTree = "<group>"; };
 		F33BB1A525ED4E5700BC5772 /* DaumMap.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DaumMap.framework; sourceTree = "<group>"; };
+		F33BB1F925ED65B200BC5772 /* WelcomeBLTNPageItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeBLTNPageItem.swift; sourceTree = "<group>"; };
+		F33BB20525ED680D00BC5772 /* IntroBulletinManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroBulletinManager.swift; sourceTree = "<group>"; };
+		F33BB21B25ED6AB300BC5772 /* SearchGuideBLTNPageItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGuideBLTNPageItem.swift; sourceTree = "<group>"; };
 		F3444C9B25E8B1BB00A0706F /* Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
 		F3444CA625E8B82300A0706F /* DoroDoroUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoroDoroUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3444CA825E8B82300A0706F /* DoroDoroUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoroDoroUITests.swift; sourceTree = "<group>"; };
@@ -515,6 +521,7 @@
 		F33BB0E825ED03B500BC5772 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				F33BB1F825ED659700BC5772 /* IntroBLTN */,
 				F33BB0F425ED043400BC5772 /* SpinnerView.swift */,
 			);
 			path = Component;
@@ -593,6 +600,16 @@
 			children = (
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		F33BB1F825ED659700BC5772 /* IntroBLTN */ = {
+			isa = PBXGroup;
+			children = (
+				F33BB1F925ED65B200BC5772 /* WelcomeBLTNPageItem.swift */,
+				F33BB21B25ED6AB300BC5772 /* SearchGuideBLTNPageItem.swift */,
+				F33BB20525ED680D00BC5772 /* IntroBulletinManager.swift */,
+			);
+			path = IntroBLTN;
 			sourceTree = "<group>";
 		};
 		F3444C9A25E8B1A700A0706F /* Localizable */ = {
@@ -1145,7 +1162,9 @@
 				F337B1EE25EC09F400FB0B61 /* DetailsViewModel.swift in Sources */,
 				F33BB10425ED268D00BC5772 /* MapViewController.swift in Sources */,
 				F333B97B25EB7F0200F1915F /* SearchViewModel.swift in Sources */,
+				F33BB20625ED680D00BC5772 /* IntroBulletinManager.swift in Sources */,
 				F378B77625E7F17A00FCE546 /* AddrLinkCommonData.swift in Sources */,
+				F33BB21C25ED6AB300BC5772 /* SearchGuideBLTNPageItem.swift in Sources */,
 				F378B70225E7D88A00FCE546 /* MainTabBarController.swift in Sources */,
 				F337B1DF25EC03A400FB0B61 /* AddrCoordSearchData.swift in Sources */,
 				F3F4FAF025E8080D0077FCB5 /* AddrEngCommonData.swift in Sources */,
@@ -1163,6 +1182,7 @@
 				F333B9A725EB8FB600F1915F /* SearchHeaderItem.swift in Sources */,
 				F378B70925E7D8C600FCE546 /* BookmarksViewController.swift in Sources */,
 				F337B1BF25EBFF5700FB0B61 /* AddrCoordCommonData.swift in Sources */,
+				F33BB1FA25ED65B200BC5772 /* WelcomeBLTNPageItem.swift in Sources */,
 				F3F4FAF725E8082F0077FCB5 /* AddrEngJusoData.swift in Sources */,
 				F33BB04F25ECCD6C00BC5772 /* KakaoAddressDocumentData.swift in Sources */,
 				F3AAE29B25E7D06700D666BD /* SceneDelegate.swift in Sources */,

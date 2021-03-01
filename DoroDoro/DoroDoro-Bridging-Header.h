@@ -12,7 +12,6 @@
 
 #if __arm64__ || TARGET_OS_SIMULATOR
 #import <DaumMap/MTMapView.h>
-#import <DaumMap/MTMapPOIItem.h>
 #endif
 
 #endif /* DoroDoro_Bridging_Header_h */
