@@ -43,7 +43,7 @@ final internal class SpinnerView: UIView {
             make.width.equalTo(200)
             make.height.equalTo(200)
         }
-        activityIndicatorView.backgroundColor = UIColor.gray.withAlphaComponent(0.75)
+        activityIndicatorView.backgroundColor = UIColor.darkGray.withAlphaComponent(0.75)
         activityIndicatorView.layer.cornerRadius = 30
         activityIndicatorView.startAnimating()
     }
