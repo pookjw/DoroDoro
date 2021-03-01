@@ -192,4 +192,40 @@ extension DetailsViewController: UICollectionViewDelegate {
     internal func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
         return false
     }
+    
+    internal func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        
+        guard let itemType: DetailHeaderItem.ItemType = viewModel?.getSectionItemType(from: indexPath) else {
+            return nil
+        }
+        
+        switch itemType {
+        case .link, .eng:
+            guard let configuration: UIListContentConfiguration = collectionView.cellForItem(at: indexPath)?.contentConfiguration as? UIListContentConfiguration else {
+                return nil
+            }
+            
+            guard let text: String = configuration.secondaryText,
+                  text != Localizable.NO_DATA.string else {
+                return nil
+            }
+            
+            let copyAction = UIAction(title: Localizable.COPY.string,
+                                 image: UIImage(systemName: "doc.on.doc")) { action in
+                UIPasteboard.general.string = text
+            }
+            
+            let shareAction = UIAction(title: Localizable.SHARE.string,
+                                  image: UIImage(systemName: "square.and.arrow.up")) { action in
+                // Perform action
+            }
+            
+            return UIContextMenuConfiguration(identifier: nil,
+                                              previewProvider: nil) { _ in
+                UIMenu(title: "", children: [copyAction, shareAction])
+            }
+        default:
+            return nil
+        }
+    }
 }

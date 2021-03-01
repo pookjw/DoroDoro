@@ -75,7 +75,7 @@ final fileprivate class _DetailsMapViewContentView: UIView, UIContentView {
         kakaoMapView.isUserInteractionEnabled = false
         
         let mapPoint: MTMapPoint = .init(geoCoord: MTMapPointGeo(latitude: configuration.latitude, longitude: configuration.longitude))
-        kakaoMapView.setMapCenter(mapPoint, zoomLevel: 4, animated: true)
+        kakaoMapView.setMapCenter(mapPoint, zoomLevel: 4, animated: false)
         
         #else
         let mapView: MKMapView = .init()
@@ -105,7 +105,7 @@ final fileprivate class _DetailsMapViewContentView: UIView, UIContentView {
         
         let coordinate: CLLocationCoordinate2D = .init(latitude: configuration.latitude, longitude: configuration.longitude)
         let region: MKCoordinateRegion = .init(center: coordinate, latitudinalMeters: 3000, longitudinalMeters: 3000)
-        mapView.setRegion(mapView.regionThatFits(region), animated: true)
+        mapView.setRegion(mapView.regionThatFits(region), animated: false)
         #endif
     }
 }

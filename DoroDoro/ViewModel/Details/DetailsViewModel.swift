@@ -25,8 +25,18 @@ final internal class DetailsViewModel {
         bind()
     }
     
+    internal func getSectionItemType(from indexPath: IndexPath) -> DetailHeaderItem.ItemType? {
+        guard let sectionIdentifiers: [DetailHeaderItem] = dataSource?.snapshot().sectionIdentifiers else {
+            return nil
+        }
+        guard sectionIdentifiers.count > indexPath.section else {
+            return nil
+        }
+        return sectionIdentifiers[indexPath.section].itemType
+    }
+    
     internal func loadData() {
-        updateJusoItems()
+        updateLinkItems()
         if let linkJusoData: AddrLinkJusoData = linkJusoData {
             addrAPIService.requestEngEvent(keyword: linkJusoData.roadAddr)
             kakaoAPIService.requestAddressEvent(query: linkJusoData.roadAddr,
@@ -34,11 +44,13 @@ final internal class DetailsViewModel {
         }
     }
     
-    private func updateJusoItems() {
+    private func updateLinkItems() {
         guard var snapshot: Snapshot = dataSource?.snapshot(),
             let linkJusoData: AddrLinkJusoData = linkJusoData else {
             return
         }
+        
+        snapshot.deleteAllItems()
         
         // 도로명주소 데이터 생성
         let linkHeaderItem: DetailHeaderItem = {

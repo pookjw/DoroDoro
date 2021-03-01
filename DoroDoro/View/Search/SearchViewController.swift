@@ -187,7 +187,11 @@ extension SearchViewController: UICollectionViewDelegate {
     }
     
     internal func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
-        guard let item: SearchResultItem = viewModel?.getResultItem(from: indexPath) else {
+        guard let configuration: UIListContentConfiguration = collectionView.cellForItem(at: indexPath)?.contentConfiguration as? UIListContentConfiguration else {
+            return nil
+        }
+        
+        guard let text: String = configuration.text else {
             return nil
         }
         
@@ -199,7 +203,7 @@ extension SearchViewController: UICollectionViewDelegate {
         
         let copyAction = UIAction(title: Localizable.COPY.string,
                              image: UIImage(systemName: "doc.on.doc")) { action in
-            // Perform action
+            UIPasteboard.general.string = text
         }
         
         let shareAction = UIAction(title: Localizable.SHARE.string,
@@ -209,7 +213,7 @@ extension SearchViewController: UICollectionViewDelegate {
         
         return UIContextMenuConfiguration(identifier: nil,
                                           previewProvider: nil) { _ in
-            UIMenu(title: "Actions", children: [bookmarkAction, copyAction, shareAction])
+            UIMenu(title: "", children: [bookmarkAction, copyAction, shareAction])
         }
     }
     
