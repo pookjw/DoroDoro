@@ -73,6 +73,8 @@ final internal class DetailsViewController: UIViewController {
             
             if elementKind == UICollectionView.elementKindSectionHeader {
                 return self.collectionView?.dequeueConfiguredReusableSupplementary(using: self.getHeaderCellRegisteration(), for: indexPath)
+            } else if elementKind == UICollectionView.elementKindSectionFooter {
+                return self.collectionView?.dequeueConfiguredReusableSupplementary(using: self.getFooterCellRegisteration(), for: indexPath)
             }
             
             return nil
@@ -102,6 +104,7 @@ final internal class DetailsViewController: UIViewController {
             
             var configuration: UICollectionLayoutListConfiguration = .init(appearance: .insetGrouped)
             configuration.headerMode = .supplementary
+            configuration.footerMode = .supplementary
             return NSCollectionLayoutSection.list(using: configuration, layoutEnvironment: layoutEnvironment)
         }
     }
@@ -121,7 +124,6 @@ final internal class DetailsViewController: UIViewController {
                 cell.contentConfiguration = configuration
             case let .map(latitude, longitude):
                 cell.contentConfiguration = DetailsMapViewConfiguration(latitude: latitude, longitude: longitude)
-                
             }
         }
     }
@@ -138,6 +140,30 @@ final internal class DetailsViewController: UIViewController {
             var configuration: UIListContentConfiguration = headerView.defaultContentConfiguration()
             configuration.text = headerItem.itemType.rawValue
             headerView.contentConfiguration = configuration
+        }
+    }
+    
+    private func getFooterCellRegisteration() -> UICollectionView.SupplementaryRegistration<UICollectionViewListCell> {
+        return .init(elementKind: UICollectionView.elementKindSectionFooter) { [weak self] (footerView, elementKind, indexPath) in
+            guard let dataSource: DetailsViewModel.DataSource = self?.viewModel?.dataSource else {
+                return
+            }
+            guard dataSource.snapshot().sectionIdentifiers.count > indexPath.section else { return }
+            
+            let headerItem: DetailHeaderItem = dataSource.snapshot().sectionIdentifiers[indexPath.section]
+            
+            switch headerItem.itemType {
+            case .map:
+                var configuration: UIListContentConfiguration = footerView.defaultContentConfiguration()
+                #if arch(arm64) || targetEnvironment(simulator)
+                configuration.text = "Powered by KakaoMap"
+                #else
+                configuration.text = "Powered by Apple Map"
+                #endif
+                footerView.contentConfiguration = configuration
+            default:
+                footerView.contentConfiguration = nil
+            }
         }
     }
 }
