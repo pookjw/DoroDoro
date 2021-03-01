@@ -140,3 +140,15 @@
 
 /* */
 "ADDR_ENG_API_ERROR_UNKNOWN" = "An unknown error occured.";
+
+/* */
+"KAKAO_ADDRESS_API_ERROR_RESPONSE" = "Failed to commuticate with server.";
+
+/* */
+"KAKAO_ADDRESS_API_ERROR_JSON_PARSE" = "Failed to parse the results.";
+
+/* */
+"KAKAO_ADDRESS_API_ERROR_NO_RESULTS" = "No results.";
+
+/* */
+"KAKAO_ADDRESS_API_UNKNOWN" = "An unknown error occured.";

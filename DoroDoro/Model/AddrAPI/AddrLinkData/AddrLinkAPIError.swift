@@ -115,6 +115,8 @@ extension AddrLinkAPIError: LocalizedError {
             return Localizable.ADDR_LINK_API_ERROR_TOO_MANY_RESULTS.string
         case .responseError:
             return Localizable.ADDR_LINK_API_ERROR_RESPONSE.string
+        case .noResults:
+            return Localizable.ADDR_LINK_API_ERROR_NO_RESULTS.string
         case .jsonError:
             return Localizable.ADDR_LINK_API_ERROR_JSON_PARSE.string
         case .unknownError:

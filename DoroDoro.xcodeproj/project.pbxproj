@@ -39,6 +39,7 @@
 		F33BB0A725ECD4C200BC5772 /* KakaoAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB0A625ECD4C200BC5772 /* KakaoAPITests.swift */; };
 		F33BB0B725ECD73D00BC5772 /* KakaoAddressAddressData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB0B625ECD73D00BC5772 /* KakaoAddressAddressData.swift */; };
 		F33BB0C525ECD76C00BC5772 /* KakaoAddressRoadAddressData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB0C425ECD76C00BC5772 /* KakaoAddressRoadAddressData.swift */; };
+		F33BB0D325ECE96C00BC5772 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB0D225ECE96C00BC5772 /* UIViewController+Ext.swift */; };
 		F3444C9C25E8B1BB00A0706F /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3444C9B25E8B1BB00A0706F /* Localizable.swift */; };
 		F3444CA925E8B82300A0706F /* DoroDoroUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3444CA825E8B82300A0706F /* DoroDoroUITests.swift */; };
 		F3444DCD25E8C4B300A0706F /* AddrAPIErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3444DCC25E8C4B300A0706F /* AddrAPIErrorTests.swift */; };
@@ -190,6 +191,7 @@
 		F33BB0A625ECD4C200BC5772 /* KakaoAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoAPITests.swift; sourceTree = "<group>"; };
 		F33BB0B625ECD73D00BC5772 /* KakaoAddressAddressData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoAddressAddressData.swift; sourceTree = "<group>"; };
 		F33BB0C425ECD76C00BC5772 /* KakaoAddressRoadAddressData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoAddressRoadAddressData.swift; sourceTree = "<group>"; };
+		F33BB0D225ECE96C00BC5772 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		F3444C9B25E8B1BB00A0706F /* Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
 		F3444CA625E8B82300A0706F /* DoroDoroUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoroDoroUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3444CA825E8B82300A0706F /* DoroDoroUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoroDoroUITests.swift; sourceTree = "<group>"; };
@@ -359,6 +361,7 @@
 			isa = PBXGroup;
 			children = (
 				F333B9FF25EBFE1B00F1915F /* NSObject+Ext.swift */,
+				F33BB0D225ECE96C00BC5772 /* UIViewController+Ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -959,6 +962,7 @@
 				F378B79025E7FAE500FCE546 /* AddrLinkResultsData.swift in Sources */,
 				F378B78425E7F45600FCE546 /* AddrLinkAPIError.swift in Sources */,
 				F378B75025E7EEDB00FCE546 /* DoroDoroWidget.intentdefinition in Sources */,
+				F33BB0D325ECE96C00BC5772 /* UIViewController+Ext.swift in Sources */,
 				F33BAFAC25EC239500BC5772 /* DetailsMapViewConfiguration.swift in Sources */,
 				F337B20025EC0E9600FB0B61 /* DetailHeaderItem.swift in Sources */,
 				F33BB0B725ECD73D00BC5772 /* KakaoAddressAddressData.swift in Sources */,

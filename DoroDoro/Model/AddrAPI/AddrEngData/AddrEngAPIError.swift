@@ -117,6 +117,8 @@ extension AddrEngAPIError: LocalizedError {
             return Localizable.ADDR_ENG_API_ERROR_RESPONSE.string
         case .jsonError:
             return Localizable.ADDR_ENG_API_ERROR_JSON_PARSE.string
+        case .noResults:
+            return Localizable.ADDR_ENG_API_ERROR_NO_RESULTS.string
         case .unknownError:
             return Localizable.ADDR_ENG_API_ERROR_UNKNOWN.string
         default:

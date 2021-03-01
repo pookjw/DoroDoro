@@ -66,6 +66,6 @@ internal enum AddrCoordAPIError: String, Error {
 
 extension AddrCoordAPIError: LocalizedError {
     internal var errorDescription: String? {
-        return rawValue
+        return self.rawValue
     }
 }

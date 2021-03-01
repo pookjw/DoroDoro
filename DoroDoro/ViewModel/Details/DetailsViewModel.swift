@@ -15,10 +15,10 @@ final internal class DetailsViewModel {
     
     internal var dataSource: DataSource? = nil
     internal var linkJusoData: AddrLinkJusoData? = nil
+    internal let addrAPIService: AddrAPIService = .init()
+    internal let kakaoAPIService: KakaoAPIService = .init()
     private var engJusoData: AddrEngJusoData? = nil
     private var addressDocumentData: KakaoAddressDocumentData? = nil
-    private let addrAPIService: AddrAPIService = .init()
-    private let kakaoAPIService: KakaoAPIService = .init()
     private var cancellableBag: Set<AnyCancellable> = .init()
     
     internal init() {

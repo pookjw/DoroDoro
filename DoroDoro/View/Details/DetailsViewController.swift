@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import Combine
 import SnapKit
 
 final internal class DetailsViewController: UIViewController {
     private weak var collectionView: UICollectionView? = nil
     private var viewModel: DetailsViewModel? = nil
+    private var cancellableBag: Set<AnyCancellable> = .init()
     
     deinit {
         printDeinitMessage()
@@ -21,6 +23,7 @@ final internal class DetailsViewController: UIViewController {
         configureAttributes()
         configureCollectionView()
         configureViewModel()
+        bind()
     }
     
     override internal func viewWillAppear(_ animated: Bool) {
@@ -165,6 +168,22 @@ final internal class DetailsViewController: UIViewController {
                 footerView.contentConfiguration = nil
             }
         }
+    }
+    
+    private func bind() {
+        viewModel?.addrAPIService.engErrorEvent
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] error in
+                self?.showErrorAlert(for: error)
+            })
+            .store(in: &cancellableBag)
+        
+        viewModel?.kakaoAPIService.addressErrorEvent
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] error in
+                self?.showErrorAlert(for: error)
+            })
+            .store(in: &cancellableBag)
     }
 }
 

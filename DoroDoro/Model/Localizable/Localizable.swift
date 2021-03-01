@@ -53,6 +53,10 @@ internal enum Localizable: String {
     case ADDR_ENG_API_ERROR_JSON_PARSE
     case ADDR_ENG_API_ERROR_NO_RESULTS
     case ADDR_ENG_API_ERROR_UNKNOWN
+    case KAKAO_ADDRESS_API_ERROR_RESPONSE
+    case KAKAO_ADDRESS_API_ERROR_JSON_PARSE
+    case KAKAO_ADDRESS_API_ERROR_NO_RESULTS
+    case KAKAO_ADDRESS_API_UNKNOWN
     
     internal var string: String {
         NSLocalizedString(self.rawValue, comment: "")

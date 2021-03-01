@@ -163,13 +163,6 @@ final internal class SearchViewController: UIViewController {
             .store(in: &cancellableBag)
     }
     
-    private func showErrorAlert(for error: LocalizedError) {
-        let alert: UIAlertController = .init(title: nil, message: error.errorDescription, preferredStyle: .alert)
-        let doneAction: UIAlertAction = .init(title: Localizable.DONE.string, style: .default)
-        alert.addAction(doneAction)
-        present(alert, animated: true)
-    }
-    
     private func pushToDetailsVC(linkJusoData: AddrLinkJusoData) {
         let detailsVC: DetailsViewController = .init()
         detailsVC.loadViewIfNeeded()
