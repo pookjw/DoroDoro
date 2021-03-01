@@ -193,6 +193,7 @@ final internal class DetailsViewController: UIViewController {
         mapVC.latitude = corrd.latitude
         mapVC.longitude = corrd.longitude
         let mapNVC: UINavigationController = .init(rootViewController: mapVC)
+        mapNVC.modalPresentationStyle = .fullScreen
         present(mapNVC, animated: true, completion: nil)
     }
 }

@@ -14,7 +14,7 @@ final internal class MapViewController: UIViewController {
         case apple, daum
     }
     
-    internal var mapType: MapType = .apple
+    internal var mapType: MapType = .daum
     
     // 서울 종로구 효자로 12
     internal var (latitude, longitude): (Double, Double) = (37.5765916191985, 126.974974825074)
@@ -46,6 +46,8 @@ final internal class MapViewController: UIViewController {
     private func configureAttributes() {
         title = Localizable.MAP_VIEW_CONTROLLER_TITLE.string
         
+        //
+        
         let doneBarButtonItem: UIBarButtonItem = .init(title: Localizable.DONE.string,
                                                        image: nil,
                                                        primaryAction: getDismissAction(),
@@ -72,7 +74,7 @@ final internal class MapViewController: UIViewController {
         }
         
         let coordinate: CLLocationCoordinate2D = .init(latitude: latitude, longitude: longitude)
-        let region: MKCoordinateRegion = .init(center: coordinate, latitudinalMeters: 3000, longitudinalMeters: 3000)
+        let region: MKCoordinateRegion = .init(center: coordinate, latitudinalMeters: 300, longitudinalMeters: 300)
         mapView.setRegion(mapView.regionThatFits(region), animated: false)
     }
     
@@ -88,7 +90,7 @@ final internal class MapViewController: UIViewController {
         }
         
         let mapPoint: MTMapPoint = .init(geoCoord: MTMapPointGeo(latitude: latitude, longitude: longitude))
-        daumMapView.setMapCenter(mapPoint, zoomLevel: 4, animated: false)
+        daumMapView.setMapCenter(mapPoint, zoomLevel: 1, animated: false)
     }
     #endif
     

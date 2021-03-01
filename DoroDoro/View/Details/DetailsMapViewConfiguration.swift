@@ -24,9 +24,6 @@ internal struct DetailsMapViewConfiguration: UIContentConfiguration {
 
 final fileprivate class _DetailsMapViewContentView: UIView, UIContentView {
     private weak var mapView: MKMapView? = nil
-    #if arch(arm64) || targetEnvironment(simulator)
-    private weak var daumMapView: MTMapView? = nil
-    #endif
     
     fileprivate var configuration: UIContentConfiguration {
         didSet {
@@ -48,13 +45,11 @@ final fileprivate class _DetailsMapViewContentView: UIView, UIContentView {
              return
         }
         
-        #if arch(arm64) || targetEnvironment(simulator)
-        
-        if daumMapView == nil {
-            let daumMapView: MTMapView = .init()
-            self.daumMapView = daumMapView
-            addSubview(daumMapView)
-            daumMapView.translatesAutoresizingMaskIntoConstraints = false
+        if mapView == nil {
+            let mapView: MKMapView = .init()
+            self.mapView = mapView
+            addSubview(mapView)
+            mapView.translatesAutoresizingMaskIntoConstraints = false
             if superview != nil {
                 translatesAutoresizingMaskIntoConstraints = false
                 
@@ -63,56 +58,26 @@ final fileprivate class _DetailsMapViewContentView: UIView, UIContentView {
                     make.height.equalTo(300).priority(999)
                 }
                 
-                daumMapView.snp.remakeConstraints { make in
+                mapView.snp.remakeConstraints { make in
                     make.edges.equalToSuperview()
                     
                 }
             } else {
-                daumMapView.snp.remakeConstraints { make in
+                mapView.snp.remakeConstraints { make in
                     make.edges.equalToSuperview()
                     make.height.equalTo(300).priority(999)
                 }
             }
             
-            daumMapView.isUserInteractionEnabled = false
+            mapView.isUserInteractionEnabled = false
+            mapView.isScrollEnabled = false
+            mapView.isPitchEnabled = false
+            mapView.isZoomEnabled = false
+            mapView.isRotateEnabled = false
         }
-        
-        let mapPoint: MTMapPoint = .init(geoCoord: MTMapPointGeo(latitude: configuration.latitude, longitude: configuration.longitude))
-        daumMapView?.setMapCenter(mapPoint, zoomLevel: 4, animated: false)
-        
-        #else
-        let mapView: MKMapView = .init()
-        self.mapView = mapView
-        addSubview(mapView)
-        mapView.translatesAutoresizingMaskIntoConstraints = false
-        if superview != nil {
-            translatesAutoresizingMaskIntoConstraints = false
-            
-            snp.remakeConstraints { make in
-                make.edges.equalToSuperview()
-                make.height.equalTo(300).priority(999)
-            }
-            
-            mapView.snp.remakeConstraints { make in
-                make.edges.equalToSuperview()
-                
-            }
-        } else {
-            mapView.snp.remakeConstraints { make in
-                make.edges.equalToSuperview()
-                make.height.equalTo(300).priority(999)
-            }
-        }
-        
-        mapView.isUserInteractionEnabled = true
-        mapView.isScrollEnabled = false
-        mapView.isPitchEnabled = false
-        mapView.isZoomEnabled = false
-        mapView.isRotateEnabled = false
         
         let coordinate: CLLocationCoordinate2D = .init(latitude: configuration.latitude, longitude: configuration.longitude)
-        let region: MKCoordinateRegion = .init(center: coordinate, latitudinalMeters: 3000, longitudinalMeters: 3000)
-        mapView.setRegion(mapView.regionThatFits(region), animated: false)
-        #endif
+        let region: MKCoordinateRegion = .init(center: coordinate, latitudinalMeters: 300, longitudinalMeters: 300)
+        mapView!.setRegion(mapView!.regionThatFits(region), animated: false)
     }
 }
