@@ -24,7 +24,7 @@ internal struct DetailsMapViewConfiguration: UIContentConfiguration {
 
 final fileprivate class _DetailsMapViewContentView: UIView, UIContentView {
     private weak var mapView: MKMapView? = nil
-    #if arch(arm64)
+    #if arch(arm64) || targetEnvironment(simulator)
     private weak var kakaoMapView: MTMapView? = nil
     #endif
     
@@ -44,7 +44,11 @@ final fileprivate class _DetailsMapViewContentView: UIView, UIContentView {
     }
     
     private func configure() {
-        #if arch(arm64)
+        guard let configuration: DetailsMapViewConfiguration = configuration as? DetailsMapViewConfiguration else {
+             return
+        }
+        
+        #if arch(arm64) || targetEnvironment(simulator)
         let kakaoMapView: MTMapView = .init()
         self.kakaoMapView = kakaoMapView
         addSubview(kakaoMapView)
@@ -69,6 +73,10 @@ final fileprivate class _DetailsMapViewContentView: UIView, UIContentView {
         }
         
         kakaoMapView.isUserInteractionEnabled = false
+        
+        let mapPoint: MTMapPoint = .init(geoCoord: MTMapPointGeo(latitude: configuration.latitude, longitude: configuration.longitude))
+        kakaoMapView.setMapCenter(mapPoint, zoomLevel: 4, animated: true)
+        
         #else
         let mapView: MKMapView = .init()
         self.mapView = mapView
@@ -94,6 +102,10 @@ final fileprivate class _DetailsMapViewContentView: UIView, UIContentView {
         }
         
         mapView.isUserInteractionEnabled = false
+        
+        let coordinate: CLLocationCoordinate2D = .init(latitude: configuration.latitude, longitude: configuration.longitude)
+        let region: MKCoordinateRegion = .init(center: coordinate, latitudinalMeters: 3000, longitudinalMeters: 3000)
+        mapView.setRegion(mapView.regionThatFits(region), animated: true)
         #endif
     }
 }

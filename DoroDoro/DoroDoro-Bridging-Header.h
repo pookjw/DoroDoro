@@ -8,7 +8,9 @@
 #ifndef DoroDoro_Bridging_Header_h
 #define DoroDoro_Bridging_Header_h
 
-#ifdef __arm64__
+#include <TargetConditionals.h>
+
+#if __arm64__ || TARGET_OS_SIMULATOR
 #import <DaumMap/MTMapView.h>
 #endif
 

@@ -85,7 +85,7 @@ final internal class DetailsViewController: UIViewController {
         return { (section: Int, layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
 //            guard let self = self else { return nil }
 //
-//            if let coordSectionIndex: Int = self.viewModel?.dataSource?.snapshot().sectionIdentifiers.firstIndex(where: { $0.itemType == .coord }),
+//            if let coordSectionIndex: Int = self.viewModel?.dataSource?.snapshot().sectionIdentifiers.firstIndex(where: { $0.itemType == .map }),
 //               coordSectionIndex == section {
 //                let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
 //                                                             heightDimension: .fractionalHeight(1.0))
@@ -119,7 +119,7 @@ final internal class DetailsViewController: UIViewController {
                 configuration.text = text
                 configuration.secondaryText = secondaryText
                 cell.contentConfiguration = configuration
-            case let .coord(latitude, longitude):
+            case let .map(latitude, longitude):
                 cell.contentConfiguration = DetailsMapViewConfiguration(latitude: latitude, longitude: longitude)
                 
             }

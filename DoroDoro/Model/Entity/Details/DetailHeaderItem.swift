@@ -11,7 +11,7 @@ internal struct DetailHeaderItem: Hashable, Equatable {
     internal enum ItemType: String {
         case link = "세부정보"
         case eng = "영문주소"
-        case coord = "지도"
+        case map = "지도"
     }
     
     internal let itemType: ItemType

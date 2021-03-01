@@ -13,11 +13,12 @@ final internal class DetailsViewModel {
     internal typealias DataSource = UICollectionViewDiffableDataSource<DetailHeaderItem, DetailInfoItem>
     internal typealias Snapshot = NSDiffableDataSourceSnapshot<DetailHeaderItem, DetailInfoItem>
     
-    internal let addrAPIService: AddrAPIService = .init()
     internal var dataSource: DataSource? = nil
     internal var linkJusoData: AddrLinkJusoData? = nil
     private var engJusoData: AddrEngJusoData? = nil
-    private var coordJusoData: AddrCoordJusoData? = nil
+    private var addressDocumentData: KakaoAddressDocumentData? = nil
+    private let addrAPIService: AddrAPIService = .init()
+    private let kakaoAPIService: KakaoAPIService = .init()
     private var cancellableBag: Set<AnyCancellable> = .init()
     
     internal init() {
@@ -28,7 +29,8 @@ final internal class DetailsViewModel {
         updateJusoItems()
         if let linkJusoData: AddrLinkJusoData = linkJusoData {
             addrAPIService.requestEngEvent(keyword: linkJusoData.roadAddr)
-            addrAPIService.requestCoordEvent(data:linkJusoData.convertToAddrCoordSearchData())
+            kakaoAPIService.requestAddressEvent(query: linkJusoData.roadAddr,
+                                                analyzeType: .exact, page: 1, size: 1)
         }
     }
     
@@ -121,11 +123,11 @@ final internal class DetailsViewModel {
         dataSource?.apply(snapshot, animatingDifferences: false)
     }
     
-    private func updateCoordItems() {
+    private func updateMapItems() {
         guard var snapshot: Snapshot = dataSource?.snapshot(),
-            let coordJusoData: AddrCoordJusoData = coordJusoData,
-            let latitude: Double = Double(coordJusoData.entX),
-            let longitude: Double = Double(coordJusoData.entY)
+            let addressDocumentData: KakaoAddressDocumentData = addressDocumentData,
+            let latitude: Double = Double(addressDocumentData.y),
+            let longitude: Double = Double(addressDocumentData.x)
         else {
             return
         }
@@ -133,10 +135,10 @@ final internal class DetailsViewModel {
         // 세부정보 데이터 생성
         let coordHeaderItem: DetailHeaderItem = {
             // 이미 기존에 생성된 Header가 있는 경우 그대로 쓴다.
-            if let coordHeaderItem: DetailHeaderItem = snapshot.sectionIdentifiers.first(where: { $0.itemType == .coord }) {
+            if let coordHeaderItem: DetailHeaderItem = snapshot.sectionIdentifiers.first(where: { $0.itemType == .map }) {
                 return coordHeaderItem
             } else {
-                let coordHeaderItem: DetailHeaderItem = .init(itemType: .coord)
+                let coordHeaderItem: DetailHeaderItem = .init(itemType: .map)
                 
                 if let engHeaderItem: DetailHeaderItem = snapshot.sectionIdentifiers.first(where: { $0.itemType == .eng }) {
                     // 영문주소 Section이 존재할 경우 그 밑에 생성한다.
@@ -153,7 +155,7 @@ final internal class DetailsViewModel {
         }()
         
         let items: [DetailInfoItem] = [
-            .init(itemType: .coord(latitude, longitude))
+            .init(itemType: .map(latitude, longitude))
         ]
         
         snapshot.appendItems(items, toSection: coordHeaderItem)
@@ -169,11 +171,11 @@ final internal class DetailsViewModel {
             })
             .store(in: &cancellableBag)
         
-        addrAPIService.coordEvent
+        kakaoAPIService.addressEvent
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] data in
-                self?.coordJusoData = data.juso.first
-                self?.updateCoordItems()
+                self?.addressDocumentData = data.documents.first
+                self?.updateMapItems()
             })
             .store(in: &cancellableBag)
     }
