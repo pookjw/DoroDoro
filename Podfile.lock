@@ -1,24 +1,30 @@
 PODS:
   - Alamofire (5.4.1)
   - CRRefresh (1.1.3)
+  - NVActivityIndicatorView (5.1.1):
+    - NVActivityIndicatorView/Base (= 5.1.1)
+  - NVActivityIndicatorView/Base (5.1.1)
   - SnapKit (5.0.1)
 
 DEPENDENCIES:
   - Alamofire (~> 5.4.1)
   - CRRefresh (~> 1.1.3)
+  - NVActivityIndicatorView (~> 5.1.1)
   - SnapKit (~> 5.0.1)
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - CRRefresh
+    - NVActivityIndicatorView
     - SnapKit
 
 SPEC CHECKSUMS:
   Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
   CRRefresh: 1415d4ae06837fa7bb064c44f2e102f3ef517044
+  NVActivityIndicatorView: 1f6c5687f1171810aa27a3296814dc2d7dec3667
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: fa39b6cca916c3bcc804756b12f6922a0b211cbc
+PODFILE CHECKSUM: 183a7fbb0a47ba819775620df64c3b532f6a8f6c
 
 COCOAPODS: 1.10.1

@@ -58,7 +58,7 @@ final fileprivate class _DetailsMapViewContentView: UIView, UIContentView {
             
             snp.remakeConstraints { make in
                 make.edges.equalToSuperview()
-                make.height.equalTo(300)
+                make.height.equalTo(300).priority(999)
             }
             
             kakaoMapView.snp.remakeConstraints { make in
@@ -68,7 +68,7 @@ final fileprivate class _DetailsMapViewContentView: UIView, UIContentView {
         } else {
             kakaoMapView.snp.remakeConstraints { make in
                 make.edges.equalToSuperview()
-                make.height.equalTo(300)
+                make.height.equalTo(300).priority(999)
             }
         }
         
@@ -87,7 +87,7 @@ final fileprivate class _DetailsMapViewContentView: UIView, UIContentView {
             
             snp.remakeConstraints { make in
                 make.edges.equalToSuperview()
-                make.height.equalTo(300)
+                make.height.equalTo(300).priority(999)
             }
             
             mapView.snp.remakeConstraints { make in
@@ -97,7 +97,7 @@ final fileprivate class _DetailsMapViewContentView: UIView, UIContentView {
         } else {
             mapView.snp.remakeConstraints { make in
                 make.edges.equalToSuperview()
-                make.height.equalTo(300)
+                make.height.equalTo(300).priority(999)
             }
         }
         
