@@ -18,6 +18,8 @@ internal enum Localizable: String {
     case RESULTS_FOR_ADDRESS
     case ADD_TO_BOOKMARKS
     case REMOVE_FROM_BOOKMARKS
+    case OPEN_IN_KAKAOMAP_APP
+    case OPEN_IN_SYSTEM_MAPS_APP
     case COPY
     case SHARE
     case ERROR_CONTACT_TO_DEVELOPER

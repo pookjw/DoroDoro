@@ -128,11 +128,11 @@ final internal class MapViewController: UIViewController {
                UIApplication.shared.canOpenURL(kakaoMapURL) {
                 
                 let alertVC: UIAlertController = .init(title: nil, message: nil, preferredStyle: .actionSheet)
-                let kakaoMapAction: UIAlertAction = .init(title: "OPEN_IN_KAKAOMAP_APP",
+                let kakaoMapAction: UIAlertAction = .init(title: Localizable.OPEN_IN_KAKAOMAP_APP.string,
                                                           style: .default) { [weak self] _ in
                                                             self?.openInKakaoMapApp()
                                                           }
-                let systemMapAction: UIAlertAction = .init(title: "OPEN_IN_SYSTEM_MAP_APP",
+                let systemMapAction: UIAlertAction = .init(title: Localizable.OPEN_IN_SYSTEM_MAPS_APP.string,
                                                            style: .default) { [weak self] _ in
                                                             self?.openInSystemMapApp()
                                                            }
