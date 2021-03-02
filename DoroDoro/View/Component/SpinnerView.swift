@@ -30,6 +30,7 @@ final internal class SpinnerView: UIView {
     
     private func configure() {
         backgroundColor = .clear
+        isUserInteractionEnabled = true
         
         let blurView: UIVisualEffectView = .init(effect: UIBlurEffect(style: .dark))
         self.blurView = blurView
@@ -38,16 +39,17 @@ final internal class SpinnerView: UIView {
         blurView.snp.remakeConstraints { make in
             make.centerX.equalToSuperview()
             make.centerY.equalToSuperview()
-            make.width.equalTo(200)
-            make.height.equalTo(200)
+            make.width.equalTo(150)
+            make.height.equalTo(150)
         }
         blurView.layer.cornerRadius = 30
         blurView.clipsToBounds = true
+        blurView.isUserInteractionEnabled = false
         
-        let activityIndicatorView: NVActivityIndicatorView = .init(frame: CGRect(x: 0, y: 0, width: 200, height: 200),
+        let activityIndicatorView: NVActivityIndicatorView = .init(frame: CGRect(x: 0, y: 0, width: 150, height: 150),
                                                                    type: .circleStrokeSpin,
                                                                    color: .white,
-                                                                   padding: 50)
+                                                                   padding: 40)
         self.activityIndicatorView = activityIndicatorView
         blurView.contentView.addSubview(activityIndicatorView)
         activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
@@ -55,6 +57,7 @@ final internal class SpinnerView: UIView {
             make.edges.equalToSuperview()
         }
         activityIndicatorView.backgroundColor = .clear
+        activityIndicatorView.isUserInteractionEnabled = false
         activityIndicatorView.startAnimating()
     }
 }
