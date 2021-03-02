@@ -10,6 +10,7 @@ import SnapKit
 import NVActivityIndicatorView
 
 final internal class SpinnerView: UIView {
+    private weak var blurView: UIVisualEffectView?
     private weak var activityIndicatorView: NVActivityIndicatorView? = nil
     
     internal init() {
@@ -30,21 +31,30 @@ final internal class SpinnerView: UIView {
     private func configure() {
         backgroundColor = .clear
         
-        let activityIndicatorView: NVActivityIndicatorView = .init(frame: CGRect(x: 0, y: 0, width: 200, height: 200),
-                                                                   type: .circleStrokeSpin,
-                                                                   color: .white,
-                                                                   padding: 50)
-        self.activityIndicatorView = activityIndicatorView
-        addSubview(activityIndicatorView)
-        activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
-        activityIndicatorView.snp.remakeConstraints { make in
+        let blurView: UIVisualEffectView = .init(effect: UIBlurEffect(style: .dark))
+        self.blurView = blurView
+        addSubview(blurView)
+        blurView.translatesAutoresizingMaskIntoConstraints = false
+        blurView.snp.remakeConstraints { make in
             make.centerX.equalToSuperview()
             make.centerY.equalToSuperview()
             make.width.equalTo(200)
             make.height.equalTo(200)
         }
-        activityIndicatorView.backgroundColor = UIColor.darkGray.withAlphaComponent(0.75)
-        activityIndicatorView.layer.cornerRadius = 30
+        blurView.layer.cornerRadius = 30
+        blurView.clipsToBounds = true
+        
+        let activityIndicatorView: NVActivityIndicatorView = .init(frame: CGRect(x: 0, y: 0, width: 200, height: 200),
+                                                                   type: .circleStrokeSpin,
+                                                                   color: .white,
+                                                                   padding: 50)
+        self.activityIndicatorView = activityIndicatorView
+        blurView.contentView.addSubview(activityIndicatorView)
+        activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
+        activityIndicatorView.snp.remakeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        activityIndicatorView.backgroundColor = .clear
         activityIndicatorView.startAnimating()
     }
 }
