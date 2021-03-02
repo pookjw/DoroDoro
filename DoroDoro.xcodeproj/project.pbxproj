@@ -106,6 +106,7 @@
 		F3AAE29B25E7D06700D666BD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AAE29A25E7D06700D666BD /* SceneDelegate.swift */; };
 		F3AAE2A225E7D06800D666BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3AAE2A125E7D06800D666BD /* Assets.xcassets */; };
 		F3AAE2A525E7D06800D666BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3AAE2A325E7D06800D666BD /* LaunchScreen.storyboard */; };
+		F3C2796125EEC8C40029A61E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3C2796025EEC8C40029A61E /* CloudKit.framework */; };
 		F3F4FAF025E8080D0077FCB5 /* AddrEngCommonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F4FAEF25E8080D0077FCB5 /* AddrEngCommonData.swift */; };
 		F3F4FAF725E8082F0077FCB5 /* AddrEngJusoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F4FAF625E8082F0077FCB5 /* AddrEngJusoData.swift */; };
 		F3F4FAFE25E809CD0077FCB5 /* AddrEngResultsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F4FAFD25E809CD0077FCB5 /* AddrEngResultsData.swift */; };
@@ -322,6 +323,7 @@
 		F3AAE2A125E7D06800D666BD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F3AAE2A425E7D06800D666BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F3AAE2A625E7D06800D666BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F3C2796025EEC8C40029A61E /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		F3F4FAEF25E8080D0077FCB5 /* AddrEngCommonData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrEngCommonData.swift; sourceTree = "<group>"; };
 		F3F4FAF625E8082F0077FCB5 /* AddrEngJusoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrEngJusoData.swift; sourceTree = "<group>"; };
 		F3F4FAFD25E809CD0077FCB5 /* AddrEngResultsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrEngResultsData.swift; sourceTree = "<group>"; };
@@ -375,6 +377,7 @@
 				F33BAFCA25ECB89600BC5772 /* CoreLocation.framework in Frameworks */,
 				F33BAFDE25ECB8D100BC5772 /* libsqlite3.tbd in Frameworks */,
 				F33BAFCC25ECB89D00BC5772 /* QuartzCore.framework in Frameworks */,
+				F3C2796125EEC8C40029A61E /* CloudKit.framework in Frameworks */,
 				E8BA96083B64A362F17AAFEA /* Pods_DoroDoro.framework in Frameworks */,
 				F33BAFD625ECB8C300BC5772 /* libxml2.tbd in Frameworks */,
 				F33BB1C125ED4E5700BC5772 /* DaumMap.framework in Frameworks */,
@@ -388,6 +391,7 @@
 		6FBAAB16978957EF30DAB117 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F3C2796025EEC8C40029A61E /* CloudKit.framework */,
 				F33BB17F25ED4E5600BC5772 /* DaumMap.embeddedframework */,
 				F33BB00425ECBAB700BC5772 /* Metal.framework */,
 				F33BAFDD25ECB8CB00BC5772 /* libsqlite3.tbd */,
