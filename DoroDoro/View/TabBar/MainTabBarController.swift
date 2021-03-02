@@ -12,7 +12,7 @@ final internal class MainTabBarController: UITabBarController {
     internal weak var searchVC: SearchViewController? = nil
     internal weak var bookmarksVC: BookmarksViewController? = nil
     internal weak var settingsVC: SettingsViewController? = nil
-    private let introBulletinManager: IntroBulletinManager = .init()
+//    private let introBulletinManager: IntroBulletinManager = .init()
     
     override internal func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +21,7 @@ final internal class MainTabBarController: UITabBarController {
     
     override internal func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        introBulletinManager.bulletinManager?.showBulletin(above: self)
+//        introBulletinManager.bulletinManager?.showBulletin(above: self)
     }
     
     private func configureViewControllers() {

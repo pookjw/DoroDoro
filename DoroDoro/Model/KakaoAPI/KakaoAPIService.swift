@@ -38,7 +38,7 @@ final internal class KakaoAPIService {
                                 "analyze_type": analyzeType,
                                 "page": String(page),
                                 "size": size],
-                   headers: ["Authorization": "KakaoAK \(KakaoKeys.restAPIKey)"])
+                   headers: ["Authorization": "KakaoAK \(KakaoAPIKeys.restAPIKey)"])
             .response(queue: DispatchQueue.global(qos: .background)) { [weak self] response in
                 guard response.response?.statusCode == 200 else {
                     self?.addressErrorEvent.send(.responseError)
