@@ -10,7 +10,7 @@ import SnapKit
 import NVActivityIndicatorView
 
 final internal class SpinnerView: UIView {
-    private weak var blurView: UIVisualEffectView?
+    private weak var blurView: UIVisualEffectView? = nil
     private weak var activityIndicatorView: NVActivityIndicatorView? = nil
     
     internal init() {
