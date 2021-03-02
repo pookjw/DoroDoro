@@ -176,7 +176,8 @@ final internal class SearchViewController: UIViewController {
     }
     
     private func addSpinnerView() {
-        removeSpinnerView()
+        spinnerView?.removeFromSuperview()
+        spinnerView = nil
         
         let spinnerView: SpinnerView = .init()
         self.spinnerView = spinnerView
@@ -185,11 +186,19 @@ final internal class SearchViewController: UIViewController {
         spinnerView.snp.remakeConstraints { make in
             make.edges.equalToSuperview()
         }
+        spinnerView.layer.opacity = 0
+        UIView.animate(withDuration: 0.3) {
+            spinnerView.layer.opacity = 1
+        }
     }
     
     private func removeSpinnerView() {
-        spinnerView?.removeFromSuperview()
-        spinnerView = nil
+        UIView.animate(withDuration: 0.3, animations: { [weak spinnerView] in
+            spinnerView?.layer.opacity = 0
+        }, completion: { [weak self] _ in
+            self?.spinnerView?.removeFromSuperview()
+            self?.spinnerView = nil
+        })
     }
 }
 
