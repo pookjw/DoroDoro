@@ -433,7 +433,6 @@
 			children = (
 				F333B9C125EBDB4200F1915F /* Search */,
 				F337B1EC25EC09E100FB0B61 /* Details */,
-				F33BB1C725ED511A00BC5772 /* Settings */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -600,13 +599,6 @@
 				F33BB19825ED4E5600BC5772 /* MTMapCircle.h */,
 			);
 			path = Headers;
-			sourceTree = "<group>";
-		};
-		F33BB1C725ED511A00BC5772 /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Settings;
 			sourceTree = "<group>";
 		};
 		F33BB1F825ED659700BC5772 /* IntroBLTN */ = {

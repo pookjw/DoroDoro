@@ -10,9 +10,9 @@ import BLTNBoard
 
 final internal class MainTabBarController: UITabBarController {
     internal weak var searchVC: SearchViewController? = nil
+    internal weak var searchNVC: UINavigationController? = nil
     internal weak var bookmarksVC: BookmarksViewController? = nil
     internal weak var settingsVC: SettingsViewController? = nil
-//    private let introBulletinManager: IntroBulletinManager = .init()
     
     override internal func viewDidLoad() {
         super.viewDidLoad()
@@ -26,13 +26,18 @@ final internal class MainTabBarController: UITabBarController {
     
     private func configureViewControllers() {
         let searchVC: SearchViewController = .init()
+        let searchNVC: UINavigationController = .init(rootViewController: searchVC)
         let bookmarksVC: BookmarksViewController = .init()
         let settingsVC: SettingsViewController = .init()
         self.searchVC = searchVC
+        self.searchNVC = searchNVC
         self.bookmarksVC = bookmarksVC
         self.settingsVC = settingsVC
         
-        let searchNVC: UINavigationController = .init(rootViewController: searchVC)
+        searchVC.loadViewIfNeeded()
+        searchNVC.loadViewIfNeeded()
+        bookmarksVC.loadViewIfNeeded()
+        settingsVC.loadViewIfNeeded()
         
         searchVC.tabBarItem = .init(title: Localizable.TABBAR_SEARCH_VIEW_CONTROLLER_TITLE.string,
                                     image: UIImage(systemName: "magnifyingglass"),

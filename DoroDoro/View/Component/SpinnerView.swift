@@ -28,11 +28,30 @@ final internal class SpinnerView: UIView {
         super.removeFromSuperview()
     }
     
+    
+    override internal func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        activityIndicatorView?.stopAnimating()
+        
+        if traitCollection.userInterfaceStyle == .dark {
+            blurView?.effect = UIBlurEffect(style: .extraLight)
+            activityIndicatorView?.color = .black
+        } else {
+            blurView?.effect = UIBlurEffect(style: .dark)
+            activityIndicatorView?.color = .white
+        }
+        
+        activityIndicatorView?.startAnimating()
+    }
+    
     private func configure() {
         backgroundColor = .clear
         isUserInteractionEnabled = true
         
-        let blurView: UIVisualEffectView = .init(effect: UIBlurEffect(style: .dark))
+        //
+        
+        let blurView: UIVisualEffectView = .init()
         self.blurView = blurView
         addSubview(blurView)
         blurView.translatesAutoresizingMaskIntoConstraints = false
@@ -46,9 +65,10 @@ final internal class SpinnerView: UIView {
         blurView.clipsToBounds = true
         blurView.isUserInteractionEnabled = false
         
+        //
+        
         let activityIndicatorView: NVActivityIndicatorView = .init(frame: CGRect(x: 0, y: 0, width: 150, height: 150),
                                                                    type: .circleStrokeSpin,
-                                                                   color: .white,
                                                                    padding: 40)
         self.activityIndicatorView = activityIndicatorView
         blurView.contentView.addSubview(activityIndicatorView)
@@ -58,6 +78,9 @@ final internal class SpinnerView: UIView {
         }
         activityIndicatorView.backgroundColor = .clear
         activityIndicatorView.isUserInteractionEnabled = false
-        activityIndicatorView.startAnimating()
+        
+        //
+        
+        traitCollectionDidChange(nil)
     }
 }

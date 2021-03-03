@@ -20,6 +20,7 @@ final internal class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let mainTabBarController: MainTabBarController = .init()
         self.mainTabBarController = mainTabBarController
+        mainTabBarController.loadViewIfNeeded()
         window?.rootViewController = mainTabBarController
         window?.makeKeyAndVisible()
     }

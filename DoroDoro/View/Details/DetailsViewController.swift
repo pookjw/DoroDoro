@@ -37,6 +37,12 @@ final internal class DetailsViewController: UIViewController {
         title = linkJusoData.rn
     }
     
+    internal func setRoadAddr(_ roadAddr: String) {
+        showSpinnerView()
+        viewModel?.roadAddr = roadAddr
+        viewModel?.loadData()
+    }
+    
     private func configureAttributes() {
         view.backgroundColor = .systemBackground
         title = Localizable.DORODORO.string
@@ -89,23 +95,6 @@ final internal class DetailsViewController: UIViewController {
     
     private func getSectionProvider() -> UICollectionViewCompositionalLayoutSectionProvider {
         return { (section: Int, layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
-//            guard let self = self else { return nil }
-//
-//            if let coordSectionIndex: Int = self.viewModel?.dataSource?.snapshot().sectionIdentifiers.firstIndex(where: { $0.itemType == .map }),
-//               coordSectionIndex == section {
-//                let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-//                                                             heightDimension: .fractionalHeight(1.0))
-//                let item: NSCollectionLayoutItem = .init(layoutSize: itemSize)
-//                let groupSize: NSCollectionLayoutSize = .init(widthDimension: .fractionalWidth(1),
-//                                                              heightDimension: .absolute(300))
-//                let group: NSCollectionLayoutGroup = .horizontal(layoutSize: groupSize, subitems: [item])
-//                return NSCollectionLayoutSection(group: group)
-//            } else {
-//                var configuration: UICollectionLayoutListConfiguration = .init(appearance: .insetGrouped)
-//                configuration.headerMode = .supplementary
-//                return NSCollectionLayoutSection.list(using: configuration, layoutEnvironment: layoutEnvironment)
-//            }
-            
             var configuration: UICollectionLayoutListConfiguration = .init(appearance: .insetGrouped)
             configuration.headerMode = .supplementary
             configuration.footerMode = .supplementary
@@ -170,6 +159,21 @@ final internal class DetailsViewController: UIViewController {
     }
     
     private func bind() {
+        viewModel?.refreshedEvent
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] in
+                self?.removeAllSpinnerView()
+            })
+            .store(in: &cancellableBag)
+        
+        viewModel?.addrAPIService.linkErrorEvent
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] error in
+                self?.showErrorAlert(for: error)
+                self?.removeAllSpinnerView()
+            })
+            .store(in: &cancellableBag)
+        
         viewModel?.addrAPIService.engErrorEvent
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] error in
@@ -192,6 +196,7 @@ final internal class DetailsViewController: UIViewController {
         mapVC.locationTitle = title
         let mapNVC: UINavigationController = .init(rootViewController: mapVC)
         mapNVC.modalPresentationStyle = .fullScreen
+        mapVC.loadViewIfNeeded()
         present(mapNVC, animated: true, completion: nil)
     }
 }

@@ -14,7 +14,10 @@ final internal class DetailsViewModel {
     internal typealias Snapshot = NSDiffableDataSourceSnapshot<DetailHeaderItem, DetailInfoItem>
     
     internal var dataSource: DataSource? = nil
+    /// 전체 도로명주소
+    internal var roadAddr: String? = nil
     internal var linkJusoData: AddrLinkJusoData? = nil
+    internal var refreshedEvent: PassthroughSubject<Void, Never> = .init()
     internal let addrAPIService: AddrAPIService = .init()
     internal let kakaoAPIService: KakaoAPIService = .init()
     private var engJusoData: AddrEngJusoData? = nil
@@ -56,11 +59,14 @@ final internal class DetailsViewModel {
     }
     
     internal func loadData() {
-        updateLinkItems()
         if let linkJusoData: AddrLinkJusoData = linkJusoData {
+            roadAddr = linkJusoData.roadAddr
+            updateLinkItems()
             addrAPIService.requestEngEvent(keyword: linkJusoData.roadAddr)
             kakaoAPIService.requestAddressEvent(query: linkJusoData.roadAddr,
                                                 analyzeType: .exact, page: 1, size: 1)
+        } else if let roadAddr: String = roadAddr {
+            addrAPIService.requestLinkEvent(keyword: roadAddr)
         }
     }
     
@@ -114,6 +120,7 @@ final internal class DetailsViewModel {
         
         snapshot.appendItems(items, toSection: linkHeaderItem)
         dataSource?.apply(snapshot, animatingDifferences: true)
+        refreshedEvent.send()
     }
     
     private func updateEngItems() {
@@ -153,6 +160,7 @@ final internal class DetailsViewModel {
         
         snapshot.appendItems(items, toSection: engHeaderItem)
         dataSource?.apply(snapshot, animatingDifferences: false)
+        refreshedEvent.send()
     }
     
     private func updateMapItems() {
@@ -192,6 +200,7 @@ final internal class DetailsViewModel {
         
         snapshot.appendItems(items, toSection: coordHeaderItem)
         dataSource?.apply(snapshot, animatingDifferences: false)
+        refreshedEvent.send()
     }
     
     private func wrappedNoData(_ text: String?) -> String {
@@ -223,7 +232,17 @@ final internal class DetailsViewModel {
     }
     
     private func bind() {
+        addrAPIService.linkEvent
+            .prefix(1)
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] data in
+                self?.linkJusoData = data.juso.first
+                self?.loadData()
+            })
+            .store(in: &cancellableBag)
+        
         addrAPIService.engEvent
+            .prefix(1)
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] data in
                 self?.engJusoData = data.juso.first
@@ -232,6 +251,7 @@ final internal class DetailsViewModel {
             .store(in: &cancellableBag)
         
         kakaoAPIService.addressEvent
+            .prefix(1)
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] data in
                 self?.addressDocumentData = data.documents.first
