@@ -147,7 +147,7 @@ final internal class SearchViewController: UIViewController {
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] error in
                 self?.showErrorAlert(for: error)
-                self?.removeSpinnerView()
+                self?.removeAllSpinnerView()
             })
             .store(in: &cancellableBag)
         
@@ -163,7 +163,7 @@ final internal class SearchViewController: UIViewController {
                     self?.slackLoadingAnimator?.isHidden = true
                 }
                 
-                self?.removeSpinnerView()
+                self?.removeAllSpinnerView()
             })
             .store(in: &cancellableBag)
     }
@@ -174,32 +174,6 @@ final internal class SearchViewController: UIViewController {
         detailsVC.setLinkJusoData(linkJusoData)
         navigationController?.pushViewController(detailsVC, animated: true)
     }
-    
-    private func addSpinnerView() {
-        spinnerView?.removeFromSuperview()
-        spinnerView = nil
-        
-        let spinnerView: SpinnerView = .init()
-        self.spinnerView = spinnerView
-        spinnerView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(spinnerView)
-        spinnerView.snp.remakeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-        spinnerView.layer.opacity = 0
-        UIView.animate(withDuration: 0.3) {
-            spinnerView.layer.opacity = 1
-        }
-    }
-    
-    private func removeSpinnerView() {
-        UIView.animate(withDuration: 0.3, animations: { [weak spinnerView] in
-            spinnerView?.layer.opacity = 0
-        }, completion: { [weak self] _ in
-            self?.spinnerView?.removeFromSuperview()
-            self?.spinnerView = nil
-        })
-    }
 }
 
 extension SearchViewController: UISearchBarDelegate {
@@ -208,7 +182,7 @@ extension SearchViewController: UISearchBarDelegate {
         if let text: String = searchBar.text,
            !text.isEmpty {
             viewModel?.searchEvent = text
-            addSpinnerView()
+            showSpinnerView()
         }
     }
 }

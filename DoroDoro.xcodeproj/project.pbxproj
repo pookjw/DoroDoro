@@ -107,6 +107,7 @@
 		F3AAE2A225E7D06800D666BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3AAE2A125E7D06800D666BD /* Assets.xcassets */; };
 		F3AAE2A525E7D06800D666BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3AAE2A325E7D06800D666BD /* LaunchScreen.storyboard */; };
 		F3C2796125EEC8C40029A61E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3C2796025EEC8C40029A61E /* CloudKit.framework */; };
+		F3F2F29225EFDB74005FC9CE /* UIViewController+SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F2F29125EFDB74005FC9CE /* UIViewController+SpinnerView.swift */; };
 		F3F4FAF025E8080D0077FCB5 /* AddrEngCommonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F4FAEF25E8080D0077FCB5 /* AddrEngCommonData.swift */; };
 		F3F4FAF725E8082F0077FCB5 /* AddrEngJusoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F4FAF625E8082F0077FCB5 /* AddrEngJusoData.swift */; };
 		F3F4FAFE25E809CD0077FCB5 /* AddrEngResultsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F4FAFD25E809CD0077FCB5 /* AddrEngResultsData.swift */; };
@@ -324,6 +325,7 @@
 		F3AAE2A425E7D06800D666BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F3AAE2A625E7D06800D666BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F3C2796025EEC8C40029A61E /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		F3F2F29125EFDB74005FC9CE /* UIViewController+SpinnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+SpinnerView.swift"; sourceTree = "<group>"; };
 		F3F4FAEF25E8080D0077FCB5 /* AddrEngCommonData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrEngCommonData.swift; sourceTree = "<group>"; };
 		F3F4FAF625E8082F0077FCB5 /* AddrEngJusoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrEngJusoData.swift; sourceTree = "<group>"; };
 		F3F4FAFD25E809CD0077FCB5 /* AddrEngResultsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrEngResultsData.swift; sourceTree = "<group>"; };
@@ -449,6 +451,7 @@
 			children = (
 				F333B9FF25EBFE1B00F1915F /* NSObject+Ext.swift */,
 				F33BB0D225ECE96C00BC5772 /* UIViewController+Ext.swift */,
+				F3F2F29125EFDB74005FC9CE /* UIViewController+SpinnerView.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -760,7 +763,6 @@
 			isa = PBXGroup;
 			children = (
 				F3309FF725EA8C5D0024DF7F /* Keys.swift */,
-				F333B98325EB88CD00F1915F /* Entity */,
 				F3444C9A25E8B1A700A0706F /* Localizable */,
 				F378B72025E7DC8E00FCE546 /* AddrAPI */,
 				F33BB02225ECC0DE00BC5772 /* KakaoAPI */,
@@ -804,6 +806,7 @@
 				F378B72125E7DD7500FCE546 /* View */,
 				F333B9C025EBDB3700F1915F /* ViewModel */,
 				F378B79625E8005100FCE546 /* Model */,
+				F333B98325EB88CD00F1915F /* Entity */,
 				F378B6A225E7D13E00FCE546 /* DoroDoro.entitlements */,
 				F3AAE29825E7D06700D666BD /* AppDelegate.swift */,
 				F3AAE29A25E7D06700D666BD /* SceneDelegate.swift */,
@@ -1186,6 +1189,7 @@
 				F333B9A725EB8FB600F1915F /* SearchHeaderItem.swift in Sources */,
 				F378B70925E7D8C600FCE546 /* BookmarksViewController.swift in Sources */,
 				F337B1BF25EBFF5700FB0B61 /* AddrCoordCommonData.swift in Sources */,
+				F3F2F29225EFDB74005FC9CE /* UIViewController+SpinnerView.swift in Sources */,
 				F33BB1FA25ED65B200BC5772 /* WelcomeBLTNPageItem.swift in Sources */,
 				F3F4FAF725E8082F0077FCB5 /* AddrEngJusoData.swift in Sources */,
 				F33BB04F25ECCD6C00BC5772 /* KakaoAddressDocumentData.swift in Sources */,
