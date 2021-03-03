@@ -170,8 +170,8 @@ final internal class SearchViewController: UIViewController {
     private func pushToDetailsVC(linkJusoData: AddrLinkJusoData) {
         let detailsVC: DetailsViewController = .init()
         detailsVC.loadViewIfNeeded()
-//        detailsVC.setLinkJusoData(linkJusoData)
-        detailsVC.setRoadAddr(linkJusoData.roadAddr)
+        detailsVC.setLinkJusoData(linkJusoData)
+//        detailsVC.setRoadAddr(linkJusoData.roadAddr)
         navigationController?.pushViewController(detailsVC, animated: true)
     }
 }

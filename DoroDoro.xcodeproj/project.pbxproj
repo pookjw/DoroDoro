@@ -470,6 +470,7 @@
 		F333B98325EB88CD00F1915F /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				F3309FF725EA8C5D0024DF7F /* Keys.swift */,
 				F337B1F525EC0DC600FB0B61 /* Search */,
 				F38128F325F0274C00C36F7B /* Bookmarks */,
 				F337B1F625EC0DCE00FB0B61 /* Details */,
@@ -806,7 +807,6 @@
 		F378B79625E8005100FCE546 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				F3309FF725EA8C5D0024DF7F /* Keys.swift */,
 				F3444C9A25E8B1A700A0706F /* Localizable */,
 				F378B72025E7DC8E00FCE546 /* AddrAPI */,
 				F33BB02225ECC0DE00BC5772 /* KakaoAPI */,
