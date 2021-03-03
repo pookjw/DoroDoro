@@ -6,12 +6,11 @@
 //
 
 import Foundation
-import UIKit
 import Combine
 
 final internal class DetailsViewModel {
-    internal typealias DataSource = UICollectionViewDiffableDataSource<DetailHeaderItem, DetailInfoItem>
-    internal typealias Snapshot = NSDiffableDataSourceSnapshot<DetailHeaderItem, DetailInfoItem>
+    internal typealias DataSource = UICollectionViewDiffableDataSource<DetailHeaderItem, DetailResultItem>
+    internal typealias Snapshot = NSDiffableDataSourceSnapshot<DetailHeaderItem, DetailResultItem>
     
     internal var dataSource: DataSource? = nil
     /// 전체 도로명주소
@@ -28,7 +27,7 @@ final internal class DetailsViewModel {
         bind()
     }
     
-    internal func getInfoItem(from indexPath: IndexPath) -> DetailInfoItem? {
+    internal func getResultItem(from indexPath: IndexPath) -> DetailResultItem? {
         guard let sectionIdentifiers: [DetailHeaderItem] = dataSource?.snapshot().sectionIdentifiers else {
             return nil
         }
@@ -37,37 +36,47 @@ final internal class DetailsViewModel {
             return nil
         }
         
-        guard let infoItems: [DetailInfoItem] = dataSource?.snapshot().itemIdentifiers(inSection: sectionIdentifiers[indexPath.section]) else {
+        guard let resultItems: [DetailResultItem] = dataSource?.snapshot().itemIdentifiers(inSection: sectionIdentifiers[indexPath.section]) else {
             return nil
         }
         
-        guard infoItems.count > indexPath.row else {
+        guard resultItems.count > indexPath.row else {
             return nil
         }
         
-        return infoItems[indexPath.row]
+        return resultItems[indexPath.row]
     }
     
-    internal func getSectionItemType(from indexPath: IndexPath) -> DetailHeaderItem.ItemType? {
+    internal func getSectionHeaderType(from indexPath: IndexPath) -> DetailHeaderItem.HeaderType? {
         guard let sectionIdentifiers: [DetailHeaderItem] = dataSource?.snapshot().sectionIdentifiers else {
             return nil
         }
         guard sectionIdentifiers.count > indexPath.section else {
             return nil
         }
-        return sectionIdentifiers[indexPath.section].itemType
+        return sectionIdentifiers[indexPath.section].headerType
     }
     
     internal func loadData() {
         if let linkJusoData: AddrLinkJusoData = linkJusoData {
+            deleteAllItems()
             roadAddr = linkJusoData.roadAddr
             updateLinkItems()
             addrAPIService.requestEngEvent(keyword: linkJusoData.roadAddr)
             kakaoAPIService.requestAddressEvent(query: linkJusoData.roadAddr,
                                                 analyzeType: .exact, page: 1, size: 1)
         } else if let roadAddr: String = roadAddr {
+            deleteAllItems()
             addrAPIService.requestLinkEvent(keyword: roadAddr)
         }
+    }
+    
+    private func deleteAllItems() {
+        guard var snapshot: Snapshot = dataSource?.snapshot() else {
+            return
+        }
+        snapshot.deleteAllItems()
+        dataSource?.apply(snapshot, animatingDifferences: true)
     }
     
     private func updateLinkItems() {
@@ -76,49 +85,50 @@ final internal class DetailsViewModel {
             return
         }
         
-        snapshot.deleteAllItems()
-        
         // 도로명주소 데이터 생성
         let linkHeaderItem: DetailHeaderItem = {
             // 이미 기존에 생성된 Header가 있는 경우 그대로 쓴다.
-            if let linkHeaderItem: DetailHeaderItem = snapshot.sectionIdentifiers.first(where: { $0.itemType == .link }) {
+            if let linkHeaderItem: DetailHeaderItem = snapshot.sectionIdentifiers.first(where: { $0.headerType == .link }) {
+                snapshot.deleteSections([linkHeaderItem])
+                snapshot.appendSections([linkHeaderItem])
                 return linkHeaderItem
             } else {
-                let headerItem: DetailHeaderItem = .init(itemType: .link)
-                snapshot.appendSections([headerItem])
-                return headerItem
+                let linkHeaderItem: DetailHeaderItem = .init(headerType: .link)
+                snapshot.appendSections([linkHeaderItem])
+                return linkHeaderItem
             }
         }()
         
-        let items: [DetailInfoItem] = [
-            .init(itemType: .link("전체 도로명주소", wrappedNoData(linkJusoData.roadAddr))),
-            .init(itemType: .link("도로명주소", wrappedNoData(linkJusoData.roadAddrPart1))),
-            .init(itemType: .link("도로명주소 참고항목", wrappedNoData(linkJusoData.roadAddrPart2))),
-            .init(itemType: .link("지번주소", wrappedNoData(linkJusoData.jibunAddr))),
-            .init(itemType: .link("우편번호", wrappedNoData(linkJusoData.zipNo))),
-            .init(itemType: .link("행정구역코드", wrappedNoData(linkJusoData.admCd))),
-            .init(itemType: .link("도로명코드", wrappedNoData(linkJusoData.rnMgtSn))),
-            .init(itemType: .link("건물관리번호", wrappedNoData(linkJusoData.bdMgtSn))),
-            .init(itemType: .link("상세건물명", wrappedNoData(linkJusoData.detBdNmList))),
-            .init(itemType: .link("건물명", wrappedNoData(linkJusoData.bdNm))),
-            .init(itemType: .link("공동주택여부", wrappedBdKdcd(linkJusoData.bdKdcd))),
-            .init(itemType: .link("시도명", wrappedNoData(linkJusoData.siNm))),
-            .init(itemType: .link("시군구명", wrappedNoData(linkJusoData.sggNm))),
-            .init(itemType: .link("읍면동명", wrappedNoData(linkJusoData.emdNm))),
-            .init(itemType: .link("법정리명", wrappedNoData(linkJusoData.liNm))),
-            .init(itemType: .link("도로명", wrappedNoData(linkJusoData.rn))),
-            .init(itemType: .link("지하여부", wrappedUdrtYn(linkJusoData.udrtYn))),
-            .init(itemType: .link("건물본번", wrappedNoData(linkJusoData.buldMnnm))),
-            .init(itemType: .link("건물부번", wrappedNoData(linkJusoData.buldSlno))),
-            .init(itemType: .link("산여부", wrappedMtYn(linkJusoData.mtYn))),
-            .init(itemType: .link("지번본번(번지)", wrappedNoData(linkJusoData.lnbrMnnm))),
-            .init(itemType: .link("지번부번(호)", wrappedNoData(linkJusoData.lnbrSlno))),
-            .init(itemType: .link("읍면동일련번호", wrappedNoData(linkJusoData.emdNo))),
-            .init(itemType: .link("관련지번", wrappedNoData(linkJusoData.relJibun))),
-            .init(itemType: .link("관할주민센터(참고정보)", wrappedNoData(linkJusoData.hemdNm)))
+        let items: [DetailResultItem] = [
+            .init(resultType: .link(text: "전체 도로명주소", secondaryText: wrappedNoData(linkJusoData.roadAddr))),
+            .init(resultType: .link(text: "도로명주소", secondaryText: wrappedNoData(linkJusoData.roadAddrPart1))),
+            .init(resultType: .link(text: "도로명주소 참고항목", secondaryText: wrappedNoData(linkJusoData.roadAddrPart2))),
+            .init(resultType: .link(text: "지번주소", secondaryText: wrappedNoData(linkJusoData.jibunAddr))),
+            .init(resultType: .link(text: "우편번호", secondaryText: wrappedNoData(linkJusoData.zipNo))),
+            .init(resultType: .link(text: "행정구역코드", secondaryText: wrappedNoData(linkJusoData.admCd))),
+            .init(resultType: .link(text: "도로명코드", secondaryText: wrappedNoData(linkJusoData.rnMgtSn))),
+            .init(resultType: .link(text: "건물관리번호", secondaryText: wrappedNoData(linkJusoData.bdMgtSn))),
+            .init(resultType: .link(text: "상세건물명", secondaryText: wrappedNoData(linkJusoData.detBdNmList))),
+            .init(resultType: .link(text: "건물명", secondaryText: wrappedNoData(linkJusoData.bdNm))),
+            .init(resultType: .link(text: "공동주택여부", secondaryText: wrappedBdKdcd(linkJusoData.bdKdcd))),
+            .init(resultType: .link(text: "시도명", secondaryText: wrappedNoData(linkJusoData.siNm))),
+            .init(resultType: .link(text: "시군구명", secondaryText: wrappedNoData(linkJusoData.sggNm))),
+            .init(resultType: .link(text: "읍면동명", secondaryText: wrappedNoData(linkJusoData.emdNm))),
+            .init(resultType: .link(text: "법정리명", secondaryText: wrappedNoData(linkJusoData.liNm))),
+            .init(resultType: .link(text: "도로명", secondaryText: wrappedNoData(linkJusoData.rn))),
+            .init(resultType: .link(text: "지하여부", secondaryText: wrappedUdrtYn(linkJusoData.udrtYn))),
+            .init(resultType: .link(text: "건물본번", secondaryText: wrappedNoData(linkJusoData.buldMnnm))),
+            .init(resultType: .link(text: "건물부번", secondaryText: wrappedNoData(linkJusoData.buldSlno))),
+            .init(resultType: .link(text: "산여부", secondaryText: wrappedMtYn(linkJusoData.mtYn))),
+            .init(resultType: .link(text: "지번본번(번지)", secondaryText: wrappedNoData(linkJusoData.lnbrMnnm))),
+            .init(resultType: .link(text: "지번부번(호)", secondaryText: wrappedNoData(linkJusoData.lnbrSlno))),
+            .init(resultType: .link(text: "읍면동일련번호", secondaryText: wrappedNoData(linkJusoData.emdNo))),
+            .init(resultType: .link(text: "관련지번", secondaryText: wrappedNoData(linkJusoData.relJibun))),
+            .init(resultType: .link(text: "관할주민센터(참고정보)", secondaryText: wrappedNoData(linkJusoData.hemdNm)))
         ]
         
         snapshot.appendItems(items, toSection: linkHeaderItem)
+        sortSnapshot(&snapshot)
         dataSource?.apply(snapshot, animatingDifferences: true)
         refreshedEvent.send()
     }
@@ -132,33 +142,29 @@ final internal class DetailsViewModel {
         // 세부정보 데이터 생성
         let engHeaderItem: DetailHeaderItem = {
             // 이미 기존에 생성된 Header가 있는 경우 그대로 쓴다.
-            if let engHeaderItem: DetailHeaderItem = snapshot.sectionIdentifiers.first(where: { $0.itemType == .eng }) {
+            if let engHeaderItem: DetailHeaderItem = snapshot.sectionIdentifiers.first(where: { $0.headerType == .eng }) {
+                snapshot.deleteSections([engHeaderItem])
+                snapshot.appendSections([engHeaderItem])
                 return engHeaderItem
             } else {
-                let engHeaderItem: DetailHeaderItem = .init(itemType: .eng)
-                
-                // 도로명주소 Section 밑에 생성한다.
-                if let linkHeaderItem: DetailHeaderItem = snapshot.sectionIdentifiers.first(where: { $0.itemType == .link }) {
-                    snapshot.insertSections([engHeaderItem], afterSection: linkHeaderItem)
-                } else {
-                    snapshot.appendSections([engHeaderItem])
-                }
-                
+                let engHeaderItem: DetailHeaderItem = .init(headerType: .eng)
+                snapshot.appendSections([engHeaderItem])
                 return engHeaderItem
             }
         }()
         
-        let items: [DetailInfoItem] = [
-            .init(itemType: .eng("영문 도로명주소", wrappedNoData(engJusoData.roadAddr))),
-            .init(itemType: .eng("영문 지번주소", wrappedNoData(engJusoData.jibunAddr))),
-            .init(itemType: .eng("영문 시도명", wrappedNoData(engJusoData.siNm))),
-            .init(itemType: .eng("영문 시군구명", wrappedNoData(engJusoData.sggNm))),
-            .init(itemType: .eng("영문 읍면동명", wrappedNoData(engJusoData.emdNm))),
-            .init(itemType: .eng("영문 법정리명", wrappedNoData(engJusoData.liNm))),
-            .init(itemType: .eng("영문 도로명", wrappedNoData(engJusoData.rn)))
+        let items: [DetailResultItem] = [
+            .init(resultType: .eng(text: "영문 도로명주소", secondaryText: wrappedNoData(engJusoData.roadAddr))),
+            .init(resultType: .eng(text: "영문 지번주소", secondaryText: wrappedNoData(engJusoData.jibunAddr))),
+            .init(resultType: .eng(text: "영문 시도명", secondaryText: wrappedNoData(engJusoData.siNm))),
+            .init(resultType: .eng(text: "영문 시군구명", secondaryText: wrappedNoData(engJusoData.sggNm))),
+            .init(resultType: .eng(text: "영문 읍면동명", secondaryText: wrappedNoData(engJusoData.emdNm))),
+            .init(resultType: .eng(text: "영문 법정리명", secondaryText: wrappedNoData(engJusoData.liNm))),
+            .init(resultType: .eng(text: "영문 도로명", secondaryText: wrappedNoData(engJusoData.rn)))
         ]
         
         snapshot.appendItems(items, toSection: engHeaderItem)
+        sortSnapshot(&snapshot)
         dataSource?.apply(snapshot, animatingDifferences: false)
         refreshedEvent.send()
     }
@@ -175,32 +181,45 @@ final internal class DetailsViewModel {
         // 세부정보 데이터 생성
         let coordHeaderItem: DetailHeaderItem = {
             // 이미 기존에 생성된 Header가 있는 경우 그대로 쓴다.
-            if let coordHeaderItem: DetailHeaderItem = snapshot.sectionIdentifiers.first(where: { $0.itemType == .map }) {
+            if let coordHeaderItem: DetailHeaderItem = snapshot.sectionIdentifiers.first(where: { $0.headerType == .map }) {
+                snapshot.deleteSections([coordHeaderItem])
+                snapshot.appendSections([coordHeaderItem])
                 return coordHeaderItem
             } else {
-                let coordHeaderItem: DetailHeaderItem = .init(itemType: .map)
-                
-                if let engHeaderItem: DetailHeaderItem = snapshot.sectionIdentifiers.first(where: { $0.itemType == .eng }) {
-                    // 영문주소 Section이 존재할 경우 그 밑에 생성한다.
-                    snapshot.insertSections([coordHeaderItem], afterSection: engHeaderItem)
-                } else if let linkHeaderItem: DetailHeaderItem = snapshot.sectionIdentifiers.first(where: { $0.itemType == .link }) {
-                    // 영문주소 Section이 없고 도로명주소 Section이 있을 경우 그 밑에 생성한다.
-                    snapshot.insertSections([coordHeaderItem], afterSection: linkHeaderItem)
-                } else {
-                    snapshot.appendSections([coordHeaderItem])
-                }
-                
+                let coordHeaderItem: DetailHeaderItem = .init(headerType: .map)
+                snapshot.appendSections([coordHeaderItem])
                 return coordHeaderItem
             }
         }()
         
-        let items: [DetailInfoItem] = [
-            .init(itemType: .map(latitude, longitude, addressDocumentData.address_name))
+        let items: [DetailResultItem] = [
+            .init(resultType: .map(latitude: latitude,
+                                   longitude: longitude,
+                                   locationTitle: addressDocumentData.address_name))
         ]
         
         snapshot.appendItems(items, toSection: coordHeaderItem)
+        sortSnapshot(&snapshot)
         dataSource?.apply(snapshot, animatingDifferences: false)
         refreshedEvent.send()
+    }
+    
+    private func sortSnapshot(_ snapshot: inout Snapshot)  {
+        var sectionIdentifiers: [DetailHeaderItem] = snapshot.sectionIdentifiers
+        
+        for a in 0..<sectionIdentifiers.count {
+            for b in (a + 1)..<sectionIdentifiers.count {
+                if (sectionIdentifiers[a].headerType.rawValue) > (sectionIdentifiers[b].headerType.rawValue) {
+                    
+                    snapshot.moveSection(sectionIdentifiers[b], beforeSection: sectionIdentifiers[a])
+                    for c in (a + 1)..<b {
+                        snapshot.moveSection(sectionIdentifiers[c], afterSection: sectionIdentifiers[c + 1])
+                    }
+                        
+                    sectionIdentifiers.swapAt(a, b)
+                }
+            }
+        }
     }
     
     private func wrappedNoData(_ text: String?) -> String {

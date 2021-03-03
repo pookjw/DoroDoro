@@ -15,7 +15,7 @@ final internal class MapViewController: UIViewController {
     }
     
     internal var mapType: MapType = .kakao
-    internal var locationTitle: String? = nil
+    internal var locationText: String? = nil
     
     // 서울 종로구 효자로 12
     internal var (latitude, longitude): (Double, Double) = (37.5765916191985, 126.974974825074)
@@ -80,7 +80,7 @@ final internal class MapViewController: UIViewController {
         
         mapView.removeAnnotations(mapView.annotations)
         let annotation: MKPointAnnotation = .init()
-        annotation.title = locationTitle
+        annotation.title = locationText
         annotation.coordinate = coordinate
         mapView.addAnnotation(annotation)
     }
@@ -104,7 +104,7 @@ final internal class MapViewController: UIViewController {
         let pointItem: MTMapPOIItem = .init()
         pointItem.markerType = .redPin
         pointItem.mapPoint = mapPoint
-        if let locationtitle: String = locationTitle {
+        if let locationtitle: String = locationText {
             pointItem.itemName = locationtitle
         }
         pointItem.showDisclosureButtonOnCalloutBalloon = false

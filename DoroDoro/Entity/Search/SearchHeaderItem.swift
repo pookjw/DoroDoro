@@ -10,9 +10,9 @@ import Foundation
 internal struct SearchHeaderItem: Hashable, Equatable {
     internal var title: String
     
-    internal let id = UUID()
-    
     internal static func == (lhs: SearchHeaderItem, rhs: SearchHeaderItem) -> Bool {
         return lhs.id == rhs.id
     }
+    
+    private let id: UUID = .init()
 }

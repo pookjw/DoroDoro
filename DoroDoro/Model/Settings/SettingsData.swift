@@ -18,6 +18,12 @@ internal struct SettingsData {
         }
     }
     
+    internal func convertToDic() -> [String: Any] {
+        var dic: [String: Any] = [:]
+        dic[Constants.enabledCloudServiceKey] = enabledCloudService
+        return dic
+    }
+    
     private struct Constants {
         static fileprivate let enabledCloudServiceKey: String = "enabled_cloud_service"
     }

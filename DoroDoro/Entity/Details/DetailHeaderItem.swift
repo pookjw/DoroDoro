@@ -8,16 +8,17 @@
 import Foundation
 
 internal struct DetailHeaderItem: Hashable, Equatable {
-    internal enum ItemType: String {
-        case link = "세부정보"
-        case eng = "영문주소"
-        case map = "지도"
+    internal enum HeaderType: Int {
+        case link = 2
+        case eng = 0
+        case map = 1
     }
     
-    internal let itemType: ItemType
-    internal let id = UUID()
+    internal let headerType: HeaderType
     
     internal static func == (lhs: DetailHeaderItem, rhs: DetailHeaderItem) -> Bool {
         return lhs.id == rhs.id
     }
+    
+    private let id: UUID = .init()
 }

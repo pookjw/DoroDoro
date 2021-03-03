@@ -20,7 +20,7 @@ final internal class DetailsViewController: UIViewController {
     
     override internal func viewDidLoad() {
         super.viewDidLoad()
-        configureAttributes()
+        setAttributes()
         configureCollectionView()
         configureViewModel()
         bind()
@@ -29,12 +29,12 @@ final internal class DetailsViewController: UIViewController {
     override internal func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationItem.largeTitleDisplayMode = .never
+        title = "DETAILS"
     }
     
     internal func setLinkJusoData(_ linkJusoData: AddrLinkJusoData) {
         viewModel?.linkJusoData = linkJusoData
         viewModel?.loadData()
-        title = linkJusoData.rn
     }
     
     internal func setRoadAddr(_ roadAddr: String) {
@@ -43,7 +43,7 @@ final internal class DetailsViewController: UIViewController {
         viewModel?.loadData()
     }
     
-    private func configureAttributes() {
+    private func setAttributes() {
         view.backgroundColor = .systemBackground
         title = Localizable.DORODORO.string
         tabBarItem.title = Localizable.TABBAR_SEARCH_VIEW_CONTROLLER_TITLE.string
@@ -102,9 +102,9 @@ final internal class DetailsViewController: UIViewController {
         }
     }
     
-    private func getInfoCellRegisteration() -> UICollectionView.CellRegistration<UICollectionViewListCell, DetailInfoItem> {
+    private func getInfoCellRegisteration() -> UICollectionView.CellRegistration<UICollectionViewListCell, DetailResultItem> {
         return .init { (cell, indexPath, item) in
-            switch item.itemType {
+            switch item.resultType {
             case let .link(text, secondaryText):
                 var configuration: UIListContentConfiguration = cell.defaultContentConfiguration()
                 configuration.text = text
@@ -131,7 +131,7 @@ final internal class DetailsViewController: UIViewController {
             let headerItem: DetailHeaderItem = dataSource.snapshot().sectionIdentifiers[indexPath.section]
             
             var configuration: UIListContentConfiguration = headerView.defaultContentConfiguration()
-            configuration.text = headerItem.itemType.rawValue
+            configuration.text = String(headerItem.headerType.rawValue)
             headerView.contentConfiguration = configuration
         }
     }
@@ -145,7 +145,7 @@ final internal class DetailsViewController: UIViewController {
             
             let headerItem: DetailHeaderItem = dataSource.snapshot().sectionIdentifiers[indexPath.section]
             
-            switch headerItem.itemType {
+            switch headerItem.headerType {
             case .map:
                 var configuration: UIListContentConfiguration = footerView.defaultContentConfiguration()
                 
@@ -193,7 +193,7 @@ final internal class DetailsViewController: UIViewController {
         let mapVC: MapViewController = .init()
         mapVC.latitude = corrd.latitude
         mapVC.longitude = corrd.longitude
-        mapVC.locationTitle = title
+        mapVC.locationText = title
         let mapNVC: UINavigationController = .init(rootViewController: mapVC)
         mapNVC.modalPresentationStyle = .fullScreen
         mapVC.loadViewIfNeeded()
@@ -203,18 +203,18 @@ final internal class DetailsViewController: UIViewController {
 
 extension DetailsViewController: UICollectionViewDelegate {
     internal func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        guard let itemType: DetailHeaderItem.ItemType = viewModel?.getSectionItemType(from: indexPath) else {
+        guard let headerType: DetailHeaderItem.HeaderType = viewModel?.getSectionHeaderType(from: indexPath) else {
             return false
         }
-        return itemType == .map
+        return headerType == .map
     }
     
     internal func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let item: DetailInfoItem = viewModel?.getInfoItem(from: indexPath) else {
+        guard let item: DetailResultItem = viewModel?.getResultItem(from: indexPath) else {
             return
         }
         
-        guard case let .map(latitude, longitude, title) = item.itemType else {
+        guard case let .map(latitude, longitude, title) = item.resultType else {
             return
         }
         
@@ -223,11 +223,11 @@ extension DetailsViewController: UICollectionViewDelegate {
     
     internal func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         
-        guard let itemType: DetailHeaderItem.ItemType = viewModel?.getSectionItemType(from: indexPath) else {
+        guard let headerType: DetailHeaderItem.HeaderType = viewModel?.getSectionHeaderType(from: indexPath) else {
             return nil
         }
         
-        switch itemType {
+        switch headerType {
         case .link, .eng:
             guard let cell: UICollectionViewCell = collectionView.cellForItem(at: indexPath) else {
                 return nil

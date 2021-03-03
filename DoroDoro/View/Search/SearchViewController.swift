@@ -12,7 +12,6 @@ import CRRefresh
 
 final internal class SearchViewController: UIViewController {
     private weak var collectionView: UICollectionView? = nil
-    private weak var spinnerView: SpinnerView? = nil
     private weak var searchController: UISearchController? = nil
     private weak var slackLoadingAnimator: SlackLoadingAnimator? = nil
     private var viewModel: SearchViewModel? = nil
@@ -24,7 +23,7 @@ final internal class SearchViewController: UIViewController {
     
     override internal func viewDidLoad() {
         super.viewDidLoad()
-        configureAttributes()
+        setAttributes()
         configureCollectionView()
         configureSearchController()
         configureViewModel()
@@ -43,7 +42,7 @@ final internal class SearchViewController: UIViewController {
         viewModel?.dataSource = makeDataSource()
     }
     
-    private func configureAttributes() {
+    private func setAttributes() {
         view.backgroundColor = .systemBackground
         title = Localizable.DORODORO.string
         tabBarItem.title = Localizable.TABBAR_SEARCH_VIEW_CONTROLLER_TITLE.string
@@ -171,8 +170,8 @@ final internal class SearchViewController: UIViewController {
     private func pushToDetailsVC(linkJusoData: AddrLinkJusoData) {
         let detailsVC: DetailsViewController = .init()
         detailsVC.loadViewIfNeeded()
-        detailsVC.setLinkJusoData(linkJusoData)
-//        detailsVC.setRoadAddr(linkJusoData.roadAddr)
+//        detailsVC.setLinkJusoData(linkJusoData)
+        detailsVC.setRoadAddr(linkJusoData.roadAddr)
         navigationController?.pushViewController(detailsVC, animated: true)
     }
 }
