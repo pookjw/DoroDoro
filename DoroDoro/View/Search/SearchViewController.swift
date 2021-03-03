@@ -212,7 +212,7 @@ extension SearchViewController: UICollectionViewDelegate {
         
         
         //
-
+        
         let bookmarkAction: UIAction
         
         if BookmarksService.shared.data.bookmarkedRoadAddrs.keys.contains(text) {

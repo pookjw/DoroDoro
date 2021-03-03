@@ -11,6 +11,7 @@ import SnapKit
 
 final internal class DetailsViewController: UIViewController {
     private weak var collectionView: UICollectionView? = nil
+    private weak var bookmarkButton: UIBarButtonItem? = nil
     private var viewModel: DetailsViewModel? = nil
     private var cancellableBag: Set<AnyCancellable> = .init()
     
@@ -23,6 +24,7 @@ final internal class DetailsViewController: UIViewController {
         setAttributes()
         configureCollectionView()
         configureViewModel()
+        configureBookmarkButton()
         bind()
     }
     
@@ -66,6 +68,21 @@ final internal class DetailsViewController: UIViewController {
     private func configureViewModel() {
         viewModel = .init()
         viewModel?.dataSource = makeDataSource()
+    }
+    
+    private func configureBookmarkButton() {
+        let bookmarkButton: UIBarButtonItem = .init(title: nil,
+                                                    image: nil,
+                                                    primaryAction: getBookmarkButtonAction(),
+                                                    menu: nil)
+        self.bookmarkButton = bookmarkButton
+        navigationItem.rightBarButtonItems = [bookmarkButton]
+    }
+    
+    private func getBookmarkButtonAction() -> UIAction {
+        return .init { [weak self] _ in
+            self?.viewModel?.toggleBookmark()
+        }
     }
     
     private func makeDataSource() -> DetailsViewModel.DataSource {
@@ -185,6 +202,13 @@ final internal class DetailsViewController: UIViewController {
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] error in
                 self?.showErrorAlert(for: error)
+            })
+            .store(in: &cancellableBag)
+        
+        viewModel?.bookmarkEvent
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] status in
+                self?.bookmarkButton?.image = status ? UIImage(systemName: "bookmark.fill") : UIImage(systemName: "bookmark")
             })
             .store(in: &cancellableBag)
     }

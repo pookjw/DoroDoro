@@ -18,6 +18,7 @@ final internal class DetailsViewModel {
     internal var roadAddr: String? = nil
     internal var linkJusoData: AddrLinkJusoData? = nil
     internal var refreshedEvent: PassthroughSubject<Void, Never> = .init()
+    internal var bookmarkEvent: PassthroughSubject<Bool, Never> = .init()
     internal let addrAPIService: AddrAPIService = .init()
     internal let kakaoAPIService: KakaoAPIService = .init()
     private var engJusoData: AddrEngJusoData? = nil
@@ -26,6 +27,20 @@ final internal class DetailsViewModel {
     
     internal init() {
         bind()
+    }
+    
+    internal func toggleBookmark() {
+        guard let roadAddr: String = roadAddr else { return }
+        
+        var data: BookmarksData = BookmarksService.shared.data
+        
+        if data.bookmarkedRoadAddrs.keys.contains(roadAddr) {
+            data.bookmarkedRoadAddrs.removeValue(forKey: roadAddr)
+        } else {
+            data.bookmarkedRoadAddrs[roadAddr] = Date()
+        }
+        
+        BookmarksService.shared.save(data: data)
     }
     
     internal func getResultItem(from indexPath: IndexPath) -> DetailResultItem? {
@@ -62,6 +77,7 @@ final internal class DetailsViewModel {
         if let linkJusoData: AddrLinkJusoData = linkJusoData {
             deleteAllItems()
             roadAddr = linkJusoData.roadAddr
+            checkBookmarkedStatus()
             updateLinkItems()
             addrAPIService.requestEngEvent(keyword: linkJusoData.roadAddr)
             kakaoAPIService.requestAddressEvent(query: linkJusoData.roadAddr,
@@ -251,6 +267,11 @@ final internal class DetailsViewModel {
         return (mtYn == "0") ? "대지" : "산"
     }
     
+    private func checkBookmarkedStatus(data: BookmarksData = BookmarksService.shared.data) {
+        guard let roadAddr: String = roadAddr else { return }
+        bookmarkEvent.send(data.bookmarkedRoadAddrs.keys.contains(roadAddr))
+    }
+    
     private func bind() {
         addrAPIService.linkEvent
             .prefix(1)
@@ -276,6 +297,13 @@ final internal class DetailsViewModel {
             .sink(receiveValue: { [weak self] data in
                 self?.addressDocumentData = data.documents.first
                 self?.updateMapItems()
+            })
+            .store(in: &cancellableBag)
+        
+        BookmarksService.shared.dataEvent
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] data in
+                self?.checkBookmarkedStatus(data: data)
             })
             .store(in: &cancellableBag)
     }
