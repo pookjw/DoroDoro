@@ -10,11 +10,7 @@ import MapKit
 import SnapKit
 
 final internal class MapViewController: UIViewController {
-    internal enum MapType {
-        case apple, kakao
-    }
-    
-    internal var mapType: MapType = .kakao
+    internal var mapSelection: MapSelection = SettingsService.shared.data.mapSelection
     internal var locationText: String? = nil
     
     // 서울 종로구 효자로 12
@@ -32,10 +28,10 @@ final internal class MapViewController: UIViewController {
         
         configureAttributes()
         
-        switch mapType {
-        case .apple:
+        switch mapSelection {
+        case .appleMap:
             configureAppleMapView()
-        case .kakao:
+        case .kakaoMap:
             #if arch(arm64) || targetEnvironment(simulator)
             configureKakaoMapView()
             #else

@@ -71,7 +71,7 @@
 		F33BB1BE25ED4E5700BC5772 /* map_present_background_update.png in Resources */ = {isa = PBXBuildFile; fileRef = F33BB1A225ED4E5600BC5772 /* map_present_background_update.png */; };
 		F33BB1BF25ED4E5700BC5772 /* daum_th_line.png in Resources */ = {isa = PBXBuildFile; fileRef = F33BB1A325ED4E5700BC5772 /* daum_th_line.png */; };
 		F33BB1C025ED4E5700BC5772 /* map_pin_shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = F33BB1A425ED4E5700BC5772 /* map_pin_shadow.png */; };
-		F33BB1C125ED4E5700BC5772 /* DaumMap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F33BB1A525ED4E5700BC5772 /* DaumMap.framework */; };
+		F33BB1C125ED4E5700BC5772 /* DaumMap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F33BB1A525ED4E5700BC5772 /* DaumMap.framework */; platformFilter = ios; };
 		F33BB1FA25ED65B200BC5772 /* WelcomeBLTNPageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB1F925ED65B200BC5772 /* WelcomeBLTNPageItem.swift */; };
 		F33BB20625ED680D00BC5772 /* IntroBulletinManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB20525ED680D00BC5772 /* IntroBulletinManager.swift */; };
 		F33BB21C25ED6AB300BC5772 /* SearchGuideBLTNPageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB21B25ED6AB300BC5772 /* SearchGuideBLTNPageItem.swift */; };

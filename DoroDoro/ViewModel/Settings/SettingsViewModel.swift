@@ -57,10 +57,12 @@ final internal class SettingsViewModel {
     }
     
     private func updateSettings(data: SettingsData) {
-        updateMapSelectionSetting(selected: data.mapSelection)
+        #if arch(arm64) || targetEnvironment(simulator)
+        updateMapSelectionItem(selected: data.mapSelection)
+        #endif
     }
     
-    private func updateMapSelectionSetting(selected: MapSelection) {
+    private func updateMapSelectionItem(selected: MapSelection) {
         guard var snapshot: Snapshot = dataSource?.snapshot() else {
             return
         }
