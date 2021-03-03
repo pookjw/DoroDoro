@@ -57,9 +57,7 @@ final internal class SettingsViewModel {
     }
     
     private func updateSettings(data: SettingsData) {
-        #if arch(arm64) || targetEnvironment(simulator)
         updateMapSelectionItem(selected: data.mapSelection)
-        #endif
     }
     
     private func updateMapSelectionItem(selected: MapSelection) {

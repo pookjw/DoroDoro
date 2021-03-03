@@ -1,5 +1,5 @@
 //
-//  SettingsService.swift
+//  BookmarksService.swift
 //  DoroDoro
 //
 //  Created by Jinwoo Kim on 3/4/21.
@@ -8,32 +8,30 @@
 import Foundation
 import Combine
 
-final internal class SettingsService {
+final internal class BookmarksService {
     // MARK: - Internal Properties
-    static internal let shared: SettingsService = .init()
-    internal let dataEvent: AnyPublisher<SettingsData, Never>
-    internal var data: SettingsData {
+    static internal let shared: BookmarksService = .init()
+    internal let dataEvent: AnyPublisher<BookmarksData, Never>
+    internal var data: BookmarksData {
         return _dataEvent.value
     }
     
     // MARK: - Internal Properties
-    internal func save(data: SettingsData) {
+    internal func save(data: BookmarksData) {
         _dataEvent.send(data)
-        let dic: [String: Any] = data.convertToDic()
-        CloudService.shared.keyValueStore.set(dic, forKey: Constants.settingsKey)
+        CloudService.shared.keyValueStore.set(data.bookmarkedRoadAddrs, forKey: Constants.bookmarksKey)
         CloudService.shared.synchronize()
     }
     
     // MARK: - Private Properties
-    private let _dataEvent: CurrentValueSubject<SettingsData, Never>
+    private let _dataEvent: CurrentValueSubject<BookmarksData, Never>
     private var cancellableBag: Set<AnyCancellable> = .init()
     private struct Constants {
-        static fileprivate let settingsKey: String = "settings"
+        static fileprivate let bookmarksKey: String = "bookmarks"
     }
     
-    // MARK: - Private Methods
     private init() {
-        if let dic: [String: Any] = CloudService.shared.keyValueStore.dictionary(forKey: Constants.settingsKey) {
+        if let dic: [String: Date] = CloudService.shared.keyValueStore.dictionary(forKey: Constants.bookmarksKey) as? [String: Date] {
             _dataEvent = .init(.init(dic: dic))
         } else {
             _dataEvent = .init(.init())
@@ -55,7 +53,7 @@ final internal class SettingsService {
     }
     
     private func fetchData() {
-        if let dic: [String: Any] = CloudService.shared.keyValueStore.dictionary(forKey: Constants.settingsKey) {
+        if let dic: [String: Date] = CloudService.shared.keyValueStore.dictionary(forKey: Constants.bookmarksKey) as? [String: Date] {
             _dataEvent.send(.init(dic: dic))
         } else {
             _dataEvent.send(.init())

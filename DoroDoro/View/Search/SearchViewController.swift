@@ -210,18 +210,37 @@ extension SearchViewController: UICollectionViewDelegate {
             return nil
         }
         
-        let bookmarkAction = UIAction(title: Localizable.REMOVE_FROM_BOOKMARKS.string,
-                                image: UIImage(systemName: "bookmark.fill"),
-                                attributes: [.destructive]) { _ in
-            // Perform action
+        
+        //
+
+        let bookmarkAction: UIAction
+        
+        if BookmarksService.shared.data.bookmarkedRoadAddrs.keys.contains(text) {
+            bookmarkAction = .init(title: Localizable.REMOVE_FROM_BOOKMARKS.string,
+                                      image: UIImage(systemName: "bookmark.fill"),
+                                      attributes: [.destructive]) { _ in
+                var data: BookmarksData = BookmarksService.shared.data
+                data.bookmarkedRoadAddrs.removeValue(forKey: text)
+                BookmarksService.shared.save(data: data)
+              }
+        } else {
+            bookmarkAction = .init(title: Localizable.ADD_TO_BOOKMARKS.string,
+                                      image: UIImage(systemName: "bookmark"),
+                                      attributes: [.destructive]) { _ in
+                var data: BookmarksData = BookmarksService.shared.data
+                data.bookmarkedRoadAddrs[text] = Date()
+                BookmarksService.shared.save(data: data)
+              }
         }
         
-        let copyAction = UIAction(title: Localizable.COPY.string,
+        //
+        
+        let copyAction: UIAction = .init(title: Localizable.COPY.string,
                              image: UIImage(systemName: "doc.on.doc")) { action in
             UIPasteboard.general.string = text
         }
         
-        let shareAction = UIAction(title: Localizable.SHARE.string,
+        let shareAction: UIAction = .init(title: Localizable.SHARE.string,
                               image: UIImage(systemName: "square.and.arrow.up")) { [weak self, weak cell] action in
             self?.share([text], sourceView: cell)
         }
