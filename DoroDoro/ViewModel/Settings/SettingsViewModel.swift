@@ -20,34 +20,69 @@ final internal class SettingsViewModel {
         bind()
     }
     
-    internal func updateCloud(new: Bool) {
+    internal func getCellItem(from indexPath: IndexPath) -> SettingCellItem? {
+        guard let sectionIdentifiers: [SettingHeaderItem] = dataSource?.snapshot().sectionIdentifiers else {
+            return nil
+        }
+        
+        guard sectionIdentifiers.count > indexPath.section else {
+            return nil
+        }
+        
+        guard let cellItems: [SettingCellItem] = dataSource?.snapshot().itemIdentifiers(inSection: sectionIdentifiers[indexPath.section]) else {
+            return nil
+        }
+        
+        guard cellItems.count > indexPath.row else {
+            return nil
+        }
+        
+        return cellItems[indexPath.row]
+    }
+    
+    internal func getSectionHeaderType(from indexPath: IndexPath) -> SettingHeaderItem.HeaderType? {
+        guard let sectionIdentifiers: [SettingHeaderItem] = dataSource?.snapshot().sectionIdentifiers else {
+            return nil
+        }
+        guard sectionIdentifiers.count > indexPath.section else {
+            return nil
+        }
+        return sectionIdentifiers[indexPath.section].headerType
+    }
+    
+    internal func updateMapSelection(new: MapSelection) {
         var data: SettingsData = SettingsService.shared.data
-        data.enabledCloudService = new
+        data.mapSelection = new
         SettingsService.shared.save(data: data)
     }
     
-    private func updateCloudItems(data: SettingsData) {
+    private func updateSettings(data: SettingsData) {
+        updateMapSelectionSetting(selected: data.mapSelection)
+    }
+    
+    private func updateMapSelectionSetting(selected: MapSelection) {
         guard var snapshot: Snapshot = dataSource?.snapshot() else {
             return
         }
         
-        let cloudHeaderItem: SettingHeaderItem = {
-            if let cloudHeaderItem: SettingHeaderItem = snapshot.sectionIdentifiers.first(where: { $0.headerType == .cloud }) {
-                snapshot.deleteSections([cloudHeaderItem])
-                snapshot.appendSections([cloudHeaderItem])
-                return cloudHeaderItem
+        let mapHeaderItem: SettingHeaderItem = {
+            if let mapHeaderItem: SettingHeaderItem = snapshot.sectionIdentifiers.first(where: { $0.headerType == .map }) {
+                snapshot.deleteSections([mapHeaderItem])
+                snapshot.appendSections([mapHeaderItem])
+                return mapHeaderItem
             } else {
-                let cloudHeaderItem: SettingHeaderItem = .init(headerType: .cloud)
-                snapshot.appendSections([cloudHeaderItem])
-                return cloudHeaderItem
+                let mapHeaderItem: SettingHeaderItem = .init(headerType: .map)
+                snapshot.appendSections([mapHeaderItem])
+                return mapHeaderItem
             }
         }()
         
         let items: [SettingCellItem] = [
-            .init(cellType: .toggleCloud(enabled: data.enabledCloudService))
+            .init(cellType: .mapSelection(mapType: .appleMap, selected: selected == .appleMap)),
+            .init(cellType: .mapSelection(mapType: .kakaoMap, selected: selected == .kakaoMap))
         ]
-        
-        snapshot.appendItems(items, toSection: cloudHeaderItem)
+
+        snapshot.appendItems(items, toSection: mapHeaderItem)
         sortSnapshot(&snapshot)
         dataSource?.apply(snapshot, animatingDifferences: true)
     }
@@ -74,7 +109,7 @@ final internal class SettingsViewModel {
         SettingsService.shared.dataEvent
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] data in
-                self?.updateCloudItems(data: data)
+                self?.updateSettings(data: data)
             })
             .store(in: &cancellableBag)
     }

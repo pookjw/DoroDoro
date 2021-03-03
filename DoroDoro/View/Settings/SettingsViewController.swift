@@ -70,30 +70,10 @@ final internal class SettingsViewController: UIViewController {
     
     private func getCellRegisteration() -> UICollectionView.CellRegistration<UICollectionViewListCell, SettingCellItem> {
         return .init { [weak self] (cell, indexPath, item) in
-            var configuration: UIListContentConfiguration = cell.defaultContentConfiguration()
-            
             switch item.cellType {
-            case .toggleCloud(let enabled):
-                configuration.text = "CLOUD"
-                configuration.image = UIImage(systemName: "icloud")
-                
-                let toggleAction: UIAction = .init { [weak self] action in
-                    guard let toggleSwitch: UISwitch = action.sender as? UISwitch else {
-                        return
-                    }
-                    self?.viewModel?.updateCloud(new: toggleSwitch.isOn)
-                }
-                
-                let toggleSwitch: UISwitch = .init(frame: .zero,
-                                                   primaryAction: toggleAction)
-                toggleSwitch.isOn = enabled
-                
-                let accessoryConfiguration: UICellAccessory.CustomViewConfiguration = .init(customView: toggleSwitch,
-                                                                               placement: .trailing(displayed: .always))
-                cell.accessories = [.customView(configuration: accessoryConfiguration)]
+            case .mapSelection(let mapType, let selected):
+                self?.setMapSelectionCell(cell: cell, mapType: mapType, selected: selected)
             }
-            
-            cell.contentConfiguration = configuration
         }
     }
     
@@ -107,16 +87,56 @@ final internal class SettingsViewController: UIViewController {
             var configuration: UIListContentConfiguration = headerView.defaultContentConfiguration()
             
             switch headerItem.headerType {
-            case .cloud:
-                configuration.text = "CLOUD(번역)"
+            case .map:
+                configuration.text = "MAPS(번역)"
             default:
                 configuration.text = "DEMO"
             }
             headerView.contentConfiguration = configuration
         }
     }
+    
+    private func setMapSelectionCell(
+        cell: UICollectionViewListCell,
+        mapType: MapSelection,
+        selected: Bool)
+    {
+        var configuration: UIListContentConfiguration = cell.defaultContentConfiguration()
+        
+        switch mapType {
+        case .appleMap:
+            configuration.text = "APPLE MAPS(번역)"
+        case .kakaoMap:
+            configuration.text = "KAKAO MAPS(번역)"
+        }
+        
+        if selected {
+            cell.accessories = [.checkmark()]
+        } else {
+            cell.accessories = []
+        }
+        
+        cell.contentConfiguration = configuration
+    }
 }
 
 extension SettingsViewController: UICollectionViewDelegate {
-    
+    internal func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let headerType: SettingHeaderItem.HeaderType = viewModel?.getSectionHeaderType(from: indexPath) else {
+            return
+        }
+        guard let cellItem: SettingCellItem = viewModel?.getCellItem(from: indexPath) else {
+             return
+        }
+        
+        switch headerType {
+        case .map:
+            if case let .mapSelection(mapType, _) = cellItem.cellType {
+                viewModel?.updateMapSelection(new: mapType)
+            }
+            collectionView.deselectItem(at: indexPath, animated: true)
+        case .about:
+            break
+        }
+    }
 }

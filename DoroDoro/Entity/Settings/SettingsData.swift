@@ -8,29 +8,30 @@
 import Foundation
 
 internal struct SettingsData {
-    internal var enabledCloudService: Bool = false
+    internal var mapSelection: MapSelection = .appleMap
     
     internal init() {}
     
     internal init(dic: [String: Any]) {
-        if let enabledCloudServiceKey: Bool = dic[Constants.enabledCloudServiceKey] as? Bool {
-            self.enabledCloudService = enabledCloudServiceKey
+        if let mapSelectionRawValue: Int = dic[Constants.mapSelectionKey] as? Int,
+           let mapSelection: MapSelection = MapSelection(rawValue: mapSelectionRawValue) {
+            self.mapSelection = mapSelection
         }
     }
     
     internal func convertToDic() -> [String: Any] {
         var dic: [String: Any] = [:]
-        dic[Constants.enabledCloudServiceKey] = enabledCloudService
+        dic[Constants.mapSelectionKey] = mapSelection.rawValue
         return dic
     }
     
     private struct Constants {
-        static fileprivate let enabledCloudServiceKey: String = "enabled_cloud_service"
+        static fileprivate let mapSelectionKey: String = "map_selection"
     }
 }
 
 extension SettingsData: Equatable {
     static internal func ==(lhs: SettingsData, rhs: SettingsData) -> Bool {
-        return (lhs.enabledCloudService == rhs.enabledCloudService)
+        return (lhs.mapSelection == rhs.mapSelection)
     }
 }

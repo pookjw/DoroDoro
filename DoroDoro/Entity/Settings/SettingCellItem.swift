@@ -9,7 +9,7 @@ import Foundation
 
 internal struct SettingCellItem: Hashable, Equatable {
     internal enum CellType: Hashable {
-        case toggleCloud(enabled: Bool)
+        case mapSelection(mapType: MapSelection, selected: Bool)
     }
     internal let cellType: CellType
     

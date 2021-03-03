@@ -105,6 +105,7 @@
 		F378B77D25E7F18900FCE546 /* AddrLinkJusoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B77C25E7F18900FCE546 /* AddrLinkJusoData.swift */; };
 		F378B78425E7F45600FCE546 /* AddrLinkAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B78325E7F45600FCE546 /* AddrLinkAPIError.swift */; };
 		F378B79025E7FAE500FCE546 /* AddrLinkResultsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B78F25E7FAE500FCE546 /* AddrLinkResultsData.swift */; };
+		F38128F225F023FD00C36F7B /* MapSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38128F125F023FD00C36F7B /* MapSelection.swift */; };
 		F384137725F005030078334A /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F384137625F005030078334A /* SettingsViewModel.swift */; };
 		F384137A25F0061C0078334A /* SettingCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F384137925F0061C0078334A /* SettingCellItem.swift */; };
 		F384137C25F006B10078334A /* SettingHeaderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F384137B25F006B10078334A /* SettingHeaderItem.swift */; };
@@ -327,6 +328,7 @@
 		F378B77C25E7F18900FCE546 /* AddrLinkJusoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrLinkJusoData.swift; sourceTree = "<group>"; };
 		F378B78325E7F45600FCE546 /* AddrLinkAPIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrLinkAPIError.swift; sourceTree = "<group>"; };
 		F378B78F25E7FAE500FCE546 /* AddrLinkResultsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrLinkResultsData.swift; sourceTree = "<group>"; };
+		F38128F125F023FD00C36F7B /* MapSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSelection.swift; sourceTree = "<group>"; };
 		F384137625F005030078334A /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		F384137925F0061C0078334A /* SettingCellItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCellItem.swift; sourceTree = "<group>"; };
 		F384137B25F006B10078334A /* SettingHeaderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingHeaderItem.swift; sourceTree = "<group>"; };
@@ -450,7 +452,6 @@
 			isa = PBXGroup;
 			children = (
 				F332741F25EFF71100417437 /* SettingsService.swift */,
-				F332742625EFF7E500417437 /* SettingsData.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -814,6 +815,8 @@
 		F384137825F005490078334A /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				F332742625EFF7E500417437 /* SettingsData.swift */,
+				F38128F125F023FD00C36F7B /* MapSelection.swift */,
 				F384137925F0061C0078334A /* SettingCellItem.swift */,
 				F384137B25F006B10078334A /* SettingHeaderItem.swift */,
 			);
@@ -1233,6 +1236,7 @@
 				F3309FF825EA8C5D0024DF7F /* Keys.swift in Sources */,
 				F378B79025E7FAE500FCE546 /* AddrLinkResultsData.swift in Sources */,
 				F378B78425E7F45600FCE546 /* AddrLinkAPIError.swift in Sources */,
+				F38128F225F023FD00C36F7B /* MapSelection.swift in Sources */,
 				F378B75025E7EEDB00FCE546 /* DoroDoroWidget.intentdefinition in Sources */,
 				F33BB0D325ECE96C00BC5772 /* UIViewController+Ext.swift in Sources */,
 				F33BAFAC25EC239500BC5772 /* DetailsMapViewConfiguration.swift in Sources */,
