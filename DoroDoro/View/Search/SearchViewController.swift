@@ -226,7 +226,7 @@ extension SearchViewController: UICollectionViewDelegate {
         } else {
             bookmarkAction = .init(title: Localizable.ADD_TO_BOOKMARKS.string,
                                       image: UIImage(systemName: "bookmark"),
-                                      attributes: [.destructive]) { _ in
+                                      attributes: []) { _ in
                 var data: BookmarksData = BookmarksService.shared.data
                 data.bookmarkedRoadAddrs[text] = Date()
                 BookmarksService.shared.save(data: data)
