@@ -9,9 +9,9 @@ import Foundation
 
 internal struct DetailHeaderItem: Hashable, Equatable {
     internal enum HeaderType: Int {
-        case link = 2
-        case eng = 0
-        case map = 1
+        case link = 0
+        case eng = 1
+        case map = 2
     }
     
     internal let headerType: HeaderType
