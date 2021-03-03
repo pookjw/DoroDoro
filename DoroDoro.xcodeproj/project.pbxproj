@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		E8BA96083B64A362F17AAFEA /* Pods_DoroDoro.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E86CEB0C5A70206FB9CE710D /* Pods_DoroDoro.framework */; };
 		F3309FF825EA8C5D0024DF7F /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3309FF725EA8C5D0024DF7F /* Keys.swift */; };
+		F332741825EFF1CF00417437 /* CloudService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F332741725EFF1CF00417437 /* CloudService.swift */; };
+		F332742025EFF71100417437 /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F332741F25EFF71100417437 /* SettingsService.swift */; };
+		F332742725EFF7E500417437 /* SettingsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F332742625EFF7E500417437 /* SettingsData.swift */; };
 		F333B97B25EB7F0200F1915F /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F333B97A25EB7F0200F1915F /* SearchViewModel.swift */; };
 		F333B98D25EB890C00F1915F /* SearchResultItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F333B98C25EB890C00F1915F /* SearchResultItem.swift */; };
 		F333B9A725EB8FB600F1915F /* SearchHeaderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F333B9A625EB8FB600F1915F /* SearchHeaderItem.swift */; };
@@ -203,6 +206,9 @@
 		86D49FB34CCC715324E29809 /* Pods-DoroDoro.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoroDoro.debug.xcconfig"; path = "Target Support Files/Pods-DoroDoro/Pods-DoroDoro.debug.xcconfig"; sourceTree = "<group>"; };
 		E86CEB0C5A70206FB9CE710D /* Pods_DoroDoro.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoroDoro.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3309FF725EA8C5D0024DF7F /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
+		F332741725EFF1CF00417437 /* CloudService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudService.swift; sourceTree = "<group>"; };
+		F332741F25EFF71100417437 /* SettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
+		F332742625EFF7E500417437 /* SettingsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsData.swift; sourceTree = "<group>"; };
 		F333B97A25EB7F0200F1915F /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		F333B98C25EB890C00F1915F /* SearchResultItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultItem.swift; sourceTree = "<group>"; };
 		F333B9A625EB8FB600F1915F /* SearchHeaderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHeaderItem.swift; sourceTree = "<group>"; };
@@ -417,6 +423,30 @@
 				6D85A13F60C3E781DFBC61E7 /* Pods-DoroDoro.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		F332741425EFF15500417437 /* Cloud */ = {
+			isa = PBXGroup;
+			children = (
+				F332741725EFF1CF00417437 /* CloudService.swift */,
+			);
+			path = Cloud;
+			sourceTree = "<group>";
+		};
+		F332741525EFF18C00417437 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
+		F332741625EFF1A700417437 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				F332741F25EFF71100417437 /* SettingsService.swift */,
+				F332742625EFF7E500417437 /* SettingsData.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		F333B98325EB88CD00F1915F /* Entity */ = {
@@ -758,6 +788,9 @@
 				F3444C9A25E8B1A700A0706F /* Localizable */,
 				F378B72025E7DC8E00FCE546 /* AddrAPI */,
 				F33BB02225ECC0DE00BC5772 /* KakaoAPI */,
+				F332741425EFF15500417437 /* Cloud */,
+				F332741525EFF18C00417437 /* Favorites */,
+				F332741625EFF1A700417437 /* Settings */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1153,6 +1186,7 @@
 				F33BB09F25ECD0C500BC5772 /* KakaoAddressAPIError.swift in Sources */,
 				F333B9F825EBFA1B00F1915F /* DetailsViewController.swift in Sources */,
 				F33BB0C525ECD76C00BC5772 /* KakaoAddressRoadAddressData.swift in Sources */,
+				F332742725EFF7E500417437 /* SettingsData.swift in Sources */,
 				F3AAE29925E7D06700D666BD /* AppDelegate.swift in Sources */,
 				F33BB03025ECC95200BC5772 /* KakaoAPIService.swift in Sources */,
 				F333BA0025EBFE1B00F1915F /* NSObject+Ext.swift in Sources */,
@@ -1163,6 +1197,8 @@
 				F333B97B25EB7F0200F1915F /* SearchViewModel.swift in Sources */,
 				F33BB20625ED680D00BC5772 /* IntroBulletinManager.swift in Sources */,
 				F378B77625E7F17A00FCE546 /* AddrLinkCommonData.swift in Sources */,
+				F332741825EFF1CF00417437 /* CloudService.swift in Sources */,
+				F332742025EFF71100417437 /* SettingsService.swift in Sources */,
 				F33BB21C25ED6AB300BC5772 /* SearchGuideBLTNPageItem.swift in Sources */,
 				F378B70225E7D88A00FCE546 /* MainTabBarController.swift in Sources */,
 				F337B1DF25EC03A400FB0B61 /* AddrCoordSearchData.swift in Sources */,

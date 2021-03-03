@@ -24,5 +24,9 @@ final internal class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.rootViewController = mainTabBarController
         window?.makeKeyAndVisible()
     }
+    
+    internal func sceneWillEnterForeground(_ scene: UIScene) {
+        CloudService.shared.synchronize()
+    }
 }
 
