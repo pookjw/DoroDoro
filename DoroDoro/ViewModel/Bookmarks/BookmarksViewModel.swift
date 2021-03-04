@@ -40,7 +40,7 @@ final internal class BookmarksViewModel {
                       !text.isEmpty else {
                     return true
                 }
-                return roadAddr.contains(text)
+                return roadAddr.contains(text) || roadAddr.choseongContains(text)
             })
             .sorted { (first, second) in
                 return first.value > second.value

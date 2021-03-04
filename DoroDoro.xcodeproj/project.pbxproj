@@ -119,6 +119,7 @@
 		F3AAE2A225E7D06800D666BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3AAE2A125E7D06800D666BD /* Assets.xcassets */; };
 		F3AAE2A525E7D06800D666BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3AAE2A325E7D06800D666BD /* LaunchScreen.storyboard */; };
 		F3C2796125EEC8C40029A61E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3C2796025EEC8C40029A61E /* CloudKit.framework */; };
+		F3E6881025F122E200A619CA /* String+choseongContains.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E6880F25F122E200A619CA /* String+choseongContains.swift */; };
 		F3F2F29225EFDB74005FC9CE /* UIViewController+SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F2F29125EFDB74005FC9CE /* UIViewController+SpinnerView.swift */; };
 		F3F4FAF025E8080D0077FCB5 /* AddrEngCommonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F4FAEF25E8080D0077FCB5 /* AddrEngCommonData.swift */; };
 		F3F4FAF725E8082F0077FCB5 /* AddrEngJusoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F4FAF625E8082F0077FCB5 /* AddrEngJusoData.swift */; };
@@ -349,6 +350,7 @@
 		F3AAE2A425E7D06800D666BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F3AAE2A625E7D06800D666BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F3C2796025EEC8C40029A61E /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		F3E6880F25F122E200A619CA /* String+choseongContains.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+choseongContains.swift"; sourceTree = "<group>"; };
 		F3F2F29125EFDB74005FC9CE /* UIViewController+SpinnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+SpinnerView.swift"; sourceTree = "<group>"; };
 		F3F4FAEF25E8080D0077FCB5 /* AddrEngCommonData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrEngCommonData.swift; sourceTree = "<group>"; };
 		F3F4FAF625E8082F0077FCB5 /* AddrEngJusoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrEngJusoData.swift; sourceTree = "<group>"; };
@@ -504,6 +506,7 @@
 				F333B9FF25EBFE1B00F1915F /* NSObject+Ext.swift */,
 				F33BB0D225ECE96C00BC5772 /* UIViewController+Ext.swift */,
 				F3F2F29125EFDB74005FC9CE /* UIViewController+SpinnerView.swift */,
+				F3E6880F25F122E200A619CA /* String+choseongContains.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1256,6 +1259,7 @@
 				F33BB04725ECCD6100BC5772 /* KakaoAddressMetaData.swift in Sources */,
 				F337B1EE25EC09F400FB0B61 /* DetailsViewModel.swift in Sources */,
 				F384137A25F0061C0078334A /* SettingCellItem.swift in Sources */,
+				F3E6881025F122E200A619CA /* String+choseongContains.swift in Sources */,
 				F33BB10425ED268D00BC5772 /* MapViewController.swift in Sources */,
 				F333B97B25EB7F0200F1915F /* SearchViewModel.swift in Sources */,
 				F33BB20625ED680D00BC5772 /* IntroBulletinManager.swift in Sources */,
