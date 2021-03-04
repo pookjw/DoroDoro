@@ -51,14 +51,14 @@ final internal class DetailsViewModel {
         return resultItems[indexPath.row]
     }
     
-    internal func getSectionHeaderType(from indexPath: IndexPath) -> DetailHeaderItem.HeaderType? {
+    internal func getSectionHeaderItem(from indexPath: IndexPath) -> DetailHeaderItem? {
         guard let sectionIdentifiers: [DetailHeaderItem] = dataSource?.snapshot().sectionIdentifiers else {
             return nil
         }
         guard sectionIdentifiers.count > indexPath.section else {
             return nil
         }
-        return sectionIdentifiers[indexPath.section].headerType
+        return sectionIdentifiers[indexPath.section]
     }
     
     internal func loadData(_ linkJusoData: AddrLinkJusoData) {

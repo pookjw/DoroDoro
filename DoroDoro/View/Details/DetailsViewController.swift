@@ -143,7 +143,9 @@ final internal class DetailsViewController: UIViewController {
             }
             guard dataSource.snapshot().sectionIdentifiers.count > indexPath.section else { return }
             
-            let headerItem: DetailHeaderItem = dataSource.snapshot().sectionIdentifiers[indexPath.section]
+            guard let headerItem: DetailHeaderItem = self?.viewModel?.getSectionHeaderItem(from: indexPath) else {
+                return
+            }
             
             var configuration: UIListContentConfiguration = headerView.defaultContentConfiguration()
             configuration.text = String(headerItem.headerType.rawValue)
@@ -158,7 +160,9 @@ final internal class DetailsViewController: UIViewController {
             }
             guard dataSource.snapshot().sectionIdentifiers.count > indexPath.section else { return }
             
-            let headerItem: DetailHeaderItem = dataSource.snapshot().sectionIdentifiers[indexPath.section]
+            guard let headerItem: DetailHeaderItem = self?.viewModel?.getSectionHeaderItem(from: indexPath) else {
+                return
+            }
             
             switch headerItem.headerType {
             case .map:
@@ -225,10 +229,10 @@ final internal class DetailsViewController: UIViewController {
 
 extension DetailsViewController: UICollectionViewDelegate {
     internal func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        guard let headerType: DetailHeaderItem.HeaderType = viewModel?.getSectionHeaderType(from: indexPath) else {
+        guard let headerItem: DetailHeaderItem = viewModel?.getSectionHeaderItem(from: indexPath) else {
             return false
         }
-        return headerType == .map
+        return headerItem.headerType == .map
     }
     
     internal func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -245,11 +249,11 @@ extension DetailsViewController: UICollectionViewDelegate {
     
     internal func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         
-        guard let headerType: DetailHeaderItem.HeaderType = viewModel?.getSectionHeaderType(from: indexPath) else {
+        guard let headerItem: DetailHeaderItem = viewModel?.getSectionHeaderItem(from: indexPath) else {
             return nil
         }
         
-        switch headerType {
+        switch headerItem.headerType {
         case .link, .eng:
             guard let cell: UICollectionViewCell = collectionView.cellForItem(at: indexPath) else {
                 return nil

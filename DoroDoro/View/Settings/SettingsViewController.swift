@@ -31,6 +31,7 @@ final internal class SettingsViewController: UIViewController {
     private func configureCollectionView() {
         var layoutConfiguration: UICollectionLayoutListConfiguration = .init(appearance: .insetGrouped)
         layoutConfiguration.headerMode = .supplementary
+        layoutConfiguration.footerMode = .supplementary
         let layout: UICollectionViewCompositionalLayout = .list(using: layoutConfiguration)
         
         let collectionView: UICollectionView = .init(frame: .zero, collectionViewLayout: layout)
@@ -60,6 +61,8 @@ final internal class SettingsViewController: UIViewController {
             
             if elementKind == UICollectionView.elementKindSectionHeader {
                 return self.collectionView?.dequeueConfiguredReusableSupplementary(using: self.getHeaderCellRegisteration(), for: indexPath)
+            } else if elementKind == UICollectionView.elementKindSectionFooter {
+                return self.collectionView?.dequeueConfiguredReusableSupplementary(using: self.getFooterCellRegisteration(), for: indexPath)
             }
 
             return nil
@@ -82,7 +85,9 @@ final internal class SettingsViewController: UIViewController {
             guard let dataSource: SettingsViewModel.DataSource = self?.viewModel?.dataSource else { return }
             guard dataSource.snapshot().sectionIdentifiers.count > indexPath.section else { return }
             
-            let headerItem: SettingHeaderItem = dataSource.snapshot().sectionIdentifiers[indexPath.section]
+            guard let headerItem: SettingHeaderItem = self?.viewModel?.getSectionHeaderItem(from: indexPath) else {
+                return
+            }
             
             var configuration: UIListContentConfiguration = headerView.defaultContentConfiguration()
             
@@ -93,6 +98,30 @@ final internal class SettingsViewController: UIViewController {
                 configuration.text = "DEMO"
             }
             headerView.contentConfiguration = configuration
+        }
+    }
+    
+    private func getFooterCellRegisteration() -> UICollectionView.SupplementaryRegistration<UICollectionViewListCell> {
+        return .init(elementKind: UICollectionView.elementKindSectionFooter) { [weak self] (footerView, elementKind, indexPath) in
+            guard let dataSource: SettingsViewModel.DataSource = self?.viewModel?.dataSource else {
+                return
+            }
+            guard dataSource.snapshot().sectionIdentifiers.count > indexPath.section else { return }
+            
+            guard let headerItem: SettingHeaderItem = self?.viewModel?.getSectionHeaderItem(from: indexPath) else {
+                return
+            }
+            
+            switch headerItem.headerType {
+            case .map:
+                var configuration: UIListContentConfiguration = footerView.defaultContentConfiguration()
+                
+                configuration.text = "dddd."
+                configuration.textProperties.alignment = .center
+                footerView.contentConfiguration = configuration
+            default:
+                footerView.contentConfiguration = nil
+            }
         }
     }
     
@@ -122,14 +151,14 @@ final internal class SettingsViewController: UIViewController {
 
 extension SettingsViewController: UICollectionViewDelegate {
     internal func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let headerType: SettingHeaderItem.HeaderType = viewModel?.getSectionHeaderType(from: indexPath) else {
+        guard let headerItem: SettingHeaderItem = viewModel?.getSectionHeaderItem(from: indexPath) else {
             return
         }
         guard let cellItem: SettingCellItem = viewModel?.getCellItem(from: indexPath) else {
              return
         }
         
-        switch headerType {
+        switch headerItem.headerType {
         case .map:
             if case let .mapSelection(mapType, _) = cellItem.cellType {
                 viewModel?.updateMapSelection(new: mapType)

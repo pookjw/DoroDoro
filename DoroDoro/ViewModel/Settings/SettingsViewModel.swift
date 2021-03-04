@@ -40,14 +40,14 @@ final internal class SettingsViewModel {
         return cellItems[indexPath.row]
     }
     
-    internal func getSectionHeaderType(from indexPath: IndexPath) -> SettingHeaderItem.HeaderType? {
+    internal func getSectionHeaderItem(from indexPath: IndexPath) -> SettingHeaderItem? {
         guard let sectionIdentifiers: [SettingHeaderItem] = dataSource?.snapshot().sectionIdentifiers else {
             return nil
         }
         guard sectionIdentifiers.count > indexPath.section else {
             return nil
         }
-        return sectionIdentifiers[indexPath.section].headerType
+        return sectionIdentifiers[indexPath.section]
     }
     
     internal func updateMapSelection(new: MapSelection) {
