@@ -185,34 +185,27 @@ extension SearchViewController: UICollectionViewDelegate {
             return nil
         }
         
-        guard let configuration: UIListContentConfiguration = cell.contentConfiguration as? UIListContentConfiguration else {
-            return nil
-        }
-        
-        guard let text: String = configuration.text else {
-            return nil
-        }
-        
         guard let contextMenuLinkJusoData: AddrLinkJusoData = viewModel?.getResultItem(from: indexPath)?.linkJusoData else {
             return nil
         }
         
+        let roadAddr: String = contextMenuLinkJusoData.roadAddr
         
         //
         
         let bookmarkAction: UIAction
         
-        if BookmarksService.shared.isBookmarked(text) {
+        if BookmarksService.shared.isBookmarked(roadAddr) {
             bookmarkAction = .init(title: Localizable.REMOVE_FROM_BOOKMARKS.string,
                                       image: UIImage(systemName: "bookmark.fill"),
                                       attributes: [.destructive]) { _ in
-                BookmarksService.shared.removeBookmark(text)
+                BookmarksService.shared.removeBookmark(roadAddr)
               }
         } else {
             bookmarkAction = .init(title: Localizable.ADD_TO_BOOKMARKS.string,
                                       image: UIImage(systemName: "bookmark"),
                                       attributes: []) { _ in
-                BookmarksService.shared.addBookmark(text)
+                BookmarksService.shared.addBookmark(roadAddr)
               }
         }
         
@@ -220,12 +213,12 @@ extension SearchViewController: UICollectionViewDelegate {
         
         let copyAction: UIAction = .init(title: Localizable.COPY.string,
                              image: UIImage(systemName: "doc.on.doc")) { action in
-            UIPasteboard.general.string = text
+            UIPasteboard.general.string = roadAddr
         }
         
         let shareAction: UIAction = .init(title: Localizable.SHARE.string,
                               image: UIImage(systemName: "square.and.arrow.up")) { [weak self, weak cell] action in
-            self?.share([text], sourceView: cell)
+            self?.share([roadAddr], sourceView: cell)
         }
         
         viewModel?.contextMenuLinkJusoData = contextMenuLinkJusoData

@@ -255,12 +255,20 @@ extension DetailsViewController: UICollectionViewDelegate {
                 return nil
             }
             
-            guard let configuration: UIListContentConfiguration = cell.contentConfiguration as? UIListContentConfiguration else {
-                return nil
-            }
-            
-            guard let text: String = configuration.secondaryText,
-                  text != Localizable.NO_DATA.string else {
+            guard let text: String = {
+                guard let resultItem: DetailResultItem = viewModel?.getResultItem(from: indexPath) else {
+                    return nil
+                }
+                
+                switch resultItem.resultType {
+                case let .link(_, text):
+                    return (text == Localizable.NO_DATA.string) ? nil : text
+                case let .eng(_, text):
+                    return (text == Localizable.NO_DATA.string) ? nil : text
+                default:
+                    return nil
+                }
+            }() else {
                 return nil
             }
             
