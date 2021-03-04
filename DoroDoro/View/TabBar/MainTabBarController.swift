@@ -9,11 +9,10 @@ import UIKit
 
 final internal class MainTabBarController: UITabBarController {
     internal weak var searchVC: SearchViewController? = nil
-    internal weak var searchNVC: UINavigationController? = nil
     internal weak var bookmarksVC: BookmarksViewController? = nil
-    internal weak var bookmarksNVC: UINavigationController? = nil
     internal weak var settingsVC: SettingsViewController? = nil
-    internal weak var settingsNVC: UINavigationController? = nil
+    
+    internal var splitVCDelegate: DetailedNVCSplitViewControllerDelegate = .init()
     
     override internal func viewDidLoad() {
         super.viewDidLoad()
@@ -47,9 +46,11 @@ final internal class MainTabBarController: UITabBarController {
         
         searchSplitVC.viewControllers = [searchNVC]
         searchSplitVC.preferredDisplayMode = .oneBesideSecondary
+        searchSplitVC.delegate = splitVCDelegate
         searchSplitVC.loadViewIfNeeded()
         bookmarksSplitVC.viewControllers = [bookmarksNVC]
         bookmarksSplitVC.preferredDisplayMode = .oneBesideSecondary
+        bookmarksSplitVC.delegate = splitVCDelegate
         bookmarksSplitVC.loadViewIfNeeded()
         
         searchSplitVC.tabBarItem = .init(title: Localizable.TABBAR_SEARCH_VIEW_CONTROLLER_TITLE.string,

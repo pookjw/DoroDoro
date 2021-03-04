@@ -118,6 +118,7 @@
 		F3C2796125EEC8C40029A61E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3C2796025EEC8C40029A61E /* CloudKit.framework */; };
 		F3E6881025F122E200A619CA /* String+choseongContains.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E6880F25F122E200A619CA /* String+choseongContains.swift */; };
 		F3E6881225F12B4E00A619CA /* SettingsContributorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E6881125F12B4E00A619CA /* SettingsContributorType.swift */; };
+		F3E6881425F13E6600A619CA /* DetailedNVCSplitViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E6881325F13E6600A619CA /* DetailedNVCSplitViewControllerDelegate.swift */; };
 		F3F2F29225EFDB74005FC9CE /* UIViewController+SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F2F29125EFDB74005FC9CE /* UIViewController+SpinnerView.swift */; };
 		F3F4FAF025E8080D0077FCB5 /* AddrEngCommonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F4FAEF25E8080D0077FCB5 /* AddrEngCommonData.swift */; };
 		F3F4FAF725E8082F0077FCB5 /* AddrEngJusoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F4FAF625E8082F0077FCB5 /* AddrEngJusoData.swift */; };
@@ -347,6 +348,7 @@
 		F3C2796025EEC8C40029A61E /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		F3E6880F25F122E200A619CA /* String+choseongContains.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+choseongContains.swift"; sourceTree = "<group>"; };
 		F3E6881125F12B4E00A619CA /* SettingsContributorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsContributorType.swift; sourceTree = "<group>"; };
+		F3E6881325F13E6600A619CA /* DetailedNVCSplitViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedNVCSplitViewControllerDelegate.swift; sourceTree = "<group>"; };
 		F3F2F29125EFDB74005FC9CE /* UIViewController+SpinnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+SpinnerView.swift"; sourceTree = "<group>"; };
 		F3F4FAEF25E8080D0077FCB5 /* AddrEngCommonData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrEngCommonData.swift; sourceTree = "<group>"; };
 		F3F4FAF625E8082F0077FCB5 /* AddrEngJusoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrEngJusoData.swift; sourceTree = "<group>"; };
@@ -580,6 +582,7 @@
 			isa = PBXGroup;
 			children = (
 				F33BB0F425ED043400BC5772 /* SpinnerView.swift */,
+				F3E6881325F13E6600A619CA /* DetailedNVCSplitViewControllerDelegate.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -1247,6 +1250,7 @@
 				F384137A25F0061C0078334A /* SettingCellItem.swift in Sources */,
 				F3E6881025F122E200A619CA /* String+choseongContains.swift in Sources */,
 				F33BB10425ED268D00BC5772 /* MapViewController.swift in Sources */,
+				F3E6881425F13E6600A619CA /* DetailedNVCSplitViewControllerDelegate.swift in Sources */,
 				F333B97B25EB7F0200F1915F /* SearchViewModel.swift in Sources */,
 				F378B77625E7F17A00FCE546 /* AddrLinkCommonData.swift in Sources */,
 				F332741825EFF1CF00417437 /* CloudService.swift in Sources */,

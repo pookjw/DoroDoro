@@ -15,10 +15,6 @@ final internal class DetailsViewController: UIViewController {
     private var viewModel: DetailsViewModel? = nil
     private var cancellableBag: Set<AnyCancellable> = .init()
     
-    deinit {
-        printDeinitMessage()
-    }
-    
     override internal func viewDidLoad() {
         super.viewDidLoad()
         setAttributes()
