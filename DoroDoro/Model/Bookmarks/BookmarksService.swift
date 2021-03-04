@@ -17,10 +17,34 @@ final internal class BookmarksService {
     }
     
     // MARK: - Internal Properties
-    internal func save(data: BookmarksData) {
+    internal func save(_ data: BookmarksData) {
         _dataEvent.send(data)
         CloudService.shared.keyValueStore.set(data.bookmarkedRoadAddrs, forKey: Constants.bookmarksKey)
         CloudService.shared.synchronize()
+    }
+    
+    internal func isBookmarked(_ roadAddr: String) -> Bool {
+        data.bookmarkedRoadAddrs.keys.contains(roadAddr)
+    }
+    
+    internal func removeBookmark(_ roadAddr: String) {
+        var data: BookmarksData = data
+        data.bookmarkedRoadAddrs.removeValue(forKey: roadAddr)
+        save(data)
+    }
+    
+    internal func addBookmark(_ roadAddr: String) {
+        var data: BookmarksData = data
+        data.bookmarkedRoadAddrs[roadAddr] = Date()
+        save(data)
+    }
+    
+    internal func toggleBookmark(_ roadAddr: String) {
+        if isBookmarked(roadAddr) {
+            removeBookmark(roadAddr)
+        } else {
+            addBookmark(roadAddr)
+        }
     }
     
     // MARK: - Private Properties

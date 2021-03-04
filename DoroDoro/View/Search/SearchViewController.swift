@@ -215,21 +215,17 @@ extension SearchViewController: UICollectionViewDelegate {
         
         let bookmarkAction: UIAction
         
-        if BookmarksService.shared.data.bookmarkedRoadAddrs.keys.contains(text) {
+        if BookmarksService.shared.isBookmarked(text) {
             bookmarkAction = .init(title: Localizable.REMOVE_FROM_BOOKMARKS.string,
                                       image: UIImage(systemName: "bookmark.fill"),
                                       attributes: [.destructive]) { _ in
-                var data: BookmarksData = BookmarksService.shared.data
-                data.bookmarkedRoadAddrs.removeValue(forKey: text)
-                BookmarksService.shared.save(data: data)
+                BookmarksService.shared.removeBookmark(text)
               }
         } else {
             bookmarkAction = .init(title: Localizable.ADD_TO_BOOKMARKS.string,
                                       image: UIImage(systemName: "bookmark"),
                                       attributes: []) { _ in
-                var data: BookmarksData = BookmarksService.shared.data
-                data.bookmarkedRoadAddrs[text] = Date()
-                BookmarksService.shared.save(data: data)
+                BookmarksService.shared.addBookmark(text)
               }
         }
         

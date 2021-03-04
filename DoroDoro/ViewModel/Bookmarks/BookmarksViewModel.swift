@@ -20,6 +20,11 @@ final internal class BookmarksViewModel {
     }
     
     private func bind() {
-        
+        BookmarksService.shared.dataEvent
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] data in
+                    
+            })
+            .store(in: &cancellableBag)
     }
 }

@@ -28,16 +28,7 @@ final internal class DetailsViewModel {
     
     internal func toggleBookmark() {
         guard let roadAddr: String = roadAddr else { return }
-        
-        var data: BookmarksData = BookmarksService.shared.data
-        
-        if data.bookmarkedRoadAddrs.keys.contains(roadAddr) {
-            data.bookmarkedRoadAddrs.removeValue(forKey: roadAddr)
-        } else {
-            data.bookmarkedRoadAddrs[roadAddr] = Date()
-        }
-        
-        BookmarksService.shared.save(data: data)
+        BookmarksService.shared.toggleBookmark(roadAddr)
     }
     
     internal func getResultItem(from indexPath: IndexPath) -> DetailResultItem? {
@@ -264,7 +255,7 @@ final internal class DetailsViewModel {
     
     private func checkBookmarkedStatus(data: BookmarksData = BookmarksService.shared.data) {
         guard let roadAddr: String = roadAddr else { return }
-        bookmarkEvent.send(data.bookmarkedRoadAddrs.keys.contains(roadAddr))
+        bookmarkEvent.send(BookmarksService.shared.isBookmarked((roadAddr)))
     }
     
     private func bind() {
