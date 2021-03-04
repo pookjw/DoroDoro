@@ -65,9 +65,8 @@ final internal class SearchViewModel {
                 return headerItem
             } else {
                 // 기존에 생성된 Header가 없거나 1페이지일 경우 Header를 새로 만든다.
-                snapshot.deleteAllItems()
-                
                 let headerItem: SearchHeaderItem = .init(title: String(format: Localizable.RESULTS_FOR_ADDRESS.string, text))
+                snapshot.deleteAllItems()
                 snapshot.appendSections([headerItem])
                 
                 return headerItem

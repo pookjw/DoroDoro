@@ -34,7 +34,10 @@ final internal class SearchViewController: UIViewController {
         super.viewWillAppear(animated)
         navigationItem.largeTitleDisplayMode = .always
         navigationController?.navigationBar.prefersLargeTitles = true
-        animateForSelectedIndexPath(animated: animated)
+        
+        if let collectionView: UICollectionView = collectionView {
+            animateForSelectedIndexPath(collectionView, animated: animated)
+        }
     }
     
     private func configureViewModel() {
@@ -80,22 +83,6 @@ final internal class SearchViewController: UIViewController {
         searchController.searchBar.delegate = self
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
-    }
-    
-    private func animateForSelectedIndexPath(animated: Bool) {
-        collectionView?.indexPathsForSelectedItems?.forEach { [weak self] indexPath in
-            if let coordinator: UIViewControllerTransitionCoordinator = self?.transitionCoordinator {
-                coordinator.animate(alongsideTransition: { context in
-                    self?.collectionView?.deselectItem(at: indexPath, animated: true)
-                }, completion: { context in
-                    if context.isCancelled {
-                        self?.collectionView?.selectItem(at: indexPath, animated: false, scrollPosition: .left)
-                    }
-                })
-            } else {
-                self?.collectionView?.deselectItem(at: indexPath, animated: animated)
-            }
-        }
     }
     
     private func makeDataSource() -> SearchViewModel.DataSource {

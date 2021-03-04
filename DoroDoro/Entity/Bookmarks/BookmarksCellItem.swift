@@ -11,8 +11,6 @@ internal struct BookmarksCellItem: Hashable, Equatable {
     internal let roadAddr: String
     
     internal static func == (lhs: BookmarksCellItem, rhs: BookmarksCellItem) -> Bool {
-        return lhs.id == rhs.id
+        return lhs.roadAddr == rhs.roadAddr
     }
-    
-    private let id: UUID = .init()
 }

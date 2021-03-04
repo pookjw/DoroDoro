@@ -31,4 +31,20 @@ extension UIViewController {
         present(ac, animated: true)
         return ac
     }
+    
+    internal func animateForSelectedIndexPath(_ collectionView: UICollectionView, animated: Bool) {
+        collectionView.indexPathsForSelectedItems?.forEach { [weak self, weak collectionView] indexPath in
+            if let coordinator: UIViewControllerTransitionCoordinator = self?.transitionCoordinator {
+                coordinator.animate(alongsideTransition: { context in
+                    collectionView?.deselectItem(at: indexPath, animated: true)
+                }, completion: { context in
+                    if context.isCancelled {
+                        collectionView?.selectItem(at: indexPath, animated: false, scrollPosition: .left)
+                    }
+                })
+            } else {
+                collectionView?.deselectItem(at: indexPath, animated: animated)
+            }
+        }
+    }
 }
