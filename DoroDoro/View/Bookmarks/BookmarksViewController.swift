@@ -84,6 +84,7 @@ final internal class BookmarksViewController: UIViewController {
             configuration.text = result.roadAddr
             configuration.image = UIImage(systemName: "signpost.right")
             cell.contentConfiguration = configuration
+            cell.accessories = [.disclosureIndicator()]
         }
     }
     

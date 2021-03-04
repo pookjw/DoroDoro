@@ -112,6 +112,7 @@ final internal class SearchViewController: UIViewController {
             configuration.text = result.linkJusoData.roadAddr
             configuration.image = UIImage(systemName: "signpost.right")
             cell.contentConfiguration = configuration
+            cell.accessories = [.disclosureIndicator()]
         }
     }
     
