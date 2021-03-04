@@ -27,17 +27,16 @@ final internal class MainTabBarController: UITabBarController {
     private func configureViewControllers() {
         let searchVC: SearchViewController = .init()
         let searchNVC: UINavigationController = .init(rootViewController: searchVC)
+        let searchSplitVC: UISplitViewController = .init()
         let bookmarksVC: BookmarksViewController = .init()
         let bookmarksNVC: UINavigationController = .init(rootViewController: bookmarksVC)
+        let bookmarksSplitVC: UISplitViewController = .init()
         let settingsVC: SettingsViewController = .init()
         let settingsNVC: UINavigationController = .init(rootViewController: settingsVC)
         
         self.searchVC = searchVC
-        self.searchNVC = searchNVC
         self.bookmarksVC = bookmarksVC
-        self.bookmarksNVC = bookmarksNVC
         self.settingsVC = settingsVC
-        self.settingsNVC = settingsNVC
         
         searchVC.loadViewIfNeeded()
         searchNVC.loadViewIfNeeded()
@@ -46,20 +45,27 @@ final internal class MainTabBarController: UITabBarController {
         settingsVC.loadViewIfNeeded()
         settingsNVC.loadViewIfNeeded()
         
-        searchVC.tabBarItem = .init(title: Localizable.TABBAR_SEARCH_VIEW_CONTROLLER_TITLE.string,
+        searchSplitVC.viewControllers = [searchNVC]
+        searchSplitVC.preferredDisplayMode = .oneBesideSecondary
+        searchSplitVC.loadViewIfNeeded()
+        bookmarksSplitVC.viewControllers = [bookmarksNVC]
+        bookmarksSplitVC.preferredDisplayMode = .oneBesideSecondary
+        bookmarksSplitVC.loadViewIfNeeded()
+        
+        searchSplitVC.tabBarItem = .init(title: Localizable.TABBAR_SEARCH_VIEW_CONTROLLER_TITLE.string,
                                     image: UIImage(systemName: "magnifyingglass"),
                                     tag: 0)
         
-        bookmarksVC.tabBarItem = .init(title: Localizable.TABBAR_BOOKMARKS_VIEW_CONTROLLER_TITLE.string,
+        bookmarksSplitVC.tabBarItem = .init(title: Localizable.TABBAR_BOOKMARKS_VIEW_CONTROLLER_TITLE.string,
                                        image: UIImage(systemName: "bookmark"),
                                        tag: 1)
-        bookmarksVC.tabBarItem.selectedImage = UIImage(systemName: "bookmark.fill")
+        bookmarksSplitVC.tabBarItem.selectedImage = UIImage(systemName: "bookmark.fill")
         
-        settingsVC.tabBarItem = .init(title: Localizable.TABBAR_SETTINGS_VIEW_CONTROLLER_TITLE.string,
+        settingsNVC.tabBarItem = .init(title: Localizable.TABBAR_SETTINGS_VIEW_CONTROLLER_TITLE.string,
                                        image: UIImage(systemName: "gearshape"),
                                        tag: 2)
-        settingsVC.tabBarItem.selectedImage = UIImage(systemName: "gearshape.fill")
+        settingsNVC.tabBarItem.selectedImage = UIImage(systemName: "gearshape.fill")
         
-        setViewControllers([searchNVC, bookmarksNVC, settingsNVC], animated: false)
+        setViewControllers([searchSplitVC, bookmarksSplitVC, settingsNVC], animated: false)
     }
 }

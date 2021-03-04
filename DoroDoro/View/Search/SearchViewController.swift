@@ -159,8 +159,7 @@ final internal class SearchViewController: UIViewController {
         let detailsVC: DetailsViewController = .init()
         detailsVC.loadViewIfNeeded()
         detailsVC.setLinkJusoData(linkJusoData)
-//        detailsVC.setRoadAddr(linkJusoData.roadAddr)
-        navigationController?.pushViewController(detailsVC, animated: true)
+        splitViewController?.showDetailViewController(detailsVC, sender: nil)
     }
 }
 
