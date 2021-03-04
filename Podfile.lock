@@ -1,6 +1,5 @@
 PODS:
   - Alamofire (5.4.1)
-  - BulletinBoard (4.1.2)
   - CRRefresh (1.1.3)
   - MarqueeLabel (4.0.5)
   - NotificationBannerSwift (3.0.6):
@@ -13,7 +12,6 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 5.4.1)
-  - BulletinBoard (~> 4.1.1)
   - CRRefresh (~> 1.1.3)
   - NotificationBannerSwift (= 3.0.6)
   - NVActivityIndicatorView (~> 5.1.1)
@@ -22,7 +20,6 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
-    - BulletinBoard
     - CRRefresh
     - MarqueeLabel
     - NotificationBannerSwift
@@ -31,13 +28,12 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
-  BulletinBoard: 1c0cb191b6c6245d08f51bd2445f1e36414ec0ed
   CRRefresh: 1415d4ae06837fa7bb064c44f2e102f3ef517044
   MarqueeLabel: 00cc0bcd087111dca575878b3531af980559707d
   NotificationBannerSwift: 7021be2338f8f29cf424b0aca43da462bf9e2a1a
   NVActivityIndicatorView: 1f6c5687f1171810aa27a3296814dc2d7dec3667
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: 94a95aed59818faad67811509ab3a48d8b2688ba
+PODFILE CHECKSUM: 6030536f53bc1863c581580034d61d8e29dc8deb
 
 COCOAPODS: 1.10.1

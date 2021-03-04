@@ -128,7 +128,7 @@ final internal class SettingsViewController: UIViewController {
             case .map:
                 var configuration: UIListContentConfiguration = footerView.defaultContentConfiguration()
                 
-                configuration.text = "상세 보기 화면과 Intel CPU가 탑재된 Mac은 카카오지도를 지원하지 않습니다.(번역)"
+                configuration.text = "상세 보기 화면과 Intel CPU에서는 카카오지도를 지원하지 않습니다.(번역)"
                 configuration.textProperties.alignment = .center
                 footerView.contentConfiguration = configuration
             default:
