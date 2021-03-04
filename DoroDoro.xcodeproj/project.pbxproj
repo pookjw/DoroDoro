@@ -72,9 +72,6 @@
 		F33BB1BF25ED4E5700BC5772 /* daum_th_line.png in Resources */ = {isa = PBXBuildFile; fileRef = F33BB1A325ED4E5700BC5772 /* daum_th_line.png */; };
 		F33BB1C025ED4E5700BC5772 /* map_pin_shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = F33BB1A425ED4E5700BC5772 /* map_pin_shadow.png */; };
 		F33BB1C125ED4E5700BC5772 /* DaumMap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F33BB1A525ED4E5700BC5772 /* DaumMap.framework */; platformFilter = ios; };
-		F33BB1FA25ED65B200BC5772 /* WelcomeBLTNPageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB1F925ED65B200BC5772 /* WelcomeBLTNPageItem.swift */; };
-		F33BB20625ED680D00BC5772 /* IntroBulletinManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB20525ED680D00BC5772 /* IntroBulletinManager.swift */; };
-		F33BB21C25ED6AB300BC5772 /* SearchGuideBLTNPageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB21B25ED6AB300BC5772 /* SearchGuideBLTNPageItem.swift */; };
 		F3444C9C25E8B1BB00A0706F /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3444C9B25E8B1BB00A0706F /* Localizable.swift */; };
 		F3444CA925E8B82300A0706F /* DoroDoroUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3444CA825E8B82300A0706F /* DoroDoroUITests.swift */; };
 		F3444DCD25E8C4B300A0706F /* AddrAPIErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3444DCC25E8C4B300A0706F /* AddrAPIErrorTests.swift */; };
@@ -105,7 +102,7 @@
 		F378B77D25E7F18900FCE546 /* AddrLinkJusoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B77C25E7F18900FCE546 /* AddrLinkJusoData.swift */; };
 		F378B78425E7F45600FCE546 /* AddrLinkAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B78325E7F45600FCE546 /* AddrLinkAPIError.swift */; };
 		F378B79025E7FAE500FCE546 /* AddrLinkResultsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B78F25E7FAE500FCE546 /* AddrLinkResultsData.swift */; };
-		F38128F225F023FD00C36F7B /* MapSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38128F125F023FD00C36F7B /* MapSelection.swift */; };
+		F38128F225F023FD00C36F7B /* SettingsMapSelectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38128F125F023FD00C36F7B /* SettingsMapSelectionType.swift */; };
 		F38128F525F0276700C36F7B /* BookmarksCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38128F425F0276700C36F7B /* BookmarksCellItem.swift */; };
 		F38128F725F027F000C36F7B /* BookmarksHeaderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38128F625F027F000C36F7B /* BookmarksHeaderItem.swift */; };
 		F38128FA25F0286100C36F7B /* BookmarksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38128F925F0286100C36F7B /* BookmarksViewModel.swift */; };
@@ -120,6 +117,7 @@
 		F3AAE2A525E7D06800D666BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3AAE2A325E7D06800D666BD /* LaunchScreen.storyboard */; };
 		F3C2796125EEC8C40029A61E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3C2796025EEC8C40029A61E /* CloudKit.framework */; };
 		F3E6881025F122E200A619CA /* String+choseongContains.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E6880F25F122E200A619CA /* String+choseongContains.swift */; };
+		F3E6881225F12B4E00A619CA /* SettingsContributorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E6881125F12B4E00A619CA /* SettingsContributorType.swift */; };
 		F3F2F29225EFDB74005FC9CE /* UIViewController+SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F2F29125EFDB74005FC9CE /* UIViewController+SpinnerView.swift */; };
 		F3F4FAF025E8080D0077FCB5 /* AddrEngCommonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F4FAEF25E8080D0077FCB5 /* AddrEngCommonData.swift */; };
 		F3F4FAF725E8082F0077FCB5 /* AddrEngJusoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F4FAF625E8082F0077FCB5 /* AddrEngJusoData.swift */; };
@@ -289,9 +287,6 @@
 		F33BB1A325ED4E5700BC5772 /* daum_th_line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = daum_th_line.png; sourceTree = "<group>"; };
 		F33BB1A425ED4E5700BC5772 /* map_pin_shadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_pin_shadow.png; sourceTree = "<group>"; };
 		F33BB1A525ED4E5700BC5772 /* DaumMap.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DaumMap.framework; sourceTree = "<group>"; };
-		F33BB1F925ED65B200BC5772 /* WelcomeBLTNPageItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeBLTNPageItem.swift; sourceTree = "<group>"; };
-		F33BB20525ED680D00BC5772 /* IntroBulletinManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroBulletinManager.swift; sourceTree = "<group>"; };
-		F33BB21B25ED6AB300BC5772 /* SearchGuideBLTNPageItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGuideBLTNPageItem.swift; sourceTree = "<group>"; };
 		F3444C9B25E8B1BB00A0706F /* Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
 		F3444CA625E8B82300A0706F /* DoroDoroUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoroDoroUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3444CA825E8B82300A0706F /* DoroDoroUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoroDoroUITests.swift; sourceTree = "<group>"; };
@@ -334,7 +329,7 @@
 		F378B77C25E7F18900FCE546 /* AddrLinkJusoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrLinkJusoData.swift; sourceTree = "<group>"; };
 		F378B78325E7F45600FCE546 /* AddrLinkAPIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrLinkAPIError.swift; sourceTree = "<group>"; };
 		F378B78F25E7FAE500FCE546 /* AddrLinkResultsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrLinkResultsData.swift; sourceTree = "<group>"; };
-		F38128F125F023FD00C36F7B /* MapSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSelection.swift; sourceTree = "<group>"; };
+		F38128F125F023FD00C36F7B /* SettingsMapSelectionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsMapSelectionType.swift; sourceTree = "<group>"; };
 		F38128F425F0276700C36F7B /* BookmarksCellItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksCellItem.swift; sourceTree = "<group>"; };
 		F38128F625F027F000C36F7B /* BookmarksHeaderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksHeaderItem.swift; sourceTree = "<group>"; };
 		F38128F925F0286100C36F7B /* BookmarksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksViewModel.swift; sourceTree = "<group>"; };
@@ -351,6 +346,7 @@
 		F3AAE2A625E7D06800D666BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F3C2796025EEC8C40029A61E /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		F3E6880F25F122E200A619CA /* String+choseongContains.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+choseongContains.swift"; sourceTree = "<group>"; };
+		F3E6881125F12B4E00A619CA /* SettingsContributorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsContributorType.swift; sourceTree = "<group>"; };
 		F3F2F29125EFDB74005FC9CE /* UIViewController+SpinnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+SpinnerView.swift"; sourceTree = "<group>"; };
 		F3F4FAEF25E8080D0077FCB5 /* AddrEngCommonData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrEngCommonData.swift; sourceTree = "<group>"; };
 		F3F4FAF625E8082F0077FCB5 /* AddrEngJusoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrEngJusoData.swift; sourceTree = "<group>"; };
@@ -583,7 +579,6 @@
 		F33BB0E825ED03B500BC5772 /* Component */ = {
 			isa = PBXGroup;
 			children = (
-				F33BB1F825ED659700BC5772 /* IntroBLTN */,
 				F33BB0F425ED043400BC5772 /* SpinnerView.swift */,
 			);
 			path = Component;
@@ -655,16 +650,6 @@
 				F33BB19825ED4E5600BC5772 /* MTMapCircle.h */,
 			);
 			path = Headers;
-			sourceTree = "<group>";
-		};
-		F33BB1F825ED659700BC5772 /* IntroBLTN */ = {
-			isa = PBXGroup;
-			children = (
-				F33BB1F925ED65B200BC5772 /* WelcomeBLTNPageItem.swift */,
-				F33BB21B25ED6AB300BC5772 /* SearchGuideBLTNPageItem.swift */,
-				F33BB20525ED680D00BC5772 /* IntroBulletinManager.swift */,
-			);
-			path = IntroBLTN;
 			sourceTree = "<group>";
 		};
 		F3444C9A25E8B1A700A0706F /* Localizable */ = {
@@ -850,7 +835,8 @@
 			isa = PBXGroup;
 			children = (
 				F332742625EFF7E500417437 /* SettingsData.swift */,
-				F38128F125F023FD00C36F7B /* MapSelection.swift */,
+				F38128F125F023FD00C36F7B /* SettingsMapSelectionType.swift */,
+				F3E6881125F12B4E00A619CA /* SettingsContributorType.swift */,
 				F384137925F0061C0078334A /* SettingCellItem.swift */,
 				F384137B25F006B10078334A /* SettingHeaderItem.swift */,
 			);
@@ -1262,20 +1248,19 @@
 				F3E6881025F122E200A619CA /* String+choseongContains.swift in Sources */,
 				F33BB10425ED268D00BC5772 /* MapViewController.swift in Sources */,
 				F333B97B25EB7F0200F1915F /* SearchViewModel.swift in Sources */,
-				F33BB20625ED680D00BC5772 /* IntroBulletinManager.swift in Sources */,
 				F378B77625E7F17A00FCE546 /* AddrLinkCommonData.swift in Sources */,
 				F332741825EFF1CF00417437 /* CloudService.swift in Sources */,
 				F332742025EFF71100417437 /* SettingsService.swift in Sources */,
-				F33BB21C25ED6AB300BC5772 /* SearchGuideBLTNPageItem.swift in Sources */,
 				F378B70225E7D88A00FCE546 /* MainTabBarController.swift in Sources */,
 				F38128FC25F028F800C36F7B /* BookmarksData.swift in Sources */,
 				F337B1DF25EC03A400FB0B61 /* AddrCoordSearchData.swift in Sources */,
 				F3F4FAF025E8080D0077FCB5 /* AddrEngCommonData.swift in Sources */,
+				F3E6881225F12B4E00A619CA /* SettingsContributorType.swift in Sources */,
 				F38128F525F0276700C36F7B /* BookmarksCellItem.swift in Sources */,
 				F3309FF825EA8C5D0024DF7F /* Keys.swift in Sources */,
 				F378B79025E7FAE500FCE546 /* AddrLinkResultsData.swift in Sources */,
 				F378B78425E7F45600FCE546 /* AddrLinkAPIError.swift in Sources */,
-				F38128F225F023FD00C36F7B /* MapSelection.swift in Sources */,
+				F38128F225F023FD00C36F7B /* SettingsMapSelectionType.swift in Sources */,
 				F378B75025E7EEDB00FCE546 /* DoroDoroWidget.intentdefinition in Sources */,
 				F33BB0D325ECE96C00BC5772 /* UIViewController+Ext.swift in Sources */,
 				F33BAFAC25EC239500BC5772 /* DetailsMapViewConfiguration.swift in Sources */,
@@ -1289,7 +1274,6 @@
 				F378B70925E7D8C600FCE546 /* BookmarksViewController.swift in Sources */,
 				F337B1BF25EBFF5700FB0B61 /* AddrCoordCommonData.swift in Sources */,
 				F3F2F29225EFDB74005FC9CE /* UIViewController+SpinnerView.swift in Sources */,
-				F33BB1FA25ED65B200BC5772 /* WelcomeBLTNPageItem.swift in Sources */,
 				F3F4FAF725E8082F0077FCB5 /* AddrEngJusoData.swift in Sources */,
 				F33BB04F25ECCD6C00BC5772 /* KakaoAddressDocumentData.swift in Sources */,
 				F3AAE29B25E7D06700D666BD /* SceneDelegate.swift in Sources */,

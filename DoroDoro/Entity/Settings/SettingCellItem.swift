@@ -9,7 +9,8 @@ import Foundation
 
 internal struct SettingCellItem: Hashable, Equatable {
     internal enum CellType: Hashable {
-        case mapSelection(mapType: MapSelection, selected: Bool)
+        case mapSelection(mapType: SettingsMapSelectionType, selected: Bool)
+        case contributor(contributorType: SettingsContributorType)
     }
     internal let cellType: CellType
     

@@ -10,7 +10,7 @@ import MapKit
 import SnapKit
 
 final internal class MapViewController: UIViewController {
-    internal var mapSelection: MapSelection = SettingsService.shared.data.mapSelection
+    internal var mapSelection: SettingsMapSelectionType = SettingsService.shared.data.mapSelection
     internal var locationText: String? = nil
     
     // 서울 종로구 효자로 12

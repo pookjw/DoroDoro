@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SafariServices
 
 extension UIViewController {
     internal func showErrorAlert(for error: LocalizedError) {
@@ -46,5 +47,10 @@ extension UIViewController {
                 collectionView?.deselectItem(at: indexPath, animated: animated)
             }
         }
+    }
+    
+    internal func presentSFSafariViewController(_ url: URL) {
+        let vc: SFSafariViewController = .init(url: url)
+        present(vc, animated: true)
     }
 }

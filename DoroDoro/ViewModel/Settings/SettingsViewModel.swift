@@ -50,7 +50,7 @@ final internal class SettingsViewModel {
         return sectionIdentifiers[indexPath.section]
     }
     
-    internal func updateMapSelection(new: MapSelection) {
+    internal func updateMapSelection(new: SettingsMapSelectionType) {
         var data: SettingsData = SettingsService.shared.data
         data.mapSelection = new
         SettingsService.shared.save(data: data)
@@ -58,9 +58,10 @@ final internal class SettingsViewModel {
     
     private func updateSettings(_ data: SettingsData) {
         updateMapSelectionItem(data.mapSelection)
+        updateContributorItem()
     }
     
-    private func updateMapSelectionItem(_ selected: MapSelection) {
+    private func updateMapSelectionItem(_ selected: SettingsMapSelectionType) {
         guard var snapshot: Snapshot = dataSource?.snapshot() else {
             return
         }
@@ -83,6 +84,32 @@ final internal class SettingsViewModel {
         ]
 
         snapshot.appendItems(items, toSection: mapHeaderItem)
+        sortSnapshot(&snapshot)
+        dataSource?.apply(snapshot, animatingDifferences: true)
+    }
+    
+    private func updateContributorItem() {
+        guard var snapshot: Snapshot = dataSource?.snapshot() else {
+            return
+        }
+        
+        let contributorHeaderItem: SettingHeaderItem = {
+            if let contributorHeaderItem: SettingHeaderItem = snapshot.sectionIdentifiers.first(where: { $0.headerType == .contributor }) {
+                snapshot.deleteSections([contributorHeaderItem])
+                snapshot.appendSections([contributorHeaderItem])
+                return contributorHeaderItem
+            } else {
+                let contributorHeaderItem: SettingHeaderItem = .init(headerType: .contributor)
+                snapshot.appendSections([contributorHeaderItem])
+                return contributorHeaderItem
+            }
+        }()
+        
+        let items: [SettingCellItem] = [
+            .init(cellType: .contributor(contributorType: .pookjw))
+        ]
+        
+        snapshot.appendItems(items, toSection: contributorHeaderItem)
         sortSnapshot(&snapshot)
         dataSource?.apply(snapshot, animatingDifferences: true)
     }

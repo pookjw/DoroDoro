@@ -8,13 +8,13 @@
 import Foundation
 
 internal struct SettingsData {
-    internal var mapSelection: MapSelection = .appleMap
+    internal var mapSelection: SettingsMapSelectionType = .appleMap
     
     internal init() {}
     
     internal init(dic: [String: Any]) {
         if let mapSelectionRawValue: Int = dic[Constants.mapSelectionKey] as? Int,
-           let mapSelection: MapSelection = MapSelection(rawValue: mapSelectionRawValue) {
+           let mapSelection: SettingsMapSelectionType = SettingsMapSelectionType(rawValue: mapSelectionRawValue) {
             self.mapSelection = mapSelection
         }
     }

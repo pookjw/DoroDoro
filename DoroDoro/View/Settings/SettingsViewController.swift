@@ -18,6 +18,16 @@ final internal class SettingsViewController: UIViewController {
         configureViewModel()
     }
     
+    override internal func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationItem.largeTitleDisplayMode = .always
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
+        if let collectionView: UICollectionView = collectionView {
+            animateForSelectedIndexPath(collectionView, animated: animated)
+        }
+    }
+    
     private func setAttributes() {
         view.backgroundColor = .systemBackground
         title = "SETTINGS"
@@ -76,6 +86,8 @@ final internal class SettingsViewController: UIViewController {
             switch item.cellType {
             case .mapSelection(let mapType, let selected):
                 self?.setMapSelectionCell(cell: cell, mapType: mapType, selected: selected)
+            case .contributor(let contributorType):
+                self?.setContributorTypeCell(cell: cell, contributorType: contributorType)
             }
         }
     }
@@ -94,8 +106,8 @@ final internal class SettingsViewController: UIViewController {
             switch headerItem.headerType {
             case .map:
                 configuration.text = "MAPS(번역)"
-            default:
-                configuration.text = "DEMO"
+            case .contributor:
+                configuration.text = "Contributors(번역)"
             }
             headerView.contentConfiguration = configuration
         }
@@ -116,7 +128,7 @@ final internal class SettingsViewController: UIViewController {
             case .map:
                 var configuration: UIListContentConfiguration = footerView.defaultContentConfiguration()
                 
-                configuration.text = "dddd."
+                configuration.text = "상세 보기 화면과 Intel CPU가 탑재된 Mac은 카카오지도를 지원하지 않습니다.(번역)"
                 configuration.textProperties.alignment = .center
                 footerView.contentConfiguration = configuration
             default:
@@ -127,7 +139,7 @@ final internal class SettingsViewController: UIViewController {
     
     private func setMapSelectionCell(
         cell: UICollectionViewListCell,
-        mapType: MapSelection,
+        mapType: SettingsMapSelectionType,
         selected: Bool)
     {
         var configuration: UIListContentConfiguration = cell.defaultContentConfiguration()
@@ -147,25 +159,41 @@ final internal class SettingsViewController: UIViewController {
         
         cell.contentConfiguration = configuration
     }
+    
+    private func setContributorTypeCell(cell: UICollectionViewListCell, contributorType: SettingsContributorType) {
+        var configuration: UIListContentConfiguration = cell.defaultContentConfiguration()
+        
+        switch contributorType {
+        case .pookjw:
+            configuration.image = UIImage(named: "pookjw")
+            configuration.imageProperties.cornerRadius = 25
+            configuration.imageProperties.maximumSize = .init(width: 50, height: 50)
+            configuration.text = "김진우(번역필요)"
+            configuration.secondaryText = "메인 개발자(번역필요)"
+        }
+        
+        cell.contentConfiguration = configuration
+        cell.accessories = [.disclosureIndicator()]
+    }
 }
 
 extension SettingsViewController: UICollectionViewDelegate {
     internal func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let headerItem: SettingHeaderItem = viewModel?.getSectionHeaderItem(from: indexPath) else {
-            return
-        }
         guard let cellItem: SettingCellItem = viewModel?.getCellItem(from: indexPath) else {
              return
         }
         
-        switch headerItem.headerType {
-        case .map:
-            if case let .mapSelection(mapType, _) = cellItem.cellType {
-                viewModel?.updateMapSelection(new: mapType)
-            }
+        switch cellItem.cellType {
+        case .mapSelection(let mapType, _):
+            viewModel?.updateMapSelection(new: mapType)
             collectionView.deselectItem(at: indexPath, animated: true)
-        case .about:
-            break
+        case .contributor(let contributorType):
+            switch contributorType {
+            case .pookjw:
+                if let url: URL = .init(string: "https://github.com/pookjw") {
+                    presentSFSafariViewController(url)
+                }
+            }
         }
     }
 }

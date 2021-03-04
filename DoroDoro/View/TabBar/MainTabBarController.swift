@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import BLTNBoard
 
 final internal class MainTabBarController: UITabBarController {
     internal weak var searchVC: SearchViewController? = nil
@@ -23,7 +22,6 @@ final internal class MainTabBarController: UITabBarController {
     
     override internal func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-//        introBulletinManager.bulletinManager?.showBulletin(above: self)
     }
     
     private func configureViewControllers() {

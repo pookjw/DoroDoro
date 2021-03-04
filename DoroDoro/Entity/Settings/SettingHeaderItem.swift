@@ -10,7 +10,7 @@ import Foundation
 internal struct SettingHeaderItem: Hashable, Equatable {
     internal enum HeaderType: Int {
         case map = 0
-        case about = 1
+        case contributor = 1
     }
     
     internal let headerType: HeaderType
