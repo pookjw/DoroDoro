@@ -56,11 +56,11 @@ final internal class SettingsViewModel {
         SettingsService.shared.save(data: data)
     }
     
-    private func updateSettings(data: SettingsData) {
-        updateMapSelectionItem(selected: data.mapSelection)
+    private func updateSettings(_ data: SettingsData) {
+        updateMapSelectionItem(data.mapSelection)
     }
     
-    private func updateMapSelectionItem(selected: MapSelection) {
+    private func updateMapSelectionItem(_ selected: MapSelection) {
         guard var snapshot: Snapshot = dataSource?.snapshot() else {
             return
         }
@@ -109,7 +109,7 @@ final internal class SettingsViewModel {
         SettingsService.shared.dataEvent
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] data in
-                self?.updateSettings(data: data)
+                self?.updateSettings(data)
             })
             .store(in: &cancellableBag)
     }

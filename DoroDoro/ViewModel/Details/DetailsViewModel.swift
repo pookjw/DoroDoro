@@ -15,14 +15,11 @@ final internal class DetailsViewModel {
     
     internal var dataSource: DataSource? = nil
     /// 전체 도로명주소
-    internal var roadAddr: String? = nil
-    internal var linkJusoData: AddrLinkJusoData? = nil
     internal var refreshedEvent: PassthroughSubject<Void, Never> = .init()
     internal var bookmarkEvent: PassthroughSubject<Bool, Never> = .init()
     internal let addrAPIService: AddrAPIService = .init()
     internal let kakaoAPIService: KakaoAPIService = .init()
-    private var engJusoData: AddrEngJusoData? = nil
-    private var addressDocumentData: KakaoAddressDocumentData? = nil
+    private var roadAddr: String? = nil
     private var cancellableBag: Set<AnyCancellable> = .init()
     
     internal init() {
@@ -73,19 +70,20 @@ final internal class DetailsViewModel {
         return sectionIdentifiers[indexPath.section].headerType
     }
     
-    internal func loadData() {
-        if let linkJusoData: AddrLinkJusoData = linkJusoData {
-            deleteAllItems()
-            roadAddr = linkJusoData.roadAddr
-            checkBookmarkedStatus()
-            updateLinkItems()
-            addrAPIService.requestEngEvent(keyword: linkJusoData.roadAddr)
-            kakaoAPIService.requestAddressEvent(query: linkJusoData.roadAddr,
-                                                analyzeType: .exact, page: 1, size: 1)
-        } else if let roadAddr: String = roadAddr {
-            deleteAllItems()
-            addrAPIService.requestLinkEvent(keyword: roadAddr)
-        }
+    internal func loadData(_ linkJusoData: AddrLinkJusoData) {
+        deleteAllItems()
+        roadAddr = linkJusoData.roadAddr
+        checkBookmarkedStatus()
+        updateLinkItems(linkJusoData)
+        addrAPIService.requestEngEvent(keyword: linkJusoData.roadAddr)
+        kakaoAPIService.requestAddressEvent(query: linkJusoData.roadAddr,
+                                            analyzeType: .exact, page: 1, size: 1)
+    }
+    
+    internal func loadData(_ roadAddr: String) {
+        deleteAllItems()
+        self.roadAddr = roadAddr
+        addrAPIService.requestLinkEvent(keyword: roadAddr)
     }
     
     private func deleteAllItems() {
@@ -96,9 +94,8 @@ final internal class DetailsViewModel {
         dataSource?.apply(snapshot, animatingDifferences: true)
     }
     
-    private func updateLinkItems() {
-        guard var snapshot: Snapshot = dataSource?.snapshot(),
-            let linkJusoData: AddrLinkJusoData = linkJusoData else {
+    private func updateLinkItems(_ linkJusoData: AddrLinkJusoData) {
+        guard var snapshot: Snapshot = dataSource?.snapshot() else {
             return
         }
         
@@ -150,9 +147,8 @@ final internal class DetailsViewModel {
         refreshedEvent.send()
     }
     
-    private func updateEngItems() {
-        guard var snapshot: Snapshot = dataSource?.snapshot(),
-            let engJusoData: AddrEngJusoData = engJusoData else {
+    private func updateEngItems(_ engJusoData: AddrEngJusoData) {
+        guard var snapshot: Snapshot = dataSource?.snapshot() else {
             return
         }
         
@@ -186,9 +182,8 @@ final internal class DetailsViewModel {
         refreshedEvent.send()
     }
     
-    private func updateMapItems() {
+    private func updateMapItems(_ addressDocumentData: KakaoAddressDocumentData) {
         guard var snapshot: Snapshot = dataSource?.snapshot(),
-            let addressDocumentData: KakaoAddressDocumentData = addressDocumentData,
             let latitude: Double = Double(addressDocumentData.y),
             let longitude: Double = Double(addressDocumentData.x)
         else {
@@ -277,8 +272,10 @@ final internal class DetailsViewModel {
             .prefix(1)
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] data in
-                self?.linkJusoData = data.juso.first
-                self?.loadData()
+                guard let data: AddrLinkJusoData = data.juso.first else {
+                    return
+                }
+                self?.loadData(data)
             })
             .store(in: &cancellableBag)
         
@@ -286,8 +283,10 @@ final internal class DetailsViewModel {
             .prefix(1)
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] data in
-                self?.engJusoData = data.juso.first
-                self?.updateEngItems()
+                guard let engJusoData: AddrEngJusoData = data.juso.first else {
+                    return
+                }
+                self?.updateEngItems(engJusoData)
             })
             .store(in: &cancellableBag)
         
@@ -295,8 +294,10 @@ final internal class DetailsViewModel {
             .prefix(1)
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] data in
-                self?.addressDocumentData = data.documents.first
-                self?.updateMapItems()
+                guard let addressDocumentData: KakaoAddressDocumentData = data.documents.first else {
+                    return
+                }
+                self?.updateMapItems(addressDocumentData)
             })
             .store(in: &cancellableBag)
         

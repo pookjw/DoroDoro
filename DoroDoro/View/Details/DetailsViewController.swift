@@ -35,14 +35,12 @@ final internal class DetailsViewController: UIViewController {
     }
     
     internal func setLinkJusoData(_ linkJusoData: AddrLinkJusoData) {
-        viewModel?.linkJusoData = linkJusoData
-        viewModel?.loadData()
+        viewModel?.loadData(linkJusoData)
     }
     
     internal func setRoadAddr(_ roadAddr: String) {
         showSpinnerView()
-        viewModel?.roadAddr = roadAddr
-        viewModel?.loadData()
+        viewModel?.loadData(roadAddr)
     }
     
     private func setAttributes() {
