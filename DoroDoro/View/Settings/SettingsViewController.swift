@@ -190,7 +190,7 @@ extension SettingsViewController: UICollectionViewDelegate {
         case .contributor(let contributorType):
             switch contributorType {
             case .pookjw:
-                if let url: URL = .init(string: "https://github.com/pookjw") {
+                if let url: URL = URL(string: "https://github.com/pookjw") {
                     presentSFSafariViewController(url)
                 }
             }

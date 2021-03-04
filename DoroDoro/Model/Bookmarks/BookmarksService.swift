@@ -28,13 +28,13 @@ final internal class BookmarksService {
     }
     
     internal func removeBookmark(_ roadAddr: String) {
-        var data: BookmarksData = data
+        var data: BookmarksData = self.data
         data.bookmarkedRoadAddrs.removeValue(forKey: roadAddr)
         save(data)
     }
     
     internal func addBookmark(_ roadAddr: String) {
-        var data: BookmarksData = data
+        var data: BookmarksData = self.data
         data.bookmarkedRoadAddrs[roadAddr] = Date()
         save(data)
     }

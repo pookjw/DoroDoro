@@ -13,6 +13,7 @@ final internal class SearchViewModel {
     internal typealias DataSource = UICollectionViewDiffableDataSource<SearchHeaderItem, SearchResultItem>
     internal typealias Snapshot = NSDiffableDataSourceSnapshot<SearchHeaderItem, SearchResultItem>
     
+    internal var contextMenuIndexPath: IndexPath? = nil
     internal var contextMenuLinkJusoData: AddrLinkJusoData? = nil
     internal let addrAPIService: AddrAPIService = .init()
     internal var dataSource: DataSource? = nil

@@ -92,7 +92,8 @@ final internal class BookmarksViewController: UIViewController {
         let detailsVC: DetailsViewController = .init()
         detailsVC.loadViewIfNeeded()
         detailsVC.setRoadAddr(roadAddr)
-        splitViewController?.showDetailViewController(detailsVC, sender: nil)
+        splitViewController?.showDetailViewController(detailsVC, sender: true)
+//        splitViewController?.showDetailViewController(detailsVC, sender: tr)
     }
 }
 

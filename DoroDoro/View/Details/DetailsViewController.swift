@@ -221,6 +221,13 @@ final internal class DetailsViewController: UIViewController {
         mapVC.loadViewIfNeeded()
         present(mapNVC, animated: true, completion: nil)
     }
+    
+    private func pushToDetailsVC(roadAddr: String) {
+        let detailsVC: DetailsViewController = .init()
+        detailsVC.loadViewIfNeeded()
+        detailsVC.setRoadAddr(roadAddr)
+        splitViewController?.showDetailViewController(detailsVC, sender: nil)
+    }
 }
 
 extension DetailsViewController: UICollectionViewDelegate {
@@ -229,9 +236,11 @@ extension DetailsViewController: UICollectionViewDelegate {
             return false
         }
         return headerItem.headerType == .map
+//        return true
     }
     
     internal func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        pushToDetailsVC(roadAddr: viewModel!.roadAddr!)
         guard let item: DetailResultItem = viewModel?.getResultItem(from: indexPath) else {
             return
         }

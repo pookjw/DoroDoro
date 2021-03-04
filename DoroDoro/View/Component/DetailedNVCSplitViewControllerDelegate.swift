@@ -9,27 +9,42 @@ import UIKit
 
 final internal class DetailedNVCSplitViewControllerDelegate: UISplitViewControllerDelegate {
     func splitViewController(_ splitViewController: UISplitViewController, showDetail vc: UIViewController, sender: Any?) -> Bool {
-        guard !splitViewController.isCollapsed else {
+        print(splitViewController.style.rawValue)
+        guard !splitViewController.isCollapsed,
+              !splitViewController.viewControllers.isEmpty else {
             return false
         }
         
-        let secondaryNavigationController: UINavigationController = .init(rootViewController: vc)
-        if splitViewController.viewControllers.count < 2 {
+        if (splitViewController.viewControllers.count == 1) {
+            let secondaryNavigationController: UINavigationController = .init(rootViewController: vc)
             splitViewController.viewControllers.append(secondaryNavigationController)
-        } else {
+            return true
+        } else if (sender as? Bool) == true {
+            let secondaryNavigationController: UINavigationController = .init(rootViewController: vc)
             splitViewController.viewControllers[1] = secondaryNavigationController
+            return true
+        } else if let secondaryNavigationController: UINavigationController = splitViewController.viewControllers[1] as? UINavigationController {
+            secondaryNavigationController.pushViewController(vc, animated: true)
+            return true
+        } else {
+            return false
         }
-        
-        return true
     }
 
     func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
-        guard let secondaryNavigationController: UINavigationController = secondaryViewController as? UINavigationController,
-            let primaryNavigationController: UINavigationController = primaryViewController as? UINavigationController else {
+        guard let primaryNavigationController: UINavigationController = primaryViewController as? UINavigationController else {
+            return false
+        }
+        
+        guard let secondaryNavigationController: UINavigationController = secondaryViewController as? UINavigationController else {
+//            if secondaryViewController != nil {
+//                primaryNavigationController.viewControllers.append(secondaryViewController)
+//            }
             return false
         }
         
         primaryNavigationController.viewControllers.append(contentsOf: secondaryNavigationController.viewControllers)
+        
         return true
     }
 
@@ -39,19 +54,21 @@ final internal class DetailedNVCSplitViewControllerDelegate: UISplitViewControll
             return nil
         }
         
-        guard primaryNavigationController.viewControllers.count > 1 else {
+        let primaryNavigationControllersCount: Int = primaryNavigationController.viewControllers.count
+        
+        guard primaryNavigationControllersCount > 1 else {
             return nil
         }
         
-        guard let secondaryViewController: UIViewController = primaryNavigationController.viewControllers.popLast() else {
-            return nil
-        }
+        let secondaryViewControllers: [UIViewController] = Array(primaryNavigationController.viewControllers[1..<primaryNavigationControllersCount])
+        primaryNavigationController.viewControllers = [primaryNavigationController.viewControllers[0]]
         
-        if secondaryViewController is UINavigationController {
-            return secondaryViewController
-        }
-        
-        let secondaryNavigationController: UINavigationController = .init(rootViewController: secondaryViewController)
+        let secondaryNavigationController: UINavigationController = .init()
+        secondaryNavigationController.viewControllers = secondaryViewControllers
         return secondaryNavigationController
+    }
+    
+    func splitViewController(_ svc: UISplitViewController, topColumnForCollapsingToProposedTopColumn proposedTopColumn: UISplitViewController.Column) -> UISplitViewController.Column {
+        return .primary
     }
 }

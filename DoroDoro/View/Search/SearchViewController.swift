@@ -159,7 +159,7 @@ final internal class SearchViewController: UIViewController {
         let detailsVC: DetailsViewController = .init()
         detailsVC.loadViewIfNeeded()
         detailsVC.setLinkJusoData(linkJusoData)
-        splitViewController?.showDetailViewController(detailsVC, sender: nil)
+        splitViewController?.showDetailViewController(detailsVC, sender: true)
     }
 }
 
@@ -222,6 +222,7 @@ extension SearchViewController: UICollectionViewDelegate {
         }
         
         viewModel?.contextMenuLinkJusoData = contextMenuLinkJusoData
+        viewModel?.contextMenuIndexPath = indexPath
         
         return UIContextMenuConfiguration(identifier: nil,
                                           previewProvider: nil) { _ in
@@ -230,9 +231,12 @@ extension SearchViewController: UICollectionViewDelegate {
     }
     
     internal func collectionView(_ collectionView: UICollectionView, willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionCommitAnimating) {
-        animator.addAnimations { [weak self] in
+        animator.addAnimations { [weak self, weak collectionView] in
             if let data: AddrLinkJusoData = self?.viewModel?.contextMenuLinkJusoData {
                 self?.pushToDetailsVC(linkJusoData: data)
+            }
+            if let indexPath: IndexPath = self?.viewModel?.contextMenuIndexPath {
+                collectionView?.selectItem(at: indexPath, animated: true, scrollPosition: .left)
             }
             self?.viewModel?.contextMenuLinkJusoData = nil
         }

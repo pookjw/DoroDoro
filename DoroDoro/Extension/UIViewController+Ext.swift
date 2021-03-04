@@ -43,7 +43,7 @@ extension UIViewController {
                         collectionView?.selectItem(at: indexPath, animated: false, scrollPosition: .left)
                     }
                 })
-            } else {
+            } else if let isCollapsed: Bool = splitViewController?.isCollapsed, isCollapsed {
                 collectionView?.deselectItem(at: indexPath, animated: animated)
             }
         }
