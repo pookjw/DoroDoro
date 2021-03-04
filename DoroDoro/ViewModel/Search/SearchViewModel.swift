@@ -86,6 +86,7 @@ final internal class SearchViewModel {
     
     private func bind() {
         $searchEvent
+            .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] text in
                 guard let self = self else { return }
                 guard let text: String = text,

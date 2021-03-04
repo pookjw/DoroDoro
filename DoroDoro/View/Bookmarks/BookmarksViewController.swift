@@ -9,12 +9,14 @@ import UIKit
 
 final internal class BookmarksViewController: UIViewController {
     private weak var collectionView: UICollectionView? = nil
+    private weak var searchController: UISearchController? = nil
     private var viewModel: BookmarksViewModel? = nil
     
     override internal func viewDidLoad() {
         super.viewDidLoad()
         setAttributes()
         configureCollectionView()
+        configureSearchController()
         configureViewModel()
     }
     
@@ -32,6 +34,15 @@ final internal class BookmarksViewController: UIViewController {
         if let collectionView: UICollectionView = collectionView {
             animateForSelectedIndexPath(collectionView, animated: animated)
         }
+    }
+    
+    private func configureSearchController() {
+        let searchController: UISearchController = .init(searchResultsController: nil)
+        self.searchController = searchController
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.delegate = self
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
     }
     
     private func configureViewModel() {
@@ -103,4 +114,14 @@ final internal class BookmarksViewController: UIViewController {
 
 extension BookmarksViewController: UICollectionViewDelegate {
     
+}
+
+extension BookmarksViewController: UISearchBarDelegate {
+    internal func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        viewModel?.searchEvent = searchText
+    }
+    
+    internal func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchController?.dismiss(animated: true, completion: nil)
+    }
 }
