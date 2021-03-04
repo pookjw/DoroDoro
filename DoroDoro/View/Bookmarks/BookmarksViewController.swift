@@ -52,8 +52,7 @@ final internal class BookmarksViewController: UIViewController {
     
     private func configureCollectionView() {
         // 이 View Controller에는 Section이 1개이므로 NSCollectionLayoutSection를 쓸 필요가 없다.
-        var layoutConfiguration: UICollectionLayoutListConfiguration = .init(appearance: .insetGrouped)
-        layoutConfiguration.headerMode = .supplementary
+        let layoutConfiguration: UICollectionLayoutListConfiguration = .init(appearance: .insetGrouped)
         let layout: UICollectionViewCompositionalLayout = .list(using: layoutConfiguration)
         
         let collectionView: UICollectionView = .init(frame: .zero, collectionViewLayout: layout)
@@ -76,16 +75,6 @@ final internal class BookmarksViewController: UIViewController {
             return collectionView.dequeueConfiguredReusableCell(using: self.getResultCellRegisteration(), for: indexPath, item: result)
         }
         
-        dataSource.supplementaryViewProvider = { [weak self] (collectionView, elementKind, indexPath) -> UICollectionReusableView? in
-            guard let self = self else { return nil }
-            
-            if elementKind == UICollectionView.elementKindSectionHeader {
-                return self.collectionView?.dequeueConfiguredReusableSupplementary(using: self.getHeaderCellRegisteration(), for: indexPath)
-            }
-
-            return nil
-        }
-        
         return dataSource
     }
     
@@ -95,19 +84,6 @@ final internal class BookmarksViewController: UIViewController {
             configuration.text = result.roadAddr
             configuration.image = UIImage(systemName: "signpost.right")
             cell.contentConfiguration = configuration
-        }
-    }
-    
-    private func getHeaderCellRegisteration() -> UICollectionView.SupplementaryRegistration<UICollectionViewListCell> {
-        return .init(elementKind: UICollectionView.elementKindSectionHeader) { [weak self] (headerView, elementKind, indexPath) in
-            guard let dataSource: BookmarksViewModel.DataSource = self?.viewModel?.dataSource else { return }
-            guard dataSource.snapshot().sectionIdentifiers.count > indexPath.section else { return }
-            
-            let headerItem: BookmarksHeaderItem = dataSource.snapshot().sectionIdentifiers[indexPath.section]
-            
-            var configuration: UIListContentConfiguration = headerView.defaultContentConfiguration()
-            configuration.text = "DEMO"
-            headerView.contentConfiguration = configuration
         }
     }
     

@@ -54,8 +54,10 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <RemoteRunnable
+         runnableDebuggingMode = "2"
+         BundleIdentifier = "com.apple.Carousel"
+         RemotePath = "/DoroDoro">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F378B6CA25E7D77100FCE546"
@@ -63,7 +65,7 @@
             BlueprintName = "DoroDoroWatch"
             ReferencedContainer = "container:DoroDoro.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </RemoteRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -71,8 +73,10 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <RemoteRunnable
+         runnableDebuggingMode = "2"
+         BundleIdentifier = "com.apple.Carousel"
+         RemotePath = "/DoroDoro">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F378B6CA25E7D77100FCE546"
@@ -80,7 +84,16 @@
             BlueprintName = "DoroDoroWatch"
             ReferencedContainer = "container:DoroDoro.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </RemoteRunnable>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "F378B6CA25E7D77100FCE546"
+            BuildableName = "DoroDoroWatch.app"
+            BlueprintName = "DoroDoroWatch"
+            ReferencedContainer = "container:DoroDoro.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
