@@ -51,7 +51,7 @@ final internal class SearchViewModel {
         return items[indexPath.row]
     }
     
-    internal func updateResultItems(_ result: AddrLinkResultsData, text: String) {
+    private func updateResultItems(_ result: AddrLinkResultsData, text: String) {
         totalCount = Int(result.common.totalCount) ?? 1
         
         guard var snapshot: Snapshot = dataSource?.snapshot() else {

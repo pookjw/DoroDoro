@@ -110,10 +110,84 @@ final internal class BookmarksViewController: UIViewController {
             headerView.contentConfiguration = configuration
         }
     }
+    
+    private func pushToDetailsVC(roadAddr: String) {
+        let detailsVC: DetailsViewController = .init()
+        detailsVC.loadViewIfNeeded()
+        detailsVC.setRoadAddr(roadAddr)
+        navigationController?.pushViewController(detailsVC, animated: true)
+    }
 }
 
 extension BookmarksViewController: UICollectionViewDelegate {
+    internal func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        searchController?.searchBar.resignFirstResponder()
+    }
     
+    internal func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        
+        guard let cell: UICollectionViewCell = collectionView.cellForItem(at: indexPath) else {
+            return nil
+        }
+
+        guard let roadAddr: String = viewModel?.getCellItem(from: indexPath)?.roadAddr else {
+            return nil
+        }
+        
+        
+        //
+        
+        let bookmarkAction: UIAction
+        
+        if BookmarksService.shared.isBookmarked(roadAddr) {
+            bookmarkAction = .init(title: Localizable.REMOVE_FROM_BOOKMARKS.string,
+                                      image: UIImage(systemName: "bookmark.fill"),
+                                      attributes: [.destructive]) { _ in
+                BookmarksService.shared.removeBookmark(roadAddr)
+              }
+        } else {
+            bookmarkAction = .init(title: Localizable.ADD_TO_BOOKMARKS.string,
+                                      image: UIImage(systemName: "bookmark"),
+                                      attributes: []) { _ in
+                BookmarksService.shared.addBookmark(roadAddr)
+              }
+        }
+        
+        //
+        
+        let copyAction: UIAction = .init(title: Localizable.COPY.string,
+                             image: UIImage(systemName: "doc.on.doc")) { action in
+            UIPasteboard.general.string = roadAddr
+        }
+        
+        let shareAction: UIAction = .init(title: Localizable.SHARE.string,
+                              image: UIImage(systemName: "square.and.arrow.up")) { [weak self, weak cell] action in
+            self?.share([roadAddr], sourceView: cell)
+        }
+        
+        viewModel?.contextMenuRoadAddr = roadAddr
+        
+        return UIContextMenuConfiguration(identifier: nil,
+                                          previewProvider: nil) { _ in
+            UIMenu(title: "", children: [bookmarkAction, copyAction, shareAction])
+        }
+    }
+    
+    internal func collectionView(_ collectionView: UICollectionView, willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionCommitAnimating) {
+        animator.addAnimations { [weak self] in
+            if let roadAddr: String = self?.viewModel?.contextMenuRoadAddr {
+                self?.pushToDetailsVC(roadAddr: roadAddr)
+            }
+            self?.viewModel?.contextMenuRoadAddr = nil
+        }
+    }
+    
+    internal func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let item: BookmarksCellItem = viewModel?.getCellItem(from: indexPath) else {
+            return
+        }
+        pushToDetailsVC(roadAddr: item.roadAddr)
+    }
 }
 
 extension BookmarksViewController: UISearchBarDelegate {

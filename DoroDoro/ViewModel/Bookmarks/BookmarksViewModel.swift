@@ -14,10 +14,19 @@ final internal class BookmarksViewModel {
     internal typealias Snapshot = NSDiffableDataSourceSnapshot<BookmarksHeaderItem, BookmarksCellItem>
     internal var dataSource: DataSource? = nil
     @Published internal var searchEvent: String? = nil
+    internal var contextMenuRoadAddr: String? = nil
     private var cancellableBag: Set<AnyCancellable> = .init()
     
     internal init() {
         bind()
+    }
+    
+    internal func getCellItem(from indexPath: IndexPath) -> BookmarksCellItem? {
+        guard let items: [BookmarksCellItem] = dataSource?.snapshot().itemIdentifiers,
+              items.count > indexPath.row else {
+            return nil
+        }
+        return items[indexPath.row]
     }
     
     private func updateCellItems(_ bookmarksData: BookmarksData, searchText: String? = nil) {
