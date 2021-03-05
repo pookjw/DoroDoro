@@ -53,7 +53,7 @@ final internal class SearchViewController: UIViewController {
     
     private func configureCollectionView() {
         // 이 View Controller에는 Section이 1개이므로 NSCollectionLayoutSection를 쓸 필요가 없다.
-        var layoutConfiguration: UICollectionLayoutListConfiguration = .init(appearance: .sidebar)
+        var layoutConfiguration: UICollectionLayoutListConfiguration = .init(appearance: .insetGrouped)
         layoutConfiguration.headerMode = .supplementary
         let layout: UICollectionViewCompositionalLayout = .list(using: layoutConfiguration)
         
@@ -231,15 +231,16 @@ extension SearchViewController: UICollectionViewDelegate {
     }
     
     internal func collectionView(_ collectionView: UICollectionView, willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionCommitAnimating) {
-        animator.addAnimations { [weak self, weak collectionView] in
+        animator.addAnimations { [weak self] in
             if let data: AddrLinkJusoData = self?.viewModel?.contextMenuLinkJusoData {
                 self?.pushToDetailsVC(linkJusoData: data)
+                self?.viewModel?.contextMenuLinkJusoData = nil
             }
-            if let indexPath: IndexPath = self?.viewModel?.contextMenuIndexPath {
-                collectionView?.selectItem(at: indexPath, animated: true, scrollPosition: .left)
-            }
-            self?.viewModel?.contextMenuLinkJusoData = nil
-            self?.viewModel?.contextMenuIndexPath = nil
+        }
+        
+        if let indexPath: IndexPath = viewModel?.contextMenuIndexPath {
+            collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredHorizontally)
+            viewModel?.contextMenuIndexPath = nil
         }
     }
     

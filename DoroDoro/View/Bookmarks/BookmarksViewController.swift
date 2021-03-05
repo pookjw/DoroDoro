@@ -52,7 +52,7 @@ final internal class BookmarksViewController: UIViewController {
     
     private func configureCollectionView() {
         // 이 View Controller에는 Section이 1개이므로 NSCollectionLayoutSection를 쓸 필요가 없다.
-        let layoutConfiguration: UICollectionLayoutListConfiguration = .init(appearance: .sidebar)
+        let layoutConfiguration: UICollectionLayoutListConfiguration = .init(appearance: .insetGrouped)
         let layout: UICollectionViewCompositionalLayout = .list(using: layoutConfiguration)
         
         let collectionView: UICollectionView = .init(frame: .zero, collectionViewLayout: layout)
@@ -152,15 +152,16 @@ extension BookmarksViewController: UICollectionViewDelegate {
     }
     
     internal func collectionView(_ collectionView: UICollectionView, willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionCommitAnimating) {
-        animator.addAnimations { [weak self, weak collectionView] in
+        animator.addAnimations { [weak self] in
             if let roadAddr: String = self?.viewModel?.contextMenuRoadAddr {
                 self?.pushToDetailsVC(roadAddr: roadAddr)
+                self?.viewModel?.contextMenuRoadAddr = nil
             }
-            if let indexPath: IndexPath = self?.viewModel?.contextMenuIndexPath {
-                collectionView?.selectItem(at: indexPath, animated: true, scrollPosition: .left)
-            }
-            self?.viewModel?.contextMenuRoadAddr = nil
-            self?.viewModel?.contextMenuIndexPath = nil
+        }
+        
+        if let indexPath: IndexPath = viewModel?.contextMenuIndexPath {
+            collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredHorizontally)
+            viewModel?.contextMenuIndexPath = nil
         }
     }
     
