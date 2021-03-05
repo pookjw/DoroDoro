@@ -81,7 +81,6 @@
 		F378B6D825E7D77200FCE546 /* DoroDoroWatch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F378B6D725E7D77200FCE546 /* DoroDoroWatch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F378B6DD25E7D77200FCE546 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B6DC25E7D77200FCE546 /* InterfaceController.swift */; };
 		F378B6DF25E7D77200FCE546 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B6DE25E7D77200FCE546 /* ExtensionDelegate.swift */; };
-		F378B6E125E7D77200FCE546 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B6E025E7D77200FCE546 /* ComplicationController.swift */; };
 		F378B6E325E7D77300FCE546 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F378B6E225E7D77300FCE546 /* Assets.xcassets */; };
 		F378B6E725E7D77300FCE546 /* DoroDoroWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = F378B6CB25E7D77100FCE546 /* DoroDoroWatch.app */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F378B6FB25E7D83F00FCE546 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B6FA25E7D83F00FCE546 /* SearchViewController.swift */; };
@@ -89,8 +88,6 @@
 		F378B70925E7D8C600FCE546 /* BookmarksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B70825E7D8C600FCE546 /* BookmarksViewController.swift */; };
 		F378B71425E7DAFF00FCE546 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F378B71625E7DAFF00FCE546 /* InfoPlist.strings */; };
 		F378B72925E7E26900FCE546 /* AddrAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B72825E7E26900FCE546 /* AddrAPIService.swift */; };
-		F378B74525E7EED900FCE546 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F378B74425E7EED900FCE546 /* WidgetKit.framework */; };
-		F378B74725E7EED900FCE546 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F378B74625E7EED900FCE546 /* SwiftUI.framework */; };
 		F378B76F25E7F0B700FCE546 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B76E25E7F0B700FCE546 /* SettingsViewController.swift */; };
 		F378B77625E7F17A00FCE546 /* AddrLinkCommonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B77525E7F17A00FCE546 /* AddrLinkCommonData.swift */; };
 		F378B77D25E7F18900FCE546 /* AddrLinkJusoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B77C25E7F18900FCE546 /* AddrLinkJusoData.swift */; };
@@ -284,7 +281,6 @@
 		F378B6D725E7D77200FCE546 /* DoroDoroWatch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "DoroDoroWatch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F378B6DC25E7D77200FCE546 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
 		F378B6DE25E7D77200FCE546 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
-		F378B6E025E7D77200FCE546 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
 		F378B6E225E7D77300FCE546 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F378B6E425E7D77300FCE546 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F378B6FA25E7D83F00FCE546 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -293,7 +289,6 @@
 		F378B71525E7DAFF00FCE546 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F378B71B25E7DB0200FCE546 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F378B72825E7E26900FCE546 /* AddrAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrAPIService.swift; sourceTree = "<group>"; };
-		F378B74325E7EED900FCE546 /* DoroDoroWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DoroDoroWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		F378B74425E7EED900FCE546 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		F378B74625E7EED900FCE546 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		F378B75425E7EEDB00FCE546 /* DoroDoroWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DoroDoroWidgetExtension.entitlements; sourceTree = "<group>"; };
@@ -355,15 +350,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F378B74025E7EED900FCE546 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F378B74725E7EED900FCE546 /* SwiftUI.framework in Frameworks */,
-				F378B74525E7EED900FCE546 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -671,7 +657,6 @@
 			children = (
 				F378B6DC25E7D77200FCE546 /* InterfaceController.swift */,
 				F378B6DE25E7D77200FCE546 /* ExtensionDelegate.swift */,
-				F378B6E025E7D77200FCE546 /* ComplicationController.swift */,
 				F378B6E225E7D77300FCE546 /* Assets.xcassets */,
 				F378B6E425E7D77300FCE546 /* Info.plist */,
 			);
@@ -830,7 +815,6 @@
 				F378B6BB25E7D71C00FCE546 /* DoroDoroTests.xctest */,
 				F378B6CB25E7D77100FCE546 /* DoroDoroWatch.app */,
 				F378B6D725E7D77200FCE546 /* DoroDoroWatch Extension.appex */,
-				F378B74325E7EED900FCE546 /* DoroDoroWidgetExtension.appex */,
 				F3444CA625E8B82300A0706F /* DoroDoroUITests.xctest */,
 			);
 			name = Products;
@@ -931,23 +915,6 @@
 			productReference = F378B6D725E7D77200FCE546 /* DoroDoroWatch Extension.appex */;
 			productType = "com.apple.product-type.watchkit2-extension";
 		};
-		F378B74225E7EED900FCE546 /* DoroDoroWidgetExtension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F378B75525E7EEDB00FCE546 /* Build configuration list for PBXNativeTarget "DoroDoroWidgetExtension" */;
-			buildPhases = (
-				F378B73F25E7EED900FCE546 /* Sources */,
-				F378B74025E7EED900FCE546 /* Frameworks */,
-				F378B74125E7EED900FCE546 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = DoroDoroWidgetExtension;
-			productName = DoroDoroWidgetExtension;
-			productReference = F378B74325E7EED900FCE546 /* DoroDoroWidgetExtension.appex */;
-			productType = "com.apple.product-type.app-extension";
-		};
 		F3AAE29425E7D06700D666BD /* DoroDoro */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F3AAE2A925E7D06800D666BD /* Build configuration list for PBXNativeTarget "DoroDoro" */;
@@ -993,9 +960,6 @@
 					F378B6D625E7D77200FCE546 = {
 						CreatedOnToolsVersion = 12.4;
 					};
-					F378B74225E7EED900FCE546 = {
-						CreatedOnToolsVersion = 12.4;
-					};
 					F3AAE29425E7D06700D666BD = {
 						CreatedOnToolsVersion = 12.4;
 					};
@@ -1019,7 +983,6 @@
 				F378B6BA25E7D71C00FCE546 /* DoroDoroTests */,
 				F378B6CA25E7D77100FCE546 /* DoroDoroWatch */,
 				F378B6D625E7D77200FCE546 /* DoroDoroWatch Extension */,
-				F378B74225E7EED900FCE546 /* DoroDoroWidgetExtension */,
 				F3444CA525E8B82300A0706F /* DoroDoroUITests */,
 			);
 		};
@@ -1054,13 +1017,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F378B6E325E7D77300FCE546 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F378B74125E7EED900FCE546 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1171,14 +1127,6 @@
 			files = (
 				F378B6DF25E7D77200FCE546 /* ExtensionDelegate.swift in Sources */,
 				F378B6DD25E7D77200FCE546 /* InterfaceController.swift in Sources */,
-				F378B6E125E7D77200FCE546 /* ComplicationController.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F378B73F25E7EED900FCE546 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1397,7 +1345,6 @@
 		F378B6E925E7D77300FCE546 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P53D29U9LJ;
 				INFOPLIST_FILE = "DoroDoroWatch Extension/Info.plist";
@@ -1419,7 +1366,6 @@
 		F378B6EA25E7D77300FCE546 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P53D29U9LJ;
 				INFOPLIST_FILE = "DoroDoroWatch Extension/Info.plist";
@@ -1475,54 +1421,6 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 7.2;
-			};
-			name = Release;
-		};
-		F378B75625E7EEDB00FCE546 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_ENTITLEMENTS = DoroDoroWidgetExtension.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = P53D29U9LJ;
-				INFOPLIST_FILE = DoroDoroWidget/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.pookjw.DoroDoro.DoroDoroWidget;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SUPPORTS_MACCATALYST = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		F378B75725E7EEDB00FCE546 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_ENTITLEMENTS = DoroDoroWidgetExtension.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = P53D29U9LJ;
-				INFOPLIST_FILE = DoroDoroWidget/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.pookjw.DoroDoro.DoroDoroWidget;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SUPPORTS_MACCATALYST = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -1739,15 +1637,6 @@
 			buildConfigurations = (
 				F378B6ED25E7D77300FCE546 /* Debug */,
 				F378B6EE25E7D77300FCE546 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		F378B75525E7EEDB00FCE546 /* Build configuration list for PBXNativeTarget "DoroDoroWidgetExtension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F378B75625E7EEDB00FCE546 /* Debug */,
-				F378B75725E7EEDB00FCE546 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
