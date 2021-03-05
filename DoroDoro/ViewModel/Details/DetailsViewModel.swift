@@ -66,7 +66,7 @@ final internal class DetailsViewModel {
         roadAddr = linkJusoData.roadAddr
         checkBookmarkedStatus()
         updateLinkItems(linkJusoData)
-        addrAPIService.requestEngEvent(keyword: linkJusoData.roadAddr)
+        addrAPIService.requestEngEvent(keyword: linkJusoData.roadAddr, countPerPage: 1)
         kakaoAPIService.requestAddressEvent(query: linkJusoData.roadAddr,
                                             analyzeType: .exact, page: 1, size: 1)
     }

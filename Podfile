@@ -10,3 +10,7 @@ target 'DoroDoro' do
   pod 'NVActivityIndicatorView', '~> 5.1.1'
   pod 'NotificationBannerSwift', '3.0.6'
 end
+
+target 'DoroDoroWatch Extension' do
+  pod 'Alamofire', '~> 5.4.1'
+end

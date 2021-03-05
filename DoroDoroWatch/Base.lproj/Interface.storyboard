@@ -1,17 +1,138 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="18122" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="17701" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
     <device id="watch38"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18092"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="18022"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="17500"/>
     </dependencies>
     <scenes>
-        <!--Interface Controller-->
+        <!--Search Interface Controller-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="DoroDoroWatch" customModuleProvider="target"/>
+                <controller id="AgC-eL-Hgc" customClass="SearchInterfaceController" customModule="DoroDoroWatch" customModuleProvider="target">
+                    <items>
+                        <group width="1" alignment="left" layout="vertical" id="hNm-2u-D14">
+                            <items>
+                                <textField width="1" alignment="left" placeholder="🔎 Search(번역)..." id="xcp-Lr-e6F">
+                                    <connections>
+                                        <action selector="textFieldAction:" destination="AgC-eL-Hgc" id="Thi-M6-g7B"/>
+                                    </connections>
+                                </textField>
+                                <separator alignment="left" id="p7m-ze-N2g"/>
+                            </items>
+                        </group>
+                        <group width="1" alignment="left" layout="vertical" id="JNE-vi-dl6">
+                            <items>
+                                <label alignment="left" text="Label" id="NVS-sQ-akm">
+                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </label>
+                                <table alignment="left" id="KXK-U1-Kvt">
+                                    <items>
+                                        <tableRow identifier="ResultCell" id="Pg5-t3-pax" customClass="SearchResultObject" customModule="DoroDoroWatch_Extension">
+                                            <group key="rootItem" width="1" height="0.0" alignment="left" id="kuE-pY-lOp">
+                                                <items>
+                                                    <label alignment="left" verticalAlignment="center" text="Label" numberOfLines="0" id="yDd-x9-hWd"/>
+                                                </items>
+                                            </group>
+                                            <connections>
+                                                <outlet property="label" destination="yDd-x9-hWd" id="Icb-Cn-4tB"/>
+                                            </connections>
+                                        </tableRow>
+                                    </items>
+                                </table>
+                            </items>
+                        </group>
+                        <imageView alignment="center" verticalAlignment="center" id="wyo-mV-zC2"/>
+                        <label height="100" alignment="center" text="검색어를 입력해 주세요...(번역)" textAlignment="center" numberOfLines="0" id="Uwa-7A-Orq">
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </label>
+                    </items>
+                    <connections>
+                        <outlet property="guideLabel" destination="Uwa-7A-Orq" id="gQI-lF-Qch"/>
+                        <outlet property="loadingImage" destination="wyo-mV-zC2" id="K34-g5-sX0"/>
+                        <outlet property="tableGroup" destination="JNE-vi-dl6" id="KeX-F1-XuY"/>
+                        <outlet property="tableHeaderLabel" destination="NVS-sQ-akm" id="M4U-fQ-zhw"/>
+                        <outlet property="tableView" destination="KXK-U1-Kvt" id="amb-xS-vqU"/>
+                        <outlet property="topGroup" destination="hNm-2u-D14" id="Opb-AN-QRH"/>
+                    </connections>
+                </controller>
             </objects>
             <point key="canvasLocation" x="-16" y="-20"/>
+        </scene>
+        <!--DetailsInterfaceController-->
+        <scene sceneID="DXw-3b-69f">
+            <objects>
+                <controller identifier="DetailsInterfaceController" id="JpK-6X-O1t" customClass="DetailsInterfaceController" customModule="DoroDoroWatch_Extension">
+                    <items>
+                        <group width="1" alignment="left" layout="vertical" id="Ypi-xb-MKa">
+                            <items>
+                                <label alignment="left" text="0" id="73X-CX-auT"/>
+                                <table alignment="left" id="ESY-MF-Hva">
+                                    <items>
+                                        <tableRow identifier="LinkJusoCell" selectable="NO" id="ohY-XS-h5E" customClass="DetailsLinkJusoObject" customModule="DoroDoroWatch_Extension">
+                                            <group key="rootItem" width="1" height="0.0" alignment="left" layout="vertical" id="iap-OV-zZL">
+                                                <items>
+                                                    <label alignment="left" text="Label" numberOfLines="0" id="xj7-Y7-iMs">
+                                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="font" type="system" pointSize="15"/>
+                                                    </label>
+                                                    <label alignment="left" verticalAlignment="center" text="Label" numberOfLines="0" id="6TD-Rv-AWm"/>
+                                                </items>
+                                            </group>
+                                            <connections>
+                                                <outlet property="primaryLabel" destination="xj7-Y7-iMs" id="2t9-By-ZXp"/>
+                                                <outlet property="secondaryLabel" destination="6TD-Rv-AWm" id="KFw-pa-lG5"/>
+                                            </connections>
+                                        </tableRow>
+                                    </items>
+                                </table>
+                            </items>
+                        </group>
+                        <group width="1" alignment="left" layout="vertical" id="9ZZ-LP-eYe">
+                            <items>
+                                <label alignment="left" text="1" id="dkg-ld-3lX"/>
+                                <table alignment="left" id="Y80-IQ-9cj">
+                                    <items>
+                                        <tableRow identifier="EngJusoCell" selectable="NO" id="OR7-9N-xSH" customClass="DetailsEngJusoObject" customModule="DoroDoroWatch_Extension">
+                                            <group key="rootItem" width="1" height="0.0" alignment="left" layout="vertical" id="Hbx-bC-bpk">
+                                                <items>
+                                                    <label alignment="left" text="Label" numberOfLines="0" id="l3F-80-Dyx">
+                                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="font" type="system" pointSize="15"/>
+                                                    </label>
+                                                    <label alignment="left" text="Label" numberOfLines="0" id="200-Mb-4p0"/>
+                                                </items>
+                                            </group>
+                                            <connections>
+                                                <outlet property="primaryLabel" destination="l3F-80-Dyx" id="glA-ds-5Ng"/>
+                                                <outlet property="secondaryLabel" destination="200-Mb-4p0" id="l1F-lT-hkF"/>
+                                            </connections>
+                                        </tableRow>
+                                    </items>
+                                </table>
+                            </items>
+                        </group>
+                        <group width="1" alignment="left" layout="vertical" id="7IV-u7-y54">
+                            <items>
+                                <label alignment="left" text="Label" id="o8N-gi-eAE"/>
+                                <map height="100" alignment="left" id="RXZ-fJ-tHO"/>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="engJusoGroup" destination="9ZZ-LP-eYe" id="rtr-dN-4yd"/>
+                        <outlet property="engJusoHeaderLabel" destination="dkg-ld-3lX" id="6GP-ib-aiq"/>
+                        <outlet property="engJusoTableView" destination="Y80-IQ-9cj" id="j1a-4Y-k9Z"/>
+                        <outlet property="linkJusoGroup" destination="Ypi-xb-MKa" id="ZHr-Tm-9YN"/>
+                        <outlet property="linkJusoHeaderLabel" destination="73X-CX-auT" id="1Su-Pg-f0i"/>
+                        <outlet property="linkJusoTableView" destination="ESY-MF-Hva" id="OXh-QI-dn1"/>
+                        <outlet property="mapGroup" destination="7IV-u7-y54" id="dlZ-cw-HsT"/>
+                        <outlet property="mapHeaderLabel" destination="o8N-gi-eAE" id="COi-Pp-dKO"/>
+                        <outlet property="mapView" destination="RXZ-fJ-tHO" id="ANB-3B-wKt"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="292" y="-20"/>
         </scene>
     </scenes>
 </document>
