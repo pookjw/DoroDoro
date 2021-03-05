@@ -6,6 +6,7 @@
 //
 
 import WatchKit
+import DoroDoroWatchAPI
 
 internal final class DetailsLinkJusoObject: NSObject {
     @IBOutlet weak var primaryLabel: WKInterfaceLabel!

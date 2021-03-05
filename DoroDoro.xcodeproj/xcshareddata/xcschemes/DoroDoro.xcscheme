@@ -48,6 +48,16 @@
                ReferencedContainer = "container:DoroDoro.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "F380094D25F2E1E400F218A1"
+               BuildableName = "DoroDoroAPITests.xctest"
+               BlueprintName = "DoroDoroAPITests"
+               ReferencedContainer = "container:DoroDoro.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

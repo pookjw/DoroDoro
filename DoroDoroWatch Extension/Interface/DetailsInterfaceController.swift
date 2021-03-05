@@ -8,6 +8,7 @@
 import WatchKit
 import MapKit
 import Combine
+import DoroDoroWatchAPI
 
 final internal class DetailsInterfaceController: WKInterfaceController {
     @IBOutlet weak var linkJusoGroup: WKInterfaceGroup!

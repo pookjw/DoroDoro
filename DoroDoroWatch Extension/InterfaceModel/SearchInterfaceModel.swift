@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import DoroDoroWatchAPI
 
 final internal class SearchInterfaceModel {
     internal let linkJusoDataEvent: PassthroughSubject<([AddrLinkJusoData], String), Never> = .init()

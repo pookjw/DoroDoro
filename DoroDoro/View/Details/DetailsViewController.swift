@@ -8,6 +8,7 @@
 import UIKit
 import Combine
 import SnapKit
+import DoroDoroAPI
 
 final internal class DetailsViewController: UIViewController {
     private weak var collectionView: UICollectionView? = nil

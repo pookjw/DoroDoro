@@ -11,6 +11,14 @@ target 'DoroDoro' do
   pod 'NotificationBannerSwift', '3.0.6'
 end
 
+target 'DoroDoroAPI' do
+  pod 'Alamofire', '~> 5.4.1'
+end
+
+target 'DoroDoroWatchAPI' do
+  pod 'Alamofire', '~> 5.4.1'
+end
+
 target 'DoroDoroWatch Extension' do
   pod 'Alamofire', '~> 5.4.1'
 end

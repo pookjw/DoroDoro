@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import DoroDoroWatchAPI
 
 final internal class DetailsInterfaceModel {
     internal let addrAPIService: AddrAPIService = .init()

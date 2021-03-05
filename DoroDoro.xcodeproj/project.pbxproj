@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CF8FFEB90687086F62593892 /* Pods_DoroDoroWatch_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B5C305ACAC31802355305AA /* Pods_DoroDoroWatch_Extension.framework */; };
+		738B25F698562856F3A291B1 /* Pods_DoroDoroWatchAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24CE4333A9C3009967DAEF3B /* Pods_DoroDoroWatchAPI.framework */; };
+		93239F3CBE1708F488E8EF48 /* Pods_DoroDoroWatch_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF4E71F7032F7AEA1171F871 /* Pods_DoroDoroWatch_Extension.framework */; };
+		D8C84073ADE3808F2A421FFF /* Pods_DoroDoroAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5309ED33327A32D8822CF4CC /* Pods_DoroDoroAPI.framework */; };
 		E8BA96083B64A362F17AAFEA /* Pods_DoroDoro.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E86CEB0C5A70206FB9CE710D /* Pods_DoroDoro.framework */; };
 		F332741825EFF1CF00417437 /* CloudService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F332741725EFF1CF00417437 /* CloudService.swift */; };
 		F332742025EFF71100417437 /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F332741F25EFF71100417437 /* SettingsService.swift */; };
@@ -19,35 +21,8 @@
 		F333BA0025EBFE1B00F1915F /* NSObject+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F333B9FF25EBFE1B00F1915F /* NSObject+Ext.swift */; };
 		F334A61A25F2AE390005E970 /* SearchResultObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F334A61925F2AE390005E970 /* SearchResultObject.swift */; };
 		F334A61E25F2AEE70005E970 /* SearchInterfaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F334A61D25F2AEE70005E970 /* SearchInterfaceModel.swift */; };
-		F334A61F25F2AF6F0005E970 /* AddrLinkResultsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B78F25E7FAE500FCE546 /* AddrLinkResultsData.swift */; };
-		F334A62025F2AF710005E970 /* AddrLinkAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B78325E7F45600FCE546 /* AddrLinkAPIError.swift */; };
-		F334A62125F2AF740005E970 /* AddrLinkJusoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B77C25E7F18900FCE546 /* AddrLinkJusoData.swift */; };
-		F334A62225F2AF770005E970 /* AddrLinkCommonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B77525E7F17A00FCE546 /* AddrLinkCommonData.swift */; };
-		F334A62325F2AF7B0005E970 /* AddrEngCommonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F4FAEF25E8080D0077FCB5 /* AddrEngCommonData.swift */; };
-		F334A62425F2AF7D0005E970 /* AddrEngJusoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F4FAF625E8082F0077FCB5 /* AddrEngJusoData.swift */; };
-		F334A62525F2AF800005E970 /* AddrEngAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F4FB0925E80A040077FCB5 /* AddrEngAPIError.swift */; };
-		F334A62625F2AF840005E970 /* AddrEngResultsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F4FAFD25E809CD0077FCB5 /* AddrEngResultsData.swift */; };
-		F334A62725F2AF8D0005E970 /* AddrAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B72825E7E26900FCE546 /* AddrAPIService.swift */; };
-		F334A62825F2AF900005E970 /* AddrCoordCommonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B1BE25EBFF5700FB0B61 /* AddrCoordCommonData.swift */; };
-		F334A62925F2AF920005E970 /* AddrCoordJusoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B1C625EC009400FB0B61 /* AddrCoordJusoData.swift */; };
-		F334A62A25F2AF950005E970 /* AddrCoordAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B1CE25EC016800FB0B61 /* AddrCoordAPIError.swift */; };
-		F334A62B25F2AF970005E970 /* AddrCoordResultsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B1D625EC02AD00FB0B61 /* AddrCoordResultsData.swift */; };
-		F334A62C25F2AF990005E970 /* AddrCoordSearchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B1DE25EC03A400FB0B61 /* AddrCoordSearchData.swift */; };
 		F334A62D25F2AFFB0005E970 /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3444C9B25E8B1BB00A0706F /* Localizable.swift */; };
-		F334A62E25F2B0070005E970 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B36AB225F1CA0A00B59915 /* Keys.swift */; };
-		F334A62F25F2B01F0005E970 /* KakaoAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB02F25ECC95200BC5772 /* KakaoAPIService.swift */; };
-		F334A63025F2B0210005E970 /* KakaoAddressAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB09E25ECD0C500BC5772 /* KakaoAddressAPIError.swift */; };
-		F334A63125F2B0230005E970 /* KakaoAddressRoadAddressData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB0C425ECD76C00BC5772 /* KakaoAddressRoadAddressData.swift */; };
-		F334A63225F2B0250005E970 /* KakaoAddressAddressData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB0B625ECD73D00BC5772 /* KakaoAddressAddressData.swift */; };
-		F334A63325F2B0280005E970 /* KakaoAddressDocumentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB04E25ECCD6C00BC5772 /* KakaoAddressDocumentData.swift */; };
-		F334A63425F2B02A0005E970 /* KakaoAddressMetaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB04625ECCD6100BC5772 /* KakaoAddressMetaData.swift */; };
-		F334A63525F2B02D0005E970 /* KakaoAddressResultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB03825ECCD2E00BC5772 /* KakaoAddressResultData.swift */; };
 		F334A63625F2B0340005E970 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F378B6B325E7D69300FCE546 /* Localizable.strings */; };
-		F337B1BF25EBFF5700FB0B61 /* AddrCoordCommonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B1BE25EBFF5700FB0B61 /* AddrCoordCommonData.swift */; };
-		F337B1C725EC009400FB0B61 /* AddrCoordJusoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B1C625EC009400FB0B61 /* AddrCoordJusoData.swift */; };
-		F337B1CF25EC016800FB0B61 /* AddrCoordAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B1CE25EC016800FB0B61 /* AddrCoordAPIError.swift */; };
-		F337B1D725EC02AD00FB0B61 /* AddrCoordResultsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B1D625EC02AD00FB0B61 /* AddrCoordResultsData.swift */; };
-		F337B1DF25EC03A400FB0B61 /* AddrCoordSearchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B1DE25EC03A400FB0B61 /* AddrCoordSearchData.swift */; };
 		F337B1EE25EC09F400FB0B61 /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B1ED25EC09F400FB0B61 /* DetailsViewModel.swift */; };
 		F337B1F825EC0E0F00FB0B61 /* DetailResultItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B1F725EC0E0F00FB0B61 /* DetailResultItem.swift */; };
 		F337B20025EC0E9600FB0B61 /* DetailHeaderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B1FF25EC0E9600FB0B61 /* DetailHeaderItem.swift */; };
@@ -59,14 +34,7 @@
 		F33BAFD625ECB8C300BC5772 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F33BAFD525ECB8BC00BC5772 /* libxml2.tbd */; };
 		F33BAFDE25ECB8D100BC5772 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F33BAFDD25ECB8CB00BC5772 /* libsqlite3.tbd */; };
 		F33BB00525ECBAB700BC5772 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F33BB00425ECBAB700BC5772 /* Metal.framework */; };
-		F33BB03025ECC95200BC5772 /* KakaoAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB02F25ECC95200BC5772 /* KakaoAPIService.swift */; };
-		F33BB03925ECCD2E00BC5772 /* KakaoAddressResultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB03825ECCD2E00BC5772 /* KakaoAddressResultData.swift */; };
-		F33BB04725ECCD6100BC5772 /* KakaoAddressMetaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB04625ECCD6100BC5772 /* KakaoAddressMetaData.swift */; };
-		F33BB04F25ECCD6C00BC5772 /* KakaoAddressDocumentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB04E25ECCD6C00BC5772 /* KakaoAddressDocumentData.swift */; };
-		F33BB09F25ECD0C500BC5772 /* KakaoAddressAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB09E25ECD0C500BC5772 /* KakaoAddressAPIError.swift */; };
 		F33BB0A725ECD4C200BC5772 /* KakaoAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB0A625ECD4C200BC5772 /* KakaoAPITests.swift */; };
-		F33BB0B725ECD73D00BC5772 /* KakaoAddressAddressData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB0B625ECD73D00BC5772 /* KakaoAddressAddressData.swift */; };
-		F33BB0C525ECD76C00BC5772 /* KakaoAddressRoadAddressData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB0C425ECD76C00BC5772 /* KakaoAddressRoadAddressData.swift */; };
 		F33BB0D325ECE96C00BC5772 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB0D225ECE96C00BC5772 /* UIViewController+Ext.swift */; };
 		F33BB0F525ED043400BC5772 /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB0F425ED043400BC5772 /* SpinnerView.swift */; };
 		F33BB10425ED268D00BC5772 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB10325ED268D00BC5772 /* MapViewController.swift */; };
@@ -120,12 +88,66 @@
 		F378B70225E7D88A00FCE546 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B70125E7D88A00FCE546 /* MainTabBarController.swift */; };
 		F378B70925E7D8C600FCE546 /* BookmarksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B70825E7D8C600FCE546 /* BookmarksViewController.swift */; };
 		F378B71425E7DAFF00FCE546 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F378B71625E7DAFF00FCE546 /* InfoPlist.strings */; };
-		F378B72925E7E26900FCE546 /* AddrAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B72825E7E26900FCE546 /* AddrAPIService.swift */; };
 		F378B76F25E7F0B700FCE546 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B76E25E7F0B700FCE546 /* SettingsViewController.swift */; };
-		F378B77625E7F17A00FCE546 /* AddrLinkCommonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B77525E7F17A00FCE546 /* AddrLinkCommonData.swift */; };
-		F378B77D25E7F18900FCE546 /* AddrLinkJusoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B77C25E7F18900FCE546 /* AddrLinkJusoData.swift */; };
-		F378B78425E7F45600FCE546 /* AddrLinkAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B78325E7F45600FCE546 /* AddrLinkAPIError.swift */; };
-		F378B79025E7FAE500FCE546 /* AddrLinkResultsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B78F25E7FAE500FCE546 /* AddrLinkResultsData.swift */; };
+		F380095825F2E1E400F218A1 /* DoroDoroAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = F380094825F2E1E400F218A1 /* DoroDoroAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F380095B25F2E1E400F218A1 /* DoroDoroAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F380094625F2E1E400F218A1 /* DoroDoroAPI.framework */; };
+		F380095C25F2E1E400F218A1 /* DoroDoroAPI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F380094625F2E1E400F218A1 /* DoroDoroAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F380098E25F2E39F00F218A1 /* AddrLinkCommonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B77525E7F17A00FCE546 /* AddrLinkCommonData.swift */; };
+		F380099725F2E3A300F218A1 /* AddrLinkJusoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B77C25E7F18900FCE546 /* AddrLinkJusoData.swift */; };
+		F38009A025F2E3AD00F218A1 /* AddrLinkAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B78325E7F45600FCE546 /* AddrLinkAPIError.swift */; };
+		F38009A525F2E3B000F218A1 /* AddrLinkResultsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B78F25E7FAE500FCE546 /* AddrLinkResultsData.swift */; };
+		F38009AE25F2E3B700F218A1 /* AddrEngCommonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F4FAEF25E8080D0077FCB5 /* AddrEngCommonData.swift */; };
+		F38009AF25F2E3BB00F218A1 /* AddrEngJusoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F4FAF625E8082F0077FCB5 /* AddrEngJusoData.swift */; };
+		F38009B825F2E3BF00F218A1 /* AddrEngAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F4FB0925E80A040077FCB5 /* AddrEngAPIError.swift */; };
+		F38009C125F2E3C300F218A1 /* AddrEngResultsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F4FAFD25E809CD0077FCB5 /* AddrEngResultsData.swift */; };
+		F38009CA25F2E3C900F218A1 /* AddrCoordCommonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B1BE25EBFF5700FB0B61 /* AddrCoordCommonData.swift */; };
+		F38009CB25F2E3CD00F218A1 /* AddrCoordJusoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B1C625EC009400FB0B61 /* AddrCoordJusoData.swift */; };
+		F38009D425F2E3D100F218A1 /* AddrCoordAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B1CE25EC016800FB0B61 /* AddrCoordAPIError.swift */; };
+		F38009DD25F2E3D500F218A1 /* AddrCoordResultsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B1D625EC02AD00FB0B61 /* AddrCoordResultsData.swift */; };
+		F38009E225F2E3D900F218A1 /* AddrCoordSearchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B1DE25EC03A400FB0B61 /* AddrCoordSearchData.swift */; };
+		F38009EF25F2E3DD00F218A1 /* AddrAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B72825E7E26900FCE546 /* AddrAPIService.swift */; };
+		F38009F825F2E3E600F218A1 /* KakaoAddressResultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB03825ECCD2E00BC5772 /* KakaoAddressResultData.swift */; };
+		F38009F925F2E3EA00F218A1 /* KakaoAddressMetaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB04625ECCD6100BC5772 /* KakaoAddressMetaData.swift */; };
+		F3800A0225F2E3EF00F218A1 /* KakaoAddressDocumentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB04E25ECCD6C00BC5772 /* KakaoAddressDocumentData.swift */; };
+		F3800A0325F2E3F300F218A1 /* KakaoAddressAddressData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB0B625ECD73D00BC5772 /* KakaoAddressAddressData.swift */; };
+		F3800A0C25F2E3F700F218A1 /* KakaoAddressRoadAddressData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB0C425ECD76C00BC5772 /* KakaoAddressRoadAddressData.swift */; };
+		F3800A0D25F2E3FB00F218A1 /* KakaoAddressAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB09E25ECD0C500BC5772 /* KakaoAddressAPIError.swift */; };
+		F3800A1625F2E3FF00F218A1 /* KakaoAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB02F25ECC95200BC5772 /* KakaoAPIService.swift */; };
+		F3800A1B25F2E47400F218A1 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B36AB225F1CA0A00B59915 /* Keys.swift */; };
+		F3800A2325F2E4F900F218A1 /* AddrLinkAPIError+LocalizedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3800A2225F2E4F900F218A1 /* AddrLinkAPIError+LocalizedError.swift */; };
+		F3800A2E25F2E54100F218A1 /* AddrLinkJusoData+convertToAddrCoordSearchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3800A2D25F2E54100F218A1 /* AddrLinkJusoData+convertToAddrCoordSearchData.swift */; };
+		F3800A3425F2E56B00F218A1 /* AddrEngAPIError+LocalizedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3800A3325F2E56B00F218A1 /* AddrEngAPIError+LocalizedError.swift */; };
+		F3800A3A25F2E59100F218A1 /* AddrCoordAPIError+LocalizedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3800A3925F2E59100F218A1 /* AddrCoordAPIError+LocalizedError.swift */; };
+		F3800A4025F2E5BA00F218A1 /* KakaoAddressAPIError+LocalizedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3800A3F25F2E5BA00F218A1 /* KakaoAddressAPIError+LocalizedError.swift */; };
+		F3800AB625F2E8C900F218A1 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B36AB225F1CA0A00B59915 /* Keys.swift */; };
+		F3800ABB25F2E8D200F218A1 /* KakaoAddressRoadAddressData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB0C425ECD76C00BC5772 /* KakaoAddressRoadAddressData.swift */; };
+		F3800ABC25F2E8D200F218A1 /* KakaoAddressDocumentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB04E25ECCD6C00BC5772 /* KakaoAddressDocumentData.swift */; };
+		F3800ABD25F2E8D200F218A1 /* KakaoAddressAddressData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB0B625ECD73D00BC5772 /* KakaoAddressAddressData.swift */; };
+		F3800ABE25F2E8D200F218A1 /* KakaoAddressAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB09E25ECD0C500BC5772 /* KakaoAddressAPIError.swift */; };
+		F3800ABF25F2E8D200F218A1 /* KakaoAddressResultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB03825ECCD2E00BC5772 /* KakaoAddressResultData.swift */; };
+		F3800AC025F2E8D200F218A1 /* KakaoAddressMetaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB04625ECCD6100BC5772 /* KakaoAddressMetaData.swift */; };
+		F3800ADC25F2E8E100F218A1 /* AddrCoordSearchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B1DE25EC03A400FB0B61 /* AddrCoordSearchData.swift */; };
+		F3800ADD25F2E8E100F218A1 /* AddrLinkCommonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B77525E7F17A00FCE546 /* AddrLinkCommonData.swift */; };
+		F3800ADE25F2E8E100F218A1 /* AddrLinkAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B78325E7F45600FCE546 /* AddrLinkAPIError.swift */; };
+		F3800ADF25F2E8E100F218A1 /* AddrEngResultsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F4FAFD25E809CD0077FCB5 /* AddrEngResultsData.swift */; };
+		F3800AE025F2E8E100F218A1 /* AddrAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B72825E7E26900FCE546 /* AddrAPIService.swift */; };
+		F3800AE125F2E8E100F218A1 /* AddrLinkResultsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B78F25E7FAE500FCE546 /* AddrLinkResultsData.swift */; };
+		F3800AE225F2E8E100F218A1 /* AddrEngJusoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F4FAF625E8082F0077FCB5 /* AddrEngJusoData.swift */; };
+		F3800AE325F2E8E100F218A1 /* AddrCoordResultsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B1D625EC02AD00FB0B61 /* AddrCoordResultsData.swift */; };
+		F3800AE425F2E8E100F218A1 /* AddrCoordJusoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B1C625EC009400FB0B61 /* AddrCoordJusoData.swift */; };
+		F3800AE525F2E8E100F218A1 /* AddrLinkJusoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B77C25E7F18900FCE546 /* AddrLinkJusoData.swift */; };
+		F3800AE625F2E8E100F218A1 /* AddrEngAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F4FB0925E80A040077FCB5 /* AddrEngAPIError.swift */; };
+		F3800AE725F2E8E100F218A1 /* AddrCoordAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B1CE25EC016800FB0B61 /* AddrCoordAPIError.swift */; };
+		F3800AE825F2E8E100F218A1 /* AddrEngCommonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F4FAEF25E8080D0077FCB5 /* AddrEngCommonData.swift */; };
+		F3800AE925F2E8E100F218A1 /* KakaoAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB02F25ECC95200BC5772 /* KakaoAPIService.swift */; };
+		F3800AEA25F2E8E100F218A1 /* AddrCoordCommonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B1BE25EBFF5700FB0B61 /* AddrCoordCommonData.swift */; };
+		F3800B4425F2EBD400F218A1 /* KakaoAddressAPIError+LocalizedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3800A3F25F2E5BA00F218A1 /* KakaoAddressAPIError+LocalizedError.swift */; };
+		F3800B4525F2EBD400F218A1 /* AddrCoordAPIError+LocalizedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3800A3925F2E59100F218A1 /* AddrCoordAPIError+LocalizedError.swift */; };
+		F3800B4625F2EBD400F218A1 /* AddrLinkAPIError+LocalizedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3800A2225F2E4F900F218A1 /* AddrLinkAPIError+LocalizedError.swift */; };
+		F3800B4725F2EBD400F218A1 /* AddrEngAPIError+LocalizedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3800A3325F2E56B00F218A1 /* AddrEngAPIError+LocalizedError.swift */; };
+		F3800B7425F2ED9100F218A1 /* DoroDoroWatchAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = F3800B7325F2ED9100F218A1 /* DoroDoroWatchAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F3800C2025F2F1E700F218A1 /* DoroDoroWatchAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3800AA125F2E89900F218A1 /* DoroDoroWatchAPI.framework */; };
+		F3800C2125F2F1E700F218A1 /* DoroDoroWatchAPI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F3800AA125F2E89900F218A1 /* DoroDoroWatchAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F38128F225F023FD00C36F7B /* SettingsMapSelectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38128F125F023FD00C36F7B /* SettingsMapSelectionType.swift */; };
 		F38128F525F0276700C36F7B /* BookmarksCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38128F425F0276700C36F7B /* BookmarksCellItem.swift */; };
 		F38128F725F027F000C36F7B /* BookmarksHeaderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38128F625F027F000C36F7B /* BookmarksHeaderItem.swift */; };
@@ -139,17 +161,12 @@
 		F3AAE29B25E7D06700D666BD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AAE29A25E7D06700D666BD /* SceneDelegate.swift */; };
 		F3AAE2A225E7D06800D666BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3AAE2A125E7D06800D666BD /* Assets.xcassets */; };
 		F3AAE2A525E7D06800D666BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3AAE2A325E7D06800D666BD /* LaunchScreen.storyboard */; };
-		F3B36AB325F1CA0A00B59915 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B36AB225F1CA0A00B59915 /* Keys.swift */; };
 		F3C2796125EEC8C40029A61E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3C2796025EEC8C40029A61E /* CloudKit.framework */; };
 		F3C9222825F2DC9000737341 /* WKInterfaceController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9222725F2DC9000737341 /* WKInterfaceController+Ext.swift */; };
 		F3E6881025F122E200A619CA /* String+choseongContains.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E6880F25F122E200A619CA /* String+choseongContains.swift */; };
 		F3E6881225F12B4E00A619CA /* SettingsContributorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E6881125F12B4E00A619CA /* SettingsContributorType.swift */; };
 		F3E6881425F13E6600A619CA /* DetailedNVCSplitViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E6881325F13E6600A619CA /* DetailedNVCSplitViewControllerDelegate.swift */; };
 		F3F2F29225EFDB74005FC9CE /* UIViewController+SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F2F29125EFDB74005FC9CE /* UIViewController+SpinnerView.swift */; };
-		F3F4FAF025E8080D0077FCB5 /* AddrEngCommonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F4FAEF25E8080D0077FCB5 /* AddrEngCommonData.swift */; };
-		F3F4FAF725E8082F0077FCB5 /* AddrEngJusoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F4FAF625E8082F0077FCB5 /* AddrEngJusoData.swift */; };
-		F3F4FAFE25E809CD0077FCB5 /* AddrEngResultsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F4FAFD25E809CD0077FCB5 /* AddrEngResultsData.swift */; };
-		F3F4FB0A25E80A040077FCB5 /* AddrEngAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F4FB0925E80A040077FCB5 /* AddrEngAPIError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -181,6 +198,20 @@
 			remoteGlobalIDString = F378B6CA25E7D77100FCE546;
 			remoteInfo = DoroDoroWatch;
 		};
+		F380095925F2E1E400F218A1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F3AAE28D25E7D06700D666BD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F380094525F2E1E400F218A1;
+			remoteInfo = DoroDoroAPI;
+		};
+		F3800C2225F2F1E700F218A1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F3AAE28D25E7D06700D666BD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F3800AA025F2E89900F218A1;
+			remoteInfo = DoroDoroWatchAPI;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -190,6 +221,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				F380095C25F2E1E400F218A1 /* DoroDoroAPI.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -216,15 +248,31 @@
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F3800C2425F2F1E700F218A1 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				F3800C2125F2F1E700F218A1 /* DoroDoroWatchAPI.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		11AF41BFC41987DE1C99AE69 /* Pods-DoroDoroWatchAPI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoroDoroWatchAPI.release.xcconfig"; path = "Target Support Files/Pods-DoroDoroWatchAPI/Pods-DoroDoroWatchAPI.release.xcconfig"; sourceTree = "<group>"; };
+		24CE4333A9C3009967DAEF3B /* Pods_DoroDoroWatchAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoroDoroWatchAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5309ED33327A32D8822CF4CC /* Pods_DoroDoroAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoroDoroAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D85A13F60C3E781DFBC61E7 /* Pods-DoroDoro.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoroDoro.release.xcconfig"; path = "Target Support Files/Pods-DoroDoro/Pods-DoroDoro.release.xcconfig"; sourceTree = "<group>"; };
 		86D49FB34CCC715324E29809 /* Pods-DoroDoro.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoroDoro.debug.xcconfig"; path = "Target Support Files/Pods-DoroDoro/Pods-DoroDoro.debug.xcconfig"; sourceTree = "<group>"; };
-		9B5C305ACAC31802355305AA /* Pods_DoroDoroWatch_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoroDoroWatch_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BD4BB8F8E871C18D9410ABC7 /* Pods-DoroDoroWatch Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoroDoroWatch Extension.release.xcconfig"; path = "Target Support Files/Pods-DoroDoroWatch Extension/Pods-DoroDoroWatch Extension.release.xcconfig"; sourceTree = "<group>"; };
-		E42CE64A03455601AFB56029 /* Pods-DoroDoroWatch Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoroDoroWatch Extension.debug.xcconfig"; path = "Target Support Files/Pods-DoroDoroWatch Extension/Pods-DoroDoroWatch Extension.debug.xcconfig"; sourceTree = "<group>"; };
+		931F37118C61A8EE14A666C3 /* Pods-DoroDoroAPI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoroDoroAPI.debug.xcconfig"; path = "Target Support Files/Pods-DoroDoroAPI/Pods-DoroDoroAPI.debug.xcconfig"; sourceTree = "<group>"; };
+		A468E40173398C1B231AC2A6 /* Pods-DoroDoroWatch Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoroDoroWatch Extension.release.xcconfig"; path = "Target Support Files/Pods-DoroDoroWatch Extension/Pods-DoroDoroWatch Extension.release.xcconfig"; sourceTree = "<group>"; };
+		C70BFE619FFD251C29D381CA /* Pods-DoroDoroAPI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoroDoroAPI.release.xcconfig"; path = "Target Support Files/Pods-DoroDoroAPI/Pods-DoroDoroAPI.release.xcconfig"; sourceTree = "<group>"; };
 		E86CEB0C5A70206FB9CE710D /* Pods_DoroDoro.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoroDoro.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF4E71F7032F7AEA1171F871 /* Pods_DoroDoroWatch_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoroDoroWatch_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F31F908CAD8875E972E2A171 /* Pods-DoroDoroWatchAPI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoroDoroWatchAPI.debug.xcconfig"; path = "Target Support Files/Pods-DoroDoroWatchAPI/Pods-DoroDoroWatchAPI.debug.xcconfig"; sourceTree = "<group>"; };
 		F332741725EFF1CF00417437 /* CloudService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudService.swift; sourceTree = "<group>"; };
 		F332741F25EFF71100417437 /* SettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
 		F332742625EFF7E500417437 /* SettingsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsData.swift; sourceTree = "<group>"; };
@@ -342,6 +390,18 @@
 		F378B77C25E7F18900FCE546 /* AddrLinkJusoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrLinkJusoData.swift; sourceTree = "<group>"; };
 		F378B78325E7F45600FCE546 /* AddrLinkAPIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrLinkAPIError.swift; sourceTree = "<group>"; };
 		F378B78F25E7FAE500FCE546 /* AddrLinkResultsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrLinkResultsData.swift; sourceTree = "<group>"; };
+		F380094625F2E1E400F218A1 /* DoroDoroAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DoroDoroAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F380094825F2E1E400F218A1 /* DoroDoroAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DoroDoroAPI.h; sourceTree = "<group>"; };
+		F380094925F2E1E400F218A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F3800A2225F2E4F900F218A1 /* AddrLinkAPIError+LocalizedError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddrLinkAPIError+LocalizedError.swift"; sourceTree = "<group>"; };
+		F3800A2D25F2E54100F218A1 /* AddrLinkJusoData+convertToAddrCoordSearchData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddrLinkJusoData+convertToAddrCoordSearchData.swift"; sourceTree = "<group>"; };
+		F3800A3325F2E56B00F218A1 /* AddrEngAPIError+LocalizedError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddrEngAPIError+LocalizedError.swift"; sourceTree = "<group>"; };
+		F3800A3925F2E59100F218A1 /* AddrCoordAPIError+LocalizedError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddrCoordAPIError+LocalizedError.swift"; sourceTree = "<group>"; };
+		F3800A3F25F2E5BA00F218A1 /* KakaoAddressAPIError+LocalizedError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KakaoAddressAPIError+LocalizedError.swift"; sourceTree = "<group>"; };
+		F3800AA125F2E89900F218A1 /* DoroDoroWatchAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DoroDoroWatchAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F3800AA425F2E89900F218A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F3800B7325F2ED9100F218A1 /* DoroDoroWatchAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoroDoroWatchAPI.h; sourceTree = "<group>"; };
+		F3800BBF25F2EF7D00F218A1 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F38128F125F023FD00C36F7B /* SettingsMapSelectionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsMapSelectionType.swift; sourceTree = "<group>"; };
 		F38128F425F0276700C36F7B /* BookmarksCellItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksCellItem.swift; sourceTree = "<group>"; };
 		F38128F625F027F000C36F7B /* BookmarksHeaderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksHeaderItem.swift; sourceTree = "<group>"; };
@@ -368,6 +428,7 @@
 		F3F4FAF625E8082F0077FCB5 /* AddrEngJusoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrEngJusoData.swift; sourceTree = "<group>"; };
 		F3F4FAFD25E809CD0077FCB5 /* AddrEngResultsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrEngResultsData.swift; sourceTree = "<group>"; };
 		F3F4FB0925E80A040077FCB5 /* AddrEngAPIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrEngAPIError.swift; sourceTree = "<group>"; };
+		FBC6FAC74664FE9723320696 /* Pods-DoroDoroWatch Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoroDoroWatch Extension.debug.xcconfig"; path = "Target Support Files/Pods-DoroDoroWatch Extension/Pods-DoroDoroWatch Extension.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -396,7 +457,24 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF8FFEB90687086F62593892 /* Pods_DoroDoroWatch_Extension.framework in Frameworks */,
+				F3800C2025F2F1E700F218A1 /* DoroDoroWatchAPI.framework in Frameworks */,
+				93239F3CBE1708F488E8EF48 /* Pods_DoroDoroWatch_Extension.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F380094325F2E1E400F218A1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8C84073ADE3808F2A421FFF /* Pods_DoroDoroAPI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F3800A9E25F2E89900F218A1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				738B25F698562856F3A291B1 /* Pods_DoroDoroWatchAPI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,6 +488,7 @@
 				F33BAFDE25ECB8D100BC5772 /* libsqlite3.tbd in Frameworks */,
 				F33BAFCC25ECB89D00BC5772 /* QuartzCore.framework in Frameworks */,
 				F3C2796125EEC8C40029A61E /* CloudKit.framework in Frameworks */,
+				F380095B25F2E1E400F218A1 /* DoroDoroAPI.framework in Frameworks */,
 				E8BA96083B64A362F17AAFEA /* Pods_DoroDoro.framework in Frameworks */,
 				F33BAFD625ECB8C300BC5772 /* libxml2.tbd in Frameworks */,
 				F33BB1C125ED4E5700BC5772 /* DaumMap.framework in Frameworks */,
@@ -423,6 +502,7 @@
 		6FBAAB16978957EF30DAB117 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F3800BBF25F2EF7D00F218A1 /* Alamofire.framework */,
 				F3C2796025EEC8C40029A61E /* CloudKit.framework */,
 				F33BB17F25ED4E5600BC5772 /* DaumMap.embeddedframework */,
 				F33BB00425ECBAB700BC5772 /* Metal.framework */,
@@ -436,7 +516,9 @@
 				E86CEB0C5A70206FB9CE710D /* Pods_DoroDoro.framework */,
 				F378B74425E7EED900FCE546 /* WidgetKit.framework */,
 				F378B74625E7EED900FCE546 /* SwiftUI.framework */,
-				9B5C305ACAC31802355305AA /* Pods_DoroDoroWatch_Extension.framework */,
+				5309ED33327A32D8822CF4CC /* Pods_DoroDoroAPI.framework */,
+				24CE4333A9C3009967DAEF3B /* Pods_DoroDoroWatchAPI.framework */,
+				EF4E71F7032F7AEA1171F871 /* Pods_DoroDoroWatch_Extension.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -446,8 +528,12 @@
 			children = (
 				86D49FB34CCC715324E29809 /* Pods-DoroDoro.debug.xcconfig */,
 				6D85A13F60C3E781DFBC61E7 /* Pods-DoroDoro.release.xcconfig */,
-				E42CE64A03455601AFB56029 /* Pods-DoroDoroWatch Extension.debug.xcconfig */,
-				BD4BB8F8E871C18D9410ABC7 /* Pods-DoroDoroWatch Extension.release.xcconfig */,
+				931F37118C61A8EE14A666C3 /* Pods-DoroDoroAPI.debug.xcconfig */,
+				C70BFE619FFD251C29D381CA /* Pods-DoroDoroAPI.release.xcconfig */,
+				F31F908CAD8875E972E2A171 /* Pods-DoroDoroWatchAPI.debug.xcconfig */,
+				11AF41BFC41987DE1C99AE69 /* Pods-DoroDoroWatchAPI.release.xcconfig */,
+				FBC6FAC74664FE9723320696 /* Pods-DoroDoroWatch Extension.debug.xcconfig */,
+				A468E40173398C1B231AC2A6 /* Pods-DoroDoroWatch Extension.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -483,7 +569,6 @@
 				F38128F325F0274C00C36F7B /* Bookmarks */,
 				F337B1F625EC0DCE00FB0B61 /* Details */,
 				F384137825F005490078334A /* Settings */,
-				F3B36AB225F1CA0A00B59915 /* Keys.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -514,6 +599,7 @@
 				F33BB0D225ECE96C00BC5772 /* UIViewController+Ext.swift */,
 				F3F2F29125EFDB74005FC9CE /* UIViewController+SpinnerView.swift */,
 				F3E6880F25F122E200A619CA /* String+choseongContains.swift */,
+				F3800A2D25F2E54100F218A1 /* AddrLinkJusoData+convertToAddrCoordSearchData.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -828,13 +914,58 @@
 			isa = PBXGroup;
 			children = (
 				F3444C9A25E8B1A700A0706F /* Localizable */,
-				F378B72025E7DC8E00FCE546 /* AddrAPI */,
-				F33BB02225ECC0DE00BC5772 /* KakaoAPI */,
 				F332741425EFF15500417437 /* Cloud */,
 				F332741525EFF18C00417437 /* Bookmarks */,
 				F332741625EFF1A700417437 /* Settings */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		F380094725F2E1E400F218A1 /* DoroDoroAPI */ = {
+			isa = PBXGroup;
+			children = (
+				F380094825F2E1E400F218A1 /* DoroDoroAPI.h */,
+				F380094925F2E1E400F218A1 /* Info.plist */,
+			);
+			path = DoroDoroAPI;
+			sourceTree = "<group>";
+		};
+		F3800A2025F2E4AF00F218A1 /* DoroDoroAppCommon */ = {
+			isa = PBXGroup;
+			children = (
+				F3800A2125F2E4BF00F218A1 /* Extension */,
+			);
+			path = DoroDoroAppCommon;
+			sourceTree = "<group>";
+		};
+		F3800A2125F2E4BF00F218A1 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				F3800A2225F2E4F900F218A1 /* AddrLinkAPIError+LocalizedError.swift */,
+				F3800A3325F2E56B00F218A1 /* AddrEngAPIError+LocalizedError.swift */,
+				F3800A3925F2E59100F218A1 /* AddrCoordAPIError+LocalizedError.swift */,
+				F3800A3F25F2E5BA00F218A1 /* KakaoAddressAPIError+LocalizedError.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		F3800AA225F2E89900F218A1 /* DoroDoroWatchAPI */ = {
+			isa = PBXGroup;
+			children = (
+				F3800B7325F2ED9100F218A1 /* DoroDoroWatchAPI.h */,
+				F3800AA425F2E89900F218A1 /* Info.plist */,
+			);
+			path = DoroDoroWatchAPI;
+			sourceTree = "<group>";
+		};
+		F3800AB525F2E8BC00F218A1 /* DoroDoroAPICommon */ = {
+			isa = PBXGroup;
+			children = (
+				F3B36AB225F1CA0A00B59915 /* Keys.swift */,
+				F378B72025E7DC8E00FCE546 /* AddrAPI */,
+				F33BB02225ECC0DE00BC5772 /* KakaoAPI */,
+			);
+			path = DoroDoroAPICommon;
 			sourceTree = "<group>";
 		};
 		F38128F325F0274C00C36F7B /* Bookmarks */ = {
@@ -879,11 +1010,15 @@
 			isa = PBXGroup;
 			children = (
 				F378B75425E7EEDB00FCE546 /* DoroDoroWidgetExtension.entitlements */,
+				F3800AB525F2E8BC00F218A1 /* DoroDoroAPICommon */,
+				F3800A2025F2E4AF00F218A1 /* DoroDoroAppCommon */,
 				F3AAE29725E7D06700D666BD /* DoroDoro */,
 				F378B6BC25E7D71C00FCE546 /* DoroDoroTests */,
 				F3444CA725E8B82300A0706F /* DoroDoroUITests */,
 				F378B6CC25E7D77100FCE546 /* DoroDoroWatch */,
 				F378B6DB25E7D77200FCE546 /* DoroDoroWatch Extension */,
+				F380094725F2E1E400F218A1 /* DoroDoroAPI */,
+				F3800AA225F2E89900F218A1 /* DoroDoroWatchAPI */,
 				F3AAE29625E7D06700D666BD /* Products */,
 				A8A59AF1328A673D479B7E6D /* Pods */,
 				6FBAAB16978957EF30DAB117 /* Frameworks */,
@@ -898,6 +1033,8 @@
 				F378B6CB25E7D77100FCE546 /* DoroDoroWatch.app */,
 				F378B6D725E7D77200FCE546 /* DoroDoroWatch Extension.appex */,
 				F3444CA625E8B82300A0706F /* DoroDoroUITests.xctest */,
+				F380094625F2E1E400F218A1 /* DoroDoroAPI.framework */,
+				F3800AA125F2E89900F218A1 /* DoroDoroWatchAPI.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -941,6 +1078,25 @@
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		F380094125F2E1E400F218A1 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F380095825F2E1E400F218A1 /* DoroDoroAPI.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F3800A9C25F2E89900F218A1 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F3800B7425F2ED9100F218A1 /* DoroDoroWatchAPI.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		F3444CA525E8B82300A0706F /* DoroDoroUITests */ = {
@@ -1001,20 +1157,60 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F378B6E825E7D77300FCE546 /* Build configuration list for PBXNativeTarget "DoroDoroWatch Extension" */;
 			buildPhases = (
-				5C1043C6485545FA0696C43C /* [CP] Check Pods Manifest.lock */,
+				D5C47D55228F49CE22CB9043 /* [CP] Check Pods Manifest.lock */,
 				F378B6D325E7D77200FCE546 /* Sources */,
 				F378B6D425E7D77200FCE546 /* Frameworks */,
 				F378B6D525E7D77200FCE546 /* Resources */,
-				48B6F2DFFF1DEA19639C84C5 /* [CP] Embed Pods Frameworks */,
+				F3800C2425F2F1E700F218A1 /* Embed Frameworks */,
+				3173D44D5DFADBBAF9121D34 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				F3800C2325F2F1E700F218A1 /* PBXTargetDependency */,
 			);
 			name = "DoroDoroWatch Extension";
 			productName = "DoroDoroWatch Extension";
 			productReference = F378B6D725E7D77200FCE546 /* DoroDoroWatch Extension.appex */;
 			productType = "com.apple.product-type.watchkit2-extension";
+		};
+		F380094525F2E1E400F218A1 /* DoroDoroAPI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F380095D25F2E1E400F218A1 /* Build configuration list for PBXNativeTarget "DoroDoroAPI" */;
+			buildPhases = (
+				E35A8C5EDA57689314CF26C6 /* [CP] Check Pods Manifest.lock */,
+				F380094125F2E1E400F218A1 /* Headers */,
+				F380094225F2E1E400F218A1 /* Sources */,
+				F380094325F2E1E400F218A1 /* Frameworks */,
+				F380094425F2E1E400F218A1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DoroDoroAPI;
+			productName = DoroDoroAPI;
+			productReference = F380094625F2E1E400F218A1 /* DoroDoroAPI.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		F3800AA025F2E89900F218A1 /* DoroDoroWatchAPI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F3800AAA25F2E89900F218A1 /* Build configuration list for PBXNativeTarget "DoroDoroWatchAPI" */;
+			buildPhases = (
+				FB629BF30D8F277E794B95A7 /* [CP] Check Pods Manifest.lock */,
+				F3800A9C25F2E89900F218A1 /* Headers */,
+				F3800A9D25F2E89900F218A1 /* Sources */,
+				F3800A9E25F2E89900F218A1 /* Frameworks */,
+				F3800A9F25F2E89900F218A1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DoroDoroWatchAPI;
+			productName = DoroDoroWatchAPI;
+			productReference = F3800AA125F2E89900F218A1 /* DoroDoroWatchAPI.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 		F3AAE29425E7D06700D666BD /* DoroDoro */ = {
 			isa = PBXNativeTarget;
@@ -1032,6 +1228,7 @@
 			);
 			dependencies = (
 				F378B6E625E7D77300FCE546 /* PBXTargetDependency */,
+				F380095A25F2E1E400F218A1 /* PBXTargetDependency */,
 			);
 			name = DoroDoro;
 			productName = DoroDoro;
@@ -1044,7 +1241,7 @@
 		F3AAE28D25E7D06700D666BD /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1250;
+				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1240;
 				TargetAttributes = {
 					F3444CA525E8B82300A0706F = {
@@ -1057,8 +1254,15 @@
 					};
 					F378B6CA25E7D77100FCE546 = {
 						CreatedOnToolsVersion = 12.4;
+						LastSwiftMigration = 1240;
 					};
 					F378B6D625E7D77200FCE546 = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					F380094525F2E1E400F218A1 = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					F3800AA025F2E89900F218A1 = {
 						CreatedOnToolsVersion = 12.4;
 					};
 					F3AAE29425E7D06700D666BD = {
@@ -1085,6 +1289,8 @@
 				F378B6CA25E7D77100FCE546 /* DoroDoroWatch */,
 				F378B6D625E7D77200FCE546 /* DoroDoroWatch Extension */,
 				F3444CA525E8B82300A0706F /* DoroDoroUITests */,
+				F380094525F2E1E400F218A1 /* DoroDoroAPI */,
+				F3800AA025F2E89900F218A1 /* DoroDoroWatchAPI */,
 			);
 		};
 /* End PBXProject section */
@@ -1119,6 +1325,20 @@
 			files = (
 				F378B6E325E7D77300FCE546 /* Assets.xcassets in Resources */,
 				F334A63625F2B0340005E970 /* Localizable.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F380094425F2E1E400F218A1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F3800A9F25F2E89900F218A1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1163,6 +1383,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		3173D44D5DFADBBAF9121D34 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DoroDoroWatch Extension/Pods-DoroDoroWatch Extension-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DoroDoroWatch Extension/Pods-DoroDoroWatch Extension-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DoroDoroWatch Extension/Pods-DoroDoroWatch Extension-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		42A183763EE19DA7B551364D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1185,24 +1422,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		48B6F2DFFF1DEA19639C84C5 /* [CP] Embed Pods Frameworks */ = {
+		C7C0829D08C78473D4B703F4 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DoroDoroWatch Extension/Pods-DoroDoroWatch Extension-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-DoroDoro/Pods-DoroDoro-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DoroDoroWatch Extension/Pods-DoroDoroWatch Extension-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-DoroDoro/Pods-DoroDoro-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DoroDoroWatch Extension/Pods-DoroDoroWatch Extension-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DoroDoro/Pods-DoroDoro-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		5C1043C6485545FA0696C43C /* [CP] Check Pods Manifest.lock */ = {
+		D5C47D55228F49CE22CB9043 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1224,21 +1461,48 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C7C0829D08C78473D4B703F4 /* [CP] Embed Pods Frameworks */ = {
+		E35A8C5EDA57689314CF26C6 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DoroDoro/Pods-DoroDoro-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Embed Pods Frameworks";
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DoroDoro/Pods-DoroDoro-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DoroDoroAPI-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DoroDoro/Pods-DoroDoro-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FB629BF30D8F277E794B95A7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DoroDoroWatchAPI-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1266,40 +1530,80 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F334A61F25F2AF6F0005E970 /* AddrLinkResultsData.swift in Sources */,
-				F334A62325F2AF7B0005E970 /* AddrEngCommonData.swift in Sources */,
 				F350298625F2D5960094B33D /* DetailsLinkJusoIndex.swift in Sources */,
 				F378B6DF25E7D77200FCE546 /* ExtensionDelegate.swift in Sources */,
-				F334A63525F2B02D0005E970 /* KakaoAddressResultData.swift in Sources */,
-				F334A62525F2AF800005E970 /* AddrEngAPIError.swift in Sources */,
-				F334A63025F2B0210005E970 /* KakaoAddressAPIError.swift in Sources */,
 				F350296B25F2CA550094B33D /* DetailsInterfaceModel.swift in Sources */,
 				F350296525F2C9200094B33D /* DetailsInterfaceController.swift in Sources */,
-				F334A62625F2AF840005E970 /* AddrEngResultsData.swift in Sources */,
-				F334A62025F2AF710005E970 /* AddrLinkAPIError.swift in Sources */,
-				F334A62F25F2B01F0005E970 /* KakaoAPIService.swift in Sources */,
-				F334A62925F2AF920005E970 /* AddrCoordJusoData.swift in Sources */,
+				F3800B4725F2EBD400F218A1 /* AddrEngAPIError+LocalizedError.swift in Sources */,
 				F334A61E25F2AEE70005E970 /* SearchInterfaceModel.swift in Sources */,
-				F334A62A25F2AF950005E970 /* AddrCoordAPIError.swift in Sources */,
-				F334A62E25F2B0070005E970 /* Keys.swift in Sources */,
-				F334A62725F2AF8D0005E970 /* AddrAPIService.swift in Sources */,
+				F3800B4525F2EBD400F218A1 /* AddrCoordAPIError+LocalizedError.swift in Sources */,
+				F3800B4425F2EBD400F218A1 /* KakaoAddressAPIError+LocalizedError.swift in Sources */,
 				F350297925F2CE1E0094B33D /* DetailsLinkJusoObject.swift in Sources */,
-				F334A63225F2B0250005E970 /* KakaoAddressAddressData.swift in Sources */,
+				F3800B4625F2EBD400F218A1 /* AddrLinkAPIError+LocalizedError.swift in Sources */,
 				F350297F25F2CEF70094B33D /* DetailsEngJusoObject.swift in Sources */,
-				F334A62125F2AF740005E970 /* AddrLinkJusoData.swift in Sources */,
-				F334A62425F2AF7D0005E970 /* AddrEngJusoData.swift in Sources */,
 				F378B6DD25E7D77200FCE546 /* SearchInterfaceController.swift in Sources */,
-				F334A63425F2B02A0005E970 /* KakaoAddressMetaData.swift in Sources */,
 				F350299825F2D8350094B33D /* DetailsEngJusoIndex.swift in Sources */,
 				F334A62D25F2AFFB0005E970 /* Localizable.swift in Sources */,
-				F334A63325F2B0280005E970 /* KakaoAddressDocumentData.swift in Sources */,
-				F334A62B25F2AF970005E970 /* AddrCoordResultsData.swift in Sources */,
-				F334A62C25F2AF990005E970 /* AddrCoordSearchData.swift in Sources */,
-				F334A62825F2AF900005E970 /* AddrCoordCommonData.swift in Sources */,
-				F334A63125F2B0230005E970 /* KakaoAddressRoadAddressData.swift in Sources */,
 				F3C9222825F2DC9000737341 /* WKInterfaceController+Ext.swift in Sources */,
 				F334A61A25F2AE390005E970 /* SearchResultObject.swift in Sources */,
-				F334A62225F2AF770005E970 /* AddrLinkCommonData.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F380094225F2E1E400F218A1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F38009D425F2E3D100F218A1 /* AddrCoordAPIError.swift in Sources */,
+				F380098E25F2E39F00F218A1 /* AddrLinkCommonData.swift in Sources */,
+				F38009CB25F2E3CD00F218A1 /* AddrCoordJusoData.swift in Sources */,
+				F38009F925F2E3EA00F218A1 /* KakaoAddressMetaData.swift in Sources */,
+				F38009E225F2E3D900F218A1 /* AddrCoordSearchData.swift in Sources */,
+				F38009A525F2E3B000F218A1 /* AddrLinkResultsData.swift in Sources */,
+				F3800A1625F2E3FF00F218A1 /* KakaoAPIService.swift in Sources */,
+				F38009AF25F2E3BB00F218A1 /* AddrEngJusoData.swift in Sources */,
+				F38009AE25F2E3B700F218A1 /* AddrEngCommonData.swift in Sources */,
+				F38009C125F2E3C300F218A1 /* AddrEngResultsData.swift in Sources */,
+				F38009B825F2E3BF00F218A1 /* AddrEngAPIError.swift in Sources */,
+				F3800A0225F2E3EF00F218A1 /* KakaoAddressDocumentData.swift in Sources */,
+				F380099725F2E3A300F218A1 /* AddrLinkJusoData.swift in Sources */,
+				F38009A025F2E3AD00F218A1 /* AddrLinkAPIError.swift in Sources */,
+				F3800A0325F2E3F300F218A1 /* KakaoAddressAddressData.swift in Sources */,
+				F3800A1B25F2E47400F218A1 /* Keys.swift in Sources */,
+				F38009EF25F2E3DD00F218A1 /* AddrAPIService.swift in Sources */,
+				F38009F825F2E3E600F218A1 /* KakaoAddressResultData.swift in Sources */,
+				F38009CA25F2E3C900F218A1 /* AddrCoordCommonData.swift in Sources */,
+				F3800A0C25F2E3F700F218A1 /* KakaoAddressRoadAddressData.swift in Sources */,
+				F3800A0D25F2E3FB00F218A1 /* KakaoAddressAPIError.swift in Sources */,
+				F38009DD25F2E3D500F218A1 /* AddrCoordResultsData.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F3800A9D25F2E89900F218A1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F3800ADE25F2E8E100F218A1 /* AddrLinkAPIError.swift in Sources */,
+				F3800AC025F2E8D200F218A1 /* KakaoAddressMetaData.swift in Sources */,
+				F3800AE825F2E8E100F218A1 /* AddrEngCommonData.swift in Sources */,
+				F3800AB625F2E8C900F218A1 /* Keys.swift in Sources */,
+				F3800ABD25F2E8D200F218A1 /* KakaoAddressAddressData.swift in Sources */,
+				F3800AE125F2E8E100F218A1 /* AddrLinkResultsData.swift in Sources */,
+				F3800AE925F2E8E100F218A1 /* KakaoAPIService.swift in Sources */,
+				F3800AE325F2E8E100F218A1 /* AddrCoordResultsData.swift in Sources */,
+				F3800ADF25F2E8E100F218A1 /* AddrEngResultsData.swift in Sources */,
+				F3800AE725F2E8E100F218A1 /* AddrCoordAPIError.swift in Sources */,
+				F3800ABB25F2E8D200F218A1 /* KakaoAddressRoadAddressData.swift in Sources */,
+				F3800ABF25F2E8D200F218A1 /* KakaoAddressResultData.swift in Sources */,
+				F3800ABE25F2E8D200F218A1 /* KakaoAddressAPIError.swift in Sources */,
+				F3800ADC25F2E8E100F218A1 /* AddrCoordSearchData.swift in Sources */,
+				F3800AE525F2E8E100F218A1 /* AddrLinkJusoData.swift in Sources */,
+				F3800AEA25F2E8E100F218A1 /* AddrCoordCommonData.swift in Sources */,
+				F3800AE025F2E8E100F218A1 /* AddrAPIService.swift in Sources */,
+				F3800ADD25F2E8E100F218A1 /* AddrLinkCommonData.swift in Sources */,
+				F3800AE225F2E8E100F218A1 /* AddrEngJusoData.swift in Sources */,
+				F3800ABC25F2E8D200F218A1 /* KakaoAddressDocumentData.swift in Sources */,
+				F3800AE425F2E8E100F218A1 /* AddrCoordJusoData.swift in Sources */,
+				F3800AE625F2E8E100F218A1 /* AddrEngAPIError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1307,63 +1611,46 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3800A3425F2E56B00F218A1 /* AddrEngAPIError+LocalizedError.swift in Sources */,
 				F384137C25F006B10078334A /* SettingHeaderItem.swift in Sources */,
-				F3F4FB0A25E80A040077FCB5 /* AddrEngAPIError.swift in Sources */,
 				F337B1F825EC0E0F00FB0B61 /* DetailResultItem.swift in Sources */,
 				F38128FE25F0298700C36F7B /* BookmarksService.swift in Sources */,
 				F378B6FB25E7D83F00FCE546 /* SearchViewController.swift in Sources */,
-				F3F4FAFE25E809CD0077FCB5 /* AddrEngResultsData.swift in Sources */,
-				F33BB09F25ECD0C500BC5772 /* KakaoAddressAPIError.swift in Sources */,
 				F333B9F825EBFA1B00F1915F /* DetailsViewController.swift in Sources */,
-				F33BB0C525ECD76C00BC5772 /* KakaoAddressRoadAddressData.swift in Sources */,
+				F3800A2325F2E4F900F218A1 /* AddrLinkAPIError+LocalizedError.swift in Sources */,
 				F332742725EFF7E500417437 /* SettingsData.swift in Sources */,
 				F38128F725F027F000C36F7B /* BookmarksHeaderItem.swift in Sources */,
+				F3800A4025F2E5BA00F218A1 /* KakaoAddressAPIError+LocalizedError.swift in Sources */,
 				F3AAE29925E7D06700D666BD /* AppDelegate.swift in Sources */,
-				F33BB03025ECC95200BC5772 /* KakaoAPIService.swift in Sources */,
 				F333BA0025EBFE1B00F1915F /* NSObject+Ext.swift in Sources */,
-				F337B1C725EC009400FB0B61 /* AddrCoordJusoData.swift in Sources */,
-				F33BB04725ECCD6100BC5772 /* KakaoAddressMetaData.swift in Sources */,
 				F337B1EE25EC09F400FB0B61 /* DetailsViewModel.swift in Sources */,
+				F3800A3A25F2E59100F218A1 /* AddrCoordAPIError+LocalizedError.swift in Sources */,
 				F384137A25F0061C0078334A /* SettingCellItem.swift in Sources */,
 				F3E6881025F122E200A619CA /* String+choseongContains.swift in Sources */,
 				F33BB10425ED268D00BC5772 /* MapViewController.swift in Sources */,
 				F3E6881425F13E6600A619CA /* DetailedNVCSplitViewControllerDelegate.swift in Sources */,
+				F3800A2E25F2E54100F218A1 /* AddrLinkJusoData+convertToAddrCoordSearchData.swift in Sources */,
 				F333B97B25EB7F0200F1915F /* SearchViewModel.swift in Sources */,
-				F378B77625E7F17A00FCE546 /* AddrLinkCommonData.swift in Sources */,
 				F332741825EFF1CF00417437 /* CloudService.swift in Sources */,
 				F332742025EFF71100417437 /* SettingsService.swift in Sources */,
 				F378B70225E7D88A00FCE546 /* MainTabBarController.swift in Sources */,
 				F38128FC25F028F800C36F7B /* BookmarksData.swift in Sources */,
-				F3B36AB325F1CA0A00B59915 /* Keys.swift in Sources */,
-				F337B1DF25EC03A400FB0B61 /* AddrCoordSearchData.swift in Sources */,
-				F3F4FAF025E8080D0077FCB5 /* AddrEngCommonData.swift in Sources */,
 				F3E6881225F12B4E00A619CA /* SettingsContributorType.swift in Sources */,
 				F38128F525F0276700C36F7B /* BookmarksCellItem.swift in Sources */,
-				F378B79025E7FAE500FCE546 /* AddrLinkResultsData.swift in Sources */,
-				F378B78425E7F45600FCE546 /* AddrLinkAPIError.swift in Sources */,
 				F38128F225F023FD00C36F7B /* SettingsMapSelectionType.swift in Sources */,
 				F33BB0D325ECE96C00BC5772 /* UIViewController+Ext.swift in Sources */,
 				F33BAFAC25EC239500BC5772 /* DetailsMapViewConfiguration.swift in Sources */,
 				F337B20025EC0E9600FB0B61 /* DetailHeaderItem.swift in Sources */,
-				F33BB0B725ECD73D00BC5772 /* KakaoAddressAddressData.swift in Sources */,
 				F33BB0F525ED043400BC5772 /* SpinnerView.swift in Sources */,
 				F333B98D25EB890C00F1915F /* SearchResultItem.swift in Sources */,
-				F337B1CF25EC016800FB0B61 /* AddrCoordAPIError.swift in Sources */,
 				F384137725F005030078334A /* SettingsViewModel.swift in Sources */,
 				F333B9A725EB8FB600F1915F /* SearchHeaderItem.swift in Sources */,
 				F378B70925E7D8C600FCE546 /* BookmarksViewController.swift in Sources */,
-				F337B1BF25EBFF5700FB0B61 /* AddrCoordCommonData.swift in Sources */,
 				F3F2F29225EFDB74005FC9CE /* UIViewController+SpinnerView.swift in Sources */,
-				F3F4FAF725E8082F0077FCB5 /* AddrEngJusoData.swift in Sources */,
-				F33BB04F25ECCD6C00BC5772 /* KakaoAddressDocumentData.swift in Sources */,
 				F3AAE29B25E7D06700D666BD /* SceneDelegate.swift in Sources */,
-				F33BB03925ECCD2E00BC5772 /* KakaoAddressResultData.swift in Sources */,
 				F38128FA25F0286100C36F7B /* BookmarksViewModel.swift in Sources */,
-				F378B72925E7E26900FCE546 /* AddrAPIService.swift in Sources */,
-				F378B77D25E7F18900FCE546 /* AddrLinkJusoData.swift in Sources */,
 				F3444C9C25E8B1BB00A0706F /* Localizable.swift in Sources */,
 				F378B76F25E7F0B700FCE546 /* SettingsViewController.swift in Sources */,
-				F337B1D725EC02AD00FB0B61 /* AddrCoordResultsData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1390,6 +1677,16 @@
 			platformFilter = ios;
 			target = F378B6CA25E7D77100FCE546 /* DoroDoroWatch */;
 			targetProxy = F378B6E525E7D77300FCE546 /* PBXContainerItemProxy */;
+		};
+		F380095A25F2E1E400F218A1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F380094525F2E1E400F218A1 /* DoroDoroAPI */;
+			targetProxy = F380095925F2E1E400F218A1 /* PBXContainerItemProxy */;
+		};
+		F3800C2325F2F1E700F218A1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F3800AA025F2E89900F218A1 /* DoroDoroWatchAPI */;
+			targetProxy = F3800C2225F2F1E700F218A1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1439,7 +1736,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P53D29U9LJ;
 				INFOPLIST_FILE = DoroDoroUITests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1459,7 +1756,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P53D29U9LJ;
 				INFOPLIST_FILE = DoroDoroUITests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1480,7 +1777,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P53D29U9LJ;
 				INFOPLIST_FILE = DoroDoroTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1501,7 +1798,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P53D29U9LJ;
 				INFOPLIST_FILE = DoroDoroTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1517,7 +1814,7 @@
 		};
 		F378B6E925E7D77300FCE546 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E42CE64A03455601AFB56029 /* Pods-DoroDoroWatch Extension.debug.xcconfig */;
+			baseConfigurationReference = FBC6FAC74664FE9723320696 /* Pods-DoroDoroWatch Extension.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P53D29U9LJ;
@@ -1533,13 +1830,13 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 7.2;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
 			};
 			name = Debug;
 		};
 		F378B6EA25E7D77300FCE546 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BD4BB8F8E871C18D9410ABC7 /* Pods-DoroDoroWatch Extension.release.xcconfig */;
+			baseConfigurationReference = A468E40173398C1B231AC2A6 /* Pods-DoroDoroWatch Extension.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P53D29U9LJ;
@@ -1555,7 +1852,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 7.2;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
 			};
 			name = Release;
 		};
@@ -1565,17 +1862,23 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P53D29U9LJ;
 				IBSC_MODULE = DoroDoroWatch_Extension;
 				INFOPLIST_FILE = DoroDoroWatch/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.pookjw.DoroDoro.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 7.2;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
 			};
 			name = Debug;
 		};
@@ -1585,17 +1888,142 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P53D29U9LJ;
 				IBSC_MODULE = DoroDoroWatch_Extension;
 				INFOPLIST_FILE = DoroDoroWatch/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.pookjw.DoroDoro.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 7.2;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
+			};
+			name = Release;
+		};
+		F380095E25F2E1E400F218A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 931F37118C61A8EE14A666C3 /* Pods-DoroDoroAPI.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = P53D29U9LJ;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = DoroDoroAPI/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.pookjw.DoroDoroAPI;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		F380095F25F2E1E400F218A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C70BFE619FFD251C29D381CA /* Pods-DoroDoroAPI.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = P53D29U9LJ;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = DoroDoroAPI/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.pookjw.DoroDoroAPI;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		F3800AAB25F2E89900F218A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F31F908CAD8875E972E2A171 /* Pods-DoroDoroWatchAPI.debug.xcconfig */;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = P53D29U9LJ;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = DoroDoroWatchAPI/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.pookjw.DoroDoroWatchAPI;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
+			};
+			name = Debug;
+		};
+		F3800AAC25F2E89900F218A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 11AF41BFC41987DE1C99AE69 /* Pods-DoroDoroWatchAPI.release.xcconfig */;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = P53D29U9LJ;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = DoroDoroWatchAPI/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.pookjw.DoroDoroWatchAPI;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
 			};
 			name = Release;
 		};
@@ -1721,6 +2149,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 86D49FB34CCC715324E29809 /* Pods-DoroDoro.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_OBJC_ARC = NO;
@@ -1751,6 +2180,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6D85A13F60C3E781DFBC61E7 /* Pods-DoroDoro.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_OBJC_ARC = NO;
@@ -1812,6 +2242,24 @@
 			buildConfigurations = (
 				F378B6ED25E7D77300FCE546 /* Debug */,
 				F378B6EE25E7D77300FCE546 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F380095D25F2E1E400F218A1 /* Build configuration list for PBXNativeTarget "DoroDoroAPI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F380095E25F2E1E400F218A1 /* Debug */,
+				F380095F25F2E1E400F218A1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F3800AAA25F2E89900F218A1 /* Build configuration list for PBXNativeTarget "DoroDoroWatchAPI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F3800AAB25F2E89900F218A1 /* Debug */,
+				F3800AAC25F2E89900F218A1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

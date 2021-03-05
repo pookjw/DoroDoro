@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import DoroDoroAPI
 
 internal struct SearchResultItem: Hashable, Equatable {
     internal let linkJusoData: AddrLinkJusoData

@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import Combine
+import DoroDoroAPI
 
 final internal class SearchViewModel {
     internal typealias DataSource = UICollectionViewDiffableDataSource<SearchHeaderItem, SearchResultItem>

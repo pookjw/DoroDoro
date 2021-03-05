@@ -9,6 +9,7 @@ import UIKit
 import Combine
 import SnapKit
 import CRRefresh
+import DoroDoroAPI
 
 final internal class SearchViewController: UIViewController {
     private weak var collectionView: UICollectionView? = nil

@@ -6,6 +6,7 @@
 //
 
 import WatchKit
+import DoroDoroWatchAPI
 
 internal final class SearchResultObject: NSObject {
     @IBOutlet weak internal var label: WKInterfaceLabel!

@@ -13,7 +13,7 @@
                     <items>
                         <group width="1" alignment="left" layout="vertical" id="hNm-2u-D14">
                             <items>
-                                <textField width="1" alignment="left" placeholder="🔎 Search(번역)..." id="xcp-Lr-e6F">
+                                <textField width="1" alignment="left" text="솔샘로" placeholder="🔎 Search(번역)..." id="xcp-Lr-e6F">
                                     <connections>
                                         <action selector="textFieldAction:" destination="AgC-eL-Hgc" id="Thi-M6-g7B"/>
                                     </connections>

@@ -42,6 +42,16 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "F380094D25F2E1E400F218A1"
+               BuildableName = "DoroDoroAPITests.xctest"
+               BlueprintName = "DoroDoroAPITests"
+               ReferencedContainer = "container:DoroDoro.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
@@ -54,8 +64,10 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <RemoteRunnable
+         runnableDebuggingMode = "2"
+         BundleIdentifier = "com.apple.Carousel"
+         RemotePath = "/DoroDoro">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F378B6CA25E7D77100FCE546"
@@ -63,7 +75,7 @@
             BlueprintName = "DoroDoroWatch"
             ReferencedContainer = "container:DoroDoro.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </RemoteRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -71,8 +83,10 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <RemoteRunnable
+         runnableDebuggingMode = "2"
+         BundleIdentifier = "com.apple.Carousel"
+         RemotePath = "/DoroDoro">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F378B6CA25E7D77100FCE546"
@@ -80,7 +94,16 @@
             BlueprintName = "DoroDoroWatch"
             ReferencedContainer = "container:DoroDoro.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </RemoteRunnable>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "F378B6CA25E7D77100FCE546"
+            BuildableName = "DoroDoroWatch.app"
+            BlueprintName = "DoroDoroWatch"
+            ReferencedContainer = "container:DoroDoro.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
