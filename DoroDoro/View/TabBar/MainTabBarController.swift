@@ -25,10 +25,12 @@ final internal class MainTabBarController: UITabBarController {
     
     private func configureViewControllers() {
         let searchVC: SearchViewController = .init()
-        let searchNVC: UINavigationController = .init(rootViewController: searchVC)
+        let searchPrimaryNVC: UINavigationController = .init(rootViewController: searchVC)
+        let searchSecondaryNVC: UINavigationController = .init()
         let searchSplitVC: UISplitViewController = .init()
         let bookmarksVC: BookmarksViewController = .init()
-        let bookmarksNVC: UINavigationController = .init(rootViewController: bookmarksVC)
+        let bookmarksPrimaryNVC: UINavigationController = .init(rootViewController: bookmarksVC)
+        let bookmarksSecondaryNVC: UINavigationController = .init()
         let bookmarksSplitVC: UISplitViewController = .init()
         let settingsVC: SettingsViewController = .init()
         let settingsNVC: UINavigationController = .init(rootViewController: settingsVC)
@@ -38,17 +40,17 @@ final internal class MainTabBarController: UITabBarController {
         self.settingsVC = settingsVC
         
         searchVC.loadViewIfNeeded()
-        searchNVC.loadViewIfNeeded()
+        searchPrimaryNVC.loadViewIfNeeded()
         bookmarksVC.loadViewIfNeeded()
-        bookmarksNVC.loadViewIfNeeded()
+        bookmarksPrimaryNVC.loadViewIfNeeded()
         settingsVC.loadViewIfNeeded()
         settingsNVC.loadViewIfNeeded()
         
-        searchSplitVC.viewControllers = [searchNVC]
+        searchSplitVC.viewControllers = [searchPrimaryNVC, searchSecondaryNVC]
         searchSplitVC.preferredDisplayMode = .oneBesideSecondary
         searchSplitVC.delegate = splitVCDelegate
         searchSplitVC.loadViewIfNeeded()
-        bookmarksSplitVC.viewControllers = [bookmarksNVC]
+        bookmarksSplitVC.viewControllers = [bookmarksPrimaryNVC, bookmarksSecondaryNVC]
         bookmarksSplitVC.preferredDisplayMode = .oneBesideSecondary
         bookmarksSplitVC.delegate = splitVCDelegate
         bookmarksSplitVC.loadViewIfNeeded()

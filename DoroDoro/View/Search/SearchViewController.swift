@@ -53,7 +53,7 @@ final internal class SearchViewController: UIViewController {
     
     private func configureCollectionView() {
         // 이 View Controller에는 Section이 1개이므로 NSCollectionLayoutSection를 쓸 필요가 없다.
-        var layoutConfiguration: UICollectionLayoutListConfiguration = .init(appearance: .insetGrouped)
+        var layoutConfiguration: UICollectionLayoutListConfiguration = .init(appearance: .sidebar)
         layoutConfiguration.headerMode = .supplementary
         let layout: UICollectionViewCompositionalLayout = .list(using: layoutConfiguration)
         
@@ -159,7 +159,7 @@ final internal class SearchViewController: UIViewController {
         let detailsVC: DetailsViewController = .init()
         detailsVC.loadViewIfNeeded()
         detailsVC.setLinkJusoData(linkJusoData)
-        splitViewController?.showDetailViewController(detailsVC, sender: true)
+        splitViewController?.showDetailViewController(detailsVC, sender: nil)
     }
 }
 
@@ -239,6 +239,7 @@ extension SearchViewController: UICollectionViewDelegate {
                 collectionView?.selectItem(at: indexPath, animated: true, scrollPosition: .left)
             }
             self?.viewModel?.contextMenuLinkJusoData = nil
+            self?.viewModel?.contextMenuIndexPath = nil
         }
     }
     

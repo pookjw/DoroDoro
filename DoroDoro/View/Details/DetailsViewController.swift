@@ -236,11 +236,9 @@ extension DetailsViewController: UICollectionViewDelegate {
             return false
         }
         return headerItem.headerType == .map
-//        return true
     }
     
     internal func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        pushToDetailsVC(roadAddr: viewModel!.roadAddr!)
         guard let item: DetailResultItem = viewModel?.getResultItem(from: indexPath) else {
             return
         }

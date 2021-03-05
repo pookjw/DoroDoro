@@ -52,7 +52,7 @@ final internal class BookmarksViewController: UIViewController {
     
     private func configureCollectionView() {
         // 이 View Controller에는 Section이 1개이므로 NSCollectionLayoutSection를 쓸 필요가 없다.
-        let layoutConfiguration: UICollectionLayoutListConfiguration = .init(appearance: .insetGrouped)
+        let layoutConfiguration: UICollectionLayoutListConfiguration = .init(appearance: .sidebar)
         let layout: UICollectionViewCompositionalLayout = .list(using: layoutConfiguration)
         
         let collectionView: UICollectionView = .init(frame: .zero, collectionViewLayout: layout)
@@ -92,8 +92,7 @@ final internal class BookmarksViewController: UIViewController {
         let detailsVC: DetailsViewController = .init()
         detailsVC.loadViewIfNeeded()
         detailsVC.setRoadAddr(roadAddr)
-        splitViewController?.showDetailViewController(detailsVC, sender: true)
-//        splitViewController?.showDetailViewController(detailsVC, sender: tr)
+        splitViewController?.showDetailViewController(detailsVC, sender: nil)
     }
 }
 
@@ -143,6 +142,7 @@ extension BookmarksViewController: UICollectionViewDelegate {
             self?.share([roadAddr], sourceView: cell)
         }
         
+        viewModel?.contextMenuIndexPath = indexPath
         viewModel?.contextMenuRoadAddr = roadAddr
         
         return UIContextMenuConfiguration(identifier: nil,
@@ -152,11 +152,15 @@ extension BookmarksViewController: UICollectionViewDelegate {
     }
     
     internal func collectionView(_ collectionView: UICollectionView, willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionCommitAnimating) {
-        animator.addAnimations { [weak self] in
+        animator.addAnimations { [weak self, weak collectionView] in
             if let roadAddr: String = self?.viewModel?.contextMenuRoadAddr {
                 self?.pushToDetailsVC(roadAddr: roadAddr)
             }
+            if let indexPath: IndexPath = self?.viewModel?.contextMenuIndexPath {
+                collectionView?.selectItem(at: indexPath, animated: true, scrollPosition: .left)
+            }
             self?.viewModel?.contextMenuRoadAddr = nil
+            self?.viewModel?.contextMenuIndexPath = nil
         }
     }
     

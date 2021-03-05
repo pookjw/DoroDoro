@@ -9,26 +9,18 @@ import UIKit
 
 final internal class DetailedNVCSplitViewControllerDelegate: UISplitViewControllerDelegate {
     func splitViewController(_ splitViewController: UISplitViewController, showDetail vc: UIViewController, sender: Any?) -> Bool {
-        print(splitViewController.style.rawValue)
         guard !splitViewController.isCollapsed,
-              !splitViewController.viewControllers.isEmpty else {
+              splitViewController.viewControllers.count > 1 else {
             return false
         }
         
-        if (splitViewController.viewControllers.count == 1) {
-            let secondaryNavigationController: UINavigationController = .init(rootViewController: vc)
-            splitViewController.viewControllers.append(secondaryNavigationController)
-            return true
-        } else if (sender as? Bool) == true {
-            let secondaryNavigationController: UINavigationController = .init(rootViewController: vc)
-            splitViewController.viewControllers[1] = secondaryNavigationController
-            return true
-        } else if let secondaryNavigationController: UINavigationController = splitViewController.viewControllers[1] as? UINavigationController {
-            secondaryNavigationController.pushViewController(vc, animated: true)
-            return true
-        } else {
+        guard let secondaryNavigationController: UINavigationController = splitViewController.viewControllers[1] as? UINavigationController else {
             return false
         }
+        
+        secondaryNavigationController.viewControllers = [vc]
+        
+        return true
     }
 
     func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
@@ -37,13 +29,11 @@ final internal class DetailedNVCSplitViewControllerDelegate: UISplitViewControll
         }
         
         guard let secondaryNavigationController: UINavigationController = secondaryViewController as? UINavigationController else {
-//            if secondaryViewController != nil {
-//                primaryNavigationController.viewControllers.append(secondaryViewController)
-//            }
             return false
         }
         
         primaryNavigationController.viewControllers.append(contentsOf: secondaryNavigationController.viewControllers)
+        secondaryNavigationController.viewControllers = []
         
         return true
     }

@@ -14,6 +14,7 @@ final internal class BookmarksViewModel {
     internal typealias Snapshot = NSDiffableDataSourceSnapshot<BookmarksHeaderItem, BookmarksCellItem>
     internal var dataSource: DataSource? = nil
     @Published internal var searchEvent: String? = nil
+    internal var contextMenuIndexPath: IndexPath? = nil
     internal var contextMenuRoadAddr: String? = nil
     private var cancellableBag: Set<AnyCancellable> = .init()
     

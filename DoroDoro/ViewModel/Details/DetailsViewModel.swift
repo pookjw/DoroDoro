@@ -19,7 +19,7 @@ final internal class DetailsViewModel {
     internal var bookmarkEvent: PassthroughSubject<Bool, Never> = .init()
     internal let addrAPIService: AddrAPIService = .init()
     internal let kakaoAPIService: KakaoAPIService = .init()
-    internal var roadAddr: String? = nil
+    private var roadAddr: String? = nil
     private var cancellableBag: Set<AnyCancellable> = .init()
     
     internal init() {
