@@ -9,8 +9,15 @@ import UIKit
 import SafariServices
 
 extension UIViewController {
-    internal func showErrorAlert(for error: LocalizedError) {
-        let alert: UIAlertController = .init(title: nil, message: error.errorDescription, preferredStyle: .alert)
+    internal func showErrorAlert(for error: Error) {
+        let message: String?
+        if let error: LocalizedError = error as? LocalizedError {
+            message = error.errorDescription
+        } else {
+            message = error.localizedDescription
+        }
+        
+        let alert: UIAlertController = .init(title: nil, message: message, preferredStyle: .alert)
         let doneAction: UIAlertAction = .init(title: Localizable.DONE.string, style: .default)
         alert.addAction(doneAction)
         present(alert, animated: true)

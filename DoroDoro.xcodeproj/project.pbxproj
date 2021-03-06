@@ -173,6 +173,8 @@
 		F384137725F005030078334A /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F384137625F005030078334A /* SettingsViewModel.swift */; };
 		F384137A25F0061C0078334A /* SettingCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F384137925F0061C0078334A /* SettingCellItem.swift */; };
 		F384137C25F006B10078334A /* SettingHeaderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F384137B25F006B10078334A /* SettingHeaderItem.swift */; };
+		F3A3DEF025F41D4000E8F2F0 /* KakaoCoord2AddressAPIError+LocalizedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A3DEEF25F41D4000E8F2F0 /* KakaoCoord2AddressAPIError+LocalizedError.swift */; };
+		F3A3DEF125F41D4000E8F2F0 /* KakaoCoord2AddressAPIError+LocalizedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A3DEEF25F41D4000E8F2F0 /* KakaoCoord2AddressAPIError+LocalizedError.swift */; };
 		F3AAE29925E7D06700D666BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AAE29825E7D06700D666BD /* AppDelegate.swift */; };
 		F3AAE29B25E7D06700D666BD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AAE29A25E7D06700D666BD /* SceneDelegate.swift */; };
 		F3AAE2A225E7D06800D666BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3AAE2A125E7D06800D666BD /* Assets.xcassets */; };
@@ -435,6 +437,7 @@
 		F384137625F005030078334A /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		F384137925F0061C0078334A /* SettingCellItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCellItem.swift; sourceTree = "<group>"; };
 		F384137B25F006B10078334A /* SettingHeaderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingHeaderItem.swift; sourceTree = "<group>"; };
+		F3A3DEEF25F41D4000E8F2F0 /* KakaoCoord2AddressAPIError+LocalizedError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KakaoCoord2AddressAPIError+LocalizedError.swift"; sourceTree = "<group>"; };
 		F3AAE29525E7D06700D666BD /* DoroDoro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoroDoro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3AAE29825E7D06700D666BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F3AAE29A25E7D06700D666BD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -993,6 +996,7 @@
 				F3800A3325F2E56B00F218A1 /* AddrEngAPIError+LocalizedError.swift */,
 				F3800A3925F2E59100F218A1 /* AddrCoordAPIError+LocalizedError.swift */,
 				F3800A3F25F2E5BA00F218A1 /* KakaoAddressAPIError+LocalizedError.swift */,
+				F3A3DEEF25F41D4000E8F2F0 /* KakaoCoord2AddressAPIError+LocalizedError.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1591,6 +1595,7 @@
 				F350297F25F2CEF70094B33D /* DetailsEngJusoObject.swift in Sources */,
 				F378B6DD25E7D77200FCE546 /* SearchInterfaceController.swift in Sources */,
 				F350299825F2D8350094B33D /* DetailsEngJusoIndex.swift in Sources */,
+				F3A3DEF125F41D4000E8F2F0 /* KakaoCoord2AddressAPIError+LocalizedError.swift in Sources */,
 				F334A62D25F2AFFB0005E970 /* Localizable.swift in Sources */,
 				F3C9222825F2DC9000737341 /* WKInterfaceController+Ext.swift in Sources */,
 				F334A61A25F2AE390005E970 /* SearchResultObject.swift in Sources */,
@@ -1692,6 +1697,7 @@
 				F384137A25F0061C0078334A /* SettingCellItem.swift in Sources */,
 				F3E6881025F122E200A619CA /* String+choseongContains.swift in Sources */,
 				F33BB10425ED268D00BC5772 /* MapViewController.swift in Sources */,
+				F3A3DEF025F41D4000E8F2F0 /* KakaoCoord2AddressAPIError+LocalizedError.swift in Sources */,
 				F3E6881425F13E6600A619CA /* DetailedNVCSplitViewControllerDelegate.swift in Sources */,
 				F3800A2E25F2E54100F218A1 /* AddrLinkJusoData+convertToAddrCoordSearchData.swift in Sources */,
 				F333B97B25EB7F0200F1915F /* SearchViewModel.swift in Sources */,

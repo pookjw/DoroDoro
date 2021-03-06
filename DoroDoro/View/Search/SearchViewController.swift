@@ -14,6 +14,7 @@ import DoroDoroAPI
 final internal class SearchViewController: UIViewController {
     private weak var collectionView: UICollectionView? = nil
     private weak var searchController: UISearchController? = nil
+    private weak var geoBarButtonItem: UIBarButtonItem? = nil
     private weak var slackLoadingAnimator: SlackLoadingAnimator? = nil
     private var viewModel: SearchViewModel? = nil
     private var cancellableBag: Set<AnyCancellable> = .init()
@@ -51,6 +52,19 @@ final internal class SearchViewController: UIViewController {
         title = Localizable.DORODORO.string
         tabBarItem.title = Localizable.TABBAR_SEARCH_VIEW_CONTROLLER_TITLE.string
         
+        let geoBarButtonItem: UIBarButtonItem = .init(title: nil,
+                                                      image: UIImage(systemName: "location.fill"),
+                                                      primaryAction: getGeoBarButtonAction(),
+                                                      menu: nil)
+        self.geoBarButtonItem = geoBarButtonItem
+        navigationItem.rightBarButtonItems = [geoBarButtonItem]
+    }
+    
+    private func getGeoBarButtonAction() -> UIAction {
+        return .init { [weak self] _ in
+            self?.showSpinnerView()
+            self?.viewModel?.requestGeoEvent()
+        }
     }
     
     private func configureCollectionView() {
@@ -155,12 +169,41 @@ final internal class SearchViewController: UIViewController {
                 self?.removeAllSpinnerView()
             })
             .store(in: &cancellableBag)
+        
+        viewModel?.geoEvent
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] roadAddr in
+                self?.removeAllSpinnerView()
+                self?.pushToDetailsVC(roadAddr: roadAddr)
+            })
+            .store(in: &cancellableBag)
+        
+        viewModel?.geoAPIService.coordErrorEvent
+            .sink(receiveValue: { [weak self] error in
+                self?.showErrorAlert(for: error)
+                self?.removeAllSpinnerView()
+            })
+            .store(in: &cancellableBag)
+        
+        viewModel?.kakaoAPIService.coord2AddressErrorEvent
+            .sink(receiveValue: { [weak self] error in
+                self?.showErrorAlert(for: error)
+                self?.removeAllSpinnerView()
+            })
+            .store(in: &cancellableBag)
     }
     
     private func pushToDetailsVC(linkJusoData: AddrLinkJusoData) {
         let detailsVC: DetailsViewController = .init()
         detailsVC.loadViewIfNeeded()
         detailsVC.setLinkJusoData(linkJusoData)
+        splitViewController?.showDetailViewController(detailsVC, sender: nil)
+    }
+    
+    private func pushToDetailsVC(roadAddr: String) {
+        let detailsVC: DetailsViewController = .init()
+        detailsVC.loadViewIfNeeded()
+        detailsVC.setRoadAddr(roadAddr)
         splitViewController?.showDetailViewController(detailsVC, sender: nil)
     }
 }

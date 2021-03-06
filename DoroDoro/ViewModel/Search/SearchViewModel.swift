@@ -17,8 +17,11 @@ final internal class SearchViewModel {
     internal var contextMenuIndexPath: IndexPath? = nil
     internal var contextMenuLinkJusoData: AddrLinkJusoData? = nil
     internal let addrAPIService: AddrAPIService = .init()
+    internal let geoAPIService: GeoAPIService = .init()
+    internal let kakaoAPIService: KakaoAPIService = .init()
     internal var dataSource: DataSource? = nil
     internal var refreshedEvent: PassthroughSubject<Bool, Never> = .init()
+    internal var geoEvent: PassthroughSubject<String, Never> = .init()
     @Published internal var searchEvent: String? = nil
     
     private var currentPage: Int = 1
@@ -27,11 +30,14 @@ final internal class SearchViewModel {
         let maxPage: Int = totalCount.isMultiple(of: 50) ? (totalCount / 50) : (totalCount / 50 + 1)
         return currentPage < maxPage
     }
-    
     private var cancellableBag: Set<AnyCancellable> = .init()
     
     internal init() {
         bind()
+    }
+    
+    internal func requestGeoEvent() {
+        geoAPIService.requestCurrentCoord()
     }
     
     internal func requestNextPageIfAvailable() {
@@ -102,6 +108,24 @@ final internal class SearchViewModel {
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] result in
                 self?.updateResultItems(result, text: self?.searchEvent ?? "")
+            })
+            .store(in: &cancellableBag)
+        
+        geoAPIService.coordEvent
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] coord in
+                self?.kakaoAPIService.requestCoord2AddressEvent(x: String(coord.longitude), y: String(coord.latitude))
+            })
+            .store(in: &cancellableBag)
+        
+        kakaoAPIService.coord2AddressEvent
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] data in
+                guard let document: KakaoCoord2AddressDocumentData = data.documents.first else {
+                    self?.kakaoAPIService.coord2AddressErrorEvent.send(.noResults)
+                    return
+                }
+                self?.geoEvent.send(document.road_address.address_name)
             })
             .store(in: &cancellableBag)
     }
