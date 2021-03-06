@@ -83,6 +83,7 @@ final internal class BookmarksViewController: UIViewController {
         guideLabel.textColor = .systemGray
         guideLabel.font = .preferredFont(forTextStyle: .title3)
         guideLabel.adjustsFontForContentSizeCategory = true
+        guideLabel.backgroundColor = .clear
         guideLabel.text = "이거는 가이드 문구"
     }
     
