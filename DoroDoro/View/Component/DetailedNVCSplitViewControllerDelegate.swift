@@ -9,8 +9,7 @@ import UIKit
 
 final internal class DetailedNVCSplitViewControllerDelegate: UISplitViewControllerDelegate {
     func splitViewController(_ splitViewController: UISplitViewController, showDetail vc: UIViewController, sender: Any?) -> Bool {
-        guard !splitViewController.isCollapsed,
-              splitViewController.viewControllers.count > 1 else {
+        guard !splitViewController.isCollapsed else {
             return false
         }
         
@@ -47,7 +46,7 @@ final internal class DetailedNVCSplitViewControllerDelegate: UISplitViewControll
         let primaryNavigationControllersCount: Int = primaryNavigationController.viewControllers.count
         
         guard primaryNavigationControllersCount > 1 else {
-            return nil
+            return UINavigationController()
         }
         
         let secondaryViewControllers: [UIViewController] = Array(primaryNavigationController.viewControllers[1..<primaryNavigationControllersCount])
