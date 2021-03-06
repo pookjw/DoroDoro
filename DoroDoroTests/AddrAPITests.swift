@@ -7,6 +7,7 @@
 
 import XCTest
 import Combine
+@testable import DoroDoroAPI
 @testable import DoroDoro
 
 final internal class AddrAPITests: XCTestCase {

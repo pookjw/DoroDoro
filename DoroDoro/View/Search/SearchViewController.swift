@@ -50,6 +50,7 @@ final internal class SearchViewController: UIViewController {
         view.backgroundColor = .systemBackground
         title = Localizable.DORODORO.string
         tabBarItem.title = Localizable.TABBAR_SEARCH_VIEW_CONTROLLER_TITLE.string
+        
     }
     
     private func configureCollectionView() {

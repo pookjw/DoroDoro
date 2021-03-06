@@ -28,7 +28,7 @@ final internal class DetailsInterfaceModel {
         
         addrAPIService.requestEngEvent(keyword: linkJusoData.roadAddr, countPerPage: 1)
         kakaoAPIService.requestAddressEvent(query: linkJusoData.roadAddr,
-                                            analyzeType: .exact,
+                                            analyze_type: .exact,
                                             page: 1, size: 1)
     }
     

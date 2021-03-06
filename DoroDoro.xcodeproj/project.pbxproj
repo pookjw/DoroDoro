@@ -14,6 +14,23 @@
 		F332741825EFF1CF00417437 /* CloudService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F332741725EFF1CF00417437 /* CloudService.swift */; };
 		F332742025EFF71100417437 /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F332741F25EFF71100417437 /* SettingsService.swift */; };
 		F332742725EFF7E500417437 /* SettingsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F332742625EFF7E500417437 /* SettingsData.swift */; };
+		F333101525F410AB00EF3A31 /* KakaoCoord2AddressResultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3330FED25F40E9B00EF3A31 /* KakaoCoord2AddressResultData.swift */; };
+		F333101625F410AB00EF3A31 /* KakaoCoord2AddressMetaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3330FF425F40ED500EF3A31 /* KakaoCoord2AddressMetaData.swift */; };
+		F333101725F410AB00EF3A31 /* KakaoCoord2AddressDocumentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3330FFB25F40EE400EF3A31 /* KakaoCoord2AddressDocumentData.swift */; };
+		F333101825F410AB00EF3A31 /* KakaoCoord2AddressRoadAddressData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F333100925F40F9200EF3A31 /* KakaoCoord2AddressRoadAddressData.swift */; };
+		F333101925F410AB00EF3A31 /* KakaoCoord2AddressAddressData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F333100225F40F5E00EF3A31 /* KakaoCoord2AddressAddressData.swift */; };
+		F333101A25F410AC00EF3A31 /* KakaoCoord2AddressResultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3330FED25F40E9B00EF3A31 /* KakaoCoord2AddressResultData.swift */; };
+		F333101B25F410AC00EF3A31 /* KakaoCoord2AddressMetaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3330FF425F40ED500EF3A31 /* KakaoCoord2AddressMetaData.swift */; };
+		F333101C25F410AC00EF3A31 /* KakaoCoord2AddressDocumentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3330FFB25F40EE400EF3A31 /* KakaoCoord2AddressDocumentData.swift */; };
+		F333101D25F410AC00EF3A31 /* KakaoCoord2AddressRoadAddressData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F333100925F40F9200EF3A31 /* KakaoCoord2AddressRoadAddressData.swift */; };
+		F333101E25F410AC00EF3A31 /* KakaoCoord2AddressAddressData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F333100225F40F5E00EF3A31 /* KakaoCoord2AddressAddressData.swift */; };
+		F333102B25F4116200EF3A31 /* KakaoCoord2AddressAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F333102425F4116000EF3A31 /* KakaoCoord2AddressAPIError.swift */; };
+		F333103125F4116200EF3A31 /* KakaoCoord2AddressAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F333102425F4116000EF3A31 /* KakaoCoord2AddressAPIError.swift */; };
+		F333106725F412CD00EF3A31 /* KakaoAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB0A625ECD4C200BC5772 /* KakaoAPITests.swift */; };
+		F333109325F4160700EF3A31 /* GeoAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F333109225F4160700EF3A31 /* GeoAPIService.swift */; };
+		F333109425F4160700EF3A31 /* GeoAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F333109225F4160700EF3A31 /* GeoAPIService.swift */; };
+		F33310A525F4182C00EF3A31 /* GeoAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33310A425F4182C00EF3A31 /* GeoAPIError.swift */; };
+		F33310A625F4182C00EF3A31 /* GeoAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33310A425F4182C00EF3A31 /* GeoAPIError.swift */; };
 		F333B97B25EB7F0200F1915F /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F333B97A25EB7F0200F1915F /* SearchViewModel.swift */; };
 		F333B98D25EB890C00F1915F /* SearchResultItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F333B98C25EB890C00F1915F /* SearchResultItem.swift */; };
 		F333B9A725EB8FB600F1915F /* SearchHeaderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F333B9A625EB8FB600F1915F /* SearchHeaderItem.swift */; };
@@ -34,7 +51,6 @@
 		F33BAFD625ECB8C300BC5772 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F33BAFD525ECB8BC00BC5772 /* libxml2.tbd */; };
 		F33BAFDE25ECB8D100BC5772 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F33BAFDD25ECB8CB00BC5772 /* libsqlite3.tbd */; };
 		F33BB00525ECBAB700BC5772 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F33BB00425ECBAB700BC5772 /* Metal.framework */; };
-		F33BB0A725ECD4C200BC5772 /* KakaoAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB0A625ECD4C200BC5772 /* KakaoAPITests.swift */; };
 		F33BB0D325ECE96C00BC5772 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB0D225ECE96C00BC5772 /* UIViewController+Ext.swift */; };
 		F33BB0F525ED043400BC5772 /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB0F425ED043400BC5772 /* SpinnerView.swift */; };
 		F33BB10425ED268D00BC5772 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB10325ED268D00BC5772 /* MapViewController.swift */; };
@@ -276,6 +292,14 @@
 		F332741725EFF1CF00417437 /* CloudService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudService.swift; sourceTree = "<group>"; };
 		F332741F25EFF71100417437 /* SettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
 		F332742625EFF7E500417437 /* SettingsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsData.swift; sourceTree = "<group>"; };
+		F3330FED25F40E9B00EF3A31 /* KakaoCoord2AddressResultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoCoord2AddressResultData.swift; sourceTree = "<group>"; };
+		F3330FF425F40ED500EF3A31 /* KakaoCoord2AddressMetaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoCoord2AddressMetaData.swift; sourceTree = "<group>"; };
+		F3330FFB25F40EE400EF3A31 /* KakaoCoord2AddressDocumentData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoCoord2AddressDocumentData.swift; sourceTree = "<group>"; };
+		F333100225F40F5E00EF3A31 /* KakaoCoord2AddressAddressData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoCoord2AddressAddressData.swift; sourceTree = "<group>"; };
+		F333100925F40F9200EF3A31 /* KakaoCoord2AddressRoadAddressData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoCoord2AddressRoadAddressData.swift; sourceTree = "<group>"; };
+		F333102425F4116000EF3A31 /* KakaoCoord2AddressAPIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoCoord2AddressAPIError.swift; sourceTree = "<group>"; };
+		F333109225F4160700EF3A31 /* GeoAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoAPIService.swift; sourceTree = "<group>"; };
+		F33310A425F4182C00EF3A31 /* GeoAPIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoAPIError.swift; sourceTree = "<group>"; };
 		F333B97A25EB7F0200F1915F /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		F333B98C25EB890C00F1915F /* SearchResultItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultItem.swift; sourceTree = "<group>"; };
 		F333B9A625EB8FB600F1915F /* SearchHeaderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHeaderItem.swift; sourceTree = "<group>"; };
@@ -562,6 +586,28 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
+		F3330FEC25F40DD200EF3A31 /* KakaoCoord2AddressData */ = {
+			isa = PBXGroup;
+			children = (
+				F3330FED25F40E9B00EF3A31 /* KakaoCoord2AddressResultData.swift */,
+				F3330FF425F40ED500EF3A31 /* KakaoCoord2AddressMetaData.swift */,
+				F3330FFB25F40EE400EF3A31 /* KakaoCoord2AddressDocumentData.swift */,
+				F333100225F40F5E00EF3A31 /* KakaoCoord2AddressAddressData.swift */,
+				F333100925F40F9200EF3A31 /* KakaoCoord2AddressRoadAddressData.swift */,
+				F333102425F4116000EF3A31 /* KakaoCoord2AddressAPIError.swift */,
+			);
+			path = KakaoCoord2AddressData;
+			sourceTree = "<group>";
+		};
+		F333109125F415E600EF3A31 /* GeoAPI */ = {
+			isa = PBXGroup;
+			children = (
+				F33310A425F4182C00EF3A31 /* GeoAPIError.swift */,
+				F333109225F4160700EF3A31 /* GeoAPIService.swift */,
+			);
+			path = GeoAPI;
+			sourceTree = "<group>";
+		};
 		F333B98325EB88CD00F1915F /* Entity */ = {
 			isa = PBXGroup;
 			children = (
@@ -672,6 +718,7 @@
 		F33BB02225ECC0DE00BC5772 /* KakaoAPI */ = {
 			isa = PBXGroup;
 			children = (
+				F3330FEC25F40DD200EF3A31 /* KakaoCoord2AddressData */,
 				F33BB03725ECCCE100BC5772 /* KakaoAddressData */,
 				F33BB02F25ECC95200BC5772 /* KakaoAPIService.swift */,
 			);
@@ -913,7 +960,6 @@
 		F378B79625E8005100FCE546 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				F3444C9A25E8B1A700A0706F /* Localizable */,
 				F332741425EFF15500417437 /* Cloud */,
 				F332741525EFF18C00417437 /* Bookmarks */,
 				F332741625EFF1A700417437 /* Settings */,
@@ -934,6 +980,7 @@
 			isa = PBXGroup;
 			children = (
 				F378B6B325E7D69300FCE546 /* Localizable.strings */,
+				F3444C9A25E8B1A700A0706F /* Localizable */,
 				F3800A2125F2E4BF00F218A1 /* Extension */,
 			);
 			path = DoroDoroAppCommon;
@@ -965,6 +1012,7 @@
 				F3B36AB225F1CA0A00B59915 /* Keys.swift */,
 				F378B72025E7DC8E00FCE546 /* AddrAPI */,
 				F33BB02225ECC0DE00BC5772 /* KakaoAPI */,
+				F333109125F415E600EF3A31 /* GeoAPI */,
 			);
 			path = DoroDoroAPICommon;
 			sourceTree = "<group>";
@@ -1521,7 +1569,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F378B6BE25E7D71C00FCE546 /* AddrAPITests.swift in Sources */,
-				F33BB0A725ECD4C200BC5772 /* KakaoAPITests.swift in Sources */,
+				F333106725F412CD00EF3A31 /* KakaoAPITests.swift in Sources */,
 				F3444DCD25E8C4B300A0706F /* AddrAPIErrorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1557,22 +1605,30 @@
 				F380098E25F2E39F00F218A1 /* AddrLinkCommonData.swift in Sources */,
 				F38009CB25F2E3CD00F218A1 /* AddrCoordJusoData.swift in Sources */,
 				F38009F925F2E3EA00F218A1 /* KakaoAddressMetaData.swift in Sources */,
+				F333101625F410AB00EF3A31 /* KakaoCoord2AddressMetaData.swift in Sources */,
 				F38009E225F2E3D900F218A1 /* AddrCoordSearchData.swift in Sources */,
 				F38009A525F2E3B000F218A1 /* AddrLinkResultsData.swift in Sources */,
 				F3800A1625F2E3FF00F218A1 /* KakaoAPIService.swift in Sources */,
 				F38009AF25F2E3BB00F218A1 /* AddrEngJusoData.swift in Sources */,
+				F333101725F410AB00EF3A31 /* KakaoCoord2AddressDocumentData.swift in Sources */,
 				F38009AE25F2E3B700F218A1 /* AddrEngCommonData.swift in Sources */,
+				F333101525F410AB00EF3A31 /* KakaoCoord2AddressResultData.swift in Sources */,
 				F38009C125F2E3C300F218A1 /* AddrEngResultsData.swift in Sources */,
 				F38009B825F2E3BF00F218A1 /* AddrEngAPIError.swift in Sources */,
 				F3800A0225F2E3EF00F218A1 /* KakaoAddressDocumentData.swift in Sources */,
 				F380099725F2E3A300F218A1 /* AddrLinkJusoData.swift in Sources */,
+				F333101825F410AB00EF3A31 /* KakaoCoord2AddressRoadAddressData.swift in Sources */,
 				F38009A025F2E3AD00F218A1 /* AddrLinkAPIError.swift in Sources */,
 				F3800A0325F2E3F300F218A1 /* KakaoAddressAddressData.swift in Sources */,
 				F3800A1B25F2E47400F218A1 /* Keys.swift in Sources */,
 				F38009EF25F2E3DD00F218A1 /* AddrAPIService.swift in Sources */,
 				F38009F825F2E3E600F218A1 /* KakaoAddressResultData.swift in Sources */,
+				F333102B25F4116200EF3A31 /* KakaoCoord2AddressAPIError.swift in Sources */,
+				F333101925F410AB00EF3A31 /* KakaoCoord2AddressAddressData.swift in Sources */,
 				F38009CA25F2E3C900F218A1 /* AddrCoordCommonData.swift in Sources */,
+				F33310A525F4182C00EF3A31 /* GeoAPIError.swift in Sources */,
 				F3800A0C25F2E3F700F218A1 /* KakaoAddressRoadAddressData.swift in Sources */,
+				F333109325F4160700EF3A31 /* GeoAPIService.swift in Sources */,
 				F3800A0D25F2E3FB00F218A1 /* KakaoAddressAPIError.swift in Sources */,
 				F38009DD25F2E3D500F218A1 /* AddrCoordResultsData.swift in Sources */,
 			);
@@ -1586,22 +1642,30 @@
 				F3800AC025F2E8D200F218A1 /* KakaoAddressMetaData.swift in Sources */,
 				F3800AE825F2E8E100F218A1 /* AddrEngCommonData.swift in Sources */,
 				F3800AB625F2E8C900F218A1 /* Keys.swift in Sources */,
+				F333101B25F410AC00EF3A31 /* KakaoCoord2AddressMetaData.swift in Sources */,
 				F3800ABD25F2E8D200F218A1 /* KakaoAddressAddressData.swift in Sources */,
 				F3800AE125F2E8E100F218A1 /* AddrLinkResultsData.swift in Sources */,
 				F3800AE925F2E8E100F218A1 /* KakaoAPIService.swift in Sources */,
 				F3800AE325F2E8E100F218A1 /* AddrCoordResultsData.swift in Sources */,
+				F333101C25F410AC00EF3A31 /* KakaoCoord2AddressDocumentData.swift in Sources */,
 				F3800ADF25F2E8E100F218A1 /* AddrEngResultsData.swift in Sources */,
+				F333101A25F410AC00EF3A31 /* KakaoCoord2AddressResultData.swift in Sources */,
 				F3800AE725F2E8E100F218A1 /* AddrCoordAPIError.swift in Sources */,
 				F3800ABB25F2E8D200F218A1 /* KakaoAddressRoadAddressData.swift in Sources */,
 				F3800ABF25F2E8D200F218A1 /* KakaoAddressResultData.swift in Sources */,
 				F3800ABE25F2E8D200F218A1 /* KakaoAddressAPIError.swift in Sources */,
+				F333101D25F410AC00EF3A31 /* KakaoCoord2AddressRoadAddressData.swift in Sources */,
 				F3800ADC25F2E8E100F218A1 /* AddrCoordSearchData.swift in Sources */,
 				F3800AE525F2E8E100F218A1 /* AddrLinkJusoData.swift in Sources */,
 				F3800AEA25F2E8E100F218A1 /* AddrCoordCommonData.swift in Sources */,
 				F3800AE025F2E8E100F218A1 /* AddrAPIService.swift in Sources */,
 				F3800ADD25F2E8E100F218A1 /* AddrLinkCommonData.swift in Sources */,
+				F333103125F4116200EF3A31 /* KakaoCoord2AddressAPIError.swift in Sources */,
+				F333101E25F410AC00EF3A31 /* KakaoCoord2AddressAddressData.swift in Sources */,
 				F3800AE225F2E8E100F218A1 /* AddrEngJusoData.swift in Sources */,
+				F33310A625F4182C00EF3A31 /* GeoAPIError.swift in Sources */,
 				F3800ABC25F2E8D200F218A1 /* KakaoAddressDocumentData.swift in Sources */,
+				F333109425F4160700EF3A31 /* GeoAPIService.swift in Sources */,
 				F3800AE425F2E8E100F218A1 /* AddrCoordJusoData.swift in Sources */,
 				F3800AE625F2E8E100F218A1 /* AddrEngAPIError.swift in Sources */,
 			);

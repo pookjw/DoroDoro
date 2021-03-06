@@ -69,7 +69,7 @@ final internal class DetailsViewModel {
         updateLinkItems(linkJusoData)
         addrAPIService.requestEngEvent(keyword: linkJusoData.roadAddr, countPerPage: 1)
         kakaoAPIService.requestAddressEvent(query: linkJusoData.roadAddr,
-                                            analyzeType: .exact, page: 1, size: 1)
+                                            analyze_type: .exact, page: 1, size: 1)
     }
     
     internal func loadData(_ roadAddr: String) {
