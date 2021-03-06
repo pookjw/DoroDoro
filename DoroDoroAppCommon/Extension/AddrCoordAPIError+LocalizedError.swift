@@ -12,7 +12,6 @@ import DoroDoroWatchAPI
 import DoroDoroAPI
 #endif
 
-
 extension AddrCoordAPIError: LocalizedError {
     public var errorDescription: String? {
         return self.rawValue

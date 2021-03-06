@@ -933,6 +933,7 @@
 		F3800A2025F2E4AF00F218A1 /* DoroDoroAppCommon */ = {
 			isa = PBXGroup;
 			children = (
+				F378B6B325E7D69300FCE546 /* Localizable.strings */,
 				F3800A2125F2E4BF00F218A1 /* Extension */,
 			);
 			path = DoroDoroAppCommon;
@@ -1053,7 +1054,6 @@
 				F3AAE2A125E7D06800D666BD /* Assets.xcassets */,
 				F3AAE2A325E7D06800D666BD /* LaunchScreen.storyboard */,
 				F3AAE2A625E7D06800D666BD /* Info.plist */,
-				F378B6B325E7D69300FCE546 /* Localizable.strings */,
 				F378B71625E7DAFF00FCE546 /* InfoPlist.strings */,
 				F33BAFEB25ECB91900BC5772 /* DoroDoro-Bridging-Header.h */,
 			);
