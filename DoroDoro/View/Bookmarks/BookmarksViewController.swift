@@ -36,8 +36,8 @@ final internal class BookmarksViewController: UIViewController {
     
     override internal func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationItem.largeTitleDisplayMode = .always
-        navigationController?.navigationBar.prefersLargeTitles = true
+//        navigationItem.largeTitleDisplayMode = .always
+//        navigationController?.navigationBar.prefersLargeTitles = true
         
         if let collectionView: UICollectionView = collectionView {
             animateForSelectedIndexPath(collectionView, animated: animated)
@@ -135,11 +135,8 @@ final internal class BookmarksViewController: UIViewController {
     private func bind() {
         KeyboardEvent.shared.attributesEvent
             .receive(on: DispatchQueue.main)
-            .sink(receiveValue: { [weak self] (height, duration) in
+            .sink(receiveValue: { [weak self] (height, _) in
                 self?.guideBottomConstraint?.update(offset: -height)
-                UIView.animate(withDuration: TimeInterval(duration)) { [weak self] in
-                    self?.view.layoutIfNeeded()
-                }
             })
             .store(in: &cancellableBag)
         

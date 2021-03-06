@@ -178,6 +178,8 @@
 		F3A3DEF925F4209A00E8F2F0 /* GeoInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A3DEF725F4209A00E8F2F0 /* GeoInterfaceController.swift */; };
 		F3A3DF0525F4210B00E8F2F0 /* GeoInterfaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A3DF0425F4210B00E8F2F0 /* GeoInterfaceModel.swift */; };
 		F3A3DF2225F4398700E8F2F0 /* KeyboardEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A3DF2125F4398700E8F2F0 /* KeyboardEvent.swift */; };
+		F3A3DF2F25F4412A00E8F2F0 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A3DF2E25F4412A00E8F2F0 /* UIView+Ext.swift */; };
+		F3A3DF3625F4430600E8F2F0 /* UIScrollView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A3DF3525F4430600E8F2F0 /* UIScrollView+Ext.swift */; };
 		F3AAE29925E7D06700D666BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AAE29825E7D06700D666BD /* AppDelegate.swift */; };
 		F3AAE29B25E7D06700D666BD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AAE29A25E7D06700D666BD /* SceneDelegate.swift */; };
 		F3AAE2A225E7D06800D666BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3AAE2A125E7D06800D666BD /* Assets.xcassets */; };
@@ -444,6 +446,8 @@
 		F3A3DEF725F4209A00E8F2F0 /* GeoInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoInterfaceController.swift; sourceTree = "<group>"; };
 		F3A3DF0425F4210B00E8F2F0 /* GeoInterfaceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoInterfaceModel.swift; sourceTree = "<group>"; };
 		F3A3DF2125F4398700E8F2F0 /* KeyboardEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardEvent.swift; sourceTree = "<group>"; };
+		F3A3DF2E25F4412A00E8F2F0 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
+		F3A3DF3525F4430600E8F2F0 /* UIScrollView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Ext.swift"; sourceTree = "<group>"; };
 		F3AAE29525E7D06700D666BD /* DoroDoro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoroDoro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3AAE29825E7D06700D666BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F3AAE29A25E7D06700D666BD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -655,6 +659,8 @@
 				F3F2F29125EFDB74005FC9CE /* UIViewController+SpinnerView.swift */,
 				F3E6880F25F122E200A619CA /* String+choseongContains.swift */,
 				F3800A2D25F2E54100F218A1 /* AddrLinkJusoData+convertToAddrCoordSearchData.swift */,
+				F3A3DF2E25F4412A00E8F2F0 /* UIView+Ext.swift */,
+				F3A3DF3525F4430600E8F2F0 /* UIScrollView+Ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1704,6 +1710,7 @@
 				F337B1F825EC0E0F00FB0B61 /* DetailResultItem.swift in Sources */,
 				F38128FE25F0298700C36F7B /* BookmarksService.swift in Sources */,
 				F378B6FB25E7D83F00FCE546 /* SearchViewController.swift in Sources */,
+				F3A3DF3625F4430600E8F2F0 /* UIScrollView+Ext.swift in Sources */,
 				F333B9F825EBFA1B00F1915F /* DetailsViewController.swift in Sources */,
 				F3800A2325F2E4F900F218A1 /* AddrLinkAPIError+LocalizedError.swift in Sources */,
 				F332742725EFF7E500417437 /* SettingsData.swift in Sources */,
@@ -1735,6 +1742,7 @@
 				F333B98D25EB890C00F1915F /* SearchResultItem.swift in Sources */,
 				F384137725F005030078334A /* SettingsViewModel.swift in Sources */,
 				F333B9A725EB8FB600F1915F /* SearchHeaderItem.swift in Sources */,
+				F3A3DF2F25F4412A00E8F2F0 /* UIView+Ext.swift in Sources */,
 				F378B70925E7D8C600FCE546 /* BookmarksViewController.swift in Sources */,
 				F3F2F29225EFDB74005FC9CE /* UIViewController+SpinnerView.swift in Sources */,
 				F3AAE29B25E7D06700D666BD /* SceneDelegate.swift in Sources */,

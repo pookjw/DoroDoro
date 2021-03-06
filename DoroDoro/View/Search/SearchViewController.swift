@@ -38,8 +38,8 @@ final internal class SearchViewController: UIViewController {
     
     override internal func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationItem.largeTitleDisplayMode = .always
-        navigationController?.navigationBar.prefersLargeTitles = true
+//        navigationItem.largeTitleDisplayMode = .always
+//        navigationController?.navigationBar.prefersLargeTitles = true
         
         if let collectionView: UICollectionView = collectionView {
             animateForSelectedIndexPath(collectionView, animated: animated)
@@ -181,11 +181,8 @@ final internal class SearchViewController: UIViewController {
     private func bind() {
         KeyboardEvent.shared.attributesEvent
             .receive(on: DispatchQueue.main)
-            .sink(receiveValue: { [weak self] (height, duration) in
+            .sink(receiveValue: { [weak self] (height, _) in
                 self?.guideBottomConstraint?.update(offset: -height)
-                UIView.animate(withDuration: TimeInterval(duration)) { [weak self] in
-                    self?.view.layoutIfNeeded()
-                }
             })
             .store(in: &cancellableBag)
         
@@ -200,16 +197,22 @@ final internal class SearchViewController: UIViewController {
         viewModel?.refreshedEvent
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] (canLoadMore, hasData) in
-                self?.guideContainerView?.isHidden = hasData
-                self?.collectionView?.isHidden = !hasData
                 self?.collectionView?.cr.endLoadingMore()
-                
                 if canLoadMore {
                     self?.collectionView?.cr.resetNoMore()
                     self?.slackLoadingAnimator?.isHidden = false
                 } else {
                     self?.collectionView?.cr.noticeNoMoreData()
                     self?.slackLoadingAnimator?.isHidden = true
+                }
+                
+                if hasData {
+                    self?.guideContainerView?.isHidden = true
+                    self?.collectionView?.isHidden = false
+                    self?.collectionView?.scrollToTop(animated: false)
+                } else {
+                    self?.guideContainerView?.isHidden = false
+                    self?.collectionView?.isHidden = true
                 }
                 
                 self?.removeAllSpinnerView()
