@@ -5,7 +5,6 @@
 //  Created by Jinwoo Kim on 2/28/21.
 //
 
-import Foundation
 import UIKit
 import Combine
 import DoroDoroAPI
@@ -20,7 +19,7 @@ final internal class SearchViewModel {
     internal let geoAPIService: GeoAPIService = .init()
     internal let kakaoAPIService: KakaoAPIService = .init()
     internal var dataSource: DataSource? = nil
-    internal var refreshedEvent: PassthroughSubject<Bool, Never> = .init()
+    internal var refreshedEvent: PassthroughSubject<(canLoadMore: Bool, hasData: Bool), Never> = .init()
     internal var geoEvent: PassthroughSubject<String, Never> = .init()
     @Published internal var searchEvent: String? = nil
     
@@ -89,7 +88,7 @@ final internal class SearchViewModel {
         
         snapshot.appendItems(items, toSection: headerItem)
         dataSource?.apply(snapshot, animatingDifferences: true)
-        refreshedEvent.send(canLoadMore)
+        refreshedEvent.send((canLoadMore: canLoadMore, hasData: !items.isEmpty))
     }
     
     private func bind() {

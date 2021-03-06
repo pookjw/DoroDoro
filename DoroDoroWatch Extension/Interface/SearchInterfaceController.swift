@@ -105,8 +105,7 @@ final internal class SearchInterfaceController: WKInterfaceController {
     }
     
     private func pushToDetails(data: AddrLinkJusoData) {
-//        pushController(withName: "DetailsInterfaceController", context: ["linkJusoData": data])
-        pushController(withName: "DetailsInterfaceController", context: ["roadAddr": data.roadAddr])
+        pushController(withName: "DetailsInterfaceController", context: ["linkJusoData": data])
     }
     
     override internal func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {

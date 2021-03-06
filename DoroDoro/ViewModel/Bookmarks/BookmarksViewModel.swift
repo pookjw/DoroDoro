@@ -5,7 +5,6 @@
 //  Created by Jinwoo Kim on 3/4/21.
 //
 
-import Foundation
 import UIKit
 import Combine
 
@@ -16,6 +15,7 @@ final internal class BookmarksViewModel {
     @Published internal var searchEvent: String? = nil
     internal var contextMenuIndexPath: IndexPath? = nil
     internal var contextMenuRoadAddr: String? = nil
+    internal var refreshEvent: PassthroughSubject<Bool, Never> = .init()
     private var cancellableBag: Set<AnyCancellable> = .init()
     
     internal init() {
@@ -63,6 +63,7 @@ final internal class BookmarksViewModel {
         snapshot.appendSections([headerItem])
         snapshot.appendItems(items, toSection: headerItem)
         dataSource?.apply(snapshot, animatingDifferences: true)
+        refreshEvent.send(!items.isEmpty)
     }
     
     private func bind() {

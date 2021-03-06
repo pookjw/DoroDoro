@@ -6,18 +6,26 @@
 //
 
 import UIKit
+import SnapKit
+import Combine
 
 final internal class BookmarksViewController: UIViewController {
     private weak var collectionView: UICollectionView? = nil
+    private weak var guideContainerView: UIView? = nil
+    private weak var guideBottomConstraint: Constraint? = nil
+    private weak var guideLabel: UILabel? = nil
     private weak var searchController: UISearchController? = nil
     private var viewModel: BookmarksViewModel? = nil
+    private var cancellableBag: Set<AnyCancellable> = .init()
     
     override internal func viewDidLoad() {
         super.viewDidLoad()
         setAttributes()
+        configureGuideLabel()
         configureCollectionView()
         configureSearchController()
         configureViewModel()
+        bind()
     }
     
     private func setAttributes() {
@@ -50,6 +58,34 @@ final internal class BookmarksViewController: UIViewController {
         viewModel?.dataSource = makeDataSource()
     }
     
+    private func configureGuideLabel() {
+        let guideContainerView: UIView = .init()
+        self.guideContainerView = guideContainerView
+        guideContainerView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(guideContainerView)
+        guideContainerView.snp.remakeConstraints { [weak self] make in
+            make.top.equalToSuperview()
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            let bottom: ConstraintMakerEditable = make.bottom.equalToSuperview()
+            self?.guideBottomConstraint = bottom.constraint
+        }
+        guideContainerView.backgroundColor = .systemBackground
+        
+        let guideLabel: UILabel = .init()
+        self.guideLabel = guideLabel
+        guideContainerView.translatesAutoresizingMaskIntoConstraints = false
+        guideContainerView.addSubview(guideLabel)
+        guideLabel.snp.remakeConstraints { make in
+            make.center.equalToSuperview()
+        }
+        guideLabel.textAlignment = .center
+        guideLabel.textColor = .systemGray
+        guideLabel.font = .preferredFont(forTextStyle: .title3)
+        guideLabel.adjustsFontForContentSizeCategory = true
+        guideLabel.text = "이거는 가이드 문구"
+    }
+    
     private func configureCollectionView() {
         // 이 View Controller에는 Section이 1개이므로 NSCollectionLayoutSection를 쓸 필요가 없다.
         let layoutConfiguration: UICollectionLayoutListConfiguration = .init(appearance: .insetGrouped)
@@ -64,6 +100,7 @@ final internal class BookmarksViewController: UIViewController {
         }
         
         collectionView.backgroundColor = .systemBackground
+        collectionView.isHidden = true
         collectionView.delegate = self
     }
     
@@ -93,6 +130,26 @@ final internal class BookmarksViewController: UIViewController {
         detailsVC.loadViewIfNeeded()
         detailsVC.setRoadAddr(roadAddr)
         splitViewController?.showDetailViewController(detailsVC, sender: nil)
+    }
+    
+    private func bind() {
+        KeyboardEvent.shared.attributesEvent
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] (height, duration) in
+                self?.guideBottomConstraint?.update(offset: -height)
+                UIView.animate(withDuration: TimeInterval(duration)) { [weak self] in
+                    self?.view.layoutIfNeeded()
+                }
+            })
+            .store(in: &cancellableBag)
+        
+        viewModel?.refreshEvent
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] hasData in
+                self?.guideContainerView?.isHidden = hasData
+                self?.collectionView?.isHidden = !hasData
+            })
+            .store(in: &cancellableBag)
     }
 }
 

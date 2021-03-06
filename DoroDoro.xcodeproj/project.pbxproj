@@ -177,6 +177,7 @@
 		F3A3DEF125F41D4000E8F2F0 /* KakaoCoord2AddressAPIError+LocalizedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A3DEEF25F41D4000E8F2F0 /* KakaoCoord2AddressAPIError+LocalizedError.swift */; };
 		F3A3DEF925F4209A00E8F2F0 /* GeoInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A3DEF725F4209A00E8F2F0 /* GeoInterfaceController.swift */; };
 		F3A3DF0525F4210B00E8F2F0 /* GeoInterfaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A3DF0425F4210B00E8F2F0 /* GeoInterfaceModel.swift */; };
+		F3A3DF2225F4398700E8F2F0 /* KeyboardEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A3DF2125F4398700E8F2F0 /* KeyboardEvent.swift */; };
 		F3AAE29925E7D06700D666BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AAE29825E7D06700D666BD /* AppDelegate.swift */; };
 		F3AAE29B25E7D06700D666BD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AAE29A25E7D06700D666BD /* SceneDelegate.swift */; };
 		F3AAE2A225E7D06800D666BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3AAE2A125E7D06800D666BD /* Assets.xcassets */; };
@@ -442,6 +443,7 @@
 		F3A3DEEF25F41D4000E8F2F0 /* KakaoCoord2AddressAPIError+LocalizedError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KakaoCoord2AddressAPIError+LocalizedError.swift"; sourceTree = "<group>"; };
 		F3A3DEF725F4209A00E8F2F0 /* GeoInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoInterfaceController.swift; sourceTree = "<group>"; };
 		F3A3DF0425F4210B00E8F2F0 /* GeoInterfaceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoInterfaceModel.swift; sourceTree = "<group>"; };
+		F3A3DF2125F4398700E8F2F0 /* KeyboardEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardEvent.swift; sourceTree = "<group>"; };
 		F3AAE29525E7D06700D666BD /* DoroDoro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoroDoro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3AAE29825E7D06700D666BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F3AAE29A25E7D06700D666BD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -969,6 +971,7 @@
 		F378B79625E8005100FCE546 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F3A3DF2025F4397300E8F2F0 /* Keyboard */,
 				F332741425EFF15500417437 /* Cloud */,
 				F332741525EFF18C00417437 /* Bookmarks */,
 				F332741625EFF1A700417437 /* Settings */,
@@ -1063,6 +1066,14 @@
 				F384137B25F006B10078334A /* SettingHeaderItem.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		F3A3DF2025F4397300E8F2F0 /* Keyboard */ = {
+			isa = PBXGroup;
+			children = (
+				F3A3DF2125F4398700E8F2F0 /* KeyboardEvent.swift */,
+			);
+			path = Keyboard;
 			sourceTree = "<group>";
 		};
 		F3AAE28C25E7D06700D666BD = {
@@ -1705,6 +1716,7 @@
 				F384137A25F0061C0078334A /* SettingCellItem.swift in Sources */,
 				F3E6881025F122E200A619CA /* String+choseongContains.swift in Sources */,
 				F33BB10425ED268D00BC5772 /* MapViewController.swift in Sources */,
+				F3A3DF2225F4398700E8F2F0 /* KeyboardEvent.swift in Sources */,
 				F3A3DEF025F41D4000E8F2F0 /* KakaoCoord2AddressAPIError+LocalizedError.swift in Sources */,
 				F3E6881425F13E6600A619CA /* DetailedNVCSplitViewControllerDelegate.swift in Sources */,
 				F3800A2E25F2E54100F218A1 /* AddrLinkJusoData+convertToAddrCoordSearchData.swift in Sources */,
