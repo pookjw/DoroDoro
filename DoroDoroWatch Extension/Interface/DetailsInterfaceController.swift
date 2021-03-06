@@ -11,15 +11,19 @@ import Combine
 import DoroDoroWatchAPI
 
 final internal class DetailsInterfaceController: WKInterfaceController {
-    @IBOutlet weak var linkJusoGroup: WKInterfaceGroup!
-    @IBOutlet weak var linkJusoHeaderLabel: WKInterfaceLabel!
-    @IBOutlet weak var linkJusoTableView: WKInterfaceTable!
-    @IBOutlet weak var engJusoHeaderLabel: WKInterfaceLabel!
-    @IBOutlet weak var engJusoTableView: WKInterfaceTable!
-    @IBOutlet weak var engJusoGroup: WKInterfaceGroup!
-    @IBOutlet weak var mapHeaderLabel: WKInterfaceLabel!
-    @IBOutlet weak var mapView: WKInterfaceMap!
-    @IBOutlet weak var mapGroup: WKInterfaceGroup!
+    @IBOutlet internal weak var resultGroup: WKInterfaceGroup!
+    @IBOutlet internal weak var linkJusoGroup: WKInterfaceGroup!
+    @IBOutlet internal weak var linkJusoHeaderLabel: WKInterfaceLabel!
+    @IBOutlet internal weak var linkJusoTableView: WKInterfaceTable!
+    @IBOutlet internal weak var engJusoHeaderLabel: WKInterfaceLabel!
+    @IBOutlet internal weak var engJusoTableView: WKInterfaceTable!
+    @IBOutlet internal weak var engJusoGroup: WKInterfaceGroup!
+    @IBOutlet internal weak var mapHeaderLabel: WKInterfaceLabel!
+    @IBOutlet internal weak var mapView: WKInterfaceMap!
+    @IBOutlet internal weak var mapGroup: WKInterfaceGroup!
+    
+    @IBOutlet internal weak var loadingImageView: WKInterfaceImage!
+    
     
     private var interfaceModel: DetailsInterfaceModel? = nil
     private var cancellableBag: Set<AnyCancellable> = .init()
@@ -30,11 +34,16 @@ final internal class DetailsInterfaceController: WKInterfaceController {
         configureInterfaceModel()
         
         if let linkJusoData: AddrLinkJusoData = (context as? [String: AddrLinkJusoData])?["linkJusoData"] {
-            interfaceModel?.linkJusoData = linkJusoData
             loadLinkJuso(data: linkJusoData)
+            interfaceModel?.loadData(linkJusoData: linkJusoData)
+        } else if let roadAddr: String = (context as? [String: String])?["roadAddr"] {
+            startLoadingAnimation(in: loadingImageView) { [weak self] in
+                self?.resultGroup.setHidden(true)
+                self?.loadingImageView.setHidden(false)
+            }
+            interfaceModel?.loadData(roadAddr: roadAddr)
         }
         bind()
-        interfaceModel?.loadData()
     }
     
     private func setAttributes() {
@@ -49,6 +58,11 @@ final internal class DetailsInterfaceController: WKInterfaceController {
     }
     
     private func loadLinkJuso(data: AddrLinkJusoData) {
+        stopLoadingAnimation(in: loadingImageView) { [weak self] in
+            self?.resultGroup.setHidden(false)
+            self?.loadingImageView.setHidden(true)
+        }
+        
         let rows: Int = DetailsLinkJusoIndex.allCases.count
         linkJusoGroup.setHidden(false)
         linkJusoTableView.setNumberOfRows(rows, withRowType: "LinkJusoCell")
@@ -83,17 +97,10 @@ final internal class DetailsInterfaceController: WKInterfaceController {
     }
     
     private func bind() {
-        interfaceModel?.addrAPIService.engErrorEvent
+        interfaceModel?.linkJusoDataEvent
             .receive(on: DispatchQueue.main)
-            .sink(receiveValue: { [weak self] error in
-                self?.showErrorAlert(for: error)
-            })
-            .store(in: &cancellableBag)
-        
-        interfaceModel?.kakaoAPIService.addressErrorEvent
-            .receive(on: DispatchQueue.main)
-            .sink(receiveValue: { [weak self] error in
-                self?.showErrorAlert(for: error)
+            .sink(receiveValue: { [weak self] data in
+                self?.loadLinkJuso(data: data)
             })
             .store(in: &cancellableBag)
         
@@ -108,6 +115,27 @@ final internal class DetailsInterfaceController: WKInterfaceController {
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] coord in
                 self?.loadMap(coord: coord)
+            })
+            .store(in: &cancellableBag)
+        
+        interfaceModel?.addrAPIService.linkErrorEvent
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] error in
+                self?.showErrorAlert(for: error)
+            })
+            .store(in: &cancellableBag)
+        
+        interfaceModel?.addrAPIService.engErrorEvent
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] error in
+                self?.showErrorAlert(for: error)
+            })
+            .store(in: &cancellableBag)
+        
+        interfaceModel?.kakaoAPIService.addressErrorEvent
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] error in
+                self?.showErrorAlert(for: error)
             })
             .store(in: &cancellableBag)
         

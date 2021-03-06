@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="17500"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
     </dependencies>
     <scenes>
         <!--Search Interface Controller-->
@@ -49,73 +50,108 @@
                     </items>
                     <connections>
                         <outlet property="guideLabel" destination="Uwa-7A-Orq" id="gQI-lF-Qch"/>
-                        <outlet property="loadingImage" destination="wyo-mV-zC2" id="K34-g5-sX0"/>
+                        <outlet property="loadingImageView" destination="wyo-mV-zC2" id="K34-g5-sX0"/>
                         <outlet property="tableGroup" destination="JNE-vi-dl6" id="KeX-F1-XuY"/>
                         <outlet property="tableHeaderLabel" destination="NVS-sQ-akm" id="M4U-fQ-zhw"/>
                         <outlet property="tableView" destination="KXK-U1-Kvt" id="amb-xS-vqU"/>
                         <outlet property="topGroup" destination="hNm-2u-D14" id="Opb-AN-QRH"/>
+                        <segue destination="0vU-NI-u0P" kind="relationship" relationship="nextPage" id="xg3-oX-10M"/>
                     </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="-16" y="-20"/>
+        </scene>
+        <!--GeoInterfaceController-->
+        <scene sceneID="E8y-R5-SwZ">
+            <objects>
+                <controller identifier="GeoInterfaceController" id="0vU-NI-u0P" customClass="GeoInterfaceController" customModule="DoroDoroWatch_Extension">
+                    <items>
+                        <group width="1" alignment="center" verticalAlignment="center" layout="overlap" id="SJQ-hd-RGn">
+                            <items>
+                                <button width="1" height="1" alignment="left" backgroundImage="location.fill" catalog="system" id="vIy-9e-dpB">
+                                    <color key="backgroundColor" name="AccentColor"/>
+                                    <connections>
+                                        <action selector="startFinding" destination="0vU-NI-u0P" id="qJa-AU-VxO"/>
+                                    </connections>
+                                </button>
+                                <imageView alignment="center" verticalAlignment="center" hidden="YES" id="yw8-ZZ-NC5"/>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="findButton" destination="vIy-9e-dpB" id="r07-lL-NfB"/>
+                        <outlet property="loadingImageView" destination="yw8-ZZ-NC5" id="tai-Ll-PHf"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="299" y="-20"/>
         </scene>
         <!--DetailsInterfaceController-->
         <scene sceneID="DXw-3b-69f">
             <objects>
                 <controller identifier="DetailsInterfaceController" id="JpK-6X-O1t" customClass="DetailsInterfaceController" customModule="DoroDoroWatch_Extension">
                     <items>
-                        <group width="1" alignment="left" layout="vertical" id="Ypi-xb-MKa">
+                        <group width="1" alignment="center" verticalAlignment="center" layout="overlap" id="avu-fI-eHN">
                             <items>
-                                <label alignment="left" text="0" id="73X-CX-auT"/>
-                                <table alignment="left" id="ESY-MF-Hva">
+                                <group width="1" alignment="left" layout="vertical" id="9fu-F0-eav">
                                     <items>
-                                        <tableRow identifier="LinkJusoCell" selectable="NO" id="ohY-XS-h5E" customClass="DetailsLinkJusoObject" customModule="DoroDoroWatch_Extension">
-                                            <group key="rootItem" width="1" height="0.0" alignment="left" layout="vertical" id="iap-OV-zZL">
-                                                <items>
-                                                    <label alignment="left" text="Label" numberOfLines="0" id="xj7-Y7-iMs">
-                                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <fontDescription key="font" type="system" pointSize="15"/>
-                                                    </label>
-                                                    <label alignment="left" verticalAlignment="center" text="Label" numberOfLines="0" id="6TD-Rv-AWm"/>
-                                                </items>
-                                            </group>
-                                            <connections>
-                                                <outlet property="primaryLabel" destination="xj7-Y7-iMs" id="2t9-By-ZXp"/>
-                                                <outlet property="secondaryLabel" destination="6TD-Rv-AWm" id="KFw-pa-lG5"/>
-                                            </connections>
-                                        </tableRow>
+                                        <group width="1" alignment="left" layout="vertical" id="Ypi-xb-MKa">
+                                            <items>
+                                                <label alignment="left" text="0" id="73X-CX-auT"/>
+                                                <table alignment="left" id="ESY-MF-Hva">
+                                                    <items>
+                                                        <tableRow identifier="LinkJusoCell" selectable="NO" id="ohY-XS-h5E" customClass="DetailsLinkJusoObject" customModule="DoroDoroWatch_Extension">
+                                                            <group key="rootItem" width="1" height="0.0" alignment="left" layout="vertical" id="iap-OV-zZL">
+                                                                <items>
+                                                                    <label alignment="left" text="Label" numberOfLines="0" id="xj7-Y7-iMs">
+                                                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <fontDescription key="font" type="system" pointSize="15"/>
+                                                                    </label>
+                                                                    <label alignment="left" verticalAlignment="center" text="Label" numberOfLines="0" id="6TD-Rv-AWm"/>
+                                                                </items>
+                                                            </group>
+                                                            <connections>
+                                                                <outlet property="primaryLabel" destination="xj7-Y7-iMs" id="2t9-By-ZXp"/>
+                                                                <outlet property="secondaryLabel" destination="6TD-Rv-AWm" id="KFw-pa-lG5"/>
+                                                            </connections>
+                                                        </tableRow>
+                                                    </items>
+                                                </table>
+                                            </items>
+                                        </group>
+                                        <group width="1" alignment="left" layout="vertical" id="9ZZ-LP-eYe">
+                                            <items>
+                                                <label alignment="left" text="1" id="dkg-ld-3lX"/>
+                                                <table alignment="left" id="Y80-IQ-9cj">
+                                                    <items>
+                                                        <tableRow identifier="EngJusoCell" selectable="NO" id="OR7-9N-xSH" customClass="DetailsEngJusoObject" customModule="DoroDoroWatch_Extension">
+                                                            <group key="rootItem" width="1" height="0.0" alignment="left" layout="vertical" id="Hbx-bC-bpk">
+                                                                <items>
+                                                                    <label alignment="left" text="Label" numberOfLines="0" id="l3F-80-Dyx">
+                                                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <fontDescription key="font" type="system" pointSize="15"/>
+                                                                    </label>
+                                                                    <label alignment="left" text="Label" numberOfLines="0" id="200-Mb-4p0"/>
+                                                                </items>
+                                                            </group>
+                                                            <connections>
+                                                                <outlet property="primaryLabel" destination="l3F-80-Dyx" id="glA-ds-5Ng"/>
+                                                                <outlet property="secondaryLabel" destination="200-Mb-4p0" id="l1F-lT-hkF"/>
+                                                            </connections>
+                                                        </tableRow>
+                                                    </items>
+                                                </table>
+                                            </items>
+                                        </group>
+                                        <group width="1" alignment="left" layout="vertical" id="7IV-u7-y54">
+                                            <items>
+                                                <label alignment="left" text="Label" id="o8N-gi-eAE"/>
+                                                <map height="100" alignment="left" id="RXZ-fJ-tHO"/>
+                                            </items>
+                                        </group>
                                     </items>
-                                </table>
-                            </items>
-                        </group>
-                        <group width="1" alignment="left" layout="vertical" id="9ZZ-LP-eYe">
-                            <items>
-                                <label alignment="left" text="1" id="dkg-ld-3lX"/>
-                                <table alignment="left" id="Y80-IQ-9cj">
-                                    <items>
-                                        <tableRow identifier="EngJusoCell" selectable="NO" id="OR7-9N-xSH" customClass="DetailsEngJusoObject" customModule="DoroDoroWatch_Extension">
-                                            <group key="rootItem" width="1" height="0.0" alignment="left" layout="vertical" id="Hbx-bC-bpk">
-                                                <items>
-                                                    <label alignment="left" text="Label" numberOfLines="0" id="l3F-80-Dyx">
-                                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <fontDescription key="font" type="system" pointSize="15"/>
-                                                    </label>
-                                                    <label alignment="left" text="Label" numberOfLines="0" id="200-Mb-4p0"/>
-                                                </items>
-                                            </group>
-                                            <connections>
-                                                <outlet property="primaryLabel" destination="l3F-80-Dyx" id="glA-ds-5Ng"/>
-                                                <outlet property="secondaryLabel" destination="200-Mb-4p0" id="l1F-lT-hkF"/>
-                                            </connections>
-                                        </tableRow>
-                                    </items>
-                                </table>
-                            </items>
-                        </group>
-                        <group width="1" alignment="left" layout="vertical" id="7IV-u7-y54">
-                            <items>
-                                <label alignment="left" text="Label" id="o8N-gi-eAE"/>
-                                <map height="100" alignment="left" id="RXZ-fJ-tHO"/>
+                                </group>
+                                <imageView alignment="center" verticalAlignment="center" id="XIy-3y-3gh"/>
                             </items>
                         </group>
                     </items>
@@ -126,13 +162,21 @@
                         <outlet property="linkJusoGroup" destination="Ypi-xb-MKa" id="ZHr-Tm-9YN"/>
                         <outlet property="linkJusoHeaderLabel" destination="73X-CX-auT" id="1Su-Pg-f0i"/>
                         <outlet property="linkJusoTableView" destination="ESY-MF-Hva" id="OXh-QI-dn1"/>
+                        <outlet property="loadingImageView" destination="XIy-3y-3gh" id="xWh-WH-WVJ"/>
                         <outlet property="mapGroup" destination="7IV-u7-y54" id="dlZ-cw-HsT"/>
                         <outlet property="mapHeaderLabel" destination="o8N-gi-eAE" id="COi-Pp-dKO"/>
                         <outlet property="mapView" destination="RXZ-fJ-tHO" id="ANB-3B-wKt"/>
+                        <outlet property="resultGroup" destination="9fu-F0-eav" id="ldQ-mK-24g"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="292" y="-20"/>
+            <point key="canvasLocation" x="614" y="-20"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="location.fill" catalog="system" width="128" height="121"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

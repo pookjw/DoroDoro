@@ -155,6 +155,7 @@ final internal class SearchViewController: UIViewController {
             .store(in: &cancellableBag)
         
         viewModel?.refreshedEvent
+            .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] hasMoreData in
                 self?.collectionView?.cr.endLoadingMore()
                 
@@ -179,6 +180,7 @@ final internal class SearchViewController: UIViewController {
             .store(in: &cancellableBag)
         
         viewModel?.geoAPIService.coordErrorEvent
+            .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] error in
                 self?.showErrorAlert(for: error)
                 self?.removeAllSpinnerView()
@@ -186,6 +188,7 @@ final internal class SearchViewController: UIViewController {
             .store(in: &cancellableBag)
         
         viewModel?.kakaoAPIService.coord2AddressErrorEvent
+            .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] error in
                 self?.showErrorAlert(for: error)
                 self?.removeAllSpinnerView()

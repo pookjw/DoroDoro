@@ -7,13 +7,14 @@
 
 import WatchKit
 import Combine
+import DoroDoroWatchAPI
 
 final internal class SearchInterfaceController: WKInterfaceController {
     @IBOutlet weak var topGroup: WKInterfaceGroup!
     @IBOutlet weak var tableGroup: WKInterfaceGroup!
     @IBOutlet weak var tableHeaderLabel: WKInterfaceLabel!
     @IBOutlet internal weak var tableView: WKInterfaceTable!
-    @IBOutlet weak var loadingImage: WKInterfaceImage!
+    @IBOutlet weak var loadingImageView: WKInterfaceImage!
     @IBOutlet weak var guideLabel: WKInterfaceLabel!
     
     private var interfaceModel: SearchInterfaceModel? = nil
@@ -27,14 +28,19 @@ final internal class SearchInterfaceController: WKInterfaceController {
     }
 
     @IBAction internal func textFieldAction(_ value: NSString?) {
-        startLoadingAnimating()
+        startLoadingAnimation(in: loadingImageView) { [weak self] in
+            self?.topGroup.setHidden(true)
+            self?.tableGroup.setHidden(true)
+            self?.guideLabel.setHidden(true)
+            self?.loadingImageView.setHidden(false)
+        }
         interfaceModel?.searchEvent = value as String?
     }
     
     private func setAttributes() {
         topGroup.setHidden(false)
         tableGroup.setHidden(true)
-        loadingImage.setHidden(true)
+        loadingImageView.setHidden(true)
         guideLabel.setHidden(false)
         setTitle(Localizable.DORODORO.string)
     }
@@ -47,72 +53,60 @@ final internal class SearchInterfaceController: WKInterfaceController {
         interfaceModel?.linkJusoDataEvent
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] arrayData, text in
-                self?.toggleStatus(isNormal: true)
-                self?.tableView.setNumberOfRows(arrayData.count, withRowType: "ResultCell")
+                guard let self = self else { return }
+                self.startLoadingAnimation(in: self.loadingImageView) { [weak self] in
+                    self?.topGroup.setHidden(false)
+                    self?.tableGroup.setHidden(false)
+                    self?.guideLabel.setHidden(false)
+                    self?.loadingImageView.setHidden(true)
+                }
+                
+                self.tableView.setNumberOfRows(arrayData.count, withRowType: "ResultCell")
                 
                 for (idx, data) in arrayData.enumerated() {
-                    guard let object: SearchResultObject = self?.tableView.rowController(at: idx) as? SearchResultObject else { return }
+                    guard let object: SearchResultObject = self.tableView.rowController(at: idx) as? SearchResultObject else { return }
                     object.configure(data: data)
                 }
                 
                 if arrayData.count == 0 {
-                    self?.tableGroup.setHidden(true)
-                    self?.guideLabel.setHidden(false)
+                    self.tableGroup.setHidden(true)
+                    self.guideLabel.setHidden(false)
                 } else {
-                    self?.tableGroup.setHidden(false)
-                    self?.guideLabel.setHidden(true)
+                    self.tableGroup.setHidden(false)
+                    self.guideLabel.setHidden(true)
                 }
                 
-                self?.tableHeaderLabel.setText(text)
+                self.tableHeaderLabel.setText(text)
             })
             .store(in: &cancellableBag)
         
         interfaceModel?.addrAPIService.linkErrorEvent
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] error in
-                self?.toggleStatus(isNormal: true)
-
-                if self?.interfaceModel?.linkJusoData.count == 0 || self?.interfaceModel?.linkJusoData == nil {
-                    self?.tableGroup.setHidden(true)
-                    self?.guideLabel.setHidden(false)
-                } else {
+                guard let self = self else { return }
+                self.startLoadingAnimation(in: self.loadingImageView) { [weak self] in
+                    self?.topGroup.setHidden(false)
                     self?.tableGroup.setHidden(false)
-                    self?.guideLabel.setHidden(true)
+                    self?.guideLabel.setHidden(false)
+                    self?.loadingImageView.setHidden(true)
+                }
+
+                if self.interfaceModel?.linkJusoData.count == 0 || self.interfaceModel?.linkJusoData == nil {
+                    self.tableGroup.setHidden(true)
+                    self.guideLabel.setHidden(false)
+                } else {
+                    self.tableGroup.setHidden(false)
+                    self.guideLabel.setHidden(true)
                 }
                 
-                self?.showErrorAlert(for: error)
+                self.showErrorAlert(for: error)
             })
             .store(in: &cancellableBag)
     }
     
-    private func toggleStatus(isNormal: Bool) {
-        topGroup.setHidden(!isNormal)
-        tableGroup.setHidden(!isNormal)
-        loadingImage.setHidden(isNormal)
-        
-        if isNormal {
-            stopLoadingAnimating()
-        } else {
-            startLoadingAnimating()
-        }
-    }
-    
-    private func startLoadingAnimating() {
-        topGroup.setHidden(true)
-        tableGroup.setHidden(true)
-        guideLabel.setHidden(true)
-        loadingImage.setHidden(false)
-        loadingImage.setImageNamed("Animation")
-        loadingImage.startAnimatingWithImages(in: NSRange(location: 0, length: 23), duration: 1, repeatCount: 0)
-    }
-    
-    private func stopLoadingAnimating() {
-        topGroup.setHidden(false)
-        tableGroup.setHidden(false)
-        guideLabel.setHidden(false)
-        loadingImage.setHidden(true)
-        loadingImage.stopAnimating()
-        loadingImage.setImageNamed(nil)
+    private func pushToDetails(data: AddrLinkJusoData) {
+//        pushController(withName: "DetailsInterfaceController", context: ["linkJusoData": data])
+        pushController(withName: "DetailsInterfaceController", context: ["roadAddr": data.roadAddr])
     }
     
     override internal func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {
@@ -124,6 +118,6 @@ final internal class SearchInterfaceController: WKInterfaceController {
         guard viewModel.linkJusoData.count > rowIndex else {
             return
         }
-        pushController(withName: "DetailsInterfaceController", context: ["linkJusoData": viewModel.linkJusoData[rowIndex]])
+        pushToDetails(data: viewModel.linkJusoData[rowIndex])
     }
 }
