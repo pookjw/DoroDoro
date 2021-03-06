@@ -83,7 +83,7 @@ final internal class SearchViewController: UIViewController {
             let bottom: ConstraintMakerEditable = make.bottom.equalToSuperview()
             self?.guideBottomConstraint = bottom.constraint
         }
-        guideContainerView.backgroundColor = .systemBackground
+        guideContainerView.backgroundColor = .clear
         
         let guideLabel: UILabel = .init()
         self.guideLabel = guideLabel
