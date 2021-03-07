@@ -4,24 +4,34 @@ iOS/macOS/tvOS/watchOS용 도로명 및 영문주소 검색 어플
 
 ## API Key
 
-[gitignore](.gitignore)에 적혀 있다시피 API Key가 담긴 `Keys.swift` 파일은 Git에 업로드되지 않습니다. 따라서 아래와 같은 `Keys.swift` 파일을 [DoroDoro/Model/API](DoroDoro/Model/API)에 생성해 주셔야 합니다.
+[gitignore](.gitignore)에 적혀 있다시피 API Key가 담긴 `Keys.swift` 파일은 Git에 업로드되지 않습니다. 따라서 아래와 같은 `Keys.swift` 파일을 [DoroDoroAPICommon](DoroDoroAPICommon)에 생성해 주셔야 합니다.
 
 ```swift
 import Foundation
 
-/// API Keys
-internal struct Keys {
+/// 도로명주소 API Keys
+internal struct AddrAPIKeys {
     /// 도로명주소 API
-    static internal let addrLinkApiKey: String = "<API_KEY>"
+    static internal let linkAPIKey: String = "<API_KEY>"
     
     /// 영문주소 API
-    static internal let addrEngApiKey: String = "<API_KEY>"
+    static internal let engAPIKey: String = "<API_KEY>"
     
     /// 좌표제공 API
-    static internal let addrCoordApiKey: String = "<API_KEY>"
+    static internal let coordAPIKey: String = "<API_KEY>"
 }
 
+internal struct KakaoAPIKeys {
+    /// 네이티브 앱 키
+    static internal let nativeAppKey: String = "<API_KEY>"
+    
+    /// REST API 키
+    static internal let restAPIKey: String = "<API_KEY>"
+    
+    /// JavaScript 키
+    static internal let javascriptKey: String = "<API_KEY>"
+}
 ```
 
-API Key 발급은 [도로명주소 개발자센터](https://www.juso.go.kr/addrlink/main.do?cPath=99MM)에서 하실 수 있습니다.
+API Key 발급은 [도로명주소 개발자센터](https://www.juso.go.kr/addrlink/main.do?cPath=99MM)와 [Kakao Developers](https://developers.kakao.com)에서 하실 수 있습니다.
 
