@@ -124,7 +124,15 @@ final internal class SearchViewModel {
                     self?.kakaoAPIService.coord2AddressErrorEvent.send(.noResults)
                     return
                 }
-                self?.geoEvent.send(document.road_address.address_name)
+                
+                let addr: String
+                
+                if let roadAddress: KakaoCoord2AddressRoadAddressData = document.road_address {
+                    addr = roadAddress.address_name
+                } else {
+                    addr = document.address.address_name
+                }
+                self?.geoEvent.send(addr)
             })
             .store(in: &cancellableBag)
     }

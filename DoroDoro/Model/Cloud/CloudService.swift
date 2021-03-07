@@ -39,7 +39,6 @@ final internal class CloudService {
             .default
             .publisher(for: NSUbiquitousKeyValueStore.didChangeExternallyNotification, object: keyValueStore)
             .sink(receiveValue: { [weak self] notification in
-                print("Notification!")
                 self?._didChangeEvent.send(notification.userInfo)
             })
             .store(in: &cancellableBag)

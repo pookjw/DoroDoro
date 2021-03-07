@@ -12,5 +12,5 @@ public struct KakaoCoord2AddressDocumentData: Decodable {
     public let address: KakaoCoord2AddressAddressData
     
     /// 도로명 주소 상세 정보, 아래 RoadAddress 항목 구성 요소 참고
-    public let road_address: KakaoCoord2AddressRoadAddressData
+    public let road_address: KakaoCoord2AddressRoadAddressData?
 }
