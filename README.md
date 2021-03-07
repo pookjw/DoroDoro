@@ -36,7 +36,7 @@ internal struct KakaoAPIKeys {
 
 API Key 발급은 [도로명주소 개발자센터](https://www.juso.go.kr/addrlink/main.do?cPath=99MM)와 [Kakao Developers](https://developers.kakao.com)에서 하실 수 있습니다.
 
-### ## 에러 해결
+## 에러 해결
 
 ### AcknowList-AcknowListBundle 인증 문제
 
