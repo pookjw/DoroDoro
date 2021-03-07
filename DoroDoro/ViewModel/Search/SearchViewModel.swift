@@ -19,7 +19,7 @@ final internal class SearchViewModel {
     internal let geoAPIService: GeoAPIService = .init()
     internal let kakaoAPIService: KakaoAPIService = .init()
     internal var dataSource: DataSource? = nil
-    internal var refreshedEvent: PassthroughSubject<(canLoadMore: Bool, hasData: Bool), Never> = .init()
+    internal var refreshedEvent: PassthroughSubject<(canLoadMore: Bool, hasData: Bool, isFirstPage: Bool), Never> = .init()
     internal var geoEvent: PassthroughSubject<String, Never> = .init()
     @Published internal var searchEvent: String? = nil
     
@@ -88,7 +88,7 @@ final internal class SearchViewModel {
         
         snapshot.appendItems(items, toSection: headerItem)
         dataSource?.apply(snapshot, animatingDifferences: true)
-        refreshedEvent.send((canLoadMore: canLoadMore, hasData: !items.isEmpty))
+        refreshedEvent.send((canLoadMore: canLoadMore, hasData: !items.isEmpty, isFirstPage: currentPage == 1))
     }
     
     private func bind() {

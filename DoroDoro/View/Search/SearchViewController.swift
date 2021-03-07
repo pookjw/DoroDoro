@@ -198,7 +198,7 @@ final internal class SearchViewController: UIViewController {
         
         viewModel?.refreshedEvent
             .receive(on: DispatchQueue.main)
-            .sink(receiveValue: { [weak self] (canLoadMore, hasData) in
+            .sink(receiveValue: { [weak self] (canLoadMore, hasData, isFirstPage) in
                 self?.collectionView?.cr.endLoadingMore()
                 if canLoadMore {
                     self?.collectionView?.cr.resetNoMore()
@@ -211,7 +211,9 @@ final internal class SearchViewController: UIViewController {
                 if hasData {
                     self?.guideContainerView?.isHidden = true
                     self?.collectionView?.isHidden = false
-                    self?.collectionView?.scrollToTop(animated: false)
+                    if isFirstPage {
+                        self?.collectionView?.scrollToTop(animated: false)
+                    }
                 } else {
                     self?.guideContainerView?.isHidden = false
                     self?.collectionView?.isHidden = true
