@@ -143,7 +143,7 @@ final internal class SettingsViewController: UIViewController {
             case .map:
                 var configuration: UIListContentConfiguration = footerView.defaultContentConfiguration()
                 
-                configuration.text = "상세 보기 화면과 Intel CPU와 애플워치에서는 카카오지도를 지원하지 않습니다.(번역)"
+                configuration.text = "상세 보기 화면와 Intel CPU, 애플워치에서는 애플지도만 지원합니다.(번역)"
                 configuration.textProperties.alignment = .center
                 footerView.contentConfiguration = configuration
             default:
@@ -162,8 +162,14 @@ final internal class SettingsViewController: UIViewController {
         switch mapType {
         case .appleMap:
             configuration.text = "APPLE MAPS(번역)"
+            configuration.image = UIImage(named: "kakaomap")
+            configuration.imageProperties.cornerRadius = 25
+            configuration.imageProperties.maximumSize = .init(width: 50, height: 50)
         case .kakaoMap:
             configuration.text = "KAKAO MAPS(번역)"
+            configuration.image = UIImage(named: "maps")
+            configuration.imageProperties.cornerRadius = 25
+            configuration.imageProperties.maximumSize = .init(width: 50, height: 50)
         }
         
         if selected {
@@ -194,6 +200,10 @@ final internal class SettingsViewController: UIViewController {
     private func setAcknowledgementsTypeCell(cell: UICollectionViewListCell) {
         var configuration: UIListContentConfiguration = cell.defaultContentConfiguration()
         configuration.text = "오픈소스 고지 (번역필요)"
+        configuration.secondaryText = "CocoaPods Open Source Library (번역필요)"
+        configuration.image = UIImage(named: "cocoapods")
+        configuration.imageProperties.cornerRadius = 25
+        configuration.imageProperties.maximumSize = .init(width: 50, height: 50)
         cell.contentConfiguration = configuration
         cell.accessories = [.disclosureIndicator()]
     }
@@ -201,6 +211,9 @@ final internal class SettingsViewController: UIViewController {
     private func setAppInfoCell(cell: UICollectionViewListCell, version: String?, build: String?) {
         var configuration: UIListContentConfiguration = cell.defaultContentConfiguration()
         configuration.text = "DoroDoro"
+        configuration.image = UIImage(named: "logo")
+        configuration.imageProperties.cornerRadius = 25
+        configuration.imageProperties.maximumSize = .init(width: 50, height: 50)
         configuration.secondaryText = "\(version ?? "(unknown)") (\(build ?? "(unknown)"))"
         cell.contentConfiguration = configuration
         cell.accessories = []
