@@ -125,7 +125,12 @@ final internal class DetailsInterfaceController: WKInterfaceController {
         interfaceModel?.addrAPIService.linkErrorEvent
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] error in
-                self?.showErrorAlert(for: error)
+                guard let self = self else { return }
+                self.showErrorAlert(for: error)
+                self.stopLoadingAnimation(in: self.loadingImageView) { [weak self] in
+                    self?.resultGroup.setHidden(false)
+                    self?.loadingImageView.setHidden(true)
+                }
             })
             .store(in: &cancellableBag)
         
