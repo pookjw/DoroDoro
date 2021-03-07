@@ -11,7 +11,6 @@
 		7DDABB3E480573993B22D8E5 /* Pods_DoroDoroUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C340661E7FF7B12D0DB73635 /* Pods_DoroDoroUITests.framework */; };
 		93239F3CBE1708F488E8EF48 /* Pods_DoroDoroWatch_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF4E71F7032F7AEA1171F871 /* Pods_DoroDoroWatch_Extension.framework */; };
 		D8C84073ADE3808F2A421FFF /* Pods_DoroDoroAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5309ED33327A32D8822CF4CC /* Pods_DoroDoroAPI.framework */; };
-		E8BA96083B64A362F17AAFEA /* Pods_DoroDoro.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E86CEB0C5A70206FB9CE710D /* Pods_DoroDoro.framework */; };
 		F332741825EFF1CF00417437 /* CloudService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F332741725EFF1CF00417437 /* CloudService.swift */; };
 		F332742025EFF71100417437 /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F332741F25EFF71100417437 /* SettingsService.swift */; };
 		F332742725EFF7E500417437 /* SettingsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F332742625EFF7E500417437 /* SettingsData.swift */; };
@@ -51,7 +50,6 @@
 		F33BAFCE25ECB8B400BC5772 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F33BAFCD25ECB8A900BC5772 /* libc++.tbd */; };
 		F33BAFD625ECB8C300BC5772 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F33BAFD525ECB8BC00BC5772 /* libxml2.tbd */; };
 		F33BAFDE25ECB8D100BC5772 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F33BAFDD25ECB8CB00BC5772 /* libsqlite3.tbd */; };
-		F33BB00525ECBAB700BC5772 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F33BB00425ECBAB700BC5772 /* Metal.framework */; };
 		F33BB0D325ECE96C00BC5772 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB0D225ECE96C00BC5772 /* UIViewController+Ext.swift */; };
 		F33BB0F525ED043400BC5772 /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB0F425ED043400BC5772 /* SpinnerView.swift */; };
 		F33BB10425ED268D00BC5772 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB10325ED268D00BC5772 /* MapViewController.swift */; };
@@ -94,6 +92,8 @@
 		F350299825F2D8350094B33D /* DetailsEngJusoIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F350299725F2D8350094B33D /* DetailsEngJusoIndex.swift */; };
 		F360D25525F57B4300CA4E93 /* AccessibilityIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F360D25425F57B4300CA4E93 /* AccessibilityIdentifiers.swift */; };
 		F360D28025F57D3E00CA4E93 /* AccessibilityIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F360D25425F57B4300CA4E93 /* AccessibilityIdentifiers.swift */; };
+		F360D28625F58E5200CA4E93 /* Pods_DoroDoro.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E86CEB0C5A70206FB9CE710D /* Pods_DoroDoro.framework */; };
+		F360D28D25F58E6400CA4E93 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F33BB00425ECBAB700BC5772 /* Metal.framework */; };
 		F371F06E25F50F5D00E003E8 /* Pods-DoroDoro-acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = F371F06D25F50F5D00E003E8 /* Pods-DoroDoro-acknowledgements.plist */; };
 		F371F07025F513B700E003E8 /* Bundle+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371F06F25F513B700E003E8 /* Bundle+Ext.swift */; };
 		F371F07225F52E9F00E003E8 /* UIDevice+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371F07125F52E9F00E003E8 /* UIDevice+Ext.swift */; };
@@ -533,16 +533,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F33BB00525ECBAB700BC5772 /* Metal.framework in Frameworks */,
 				F33BAFCE25ECB8B400BC5772 /* libc++.tbd in Frameworks */,
+				F360D28D25F58E6400CA4E93 /* Metal.framework in Frameworks */,
 				F33BAFCA25ECB89600BC5772 /* CoreLocation.framework in Frameworks */,
 				F33BAFDE25ECB8D100BC5772 /* libsqlite3.tbd in Frameworks */,
 				F33BAFCC25ECB89D00BC5772 /* QuartzCore.framework in Frameworks */,
 				F3C2796125EEC8C40029A61E /* CloudKit.framework in Frameworks */,
 				F380095B25F2E1E400F218A1 /* DoroDoroAPI.framework in Frameworks */,
-				E8BA96083B64A362F17AAFEA /* Pods_DoroDoro.framework in Frameworks */,
 				F33BAFD625ECB8C300BC5772 /* libxml2.tbd in Frameworks */,
 				F33BB1C125ED4E5700BC5772 /* DaumMap.framework in Frameworks */,
+				F360D28625F58E5200CA4E93 /* Pods_DoroDoro.framework in Frameworks */,
 				F33BAFC825ECB88700BC5772 /* SystemConfiguration.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
