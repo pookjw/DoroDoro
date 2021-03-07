@@ -1927,6 +1927,7 @@
 			baseConfigurationReference = FBC6FAC74664FE9723320696 /* Pods-DoroDoroWatch Extension.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = P53D29U9LJ;
 				INFOPLIST_FILE = "DoroDoroWatch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1949,6 +1950,7 @@
 			baseConfigurationReference = A468E40173398C1B231AC2A6 /* Pods-DoroDoroWatch Extension.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = P53D29U9LJ;
 				INFOPLIST_FILE = "DoroDoroWatch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1974,6 +1976,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = P53D29U9LJ;
 				IBSC_MODULE = DoroDoroWatch_Extension;
 				INFOPLIST_FILE = DoroDoroWatch/Info.plist;
@@ -2000,6 +2003,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = P53D29U9LJ;
 				IBSC_MODULE = DoroDoroWatch_Extension;
 				INFOPLIST_FILE = DoroDoroWatch/Info.plist;
@@ -2022,7 +2026,7 @@
 			baseConfigurationReference = 931F37118C61A8EE14A666C3 /* Pods-DoroDoroAPI.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = P53D29U9LJ;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -2051,7 +2055,7 @@
 			baseConfigurationReference = C70BFE619FFD251C29D381CA /* Pods-DoroDoroAPI.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = P53D29U9LJ;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -2081,7 +2085,7 @@
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = P53D29U9LJ;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -2112,7 +2116,7 @@
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = P53D29U9LJ;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -2265,6 +2269,7 @@
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_ENTITLEMENTS = DoroDoro/DoroDoro.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = P53D29U9LJ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2296,6 +2301,7 @@
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_ENTITLEMENTS = DoroDoro/DoroDoro.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = P53D29U9LJ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
