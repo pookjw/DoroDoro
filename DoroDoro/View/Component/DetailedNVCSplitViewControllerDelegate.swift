@@ -46,7 +46,8 @@ final internal class DetailedNVCSplitViewControllerDelegate: UISplitViewControll
         let primaryNavigationControllersCount: Int = primaryNavigationController.viewControllers.count
         
         guard primaryNavigationControllersCount > 1 else {
-            return UINavigationController()
+            let secondaryNavigationController: UINavigationController = .init()
+            return secondaryNavigationController
         }
         
         let secondaryViewControllers: [UIViewController] = Array(primaryNavigationController.viewControllers[1..<primaryNavigationControllersCount])
