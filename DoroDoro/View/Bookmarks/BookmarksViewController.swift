@@ -77,14 +77,17 @@ final internal class BookmarksViewController: UIViewController {
         guideContainerView.translatesAutoresizingMaskIntoConstraints = false
         guideContainerView.addSubview(guideLabel)
         guideLabel.snp.remakeConstraints { make in
-            make.center.equalToSuperview()
+            make.centerY.equalToSuperview()
+            make.leading.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().offset(-20)
         }
         guideLabel.textAlignment = .center
         guideLabel.textColor = .systemGray
+        guideLabel.numberOfLines = 0
         guideLabel.font = .preferredFont(forTextStyle: .title3)
         guideLabel.adjustsFontForContentSizeCategory = true
         guideLabel.backgroundColor = .clear
-        guideLabel.text = "이거는 가이드 문구"
+        guideLabel.text = "이거는 가이드 문구이거는 가이드 문구이거는 가이드 문구이거는 가이드 문구이거는 가이드 문구이거는 가이드 문구이거는 가이드 문구이거는 가이드 문구이거는 가이드 문구이거는 가이드 문구이거는 가이드 문구이거는 가이드 문구이거는 가이드 문구"
     }
     
     private func configureCollectionView() {
