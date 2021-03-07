@@ -7,6 +7,7 @@
 
 import UIKit
 import SafariServices
+import NotificationBannerSwift
 
 extension UIViewController {
     internal func showErrorAlert(for error: Error) {
@@ -17,10 +18,14 @@ extension UIViewController {
             message = error.localizedDescription
         }
         
-        let alert: UIAlertController = .init(title: nil, message: message, preferredStyle: .alert)
-        let doneAction: UIAlertAction = .init(title: Localizable.DONE.string, style: .default)
-        alert.addAction(doneAction)
-        present(alert, animated: true)
+        let imageView: UIImageView = .init(image: UIImage(systemName: "xmark.octagon"))
+        imageView.tintColor = .white
+        
+        let banner: FloatingNotificationBanner = .init(title: "에러!!!(번역필요)",
+                                               subtitle: message,
+                                               leftView: imageView,
+                                               style: .danger)
+        banner.show()
     }
     
     @discardableResult
