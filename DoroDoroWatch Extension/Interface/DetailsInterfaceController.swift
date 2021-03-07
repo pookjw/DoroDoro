@@ -47,7 +47,11 @@ final internal class DetailsInterfaceController: WKInterfaceController {
     }
     
     private func setAttributes() {
-        setTitle("Details(번역)")
+        setTitle(Localizable.DETAILS.string)
+        linkJusoHeaderLabel.setText(Localizable.ADDR_LINK.string)
+        engJusoHeaderLabel.setText(Localizable.ADDR_ENG.string)
+        mapHeaderLabel.setText(Localizable.MAP.string)
+        
         linkJusoGroup.setHidden(true)
         engJusoGroup.setHidden(true)
         mapGroup.setHidden(true)

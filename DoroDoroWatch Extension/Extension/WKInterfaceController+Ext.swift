@@ -18,7 +18,7 @@ extension WKInterfaceController {
         
         let doneAction: WKAlertAction = .init(title: Localizable.DONE.string,
                                               style: .default) {}
-        presentAlert(withTitle: "ERROR!(번역필요)",
+        presentAlert(withTitle: Localizable.ERROR.string,
                            message: message,
                            preferredStyle: .alert,
                            actions: [doneAction])

@@ -32,7 +32,7 @@ final internal class SettingsViewController: UIViewController {
     
     private func setAttributes() {
         view.backgroundColor = .systemBackground
-        title = "SETTINGS"
+        title = Localizable.SETTINGS.string
         
         let mailBarButtonItem: UIBarButtonItem = .init(title: nil,
                                                        image: UIImage(systemName: "ant"),
@@ -118,11 +118,11 @@ final internal class SettingsViewController: UIViewController {
             
             switch headerItem.headerType {
             case .map:
-                configuration.text = "MAPS(번역)"
-            case .contributor:
-                configuration.text = "Contributors(번역)"
+                configuration.text = Localizable.MAP_PROVIDERS.string
             case .about:
-                configuration.text = "정보(번역)"
+                configuration.text = Localizable.APP_INFO.string
+            case .contributor:
+                configuration.text = Localizable.CONTRIBUTORS.string
             }
             headerView.contentConfiguration = configuration
         }
@@ -143,7 +143,7 @@ final internal class SettingsViewController: UIViewController {
             case .map:
                 var configuration: UIListContentConfiguration = footerView.defaultContentConfiguration()
                 
-                configuration.text = "상세 보기 화면와 Intel CPU, 애플워치에서는 애플지도만 지원합니다.(번역)"
+                configuration.text = Localizable.MAP_PROVIDERS_DESCRIPTION.string
                 configuration.textProperties.alignment = .center
                 footerView.contentConfiguration = configuration
             default:
@@ -161,13 +161,13 @@ final internal class SettingsViewController: UIViewController {
         
         switch mapType {
         case .appleMaps:
-            configuration.text = "APPLE MAPS(번역)"
-            configuration.image = UIImage(named: "kakaomap")
+            configuration.text = Localizable.APPLE_MAPS.string
+            configuration.image = UIImage(named: "applemaps")
             configuration.imageProperties.cornerRadius = 25
             configuration.imageProperties.maximumSize = .init(width: 50, height: 50)
         case .kakaoMap:
-            configuration.text = "KAKAO MAPS(번역)"
-            configuration.image = UIImage(named: "applemaps")
+            configuration.text = Localizable.KAKAO_MAP.string
+            configuration.image = UIImage(named: "kakaomap")
             configuration.imageProperties.cornerRadius = 25
             configuration.imageProperties.maximumSize = .init(width: 50, height: 50)
         }
@@ -185,12 +185,12 @@ final internal class SettingsViewController: UIViewController {
         var configuration: UIListContentConfiguration = cell.defaultContentConfiguration()
         
         switch contributorType {
-        case .pookjw:
+        case .pookjw(let name, let role):
             configuration.image = UIImage(named: "pookjw")
             configuration.imageProperties.cornerRadius = 25
             configuration.imageProperties.maximumSize = .init(width: 50, height: 50)
-            configuration.text = "김진우(번역필요)"
-            configuration.secondaryText = "메인 개발자(번역필요)"
+            configuration.text = name
+            configuration.secondaryText = role
         }
         
         cell.contentConfiguration = configuration
@@ -199,8 +199,8 @@ final internal class SettingsViewController: UIViewController {
     
     private func setAcknowledgementsTypeCell(cell: UICollectionViewListCell) {
         var configuration: UIListContentConfiguration = cell.defaultContentConfiguration()
-        configuration.text = "오픈소스 고지 (번역필요)"
-        configuration.secondaryText = "CocoaPods Open Source Library (번역필요)"
+        configuration.text = Localizable.OPEN_SOURCE_ACKNOWLEDGEMENTS.string
+        configuration.secondaryText = Localizable.COCOAPODS.string
         configuration.image = UIImage(named: "cocoapods")
         configuration.imageProperties.cornerRadius = 25
         configuration.imageProperties.maximumSize = .init(width: 50, height: 50)
@@ -208,13 +208,13 @@ final internal class SettingsViewController: UIViewController {
         cell.accessories = [.disclosureIndicator()]
     }
     
-    private func setAppInfoCell(cell: UICollectionViewListCell, version: String?, build: String?) {
+    private func setAppInfoCell(cell: UICollectionViewListCell, version: String, build: String) {
         var configuration: UIListContentConfiguration = cell.defaultContentConfiguration()
-        configuration.text = "DoroDoro"
+        configuration.text = Localizable.DORODORO.string
         configuration.image = UIImage(named: "logo")
         configuration.imageProperties.cornerRadius = 25
         configuration.imageProperties.maximumSize = .init(width: 50, height: 50)
-        configuration.secondaryText = "\(version ?? "(unknown)") (\(build ?? "(unknown)"))"
+        configuration.secondaryText = "\(version) (\(build))"
         cell.contentConfiguration = configuration
         cell.accessories = []
     }
@@ -244,15 +244,25 @@ final internal class SettingsViewController: UIViewController {
     
     private func presentMFMailComposeVC() {
         guard MFMailComposeViewController.canSendMail() else {
-            showErrorAlert(message: "(번역필요)이 기기에 등록된 이메일 주소가 없습니다.")
+            showErrorAlert(message: Localizable.EMAIL_ERROR_NO_REGISTERED_EMAILS_ON_DEVICE.string)
             return
         }
+        
+        let body: String = """
+        
+        \(Localizable.EMAIL_APP_INFO.string)
+        \(Localizable.EMAIL_SYSTEM_INFO.string)
+        """
+        let formattedBody: String = String(format: body,
+                                           "\(Bundle.main.releaseVersionNumber) (\(Bundle.main.buildVersionNumber))",
+                                           "\(UIDevice.modelName)_\(UIDevice.current.systemVersion)")
         
         let composeVC: MFMailComposeViewController = .init()
         composeVC.mailComposeDelegate = self
         composeVC.setToRecipients(["kidjinwoo@me.com"])
-        composeVC.setSubject("(번역필요) DoroDoro 버그 제보")
-        composeVC.setMessageBody("(번역필요) 테스트 빌드정보", isHTML: false)
+        composeVC.setSubject(Localizable.EMAIL_TITLE.string)
+        composeVC.setMessageBody(formattedBody, isHTML: false)
+        composeVC.modalPresentationStyle = .fullScreen
         
         present(composeVC, animated: true, completion: nil)
     }
@@ -368,11 +378,11 @@ extension SettingsViewController: MFMailComposeViewControllerDelegate {
         case .cancelled:
             break
         case .failed:
-            showErrorAlert(message: "(번역필요) 실패!")
+            showErrorAlert(message: Localizable.ERROR.string)
         case .saved:
             break
         case .sent:
-            showSuccessAlert(message: "(번역필요)성공!")
+            showSuccessAlert(message: Localizable.EMAIL_SENT.string)
         @unknown default:
             break
         }

@@ -55,16 +55,16 @@ final internal class MainTabBarController: UITabBarController {
         bookmarksSplitVC.delegate = splitVCDelegate
         bookmarksSplitVC.loadViewIfNeeded()
         
-        searchSplitVC.tabBarItem = .init(title: Localizable.TABBAR_SEARCH_VIEW_CONTROLLER_TITLE.string,
+        searchSplitVC.tabBarItem = .init(title: Localizable.SEARCH.string,
                                     image: UIImage(systemName: "magnifyingglass"),
                                     tag: 0)
         
-        bookmarksSplitVC.tabBarItem = .init(title: Localizable.TABBAR_BOOKMARKS_VIEW_CONTROLLER_TITLE.string,
+        bookmarksSplitVC.tabBarItem = .init(title: Localizable.BOOKMARKS.string,
                                        image: UIImage(systemName: "bookmark"),
                                        tag: 1)
         bookmarksSplitVC.tabBarItem.selectedImage = UIImage(systemName: "bookmark.fill")
         
-        settingsNVC.tabBarItem = .init(title: Localizable.TABBAR_SETTINGS_VIEW_CONTROLLER_TITLE.string,
+        settingsNVC.tabBarItem = .init(title: Localizable.SETTINGS.string,
                                        image: UIImage(systemName: "gearshape"),
                                        tag: 2)
         settingsNVC.tabBarItem.selectedImage = UIImage(systemName: "gearshape.fill")

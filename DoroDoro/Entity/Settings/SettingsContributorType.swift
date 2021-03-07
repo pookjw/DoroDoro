@@ -7,6 +7,6 @@
 
 import Foundation
 
-internal enum SettingsContributorType {
-    case pookjw
+internal enum SettingsContributorType: Hashable {
+    case pookjw(name: String, role: String)
 }

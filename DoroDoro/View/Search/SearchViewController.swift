@@ -54,7 +54,7 @@ final internal class SearchViewController: UIViewController {
     private func setAttributes() {
         view.backgroundColor = .systemBackground
         title = Localizable.DORODORO.string
-        tabBarItem.title = Localizable.TABBAR_SEARCH_VIEW_CONTROLLER_TITLE.string
+        tabBarItem.title = Localizable.SEARCH.string
         
         let geoBarButtonItem: UIBarButtonItem = .init(title: nil,
                                                       image: UIImage(systemName: "location"),
@@ -101,7 +101,7 @@ final internal class SearchViewController: UIViewController {
         guideLabel.font = .preferredFont(forTextStyle: .title3)
         guideLabel.adjustsFontForContentSizeCategory = true
         guideLabel.backgroundColor = .clear
-        guideLabel.text = "이거는 가이드 문구이거는 가이드 문구이거는 가이드 문구이거는 가이드 문구이거는 가이드 문구이거는 가이드 문구이거는 가이드 문구이거는 가이드 문구이거는 가이드 문구이거는 가이드 문구이거는 가이드 문구이거는 가이드 문구이거는 가이드 문구"
+        guideLabel.text = Localizable.SEARCH_GUIDE_LABEL.string
     }
     
     private func configureCollectionView() {

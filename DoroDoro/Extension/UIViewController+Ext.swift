@@ -21,7 +21,7 @@ extension UIViewController {
         let imageView: UIImageView = .init(image: UIImage(systemName: "xmark.octagon"))
         imageView.tintColor = .white
         
-        let banner: FloatingNotificationBanner = .init(title: "에러!!!(번역필요)",
+        let banner: FloatingNotificationBanner = .init(title: Localizable.ERROR.string,
                                                subtitle: message,
                                                leftView: imageView,
                                                style: .danger)
@@ -32,7 +32,7 @@ extension UIViewController {
         let imageView: UIImageView = .init(image: UIImage(systemName: "xmark.octagon"))
         imageView.tintColor = .white
         
-        let banner: FloatingNotificationBanner = .init(title: "에러!!!(번역필요)",
+        let banner: FloatingNotificationBanner = .init(title: Localizable.ERROR.string,
                                                subtitle: message,
                                                leftView: imageView,
                                                style: .danger)
@@ -43,7 +43,7 @@ extension UIViewController {
         let imageView: UIImageView = .init(image: UIImage(systemName: "checkmark"))
         imageView.tintColor = .white
         
-        let banner: FloatingNotificationBanner = .init(title: "성공!!!(번역필요)",
+        let banner: FloatingNotificationBanner = .init(title: Localizable.SUCCESS.string,
                                                subtitle: message,
                                                leftView: imageView,
                                                style: .success)

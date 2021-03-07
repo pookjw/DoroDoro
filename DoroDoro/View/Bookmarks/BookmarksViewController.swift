@@ -30,8 +30,7 @@ final internal class BookmarksViewController: UIViewController {
     
     private func setAttributes() {
         view.backgroundColor = .systemBackground
-        title = "책갈피(번역)"
-        tabBarItem.title = Localizable.TABBAR_SEARCH_VIEW_CONTROLLER_TITLE.string
+        title = Localizable.BOOKMARKS.string
     }
     
     override internal func viewWillAppear(_ animated: Bool) {
@@ -87,7 +86,7 @@ final internal class BookmarksViewController: UIViewController {
         guideLabel.font = .preferredFont(forTextStyle: .title3)
         guideLabel.adjustsFontForContentSizeCategory = true
         guideLabel.backgroundColor = .clear
-        guideLabel.text = "이거는 가이드 문구이거는 가이드 문구이거는 가이드 문구이거는 가이드 문구이거는 가이드 문구이거는 가이드 문구이거는 가이드 문구이거는 가이드 문구이거는 가이드 문구이거는 가이드 문구이거는 가이드 문구이거는 가이드 문구이거는 가이드 문구"
+        guideLabel.text = Localizable.BOOKMARK_GUIDE_LABEL.string
     }
     
     private func configureCollectionView() {

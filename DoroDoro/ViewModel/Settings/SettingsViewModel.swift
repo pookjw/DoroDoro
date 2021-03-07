@@ -107,7 +107,8 @@ final internal class SettingsViewModel {
         }()
         
         let items: [SettingCellItem] = [
-            .init(cellType: .contributor(contributorType: .pookjw, url: "https://github.com/pookjw"))
+            .init(cellType: .contributor(contributorType: .pookjw(name: Localizable.POOKJW_NAME.string, role: Localizable.POOKJW_ROLE.string),
+                                         url: "https://github.com/pookjw"))
         ]
         
         snapshot.appendItems(items, toSection: contributorHeaderItem)

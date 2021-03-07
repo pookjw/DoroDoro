@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="17701" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="18122" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
     <device id="watch38"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="17500"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18092"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="18022"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
     </dependencies>
     <scenes>
@@ -14,7 +14,7 @@
                     <items>
                         <group width="1" alignment="left" layout="vertical" id="hNm-2u-D14">
                             <items>
-                                <textField width="1" alignment="left" text="솔샘로" placeholder="🔎 Search(번역)..." id="xcp-Lr-e6F">
+                                <textField width="1" alignment="left" placeholder="🔎 검색..." id="xcp-Lr-e6F">
                                     <connections>
                                         <action selector="textFieldAction:" destination="AgC-eL-Hgc" id="Thi-M6-g7B"/>
                                     </connections>
@@ -44,7 +44,7 @@
                             </items>
                         </group>
                         <imageView alignment="center" verticalAlignment="center" id="wyo-mV-zC2"/>
-                        <label height="100" alignment="center" text="검색어를 입력해 주세요...(번역)" textAlignment="center" numberOfLines="0" id="Uwa-7A-Orq">
+                        <label height="100" alignment="center" text="검색어를 입력해 주세요..." textAlignment="center" numberOfLines="0" id="Uwa-7A-Orq">
                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </label>
                     </items>
@@ -54,6 +54,7 @@
                         <outlet property="tableGroup" destination="JNE-vi-dl6" id="KeX-F1-XuY"/>
                         <outlet property="tableHeaderLabel" destination="NVS-sQ-akm" id="M4U-fQ-zhw"/>
                         <outlet property="tableView" destination="KXK-U1-Kvt" id="amb-xS-vqU"/>
+                        <outlet property="textField" destination="xcp-Lr-e6F" id="OTC-y0-olx"/>
                         <outlet property="topGroup" destination="hNm-2u-D14" id="Opb-AN-QRH"/>
                         <segue destination="0vU-NI-u0P" kind="relationship" relationship="nextPage" id="xg3-oX-10M"/>
                     </connections>

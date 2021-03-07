@@ -32,7 +32,7 @@ final internal class GeoInterfaceController: WKInterfaceController {
     private func setAttributes() {
         findButton.setHidden(false)
         loadingImageView.setHidden(true)
-        setTitle("현재위치 번역필요")
+        setTitle(Localizable.LOCATION.string)
     }
     
     private func configureInterfaceModel() {

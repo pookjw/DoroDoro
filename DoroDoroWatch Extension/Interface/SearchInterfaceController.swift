@@ -10,6 +10,7 @@ import Combine
 import DoroDoroWatchAPI
 
 final internal class SearchInterfaceController: WKInterfaceController {
+    @IBOutlet weak var textField: WKInterfaceTextField!
     @IBOutlet weak var topGroup: WKInterfaceGroup!
     @IBOutlet weak var tableGroup: WKInterfaceGroup!
     @IBOutlet weak var tableHeaderLabel: WKInterfaceLabel!
@@ -28,6 +29,11 @@ final internal class SearchInterfaceController: WKInterfaceController {
     }
 
     @IBAction internal func textFieldAction(_ value: NSString?) {
+        guard let text: String = value as String?,
+              !text.isEmpty else {
+            return
+        }
+        
         startLoadingAnimation(in: loadingImageView) { [weak self] in
             self?.topGroup.setHidden(true)
             self?.tableGroup.setHidden(true)
@@ -38,11 +44,13 @@ final internal class SearchInterfaceController: WKInterfaceController {
     }
     
     private func setAttributes() {
+        setTitle(Localizable.DORODORO.string)
+        textField.setPlaceholder(Localizable.SEARCH_BAR_PLACEHOLDER_WATCH.string)
+        guideLabel.setText(Localizable.SEARCH_GUIDE_WATCH.string)
         topGroup.setHidden(false)
         tableGroup.setHidden(true)
         loadingImageView.setHidden(true)
         guideLabel.setHidden(false)
-        setTitle(Localizable.DORODORO.string)
     }
     
     private func configureInterfaceModel() {
@@ -76,7 +84,7 @@ final internal class SearchInterfaceController: WKInterfaceController {
                     self.guideLabel.setHidden(true)
                 }
                 
-                self.tableHeaderLabel.setText(text)
+                self.tableHeaderLabel.setText(String(format: Localizable.RESULTS_FOR_ADDRESS.string, text))
             })
             .store(in: &cancellableBag)
         

@@ -10,13 +10,19 @@
 "DORODORO" = "DoroDoro";
 
 /* */
-"TABBAR_SEARCH_VIEW_CONTROLLER_TITLE" = "Search";
+"SEARCH" = "Search";
 
 /* */
-"TABBAR_BOOKMARKS_VIEW_CONTROLLER_TITLE" = "Bookmarks";
+"BOOKMARKS" = "Bookmarks";
 
 /* */
-"TABBAR_SETTINGS_VIEW_CONTROLLER_TITLE" = "Settings";
+"SETTINGS" = "Settings";
+
+/* */
+"DETAILS" = "Details";
+
+/* */
+"LOCATION" = "Location";
 
 /* */
 "MAP_VIEW_CONTROLLER_TITLE" = "Map";
@@ -26,6 +32,18 @@
 
 /* */
 "DISMISS" = "Dismiss";
+
+/* */
+"SEARCH_GUIDE_LABEL" = "Enter a keyword to get street address and english address. Also you can get informations of your current location.";
+
+/* */
+"SEARCH_BAR_PLACEHOLDER_WATCH" = "🔎 Search...";
+
+/* */
+"SEARCH_GUIDE_WATCH" = "Enter a keyword.";
+
+/* */
+"BOOKMARK_GUIDE_LABEL" = "Bookmarks are synced by iCloud.";
 
 /* */
 "NO_DATA" = "(no data)";
@@ -46,13 +64,81 @@
 "OPEN_IN_APPLE_MAPS_APP" = "Open in Maps";
 
 /* */
+"MAP_PROVIDERS" = "Map Providers";
+
+/* */
+"APPLE_MAPS" = "Apple Maps";
+
+/* */
+"KAKAO_MAP" = "KakaoMap";
+
+/* */
+"MAP_PROVIDERS_DESCRIPTION" = "In Intel-based Mac, Apple Watch and Details screen only support Apple Maps.";
+
+/* */
+"DATA_PROVIDER_DESCRIPTION" = "These data are procvided by 'Ministry of Public Administration and Security', 'Kakao' and 'Apple'.";
+
+/* */
+"POOKJW_NAME" = "Jinwoo Kim";
+
+/* */
+"POOKJW_ROLE" = "Main Developer";
+
+/* */
+"APP_INFO" = "APP INFO";
+
+/* */
+"CONTRIBUTORS" = "Contributors";
+
+/* */
+"OPEN_SOURCE_ACKNOWLEDGEMENTS" = "Open Source Acknowledgements";
+
+/* */
+"COCOAPODS" = "CocoaPods";
+
+/* */
+"ADDR_LINK" = "Street address";
+
+/* */
+"ADDR_ENG" = "English address";
+
+/* */
+"MAP" = "Map";
+
+/* */
 "COPY" = "Copy";
 
 /* */
 "SHARE" = "Share";
 
 /* */
+"EMAIL_ERROR_NO_REGISTERED_EMAILS_ON_DEVICE" = "There's no any registered emails on device.";
+
+/* */
+"EMAIL_TITLE" = "DoroDoro - Bug Report";
+
+/* */
+"EMAIL_APP_INFO" = "App Information: %@";
+
+/* */
+"EMAIL_SYSTEM_INFO" = "System Information: %@";
+
+/* */
+"EMAIL_SENT" = "Email sent!";
+
+/* */
+"SUCCESS" = "Success!";
+
+/* */
+"ERROR" = "ERROR!";
+
+/* */
 "ERROR_CONTACT_TO_DEVELOPER" = "Contact to developer.";
+
+/* */
+"UNKNOWN" = "unknown";
+
+// MARK: - AddrLinkAPIError
 
 /* */
 "ADDR_LINK_API_ERROR_NORMAL" = "It's normal.";
@@ -105,6 +191,8 @@
 /* */
 "ADDR_LINK_API_ERROR_UNKNOWN" = "An unknown error occured.";
 
+// MARK: - AddrEngAPIError
+
 /* */
 "ADDR_ENG_API_ERROR_NORMAL" = "It's normal.";
 
@@ -156,6 +244,8 @@
 /* */
 "ADDR_ENG_API_ERROR_UNKNOWN" = "An unknown error occured.";
 
+// MARK: - KakaoAddressAPIError
+
 /* */
 "KAKAO_ADDRESS_API_ERROR_RESPONSE" = "Failed to commuticate with server.";
 
@@ -167,3 +257,17 @@
 
 /* */
 "KAKAO_ADDRESS_API_UNKNOWN" = "An unknown error occured.";
+
+// MARK: - KakaoCoord2AddressAPIError
+
+/* */
+"KAKAO_COORD_TO_ADDRESS_API_ERROR_RESPONSE" = "Failed to commuticate with server.";
+
+/* */
+"KAKAO_COORD_TO_ADDRESS_API_ERROR_JSON_PARSE" = "Failed to parse the results.";
+
+/* */
+"KAKAO_COORD_TO_ADDRESS_API_ERROR_NO_RESULTS" = "No results.";
+
+/* */
+"KAKAO_COORD_TO_ADDRESS_API_UNKNOWN" = "An unknown error occured.";

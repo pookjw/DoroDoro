@@ -36,8 +36,8 @@ final internal class DetailsViewController: UIViewController {
     
     private func setAttributes() {
         view.backgroundColor = .systemBackground
-        title = "DETAILS"
-        tabBarItem.title = Localizable.TABBAR_SEARCH_VIEW_CONTROLLER_TITLE.string
+        title = Localizable.DETAILS.string
+        tabBarItem.title = Localizable.SEARCH.string
     }
     
     private func configureCollectionView() {
@@ -139,7 +139,16 @@ final internal class DetailsViewController: UIViewController {
             }
             
             var configuration: UIListContentConfiguration = headerView.defaultContentConfiguration()
-            configuration.text = String(headerItem.headerType.rawValue)
+            
+            switch headerItem.headerType {
+            case .link:
+                configuration.text = Localizable.ADDR_LINK.string
+            case .eng:
+                configuration.text = Localizable.ADDR_ENG.string
+            case .map:
+                configuration.text = Localizable.MAP.string
+            }
+            
             headerView.contentConfiguration = configuration
         }
     }
@@ -159,7 +168,7 @@ final internal class DetailsViewController: UIViewController {
             case .map:
                 var configuration: UIListContentConfiguration = footerView.defaultContentConfiguration()
                 
-                configuration.text = "(번역필요) 행정안전부, 카카오에서 데이터를 제공했습니다."
+                configuration.text = Localizable.DATA_PROVIDER_DESCRIPTION.string
                 configuration.textProperties.alignment = .center
                 footerView.contentConfiguration = configuration
             default:
