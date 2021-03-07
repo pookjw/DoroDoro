@@ -7,10 +7,12 @@
 
 import UIKit
 import SafariServices
+import MessageUI
 import AcknowList
 
 final internal class SettingsViewController: UIViewController {
     private weak var collectionView: UICollectionView? = nil
+    private weak var mailBarButtonItem: UIBarButtonItem? = nil
     private var viewModel: SettingsViewModel? = nil
     private weak var contextViewController: UIViewController? = nil
     
@@ -31,6 +33,13 @@ final internal class SettingsViewController: UIViewController {
     private func setAttributes() {
         view.backgroundColor = .systemBackground
         title = "SETTINGS"
+        
+        let mailBarButtonItem: UIBarButtonItem = .init(title: nil,
+                                                       image: UIImage(systemName: "ant"),
+                                                       primaryAction: getMailBarButtonAction(),
+                                                       menu: nil)
+        self.mailBarButtonItem = mailBarButtonItem
+        navigationItem.rightBarButtonItems = [mailBarButtonItem]
     }
     
     private func configureViewModel() {
@@ -219,6 +228,27 @@ final internal class SettingsViewController: UIViewController {
         let vc: AcknowListViewController = .init(plistPath: path, style: .insetGrouped)
         navigationController?.pushViewController(vc, animated: true)
     }
+    
+    private func presentMFMailComposeVC() {
+        guard MFMailComposeViewController.canSendMail() else {
+            showErrorAlert(message: "(번역필요)이 기기에 등록된 이메일 주소가 없습니다.")
+            return
+        }
+        
+        let composeVC: MFMailComposeViewController = .init()
+        composeVC.mailComposeDelegate = self
+        composeVC.setToRecipients(["kidjinwoo@me.com"])
+        composeVC.setSubject("(번역필요) DoroDoro 버그 제보")
+        composeVC.setMessageBody("(번역필요) 테스트 빌드정보", isHTML: false)
+        
+        present(composeVC, animated: true, completion: nil)
+    }
+    
+    private func getMailBarButtonAction() -> UIAction {
+        return .init { [weak self] _ in
+            self?.presentMFMailComposeVC()
+        }
+    }
 }
 
 extension SettingsViewController: UICollectionViewDelegate {
@@ -309,5 +339,31 @@ extension SettingsViewController: UICollectionViewDelegate {
                 self?.contextViewController = nil
             }
         }
+    }
+}
+
+extension SettingsViewController: MFMailComposeViewControllerDelegate {
+    internal func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        guard error == nil else {
+            if let error: Error = error {
+                showErrorAlert(for: error)
+            }
+            return
+        }
+        
+        switch result {
+        case .cancelled:
+            break
+        case .failed:
+            showErrorAlert(message: "(번역필요) 실패!")
+        case .saved:
+            break
+        case .sent:
+            showSuccessAlert(message: "(번역필요)성공!")
+        @unknown default:
+            break
+        }
+        
+        controller.dismiss(animated: true, completion: nil)
     }
 }

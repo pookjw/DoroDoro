@@ -28,6 +28,28 @@ extension UIViewController {
         banner.show()
     }
     
+    internal func showErrorAlert(message: String?) {
+        let imageView: UIImageView = .init(image: UIImage(systemName: "xmark.octagon"))
+        imageView.tintColor = .white
+        
+        let banner: FloatingNotificationBanner = .init(title: "에러!!!(번역필요)",
+                                               subtitle: message,
+                                               leftView: imageView,
+                                               style: .danger)
+        banner.show()
+    }
+    
+    internal func showSuccessAlert(message: String?) {
+        let imageView: UIImageView = .init(image: UIImage(systemName: "checkmark"))
+        imageView.tintColor = .white
+        
+        let banner: FloatingNotificationBanner = .init(title: "성공!!!(번역필요)",
+                                               subtitle: message,
+                                               leftView: imageView,
+                                               style: .success)
+        banner.show()
+    }
+    
     @discardableResult
     internal func share(_ items: [Any], sourceView: UIView? = nil) -> UIActivityViewController {
         let ac: UIActivityViewController = .init(activityItems: items, applicationActivities: nil)
