@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		738B25F698562856F3A291B1 /* Pods_DoroDoroWatchAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24CE4333A9C3009967DAEF3B /* Pods_DoroDoroWatchAPI.framework */; };
+		7DDABB3E480573993B22D8E5 /* Pods_DoroDoroUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C340661E7FF7B12D0DB73635 /* Pods_DoroDoroUITests.framework */; };
 		93239F3CBE1708F488E8EF48 /* Pods_DoroDoroWatch_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF4E71F7032F7AEA1171F871 /* Pods_DoroDoroWatch_Extension.framework */; };
 		D8C84073ADE3808F2A421FFF /* Pods_DoroDoroAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5309ED33327A32D8822CF4CC /* Pods_DoroDoroAPI.framework */; };
 		E8BA96083B64A362F17AAFEA /* Pods_DoroDoro.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E86CEB0C5A70206FB9CE710D /* Pods_DoroDoro.framework */; };
@@ -91,6 +92,8 @@
 		F350297F25F2CEF70094B33D /* DetailsEngJusoObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F350297E25F2CEF70094B33D /* DetailsEngJusoObject.swift */; };
 		F350298625F2D5960094B33D /* DetailsLinkJusoIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F350298525F2D5960094B33D /* DetailsLinkJusoIndex.swift */; };
 		F350299825F2D8350094B33D /* DetailsEngJusoIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F350299725F2D8350094B33D /* DetailsEngJusoIndex.swift */; };
+		F360D25525F57B4300CA4E93 /* AccessibilityIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F360D25425F57B4300CA4E93 /* AccessibilityIdentifiers.swift */; };
+		F360D28025F57D3E00CA4E93 /* AccessibilityIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F360D25425F57B4300CA4E93 /* AccessibilityIdentifiers.swift */; };
 		F371F06E25F50F5D00E003E8 /* Pods-DoroDoro-acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = F371F06D25F50F5D00E003E8 /* Pods-DoroDoro-acknowledgements.plist */; };
 		F371F07025F513B700E003E8 /* Bundle+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371F06F25F513B700E003E8 /* Bundle+Ext.swift */; };
 		F371F07225F52E9F00E003E8 /* UIDevice+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371F07125F52E9F00E003E8 /* UIDevice+Ext.swift */; };
@@ -288,13 +291,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0AE672A338C6EF8EAE20DA7D /* Pods-DoroDoroUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoroDoroUITests.debug.xcconfig"; path = "Target Support Files/Pods-DoroDoroUITests/Pods-DoroDoroUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		11AF41BFC41987DE1C99AE69 /* Pods-DoroDoroWatchAPI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoroDoroWatchAPI.release.xcconfig"; path = "Target Support Files/Pods-DoroDoroWatchAPI/Pods-DoroDoroWatchAPI.release.xcconfig"; sourceTree = "<group>"; };
 		24CE4333A9C3009967DAEF3B /* Pods_DoroDoroWatchAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoroDoroWatchAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5309ED33327A32D8822CF4CC /* Pods_DoroDoroAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoroDoroAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D85A13F60C3E781DFBC61E7 /* Pods-DoroDoro.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoroDoro.release.xcconfig"; path = "Target Support Files/Pods-DoroDoro/Pods-DoroDoro.release.xcconfig"; sourceTree = "<group>"; };
 		86D49FB34CCC715324E29809 /* Pods-DoroDoro.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoroDoro.debug.xcconfig"; path = "Target Support Files/Pods-DoroDoro/Pods-DoroDoro.debug.xcconfig"; sourceTree = "<group>"; };
+		91FF8816DBF5C70F3A076CE9 /* Pods-DoroDoroUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoroDoroUITests.release.xcconfig"; path = "Target Support Files/Pods-DoroDoroUITests/Pods-DoroDoroUITests.release.xcconfig"; sourceTree = "<group>"; };
 		931F37118C61A8EE14A666C3 /* Pods-DoroDoroAPI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoroDoroAPI.debug.xcconfig"; path = "Target Support Files/Pods-DoroDoroAPI/Pods-DoroDoroAPI.debug.xcconfig"; sourceTree = "<group>"; };
 		A468E40173398C1B231AC2A6 /* Pods-DoroDoroWatch Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoroDoroWatch Extension.release.xcconfig"; path = "Target Support Files/Pods-DoroDoroWatch Extension/Pods-DoroDoroWatch Extension.release.xcconfig"; sourceTree = "<group>"; };
+		C340661E7FF7B12D0DB73635 /* Pods_DoroDoroUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoroDoroUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C70BFE619FFD251C29D381CA /* Pods-DoroDoroAPI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoroDoroAPI.release.xcconfig"; path = "Target Support Files/Pods-DoroDoroAPI/Pods-DoroDoroAPI.release.xcconfig"; sourceTree = "<group>"; };
 		E86CEB0C5A70206FB9CE710D /* Pods_DoroDoro.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoroDoro.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF4E71F7032F7AEA1171F871 /* Pods_DoroDoroWatch_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoroDoroWatch_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -393,6 +399,7 @@
 		F350297E25F2CEF70094B33D /* DetailsEngJusoObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsEngJusoObject.swift; sourceTree = "<group>"; };
 		F350298525F2D5960094B33D /* DetailsLinkJusoIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsLinkJusoIndex.swift; sourceTree = "<group>"; };
 		F350299725F2D8350094B33D /* DetailsEngJusoIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsEngJusoIndex.swift; sourceTree = "<group>"; };
+		F360D25425F57B4300CA4E93 /* AccessibilityIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityIdentifiers.swift; sourceTree = "<group>"; };
 		F371F06D25F50F5D00E003E8 /* Pods-DoroDoro-acknowledgements.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "Pods-DoroDoro-acknowledgements.plist"; path = "Pods/Target Support Files/Pods-DoroDoro/Pods-DoroDoro-acknowledgements.plist"; sourceTree = SOURCE_ROOT; };
 		F371F06F25F513B700E003E8 /* Bundle+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Ext.swift"; sourceTree = "<group>"; };
 		F371F07125F52E9F00E003E8 /* UIDevice+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Ext.swift"; sourceTree = "<group>"; };
@@ -486,6 +493,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7DDABB3E480573993B22D8E5 /* Pods_DoroDoroUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -562,6 +570,7 @@
 				5309ED33327A32D8822CF4CC /* Pods_DoroDoroAPI.framework */,
 				24CE4333A9C3009967DAEF3B /* Pods_DoroDoroWatchAPI.framework */,
 				EF4E71F7032F7AEA1171F871 /* Pods_DoroDoroWatch_Extension.framework */,
+				C340661E7FF7B12D0DB73635 /* Pods_DoroDoroUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -577,6 +586,8 @@
 				11AF41BFC41987DE1C99AE69 /* Pods-DoroDoroWatchAPI.release.xcconfig */,
 				FBC6FAC74664FE9723320696 /* Pods-DoroDoroWatch Extension.debug.xcconfig */,
 				A468E40173398C1B231AC2A6 /* Pods-DoroDoroWatch Extension.release.xcconfig */,
+				0AE672A338C6EF8EAE20DA7D /* Pods-DoroDoroUITests.debug.xcconfig */,
+				91FF8816DBF5C70F3A076CE9 /* Pods-DoroDoroUITests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -630,6 +641,7 @@
 		F333B98325EB88CD00F1915F /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				F360D25325F57B2E00CA4E93 /* Accessibility */,
 				F371F06D25F50F5D00E003E8 /* Pods-DoroDoro-acknowledgements.plist */,
 				F337B1F525EC0DC600FB0B61 /* Search */,
 				F38128F325F0274C00C36F7B /* Bookmarks */,
@@ -866,6 +878,14 @@
 				F350299725F2D8350094B33D /* DetailsEngJusoIndex.swift */,
 			);
 			path = Details;
+			sourceTree = "<group>";
+		};
+		F360D25325F57B2E00CA4E93 /* Accessibility */ = {
+			isa = PBXGroup;
+			children = (
+				F360D25425F57B4300CA4E93 /* AccessibilityIdentifiers.swift */,
+			);
+			path = Accessibility;
 			sourceTree = "<group>";
 		};
 		F378B6BC25E7D71C00FCE546 /* DoroDoroTests */ = {
@@ -1187,9 +1207,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F3444CAD25E8B82300A0706F /* Build configuration list for PBXNativeTarget "DoroDoroUITests" */;
 			buildPhases = (
+				245BD7BE0875E195CC48DD43 /* [CP] Check Pods Manifest.lock */,
 				F3444CA225E8B82300A0706F /* Sources */,
 				F3444CA325E8B82300A0706F /* Frameworks */,
 				F3444CA425E8B82300A0706F /* Resources */,
+				A39EB31539BE4CA459193A29 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1468,6 +1490,28 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		245BD7BE0875E195CC48DD43 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DoroDoroUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		3173D44D5DFADBBAF9121D34 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1505,6 +1549,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A39EB31539BE4CA459193A29 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DoroDoroUITests/Pods-DoroDoroUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DoroDoroUITests/Pods-DoroDoroUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DoroDoroUITests/Pods-DoroDoroUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C7C0829D08C78473D4B703F4 /* [CP] Embed Pods Frameworks */ = {
@@ -1598,6 +1659,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3444CA925E8B82300A0706F /* DoroDoroUITests.swift in Sources */,
+				F360D28025F57D3E00CA4E93 /* AccessibilityIdentifiers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1753,6 +1815,7 @@
 				F33BB0F525ED043400BC5772 /* SpinnerView.swift in Sources */,
 				F333B98D25EB890C00F1915F /* SearchResultItem.swift in Sources */,
 				F384137725F005030078334A /* SettingsViewModel.swift in Sources */,
+				F360D25525F57B4300CA4E93 /* AccessibilityIdentifiers.swift in Sources */,
 				F333B9A725EB8FB600F1915F /* SearchHeaderItem.swift in Sources */,
 				F3A3DF2F25F4412A00E8F2F0 /* UIView+Ext.swift in Sources */,
 				F378B70925E7D8C600FCE546 /* BookmarksViewController.swift in Sources */,
@@ -1842,6 +1905,7 @@
 /* Begin XCBuildConfiguration section */
 		F3444CAE25E8B82300A0706F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0AE672A338C6EF8EAE20DA7D /* Pods-DoroDoroUITests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P53D29U9LJ;
@@ -1862,6 +1926,7 @@
 		};
 		F3444CAF25E8B82300A0706F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 91FF8816DBF5C70F3A076CE9 /* Pods-DoroDoroUITests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P53D29U9LJ;

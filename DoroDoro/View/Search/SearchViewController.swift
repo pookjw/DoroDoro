@@ -152,6 +152,11 @@ final internal class SearchViewController: UIViewController {
         
         geoBarButtonItem?.accessibilityLabel = Localizable.ACCESSIBILITY_SEARCH_CURRENT_LOCATION.string
         geoBarButtonItem?.isAccessibilityElement = true
+        
+        //
+        
+        searchController?.searchBar.searchTextField.accessibilityIdentifier = AccessibilityIdentifiers.SearchVC.searchField
+//        searchController?.searchBar.accessibilityIdentifier = AccessibilityIdentifiers.SearchVC.searchBar
     }
     
     private func makeDataSource() -> SearchViewModel.DataSource {
