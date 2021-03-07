@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Foundation
 import Combine
 import SnapKit
 import DoroDoroAPI
@@ -229,10 +230,21 @@ final internal class DetailsViewController: UIViewController {
         mapVC.latitude = corrd.latitude
         mapVC.longitude = corrd.longitude
         mapVC.locationText = title
-        let mapNVC: UINavigationController = .init(rootViewController: mapVC)
-        mapNVC.modalPresentationStyle = .fullScreen
         mapVC.loadViewIfNeeded()
-        present(mapNVC, animated: true, completion: nil)
+        let mapNVC: UINavigationController = .init(rootViewController: mapVC)
+        mapNVC.modalPresentationStyle = .pageSheet
+        mapNVC.isModalInPresentation = true
+        mapNVC.loadViewIfNeeded()
+        present(mapNVC, animated: true, completion: { [weak mapNVC] in
+            mapNVC?
+                .presentationController?
+                .presentedView?
+                .gestureRecognizers?
+                .filter { String(describing: $0).contains("_UISheetInteractionBackgroundDismissRecognizer") }
+                .forEach { gesture in
+                    gesture.isEnabled = false
+                }
+        })
     }
     
     private func pushToDetailsVC(roadAddr: String) {

@@ -69,9 +69,7 @@ extension UIViewController {
     
     internal func animateForSelectedIndexPath(_ collectionView: UICollectionView, animated: Bool) {
         collectionView.indexPathsForSelectedItems?.forEach { [weak self, weak collectionView] indexPath in
-            if let coordinator: UIViewControllerTransitionCoordinator = self?.transitionCoordinator,
-               // 아이패드에서 MapViewController에서 넘어올 때는 deselect 처리를 안하기 위함
-               !(coordinator.presentationStyle == .fullScreen) {
+            if let coordinator: UIViewControllerTransitionCoordinator = self?.transitionCoordinator {
                 coordinator.animate(alongsideTransition: { context in
                     collectionView?.deselectItem(at: indexPath, animated: true)
                 }, completion: { context in

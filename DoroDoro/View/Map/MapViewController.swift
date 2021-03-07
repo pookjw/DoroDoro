@@ -26,7 +26,7 @@ final internal class MapViewController: UIViewController {
     override internal func viewDidLoad() {
         super.viewDidLoad()
         
-        configureAttributes()
+        setAttributes()
         
         switch mapSelection {
         case .appleMaps:
@@ -42,7 +42,7 @@ final internal class MapViewController: UIViewController {
         configureAccessiblity()
     }
     
-    private func configureAttributes() {
+    private func setAttributes() {
         title = Localizable.MAP_VIEW_CONTROLLER_TITLE.string
         
         //
