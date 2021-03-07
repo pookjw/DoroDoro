@@ -21,6 +21,7 @@ internal struct AddrAPIKeys {
     static internal let coordAPIKey: String = "<API_KEY>"
 }
 
+/// 카카오 API Keys
 internal struct KakaoAPIKeys {
     /// 네이티브 앱 키
     static internal let nativeAppKey: String = "<API_KEY>"
