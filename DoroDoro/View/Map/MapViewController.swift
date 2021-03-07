@@ -116,6 +116,10 @@ final internal class MapViewController: UIViewController {
         openMapAppBarButtonItem?.accessibilityLabel = Localizable.ACCESSIBILITY_MAP_OPEN_IN_APP.string
         openMapAppBarButtonItem?.isAccessibilityElement = true
         
+        // 왜인지 모르는데 안 됨...
+        doneBarButtonItem?.accessibilityLabel = Localizable.ACCESSIBILITY_MAP_CLOSE_GUIDE.string
+        doneBarButtonItem?.isAccessibilityElement = true
+        
         mapView?.accessibilityLabel = Localizable.ACCESSIBILITY_MAP_GUIDE.string
         mapView?.isAccessibilityElement = true
         #if arch(arm64) || targetEnvironment(simulator)
