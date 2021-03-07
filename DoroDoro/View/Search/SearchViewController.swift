@@ -57,7 +57,7 @@ final internal class SearchViewController: UIViewController {
         tabBarItem.title = Localizable.TABBAR_SEARCH_VIEW_CONTROLLER_TITLE.string
         
         let geoBarButtonItem: UIBarButtonItem = .init(title: nil,
-                                                      image: UIImage(systemName: "location.fill"),
+                                                      image: UIImage(systemName: "location"),
                                                       primaryAction: getGeoBarButtonAction(),
                                                       menu: nil)
         self.geoBarButtonItem = geoBarButtonItem
@@ -67,6 +67,7 @@ final internal class SearchViewController: UIViewController {
     private func getGeoBarButtonAction() -> UIAction {
         return .init { [weak self] _ in
             self?.showSpinnerView()
+            self?.geoBarButtonItem?.image = UIImage(systemName: "location.fill")
             self?.viewModel?.requestGeoEvent()
         }
     }
@@ -224,6 +225,7 @@ final internal class SearchViewController: UIViewController {
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] roadAddr in
                 self?.removeAllSpinnerView()
+                self?.geoBarButtonItem?.image = UIImage(systemName: "location")
                 self?.pushToDetailsVC(roadAddr: roadAddr)
             })
             .store(in: &cancellableBag)
@@ -232,6 +234,7 @@ final internal class SearchViewController: UIViewController {
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] error in
                 self?.showErrorAlert(for: error)
+                self?.geoBarButtonItem?.image = UIImage(systemName: "location")
                 self?.removeAllSpinnerView()
             })
             .store(in: &cancellableBag)
