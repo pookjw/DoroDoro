@@ -32,6 +32,7 @@ final internal class SearchViewController: UIViewController {
         configureGuideLabel()
         configureCollectionView()
         configureSearchController()
+        configureAccessiblity()
         configureViewModel()
         bind()
     }
@@ -53,9 +54,7 @@ final internal class SearchViewController: UIViewController {
     
     private func setAttributes() {
         view.backgroundColor = .systemBackground
-        title = Localizable.DORODORO.string
-        tabBarItem.title = Localizable.SEARCH.string
-        
+        title = Localizable.SEARCH.string
         let geoBarButtonItem: UIBarButtonItem = .init(title: nil,
                                                       image: UIImage(systemName: "location"),
                                                       primaryAction: getGeoBarButtonAction(),
@@ -66,6 +65,10 @@ final internal class SearchViewController: UIViewController {
     
     private func getGeoBarButtonAction() -> UIAction {
         return .init { [weak self] _ in
+            guard let isGeoSearching: Bool = self?.viewModel?.isGeoSearching,
+                  !isGeoSearching else {
+                return
+            }
             self?.showSpinnerView()
             self?.geoBarButtonItem?.image = UIImage(systemName: "location.fill")
             self?.viewModel?.requestGeoEvent()
@@ -137,6 +140,18 @@ final internal class SearchViewController: UIViewController {
         searchController.searchBar.delegate = self
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
+    }
+    
+    private func configureAccessiblity() {
+        searchController?.searchBar.searchTextField.accessibilityLabel = Localizable.ACCESSIBILITY_SEARCH_TEXTFIELD.string
+        searchController?.searchBar.searchTextField.isAccessibilityElement = true
+        
+        guideLabel?.accessibilityLabel = Localizable.ACCESSIBILITY_SEARCH_GUIDE.string
+        guideContainerView?.accessibilityLabel = Localizable.ACCESSIBILITY_SEARCH_GUIDE.string
+        guideContainerView?.isAccessibilityElement = true
+        
+        geoBarButtonItem?.accessibilityLabel = Localizable.ACCESSIBILITY_SEARCH_CURRENT_LOCATION.string
+        geoBarButtonItem?.isAccessibilityElement = true
     }
     
     private func makeDataSource() -> SearchViewModel.DataSource {
@@ -248,6 +263,7 @@ final internal class SearchViewController: UIViewController {
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] error in
                 self?.showErrorAlert(for: error)
+                self?.geoBarButtonItem?.image = UIImage(systemName: "location")
                 self?.removeAllSpinnerView()
             })
             .store(in: &cancellableBag)

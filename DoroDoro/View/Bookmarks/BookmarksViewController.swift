@@ -24,6 +24,7 @@ final internal class BookmarksViewController: UIViewController {
         configureGuideLabel()
         configureCollectionView()
         configureSearchController()
+        configureAccessiblity()
         configureViewModel()
         bind()
     }
@@ -105,6 +106,15 @@ final internal class BookmarksViewController: UIViewController {
         collectionView.backgroundColor = .systemBackground
         collectionView.isHidden = true
         collectionView.delegate = self
+    }
+    
+    private func configureAccessiblity() {
+        searchController?.searchBar.searchTextField.accessibilityLabel = Localizable.ACCESSIBILITY_BOOKMARKS_TEXTFIELD.string
+        searchController?.searchBar.searchTextField.isAccessibilityElement = true
+        
+        guideLabel?.accessibilityLabel = Localizable.ACCESSIBILITY_BOOKMARKS_GUIDE.string
+        guideContainerView?.accessibilityLabel = Localizable.ACCESSIBILITY_BOOKMARKS_GUIDE.string
+        guideContainerView?.isAccessibilityElement = true
     }
     
     private func makeDataSource() -> BookmarksViewModel.DataSource {

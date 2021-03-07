@@ -38,6 +38,8 @@ final internal class MapViewController: UIViewController {
             configureAppleMapsView()
             #endif
         }
+        
+        configureAccessiblity()
     }
     
     private func configureAttributes() {
@@ -109,6 +111,18 @@ final internal class MapViewController: UIViewController {
         kakaoMapView.add(pointItem)
     }
     #endif
+    
+    private func configureAccessiblity() {
+        openMapAppBarButtonItem?.accessibilityLabel = Localizable.ACCESSIBILITY_MAP_OPEN_IN_APP.string
+        openMapAppBarButtonItem?.isAccessibilityElement = true
+        
+        mapView?.accessibilityLabel = Localizable.ACCESSIBILITY_MAP_GUIDE.string
+        mapView?.isAccessibilityElement = true
+        #if arch(arm64) || targetEnvironment(simulator)
+        kakaoMapView?.accessibilityLabel = Localizable.ACCESSIBILITY_MAP_GUIDE.string
+        kakaoMapView?.isAccessibilityElement = true
+        #endif
+    }
     
     private func getDismissAction() -> UIAction {
         return .init { [weak self] _ in

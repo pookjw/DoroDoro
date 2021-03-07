@@ -19,8 +19,9 @@ final internal class SearchViewModel {
     internal let geoAPIService: GeoAPIService = .init()
     internal let kakaoAPIService: KakaoAPIService = .init()
     internal var dataSource: DataSource? = nil
-    internal var refreshedEvent: PassthroughSubject<(canLoadMore: Bool, hasData: Bool, isFirstPage: Bool), Never> = .init()
-    internal var geoEvent: PassthroughSubject<String, Never> = .init()
+    internal let refreshedEvent: PassthroughSubject<(canLoadMore: Bool, hasData: Bool, isFirstPage: Bool), Never> = .init()
+    internal let geoEvent: PassthroughSubject<String, Never> = .init()
+    internal private(set) var isGeoSearching: Bool = false
     @Published internal var searchEvent: String? = nil
     
     private var currentPage: Int = 1
@@ -36,6 +37,7 @@ final internal class SearchViewModel {
     }
     
     internal func requestGeoEvent() {
+        isGeoSearching = true
         geoAPIService.requestCurrentCoord()
     }
     
@@ -120,6 +122,10 @@ final internal class SearchViewModel {
         kakaoAPIService.coord2AddressEvent
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] data in
+                defer {
+                    self?.isGeoSearching = false
+                }
+                
                 guard let document: KakaoCoord2AddressDocumentData = data.documents.first else {
                     self?.kakaoAPIService.coord2AddressErrorEvent.send(.noResults)
                     return
@@ -133,6 +139,13 @@ final internal class SearchViewModel {
                     addr = document.address.address_name
                 }
                 self?.geoEvent.send(addr)
+            })
+            .store(in: &cancellableBag)
+        
+        kakaoAPIService.coord2AddressErrorEvent
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] error in
+                self?.isGeoSearching = false
             })
             .store(in: &cancellableBag)
     }

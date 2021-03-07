@@ -22,6 +22,7 @@ final internal class DetailsViewController: UIViewController {
         configureCollectionView()
         configureViewModel()
         configureBookmarkButton()
+        configureAccessiblity()
         bind()
     }
     
@@ -66,6 +67,11 @@ final internal class DetailsViewController: UIViewController {
                                                     menu: nil)
         self.bookmarkButton = bookmarkButton
         navigationItem.rightBarButtonItems = [bookmarkButton]
+    }
+    
+    private func configureAccessiblity() {
+        /* bookmarkButton에 대한 접근성 문구와 Map Cell의 접근성 문구는 여기서 처리하지 않는다. */
+        bookmarkButton?.isAccessibilityElement = true
     }
     
     private func getBookmarkButtonAction() -> UIAction {
@@ -123,6 +129,8 @@ final internal class DetailsViewController: UIViewController {
                 cell.contentConfiguration = configuration
             case let .map(latitude, longitude, title):
                 cell.contentConfiguration = DetailsMapViewConfiguration(latitude: latitude, longitude: longitude, title: title)
+                cell.isAccessibilityElement = true
+                cell.accessibilityLabel = Localizable.ACCESSIBILITY_DETAILS_MAP.string
             }
         }
     }
@@ -211,6 +219,7 @@ final internal class DetailsViewController: UIViewController {
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] status in
                 self?.bookmarkButton?.image = status ? UIImage(systemName: "bookmark.fill") : UIImage(systemName: "bookmark")
+                self?.bookmarkButton?.accessibilityLabel = status ? Localizable.ACCESSIBILITY_REMOVE_FROM_BOOKMARK.string : Localizable.ACCESSIBILITY_ADD_TO_BOOKMARK.string
             })
             .store(in: &cancellableBag)
     }

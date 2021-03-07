@@ -15,7 +15,8 @@ final internal class SpinnerView: UIView {
     
     internal init() {
         super.init(frame: .zero)
-        configure()
+        setAttributes()
+        configureAccessiblity()
     }
     
     required internal init?(coder: NSCoder) {
@@ -45,7 +46,7 @@ final internal class SpinnerView: UIView {
         activityIndicatorView?.startAnimating()
     }
     
-    private func configure() {
+    private func setAttributes() {
         backgroundColor = .clear
         isUserInteractionEnabled = true
         
@@ -82,5 +83,14 @@ final internal class SpinnerView: UIView {
         //
         
         traitCollectionDidChange(nil)
+    }
+    
+    private func configureAccessiblity() {
+        accessibilityLabel = Localizable.ACCESSIBILITY_LOADING_CONENTS.string
+        isAccessibilityElement = true
+        blurView?.contentView.accessibilityLabel = Localizable.ACCESSIBILITY_LOADING_CONENTS.string
+        blurView?.contentView.isAccessibilityElement = true
+        activityIndicatorView?.accessibilityLabel = Localizable.ACCESSIBILITY_LOADING_CONENTS.string
+        activityIndicatorView?.isAccessibilityElement = true
     }
 }
