@@ -8,7 +8,7 @@
 import Foundation
 
 internal struct SettingsData {
-    internal var mapSelection: SettingsMapSelectionType = .appleMap
+    internal var mapSelection: SettingsMapSelectionType = .appleMaps
     
     internal init() {}
     

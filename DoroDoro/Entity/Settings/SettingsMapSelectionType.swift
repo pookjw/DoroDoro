@@ -8,5 +8,5 @@
 import Foundation
 
 internal enum SettingsMapSelectionType: Int {
-    case appleMap = 0, kakaoMap
+    case appleMaps = 0, kakaoMap
 }

@@ -29,8 +29,8 @@ final internal class MapViewController: UIViewController {
         configureAttributes()
         
         switch mapSelection {
-        case .appleMap:
-            configureAppleMapView()
+        case .appleMaps:
+            configureAppleMapsView()
         case .kakaoMap:
             #if arch(arm64) || targetEnvironment(simulator)
             configureKakaoMapView()
@@ -45,7 +45,7 @@ final internal class MapViewController: UIViewController {
         
         //
         
-        let doneBarButtonItem: UIBarButtonItem = .init(title: Localizable.DISMISS.string,
+        let doneBarButtonItem: UIBarButtonItem = .init(title: Localizable.DONE.string,
                                                        image: nil,
                                                        primaryAction: getDismissAction(),
                                                        menu: nil)
@@ -60,7 +60,7 @@ final internal class MapViewController: UIViewController {
         navigationItem.leftBarButtonItems = [openMapAppBarButtonItem]
     }
     
-    private func configureAppleMapView() {
+    private func configureAppleMapsView() {
         let mapView: MKMapView = .init()
         self.mapView = mapView
         view.addSubview(mapView)
@@ -124,19 +124,20 @@ final internal class MapViewController: UIViewController {
                UIApplication.shared.canOpenURL(kakaoMapURL) {
                 
                 let alertVC: UIAlertController = .init(title: nil, message: nil, preferredStyle: .actionSheet)
+                let appleMapsAction: UIAlertAction = .init(title: Localizable.OPEN_IN_APPLE_MAPS_APP.string,
+                                                           style: .default) { [weak self] _ in
+                                                            self?.openInAppleMapsApp()
+                                                           }
                 let kakaoMapAction: UIAlertAction = .init(title: Localizable.OPEN_IN_KAKAOMAP_APP.string,
                                                           style: .default) { [weak self] _ in
                                                             self?.openInKakaoMapApp()
                                                           }
-                let systemMapAction: UIAlertAction = .init(title: Localizable.OPEN_IN_SYSTEM_MAPS_APP.string,
-                                                           style: .default) { [weak self] _ in
-                                                            self?.openInSystemMapApp()
-                                                           }
                 let dismissButton: UIAlertAction = .init(title: Localizable.DISMISS.string,
                                                          style: .cancel,
                                                          handler: nil)
+                
+                alertVC.addAction(appleMapsAction)
                 alertVC.addAction(kakaoMapAction)
-                alertVC.addAction(systemMapAction)
                 alertVC.addAction(dismissButton)
                 
                 if let controller: UIPopoverPresentationController = alertVC.popoverPresentationController {
@@ -150,12 +151,12 @@ final internal class MapViewController: UIViewController {
                 
                 self.present(alertVC, animated: true)
             } else {
-                self.openInSystemMapApp()
+                self.openInAppleMapsApp()
             }
         }
     }
     
-    private func openInSystemMapApp() {
+    private func openInAppleMapsApp() {
         let placemark: MKPlacemark = .init(coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longitude))
         let mapItem: MKMapItem = .init(placemark: placemark)
         mapItem.openInMaps(launchOptions: nil)

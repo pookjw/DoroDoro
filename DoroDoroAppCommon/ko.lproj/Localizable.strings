@@ -43,7 +43,7 @@
 "OPEN_IN_KAKAOMAP_APP" = "카카오지도에서 열기";
 
 /* */
-"OPEN_IN_SYSTEM_MAPS_APP" = "지도에서 열기";
+"OPEN_IN_APPLE_MAPS_APP" = "지도에서 열기";
 
 /* */
 "COPY" = "복사";

@@ -160,14 +160,14 @@ final internal class SettingsViewController: UIViewController {
         var configuration: UIListContentConfiguration = cell.defaultContentConfiguration()
         
         switch mapType {
-        case .appleMap:
+        case .appleMaps:
             configuration.text = "APPLE MAPS(번역)"
             configuration.image = UIImage(named: "kakaomap")
             configuration.imageProperties.cornerRadius = 25
             configuration.imageProperties.maximumSize = .init(width: 50, height: 50)
         case .kakaoMap:
             configuration.text = "KAKAO MAPS(번역)"
-            configuration.image = UIImage(named: "maps")
+            configuration.image = UIImage(named: "applemaps")
             configuration.imageProperties.cornerRadius = 25
             configuration.imageProperties.maximumSize = .init(width: 50, height: 50)
         }

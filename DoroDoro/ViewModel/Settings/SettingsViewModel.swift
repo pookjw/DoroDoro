@@ -80,7 +80,7 @@ final internal class SettingsViewModel {
         }()
         
         let items: [SettingCellItem] = [
-            .init(cellType: .mapSelection(mapType: .appleMap, selected: selected == .appleMap)),
+            .init(cellType: .mapSelection(mapType: .appleMaps, selected: selected == .appleMaps)),
             .init(cellType: .mapSelection(mapType: .kakaoMap, selected: selected == .kakaoMap))
         ]
 
