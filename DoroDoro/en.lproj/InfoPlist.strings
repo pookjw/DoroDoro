@@ -8,3 +8,6 @@
 
 /* */
 "CFBundleDisplayName" = "DoroDoro";
+
+/* */
+"NSLocationWhenInUseUsageDescription" = "Find address using current Location.";

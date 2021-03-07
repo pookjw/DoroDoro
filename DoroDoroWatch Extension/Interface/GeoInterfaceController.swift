@@ -71,7 +71,12 @@ final internal class GeoInterfaceController: WKInterfaceController {
         interfaceModel?.geoEvent
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] roadAddr in
-                self?.pushToDetails(roadAddr: roadAddr)
+                guard let self = self else { return }
+                self.pushToDetails(roadAddr: roadAddr)
+                self.stopLoadingAnimation(in: self.loadingImageView) { [weak self] in
+                    self?.findButton.setHidden(false)
+                    self?.loadingImageView.setHidden(true)
+                }
             })
             .store(in: &cancellableBag)
     }
