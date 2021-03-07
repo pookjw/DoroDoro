@@ -115,13 +115,13 @@
 "EMAIL_ERROR_NO_REGISTERED_EMAILS_ON_DEVICE" = "기기에 등록된 이메일 주소가 없습니다.";
 
 /* */
-"EMAIL_APP_INFO" = "앱 정보: %@";
+"EMAIL_APP_INFO" = "앱 정보 : %@";
 
 /* */
 "EMAIL_TITLE" = "도로도로 - 버그 제보";
 
 /* */
-"EMAIL_SYSTEM_INFO" = "System Information: %@";
+"EMAIL_SYSTEM_INFO" = "시스템 정보 : %@";
 
 /* */
 "EMAIL_SENT" = "이메일을 보냈습니다!";
