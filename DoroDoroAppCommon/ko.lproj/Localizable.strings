@@ -73,7 +73,7 @@
 "KAKAO_MAP" = "카카오맵";
 
 /* */
-"MAP_PROVIDERS_DESCRIPTION" = "Interl 기반 Mac, Apple Watch와 상세 화면에서는 Apple 지도만 지원합니다.";
+"MAP_PROVIDERS_DESCRIPTION" = "Intel 기반 Mac, Apple Watch와 상세 화면에서는 Apple 지도만 지원합니다.";
 
 /* */
 "DATA_PROVIDER_DESCRIPTION" = "행정안전부, 카카오, Apple에서 정보를 제공했습니다.";
