@@ -91,6 +91,8 @@
 		F350297F25F2CEF70094B33D /* DetailsEngJusoObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F350297E25F2CEF70094B33D /* DetailsEngJusoObject.swift */; };
 		F350298625F2D5960094B33D /* DetailsLinkJusoIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F350298525F2D5960094B33D /* DetailsLinkJusoIndex.swift */; };
 		F350299825F2D8350094B33D /* DetailsEngJusoIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F350299725F2D8350094B33D /* DetailsEngJusoIndex.swift */; };
+		F371F06E25F50F5D00E003E8 /* Pods-DoroDoro-acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = F371F06D25F50F5D00E003E8 /* Pods-DoroDoro-acknowledgements.plist */; };
+		F371F07025F513B700E003E8 /* Bundle+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371F06F25F513B700E003E8 /* Bundle+Ext.swift */; };
 		F378B6B125E7D69300FCE546 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F378B6B325E7D69300FCE546 /* Localizable.strings */; };
 		F378B6BE25E7D71C00FCE546 /* AddrAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B6BD25E7D71C00FCE546 /* AddrAPITests.swift */; };
 		F378B6CF25E7D77100FCE546 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F378B6CD25E7D77100FCE546 /* Interface.storyboard */; };
@@ -390,6 +392,8 @@
 		F350297E25F2CEF70094B33D /* DetailsEngJusoObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsEngJusoObject.swift; sourceTree = "<group>"; };
 		F350298525F2D5960094B33D /* DetailsLinkJusoIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsLinkJusoIndex.swift; sourceTree = "<group>"; };
 		F350299725F2D8350094B33D /* DetailsEngJusoIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsEngJusoIndex.swift; sourceTree = "<group>"; };
+		F371F06D25F50F5D00E003E8 /* Pods-DoroDoro-acknowledgements.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "Pods-DoroDoro-acknowledgements.plist"; path = "Pods/Target Support Files/Pods-DoroDoro/Pods-DoroDoro-acknowledgements.plist"; sourceTree = SOURCE_ROOT; };
+		F371F06F25F513B700E003E8 /* Bundle+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Ext.swift"; sourceTree = "<group>"; };
 		F378B6A225E7D13E00FCE546 /* DoroDoro.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DoroDoro.entitlements; sourceTree = "<group>"; };
 		F378B6AA25E7D5ED00FCE546 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		F378B6AD25E7D64F00FCE546 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -624,6 +628,7 @@
 		F333B98325EB88CD00F1915F /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				F371F06D25F50F5D00E003E8 /* Pods-DoroDoro-acknowledgements.plist */,
 				F337B1F525EC0DC600FB0B61 /* Search */,
 				F38128F325F0274C00C36F7B /* Bookmarks */,
 				F337B1F625EC0DCE00FB0B61 /* Details */,
@@ -661,6 +666,7 @@
 				F3800A2D25F2E54100F218A1 /* AddrLinkJusoData+convertToAddrCoordSearchData.swift */,
 				F3A3DF2E25F4412A00E8F2F0 /* UIView+Ext.swift */,
 				F3A3DF3525F4430600E8F2F0 /* UIScrollView+Ext.swift */,
+				F371F06F25F513B700E003E8 /* Bundle+Ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1438,6 +1444,7 @@
 				F33BB1BE25ED4E5700BC5772 /* map_present_background_update.png in Resources */,
 				F33BB1B525ED4E5700BC5772 /* info_box.png in Resources */,
 				F33BB1B725ED4E5700BC5772 /* map_pinup_custom.png in Resources */,
+				F371F06E25F50F5D00E003E8 /* Pods-DoroDoro-acknowledgements.plist in Resources */,
 				F33BB1BD25ED4E5700BC5772 /* noimage.png in Resources */,
 				F378B71425E7DAFF00FCE546 /* InfoPlist.strings in Resources */,
 				F33BB1B825ED4E5700BC5772 /* info_box_tail.png in Resources */,
@@ -1717,6 +1724,7 @@
 				F38128F725F027F000C36F7B /* BookmarksHeaderItem.swift in Sources */,
 				F3800A4025F2E5BA00F218A1 /* KakaoAddressAPIError+LocalizedError.swift in Sources */,
 				F3AAE29925E7D06700D666BD /* AppDelegate.swift in Sources */,
+				F371F07025F513B700E003E8 /* Bundle+Ext.swift in Sources */,
 				F333BA0025EBFE1B00F1915F /* NSObject+Ext.swift in Sources */,
 				F337B1EE25EC09F400FB0B61 /* DetailsViewModel.swift in Sources */,
 				F3800A3A25F2E59100F218A1 /* AddrCoordAPIError+LocalizedError.swift in Sources */,

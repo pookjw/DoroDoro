@@ -1,4 +1,5 @@
 PODS:
+  - AcknowList (2.0.0-beta.1)
   - Alamofire (5.4.1)
   - CRRefresh (1.1.3)
   - MarqueeLabel (4.0.5)
@@ -11,6 +12,7 @@ PODS:
   - SnapKit (5.0.1)
 
 DEPENDENCIES:
+  - AcknowList (= 2.0.0-beta.1)
   - Alamofire (~> 5.4.1)
   - CRRefresh (~> 1.1.3)
   - NotificationBannerSwift (= 3.0.6)
@@ -19,6 +21,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - AcknowList
     - Alamofire
     - CRRefresh
     - MarqueeLabel
@@ -27,6 +30,7 @@ SPEC REPOS:
     - SnapKit
 
 SPEC CHECKSUMS:
+  AcknowList: eeb79bd42a557ae800feba3884f4c735e88a86a1
   Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
   CRRefresh: 1415d4ae06837fa7bb064c44f2e102f3ef517044
   MarqueeLabel: 00cc0bcd087111dca575878b3531af980559707d
@@ -34,6 +38,6 @@ SPEC CHECKSUMS:
   NVActivityIndicatorView: 1f6c5687f1171810aa27a3296814dc2d7dec3667
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: b7877e3d044a5eedf3d3dde1ce1ce5e58eb60adc
+PODFILE CHECKSUM: e389353a908538241963eca82239ba453ad6a107
 
 COCOAPODS: 1.10.1

@@ -59,6 +59,7 @@ final internal class SettingsViewModel {
     private func updateSettings(_ data: SettingsData) {
         updateMapSelectionItem(data.mapSelection)
         updateContributorItem()
+        updateAboutItem()
     }
     
     private func updateMapSelectionItem(_ selected: SettingsMapSelectionType) {
@@ -110,6 +111,33 @@ final internal class SettingsViewModel {
         ]
         
         snapshot.appendItems(items, toSection: contributorHeaderItem)
+        sortSnapshot(&snapshot)
+        dataSource?.apply(snapshot, animatingDifferences: true)
+    }
+    
+    private func updateAboutItem() {
+        guard var snapshot: Snapshot = dataSource?.snapshot() else {
+            return
+        }
+        
+        let aboutHeaderItem: SettingHeaderItem = {
+            if let aboutHeaderItem: SettingHeaderItem = snapshot.sectionIdentifiers.first(where: { $0.headerType == .about }) {
+                snapshot.deleteSections([aboutHeaderItem])
+                snapshot.appendSections([aboutHeaderItem])
+                return aboutHeaderItem
+            } else {
+                let aboutHeaderItem: SettingHeaderItem = .init(headerType: .about)
+                snapshot.appendSections([aboutHeaderItem])
+                return aboutHeaderItem
+            }
+        }()
+        
+        let items: [SettingCellItem] = [
+            .init(cellType: .appinfo(version: Bundle.main.releaseVersionNumber, build: Bundle.main.buildVersionNumber)),
+            .init(cellType: .acknowledgements)
+        ]
+        
+        snapshot.appendItems(items, toSection: aboutHeaderItem)
         sortSnapshot(&snapshot)
         dataSource?.apply(snapshot, animatingDifferences: true)
     }

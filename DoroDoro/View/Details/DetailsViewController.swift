@@ -25,12 +25,6 @@ final internal class DetailsViewController: UIViewController {
         bind()
     }
     
-    override internal func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationItem.largeTitleDisplayMode = .never
-        title = "DETAILS"
-    }
-    
     internal func setLinkJusoData(_ linkJusoData: AddrLinkJusoData) {
         viewModel?.loadData(linkJusoData)
     }
@@ -42,7 +36,7 @@ final internal class DetailsViewController: UIViewController {
     
     private func setAttributes() {
         view.backgroundColor = .systemBackground
-        title = Localizable.DORODORO.string
+        title = "DETAILS"
         tabBarItem.title = Localizable.TABBAR_SEARCH_VIEW_CONTROLLER_TITLE.string
     }
     

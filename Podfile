@@ -9,6 +9,7 @@ target 'DoroDoro' do
   pod 'CRRefresh', '~> 1.1.3'
   pod 'NVActivityIndicatorView', '~> 5.1.1'
   pod 'NotificationBannerSwift', '3.0.6'
+  pod 'AcknowList', '2.0.0-beta.1'
 end
 
 target 'DoroDoroAPI' do

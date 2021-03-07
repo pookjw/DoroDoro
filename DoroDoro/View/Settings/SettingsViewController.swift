@@ -7,6 +7,7 @@
 
 import UIKit
 import SafariServices
+import AcknowList
 
 final internal class SettingsViewController: UIViewController {
     private weak var collectionView: UICollectionView? = nil
@@ -22,9 +23,6 @@ final internal class SettingsViewController: UIViewController {
     
     override internal func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationItem.largeTitleDisplayMode = .always
-        navigationController?.navigationBar.prefersLargeTitles = true
-        
         if let collectionView: UICollectionView = collectionView {
             animateForSelectedIndexPath(collectionView, animated: animated)
         }
@@ -90,6 +88,10 @@ final internal class SettingsViewController: UIViewController {
                 self?.setMapSelectionCell(cell: cell, mapType: mapType, selected: selected)
             case .contributor(let contributorType, _):
                 self?.setContributorTypeCell(cell: cell, contributorType: contributorType)
+            case .acknowledgements:
+                self?.setAcknowledgementsTypeCell(cell: cell)
+            case .appinfo(let version, let build):
+                self?.setAppInfoCell(cell: cell, version: version, build: build)
             }
         }
     }
@@ -110,6 +112,8 @@ final internal class SettingsViewController: UIViewController {
                 configuration.text = "MAPS(번역)"
             case .contributor:
                 configuration.text = "Contributors(번역)"
+            case .about:
+                configuration.text = "정보(번역)"
             }
             headerView.contentConfiguration = configuration
         }
@@ -178,14 +182,63 @@ final internal class SettingsViewController: UIViewController {
         cell.accessories = [.disclosureIndicator()]
     }
     
-    internal func makeSFSafariVCPreview(url: URL) -> UIViewController {
+    private func setAcknowledgementsTypeCell(cell: UICollectionViewListCell) {
+        var configuration: UIListContentConfiguration = cell.defaultContentConfiguration()
+        configuration.text = "오픈소스 고지 (번역필요)"
+        cell.contentConfiguration = configuration
+        cell.accessories = [.disclosureIndicator()]
+    }
+    
+    private func setAppInfoCell(cell: UICollectionViewListCell, version: String?, build: String?) {
+        var configuration: UIListContentConfiguration = cell.defaultContentConfiguration()
+        configuration.text = "DoroDoro"
+        configuration.secondaryText = "\(version ?? "(unknown)") (\(build ?? "(unknown)"))"
+        cell.contentConfiguration = configuration
+        cell.accessories = []
+    }
+    
+    private func makeSFSafariVCPreview(url: URL) -> UIViewController {
         let vc: SFSafariViewController = .init(url: url)
         contextViewController = vc
         return vc
     }
+    
+    private func makeAcknowledgementsVCPreview() -> UIViewController? {
+        guard let path: String = Bundle.main.path(forResource: "Pods-DoroDoro-acknowledgements", ofType: "plist") else {
+            return nil
+        }
+        let vc: AcknowListViewController = .init(plistPath: path, style: .insetGrouped)
+        contextViewController = vc
+        return vc
+    }
+    
+    private func presentAcknowledgementsVC() {
+        guard let path: String = Bundle.main.path(forResource: "Pods-DoroDoro-acknowledgements", ofType: "plist") else {
+            return
+        }
+        let vc: AcknowListViewController = .init(plistPath: path, style: .insetGrouped)
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 extension SettingsViewController: UICollectionViewDelegate {
+    internal func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
+        guard let cellItem: SettingCellItem = viewModel?.getCellItem(from: indexPath) else {
+             return false
+        }
+        
+        switch cellItem.cellType {
+        case .mapSelection:
+            return true
+        case .contributor:
+            return true
+        case .acknowledgements:
+            return true
+        case .appinfo:
+            return false
+        }
+    }
+    
     internal func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cellItem: SettingCellItem = viewModel?.getCellItem(from: indexPath) else {
              return
@@ -202,6 +255,10 @@ extension SettingsViewController: UICollectionViewDelegate {
                     presentSFSafariViewController(url)
                 }
             }
+        case .acknowledgements:
+            presentAcknowledgementsVC()
+        case .appinfo:
+            break
         }
     }
     
@@ -224,6 +281,13 @@ extension SettingsViewController: UICollectionViewDelegate {
                              },
                              actionProvider: nil)
             }
+        case .acknowledgements:
+            viewModel?.contextMenuIndexPath = indexPath
+            return .init(identifier: nil,
+                         previewProvider: { [weak self] () -> UIViewController? in
+                            return self?.makeAcknowledgementsVCPreview()
+                         },
+                         actionProvider: nil)
         default:
             return nil
         }
@@ -237,7 +301,11 @@ extension SettingsViewController: UICollectionViewDelegate {
         
         animator.addAnimations { [weak self] in
             if let vc: UIViewController = self?.contextViewController {
-                self?.present(vc, animated: true, completion: nil)
+                if vc is SFSafariViewController {
+                    self?.present(vc, animated: true, completion: nil)
+                } else {
+                    self?.navigationController?.pushViewController(vc, animated: true)
+                }
                 self?.contextViewController = nil
             }
         }
