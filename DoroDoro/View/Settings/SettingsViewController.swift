@@ -306,6 +306,9 @@ extension SettingsViewController: UICollectionViewDelegate {
             case .pookjw:
                 if let url: URL = URL(string: url) {
                     presentSFSafariViewController(url)
+                    #if targetEnvironment(macCatalyst)
+                    collectionView.deselectItem(at: indexPath, animated: true)
+                    #endif
                 }
             }
         case .acknowledgements:

@@ -35,7 +35,7 @@ final internal class MapViewController: UIViewController {
             #if arch(arm64) || targetEnvironment(simulator)
             configureKakaoMapView()
             #else
-            configureAppleMapView()
+            configureAppleMapsView()
             #endif
         }
     }
