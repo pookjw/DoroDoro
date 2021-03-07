@@ -1022,14 +1022,14 @@
 			path = DoroDoroAPI;
 			sourceTree = "<group>";
 		};
-		F3800A2025F2E4AF00F218A1 /* DoroDoroAppCommon */ = {
+		F3800A2025F2E4AF00F218A1 /* DoroDoroCommon */ = {
 			isa = PBXGroup;
 			children = (
 				F378B6B325E7D69300FCE546 /* Localizable.strings */,
 				F3444C9A25E8B1A700A0706F /* Localizable */,
 				F3800A2125F2E4BF00F218A1 /* Extension */,
 			);
-			path = DoroDoroAppCommon;
+			path = DoroDoroCommon;
 			sourceTree = "<group>";
 		};
 		F3800A2125F2E4BF00F218A1 /* Extension */ = {
@@ -1116,7 +1116,7 @@
 			children = (
 				F378B75425E7EEDB00FCE546 /* DoroDoroWidgetExtension.entitlements */,
 				F3800AB525F2E8BC00F218A1 /* DoroDoroAPICommon */,
-				F3800A2025F2E4AF00F218A1 /* DoroDoroAppCommon */,
+				F3800A2025F2E4AF00F218A1 /* DoroDoroCommon */,
 				F3AAE29725E7D06700D666BD /* DoroDoro */,
 				F378B6BC25E7D71C00FCE546 /* DoroDoroTests */,
 				F3444CA725E8B82300A0706F /* DoroDoroUITests */,
