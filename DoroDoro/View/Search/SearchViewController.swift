@@ -328,16 +328,16 @@ extension SearchViewController: UICollectionViewDelegate {
     }
     
     internal func collectionView(_ collectionView: UICollectionView, willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionCommitAnimating) {
+        if let indexPath: IndexPath = viewModel?.contextMenuIndexPath {
+            collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredHorizontally)
+            viewModel?.contextMenuIndexPath = nil
+        }
+        
         animator.addAnimations { [weak self] in
             if let data: AddrLinkJusoData = self?.viewModel?.contextMenuLinkJusoData {
                 self?.pushToDetailsVC(linkJusoData: data)
                 self?.viewModel?.contextMenuLinkJusoData = nil
             }
-        }
-        
-        if let indexPath: IndexPath = viewModel?.contextMenuIndexPath {
-            collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredHorizontally)
-            viewModel?.contextMenuIndexPath = nil
         }
     }
     

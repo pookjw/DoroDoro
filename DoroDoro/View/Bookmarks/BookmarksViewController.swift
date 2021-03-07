@@ -207,16 +207,16 @@ extension BookmarksViewController: UICollectionViewDelegate {
     }
     
     internal func collectionView(_ collectionView: UICollectionView, willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionCommitAnimating) {
+        if let indexPath: IndexPath = viewModel?.contextMenuIndexPath {
+            collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredHorizontally)
+            viewModel?.contextMenuIndexPath = nil
+        }
+        
         animator.addAnimations { [weak self] in
             if let roadAddr: String = self?.viewModel?.contextMenuRoadAddr {
                 self?.pushToDetailsVC(roadAddr: roadAddr)
                 self?.viewModel?.contextMenuRoadAddr = nil
             }
-        }
-        
-        if let indexPath: IndexPath = viewModel?.contextMenuIndexPath {
-            collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredHorizontally)
-            viewModel?.contextMenuIndexPath = nil
         }
     }
     

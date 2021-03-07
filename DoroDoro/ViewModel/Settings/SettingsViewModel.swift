@@ -13,6 +13,7 @@ final internal class SettingsViewModel {
     internal typealias Snapshot = NSDiffableDataSourceSnapshot<SettingHeaderItem, SettingCellItem>
     private var cancellableBag: Set<AnyCancellable> = .init()
     
+    internal var contextMenuIndexPath: IndexPath? = nil
     internal var dataSource: DataSource? = nil
     
     internal init() {
@@ -105,7 +106,7 @@ final internal class SettingsViewModel {
         }()
         
         let items: [SettingCellItem] = [
-            .init(cellType: .contributor(contributorType: .pookjw))
+            .init(cellType: .contributor(contributorType: .pookjw, url: "https://github.com/pookjw"))
         ]
         
         snapshot.appendItems(items, toSection: contributorHeaderItem)

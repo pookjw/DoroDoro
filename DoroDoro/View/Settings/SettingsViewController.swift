@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import SafariServices
 
 final internal class SettingsViewController: UIViewController {
     private weak var collectionView: UICollectionView? = nil
     private var viewModel: SettingsViewModel? = nil
+    private weak var contextViewController: UIViewController? = nil
     
     override internal func viewDidLoad() {
         super.viewDidLoad()
@@ -86,7 +88,7 @@ final internal class SettingsViewController: UIViewController {
             switch item.cellType {
             case .mapSelection(let mapType, let selected):
                 self?.setMapSelectionCell(cell: cell, mapType: mapType, selected: selected)
-            case .contributor(let contributorType):
+            case .contributor(let contributorType, _):
                 self?.setContributorTypeCell(cell: cell, contributorType: contributorType)
             }
         }
@@ -175,6 +177,12 @@ final internal class SettingsViewController: UIViewController {
         cell.contentConfiguration = configuration
         cell.accessories = [.disclosureIndicator()]
     }
+    
+    internal func makeSFSafariVCPreview(url: URL) -> UIViewController {
+        let vc: SFSafariViewController = .init(url: url)
+        contextViewController = vc
+        return vc
+    }
 }
 
 extension SettingsViewController: UICollectionViewDelegate {
@@ -187,12 +195,50 @@ extension SettingsViewController: UICollectionViewDelegate {
         case .mapSelection(let mapType, _):
             viewModel?.updateMapSelection(new: mapType)
             collectionView.deselectItem(at: indexPath, animated: true)
-        case .contributor(let contributorType):
+        case .contributor(let contributorType, let url):
             switch contributorType {
             case .pookjw:
-                if let url: URL = URL(string: "https://github.com/pookjw") {
+                if let url: URL = URL(string: url) {
                     presentSFSafariViewController(url)
                 }
+            }
+        }
+    }
+    
+    internal func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        guard let cellItem: SettingCellItem = viewModel?.getCellItem(from: indexPath) else {
+             return nil
+        }
+        
+        switch cellItem.cellType {
+        case .contributor(let contributorType, let url):
+            switch contributorType {
+            case .pookjw:
+                viewModel?.contextMenuIndexPath = indexPath
+                return .init(identifier: nil,
+                             previewProvider: { [weak self] () -> UIViewController? in
+                                guard let url: URL = URL(string: url) else {
+                                    return nil
+                                }
+                                return self?.makeSFSafariVCPreview(url: url)
+                             },
+                             actionProvider: nil)
+            }
+        default:
+            return nil
+        }
+    }
+    
+    internal func collectionView(_ collectionView: UICollectionView, willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionCommitAnimating) {
+        if let indexPath: IndexPath = viewModel?.contextMenuIndexPath {
+            collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredHorizontally)
+            viewModel?.contextMenuIndexPath = nil
+        }
+        
+        animator.addAnimations { [weak self] in
+            if let vc: UIViewController = self?.contextViewController {
+                self?.present(vc, animated: true, completion: nil)
+                self?.contextViewController = nil
             }
         }
     }
