@@ -53,13 +53,52 @@ extension UIViewController {
                                    onTap: (() -> Void)? = nil,
                                    onSwipeUp: (() -> Void)? = nil)
     {
-        let imageView: UIImageView = .init(image: UIImage(systemName: "checkmark"))
+        let imageView: UIImageView = .init(image: UIImage(systemName: "checkmark.circle"))
         imageView.tintColor = .white
         
         let banner: FloatingNotificationBanner = .init(title: Localizable.SUCCESS.string,
                                                subtitle: message,
                                                leftView: imageView,
                                                style: .success)
+        banner.onTap = onTap
+        banner.onSwipeUp = onSwipeUp
+        banner.show()
+    }
+    
+    internal func showWarningAlert(for error: Error,
+                                 onTap: (() -> Void)? = nil,
+                                 onSwipeUp: (() -> Void)? = nil)
+    {
+        let message: String?
+        if let error: LocalizedError = error as? LocalizedError {
+            message = error.errorDescription
+        } else {
+            message = error.localizedDescription
+        }
+        
+        let imageView: UIImageView = .init(image: UIImage(systemName: "exclamationmark.triangle"))
+        imageView.tintColor = .white
+        
+        let banner: FloatingNotificationBanner = .init(title: Localizable.WARNING.string,
+                                               subtitle: message,
+                                               leftView: imageView,
+                                               style: .warning)
+        banner.onTap = onTap
+        banner.onSwipeUp = onSwipeUp
+        banner.show()
+    }
+    
+    internal func showWarningAlert(message: String?,
+                                 onTap: (() -> Void)? = nil,
+                                 onSwipeUp: (() -> Void)? = nil)
+    {
+        let imageView: UIImageView = .init(image: UIImage(systemName: "exclamationmark.triangle"))
+        imageView.tintColor = .white
+        
+        let banner: FloatingNotificationBanner = .init(title: Localizable.WARNING.string,
+                                               subtitle: message,
+                                               leftView: imageView,
+                                               style: .warning)
         banner.onTap = onTap
         banner.onSwipeUp = onSwipeUp
         banner.show()

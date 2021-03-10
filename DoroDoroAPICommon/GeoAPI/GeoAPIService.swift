@@ -56,7 +56,8 @@ extension GeoAPIService: CLLocationManagerDelegate {
         if let clerror: CLError = error as? CLError, clerror.code == .denied {
             switch manager.authorizationStatus {
             case .notDetermined:
-                // 아직 권한이 결정되지 않은 상태에서는 에러를 날리지 않는다.
+                // 아직 권한이 결정되지 않은 상태에서는 경고 에러를 날린다.
+                coordErrorEvent.send(GeoAPIError.warnAllowPermission)
                 return
             case .denied, .restricted:
                 coordErrorEvent.send(GeoAPIError.permissionDenined)

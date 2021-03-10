@@ -155,7 +155,6 @@ final internal class SearchViewController: UIViewController {
         //
         
         searchController?.searchBar.searchTextField.accessibilityIdentifier = AccessibilityIdentifiers.SearchVC.searchField
-//        searchController?.searchBar.accessibilityIdentifier = AccessibilityIdentifiers.SearchVC.searchBar
     }
     
     private func makeDataSource() -> SearchViewModel.DataSource {
@@ -261,6 +260,8 @@ final internal class SearchViewController: UIViewController {
                     self?.showErrorAlert(for: error, onTap: {
                         self?.viewModel?.openAppSettings()
                     })
+                case GeoAPIError.warnAllowPermission:
+                    self?.showWarningAlert(for: error)
                 default:
                     self?.showErrorAlert(for: error)
                 }
