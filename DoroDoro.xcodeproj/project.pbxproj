@@ -855,6 +855,7 @@
 		F3444C9A25E8B1A700A0706F /* Localizable */ = {
 			isa = PBXGroup;
 			children = (
+				F378B6B325E7D69300FCE546 /* Localizable.strings */,
 				F3444C9B25E8B1BB00A0706F /* Localizable.swift */,
 			);
 			path = Localizable;
@@ -1025,7 +1026,6 @@
 		F3800A2025F2E4AF00F218A1 /* DoroDoroCommon */ = {
 			isa = PBXGroup;
 			children = (
-				F378B6B325E7D69300FCE546 /* Localizable.strings */,
 				F3444C9A25E8B1A700A0706F /* Localizable */,
 				F3800A2125F2E4BF00F218A1 /* Extension */,
 			);
