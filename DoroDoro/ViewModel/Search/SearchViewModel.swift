@@ -21,7 +21,7 @@ final internal class SearchViewModel {
     internal var dataSource: DataSource? = nil
     internal let refreshedEvent: PassthroughSubject<(canLoadMore: Bool, hasData: Bool, isFirstPage: Bool), Never> = .init()
     internal let geoEvent: PassthroughSubject<String, Never> = .init()
-    internal private(set) var isGeoSearching: Bool = false
+    @Published internal private(set) var isGeoSearching: Bool = false
     @Published internal var searchEvent: String? = nil
     
     private var currentPage: Int = 1
@@ -58,6 +58,12 @@ final internal class SearchViewModel {
             return nil
         }
         return items[indexPath.row]
+    }
+    
+    internal func openAppSettings() {
+        if let appSettings = URL(string: UIApplication.openSettingsURLString) {
+            UIApplication.shared.open(appSettings, options: [:], completionHandler: nil)
+        }
     }
     
     private func updateResultItems(_ result: AddrLinkResultsData, text: String) {
@@ -143,6 +149,13 @@ final internal class SearchViewModel {
             .store(in: &cancellableBag)
         
         kakaoAPIService.coord2AddressErrorEvent
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] error in
+                self?.isGeoSearching = false
+            })
+            .store(in: &cancellableBag)
+        
+        geoAPIService.coordErrorEvent
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] error in
                 self?.isGeoSearching = false

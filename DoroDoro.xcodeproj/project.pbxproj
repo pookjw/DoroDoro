@@ -186,6 +186,7 @@
 		F3A3DF2225F4398700E8F2F0 /* KeyboardEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A3DF2125F4398700E8F2F0 /* KeyboardEvent.swift */; };
 		F3A3DF2F25F4412A00E8F2F0 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A3DF2E25F4412A00E8F2F0 /* UIView+Ext.swift */; };
 		F3A3DF3625F4430600E8F2F0 /* UIScrollView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A3DF3525F4430600E8F2F0 /* UIScrollView+Ext.swift */; };
+		F3A6102D25F96F4500AAD08F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F378B71625E7DAFF00FCE546 /* InfoPlist.strings */; };
 		F3AAE29925E7D06700D666BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AAE29825E7D06700D666BD /* AppDelegate.swift */; };
 		F3AAE29B25E7D06700D666BD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AAE29A25E7D06700D666BD /* SceneDelegate.swift */; };
 		F3AAE2A225E7D06800D666BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3AAE2A125E7D06800D666BD /* Assets.xcassets */; };
@@ -195,6 +196,8 @@
 		F3E6881025F122E200A619CA /* String+choseongContains.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E6880F25F122E200A619CA /* String+choseongContains.swift */; };
 		F3E6881225F12B4E00A619CA /* SettingsContributorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E6881125F12B4E00A619CA /* SettingsContributorType.swift */; };
 		F3E6881425F13E6600A619CA /* DetailedNVCSplitViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E6881325F13E6600A619CA /* DetailedNVCSplitViewControllerDelegate.swift */; };
+		F3E89B6F25F975BB00E3AC5A /* GeoAPIError+LocalizedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E89B6E25F975BB00E3AC5A /* GeoAPIError+LocalizedError.swift */; };
+		F3E89B7025F975C300E3AC5A /* GeoAPIError+LocalizedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E89B6E25F975BB00E3AC5A /* GeoAPIError+LocalizedError.swift */; };
 		F3F2F29225EFDB74005FC9CE /* UIViewController+SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F2F29125EFDB74005FC9CE /* UIViewController+SpinnerView.swift */; };
 /* End PBXBuildFile section */
 
@@ -472,6 +475,7 @@
 		F3E6880F25F122E200A619CA /* String+choseongContains.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+choseongContains.swift"; sourceTree = "<group>"; };
 		F3E6881125F12B4E00A619CA /* SettingsContributorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsContributorType.swift; sourceTree = "<group>"; };
 		F3E6881325F13E6600A619CA /* DetailedNVCSplitViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedNVCSplitViewControllerDelegate.swift; sourceTree = "<group>"; };
+		F3E89B6E25F975BB00E3AC5A /* GeoAPIError+LocalizedError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GeoAPIError+LocalizedError.swift"; sourceTree = "<group>"; };
 		F3F2F29125EFDB74005FC9CE /* UIViewController+SpinnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+SpinnerView.swift"; sourceTree = "<group>"; };
 		F3F4FAEF25E8080D0077FCB5 /* AddrEngCommonData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrEngCommonData.swift; sourceTree = "<group>"; };
 		F3F4FAF625E8082F0077FCB5 /* AddrEngJusoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrEngJusoData.swift; sourceTree = "<group>"; };
@@ -854,6 +858,7 @@
 		F3444C9A25E8B1A700A0706F /* Localizable */ = {
 			isa = PBXGroup;
 			children = (
+				F378B71625E7DAFF00FCE546 /* InfoPlist.strings */,
 				F378B6B325E7D69300FCE546 /* Localizable.strings */,
 				F3444C9B25E8B1BB00A0706F /* Localizable.swift */,
 			);
@@ -1039,6 +1044,7 @@
 				F3800A3925F2E59100F218A1 /* AddrCoordAPIError+LocalizedError.swift */,
 				F3800A3F25F2E5BA00F218A1 /* KakaoAddressAPIError+LocalizedError.swift */,
 				F3A3DEEF25F41D4000E8F2F0 /* KakaoCoord2AddressAPIError+LocalizedError.swift */,
+				F3E89B6E25F975BB00E3AC5A /* GeoAPIError+LocalizedError.swift */,
 				F371F07125F52E9F00E003E8 /* UIDevice+Ext.swift */,
 			);
 			path = Extension;
@@ -1156,7 +1162,6 @@
 				F3AAE2A125E7D06800D666BD /* Assets.xcassets */,
 				F3AAE2A325E7D06800D666BD /* LaunchScreen.storyboard */,
 				F3AAE2A625E7D06800D666BD /* Info.plist */,
-				F378B71625E7DAFF00FCE546 /* InfoPlist.strings */,
 				F33BAFEB25ECB91900BC5772 /* DoroDoro-Bridging-Header.h */,
 			);
 			path = DoroDoro;
@@ -1428,6 +1433,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F378B6E325E7D77300FCE546 /* Assets.xcassets in Resources */,
+				F3A6102D25F96F4500AAD08F /* InfoPlist.strings in Resources */,
 				F334A63625F2B0340005E970 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1691,6 +1697,7 @@
 				F378B6DD25E7D77200FCE546 /* SearchInterfaceController.swift in Sources */,
 				F350299825F2D8350094B33D /* DetailsEngJusoIndex.swift in Sources */,
 				F3A3DEF125F41D4000E8F2F0 /* KakaoCoord2AddressAPIError+LocalizedError.swift in Sources */,
+				F3E89B7025F975C300E3AC5A /* GeoAPIError+LocalizedError.swift in Sources */,
 				F334A62D25F2AFFB0005E970 /* Localizable.swift in Sources */,
 				F3C9222825F2DC9000737341 /* WKInterfaceController+Ext.swift in Sources */,
 				F334A61A25F2AE390005E970 /* SearchResultObject.swift in Sources */,
@@ -1819,6 +1826,7 @@
 				F378B70925E7D8C600FCE546 /* BookmarksViewController.swift in Sources */,
 				F3F2F29225EFDB74005FC9CE /* UIViewController+SpinnerView.swift in Sources */,
 				F3AAE29B25E7D06700D666BD /* SceneDelegate.swift in Sources */,
+				F3E89B6F25F975BB00E3AC5A /* GeoAPIError+LocalizedError.swift in Sources */,
 				F38128FA25F0286100C36F7B /* BookmarksViewModel.swift in Sources */,
 				F3444C9C25E8B1BB00A0706F /* Localizable.swift in Sources */,
 				F378B76F25E7F0B700FCE546 /* SettingsViewController.swift in Sources */,

@@ -10,7 +10,10 @@ import SafariServices
 import NotificationBannerSwift
 
 extension UIViewController {
-    internal func showErrorAlert(for error: Error) {
+    internal func showErrorAlert(for error: Error,
+                                 onTap: (() -> Void)? = nil,
+                                 onSwipeUp: (() -> Void)? = nil)
+    {
         let message: String?
         if let error: LocalizedError = error as? LocalizedError {
             message = error.errorDescription
@@ -25,10 +28,15 @@ extension UIViewController {
                                                subtitle: message,
                                                leftView: imageView,
                                                style: .danger)
+        banner.onTap = onTap
+        banner.onSwipeUp = onSwipeUp
         banner.show()
     }
     
-    internal func showErrorAlert(message: String?) {
+    internal func showErrorAlert(message: String?,
+                                 onTap: (() -> Void)? = nil,
+                                 onSwipeUp: (() -> Void)? = nil)
+    {
         let imageView: UIImageView = .init(image: UIImage(systemName: "xmark.octagon"))
         imageView.tintColor = .white
         
@@ -36,10 +44,15 @@ extension UIViewController {
                                                subtitle: message,
                                                leftView: imageView,
                                                style: .danger)
+        banner.onTap = onTap
+        banner.onSwipeUp = onSwipeUp
         banner.show()
     }
     
-    internal func showSuccessAlert(message: String?) {
+    internal func showSuccessAlert(message: String?,
+                                   onTap: (() -> Void)? = nil,
+                                   onSwipeUp: (() -> Void)? = nil)
+    {
         let imageView: UIImageView = .init(image: UIImage(systemName: "checkmark"))
         imageView.tintColor = .white
         
@@ -47,6 +60,8 @@ extension UIViewController {
                                                subtitle: message,
                                                leftView: imageView,
                                                style: .success)
+        banner.onTap = onTap
+        banner.onSwipeUp = onSwipeUp
         banner.show()
     }
     

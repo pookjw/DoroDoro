@@ -9,4 +9,5 @@ import Foundation
 
 public enum GeoAPIError: String, Error {
     case noLocationFound
+    case permissionDenined
 }

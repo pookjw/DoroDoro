@@ -274,6 +274,14 @@
 /* */
 "KAKAO_COORD_TO_ADDRESS_API_UNKNOWN" = "An unknown error occured.";
 
+// MARK: - GeoAPIError
+
+/* */
+"GEO_API_ERROR_NO_LOCATION_FOUND" = "No location was found.";
+
+/* */
+"GEO_API_ERROR_PERMISSION_DENINED" = "Location Permission was denined. Tap this banner to go to App Settings, and please allow Location Permission.";
+
 // MARK: - Accessibility
 
 /* */

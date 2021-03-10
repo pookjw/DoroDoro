@@ -31,7 +31,7 @@
 		<string>com.apple.watchkit</string>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string>현재 위치를 통해 주소를 검색합니다.</string>
 	<key>WKExtensionDelegateClassName</key>
 	<string>$(PRODUCT_MODULE_NAME).ExtensionDelegate</string>
 	<key>WKRunsIndependentlyOfCompanionApp</key>

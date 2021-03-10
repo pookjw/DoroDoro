@@ -33,7 +33,7 @@ extension UIViewController {
         return spinnerView
     }
     
-    /// 모든 SpinnerView를 삭제한다..
+    /// 모든 SpinnerView를 삭제한다.
     ///
     /// - Parameters:
     ///     - fadeAnimated : SpinnerView를 삭제할 때의 Fade Animation

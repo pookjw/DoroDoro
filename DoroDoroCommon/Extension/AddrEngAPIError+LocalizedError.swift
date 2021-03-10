@@ -12,7 +12,6 @@ import DoroDoroWatchAPI
 import DoroDoroAPI
 #endif
 
-
 extension AddrEngAPIError: LocalizedError {
     public var errorDescription: String? {
         switch self {

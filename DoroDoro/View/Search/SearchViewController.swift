@@ -70,7 +70,6 @@ final internal class SearchViewController: UIViewController {
                 return
             }
             self?.showSpinnerView()
-            self?.geoBarButtonItem?.image = UIImage(systemName: "location.fill")
             self?.viewModel?.requestGeoEvent()
         }
     }
@@ -250,7 +249,6 @@ final internal class SearchViewController: UIViewController {
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] roadAddr in
                 self?.removeAllSpinnerView()
-                self?.geoBarButtonItem?.image = UIImage(systemName: "location")
                 self?.pushToDetailsVC(roadAddr: roadAddr)
             })
             .store(in: &cancellableBag)
@@ -258,8 +256,14 @@ final internal class SearchViewController: UIViewController {
         viewModel?.geoAPIService.coordErrorEvent
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] error in
-                self?.showErrorAlert(for: error)
-                self?.geoBarButtonItem?.image = UIImage(systemName: "location")
+                switch error {
+                case GeoAPIError.permissionDenined:
+                    self?.showErrorAlert(for: error, onTap: {
+                        self?.viewModel?.openAppSettings()
+                    })
+                default:
+                    self?.showErrorAlert(for: error)
+                }
                 self?.removeAllSpinnerView()
             })
             .store(in: &cancellableBag)
@@ -268,8 +272,15 @@ final internal class SearchViewController: UIViewController {
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] error in
                 self?.showErrorAlert(for: error)
-                self?.geoBarButtonItem?.image = UIImage(systemName: "location")
                 self?.removeAllSpinnerView()
+            })
+            .store(in: &cancellableBag)
+        
+        viewModel?.$isGeoSearching
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] value in
+                let systemName: String = value ? "location.fill" : "location"
+                self?.geoBarButtonItem?.image = UIImage(systemName: systemName)
             })
             .store(in: &cancellableBag)
     }

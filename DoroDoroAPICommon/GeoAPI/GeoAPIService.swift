@@ -20,6 +20,12 @@ final public class GeoAPIService: NSObject {
     }
     
     public func requestCurrentCoord() {
+        // 권한을 거부당했을 경우 에러만 날린다.
+        guard locationManager.authorizationStatus != .denied && locationManager.authorizationStatus != .restricted else {
+            coordErrorEvent.send(GeoAPIError.permissionDenined)
+            return
+        }
+        
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestLocation()
     }
@@ -46,6 +52,21 @@ extension GeoAPIService: CLLocationManagerDelegate {
     }
     
     public func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        // 권한 에러일 경우
+        if let clerror: CLError = error as? CLError, clerror.code == .denied {
+            switch manager.authorizationStatus {
+            case .notDetermined:
+                // 아직 권한이 결정되지 않은 상태에서는 에러를 날리지 않는다.
+                return
+            case .denied, .restricted:
+                coordErrorEvent.send(GeoAPIError.permissionDenined)
+                return
+            default:
+                // 권한이 결정됐는데 에러가 발생했을 경우는 에러를 날린다.
+                break
+            }
+        }
+        
         coordErrorEvent.send(error)
     }
 }
