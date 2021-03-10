@@ -428,7 +428,6 @@
 		F378B72825E7E26900FCE546 /* AddrAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrAPIService.swift; sourceTree = "<group>"; };
 		F378B74425E7EED900FCE546 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		F378B74625E7EED900FCE546 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		F378B75425E7EEDB00FCE546 /* DoroDoroWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DoroDoroWidgetExtension.entitlements; sourceTree = "<group>"; };
 		F378B76E25E7F0B700FCE546 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		F378B77525E7F17A00FCE546 /* AddrLinkCommonData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrLinkCommonData.swift; sourceTree = "<group>"; };
 		F378B77C25E7F18900FCE546 /* AddrLinkJusoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrLinkJusoData.swift; sourceTree = "<group>"; };
@@ -1114,7 +1113,6 @@
 		F3AAE28C25E7D06700D666BD = {
 			isa = PBXGroup;
 			children = (
-				F378B75425E7EEDB00FCE546 /* DoroDoroWidgetExtension.entitlements */,
 				F3800AB525F2E8BC00F218A1 /* DoroDoroAPICommon */,
 				F3800A2025F2E4AF00F218A1 /* DoroDoroCommon */,
 				F3AAE29725E7D06700D666BD /* DoroDoro */,
