@@ -3,40 +3,48 @@
 
 use_frameworks!
 
-target 'DoroDoro' do
+def alamofire_pod
   pod 'Alamofire', '~> 5.4.1'
+end
+
+def ios_pods
+  alamofire_pod
   pod 'SnapKit', '~> 5.0.1'
   pod 'CRRefresh', '~> 1.1.3'
   pod 'NVActivityIndicatorView', '~> 5.1.1'
   pod 'NotificationBannerSwift', '3.0.6'
+  pod 'AcknowList', '2.0.0-beta.1'
+end
+
+###
+
+target 'DoroDoroAPI' do
+  alamofire_pod
+end
+
+target 'DoroDoroWatchAPI' do
+  alamofire_pod
+end
+
+target 'DoroDoroTVAPI' do
+  alamofire_pod
+end
+
+target 'DoroDoro' do
+  ios_pods
+end
+
+target 'DoroDoroWatch Extension' do
+  alamofire_pod
+end
+
+target 'DoroDoroTV' do
+  alamofire_pod
+  pod 'SnapKit', '~> 5.0.1'
+  pod 'NVActivityIndicatorView', '~> 5.1.1'
   pod 'AcknowList', '2.0.0-beta.1'
 end
 
 target 'DoroDoroUITests' do
-  pod 'Alamofire', '~> 5.4.1'
-  pod 'SnapKit', '~> 5.0.1'
-  pod 'CRRefresh', '~> 1.1.3'
-  pod 'NVActivityIndicatorView', '~> 5.1.1'
-  pod 'NotificationBannerSwift', '3.0.6'
-  pod 'AcknowList', '2.0.0-beta.1'
-end
-
-target 'DoroDoroAPI' do
-  pod 'Alamofire', '~> 5.4.1'
-end
-
-target 'DoroDoroWatchAPI' do
-  pod 'Alamofire', '~> 5.4.1'
-end
-
-target 'DoroDoroWatch Extension' do
-  pod 'Alamofire', '~> 5.4.1'
-end
-
-target 'DoroDoroTVAPI' do
-  pod 'Alamofire', '~> 5.4.1'
-end
-
-target 'DoroDoroTV' do
-  pod 'Alamofire', '~> 5.4.1'
+  ios_pods
 end
