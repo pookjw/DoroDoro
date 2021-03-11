@@ -36,7 +36,7 @@
 "DISMISS" = "Dismiss";
 
 /* */
-"SEARCH_GUIDE_LABEL" = "Enter a keyword to get street address and english address. Also you can get informations of your current location.";
+"SEARCH_GUIDE_LABEL" = "Enter a keyword to get road name address and english address. Also you can get informations of your current location.";
 
 /* */
 "SEARCH_BAR_PLACEHOLDER_WATCH" = "🔎 Search...";
@@ -99,7 +99,7 @@
 "COCOAPODS" = "CocoaPods";
 
 /* */
-"ADDR_LINK" = "Street address";
+"ADDR_LINK" = "Road Name address";
 
 /* */
 "ADDR_ENG" = "English address";
@@ -294,7 +294,7 @@
 "ACCESSIBILITY_SEARCH_TEXTFIELD" = "Enter a keyword to this text field to get address informations. Search results will be shown below.";
 
 /* */
-"ACCESSIBILITY_SEARCH_GUIDE" = "Enter a keyword to text field located in top to get street address and english address. Also you can get informations of your current location.";
+"ACCESSIBILITY_SEARCH_GUIDE" = "Enter a keyword to text field located in top to get road name address and english address. Also you can get informations of your current location.";
 
 /* */
 "ACCESSIBILITY_SEARCH_CURRENT_LOCATION" = "Press this button to get address informations of current location. It takes times to get current location.";
