@@ -8,6 +8,8 @@
 import Foundation
 #if os(watchOS)
 import DoroDoroWatchAPI
+#elseif os(tvOS)
+import DoroDoroTVAPI
 #else
 import DoroDoroAPI
 #endif

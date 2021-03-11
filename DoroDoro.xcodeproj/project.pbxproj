@@ -10,6 +10,7 @@
 		738B25F698562856F3A291B1 /* Pods_DoroDoroWatchAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24CE4333A9C3009967DAEF3B /* Pods_DoroDoroWatchAPI.framework */; };
 		7DDABB3E480573993B22D8E5 /* Pods_DoroDoroUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C340661E7FF7B12D0DB73635 /* Pods_DoroDoroUITests.framework */; };
 		93239F3CBE1708F488E8EF48 /* Pods_DoroDoroWatch_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF4E71F7032F7AEA1171F871 /* Pods_DoroDoroWatch_Extension.framework */; };
+		A06499CA263DB6480C62F451 /* Pods_DoroDoroTV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F02BE19F8F58D2067141AAB5 /* Pods_DoroDoroTV.framework */; };
 		D8C84073ADE3808F2A421FFF /* Pods_DoroDoroAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5309ED33327A32D8822CF4CC /* Pods_DoroDoroAPI.framework */; };
 		F332741825EFF1CF00417437 /* CloudService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F332741725EFF1CF00417437 /* CloudService.swift */; };
 		F332742025EFF71100417437 /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F332741F25EFF71100417437 /* SettingsService.swift */; };
@@ -193,12 +194,61 @@
 		F3AAE2A525E7D06800D666BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3AAE2A325E7D06800D666BD /* LaunchScreen.storyboard */; };
 		F3C2796125EEC8C40029A61E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3C2796025EEC8C40029A61E /* CloudKit.framework */; };
 		F3C9222825F2DC9000737341 /* WKInterfaceController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9222725F2DC9000737341 /* WKInterfaceController+Ext.swift */; };
+		F3CB600325FA8F6A004484A1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CB600225FA8F6A004484A1 /* AppDelegate.swift */; };
+		F3CB600525FA8F6A004484A1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CB600425FA8F6A004484A1 /* ViewController.swift */; };
+		F3CB600825FA8F6A004484A1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3CB600625FA8F6A004484A1 /* Main.storyboard */; };
+		F3CB600A25FA8F6C004484A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3CB600925FA8F6C004484A1 /* Assets.xcassets */; };
+		F3CB600D25FA8F6C004484A1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3CB600B25FA8F6C004484A1 /* LaunchScreen.storyboard */; };
+		F3CB603425FA90AA004484A1 /* DoroDoroTVAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = F3CB603225FA90AA004484A1 /* DoroDoroTVAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F3CB603725FA90AA004484A1 /* DoroDoroTVAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3CB603025FA90A9004484A1 /* DoroDoroTVAPI.framework */; };
+		F3CB603825FA90AA004484A1 /* DoroDoroTVAPI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F3CB603025FA90A9004484A1 /* DoroDoroTVAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F3CB604325FA90BF004484A1 /* AddrLinkJusoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B77C25E7F18900FCE546 /* AddrLinkJusoData.swift */; };
+		F3CB604425FA90BF004484A1 /* AddrLinkAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B78325E7F45600FCE546 /* AddrLinkAPIError.swift */; };
+		F3CB604525FA90BF004484A1 /* AddrLinkCommonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B77525E7F17A00FCE546 /* AddrLinkCommonData.swift */; };
+		F3CB604625FA90BF004484A1 /* AddrLinkResultsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B78F25E7FAE500FCE546 /* AddrLinkResultsData.swift */; };
+		F3CB604D25FA90C4004484A1 /* AddrEngCommonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F4FAEF25E8080D0077FCB5 /* AddrEngCommonData.swift */; };
+		F3CB604E25FA90C4004484A1 /* AddrEngJusoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F4FAF625E8082F0077FCB5 /* AddrEngJusoData.swift */; };
+		F3CB604F25FA90C4004484A1 /* AddrEngResultsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F4FAFD25E809CD0077FCB5 /* AddrEngResultsData.swift */; };
+		F3CB605025FA90C4004484A1 /* AddrEngAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F4FB0925E80A040077FCB5 /* AddrEngAPIError.swift */; };
+		F3CB605725FA90C9004484A1 /* AddrAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378B72825E7E26900FCE546 /* AddrAPIService.swift */; };
+		F3CB605825FA90C9004484A1 /* AddrCoordResultsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B1D625EC02AD00FB0B61 /* AddrCoordResultsData.swift */; };
+		F3CB605925FA90C9004484A1 /* AddrCoordSearchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B1DE25EC03A400FB0B61 /* AddrCoordSearchData.swift */; };
+		F3CB605A25FA90C9004484A1 /* AddrCoordCommonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B1BE25EBFF5700FB0B61 /* AddrCoordCommonData.swift */; };
+		F3CB605B25FA90C9004484A1 /* AddrCoordJusoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B1C625EC009400FB0B61 /* AddrCoordJusoData.swift */; };
+		F3CB605C25FA90C9004484A1 /* AddrCoordAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B1CE25EC016800FB0B61 /* AddrCoordAPIError.swift */; };
+		F3CB606325FA90D0004484A1 /* KakaoAddressMetaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB04625ECCD6100BC5772 /* KakaoAddressMetaData.swift */; };
+		F3CB606425FA90D0004484A1 /* KakaoAddressRoadAddressData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB0C425ECD76C00BC5772 /* KakaoAddressRoadAddressData.swift */; };
+		F3CB606525FA90D0004484A1 /* KakaoAddressAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB09E25ECD0C500BC5772 /* KakaoAddressAPIError.swift */; };
+		F3CB606625FA90D0004484A1 /* KakaoAddressDocumentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB04E25ECCD6C00BC5772 /* KakaoAddressDocumentData.swift */; };
+		F3CB606725FA90D0004484A1 /* KakaoAddressAddressData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB0B625ECD73D00BC5772 /* KakaoAddressAddressData.swift */; };
+		F3CB606825FA90D0004484A1 /* KakaoAddressResultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB03825ECCD2E00BC5772 /* KakaoAddressResultData.swift */; };
+		F3CB606F25FA90D3004484A1 /* KakaoCoord2AddressRoadAddressData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F333100925F40F9200EF3A31 /* KakaoCoord2AddressRoadAddressData.swift */; };
+		F3CB607025FA90D3004484A1 /* KakaoCoord2AddressAddressData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F333100225F40F5E00EF3A31 /* KakaoCoord2AddressAddressData.swift */; };
+		F3CB607125FA90D3004484A1 /* KakaoCoord2AddressMetaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3330FF425F40ED500EF3A31 /* KakaoCoord2AddressMetaData.swift */; };
+		F3CB607225FA90D3004484A1 /* KakaoAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BB02F25ECC95200BC5772 /* KakaoAPIService.swift */; };
+		F3CB607325FA90D3004484A1 /* KakaoCoord2AddressDocumentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3330FFB25F40EE400EF3A31 /* KakaoCoord2AddressDocumentData.swift */; };
+		F3CB607425FA90D3004484A1 /* KakaoCoord2AddressAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F333102425F4116000EF3A31 /* KakaoCoord2AddressAPIError.swift */; };
+		F3CB607525FA90D3004484A1 /* KakaoCoord2AddressResultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3330FED25F40E9B00EF3A31 /* KakaoCoord2AddressResultData.swift */; };
+		F3CB607C25FA90D9004484A1 /* GeoAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F333109225F4160700EF3A31 /* GeoAPIService.swift */; };
+		F3CB607D25FA90D9004484A1 /* GeoAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33310A425F4182C00EF3A31 /* GeoAPIError.swift */; };
+		F3CB609A25FA9147004484A1 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B36AB225F1CA0A00B59915 /* Keys.swift */; };
+		F3CB60A125FA9184004484A1 /* KakaoAddressAPIError+LocalizedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3800A3F25F2E5BA00F218A1 /* KakaoAddressAPIError+LocalizedError.swift */; };
+		F3CB60A225FA9184004484A1 /* AddrCoordAPIError+LocalizedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3800A3925F2E59100F218A1 /* AddrCoordAPIError+LocalizedError.swift */; };
+		F3CB60A325FA9184004484A1 /* AddrEngAPIError+LocalizedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3800A3325F2E56B00F218A1 /* AddrEngAPIError+LocalizedError.swift */; };
+		F3CB60A425FA9184004484A1 /* GeoAPIError+LocalizedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E89B6E25F975BB00E3AC5A /* GeoAPIError+LocalizedError.swift */; };
+		F3CB60A525FA9184004484A1 /* KakaoCoord2AddressAPIError+LocalizedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A3DEEF25F41D4000E8F2F0 /* KakaoCoord2AddressAPIError+LocalizedError.swift */; };
+		F3CB60A625FA9184004484A1 /* UIDevice+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371F07125F52E9F00E003E8 /* UIDevice+Ext.swift */; };
+		F3CB60A725FA9184004484A1 /* AddrLinkAPIError+LocalizedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3800A2225F2E4F900F218A1 /* AddrLinkAPIError+LocalizedError.swift */; };
+		F3CB60AE25FA918D004484A1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F378B71625E7DAFF00FCE546 /* InfoPlist.strings */; };
+		F3CB60B525FA9190004484A1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F378B6B325E7D69300FCE546 /* Localizable.strings */; };
+		F3CB60BC25FA9192004484A1 /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3444C9B25E8B1BB00A0706F /* Localizable.swift */; };
 		F3E6881025F122E200A619CA /* String+choseongContains.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E6880F25F122E200A619CA /* String+choseongContains.swift */; };
 		F3E6881225F12B4E00A619CA /* SettingsContributorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E6881125F12B4E00A619CA /* SettingsContributorType.swift */; };
 		F3E6881425F13E6600A619CA /* DetailedNVCSplitViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E6881325F13E6600A619CA /* DetailedNVCSplitViewControllerDelegate.swift */; };
 		F3E89B6F25F975BB00E3AC5A /* GeoAPIError+LocalizedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E89B6E25F975BB00E3AC5A /* GeoAPIError+LocalizedError.swift */; };
 		F3E89B7025F975C300E3AC5A /* GeoAPIError+LocalizedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E89B6E25F975BB00E3AC5A /* GeoAPIError+LocalizedError.swift */; };
 		F3F2F29225EFDB74005FC9CE /* UIViewController+SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F2F29125EFDB74005FC9CE /* UIViewController+SpinnerView.swift */; };
+		F61DE33D8AA5EB12E735AA68 /* Pods_DoroDoroTVAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22F66F5E7D560DB71AD8FD21 /* Pods_DoroDoroTVAPI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -243,6 +293,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = F3800AA025F2E89900F218A1;
 			remoteInfo = DoroDoroWatchAPI;
+		};
+		F3CB603525FA90AA004484A1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F3AAE28D25E7D06700D666BD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F3CB602F25FA90A9004484A1;
+			remoteInfo = DoroDoroTVAPI;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -291,22 +348,39 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F3CB603C25FA90AA004484A1 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				F3CB603825FA90AA004484A1 /* DoroDoroTVAPI.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0AE672A338C6EF8EAE20DA7D /* Pods-DoroDoroUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoroDoroUITests.debug.xcconfig"; path = "Target Support Files/Pods-DoroDoroUITests/Pods-DoroDoroUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		11AF41BFC41987DE1C99AE69 /* Pods-DoroDoroWatchAPI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoroDoroWatchAPI.release.xcconfig"; path = "Target Support Files/Pods-DoroDoroWatchAPI/Pods-DoroDoroWatchAPI.release.xcconfig"; sourceTree = "<group>"; };
+		22F66F5E7D560DB71AD8FD21 /* Pods_DoroDoroTVAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoroDoroTVAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		24CE4333A9C3009967DAEF3B /* Pods_DoroDoroWatchAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoroDoroWatchAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5309ED33327A32D8822CF4CC /* Pods_DoroDoroAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoroDoroAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		665406B7105BC1B92469065A /* Pods-DoroDoroTV.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoroDoroTV.debug.xcconfig"; path = "Target Support Files/Pods-DoroDoroTV/Pods-DoroDoroTV.debug.xcconfig"; sourceTree = "<group>"; };
 		6D85A13F60C3E781DFBC61E7 /* Pods-DoroDoro.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoroDoro.release.xcconfig"; path = "Target Support Files/Pods-DoroDoro/Pods-DoroDoro.release.xcconfig"; sourceTree = "<group>"; };
 		86D49FB34CCC715324E29809 /* Pods-DoroDoro.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoroDoro.debug.xcconfig"; path = "Target Support Files/Pods-DoroDoro/Pods-DoroDoro.debug.xcconfig"; sourceTree = "<group>"; };
 		91FF8816DBF5C70F3A076CE9 /* Pods-DoroDoroUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoroDoroUITests.release.xcconfig"; path = "Target Support Files/Pods-DoroDoroUITests/Pods-DoroDoroUITests.release.xcconfig"; sourceTree = "<group>"; };
 		931F37118C61A8EE14A666C3 /* Pods-DoroDoroAPI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoroDoroAPI.debug.xcconfig"; path = "Target Support Files/Pods-DoroDoroAPI/Pods-DoroDoroAPI.debug.xcconfig"; sourceTree = "<group>"; };
+		9BE853AAECD1AFDFD892C0E2 /* Pods-DoroDoroTVAPI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoroDoroTVAPI.debug.xcconfig"; path = "Target Support Files/Pods-DoroDoroTVAPI/Pods-DoroDoroTVAPI.debug.xcconfig"; sourceTree = "<group>"; };
 		A468E40173398C1B231AC2A6 /* Pods-DoroDoroWatch Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoroDoroWatch Extension.release.xcconfig"; path = "Target Support Files/Pods-DoroDoroWatch Extension/Pods-DoroDoroWatch Extension.release.xcconfig"; sourceTree = "<group>"; };
+		A99A02F16D56153EDCA433AE /* Pods-DoroDoroTVAPI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoroDoroTVAPI.release.xcconfig"; path = "Target Support Files/Pods-DoroDoroTVAPI/Pods-DoroDoroTVAPI.release.xcconfig"; sourceTree = "<group>"; };
 		C340661E7FF7B12D0DB73635 /* Pods_DoroDoroUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoroDoroUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3B32D27FC15061D31188B6F /* Pods-DoroDoroTV.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoroDoroTV.release.xcconfig"; path = "Target Support Files/Pods-DoroDoroTV/Pods-DoroDoroTV.release.xcconfig"; sourceTree = "<group>"; };
 		C70BFE619FFD251C29D381CA /* Pods-DoroDoroAPI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoroDoroAPI.release.xcconfig"; path = "Target Support Files/Pods-DoroDoroAPI/Pods-DoroDoroAPI.release.xcconfig"; sourceTree = "<group>"; };
 		E86CEB0C5A70206FB9CE710D /* Pods_DoroDoro.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoroDoro.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF4E71F7032F7AEA1171F871 /* Pods_DoroDoroWatch_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoroDoroWatch_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F02BE19F8F58D2067141AAB5 /* Pods_DoroDoroTV.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoroDoroTV.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F31F908CAD8875E972E2A171 /* Pods-DoroDoroWatchAPI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoroDoroWatchAPI.debug.xcconfig"; path = "Target Support Files/Pods-DoroDoroWatchAPI/Pods-DoroDoroWatchAPI.debug.xcconfig"; sourceTree = "<group>"; };
 		F332741725EFF1CF00417437 /* CloudService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudService.swift; sourceTree = "<group>"; };
 		F332741F25EFF71100417437 /* SettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
@@ -472,6 +546,17 @@
 		F3B36AB225F1CA0A00B59915 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		F3C2796025EEC8C40029A61E /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		F3C9222725F2DC9000737341 /* WKInterfaceController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WKInterfaceController+Ext.swift"; sourceTree = "<group>"; };
+		F3CB600025FA8F6A004484A1 /* DoroDoroTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoroDoroTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F3CB600225FA8F6A004484A1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F3CB600425FA8F6A004484A1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F3CB600725FA8F6A004484A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F3CB600925FA8F6C004484A1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F3CB600C25FA8F6C004484A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F3CB600E25FA8F6C004484A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F3CB602425FA8FFD004484A1 /* DoroDoroTV.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DoroDoroTV.entitlements; sourceTree = "<group>"; };
+		F3CB603025FA90A9004484A1 /* DoroDoroTVAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DoroDoroTVAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F3CB603225FA90AA004484A1 /* DoroDoroTVAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DoroDoroTVAPI.h; sourceTree = "<group>"; };
+		F3CB603325FA90AA004484A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F3E6880F25F122E200A619CA /* String+choseongContains.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+choseongContains.swift"; sourceTree = "<group>"; };
 		F3E6881125F12B4E00A619CA /* SettingsContributorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsContributorType.swift; sourceTree = "<group>"; };
 		F3E6881325F13E6600A619CA /* DetailedNVCSplitViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedNVCSplitViewControllerDelegate.swift; sourceTree = "<group>"; };
@@ -550,6 +635,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F3CB5FFD25FA8F6A004484A1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F3CB603725FA90AA004484A1 /* DoroDoroTVAPI.framework in Frameworks */,
+				A06499CA263DB6480C62F451 /* Pods_DoroDoroTV.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F3CB602D25FA90A9004484A1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F61DE33D8AA5EB12E735AA68 /* Pods_DoroDoroTVAPI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -574,6 +676,8 @@
 				24CE4333A9C3009967DAEF3B /* Pods_DoroDoroWatchAPI.framework */,
 				EF4E71F7032F7AEA1171F871 /* Pods_DoroDoroWatch_Extension.framework */,
 				C340661E7FF7B12D0DB73635 /* Pods_DoroDoroUITests.framework */,
+				22F66F5E7D560DB71AD8FD21 /* Pods_DoroDoroTVAPI.framework */,
+				F02BE19F8F58D2067141AAB5 /* Pods_DoroDoroTV.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -591,6 +695,10 @@
 				A468E40173398C1B231AC2A6 /* Pods-DoroDoroWatch Extension.release.xcconfig */,
 				0AE672A338C6EF8EAE20DA7D /* Pods-DoroDoroUITests.debug.xcconfig */,
 				91FF8816DBF5C70F3A076CE9 /* Pods-DoroDoroUITests.release.xcconfig */,
+				9BE853AAECD1AFDFD892C0E2 /* Pods-DoroDoroTVAPI.debug.xcconfig */,
+				A99A02F16D56153EDCA433AE /* Pods-DoroDoroTVAPI.release.xcconfig */,
+				665406B7105BC1B92469065A /* Pods-DoroDoroTV.debug.xcconfig */,
+				C3B32D27FC15061D31188B6F /* Pods-DoroDoroTV.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -1128,6 +1236,8 @@
 				F378B6DB25E7D77200FCE546 /* DoroDoroWatch Extension */,
 				F380094725F2E1E400F218A1 /* DoroDoroAPI */,
 				F3800AA225F2E89900F218A1 /* DoroDoroWatchAPI */,
+				F3CB600125FA8F6A004484A1 /* DoroDoroTV */,
+				F3CB603125FA90AA004484A1 /* DoroDoroTVAPI */,
 				F3AAE29625E7D06700D666BD /* Products */,
 				A8A59AF1328A673D479B7E6D /* Pods */,
 				6FBAAB16978957EF30DAB117 /* Frameworks */,
@@ -1144,6 +1254,8 @@
 				F3444CA625E8B82300A0706F /* DoroDoroUITests.xctest */,
 				F380094625F2E1E400F218A1 /* DoroDoroAPI.framework */,
 				F3800AA125F2E89900F218A1 /* DoroDoroWatchAPI.framework */,
+				F3CB600025FA8F6A004484A1 /* DoroDoroTV.app */,
+				F3CB603025FA90A9004484A1 /* DoroDoroTVAPI.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1184,6 +1296,29 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		F3CB600125FA8F6A004484A1 /* DoroDoroTV */ = {
+			isa = PBXGroup;
+			children = (
+				F3CB602425FA8FFD004484A1 /* DoroDoroTV.entitlements */,
+				F3CB600225FA8F6A004484A1 /* AppDelegate.swift */,
+				F3CB600425FA8F6A004484A1 /* ViewController.swift */,
+				F3CB600625FA8F6A004484A1 /* Main.storyboard */,
+				F3CB600925FA8F6C004484A1 /* Assets.xcassets */,
+				F3CB600B25FA8F6C004484A1 /* LaunchScreen.storyboard */,
+				F3CB600E25FA8F6C004484A1 /* Info.plist */,
+			);
+			path = DoroDoroTV;
+			sourceTree = "<group>";
+		};
+		F3CB603125FA90AA004484A1 /* DoroDoroTVAPI */ = {
+			isa = PBXGroup;
+			children = (
+				F3CB603225FA90AA004484A1 /* DoroDoroTVAPI.h */,
+				F3CB603325FA90AA004484A1 /* Info.plist */,
+			);
+			path = DoroDoroTVAPI;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -1200,6 +1335,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3800B7425F2ED9100F218A1 /* DoroDoroWatchAPI.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F3CB602B25FA90A9004484A1 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F3CB603425FA90AA004484A1 /* DoroDoroTVAPI.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1344,6 +1487,46 @@
 			productReference = F3AAE29525E7D06700D666BD /* DoroDoro.app */;
 			productType = "com.apple.product-type.application";
 		};
+		F3CB5FFF25FA8F6A004484A1 /* DoroDoroTV */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F3CB600F25FA8F6C004484A1 /* Build configuration list for PBXNativeTarget "DoroDoroTV" */;
+			buildPhases = (
+				4AFD56A55C3040A343C089B0 /* [CP] Check Pods Manifest.lock */,
+				F3CB5FFC25FA8F6A004484A1 /* Sources */,
+				F3CB5FFD25FA8F6A004484A1 /* Frameworks */,
+				F3CB5FFE25FA8F6A004484A1 /* Resources */,
+				F3CB603C25FA90AA004484A1 /* Embed Frameworks */,
+				623E2C4A034D92EFA8C8714B /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F3CB603625FA90AA004484A1 /* PBXTargetDependency */,
+			);
+			name = DoroDoroTV;
+			productName = DoroDoroTV;
+			productReference = F3CB600025FA8F6A004484A1 /* DoroDoroTV.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F3CB602F25FA90A9004484A1 /* DoroDoroTVAPI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F3CB603925FA90AA004484A1 /* Build configuration list for PBXNativeTarget "DoroDoroTVAPI" */;
+			buildPhases = (
+				9EF36719B1F8069324DE1715 /* [CP] Check Pods Manifest.lock */,
+				F3CB602B25FA90A9004484A1 /* Headers */,
+				F3CB602C25FA90A9004484A1 /* Sources */,
+				F3CB602D25FA90A9004484A1 /* Frameworks */,
+				F3CB602E25FA90A9004484A1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DoroDoroTVAPI;
+			productName = DoroDoroTVAPI;
+			productReference = F3CB603025FA90A9004484A1 /* DoroDoroTVAPI.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1377,6 +1560,12 @@
 					F3AAE29425E7D06700D666BD = {
 						CreatedOnToolsVersion = 12.4;
 					};
+					F3CB5FFF25FA8F6A004484A1 = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					F3CB602F25FA90A9004484A1 = {
+						CreatedOnToolsVersion = 12.4;
+					};
 				};
 			};
 			buildConfigurationList = F3AAE29025E7D06700D666BD /* Build configuration list for PBXProject "DoroDoro" */;
@@ -1400,6 +1589,8 @@
 				F3444CA525E8B82300A0706F /* DoroDoroUITests */,
 				F380094525F2E1E400F218A1 /* DoroDoroAPI */,
 				F3800AA025F2E89900F218A1 /* DoroDoroWatchAPI */,
+				F3CB5FFF25FA8F6A004484A1 /* DoroDoroTV */,
+				F3CB602F25FA90A9004484A1 /* DoroDoroTVAPI */,
 			);
 		};
 /* End PBXProject section */
@@ -1491,6 +1682,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F3CB5FFE25FA8F6A004484A1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F3CB60B525FA9190004484A1 /* Localizable.strings in Resources */,
+				F3CB600D25FA8F6C004484A1 /* LaunchScreen.storyboard in Resources */,
+				F3CB60AE25FA918D004484A1 /* InfoPlist.strings in Resources */,
+				F3CB600A25FA8F6C004484A1 /* Assets.xcassets in Resources */,
+				F3CB600825FA8F6A004484A1 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F3CB602E25FA90A9004484A1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -1549,6 +1759,67 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-DoroDoro-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4AFD56A55C3040A343C089B0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DoroDoroTV-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		623E2C4A034D92EFA8C8714B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DoroDoroTV/Pods-DoroDoroTV-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DoroDoroTV/Pods-DoroDoroTV-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DoroDoroTV/Pods-DoroDoroTV-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9EF36719B1F8069324DE1715 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DoroDoroTVAPI-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1833,6 +2104,60 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F3CB5FFC25FA8F6A004484A1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F3CB600525FA8F6A004484A1 /* ViewController.swift in Sources */,
+				F3CB60A125FA9184004484A1 /* KakaoAddressAPIError+LocalizedError.swift in Sources */,
+				F3CB60BC25FA9192004484A1 /* Localizable.swift in Sources */,
+				F3CB60A425FA9184004484A1 /* GeoAPIError+LocalizedError.swift in Sources */,
+				F3CB60A525FA9184004484A1 /* KakaoCoord2AddressAPIError+LocalizedError.swift in Sources */,
+				F3CB600325FA8F6A004484A1 /* AppDelegate.swift in Sources */,
+				F3CB60A725FA9184004484A1 /* AddrLinkAPIError+LocalizedError.swift in Sources */,
+				F3CB60A225FA9184004484A1 /* AddrCoordAPIError+LocalizedError.swift in Sources */,
+				F3CB60A325FA9184004484A1 /* AddrEngAPIError+LocalizedError.swift in Sources */,
+				F3CB60A625FA9184004484A1 /* UIDevice+Ext.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F3CB602C25FA90A9004484A1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F3CB604425FA90BF004484A1 /* AddrLinkAPIError.swift in Sources */,
+				F3CB605025FA90C4004484A1 /* AddrEngAPIError.swift in Sources */,
+				F3CB606F25FA90D3004484A1 /* KakaoCoord2AddressRoadAddressData.swift in Sources */,
+				F3CB604F25FA90C4004484A1 /* AddrEngResultsData.swift in Sources */,
+				F3CB605B25FA90C9004484A1 /* AddrCoordJusoData.swift in Sources */,
+				F3CB606725FA90D0004484A1 /* KakaoAddressAddressData.swift in Sources */,
+				F3CB605725FA90C9004484A1 /* AddrAPIService.swift in Sources */,
+				F3CB605925FA90C9004484A1 /* AddrCoordSearchData.swift in Sources */,
+				F3CB605A25FA90C9004484A1 /* AddrCoordCommonData.swift in Sources */,
+				F3CB607325FA90D3004484A1 /* KakaoCoord2AddressDocumentData.swift in Sources */,
+				F3CB604625FA90BF004484A1 /* AddrLinkResultsData.swift in Sources */,
+				F3CB607125FA90D3004484A1 /* KakaoCoord2AddressMetaData.swift in Sources */,
+				F3CB605825FA90C9004484A1 /* AddrCoordResultsData.swift in Sources */,
+				F3CB604E25FA90C4004484A1 /* AddrEngJusoData.swift in Sources */,
+				F3CB604D25FA90C4004484A1 /* AddrEngCommonData.swift in Sources */,
+				F3CB606625FA90D0004484A1 /* KakaoAddressDocumentData.swift in Sources */,
+				F3CB604525FA90BF004484A1 /* AddrLinkCommonData.swift in Sources */,
+				F3CB605C25FA90C9004484A1 /* AddrCoordAPIError.swift in Sources */,
+				F3CB606525FA90D0004484A1 /* KakaoAddressAPIError.swift in Sources */,
+				F3CB609A25FA9147004484A1 /* Keys.swift in Sources */,
+				F3CB607225FA90D3004484A1 /* KakaoAPIService.swift in Sources */,
+				F3CB607C25FA90D9004484A1 /* GeoAPIService.swift in Sources */,
+				F3CB607425FA90D3004484A1 /* KakaoCoord2AddressAPIError.swift in Sources */,
+				F3CB606425FA90D0004484A1 /* KakaoAddressRoadAddressData.swift in Sources */,
+				F3CB606825FA90D0004484A1 /* KakaoAddressResultData.swift in Sources */,
+				F3CB606325FA90D0004484A1 /* KakaoAddressMetaData.swift in Sources */,
+				F3CB607D25FA90D9004484A1 /* GeoAPIError.swift in Sources */,
+				F3CB607025FA90D3004484A1 /* KakaoCoord2AddressAddressData.swift in Sources */,
+				F3CB604325FA90BF004484A1 /* AddrLinkJusoData.swift in Sources */,
+				F3CB607525FA90D3004484A1 /* KakaoCoord2AddressResultData.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -1866,6 +2191,11 @@
 			isa = PBXTargetDependency;
 			target = F3800AA025F2E89900F218A1 /* DoroDoroWatchAPI */;
 			targetProxy = F3800C2225F2F1E700F218A1 /* PBXContainerItemProxy */;
+		};
+		F3CB603625FA90AA004484A1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F3CB602F25FA90A9004484A1 /* DoroDoroTVAPI */;
+			targetProxy = F3CB603525FA90AA004484A1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1902,6 +2232,22 @@
 				F3AAE2A425E7D06800D666BD /* Base */,
 				F378B6AA25E7D5ED00FCE546 /* ko */,
 				F378B6AD25E7D64F00FCE546 /* en */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		F3CB600625FA8F6A004484A1 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F3CB600725FA8F6A004484A1 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F3CB600B25FA8F6C004484A1 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F3CB600C25FA8F6C004484A1 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -2394,6 +2740,114 @@
 			};
 			name = Release;
 		};
+		F3CB601025FA8F6C004484A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 665406B7105BC1B92469065A /* Pods-DoroDoroTV.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = DoroDoroTV/DoroDoroTV.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = P53D29U9LJ;
+				INFOPLIST_FILE = DoroDoroTV/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.pookjw.DoroDoroTV;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 14.3;
+			};
+			name = Debug;
+		};
+		F3CB601125FA8F6C004484A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C3B32D27FC15061D31188B6F /* Pods-DoroDoroTV.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = DoroDoroTV/DoroDoroTV.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = P53D29U9LJ;
+				INFOPLIST_FILE = DoroDoroTV/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.pookjw.DoroDoroTV;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 14.3;
+			};
+			name = Release;
+		};
+		F3CB603A25FA90AA004484A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9BE853AAECD1AFDFD892C0E2 /* Pods-DoroDoroTVAPI.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = P53D29U9LJ;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = DoroDoroTVAPI/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.pookjw.DoroDoroTVAPI;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 14.3;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		F3CB603B25FA90AA004484A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A99A02F16D56153EDCA433AE /* Pods-DoroDoroTVAPI.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = P53D29U9LJ;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = DoroDoroTVAPI/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.pookjw.DoroDoroTVAPI;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 14.3;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -2465,6 +2919,24 @@
 			buildConfigurations = (
 				F3AAE2AA25E7D06800D666BD /* Debug */,
 				F3AAE2AB25E7D06800D666BD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F3CB600F25FA8F6C004484A1 /* Build configuration list for PBXNativeTarget "DoroDoroTV" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F3CB601025FA8F6C004484A1 /* Debug */,
+				F3CB601125FA8F6C004484A1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F3CB603925FA90AA004484A1 /* Build configuration list for PBXNativeTarget "DoroDoroTVAPI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F3CB603A25FA90AA004484A1 /* Debug */,
+				F3CB603B25FA90AA004484A1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

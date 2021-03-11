@@ -32,3 +32,11 @@ end
 target 'DoroDoroWatch Extension' do
   pod 'Alamofire', '~> 5.4.1'
 end
+
+target 'DoroDoroTVAPI' do
+  pod 'Alamofire', '~> 5.4.1'
+end
+
+target 'DoroDoroTV' do
+  pod 'Alamofire', '~> 5.4.1'
+end
