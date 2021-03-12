@@ -12,25 +12,25 @@ import Foundation
 /// 도로명주소 API Keys
 internal struct AddrAPIKeys {
     /// 도로명주소 API
-    static internal let linkAPIKey: String = "<API_KEY>"
+    internal static let linkAPIKey: String = "<API_KEY>"
     
     /// 영문주소 API
-    static internal let engAPIKey: String = "<API_KEY>"
+    internal static let engAPIKey: String = "<API_KEY>"
     
     /// 좌표제공 API
-    static internal let coordAPIKey: String = "<API_KEY>"
+    internal static let coordAPIKey: String = "<API_KEY>"
 }
 
 /// 카카오 API Keys
 internal struct KakaoAPIKeys {
     /// 네이티브 앱 키
-    static internal let nativeAppKey: String = "<API_KEY>"
+    internal static let nativeAppKey: String = "<API_KEY>"
     
     /// REST API 키
-    static internal let restAPIKey: String = "<API_KEY>"
+    internal static let restAPIKey: String = "<API_KEY>"
     
     /// JavaScript 키
-    static internal let javascriptKey: String = "<API_KEY>"
+    internal static let javascriptKey: String = "<API_KEY>"
 }
 ```
 

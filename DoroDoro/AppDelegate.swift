@@ -8,7 +8,7 @@
 import UIKit
 
 @main
-final internal class AppDelegate: UIResponder, UIApplicationDelegate {
+internal final class AppDelegate: UIResponder, UIApplicationDelegate {
     internal func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         return true
     }

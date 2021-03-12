@@ -7,19 +7,19 @@
 
 import UIKit
 
-final internal class MainTabBarController: UITabBarController {
+internal final class MainTabBarController: UITabBarController {
     internal weak var searchVC: SearchViewController? = nil
     internal weak var bookmarksVC: BookmarksViewController? = nil
     internal weak var settingsVC: SettingsViewController? = nil
     
     internal var splitVCDelegate: DetailedNVCSplitViewControllerDelegate = .init()
     
-    override internal func viewDidLoad() {
+    internal override func viewDidLoad() {
         super.viewDidLoad()
         configureViewControllers()
     }
     
-    override internal func viewDidAppear(_ animated: Bool) {
+    internal override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
     

@@ -9,7 +9,7 @@ import UIKit
 import Combine
 import DoroDoroAPI
 
-final internal class SearchViewModel {
+internal final class SearchViewModel {
     internal typealias DataSource = UICollectionViewDiffableDataSource<SearchHeaderItem, SearchResultItem>
     internal typealias Snapshot = NSDiffableDataSourceSnapshot<SearchHeaderItem, SearchResultItem>
     

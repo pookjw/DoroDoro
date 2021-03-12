@@ -9,9 +9,9 @@ import Foundation
 import Combine
 import Alamofire
 
-final public class AddrAPIService {
+public final class AddrAPIService {
     // MARK: - public Properties
-    static public let shared: AddrAPIService = .init()
+    public static let shared: AddrAPIService = .init()
     public let linkEvent: PassthroughSubject<AddrLinkResultsData, Never> = .init()
     public let engEvent: PassthroughSubject<AddrEngResultsData, Never> = .init()
     public let coordEvent: PassthroughSubject<AddrCoordResultsData, Never> = .init()
@@ -20,8 +20,8 @@ final public class AddrAPIService {
     public let coordErrorEvent: PassthroughSubject<AddrCoordAPIError, Never> = .init()
     
     // MARK: - public Methods
-    public init() {
-    }
+    public init() {}
+    
     // MARK: - 도로명주소 요청 API
     public func requestLinkEvent(keyword: String,
                                 currentPage: Int = 1,

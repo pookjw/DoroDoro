@@ -8,8 +8,8 @@
 import UIKit
 import Combine
 
-final internal class KeyboardEvent {
-    static internal let shared: KeyboardEvent = .init()
+internal final class KeyboardEvent {
+    internal static let shared: KeyboardEvent = .init()
     internal let attributesEvent: PassthroughSubject<(height: CGFloat, duration: Float), Never> = .init()
     
     internal init() {

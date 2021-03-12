@@ -9,7 +9,7 @@ import UIKit
 import Combine
 import DoroDoroAPI
 
-final internal class DetailsViewModel {
+internal final class DetailsViewModel {
     internal typealias DataSource = UICollectionViewDiffableDataSource<DetailHeaderItem, DetailResultItem>
     internal typealias Snapshot = NSDiffableDataSourceSnapshot<DetailHeaderItem, DetailResultItem>
     

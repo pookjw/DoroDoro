@@ -40,37 +40,37 @@ extension String {
 
 fileprivate final class Jamo {
     // UTF-8 기준
-    static let INDEX_HANGUL_START:UInt32 = 44032  // "가"
-    static let INDEX_HANGUL_END:UInt32 = 55199    // "힣"
+    fileprivate static let INDEX_HANGUL_START:UInt32 = 44032  // "가"
+    fileprivate static let INDEX_HANGUL_END:UInt32 = 55199    // "힣"
     
-    static let CYCLE_CHO :UInt32 = 588
-    static let CYCLE_JUNG :UInt32 = 28
+    fileprivate static let CYCLE_CHO :UInt32 = 588
+    fileprivate static let CYCLE_JUNG :UInt32 = 28
     
-    static let CHO = [
+    fileprivate static let CHO = [
         "ㄱ","ㄲ","ㄴ","ㄷ","ㄸ","ㄹ","ㅁ","ㅂ","ㅃ","ㅅ",
         "ㅆ","ㅇ","ㅈ","ㅉ","ㅊ","ㅋ","ㅌ","ㅍ","ㅎ"
     ]
     
-    static let JUNG = [
+    fileprivate static let JUNG = [
         "ㅏ", "ㅐ", "ㅑ", "ㅒ", "ㅓ", "ㅔ","ㅕ", "ㅖ", "ㅗ", "ㅘ",
         "ㅙ", "ㅚ","ㅛ", "ㅜ", "ㅝ", "ㅞ", "ㅟ", "ㅠ", "ㅡ", "ㅢ",
         "ㅣ"
     ]
     
-    static let JONG = [
+    fileprivate static let JONG = [
         "","ㄱ","ㄲ","ㄳ","ㄴ","ㄵ","ㄶ","ㄷ","ㄹ","ㄺ",
         "ㄻ","ㄼ","ㄽ","ㄾ","ㄿ","ㅀ","ㅁ","ㅂ","ㅄ","ㅅ",
         "ㅆ","ㅇ","ㅈ","ㅊ","ㅋ","ㅌ","ㅍ","ㅎ"
     ]
     
-    static let JONG_DOUBLE = [
+    fileprivate static let JONG_DOUBLE = [
         "ㄳ":"ㄱㅅ","ㄵ":"ㄴㅈ","ㄶ":"ㄴㅎ","ㄺ":"ㄹㄱ","ㄻ":"ㄹㅁ",
         "ㄼ":"ㄹㅂ","ㄽ":"ㄹㅅ","ㄾ":"ㄹㅌ","ㄿ":"ㄹㅍ","ㅀ":"ㄹㅎ",
         "ㅄ":"ㅂㅅ"
     ]
     
     // 주어진 "단어"를 자모음으로 분해해서 리턴하는 함수
-    class func getJamo(_ input: String) -> String {
+    fileprivate class func getJamo(_ input: String) -> String {
         var jamo = ""
         //let word = input.trimmingCharacters(in: .whitespacesAndNewlines).trimmingCharacters(in: .punctuationCharacters)
         for scalar in input.unicodeScalars{

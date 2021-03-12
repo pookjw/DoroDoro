@@ -9,9 +9,9 @@ import Foundation
 import Combine
 import Alamofire
 
-final public class KakaoAPIService {
+public final class KakaoAPIService {
     // MARK: - Public Properties
-    static public let shared: KakaoAPIService = .init()
+    public static let shared: KakaoAPIService = .init()
     public let addressEvent: PassthroughSubject<KakaoAddressResultData, Never> = .init()
     public let coord2AddressEvent: PassthroughSubject<KakaoCoord2AddressResultData, Never> = .init()
     public let addressErrorEvent: PassthroughSubject<KakaoAddressAPIError, Never> = .init()

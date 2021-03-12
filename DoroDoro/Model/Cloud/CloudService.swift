@@ -8,9 +8,9 @@
 import Foundation
 import Combine
 
-final internal class CloudService {
+internal final class CloudService {
     // MARK: - Internal Properties
-    static internal let shared: CloudService = .init()
+    internal static let shared: CloudService = .init()
     internal let didChangeEvent: AnyPublisher<[AnyHashable: Any]?, Never>
     
     internal let keyValueStore: NSUbiquitousKeyValueStore = .default

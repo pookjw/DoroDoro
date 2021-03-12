@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Combine
 
-final internal class BookmarksViewController: UIViewController {
+internal final class BookmarksViewController: UIViewController {
     private weak var collectionView: UICollectionView? = nil
     private weak var guideContainerView: UIView? = nil
     private weak var guideBottomConstraint: Constraint? = nil
@@ -18,7 +18,7 @@ final internal class BookmarksViewController: UIViewController {
     private var viewModel: BookmarksViewModel? = nil
     private var cancellableBag: Set<AnyCancellable> = .init()
     
-    override internal func viewDidLoad() {
+    internal override func viewDidLoad() {
         super.viewDidLoad()
         setAttributes()
         configureGuideLabel()
@@ -34,7 +34,7 @@ final internal class BookmarksViewController: UIViewController {
         title = Localizable.BOOKMARKS.string
     }
     
-    override internal func viewWillAppear(_ animated: Bool) {
+    internal override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 //        navigationItem.largeTitleDisplayMode = .always
 //        navigationController?.navigationBar.prefersLargeTitles = true

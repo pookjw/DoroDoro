@@ -10,8 +10,8 @@ import Combine
 @testable import DoroDoroAPI
 @testable import DoroDoro
 
-final internal class AddrAPIErrorTests: XCTestCase {
-    override internal func setUpWithError() throws {
+internal final class AddrAPIErrorTests: XCTestCase {
+    internal override func setUpWithError() throws {
         continueAfterFailure = false
     }
     

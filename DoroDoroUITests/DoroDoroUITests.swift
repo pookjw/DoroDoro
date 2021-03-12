@@ -8,8 +8,8 @@
 import XCTest
 @testable import DoroDoro
 
-final internal class DoroDoroUITests: XCTestCase {
-    override internal func setUpWithError() throws {
+internal final class DoroDoroUITests: XCTestCase {
+    internal override func setUpWithError() throws {
         try super.setUpWithError()
         continueAfterFailure = false
     }

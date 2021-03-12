@@ -8,7 +8,7 @@
 import UIKit
 import Combine
 
-final internal class SettingsViewModel {
+internal final class SettingsViewModel {
     internal typealias DataSource = UICollectionViewDiffableDataSource<SettingHeaderItem, SettingCellItem>
     internal typealias Snapshot = NSDiffableDataSourceSnapshot<SettingHeaderItem, SettingCellItem>
     private var cancellableBag: Set<AnyCancellable> = .init()

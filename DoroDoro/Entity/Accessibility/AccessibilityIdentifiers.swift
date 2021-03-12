@@ -9,6 +9,6 @@ import Foundation
 
 internal struct AccessibilityIdentifiers {
     internal struct SearchVC {
-        static internal let searchField: String = "SearchVC.SearchField"
+        internal static let searchField: String = "SearchVC.SearchField"
     }
 }

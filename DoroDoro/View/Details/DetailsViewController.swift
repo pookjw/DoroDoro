@@ -11,13 +11,13 @@ import Combine
 import SnapKit
 import DoroDoroAPI
 
-final internal class DetailsViewController: UIViewController {
+internal final class DetailsViewController: UIViewController {
     private weak var collectionView: UICollectionView? = nil
     private weak var bookmarkButton: UIBarButtonItem? = nil
     private var viewModel: DetailsViewModel? = nil
     private var cancellableBag: Set<AnyCancellable> = .init()
     
-    override internal func viewDidLoad() {
+    internal override func viewDidLoad() {
         super.viewDidLoad()
         setAttributes()
         configureCollectionView()

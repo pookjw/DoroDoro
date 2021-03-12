@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import NVActivityIndicatorView
 
-final internal class SpinnerView: UIView {
+internal final class SpinnerView: UIView {
     private weak var blurView: UIVisualEffectView? = nil
     private weak var activityIndicatorView: NVActivityIndicatorView? = nil
     
@@ -19,18 +19,18 @@ final internal class SpinnerView: UIView {
         configureAccessiblity()
     }
     
-    required internal init?(coder: NSCoder) {
+    internal required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override internal func removeFromSuperview() {
+    internal override func removeFromSuperview() {
         activityIndicatorView?.stopAnimating()
         activityIndicatorView?.removeFromSuperview()
         super.removeFromSuperview()
     }
     
     
-    override internal func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+    internal override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         
         activityIndicatorView?.stopAnimating()

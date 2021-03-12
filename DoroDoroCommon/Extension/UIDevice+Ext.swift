@@ -8,7 +8,7 @@
 import UIKit
 
 extension UIDevice {
-    static internal var modelName: String {
+    internal static var modelName: String {
         var systemInfo = utsname()
         uname(&systemInfo)
         let machineMirror = Mirror(reflecting: systemInfo.machine)

@@ -18,7 +18,7 @@ internal struct BookmarksData {
 }
 
 extension BookmarksData: Equatable {
-    static internal func ==(lhs: BookmarksData, rhs: BookmarksData) -> Bool {
+    internal static func ==(lhs: BookmarksData, rhs: BookmarksData) -> Bool {
         return (lhs.bookmarkedRoadAddrs == rhs.bookmarkedRoadAddrs)
     }
 }

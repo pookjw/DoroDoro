@@ -7,8 +7,8 @@
 
 import UIKit
 
-final internal class DetailedNVCSplitViewControllerDelegate: UISplitViewControllerDelegate {
-    func splitViewController(_ splitViewController: UISplitViewController, showDetail vc: UIViewController, sender: Any?) -> Bool {
+internal final class DetailedNVCSplitViewControllerDelegate: UISplitViewControllerDelegate {
+    internal func splitViewController(_ splitViewController: UISplitViewController, showDetail vc: UIViewController, sender: Any?) -> Bool {
         guard !splitViewController.isCollapsed else {
             return false
         }
@@ -22,7 +22,7 @@ final internal class DetailedNVCSplitViewControllerDelegate: UISplitViewControll
         return true
     }
 
-    func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
+    internal func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
         guard let primaryNavigationController: UINavigationController = primaryViewController as? UINavigationController else {
             return false
         }
@@ -38,7 +38,7 @@ final internal class DetailedNVCSplitViewControllerDelegate: UISplitViewControll
     }
 
 
-    func splitViewController(_ splitViewController: UISplitViewController, separateSecondaryFrom primaryViewController: UIViewController) -> UIViewController? {
+    internal func splitViewController(_ splitViewController: UISplitViewController, separateSecondaryFrom primaryViewController: UIViewController) -> UIViewController? {
         guard let primaryNavigationController: UINavigationController = primaryViewController as? UINavigationController else {
             return nil
         }

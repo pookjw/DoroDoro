@@ -10,7 +10,7 @@ import MapKit
 import Combine
 import DoroDoroWatchAPI
 
-final internal class DetailsInterfaceController: WKInterfaceController {
+internal final class DetailsInterfaceController: WKInterfaceController {
     @IBOutlet internal weak var resultGroup: WKInterfaceGroup!
     @IBOutlet internal weak var linkJusoGroup: WKInterfaceGroup!
     @IBOutlet internal weak var linkJusoHeaderLabel: WKInterfaceLabel!
@@ -21,14 +21,12 @@ final internal class DetailsInterfaceController: WKInterfaceController {
     @IBOutlet internal weak var mapHeaderLabel: WKInterfaceLabel!
     @IBOutlet internal weak var mapView: WKInterfaceMap!
     @IBOutlet internal weak var mapGroup: WKInterfaceGroup!
-    
     @IBOutlet internal weak var loadingImageView: WKInterfaceImage!
-    
     
     private var interfaceModel: DetailsInterfaceModel? = nil
     private var cancellableBag: Set<AnyCancellable> = .init()
     
-    override func awake(withContext context: Any?) {
+    internal override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         setAttributes()
         configureInterfaceModel()

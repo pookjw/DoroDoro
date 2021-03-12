@@ -10,8 +10,8 @@ import Combine
 @testable import DoroDoroAPI
 @testable import DoroDoro
 
-final internal class KakaoAPITests: XCTestCase {
-    override internal func setUpWithError() throws {
+internal final class KakaoAPITests: XCTestCase {
+    internal override func setUpWithError() throws {
         continueAfterFailure = false
     }
     

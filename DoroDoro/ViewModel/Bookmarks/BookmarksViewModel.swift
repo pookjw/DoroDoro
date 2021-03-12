@@ -8,7 +8,7 @@
 import UIKit
 import Combine
 
-final internal class BookmarksViewModel {
+internal final class BookmarksViewModel {
     internal typealias DataSource = UICollectionViewDiffableDataSource<BookmarksHeaderItem, BookmarksCellItem>
     internal typealias Snapshot = NSDiffableDataSourceSnapshot<BookmarksHeaderItem, BookmarksCellItem>
     internal var dataSource: DataSource? = nil

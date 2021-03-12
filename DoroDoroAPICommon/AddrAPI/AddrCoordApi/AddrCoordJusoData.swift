@@ -40,7 +40,7 @@ public struct AddrCoordJusoData: Decodable {
 }
 
 extension AddrCoordJusoData: Equatable {
-    static public func == (lhs: AddrCoordJusoData, rhs: AddrCoordJusoData) -> Bool {
+    public static func == (lhs: AddrCoordJusoData, rhs: AddrCoordJusoData) -> Bool {
         return (lhs.entX == rhs.entX) && (lhs.entY == rhs.entY)
     }
 }

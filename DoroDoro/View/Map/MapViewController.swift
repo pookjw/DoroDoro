@@ -9,7 +9,7 @@ import UIKit
 import MapKit
 import SnapKit
 
-final internal class MapViewController: UIViewController {
+internal final class MapViewController: UIViewController {
     internal var mapSelection: SettingsMapSelectionType = SettingsService.shared.data.mapSelection
     internal var locationText: String? = nil
     
@@ -23,7 +23,7 @@ final internal class MapViewController: UIViewController {
     private weak var doneBarButtonItem: UIBarButtonItem? = nil
     private weak var openMapAppBarButtonItem: UIBarButtonItem? = nil
     
-    override internal func viewDidLoad() {
+    internal override func viewDidLoad() {
         super.viewDidLoad()
         
         setAttributes()

@@ -8,9 +8,9 @@
 import Foundation
 import Combine
 
-final internal class SettingsService {
+internal final class SettingsService {
     // MARK: - Internal Properties
-    static internal let shared: SettingsService = .init()
+    internal static let shared: SettingsService = .init()
     internal let dataEvent: AnyPublisher<SettingsData, Never>
     internal var data: SettingsData {
         return _dataEvent.value
@@ -28,7 +28,7 @@ final internal class SettingsService {
     private let _dataEvent: CurrentValueSubject<SettingsData, Never>
     private var cancellableBag: Set<AnyCancellable> = .init()
     private struct Constants {
-        static fileprivate let settingsKey: String = "settings"
+        fileprivate static let settingsKey: String = "settings"
     }
     
     // MARK: - Private Methods

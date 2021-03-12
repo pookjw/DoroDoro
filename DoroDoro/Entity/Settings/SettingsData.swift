@@ -26,12 +26,12 @@ internal struct SettingsData {
     }
     
     private struct Constants {
-        static fileprivate let mapSelectionKey: String = "map_selection"
+        fileprivate static let mapSelectionKey: String = "map_selection"
     }
 }
 
 extension SettingsData: Equatable {
-    static internal func ==(lhs: SettingsData, rhs: SettingsData) -> Bool {
+    internal static func ==(lhs: SettingsData, rhs: SettingsData) -> Bool {
         return (lhs.mapSelection == rhs.mapSelection)
     }
 }

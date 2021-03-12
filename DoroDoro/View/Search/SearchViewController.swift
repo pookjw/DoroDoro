@@ -11,7 +11,7 @@ import SnapKit
 import CRRefresh
 import DoroDoroAPI
 
-final internal class SearchViewController: UIViewController {
+internal final class SearchViewController: UIViewController {
     private weak var collectionView: UICollectionView? = nil
     private weak var guideContainerView: UIView? = nil
     private weak var guideBottomConstraint: Constraint? = nil
@@ -26,7 +26,7 @@ final internal class SearchViewController: UIViewController {
         return searchController?.searchBar.searchTextField.text
     }
     
-    override internal func viewDidLoad() {
+    internal override func viewDidLoad() {
         super.viewDidLoad()
         setAttributes()
         configureGuideLabel()
@@ -37,7 +37,7 @@ final internal class SearchViewController: UIViewController {
         bind()
     }
     
-    override internal func viewWillAppear(_ animated: Bool) {
+    internal override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 //        navigationItem.largeTitleDisplayMode = .always
 //        navigationController?.navigationBar.prefersLargeTitles = true

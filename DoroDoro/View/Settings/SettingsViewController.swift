@@ -10,20 +10,20 @@ import SafariServices
 import MessageUI
 import AcknowList
 
-final internal class SettingsViewController: UIViewController {
+internal final class SettingsViewController: UIViewController {
     private weak var collectionView: UICollectionView? = nil
     private weak var mailBarButtonItem: UIBarButtonItem? = nil
     private var viewModel: SettingsViewModel? = nil
     private weak var contextViewController: UIViewController? = nil
     
-    override internal func viewDidLoad() {
+    internal override func viewDidLoad() {
         super.viewDidLoad()
         setAttributes()
         configureCollectionView()
         configureViewModel()
     }
     
-    override internal func viewWillAppear(_ animated: Bool) {
+    internal override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if let collectionView: UICollectionView = collectionView {
             animateForSelectedIndexPath(collectionView, animated: animated)

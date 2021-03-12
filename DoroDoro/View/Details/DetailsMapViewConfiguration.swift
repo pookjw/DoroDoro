@@ -23,7 +23,7 @@ internal struct DetailsMapViewConfiguration: UIContentConfiguration {
     }
 }
 
-final fileprivate class _DetailsMapViewContentView: UIView, UIContentView {
+fileprivate final class _DetailsMapViewContentView: UIView, UIContentView {
     private weak var mapView: MKMapView? = nil
     
     fileprivate var configuration: UIContentConfiguration {
@@ -40,7 +40,7 @@ final fileprivate class _DetailsMapViewContentView: UIView, UIContentView {
         super.init(frame: .zero)
     }
     
-    required fileprivate init?(coder: NSCoder) {
+    fileprivate required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     

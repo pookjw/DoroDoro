@@ -9,8 +9,8 @@ import Foundation
 import CoreLocation
 import Combine
 
-final public class GeoAPIService: NSObject {
-    static public let shared: GeoAPIService = .init()
+public final class GeoAPIService: NSObject {
+    public static let shared: GeoAPIService = .init()
     public let coordEvent: PassthroughSubject<(latitude: Double, longitude: Double), Never> = .init()
     public let coordErrorEvent: PassthroughSubject<Error, Never> = .init()
     

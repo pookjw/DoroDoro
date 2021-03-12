@@ -9,19 +9,19 @@ import WatchKit
 import Combine
 import DoroDoroWatchAPI
 
-final internal class SearchInterfaceController: WKInterfaceController {
-    @IBOutlet weak var textField: WKInterfaceTextField!
-    @IBOutlet weak var topGroup: WKInterfaceGroup!
-    @IBOutlet weak var tableGroup: WKInterfaceGroup!
-    @IBOutlet weak var tableHeaderLabel: WKInterfaceLabel!
+internal final class SearchInterfaceController: WKInterfaceController {
+    @IBOutlet internal weak var textField: WKInterfaceTextField!
+    @IBOutlet internal weak var topGroup: WKInterfaceGroup!
+    @IBOutlet internal weak var tableGroup: WKInterfaceGroup!
+    @IBOutlet internal weak var tableHeaderLabel: WKInterfaceLabel!
     @IBOutlet internal weak var tableView: WKInterfaceTable!
-    @IBOutlet weak var loadingImageView: WKInterfaceImage!
-    @IBOutlet weak var guideLabel: WKInterfaceLabel!
+    @IBOutlet internal weak var loadingImageView: WKInterfaceImage!
+    @IBOutlet internal weak var guideLabel: WKInterfaceLabel!
     
     private var interfaceModel: SearchInterfaceModel? = nil
     private var cancellableBag: Set<AnyCancellable> = .init()
     
-    override internal func awake(withContext context: Any?) {
+    internal override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         setAttributes()
         configureInterfaceModel()
@@ -116,7 +116,7 @@ final internal class SearchInterfaceController: WKInterfaceController {
         pushController(withName: "DetailsInterfaceController", context: ["linkJusoData": data])
     }
     
-    override internal func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {
+    internal override func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {
         super.table(table, didSelectRowAt: rowIndex)
         
         guard let viewModel: SearchInterfaceModel = interfaceModel else {

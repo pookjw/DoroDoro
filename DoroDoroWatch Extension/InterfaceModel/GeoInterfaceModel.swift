@@ -9,7 +9,7 @@ import Foundation
 import Combine
 import DoroDoroWatchAPI
 
-final internal class GeoInterfaceModel {
+internal final class GeoInterfaceModel {
     internal var geoEvent: PassthroughSubject<String, Never> = .init()
     internal let geoAPIService: GeoAPIService = .init()
     internal let kakaoAPIService: KakaoAPIService = .init()

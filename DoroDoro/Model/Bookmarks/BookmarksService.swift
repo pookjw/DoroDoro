@@ -8,9 +8,9 @@
 import Foundation
 import Combine
 
-final internal class BookmarksService {
+internal final class BookmarksService {
     // MARK: - Internal Properties
-    static internal let shared: BookmarksService = .init()
+    internal static let shared: BookmarksService = .init()
     internal let dataEvent: AnyPublisher<BookmarksData, Never>
     internal var data: BookmarksData {
         return _dataEvent.value
@@ -51,7 +51,7 @@ final internal class BookmarksService {
     private let _dataEvent: CurrentValueSubject<BookmarksData, Never>
     private var cancellableBag: Set<AnyCancellable> = .init()
     private struct Constants {
-        static fileprivate let bookmarksKey: String = "bookmarks"
+        fileprivate static let bookmarksKey: String = "bookmarks"
     }
     
     private init() {

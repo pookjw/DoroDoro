@@ -7,7 +7,7 @@
 
 import UIKit
 
-final internal class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+internal final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     internal var window: UIWindow?
     internal weak var mainTabBarController: MainTabBarController? = nil
     

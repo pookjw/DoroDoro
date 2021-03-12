@@ -8,13 +8,13 @@
 import WatchKit
 import Combine
 
-final internal class GeoInterfaceController: WKInterfaceController {
+internal final class GeoInterfaceController: WKInterfaceController {
     @IBOutlet internal weak var findButton: WKInterfaceButton!
     @IBOutlet internal weak var loadingImageView: WKInterfaceImage!
     private var interfaceModel: GeoInterfaceModel? = nil
     private var cancellableBag: Set<AnyCancellable> = .init()
     
-    override internal func awake(withContext context: Any?) {
+    internal override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         setAttributes()
         configureInterfaceModel()

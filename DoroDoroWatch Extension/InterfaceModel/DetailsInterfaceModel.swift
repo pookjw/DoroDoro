@@ -9,7 +9,7 @@ import Foundation
 import Combine
 import DoroDoroWatchAPI
 
-final internal class DetailsInterfaceModel {
+internal final class DetailsInterfaceModel {
     internal let addrAPIService: AddrAPIService = .init()
     internal let kakaoAPIService: KakaoAPIService = .init()
     internal var linkJusoDataEvent: PassthroughSubject<AddrLinkJusoData, Never> = .init()

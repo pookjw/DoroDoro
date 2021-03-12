@@ -105,7 +105,7 @@ public struct AddrLinkJusoData: Decodable, Hashable {
 }
 
 extension AddrLinkJusoData: Equatable {
-    static public func == (lhs: AddrLinkJusoData, rhs: AddrLinkJusoData) -> Bool {
+    public static func == (lhs: AddrLinkJusoData, rhs: AddrLinkJusoData) -> Bool {
         return lhs.roadAddr == rhs.roadAddr
     }
 }
