@@ -216,6 +216,10 @@ extension SearchViewController: NSTableViewDataSource {
         else {
             return nil
         }
+        
+        guard viewModel.addrLinkJusoData.count > row else {
+            return nil
+        }
 
         cell.textLabel.stringValue = viewModel.addrLinkJusoData[row].roadAddr
 
