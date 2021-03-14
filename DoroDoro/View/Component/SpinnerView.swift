@@ -10,7 +10,7 @@ import SnapKit
 import NVActivityIndicatorView
 
 internal final class SpinnerView: UIView {
-    private weak var blurView: UIVisualEffectView? = nil
+    private weak var visualEffectView: UIVisualEffectView? = nil
     private weak var activityIndicatorView: NVActivityIndicatorView? = nil
     
     internal init() {
@@ -36,10 +36,10 @@ internal final class SpinnerView: UIView {
         activityIndicatorView?.stopAnimating()
         
         if traitCollection.userInterfaceStyle == .dark {
-            blurView?.effect = UIBlurEffect(style: .extraLight)
+            visualEffectView?.effect = UIBlurEffect(style: .extraLight)
             activityIndicatorView?.color = .black
         } else {
-            blurView?.effect = UIBlurEffect(style: .dark)
+            visualEffectView?.effect = UIBlurEffect(style: .dark)
             activityIndicatorView?.color = .white
         }
         
@@ -52,19 +52,18 @@ internal final class SpinnerView: UIView {
         
         //
         
-        let blurView: UIVisualEffectView = .init()
-        self.blurView = blurView
-        addSubview(blurView)
-        blurView.translatesAutoresizingMaskIntoConstraints = false
-        blurView.snp.remakeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.centerY.equalToSuperview()
+        let visualEffectView: UIVisualEffectView = .init()
+        self.visualEffectView = visualEffectView
+        addSubview(visualEffectView)
+        visualEffectView.translatesAutoresizingMaskIntoConstraints = false
+        visualEffectView.snp.remakeConstraints { make in
+            make.center.equalToSuperview()
             make.width.equalTo(150)
             make.height.equalTo(150)
         }
-        blurView.layer.cornerRadius = 30
-        blurView.clipsToBounds = true
-        blurView.isUserInteractionEnabled = false
+        visualEffectView.layer.cornerRadius = 30
+        visualEffectView.clipsToBounds = true
+        visualEffectView.isUserInteractionEnabled = false
         
         //
         
@@ -72,7 +71,7 @@ internal final class SpinnerView: UIView {
                                                                    type: .circleStrokeSpin,
                                                                    padding: 40)
         self.activityIndicatorView = activityIndicatorView
-        blurView.contentView.addSubview(activityIndicatorView)
+        visualEffectView.contentView.addSubview(activityIndicatorView)
         activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
         activityIndicatorView.snp.remakeConstraints { make in
             make.edges.equalToSuperview()
@@ -88,8 +87,8 @@ internal final class SpinnerView: UIView {
     private func configureAccessiblity() {
         accessibilityLabel = Localizable.ACCESSIBILITY_LOADING_CONENTS.string
         isAccessibilityElement = true
-        blurView?.contentView.accessibilityLabel = Localizable.ACCESSIBILITY_LOADING_CONENTS.string
-        blurView?.contentView.isAccessibilityElement = true
+        visualEffectView?.contentView.accessibilityLabel = Localizable.ACCESSIBILITY_LOADING_CONENTS.string
+        visualEffectView?.contentView.isAccessibilityElement = true
         activityIndicatorView?.accessibilityLabel = Localizable.ACCESSIBILITY_LOADING_CONENTS.string
         activityIndicatorView?.isAccessibilityElement = true
     }

@@ -30,6 +30,12 @@ target 'DoroDoroTVAPI' do
   alamofire_pod
 end
 
+target 'DoroDoroMacAPI' do
+  alamofire_pod
+  pod 'SnapKit', '~> 5.0.1'
+  pod 'ITProgressIndicator', '~> 0.1'
+end
+
 target 'DoroDoro' do
   ios_pods
 end
@@ -43,6 +49,10 @@ target 'DoroDoroTV' do
   pod 'SnapKit', '~> 5.0.1'
   pod 'NVActivityIndicatorView', '~> 5.1.1'
   pod 'AcknowList', '2.0.0-beta.1'
+end
+
+target 'DoroDoroMac' do
+  alamofire_pod
 end
 
 target 'DoroDoroUITests' do

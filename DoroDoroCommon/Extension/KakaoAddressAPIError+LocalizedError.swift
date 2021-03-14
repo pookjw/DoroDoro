@@ -10,10 +10,11 @@ import Foundation
 import DoroDoroWatchAPI
 #elseif os(tvOS)
 import DoroDoroTVAPI
+#elseif os(macOS)
+import DoroDoroMacAPI
 #else
 import DoroDoroAPI
 #endif
-
 
 extension KakaoAddressAPIError: LocalizedError {
     public var errorDescription: String? {

@@ -26,8 +26,9 @@ internal final class SearchViewModel {
     
     private var currentPage: Int = 1
     private var totalCount: Int = 1
+    private let countPerPage: Int = 50
     private var canLoadMore: Bool {
-        let maxPage: Int = totalCount.isMultiple(of: 50) ? (totalCount / 50) : (totalCount / 50 + 1)
+        let maxPage: Int = totalCount.isMultiple(of: countPerPage) ? (totalCount / countPerPage) : (totalCount / countPerPage + 1)
         return currentPage < maxPage
     }
     private var cancellableBag: Set<AnyCancellable> = .init()
@@ -49,7 +50,7 @@ internal final class SearchViewModel {
         guard let text: String = searchEvent,
               !text.isEmpty else { return }
         currentPage += 1
-        addrAPIService.requestLinkEvent(keyword: text, currentPage: currentPage, countPerPage: 50)
+        addrAPIService.requestLinkEvent(keyword: text, currentPage: currentPage, countPerPage: countPerPage)
     }
     
     internal func getResultItem(from indexPath: IndexPath) -> SearchResultItem? {
@@ -107,7 +108,7 @@ internal final class SearchViewModel {
                 guard let text: String = text,
                       !text.isEmpty else { return }
                 self.currentPage = 1
-                self.addrAPIService.requestLinkEvent(keyword: text, currentPage: self.currentPage, countPerPage: 50)
+                self.addrAPIService.requestLinkEvent(keyword: text, currentPage: self.currentPage, countPerPage: self.countPerPage)
             })
             .store(in: &cancellableBag)
         
