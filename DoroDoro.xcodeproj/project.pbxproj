@@ -1267,6 +1267,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		F37A038425FDFF760036E489 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				F3E24DB625FDCA7100123E3B /* SearchViewModel.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
 		F380094725F2E1E400F218A1 /* DoroDoroAPI */ = {
 			isa = PBXGroup;
 			children = (
@@ -1551,7 +1559,7 @@
 		F3E24DAE25FDCA2400123E3B /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				F3E24DB625FDCA7100123E3B /* SearchViewModel.swift */,
+				F37A038425FDFF760036E489 /* Search */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";

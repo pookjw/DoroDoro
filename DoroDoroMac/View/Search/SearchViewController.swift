@@ -14,6 +14,7 @@ internal final class SearchViewController: NSViewController {
     private weak var searchField: NSSearchField? = nil
     private weak var separatorView: NSView? = nil
     private weak var tableView: NSTableView? = nil
+    private weak var clipView: NSClipView? = nil
     private weak var scrollView: NSScrollView? = nil
     private var searchIdentifier: NSUserInterfaceItemIdentifier? = nil
     private weak var searchColumn: NSTableColumn? = nil
@@ -110,9 +111,14 @@ internal final class SearchViewController: NSViewController {
         tableView.addTableColumn(searchColumn)
         tableView.register(NSNib(nibNamed: SearchTableCellView.className, bundle: .main), forIdentifier: searchIdentifier)
         
+        let clipView: NSClipView = .init()
+        self.clipView = clipView
+        clipView.documentView = tableView
+        clipView.postsBoundsChangedNotifications = true
         
         let scrollView: NSScrollView = .init()
-        scrollView.documentView = tableView
+        self.scrollView = scrollView
+        scrollView.contentView = clipView
         scrollView.autohidesScrollers = true
         scrollView.hasVerticalScroller = true
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -136,10 +142,12 @@ internal final class SearchViewController: NSViewController {
     private func bind() {
         viewModel?.addrLinkJusoDataEvent
             .receive(on: DispatchQueue.main)
-            .sink(receiveValue: { [weak self] (_, text) in
+            .sink(receiveValue: { [weak self] (_, text, isFirstPage) in
                 self?.tableView?.reloadData()
                 self?.updateColumnTitle(for: text)
-                self?.tableView?.scrollToTop()
+                if isFirstPage {
+                    self?.tableView?.scrollToTop()
+                }
                 self?.removeAllSpinnerView()
             })
             .store(in: &cancellableBag)
@@ -151,6 +159,18 @@ internal final class SearchViewController: NSViewController {
                 self?.removeAllSpinnerView()
             })
             .store(in: &cancellableBag)
+        
+        if let clipView: NSClipView = clipView {
+            NotificationCenter.default
+                .publisher(for: NSView.boundsDidChangeNotification, object: clipView)
+                .sink(receiveValue: { [weak self] notification in
+                    guard let bounds: CGRect = (notification.object as? NSClipView)?.bounds else {
+                        return
+                    }
+                    self?.determineLoadNextPage(bounds: bounds)
+                })
+                .store(in: &cancellableBag)
+        }
     }
     
     private func updateColumnTitle(for text: String) {
@@ -159,6 +179,25 @@ internal final class SearchViewController: NSViewController {
     
     @objc private func clickedHeaderView(_ sender: NSClickGestureRecognizer) {
         tableView?.scrollToTop()
+    }
+    
+    private func determineLoadNextPage(bounds: CGRect) {
+        guard let viewModel: SearchViewModel = viewModel else {
+            return
+        }
+        
+        let maxPoint: CGPoint = .init(x: bounds.origin.x, y: bounds.maxY)
+        
+        guard let currentRow: Int = tableView?.row(at: maxPoint) else {
+            return
+        }
+        
+        if currentRow == -1 || (currentRow + 1) == viewModel.addrLinkJusoData.count {
+            let requested: Bool = viewModel.requestNextPageIfAvailable()
+            if requested {
+                showSpinnerView()
+            }
+        }
     }
 }
 
