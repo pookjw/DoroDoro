@@ -290,7 +290,6 @@
 		F3E24CDE25FDAD5400123E3B /* AddrEngAPIError+LocalizedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3800A3325F2E56B00F218A1 /* AddrEngAPIError+LocalizedError.swift */; };
 		F3E24CDF25FDAD5400123E3B /* KakaoCoord2AddressAPIError+LocalizedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A3DEEF25F41D4000E8F2F0 /* KakaoCoord2AddressAPIError+LocalizedError.swift */; };
 		F3E24CE025FDAD5400123E3B /* GeoAPIError+LocalizedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E89B6E25F975BB00E3AC5A /* GeoAPIError+LocalizedError.swift */; };
-		F3E24CE125FDAD5400123E3B /* UIDevice+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371F07125F52E9F00E003E8 /* UIDevice+Ext.swift */; };
 		F3E24CE225FDAD5400123E3B /* AddrLinkAPIError+LocalizedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3800A2225F2E4F900F218A1 /* AddrLinkAPIError+LocalizedError.swift */; };
 		F3E24CE325FDAD5400123E3B /* AddrCoordAPIError+LocalizedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3800A3925F2E59100F218A1 /* AddrCoordAPIError+LocalizedError.swift */; };
 		F3E24CE425FDAD5400123E3B /* KakaoAddressAPIError+LocalizedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3800A3F25F2E5BA00F218A1 /* KakaoAddressAPIError+LocalizedError.swift */; };
@@ -2338,7 +2337,6 @@
 				F3E24CE325FDAD5400123E3B /* AddrCoordAPIError+LocalizedError.swift in Sources */,
 				F350296B25F2CA550094B33D /* DetailsInterfaceModel.swift in Sources */,
 				F350296525F2C9200094B33D /* DetailsInterfaceController.swift in Sources */,
-				F3E24CE125FDAD5400123E3B /* UIDevice+Ext.swift in Sources */,
 				F334A61E25F2AEE70005E970 /* SearchInterfaceModel.swift in Sources */,
 				F3A3DF0525F4210B00E8F2F0 /* GeoInterfaceModel.swift in Sources */,
 				F350297925F2CE1E0094B33D /* DetailsLinkJusoObject.swift in Sources */,
