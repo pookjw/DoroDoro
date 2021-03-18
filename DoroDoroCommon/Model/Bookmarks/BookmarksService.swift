@@ -28,6 +28,10 @@ internal final class BookmarksService {
     }
     
     internal func removeBookmark(_ roadAddr: String) {
+        guard data.bookmarkedRoadAddrs.keys.contains(roadAddr) else {
+            return
+        }
+        
         var data: BookmarksData = self.data
         data.bookmarkedRoadAddrs.removeValue(forKey: roadAddr)
         save(data)

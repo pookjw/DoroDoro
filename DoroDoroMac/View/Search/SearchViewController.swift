@@ -8,6 +8,7 @@
 import Cocoa
 import Combine
 import SnapKit
+import DoroDoroMacAPI
 
 internal final class SearchViewController: NSViewController {
     private weak var visualEffectView: NSVisualEffectView? = nil
@@ -32,6 +33,7 @@ internal final class SearchViewController: NSViewController {
         configureSearchField()
         configureSeparatorView()
         configureTableView()
+        configureMenu()
         configureViewModel()
         bind()
     }
@@ -134,6 +136,12 @@ internal final class SearchViewController: NSViewController {
         }
     }
     
+    private func configureMenu() {
+        let menu: NSMenu = .init()
+        menu.delegate = self
+        tableView?.menu = menu
+    }
+    
     private func configureViewModel() {
         let viewModel: SearchViewModel = .init()
         self.viewModel = viewModel
@@ -199,6 +207,51 @@ internal final class SearchViewController: NSViewController {
             }
         }
     }
+    
+    @objc private func removeFromBookmarks(_ sender: NSMenuItem) {
+        guard let selectedMenuJusoData: AddrLinkJusoData = viewModel?.selectedMenuJusoData else {
+            return
+        }
+        BookmarksService.shared.removeBookmark(selectedMenuJusoData.roadAddr)
+    }
+    
+    @objc private func addToBookmarks(_ sender: NSMenuItem) {
+        guard let selectedMenuJusoData: AddrLinkJusoData = viewModel?.selectedMenuJusoData else {
+            return
+        }
+        BookmarksService.shared.addBookmark(selectedMenuJusoData.roadAddr)
+    }
+    
+    @objc private func copyRoadAddr(_ sender: NSMenuItem) {
+        guard let selectedMenuJusoData: AddrLinkJusoData = viewModel?.selectedMenuJusoData else {
+            return
+        }
+        print(sender)
+        NSPasteboard.general.declareTypes([.string], owner: nil)
+        NSPasteboard.general.setString(selectedMenuJusoData.roadAddr, forType: .string)
+    }
+    
+    @objc private func shareRoadAddr(_ sender: NSMenuItem) {
+        guard let selectedMenuJusoData: AddrLinkJusoData = viewModel?.selectedMenuJusoData,
+              let selectedMenuRow: Int = viewModel?.selectedMenuRow,
+              let cell: NSView = tableView?.rowView(atRow: selectedMenuRow, makeIfNecessary: false) else {
+            return
+        }
+        
+        let picker: NSSharingServicePicker = .init(items: [selectedMenuJusoData.roadAddr])
+        picker.show(relativeTo: .zero, of: cell, preferredEdge: .minY)
+    }
+    
+    private func presentDetailVC(data: AddrLinkJusoData, at view: NSView) {
+        let popover: NSPopover = .init()
+        popover.contentViewController = SearchViewController()
+        popover.contentViewController?.preferredContentSize = .init(width: 300, height: 400)
+        popover.behavior = .semitransient
+        popover.delegate = self
+        popover.show(relativeTo: view.bounds,
+                     of: view,
+                     preferredEdge: .maxX)
+    }
 }
 
 extension SearchViewController: NSTableViewDataSource {
@@ -220,10 +273,27 @@ extension SearchViewController: NSTableViewDataSource {
         guard viewModel.addrLinkJusoData.count > row else {
             return nil
         }
-
+        
         cell.textLabel.stringValue = viewModel.addrLinkJusoData[row].roadAddr
-
+        
         return cell
+    }
+    
+    internal func tableViewSelectionDidChange(_ notification: Notification) {
+        guard let viewModel: SearchViewModel = viewModel,
+              let clickedRow: Int = tableView?.selectedRow,
+              clickedRow >= 0 &&
+                viewModel.addrLinkJusoData.count > clickedRow else {
+            return
+        }
+        
+        guard let tableView: NSTableView = notification.object as? NSTableView,
+              let cell: NSView = tableView.rowView(atRow: clickedRow, makeIfNecessary: false) else {
+            return
+        }
+        
+        let selectedMenuJusoData: AddrLinkJusoData = viewModel.addrLinkJusoData[clickedRow]
+        presentDetailVC(data: selectedMenuJusoData, at: cell)
     }
 }
 
@@ -243,5 +313,49 @@ extension SearchViewController: NSSearchFieldDelegate {
         
         showSpinnerView()
         viewModel?.searchEvent = searchField.stringValue
+    }
+}
+
+extension SearchViewController: NSMenuDelegate {
+    internal func menuWillOpen(_ menu: NSMenu) {
+        guard let viewModel: SearchViewModel = viewModel,
+              let clickedRow: Int = tableView?.clickedRow,
+              clickedRow >= 0 else {
+            return
+        }
+        
+        guard viewModel.addrLinkJusoData.count > clickedRow else {
+            return
+        }
+        
+        let selectedMenuJusoData: AddrLinkJusoData = viewModel.addrLinkJusoData[clickedRow]
+        viewModel.selectedMenuJusoData = selectedMenuJusoData
+        viewModel.selectedMenuRow = clickedRow
+        let roadAddr: String = selectedMenuJusoData.roadAddr
+        
+        menu.items.removeAll()
+        
+        if BookmarksService.shared.isBookmarked(roadAddr) {
+            menu.addItem(NSMenuItem(title: Localizable.REMOVE_FROM_BOOKMARKS.string,
+                                    action: #selector(removeFromBookmarks(_:)),
+                                    keyEquivalent: ""))
+        } else {
+            menu.addItem(NSMenuItem(title: Localizable.ADD_TO_BOOKMARKS.string,
+                                    action: #selector(addToBookmarks(_:)),
+                                    keyEquivalent: ""))
+        }
+        
+        menu.addItem(NSMenuItem(title: Localizable.COPY.string,
+                                action: #selector(copyRoadAddr(_:)),
+                                keyEquivalent: ""))
+        menu.addItem(NSMenuItem(title: Localizable.SHARE.string,
+                                action: #selector(shareRoadAddr(_:)),
+                                keyEquivalent: ""))
+    }
+}
+
+extension SearchViewController: NSPopoverDelegate {
+    internal func popoverDidDetach(_ popover: NSPopover) {
+        tableView?.deselectAll(nil)
     }
 }

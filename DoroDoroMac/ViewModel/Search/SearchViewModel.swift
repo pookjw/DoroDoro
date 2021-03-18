@@ -15,6 +15,8 @@ internal final class SearchViewModel {
     internal let addrLinkJusoDataEvent: PassthroughSubject<(data: [AddrLinkJusoData], text: String, isFirstPage: Bool), Never> = .init()
     internal private(set) var addrLinkJusoData: [AddrLinkJusoData] = []
     internal let addrAPIService: AddrAPIService = .init()
+    internal var selectedMenuRow: Int? = nil
+    internal var selectedMenuJusoData: AddrLinkJusoData? = nil
     
     private var currentPage: Int = 1
     private var totalCount: Int = 1

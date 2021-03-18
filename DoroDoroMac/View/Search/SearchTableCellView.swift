@@ -14,15 +14,24 @@ class SearchTableCellView: NSView {
     @IBOutlet internal weak var textLabel: NSTextField!
     private var cancellableBag: Set<AnyCancellable> = .init()
     
-    internal override func draw(_ dirtyRect: NSRect) {
-        super.draw(dirtyRect)
-        imageView.contentTintColor = NSColor.controlAccentColor
+    internal override func awakeFromNib() {
+        super.awakeFromNib()
+        setAttributes()
         bind()
+    }
+    
+    private func setAttributes() {
+        imageView.contentTintColor = NSColor.controlAccentColor
+        
+        if NSApplication.shared.isActive {
+            textLabel.textColor = .labelColor
+        } else {
+            textLabel.textColor = .gray
+        }
     }
     
     private func bind() {
         // 굳이 이거 안해줘도 자동으로 되더라...
-        
 //        NotificationCenter.default
 //            .publisher(for: NSColor.systemColorsDidChangeNotification)
 //            .sink(receiveValue: { [weak self] notification in
@@ -32,5 +41,20 @@ class SearchTableCellView: NSView {
 //                self?.imageView.contentTintColor = color
 //            })
 //            .store(in: &cancellableBag)
+        
+        NotificationCenter.default
+            .publisher(for: NSApplication.didBecomeActiveNotification)
+            .sink(receiveValue: { [weak self] _ in
+                self?.textLabel?.textColor = .labelColor
+            })
+            .store(in: &cancellableBag)
+        
+        NotificationCenter.default
+            .publisher(for: NSApplication.didResignActiveNotification)
+            .sink(receiveValue: { [weak self] _ in
+                self?.textLabel?.textColor = .gray
+            })
+            .store(in: &cancellableBag)
     }
+    
 }

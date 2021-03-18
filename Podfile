@@ -13,7 +13,7 @@ def ios_pods
   pod 'CRRefresh', '~> 1.1.3'
   pod 'NVActivityIndicatorView', '~> 5.1.1'
   pod 'NotificationBannerSwift', '3.0.6'
-  pod 'AcknowList', '2.0.0-beta.1'
+  pod 'AcknowList', '2.0.0'
 end
 
 ###
@@ -48,7 +48,7 @@ target 'DoroDoroTV' do
   alamofire_pod
   pod 'SnapKit', '~> 5.0.1'
   pod 'NVActivityIndicatorView', '~> 5.1.1'
-  pod 'AcknowList', '2.0.0-beta.1'
+  pod 'AcknowList', '2.0.0'
 end
 
 target 'DoroDoroMac' do
