@@ -22,11 +22,12 @@ class SearchTableCellView: NSView {
     
     private func setAttributes() {
         imageView.contentTintColor = NSColor.controlAccentColor
+        imageView.wantsLayer = true
         
         if NSApplication.shared.isActive {
-            textLabel.textColor = .labelColor
+            whenBecomeActive()
         } else {
-            textLabel.textColor = .gray
+            whenResignActive()
         }
     }
     
@@ -45,16 +46,25 @@ class SearchTableCellView: NSView {
         NotificationCenter.default
             .publisher(for: NSApplication.didBecomeActiveNotification)
             .sink(receiveValue: { [weak self] _ in
-                self?.textLabel?.textColor = .labelColor
+                self?.whenBecomeActive()
             })
             .store(in: &cancellableBag)
         
         NotificationCenter.default
             .publisher(for: NSApplication.didResignActiveNotification)
             .sink(receiveValue: { [weak self] _ in
-                self?.textLabel?.textColor = .gray
+                self?.whenResignActive()
             })
             .store(in: &cancellableBag)
     }
     
+    private func whenBecomeActive() {
+        imageView?.layer?.opacity = 1
+        textLabel?.textColor = .labelColor
+    }
+    
+    private func whenResignActive() {
+        imageView?.layer?.opacity = 0.5
+        textLabel?.textColor = .gray
+    }
 }
