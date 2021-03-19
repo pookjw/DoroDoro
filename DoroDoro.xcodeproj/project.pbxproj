@@ -14,6 +14,9 @@
 		A06499CA263DB6480C62F451 /* Pods_DoroDoroTV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F02BE19F8F58D2067141AAB5 /* Pods_DoroDoroTV.framework */; };
 		C012BC21BA792C4278AD5AE6 /* Pods_DoroDoroMacAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F96722D4DC90CEFE9BFDBE4B /* Pods_DoroDoroMacAPI.framework */; };
 		D8C84073ADE3808F2A421FFF /* Pods_DoroDoroAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5309ED33327A32D8822CF4CC /* Pods_DoroDoroAPI.framework */; };
+		F305B34726044C18002F878A /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F305B34626044C18002F878A /* DetailsViewModel.swift */; };
+		F305B35126044C29002F878A /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F305B34F26044C29002F878A /* DetailsViewController.swift */; };
+		F305B35226044C29002F878A /* DetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F305B35026044C29002F878A /* DetailsViewController.xib */; };
 		F332741825EFF1CF00417437 /* CloudService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F332741725EFF1CF00417437 /* CloudService.swift */; };
 		F332742025EFF71100417437 /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F332741F25EFF71100417437 /* SettingsService.swift */; };
 		F332742725EFF7E500417437 /* SettingsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F332742625EFF7E500417437 /* SettingsData.swift */; };
@@ -469,6 +472,9 @@
 		E86CEB0C5A70206FB9CE710D /* Pods_DoroDoro.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoroDoro.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF4E71F7032F7AEA1171F871 /* Pods_DoroDoroWatch_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoroDoroWatch_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F02BE19F8F58D2067141AAB5 /* Pods_DoroDoroTV.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoroDoroTV.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F305B34626044C18002F878A /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
+		F305B34F26044C29002F878A /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		F305B35026044C29002F878A /* DetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsViewController.xib; sourceTree = "<group>"; };
 		F31F908CAD8875E972E2A171 /* Pods-DoroDoroWatchAPI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoroDoroWatchAPI.debug.xcconfig"; path = "Target Support Files/Pods-DoroDoroWatchAPI/Pods-DoroDoroWatchAPI.debug.xcconfig"; sourceTree = "<group>"; };
 		F332741725EFF1CF00417437 /* CloudService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudService.swift; sourceTree = "<group>"; };
 		F332741F25EFF71100417437 /* SettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
@@ -835,6 +841,23 @@
 				2EC2710C2BECF6DD2362AAC0 /* Pods-DoroDoroMacAPI.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		F305B34426044BE8002F878A /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				F305B34F26044C29002F878A /* DetailsViewController.swift */,
+				F305B35026044C29002F878A /* DetailsViewController.xib */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		F305B34526044BF1002F878A /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				F305B34626044C18002F878A /* DetailsViewModel.swift */,
+			);
+			path = Details;
 			sourceTree = "<group>";
 		};
 		F332741425EFF15500417437 /* Cloud */ = {
@@ -1527,6 +1550,7 @@
 			children = (
 				F375B72B25FDF1560075C3AE /* Component */,
 				F3E24D3725FDB04800123E3B /* Search */,
+				F305B34426044BE8002F878A /* Details */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1559,6 +1583,7 @@
 			isa = PBXGroup;
 			children = (
 				F37A038425FDFF760036E489 /* Search */,
+				F305B34526044BF1002F878A /* Details */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1988,6 +2013,7 @@
 			files = (
 				F3BF54DC25FD98D400A5097B /* Assets.xcassets in Resources */,
 				F3E24D8325FDC04300123E3B /* SearchTableCellView.xib in Resources */,
+				F305B35226044C29002F878A /* DetailsViewController.xib in Resources */,
 				F3E24CB925FDAD4700123E3B /* Localizable.strings in Resources */,
 				F3E24CB125FDAD4000123E3B /* InfoPlist.strings in Resources */,
 			);
@@ -2498,6 +2524,7 @@
 				F3E24CDA25FDAD5200123E3B /* AddrLinkAPIError+LocalizedError.swift in Sources */,
 				F3E24DC025FDE8F300123E3B /* NSTableView+scrollToTop.swift in Sources */,
 				F3E24CDB25FDAD5200123E3B /* AddrCoordAPIError+LocalizedError.swift in Sources */,
+				F305B34726044C18002F878A /* DetailsViewModel.swift in Sources */,
 				F3E24CD825FDAD5200123E3B /* GeoAPIError+LocalizedError.swift in Sources */,
 				F375B75625FDF3450075C3AE /* NSViewController+SpinnerView.swift in Sources */,
 				F3BF54D825FD98D200A5097B /* AppDelegate.swift in Sources */,
@@ -2505,6 +2532,7 @@
 				F3E24D4925FDB06E00123E3B /* SearchViewController.swift in Sources */,
 				F3E24CC125FDAD4A00123E3B /* Localizable.swift in Sources */,
 				F3E24CFC25FDADFB00123E3B /* CloudService.swift in Sources */,
+				F305B35126044C29002F878A /* DetailsViewController.swift in Sources */,
 				F3E24D1025FDAE3700123E3B /* BookmarksData.swift in Sources */,
 				F3E24CD725FDAD5200123E3B /* KakaoCoord2AddressAPIError+LocalizedError.swift in Sources */,
 				F3E24DB725FDCA7100123E3B /* SearchViewModel.swift in Sources */,

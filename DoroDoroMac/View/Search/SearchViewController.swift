@@ -244,8 +244,9 @@ internal final class SearchViewController: NSViewController {
     
     private func presentDetailVC(data: AddrLinkJusoData, at view: NSView) {
         let popover: NSPopover = .init()
-        popover.contentViewController = SearchViewController()
-        popover.contentViewController?.preferredContentSize = .init(width: 300, height: 400)
+        let vc: DetailsViewController = .init()
+        vc.preferredContentSize = .init(width: 400, height: 500)
+        popover.contentViewController = vc
         popover.behavior = .semitransient
         popover.delegate = self
         popover.show(relativeTo: view.bounds,
