@@ -30,9 +30,9 @@ internal final class DetailsInterfaceController: WKInterfaceController {
         super.awake(withContext: context)
         setAttributes()
         configureInterfaceModel()
+        bind()
         
         if let linkJusoData: AddrLinkJusoData = (context as? [String: AddrLinkJusoData])?["linkJusoData"] {
-            loadLinkJuso(data: linkJusoData)
             interfaceModel?.loadData(linkJusoData: linkJusoData)
         } else if let roadAddr: String = (context as? [String: String])?["roadAddr"] {
             startLoadingAnimation(in: loadingImageView) { [weak self] in
@@ -41,7 +41,6 @@ internal final class DetailsInterfaceController: WKInterfaceController {
             }
             interfaceModel?.loadData(roadAddr: roadAddr)
         }
-        bind()
     }
     
     private func setAttributes() {

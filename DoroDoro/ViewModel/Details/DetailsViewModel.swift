@@ -14,7 +14,6 @@ internal final class DetailsViewModel {
     internal typealias Snapshot = NSDiffableDataSourceSnapshot<DetailHeaderItem, DetailResultItem>
     
     internal var dataSource: DataSource? = nil
-    /// 전체 도로명주소
     internal var refreshedEvent: PassthroughSubject<Void, Never> = .init()
     internal var bookmarkEvent: PassthroughSubject<Bool, Never> = .init()
     internal let addrAPIService: AddrAPIService = .init()

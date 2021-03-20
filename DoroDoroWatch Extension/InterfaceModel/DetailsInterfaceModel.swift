@@ -22,6 +22,7 @@ internal final class DetailsInterfaceModel {
     }
     
     internal func loadData(linkJusoData: AddrLinkJusoData) {
+        linkJusoDataEvent.send(linkJusoData)
         addrAPIService.requestEngEvent(keyword: linkJusoData.roadAddr, countPerPage: 1)
         kakaoAPIService.requestAddressEvent(query: linkJusoData.roadAddr,
                                             analyze_type: .exact,

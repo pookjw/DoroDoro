@@ -44,4 +44,8 @@ extension NSViewController {
             alert.runModal()
         }
     }
+    
+    internal func loadViewIfNeeded() {
+        _ = view
+    }
 }

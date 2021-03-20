@@ -249,6 +249,9 @@
 		F3CB60BC25FA9192004484A1 /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3444C9B25E8B1BB00A0706F /* Localizable.swift */; };
 		F3D760BB2606291700461F70 /* DetailsTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D760BA2606291700461F70 /* DetailsTableCellView.swift */; };
 		F3D760BD2606292900461F70 /* DetailsTableCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3D760BC2606292900461F70 /* DetailsTableCellView.xib */; };
+		F3D760E326063DF200461F70 /* DetailsListResultItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D760E226063DF200461F70 /* DetailsListResultItem.swift */; };
+		F3D760E726063FBD00461F70 /* DetailsMapResultItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D760E626063FBD00461F70 /* DetailsMapResultItem.swift */; };
+		F3D760EB2606456600461F70 /* DetailsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D760EA2606456600461F70 /* DetailsListViewController.swift */; };
 		F3E24C2425FDAC1900123E3B /* DoroDoroMacAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = F3E24C2225FDAC1900123E3B /* DoroDoroMacAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F3E24C2725FDAC1900123E3B /* DoroDoroMacAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3E24C2025FDAC1900123E3B /* DoroDoroMacAPI.framework */; };
 		F3E24C2825FDAC1900123E3B /* DoroDoroMacAPI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F3E24C2025FDAC1900123E3B /* DoroDoroMacAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -663,6 +666,9 @@
 		F3CB603325FA90AA004484A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F3D760BA2606291700461F70 /* DetailsTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsTableCellView.swift; sourceTree = "<group>"; };
 		F3D760BC2606292900461F70 /* DetailsTableCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsTableCellView.xib; sourceTree = "<group>"; };
+		F3D760E226063DF200461F70 /* DetailsListResultItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsListResultItem.swift; sourceTree = "<group>"; };
+		F3D760E626063FBD00461F70 /* DetailsMapResultItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsMapResultItem.swift; sourceTree = "<group>"; };
+		F3D760EA2606456600461F70 /* DetailsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsListViewController.swift; sourceTree = "<group>"; };
 		F3E24C2025FDAC1900123E3B /* DoroDoroMacAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DoroDoroMacAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3E24C2225FDAC1900123E3B /* DoroDoroMacAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DoroDoroMacAPI.h; sourceTree = "<group>"; };
 		F3E24C2325FDAC1900123E3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -851,6 +857,7 @@
 				F305B34F26044C29002F878A /* DetailsViewController.swift */,
 				F3D760BC2606292900461F70 /* DetailsTableCellView.xib */,
 				F3D760BA2606291700461F70 /* DetailsTableCellView.swift */,
+				F3D760EA2606456600461F70 /* DetailsListViewController.swift */,
 			);
 			path = Details;
 			sourceTree = "<group>";
@@ -1513,6 +1520,15 @@
 			path = DoroDoroTVAPI;
 			sourceTree = "<group>";
 		};
+		F3D760BE2606318D00461F70 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				F3D760E226063DF200461F70 /* DetailsListResultItem.swift */,
+				F3D760E626063FBD00461F70 /* DetailsMapResultItem.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
 		F3E24C2125FDAC1900123E3B /* DoroDoroMacAPI */ = {
 			isa = PBXGroup;
 			children = (
@@ -1587,6 +1603,7 @@
 			children = (
 				F37A038425FDFF760036E489 /* Search */,
 				F305B34526044BF1002F878A /* Details */,
+				F3D760BE2606318D00461F70 /* Entity */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -2522,12 +2539,15 @@
 				F3E24DC925FDEDAF00123E3B /* NSViewController+Ext.swift in Sources */,
 				F3E24CD625FDAD5200123E3B /* AddrEngAPIError+LocalizedError.swift in Sources */,
 				F3E24D2725FDAFC400123E3B /* main.swift in Sources */,
+				F3D760E326063DF200461F70 /* DetailsListResultItem.swift in Sources */,
 				F3E24D0525FDADFF00123E3B /* BookmarksService.swift in Sources */,
 				F375B72D25FDF1680075C3AE /* SpinnerView.swift in Sources */,
 				F3E24CDA25FDAD5200123E3B /* AddrLinkAPIError+LocalizedError.swift in Sources */,
 				F3E24DC025FDE8F300123E3B /* NSTableView+scrollToTop.swift in Sources */,
 				F3E24CDB25FDAD5200123E3B /* AddrCoordAPIError+LocalizedError.swift in Sources */,
+				F3D760E726063FBD00461F70 /* DetailsMapResultItem.swift in Sources */,
 				F305B34726044C18002F878A /* DetailsViewModel.swift in Sources */,
+				F3D760EB2606456600461F70 /* DetailsListViewController.swift in Sources */,
 				F3D760BB2606291700461F70 /* DetailsTableCellView.swift in Sources */,
 				F3E24CD825FDAD5200123E3B /* GeoAPIError+LocalizedError.swift in Sources */,
 				F375B75625FDF3450075C3AE /* NSViewController+SpinnerView.swift in Sources */,

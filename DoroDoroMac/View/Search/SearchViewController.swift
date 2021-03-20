@@ -109,16 +109,18 @@ internal final class SearchViewController: NSViewController {
         self.searchIdentifier = searchIdentifier
         let searchColumn: NSTableColumn = .init(identifier: searchIdentifier)
         self.searchColumn = searchColumn
-        searchColumn.minWidth = 400
+//        searchColumn.minWidth = 400
         searchColumn.title = ""
         tableView.addTableColumn(searchColumn)
         tableView.register(NSNib(nibNamed: SearchTableCellView.className, bundle: .main), forIdentifier: searchIdentifier)
+        
+        // 그냥 tableView를 등록할 경우 bound 계산이 제대로 안 된다. 따라서 정석대로 NSClipView와 NSScrollView를 써준다.
         
         let clipView: NSClipView = .init()
         self.clipView = clipView
         clipView.documentView = tableView
         clipView.postsBoundsChangedNotifications = true
-        
+
         let scrollView: NSScrollView = .init()
         self.scrollView = scrollView
         scrollView.contentView = clipView
@@ -181,14 +183,14 @@ internal final class SearchViewController: NSViewController {
                 .store(in: &cancellableBag)
         }
         
-        if let searchWindow: SearchWindow = view.window as? SearchWindow {
-            searchWindow.resizeEvent
-                .receive(on: DispatchQueue.main)
-                .sink(receiveValue: { [weak self] rect in
-                    self?.searchColumn?.minWidth = rect.width
-                })
-                .store(in: &cancellableBag)
-        }
+//        if let searchWindow: SearchWindow = window as? SearchWindow {
+//            searchWindow.resizeEvent
+//                .receive(on: DispatchQueue.main)
+//                .sink(receiveValue: { [weak self] rect in
+//                    self?.searchColumn?.minWidth = rect.width
+//                })
+//                .store(in: &cancellableBag)
+//        }
     }
     
     private func updateColumnTitle(for text: String) {
@@ -255,6 +257,9 @@ internal final class SearchViewController: NSViewController {
     private func presentDetailVC(data: AddrLinkJusoData, at view: NSView) {
         let popover: NSPopover = .init()
         let vc: DetailsViewController = .init()
+        vc.loadViewIfNeeded()
+        vc.setLinkJusoData(data)
+//        vc.setRoadAddr(data.roadAddr)
         vc.preferredContentSize = .init(width: 400, height: 500)
         popover.contentViewController = vc
         popover.behavior = .semitransient
@@ -289,6 +294,12 @@ extension SearchViewController: NSTableViewDataSource {
         
         return cell
     }
+}
+
+extension SearchViewController: NSTableViewDelegate {
+    internal func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
+        return 40
+    }
     
     internal func tableViewSelectionDidChange(_ notification: Notification) {
         guard let viewModel: SearchViewModel = viewModel,
@@ -305,12 +316,6 @@ extension SearchViewController: NSTableViewDataSource {
         
         let selectedMenuJusoData: AddrLinkJusoData = viewModel.addrLinkJusoData[clickedRow]
         presentDetailVC(data: selectedMenuJusoData, at: cell)
-    }
-}
-
-extension SearchViewController: NSTableViewDelegate {
-    internal func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
-        return 40
     }
 }
 

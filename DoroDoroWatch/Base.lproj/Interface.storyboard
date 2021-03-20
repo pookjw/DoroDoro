@@ -14,7 +14,7 @@
                     <items>
                         <group width="1" alignment="left" layout="vertical" id="hNm-2u-D14">
                             <items>
-                                <textField width="1" alignment="left" placeholder="🔎 검색..." id="xcp-Lr-e6F">
+                                <textField width="1" alignment="left" text="미아동" placeholder="🔎 검색..." id="xcp-Lr-e6F">
                                     <connections>
                                         <action selector="textFieldAction:" destination="AgC-eL-Hgc" id="Thi-M6-g7B"/>
                                     </connections>
