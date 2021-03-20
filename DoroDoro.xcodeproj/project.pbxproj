@@ -16,7 +16,6 @@
 		D8C84073ADE3808F2A421FFF /* Pods_DoroDoroAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5309ED33327A32D8822CF4CC /* Pods_DoroDoroAPI.framework */; };
 		F305B34726044C18002F878A /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F305B34626044C18002F878A /* DetailsViewModel.swift */; };
 		F305B35126044C29002F878A /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F305B34F26044C29002F878A /* DetailsViewController.swift */; };
-		F305B35226044C29002F878A /* DetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F305B35026044C29002F878A /* DetailsViewController.xib */; };
 		F332741825EFF1CF00417437 /* CloudService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F332741725EFF1CF00417437 /* CloudService.swift */; };
 		F332742025EFF71100417437 /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F332741F25EFF71100417437 /* SettingsService.swift */; };
 		F332742725EFF7E500417437 /* SettingsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F332742625EFF7E500417437 /* SettingsData.swift */; };
@@ -248,6 +247,8 @@
 		F3CB60AE25FA918D004484A1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F378B71625E7DAFF00FCE546 /* InfoPlist.strings */; };
 		F3CB60B525FA9190004484A1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F378B6B325E7D69300FCE546 /* Localizable.strings */; };
 		F3CB60BC25FA9192004484A1 /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3444C9B25E8B1BB00A0706F /* Localizable.swift */; };
+		F3D760BB2606291700461F70 /* DetailsTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D760BA2606291700461F70 /* DetailsTableCellView.swift */; };
+		F3D760BD2606292900461F70 /* DetailsTableCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3D760BC2606292900461F70 /* DetailsTableCellView.xib */; };
 		F3E24C2425FDAC1900123E3B /* DoroDoroMacAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = F3E24C2225FDAC1900123E3B /* DoroDoroMacAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F3E24C2725FDAC1900123E3B /* DoroDoroMacAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3E24C2025FDAC1900123E3B /* DoroDoroMacAPI.framework */; };
 		F3E24C2825FDAC1900123E3B /* DoroDoroMacAPI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F3E24C2025FDAC1900123E3B /* DoroDoroMacAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -474,7 +475,6 @@
 		F02BE19F8F58D2067141AAB5 /* Pods_DoroDoroTV.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoroDoroTV.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F305B34626044C18002F878A /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
 		F305B34F26044C29002F878A /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
-		F305B35026044C29002F878A /* DetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsViewController.xib; sourceTree = "<group>"; };
 		F31F908CAD8875E972E2A171 /* Pods-DoroDoroWatchAPI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoroDoroWatchAPI.debug.xcconfig"; path = "Target Support Files/Pods-DoroDoroWatchAPI/Pods-DoroDoroWatchAPI.debug.xcconfig"; sourceTree = "<group>"; };
 		F332741725EFF1CF00417437 /* CloudService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudService.swift; sourceTree = "<group>"; };
 		F332741F25EFF71100417437 /* SettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
@@ -661,6 +661,8 @@
 		F3CB603025FA90A9004484A1 /* DoroDoroTVAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DoroDoroTVAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3CB603225FA90AA004484A1 /* DoroDoroTVAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DoroDoroTVAPI.h; sourceTree = "<group>"; };
 		F3CB603325FA90AA004484A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F3D760BA2606291700461F70 /* DetailsTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsTableCellView.swift; sourceTree = "<group>"; };
+		F3D760BC2606292900461F70 /* DetailsTableCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsTableCellView.xib; sourceTree = "<group>"; };
 		F3E24C2025FDAC1900123E3B /* DoroDoroMacAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DoroDoroMacAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3E24C2225FDAC1900123E3B /* DoroDoroMacAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DoroDoroMacAPI.h; sourceTree = "<group>"; };
 		F3E24C2325FDAC1900123E3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -847,7 +849,8 @@
 			isa = PBXGroup;
 			children = (
 				F305B34F26044C29002F878A /* DetailsViewController.swift */,
-				F305B35026044C29002F878A /* DetailsViewController.xib */,
+				F3D760BC2606292900461F70 /* DetailsTableCellView.xib */,
+				F3D760BA2606291700461F70 /* DetailsTableCellView.swift */,
 			);
 			path = Details;
 			sourceTree = "<group>";
@@ -2013,9 +2016,9 @@
 			files = (
 				F3BF54DC25FD98D400A5097B /* Assets.xcassets in Resources */,
 				F3E24D8325FDC04300123E3B /* SearchTableCellView.xib in Resources */,
-				F305B35226044C29002F878A /* DetailsViewController.xib in Resources */,
 				F3E24CB925FDAD4700123E3B /* Localizable.strings in Resources */,
 				F3E24CB125FDAD4000123E3B /* InfoPlist.strings in Resources */,
+				F3D760BD2606292900461F70 /* DetailsTableCellView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2525,6 +2528,7 @@
 				F3E24DC025FDE8F300123E3B /* NSTableView+scrollToTop.swift in Sources */,
 				F3E24CDB25FDAD5200123E3B /* AddrCoordAPIError+LocalizedError.swift in Sources */,
 				F305B34726044C18002F878A /* DetailsViewModel.swift in Sources */,
+				F3D760BB2606291700461F70 /* DetailsTableCellView.swift in Sources */,
 				F3E24CD825FDAD5200123E3B /* GeoAPIError+LocalizedError.swift in Sources */,
 				F375B75625FDF3450075C3AE /* NSViewController+SpinnerView.swift in Sources */,
 				F3BF54D825FD98D200A5097B /* AppDelegate.swift in Sources */,

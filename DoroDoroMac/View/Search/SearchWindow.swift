@@ -6,8 +6,11 @@
 //
 
 import Cocoa
+import Combine
 
 internal final class SearchWindow: NSWindow {
+    internal let resizeEvent: PassthroughSubject<NSRect, Never> = .init()
+    
     internal convenience init() {
         self.init(contentRect: NSRect(x: 0, y: 0, width: 400, height: 400),
                   styleMask:  [.miniaturizable, .closable, .resizable, .titled],
@@ -25,5 +28,10 @@ internal final class SearchWindow: NSWindow {
 }
 
 extension SearchWindow: NSWindowDelegate {
-    
+    internal func windowDidResize(_ notification: Notification) {
+        guard let searchWindow: SearchWindow = notification.object as? SearchWindow else {
+            return
+        }
+        searchWindow.resizeEvent.send(searchWindow.frame)
+    }
 }

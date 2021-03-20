@@ -10,14 +10,18 @@ import Combine
 
 class SearchTableCellView: NSView {
 
-    @IBOutlet internal weak var imageView: NSImageView!
-    @IBOutlet internal weak var textLabel: NSTextField!
+    @IBOutlet private weak var imageView: NSImageView!
+    @IBOutlet private weak var textLabel: NSTextField!
     private var cancellableBag: Set<AnyCancellable> = .init()
     
     internal override func awakeFromNib() {
         super.awakeFromNib()
         setAttributes()
         bind()
+    }
+    
+    internal func configure(text: String) {
+        textLabel.stringValue = text
     }
     
     private func setAttributes() {

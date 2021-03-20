@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="18122" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18122"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -10,11 +10,11 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="vjx-S9-bOz" customClass="SearchTableCellView" customModule="DoroDoroMac" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="311" height="70"/>
+            <rect key="frame" x="0.0" y="0.0" width="310" height="70"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <stackView distribution="fillProportionally" orientation="horizontal" alignment="centerY" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vmm-EX-fgQ">
-                    <rect key="frame" x="0.0" y="0.0" width="311" height="70"/>
+                    <rect key="frame" x="0.0" y="0.0" width="310" height="70"/>
                     <subviews>
                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eKv-pC-gdR">
                             <rect key="frame" x="0.0" y="16.5" width="28.5" height="38"/>
@@ -27,7 +27,7 @@
                             </imageCell>
                         </imageView>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5lM-8O-T9H">
-                            <rect key="frame" x="26" y="27" width="287" height="16"/>
+                            <rect key="frame" x="26" y="27" width="286" height="16"/>
                             <textFieldCell key="cell" lineBreakMode="truncatingTail" alignment="left" title="서울특별시 강남구 가로수길 5 (신사동)" id="hvV-ep-bIh">
                                 <font key="font" usesAppearanceFont="YES"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>

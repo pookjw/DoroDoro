@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="18122" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18122"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner"/>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="c22-O7-iKe" customClass="DetailsTableCellView" customModule="DoroDoroMac" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="310" height="51"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FMt-Fd-sS5">
+                    <rect key="frame" x="0.0" y="0.0" width="310" height="51"/>
+                    <subviews>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wMN-vg-ZOg">
+                            <rect key="frame" x="-2" y="27" width="52" height="24"/>
+                            <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="5dx-AV-J21">
+                                <font key="font" metaFont="system" size="20"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KD9-LT-Gis">
+                            <rect key="frame" x="-2" y="0.0" width="42" height="19"/>
+                            <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="7rV-Of-sbq">
+                                <font key="font" metaFont="system" size="15"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                    </subviews>
+                    <visibilityPriorities>
+                        <integer value="1000"/>
+                        <integer value="1000"/>
+                    </visibilityPriorities>
+                    <customSpacing>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
+                    </customSpacing>
+                </stackView>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="FMt-Fd-sS5" secondAttribute="trailing" id="5yT-dn-Q0Q"/>
+                <constraint firstItem="FMt-Fd-sS5" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="K2U-5q-Qja"/>
+                <constraint firstAttribute="bottom" secondItem="FMt-Fd-sS5" secondAttribute="bottom" id="LPd-iA-zIj"/>
+                <constraint firstItem="FMt-Fd-sS5" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="ush-7P-XOL"/>
+            </constraints>
+            <point key="canvasLocation" x="139" y="154"/>
+        </customView>
+    </objects>
+</document>

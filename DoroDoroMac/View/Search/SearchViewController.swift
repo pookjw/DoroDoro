@@ -109,6 +109,7 @@ internal final class SearchViewController: NSViewController {
         self.searchIdentifier = searchIdentifier
         let searchColumn: NSTableColumn = .init(identifier: searchIdentifier)
         self.searchColumn = searchColumn
+        searchColumn.minWidth = 400
         searchColumn.title = ""
         tableView.addTableColumn(searchColumn)
         tableView.register(NSNib(nibNamed: SearchTableCellView.className, bundle: .main), forIdentifier: searchIdentifier)
@@ -176,6 +177,15 @@ internal final class SearchViewController: NSViewController {
                         return
                     }
                     self?.determineLoadNextPage(bounds: bounds)
+                })
+                .store(in: &cancellableBag)
+        }
+        
+        if let searchWindow: SearchWindow = view.window as? SearchWindow {
+            searchWindow.resizeEvent
+                .receive(on: DispatchQueue.main)
+                .sink(receiveValue: { [weak self] rect in
+                    self?.searchColumn?.minWidth = rect.width
                 })
                 .store(in: &cancellableBag)
         }
@@ -275,7 +285,7 @@ extension SearchViewController: NSTableViewDataSource {
             return nil
         }
         
-        cell.textLabel.stringValue = viewModel.addrLinkJusoData[row].roadAddr
+        cell.configure(text: viewModel.addrLinkJusoData[row].roadAddr)
         
         return cell
     }
