@@ -40,13 +40,13 @@ internal final class DetailsListViewController: NSViewController {
         tableView.headerView = nil
         tableView.usesAutomaticRowHeights = true
         
-        let listIdentifier: NSUserInterfaceItemIdentifier = .init(DetailsTableCellView.className)
+        let listIdentifier: NSUserInterfaceItemIdentifier = .init(DetailTableCellView.className)
         self.listIdentifier = listIdentifier
         let listColumn: NSTableColumn = .init(identifier: listIdentifier)
 //        listColumn.minWidth = 400
         listColumn.title = ""
         tableView.addTableColumn(listColumn)
-        tableView.register(NSNib(nibNamed: DetailsTableCellView.className, bundle: .main), forIdentifier: listIdentifier)
+        tableView.register(NSNib(nibNamed: DetailTableCellView.className, bundle: .main), forIdentifier: listIdentifier)
         
         let clipView: NSClipView = .init()
         clipView.documentView = tableView
@@ -70,7 +70,7 @@ extension DetailsListViewController: NSTableViewDataSource {
     
     internal func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         guard let listIdentifier: NSUserInterfaceItemIdentifier = listIdentifier,
-              let cell: DetailsTableCellView = tableView.makeView(withIdentifier: listIdentifier, owner: self) as? DetailsTableCellView
+              let cell: DetailTableCellView = tableView.makeView(withIdentifier: listIdentifier, owner: self) as? DetailTableCellView
         else {
             return nil
         }

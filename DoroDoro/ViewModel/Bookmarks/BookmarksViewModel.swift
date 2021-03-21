@@ -19,7 +19,7 @@ internal final class BookmarksViewModel {
     private var cancellableBag: Set<AnyCancellable> = .init()
     
     internal init() {
-        bind()
+//        bind()
     }
     
     internal func getCellItem(from indexPath: IndexPath) -> BookmarksCellItem? {
@@ -66,7 +66,7 @@ internal final class BookmarksViewModel {
         refreshEvent.send(!items.isEmpty)
     }
     
-    private func bind() {
+    internal func bind() {
         BookmarksService.shared.dataEvent
             .combineLatest($searchEvent)
             .receive(on: DispatchQueue.main)

@@ -10,7 +10,6 @@ import Combine
 import DoroDoroMacAPI
 
 internal final class SearchViewModel {
-    
     @Published internal var searchEvent: String? = nil
     internal let addrLinkJusoDataEvent: PassthroughSubject<(data: [AddrLinkJusoData], text: String, isFirstPage: Bool), Never> = .init()
     internal private(set) var addrLinkJusoData: [AddrLinkJusoData] = []

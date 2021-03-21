@@ -242,13 +242,12 @@
 		F3CB60A325FA9184004484A1 /* AddrEngAPIError+LocalizedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3800A3325F2E56B00F218A1 /* AddrEngAPIError+LocalizedError.swift */; };
 		F3CB60A425FA9184004484A1 /* GeoAPIError+LocalizedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E89B6E25F975BB00E3AC5A /* GeoAPIError+LocalizedError.swift */; };
 		F3CB60A525FA9184004484A1 /* KakaoCoord2AddressAPIError+LocalizedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A3DEEF25F41D4000E8F2F0 /* KakaoCoord2AddressAPIError+LocalizedError.swift */; };
-		F3CB60A625FA9184004484A1 /* UIDevice+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371F07125F52E9F00E003E8 /* UIDevice+Ext.swift */; };
 		F3CB60A725FA9184004484A1 /* AddrLinkAPIError+LocalizedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3800A2225F2E4F900F218A1 /* AddrLinkAPIError+LocalizedError.swift */; };
 		F3CB60AE25FA918D004484A1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F378B71625E7DAFF00FCE546 /* InfoPlist.strings */; };
 		F3CB60B525FA9190004484A1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F378B6B325E7D69300FCE546 /* Localizable.strings */; };
 		F3CB60BC25FA9192004484A1 /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3444C9B25E8B1BB00A0706F /* Localizable.swift */; };
-		F3D760BB2606291700461F70 /* DetailsTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D760BA2606291700461F70 /* DetailsTableCellView.swift */; };
-		F3D760BD2606292900461F70 /* DetailsTableCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3D760BC2606292900461F70 /* DetailsTableCellView.xib */; };
+		F3D760BB2606291700461F70 /* DetailTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D760BA2606291700461F70 /* DetailTableCellView.swift */; };
+		F3D760BD2606292900461F70 /* DetailTableCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3D760BC2606292900461F70 /* DetailTableCellView.xib */; };
 		F3D760E326063DF200461F70 /* DetailsListResultItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D760E226063DF200461F70 /* DetailsListResultItem.swift */; };
 		F3D760E726063FBD00461F70 /* DetailsMapResultItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D760E626063FBD00461F70 /* DetailsMapResultItem.swift */; };
 		F3D760EB2606456600461F70 /* DetailsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D760EA2606456600461F70 /* DetailsListViewController.swift */; };
@@ -257,6 +256,11 @@
 		F3D760F326079C8A00461F70 /* AboutWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D760F226079C8A00461F70 /* AboutWindow.swift */; };
 		F3D760F526079DF400461F70 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D760F426079DF400461F70 /* AboutViewController.swift */; };
 		F3D760F92607A5E900461F70 /* NSWindow+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D760F82607A5E900461F70 /* NSWindow+Ext.swift */; };
+		F3D760FC2607AC2F00461F70 /* BookmarksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D760FB2607AC2F00461F70 /* BookmarksViewController.swift */; };
+		F3D760FF2607B14500461F70 /* BookmarksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D760FE2607B14500461F70 /* BookmarksViewModel.swift */; };
+		F3D761002607B2D700461F70 /* String+choseongContains.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E6880F25F122E200A619CA /* String+choseongContains.swift */; };
+		F3D761012607B2D800461F70 /* String+choseongContains.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E6880F25F122E200A619CA /* String+choseongContains.swift */; };
+		F3D761022607B2DA00461F70 /* String+choseongContains.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E6880F25F122E200A619CA /* String+choseongContains.swift */; };
 		F3E24C2425FDAC1900123E3B /* DoroDoroMacAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = F3E24C2225FDAC1900123E3B /* DoroDoroMacAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F3E24C2725FDAC1900123E3B /* DoroDoroMacAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3E24C2025FDAC1900123E3B /* DoroDoroMacAPI.framework */; };
 		F3E24C2825FDAC1900123E3B /* DoroDoroMacAPI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F3E24C2025FDAC1900123E3B /* DoroDoroMacAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -314,8 +318,8 @@
 		F3E24D2725FDAFC400123E3B /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E24D2625FDAFC400123E3B /* main.swift */; };
 		F3E24D3925FDB06000123E3B /* SearchWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E24D3825FDB06000123E3B /* SearchWindow.swift */; };
 		F3E24D4925FDB06E00123E3B /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E24D4825FDB06E00123E3B /* SearchViewController.swift */; };
-		F3E24D8325FDC04300123E3B /* SearchTableCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3E24D8225FDC04300123E3B /* SearchTableCellView.xib */; };
-		F3E24D8C25FDC0C600123E3B /* SearchTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E24D8B25FDC0C600123E3B /* SearchTableCellView.swift */; };
+		F3E24D8325FDC04300123E3B /* SimgleResultTableCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3E24D8225FDC04300123E3B /* SimgleResultTableCellView.xib */; };
+		F3E24D8C25FDC0C600123E3B /* SimgleResultTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E24D8B25FDC0C600123E3B /* SimgleResultTableCellView.swift */; };
 		F3E24DA625FDC9E500123E3B /* NSObject+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E24DA525FDC9E500123E3B /* NSObject+Ext.swift */; };
 		F3E24DB725FDCA7100123E3B /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E24DB625FDCA7100123E3B /* SearchViewModel.swift */; };
 		F3E24DC025FDE8F300123E3B /* NSTableView+scrollToTop.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E24DBF25FDE8F300123E3B /* NSTableView+scrollToTop.swift */; };
@@ -669,8 +673,8 @@
 		F3CB603025FA90A9004484A1 /* DoroDoroTVAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DoroDoroTVAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3CB603225FA90AA004484A1 /* DoroDoroTVAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DoroDoroTVAPI.h; sourceTree = "<group>"; };
 		F3CB603325FA90AA004484A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F3D760BA2606291700461F70 /* DetailsTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsTableCellView.swift; sourceTree = "<group>"; };
-		F3D760BC2606292900461F70 /* DetailsTableCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsTableCellView.xib; sourceTree = "<group>"; };
+		F3D760BA2606291700461F70 /* DetailTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableCellView.swift; sourceTree = "<group>"; };
+		F3D760BC2606292900461F70 /* DetailTableCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailTableCellView.xib; sourceTree = "<group>"; };
 		F3D760E226063DF200461F70 /* DetailsListResultItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsListResultItem.swift; sourceTree = "<group>"; };
 		F3D760E626063FBD00461F70 /* DetailsMapResultItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsMapResultItem.swift; sourceTree = "<group>"; };
 		F3D760EA2606456600461F70 /* DetailsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsListViewController.swift; sourceTree = "<group>"; };
@@ -679,14 +683,16 @@
 		F3D760F226079C8A00461F70 /* AboutWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutWindow.swift; sourceTree = "<group>"; };
 		F3D760F426079DF400461F70 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		F3D760F82607A5E900461F70 /* NSWindow+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSWindow+Ext.swift"; sourceTree = "<group>"; };
+		F3D760FB2607AC2F00461F70 /* BookmarksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksViewController.swift; sourceTree = "<group>"; };
+		F3D760FE2607B14500461F70 /* BookmarksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksViewModel.swift; sourceTree = "<group>"; };
 		F3E24C2025FDAC1900123E3B /* DoroDoroMacAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DoroDoroMacAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3E24C2225FDAC1900123E3B /* DoroDoroMacAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DoroDoroMacAPI.h; sourceTree = "<group>"; };
 		F3E24C2325FDAC1900123E3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F3E24D2625FDAFC400123E3B /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		F3E24D3825FDB06000123E3B /* SearchWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchWindow.swift; sourceTree = "<group>"; };
 		F3E24D4825FDB06E00123E3B /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		F3E24D8225FDC04300123E3B /* SearchTableCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTableCellView.xib; sourceTree = "<group>"; };
-		F3E24D8B25FDC0C600123E3B /* SearchTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableCellView.swift; sourceTree = "<group>"; };
+		F3E24D8225FDC04300123E3B /* SimgleResultTableCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SimgleResultTableCellView.xib; sourceTree = "<group>"; };
+		F3E24D8B25FDC0C600123E3B /* SimgleResultTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimgleResultTableCellView.swift; sourceTree = "<group>"; };
 		F3E24DA525FDC9E500123E3B /* NSObject+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Ext.swift"; sourceTree = "<group>"; };
 		F3E24DB625FDCA7100123E3B /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		F3E24DBF25FDE8F300123E3B /* NSTableView+scrollToTop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTableView+scrollToTop.swift"; sourceTree = "<group>"; };
@@ -865,8 +871,6 @@
 			isa = PBXGroup;
 			children = (
 				F305B34F26044C29002F878A /* DetailsViewController.swift */,
-				F3D760BC2606292900461F70 /* DetailsTableCellView.xib */,
-				F3D760BA2606291700461F70 /* DetailsTableCellView.swift */,
 				F3D760EA2606456600461F70 /* DetailsListViewController.swift */,
 				F3D760EC2607796200461F70 /* DetailsMapViewController.swift */,
 			);
@@ -965,10 +969,10 @@
 				F333B9FF25EBFE1B00F1915F /* NSObject+Ext.swift */,
 				F33BB0D225ECE96C00BC5772 /* UIViewController+Ext.swift */,
 				F3F2F29125EFDB74005FC9CE /* UIViewController+SpinnerView.swift */,
-				F3E6880F25F122E200A619CA /* String+choseongContains.swift */,
 				F3800A2D25F2E54100F218A1 /* AddrLinkJusoData+convertToAddrCoordSearchData.swift */,
 				F3A3DF2E25F4412A00E8F2F0 /* UIView+Ext.swift */,
 				F3A3DF3525F4430600E8F2F0 /* UIScrollView+Ext.swift */,
+				F371F07125F52E9F00E003E8 /* UIDevice+Ext.swift */,
 				F371F06F25F513B700E003E8 /* Bundle+Ext.swift */,
 			);
 			path = Extension;
@@ -1184,6 +1188,10 @@
 			children = (
 				F3D760EE2607964700461F70 /* CustomMenu.swift */,
 				F375B72C25FDF1680075C3AE /* SpinnerView.swift */,
+				F3E24D8225FDC04300123E3B /* SimgleResultTableCellView.xib */,
+				F3E24D8B25FDC0C600123E3B /* SimgleResultTableCellView.swift */,
+				F3D760BC2606292900461F70 /* DetailTableCellView.xib */,
+				F3D760BA2606291700461F70 /* DetailTableCellView.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -1348,7 +1356,7 @@
 				F3800A3F25F2E5BA00F218A1 /* KakaoAddressAPIError+LocalizedError.swift */,
 				F3A3DEEF25F41D4000E8F2F0 /* KakaoCoord2AddressAPIError+LocalizedError.swift */,
 				F3E89B6E25F975BB00E3AC5A /* GeoAPIError+LocalizedError.swift */,
-				F371F07125F52E9F00E003E8 /* UIDevice+Ext.swift */,
+				F3E6880F25F122E200A619CA /* String+choseongContains.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1550,6 +1558,22 @@
 			path = About;
 			sourceTree = "<group>";
 		};
+		F3D760FA2607ABDA00461F70 /* Bookmarks */ = {
+			isa = PBXGroup;
+			children = (
+				F3D760FB2607AC2F00461F70 /* BookmarksViewController.swift */,
+			);
+			path = Bookmarks;
+			sourceTree = "<group>";
+		};
+		F3D760FD2607B13400461F70 /* Bookmarks */ = {
+			isa = PBXGroup;
+			children = (
+				F3D760FE2607B14500461F70 /* BookmarksViewModel.swift */,
+			);
+			path = Bookmarks;
+			sourceTree = "<group>";
+		};
 		F3E24C2125FDAC1900123E3B /* DoroDoroMacAPI */ = {
 			isa = PBXGroup;
 			children = (
@@ -1591,6 +1615,7 @@
 				F375B72B25FDF1560075C3AE /* Component */,
 				F3D760F126079B1500461F70 /* About */,
 				F3E24D3725FDB04800123E3B /* Search */,
+				F3D760FA2607ABDA00461F70 /* Bookmarks */,
 				F305B34426044BE8002F878A /* Details */,
 			);
 			path = View;
@@ -1601,8 +1626,6 @@
 			children = (
 				F3E24D3825FDB06000123E3B /* SearchWindow.swift */,
 				F3E24D4825FDB06E00123E3B /* SearchViewController.swift */,
-				F3E24D8225FDC04300123E3B /* SearchTableCellView.xib */,
-				F3E24D8B25FDC0C600123E3B /* SearchTableCellView.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -1625,6 +1648,7 @@
 			isa = PBXGroup;
 			children = (
 				F37A038425FDFF760036E489 /* Search */,
+				F3D760FD2607B13400461F70 /* Bookmarks */,
 				F305B34526044BF1002F878A /* Details */,
 				F3D760BE2606318D00461F70 /* Entity */,
 			);
@@ -2055,10 +2079,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3BF54DC25FD98D400A5097B /* Assets.xcassets in Resources */,
-				F3E24D8325FDC04300123E3B /* SearchTableCellView.xib in Resources */,
+				F3E24D8325FDC04300123E3B /* SimgleResultTableCellView.xib in Resources */,
 				F3E24CB925FDAD4700123E3B /* Localizable.strings in Resources */,
 				F3E24CB125FDAD4000123E3B /* InfoPlist.strings in Resources */,
-				F3D760BD2606292900461F70 /* DetailsTableCellView.xib in Resources */,
+				F3D760BD2606292900461F70 /* DetailTableCellView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2407,6 +2431,7 @@
 				F350296B25F2CA550094B33D /* DetailsInterfaceModel.swift in Sources */,
 				F350296525F2C9200094B33D /* DetailsInterfaceController.swift in Sources */,
 				F334A61E25F2AEE70005E970 /* SearchInterfaceModel.swift in Sources */,
+				F3D761022607B2DA00461F70 /* String+choseongContains.swift in Sources */,
 				F3A3DF0525F4210B00E8F2F0 /* GeoInterfaceModel.swift in Sources */,
 				F350297925F2CE1E0094B33D /* DetailsLinkJusoObject.swift in Sources */,
 				F3E24CE425FDAD5400123E3B /* KakaoAddressAPIError+LocalizedError.swift in Sources */,
@@ -2556,8 +2581,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3D760FC2607AC2F00461F70 /* BookmarksViewController.swift in Sources */,
 				F3D760ED2607796200461F70 /* DetailsMapViewController.swift in Sources */,
 				F3E24D3925FDB06000123E3B /* SearchWindow.swift in Sources */,
+				F3D761012607B2D800461F70 /* String+choseongContains.swift in Sources */,
 				F375B75F25FDF6A40075C3AE /* NSAppearance+Ext.swift in Sources */,
 				F3E24DA625FDC9E500123E3B /* NSObject+Ext.swift in Sources */,
 				F3E24DC925FDEDAF00123E3B /* NSViewController+Ext.swift in Sources */,
@@ -2573,8 +2600,9 @@
 				F3D760E726063FBD00461F70 /* DetailsMapResultItem.swift in Sources */,
 				F305B34726044C18002F878A /* DetailsViewModel.swift in Sources */,
 				F3D760EB2606456600461F70 /* DetailsListViewController.swift in Sources */,
-				F3D760BB2606291700461F70 /* DetailsTableCellView.swift in Sources */,
+				F3D760BB2606291700461F70 /* DetailTableCellView.swift in Sources */,
 				F3E24CD825FDAD5200123E3B /* GeoAPIError+LocalizedError.swift in Sources */,
+				F3D760FF2607B14500461F70 /* BookmarksViewModel.swift in Sources */,
 				F375B75625FDF3450075C3AE /* NSViewController+SpinnerView.swift in Sources */,
 				F3BF54D825FD98D200A5097B /* AppDelegate.swift in Sources */,
 				F37A035B25FDF7580036E489 /* NSApplication+Ext.swift in Sources */,
@@ -2588,7 +2616,7 @@
 				F3E24CD725FDAD5200123E3B /* KakaoCoord2AddressAPIError+LocalizedError.swift in Sources */,
 				F3E24DB725FDCA7100123E3B /* SearchViewModel.swift in Sources */,
 				F3E24CDC25FDAD5200123E3B /* KakaoAddressAPIError+LocalizedError.swift in Sources */,
-				F3E24D8C25FDC0C600123E3B /* SearchTableCellView.swift in Sources */,
+				F3E24D8C25FDC0C600123E3B /* SimgleResultTableCellView.swift in Sources */,
 				F3D760F326079C8A00461F70 /* AboutWindow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2604,10 +2632,10 @@
 				F3CB60A425FA9184004484A1 /* GeoAPIError+LocalizedError.swift in Sources */,
 				F3CB60A525FA9184004484A1 /* KakaoCoord2AddressAPIError+LocalizedError.swift in Sources */,
 				F3CB600325FA8F6A004484A1 /* AppDelegate.swift in Sources */,
+				F3D761002607B2D700461F70 /* String+choseongContains.swift in Sources */,
 				F3CB60A725FA9184004484A1 /* AddrLinkAPIError+LocalizedError.swift in Sources */,
 				F3CB60A225FA9184004484A1 /* AddrCoordAPIError+LocalizedError.swift in Sources */,
 				F3CB60A325FA9184004484A1 /* AddrEngAPIError+LocalizedError.swift in Sources */,
-				F3CB60A625FA9184004484A1 /* UIDevice+Ext.swift in Sources */,
 				F3E24CF425FDADFA00123E3B /* CloudService.swift in Sources */,
 				F3E24D0425FDADFE00123E3B /* BookmarksService.swift in Sources */,
 			);

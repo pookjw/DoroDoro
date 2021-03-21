@@ -1,17 +1,17 @@
 //
-//  DetailsTableCellView.swift
+//  SimgleResultTableCellView.swift
 //  DoroDoroMac
 //
-//  Created by Jinwoo Kim on 3/20/21.
+//  Created by Jinwoo Kim on 3/14/21.
 //
 
 import Cocoa
 import Combine
 
-internal final class DetailsTableCellView: NSView {
+class SimgleResultTableCellView: NSView {
+
     @IBOutlet private weak var imageView: NSImageView!
-    @IBOutlet private weak var mainTextLabel: NSTextField!
-    @IBOutlet private weak var subTextLabel: NSTextField!
+    @IBOutlet private weak var textLabel: NSTextField!
     @IBOutlet weak var mainStackViewWidthLayout: NSLayoutConstraint!
     private var cancellableBag: Set<AnyCancellable> = .init()
     
@@ -21,9 +21,8 @@ internal final class DetailsTableCellView: NSView {
         bind()
     }
     
-    internal func configure(mainText: String, subText: String, width: CGFloat) {
-        mainTextLabel.stringValue = mainText
-        subTextLabel.stringValue = subText
+    internal func configure(text: String, width: CGFloat) {
+        textLabel.stringValue = text
         updateWidthConstraint(width: width)
     }
     
@@ -31,7 +30,6 @@ internal final class DetailsTableCellView: NSView {
         imageView.contentTintColor = NSColor.controlAccentColor
         imageView.wantsLayer = true
         
-        subTextLabel.maximumNumberOfLines = 0
         if NSApplication.shared.isActive {
             whenBecomeActive()
         } else {
@@ -40,6 +38,17 @@ internal final class DetailsTableCellView: NSView {
     }
     
     private func bind() {
+        // 굳이 이거 안해줘도 자동으로 되더라...
+//        NotificationCenter.default
+//            .publisher(for: NSColor.systemColorsDidChangeNotification)
+//            .sink(receiveValue: { [weak self] notification in
+//                guard let color: NSColor = notification.object as? NSColor else {
+//                    return
+//                }
+//                self?.imageView.contentTintColor = color
+//            })
+//            .store(in: &cancellableBag)
+        
         NotificationCenter.default
             .publisher(for: NSApplication.didBecomeActiveNotification)
             .sink(receiveValue: { [weak self] _ in
@@ -57,14 +66,12 @@ internal final class DetailsTableCellView: NSView {
     
     private func whenBecomeActive() {
         imageView?.layer?.opacity = 1
-        mainTextLabel?.textColor = .labelColor
-        subTextLabel?.textColor = .labelColor
+        textLabel?.textColor = .labelColor
     }
     
     private func whenResignActive() {
         imageView?.layer?.opacity = 0.5
-        mainTextLabel?.textColor = .gray
-        subTextLabel?.textColor = .gray
+        textLabel?.textColor = .gray
     }
     
     private func updateWidthConstraint(width: CGFloat) {

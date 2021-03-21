@@ -8,9 +8,11 @@
 import Cocoa
 
 internal final class AppDelegate: NSObject, NSApplicationDelegate {
+    private lazy var statusItem: NSStatusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     
     internal func applicationDidFinishLaunching(_ aNotification: Notification) {
         configureMenu()
+        configureBookmarksStatusBarItem()
         showSearchWindow()
     }
 
@@ -38,5 +40,20 @@ internal final class AppDelegate: NSObject, NSApplicationDelegate {
     
     private func configureMenu() {
         NSApp.mainMenu = CustomMenu(title: "")
+    }
+    
+    private func configureBookmarksStatusBarItem() {
+        statusItem.button?.image = NSImage(systemSymbolName: "signpost.right.fill", accessibilityDescription: nil)
+        statusItem.button?.action = #selector(showBookmarksPopover(_:))
+        statusItem.button?.target = self
+    }
+    
+    @objc private func showBookmarksPopover(_ sender: NSStatusBarButton) {
+        let vc: BookmarksViewController = .init()
+        let popover: NSPopover = .init()
+        vc.preferredContentSize = .init(width: 400, height: 600)
+        popover.contentViewController = vc
+        popover.behavior = .transient
+        popover.show(relativeTo: sender.bounds, of: sender, preferredEdge: .maxY)
     }
 }

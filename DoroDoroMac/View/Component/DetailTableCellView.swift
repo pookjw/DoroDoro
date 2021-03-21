@@ -1,17 +1,17 @@
 //
-//  SearchTableCellView.swift
+//  DetailTableCellView.swift
 //  DoroDoroMac
 //
-//  Created by Jinwoo Kim on 3/14/21.
+//  Created by Jinwoo Kim on 3/20/21.
 //
 
 import Cocoa
 import Combine
 
-class SearchTableCellView: NSView {
-
+internal final class DetailTableCellView: NSView {
     @IBOutlet private weak var imageView: NSImageView!
-    @IBOutlet private weak var textLabel: NSTextField!
+    @IBOutlet private weak var mainTextLabel: NSTextField!
+    @IBOutlet private weak var subTextLabel: NSTextField!
     @IBOutlet weak var mainStackViewWidthLayout: NSLayoutConstraint!
     private var cancellableBag: Set<AnyCancellable> = .init()
     
@@ -21,8 +21,9 @@ class SearchTableCellView: NSView {
         bind()
     }
     
-    internal func configure(text: String, width: CGFloat) {
-        textLabel.stringValue = text
+    internal func configure(mainText: String, subText: String, width: CGFloat) {
+        mainTextLabel.stringValue = mainText
+        subTextLabel.stringValue = subText
         updateWidthConstraint(width: width)
     }
     
@@ -30,6 +31,7 @@ class SearchTableCellView: NSView {
         imageView.contentTintColor = NSColor.controlAccentColor
         imageView.wantsLayer = true
         
+        subTextLabel.maximumNumberOfLines = 0
         if NSApplication.shared.isActive {
             whenBecomeActive()
         } else {
@@ -38,17 +40,6 @@ class SearchTableCellView: NSView {
     }
     
     private func bind() {
-        // 굳이 이거 안해줘도 자동으로 되더라...
-//        NotificationCenter.default
-//            .publisher(for: NSColor.systemColorsDidChangeNotification)
-//            .sink(receiveValue: { [weak self] notification in
-//                guard let color: NSColor = notification.object as? NSColor else {
-//                    return
-//                }
-//                self?.imageView.contentTintColor = color
-//            })
-//            .store(in: &cancellableBag)
-        
         NotificationCenter.default
             .publisher(for: NSApplication.didBecomeActiveNotification)
             .sink(receiveValue: { [weak self] _ in
@@ -66,12 +57,14 @@ class SearchTableCellView: NSView {
     
     private func whenBecomeActive() {
         imageView?.layer?.opacity = 1
-        textLabel?.textColor = .labelColor
+        mainTextLabel?.textColor = .labelColor
+        subTextLabel?.textColor = .labelColor
     }
     
     private func whenResignActive() {
         imageView?.layer?.opacity = 0.5
-        textLabel?.textColor = .gray
+        mainTextLabel?.textColor = .gray
+        subTextLabel?.textColor = .gray
     }
     
     private func updateWidthConstraint(width: CGFloat) {

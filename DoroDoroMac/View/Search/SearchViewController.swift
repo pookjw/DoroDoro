@@ -107,13 +107,13 @@ internal final class SearchViewController: NSViewController {
             headerView.addGestureRecognizer(clickGesture)
         }
         
-        let searchIdentifier: NSUserInterfaceItemIdentifier = .init(SearchTableCellView.className)
+        let searchIdentifier: NSUserInterfaceItemIdentifier = .init(SimgleResultTableCellView.className)
         self.searchIdentifier = searchIdentifier
         let searchColumn: NSTableColumn = .init(identifier: searchIdentifier)
         self.searchColumn = searchColumn
         searchColumn.title = ""
         tableView.addTableColumn(searchColumn)
-        tableView.register(NSNib(nibNamed: SearchTableCellView.className, bundle: .main), forIdentifier: searchIdentifier)
+        tableView.register(NSNib(nibNamed: SimgleResultTableCellView.className, bundle: .main), forIdentifier: searchIdentifier)
         
         // 그냥 tableView를 등록할 경우 bound 계산이 제대로 안 된다. 따라서 정석대로 NSClipView와 NSScrollView를 써준다.
         
@@ -280,7 +280,7 @@ extension SearchViewController: NSTableViewDataSource {
     internal func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         guard let viewModel: SearchViewModel = viewModel,
               let searchIdentifier: NSUserInterfaceItemIdentifier = searchIdentifier,
-              let cell: SearchTableCellView = tableView.makeView(withIdentifier: searchIdentifier, owner: self) as? SearchTableCellView
+              let cell: SimgleResultTableCellView = tableView.makeView(withIdentifier: searchIdentifier, owner: self) as? SimgleResultTableCellView
         else {
             return nil
         }
