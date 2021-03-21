@@ -238,7 +238,6 @@ internal final class SearchViewController: NSViewController {
         guard let selectedMenuJusoData: AddrLinkJusoData = viewModel?.selectedMenuJusoData else {
             return
         }
-        print(sender)
         NSPasteboard.general.declareTypes([.string], owner: nil)
         NSPasteboard.general.setString(selectedMenuJusoData.roadAddr, forType: .string)
     }

@@ -28,6 +28,7 @@ internal final class BookmarksViewController: NSViewController {
         configureSearchField()
         configureSeparatorView()
         configureTableView()
+        configureMenu()
         configureViewModel()
         bind()
     }
@@ -102,6 +103,12 @@ internal final class BookmarksViewController: NSViewController {
         }
     }
     
+    private func configureMenu() {
+        let menu: NSMenu = .init()
+        menu.delegate = self
+        tableView?.menu = menu
+    }
+    
     private func configureViewModel() {
         let viewModel: BookmarksViewModel = .init()
         self.viewModel = viewModel
@@ -127,6 +134,39 @@ internal final class BookmarksViewController: NSViewController {
         popover.show(relativeTo: view.bounds,
                      of: view,
                      preferredEdge: .maxX)
+    }
+    
+    @objc private func removeFromBookmarks(_ sender: NSMenuItem) {
+        guard let selectedMenuRoadAddr: String = viewModel?.selectedMenuRoadAddr else {
+            return
+        }
+        BookmarksService.shared.removeBookmark(selectedMenuRoadAddr)
+    }
+    
+    @objc private func addToBookmarks(_ sender: NSMenuItem) {
+        guard let selectedMenuRoadAddr: String = viewModel?.selectedMenuRoadAddr else {
+            return
+        }
+        BookmarksService.shared.addBookmark(selectedMenuRoadAddr)
+    }
+    
+    @objc private func copyRoadAddr(_ sender: NSMenuItem) {
+        guard let selectedMenuRoadAddr: String = viewModel?.selectedMenuRoadAddr else {
+            return
+        }
+        NSPasteboard.general.declareTypes([.string], owner: nil)
+        NSPasteboard.general.setString(selectedMenuRoadAddr, forType: .string)
+    }
+    
+    @objc private func shareRoadAddr(_ sender: NSMenuItem) {
+        guard let selectedMenuRoadAddr: String = viewModel?.selectedMenuRoadAddr,
+              let selectedMenuRow: Int = viewModel?.selectedMenuRow,
+              let cell: NSView = tableView?.rowView(atRow: selectedMenuRow, makeIfNecessary: false) else {
+            return
+        }
+        
+        let picker: NSSharingServicePicker = .init(items: [selectedMenuRoadAddr])
+        picker.show(relativeTo: .zero, of: cell, preferredEdge: .minY)
     }
 }
 
@@ -158,7 +198,22 @@ extension BookmarksViewController: NSTableViewDataSource {
 }
 
 extension BookmarksViewController: NSTableViewDelegate {
-    
+    internal func tableViewSelectionDidChange(_ notification: Notification) {
+        guard let viewModel: BookmarksViewModel = viewModel,
+              let clickedRow: Int = tableView?.selectedRow,
+              clickedRow >= 0 &&
+                viewModel.bookmarksData.count > clickedRow else {
+            return
+        }
+        
+        guard let tableView: NSTableView = notification.object as? NSTableView,
+              let cell: NSView = tableView.rowView(atRow: clickedRow, makeIfNecessary: false) else {
+            return
+        }
+        
+        let selectedMenuRoadAddr: String = viewModel.bookmarksData[clickedRow]
+        presentDetailVC(roadAddr: selectedMenuRoadAddr, at: cell)
+    }
 }
 
 extension BookmarksViewController: NSSearchFieldDelegate {
@@ -167,5 +222,42 @@ extension BookmarksViewController: NSSearchFieldDelegate {
             return
         }
         viewModel?.searchEvent = searchField.stringValue
+    }
+}
+
+extension BookmarksViewController: NSMenuDelegate {
+    internal func menuWillOpen(_ menu: NSMenu) {
+        guard let viewModel: BookmarksViewModel = viewModel,
+              let clickedRow: Int = tableView?.clickedRow,
+              clickedRow >= 0 else {
+            return
+        }
+        
+        guard viewModel.bookmarksData.count > clickedRow else {
+            return
+        }
+        
+        let selectedMenuRoadAddr: String = viewModel.bookmarksData[clickedRow]
+        viewModel.selectedMenuRoadAddr = selectedMenuRoadAddr
+        viewModel.selectedMenuRow = clickedRow
+        
+        menu.items.removeAll()
+        
+        if BookmarksService.shared.isBookmarked(selectedMenuRoadAddr) {
+            menu.addItem(NSMenuItem(title: Localizable.REMOVE_FROM_BOOKMARKS.string,
+                                    action: #selector(removeFromBookmarks(_:)),
+                                    keyEquivalent: ""))
+        } else {
+            menu.addItem(NSMenuItem(title: Localizable.ADD_TO_BOOKMARKS.string,
+                                    action: #selector(addToBookmarks(_:)),
+                                    keyEquivalent: ""))
+        }
+        
+        menu.addItem(NSMenuItem(title: Localizable.COPY.string,
+                                action: #selector(copyRoadAddr(_:)),
+                                keyEquivalent: ""))
+        menu.addItem(NSMenuItem(title: Localizable.SHARE.string,
+                                action: #selector(shareRoadAddr(_:)),
+                                keyEquivalent: ""))
     }
 }
