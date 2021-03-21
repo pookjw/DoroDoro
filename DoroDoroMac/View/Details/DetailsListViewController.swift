@@ -17,6 +17,8 @@ internal final class DetailsListViewController: NSViewController {
     
     private weak var tableView: NSTableView? = nil
     private var listIdentifier: NSUserInterfaceItemIdentifier? = nil
+    private var selectedString: String? = nil
+    private var selectedMenuRow: Int? = nil
     
     internal override func loadView() {
         let view: NSView = .init()
@@ -26,6 +28,7 @@ internal final class DetailsListViewController: NSViewController {
     internal override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
+        configureMenu()
     }
     
     private func configureTableView() {
@@ -61,6 +64,31 @@ internal final class DetailsListViewController: NSViewController {
         // scrollView도 투명하게 하기 위해
         scrollView.drawsBackground = false
     }
+    
+    private func configureMenu() {
+        let menu: NSMenu = .init()
+        menu.delegate = self
+        tableView?.menu = menu
+    }
+    
+    @objc private func copyRoadAddr(_ sender: NSMenuItem) {
+        guard let selectedString: String = selectedString else {
+            return
+        }
+        NSPasteboard.general.declareTypes([.string], owner: nil)
+        NSPasteboard.general.setString(selectedString, forType: .string)
+    }
+    
+    @objc private func shareRoadAddr(_ sender: NSMenuItem) {
+        guard let selectedString: String = selectedString,
+              let selectedMenuRow: Int = selectedMenuRow,
+              let cell: NSView = tableView?.rowView(atRow: selectedMenuRow, makeIfNecessary: false) else {
+            return
+        }
+        
+        let picker: NSSharingServicePicker = .init(items: [selectedString])
+        picker.show(relativeTo: .zero, of: cell, preferredEdge: .minY)
+    }
 }
 
 extension DetailsListViewController: NSTableViewDataSource {
@@ -88,4 +116,30 @@ extension DetailsListViewController: NSTableViewDataSource {
 }
 
 extension DetailsListViewController: NSTableViewDelegate {
+}
+
+extension DetailsListViewController: NSMenuDelegate {
+    internal func menuWillOpen(_ menu: NSMenu) {
+        guard let clickedRow: Int = tableView?.clickedRow,
+              clickedRow >= 0 else {
+            return
+        }
+        
+        guard dataSource.count > clickedRow else {
+            return
+        }
+        
+        let selectedString: String = dataSource[clickedRow].secondaryText
+        self.selectedString = selectedString
+        self.selectedMenuRow = clickedRow
+        
+        menu.items.removeAll()
+        
+        menu.addItem(NSMenuItem(title: Localizable.COPY.string,
+                                action: #selector(copyRoadAddr(_:)),
+                                keyEquivalent: ""))
+        menu.addItem(NSMenuItem(title: Localizable.SHARE.string,
+                                action: #selector(shareRoadAddr(_:)),
+                                keyEquivalent: ""))
+    }
 }
