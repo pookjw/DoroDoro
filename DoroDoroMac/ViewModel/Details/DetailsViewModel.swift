@@ -84,7 +84,7 @@ internal final class DetailsViewModel {
             return nil
         }
         
-        return .init(latitude: latitude, longitude: longitude)
+        return .init(latitude: latitude, longitude: longitude, locationTitle: addressDocumentData.address_name)
     }
     
     private func bind() {

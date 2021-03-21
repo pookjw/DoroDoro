@@ -6,7 +6,6 @@
 //
 
 import Cocoa
-import MapKit
 import Combine
 import SnapKit
 import DoroDoroMacAPI
@@ -14,6 +13,9 @@ import DoroDoroMacAPI
 internal final class DetailsViewController: NSViewController {
     private weak var visualEffectView: NSVisualEffectView? = nil
     private weak var tabView: NSTabView? = nil
+    private weak var linkResultTabViewItem: NSTabViewItem? = nil
+    private weak var engResultTabViewItem: NSTabViewItem? = nil
+    private weak var mapResultTabViewItem: NSTabViewItem? = nil
     
     private var viewModel: DetailsViewModel? = nil
     private var cancellableBag: Set<AnyCancellable> = .init()
@@ -57,7 +59,12 @@ internal final class DetailsViewController: NSViewController {
         self.tabView = tabView
         tabView.translatesAutoresizingMaskIntoConstraints = false
         visualEffectView.addSubview(tabView)
-        tabView.snp.remakeConstraints { $0.edges.equalToSuperview() }
+        tabView.snp.remakeConstraints { make in
+            make.top.equalToSuperview().offset(20)
+            make.bottom.equalToSuperview().offset(-20)
+            make.leading.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().offset(-20)
+        }
     }
     
     private func configureViewModel() {
@@ -125,23 +132,59 @@ internal final class DetailsViewController: NSViewController {
         guard let tabView: NSTabView = tabView else {
             return
         }
+        
         let vc: DetailsListViewController = .init()
         vc.loadViewIfNeeded()
         vc.dataSource = items
-        tabView.addTabViewItem(.init(viewController: vc))
+        
+        let linkResultTabViewItem: NSTabViewItem = .init(viewController: vc)
+        self.linkResultTabViewItem = linkResultTabViewItem
+        linkResultTabViewItem.label = Localizable.ADDR_LINK.string
+        
+        tabView.addTabViewItem(linkResultTabViewItem)
+        tabView.selectTabViewItem(linkResultTabViewItem)
+        sortTabViewItems()
     }
     
     private func configureEngResult(items: [DetailsListResultItem]) {
         guard let tabView: NSTabView = tabView else {
             return
         }
+        
         let vc: DetailsListViewController = .init()
         vc.loadViewIfNeeded()
         vc.dataSource = items
-        tabView.addTabViewItem(.init(viewController: vc))
+        
+        let engResultTabViewItem: NSTabViewItem = .init(viewController: vc)
+        self.engResultTabViewItem = engResultTabViewItem
+        engResultTabViewItem.label = Localizable.ADDR_ENG.string
+        
+        tabView.addTabViewItem(engResultTabViewItem)
+        sortTabViewItems()
     }
     
     private func configureMapResult(item: DetailsMapResultItem) {
+        guard let tabView: NSTabView = tabView else {
+            return
+        }
         
+        let vc: DetailsMapViewController = .init()
+        vc.latitude = item.latitude
+        vc.longitude = item.longitude
+        vc.locationTitle = item.locationTitle
+        vc.loadViewIfNeeded()
+        
+        let mapResultTabViewItem: NSTabViewItem = .init(viewController: vc)
+        self.mapResultTabViewItem = mapResultTabViewItem
+        mapResultTabViewItem.label = Localizable.MAP.string
+        
+        tabView.addTabViewItem(mapResultTabViewItem)
+        sortTabViewItems()
+    }
+    
+    private func sortTabViewItems() {
+        let nullableItems: [NSTabViewItem?] = [linkResultTabViewItem, engResultTabViewItem, mapResultTabViewItem]
+        let nonNullItems: [NSTabViewItem] = nullableItems.compactMap { $0 }
+        tabView?.tabViewItems = nonNullItems
     }
 }

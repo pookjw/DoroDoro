@@ -263,7 +263,6 @@ internal final class SearchViewController: NSViewController {
         vc.preferredContentSize = .init(width: 450, height: 600)
         popover.contentViewController = vc
         popover.behavior = .semitransient
-        popover.delegate = self
         popover.show(relativeTo: view.bounds,
                      of: view,
                      preferredEdge: .maxX)
@@ -364,11 +363,5 @@ extension SearchViewController: NSMenuDelegate {
         menu.addItem(NSMenuItem(title: Localizable.SHARE.string,
                                 action: #selector(shareRoadAddr(_:)),
                                 keyEquivalent: ""))
-    }
-}
-
-extension SearchViewController: NSPopoverDelegate {
-    internal func popoverDidDetach(_ popover: NSPopover) {
-        tableView?.deselectAll(nil)
     }
 }

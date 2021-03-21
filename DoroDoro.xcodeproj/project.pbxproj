@@ -252,6 +252,7 @@
 		F3D760E326063DF200461F70 /* DetailsListResultItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D760E226063DF200461F70 /* DetailsListResultItem.swift */; };
 		F3D760E726063FBD00461F70 /* DetailsMapResultItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D760E626063FBD00461F70 /* DetailsMapResultItem.swift */; };
 		F3D760EB2606456600461F70 /* DetailsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D760EA2606456600461F70 /* DetailsListViewController.swift */; };
+		F3D760ED2607796200461F70 /* DetailsMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D760EC2607796200461F70 /* DetailsMapViewController.swift */; };
 		F3E24C2425FDAC1900123E3B /* DoroDoroMacAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = F3E24C2225FDAC1900123E3B /* DoroDoroMacAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F3E24C2725FDAC1900123E3B /* DoroDoroMacAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3E24C2025FDAC1900123E3B /* DoroDoroMacAPI.framework */; };
 		F3E24C2825FDAC1900123E3B /* DoroDoroMacAPI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F3E24C2025FDAC1900123E3B /* DoroDoroMacAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -669,6 +670,7 @@
 		F3D760E226063DF200461F70 /* DetailsListResultItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsListResultItem.swift; sourceTree = "<group>"; };
 		F3D760E626063FBD00461F70 /* DetailsMapResultItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsMapResultItem.swift; sourceTree = "<group>"; };
 		F3D760EA2606456600461F70 /* DetailsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsListViewController.swift; sourceTree = "<group>"; };
+		F3D760EC2607796200461F70 /* DetailsMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsMapViewController.swift; sourceTree = "<group>"; };
 		F3E24C2025FDAC1900123E3B /* DoroDoroMacAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DoroDoroMacAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3E24C2225FDAC1900123E3B /* DoroDoroMacAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DoroDoroMacAPI.h; sourceTree = "<group>"; };
 		F3E24C2325FDAC1900123E3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -858,6 +860,7 @@
 				F3D760BC2606292900461F70 /* DetailsTableCellView.xib */,
 				F3D760BA2606291700461F70 /* DetailsTableCellView.swift */,
 				F3D760EA2606456600461F70 /* DetailsListViewController.swift */,
+				F3D760EC2607796200461F70 /* DetailsMapViewController.swift */,
 			);
 			path = Details;
 			sourceTree = "<group>";
@@ -2533,6 +2536,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3D760ED2607796200461F70 /* DetailsMapViewController.swift in Sources */,
 				F3E24D3925FDB06000123E3B /* SearchWindow.swift in Sources */,
 				F375B75F25FDF6A40075C3AE /* NSAppearance+Ext.swift in Sources */,
 				F3E24DA625FDC9E500123E3B /* NSObject+Ext.swift in Sources */,

@@ -10,4 +10,5 @@ import Foundation
 internal struct DetailsMapResultItem {
     internal let latitude: Double
     internal let longitude: Double
+    internal let locationTitle: String
 }

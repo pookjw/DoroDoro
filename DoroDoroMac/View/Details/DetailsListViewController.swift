@@ -34,6 +34,7 @@ internal final class DetailsListViewController: NSViewController {
         tableView.style = .plain
         tableView.wantsLayer = true
         tableView.layer?.backgroundColor = .clear
+        tableView.backgroundColor = .clear
         tableView.dataSource = self
         tableView.delegate = self
         tableView.headerView = nil
@@ -57,6 +58,8 @@ internal final class DetailsListViewController: NSViewController {
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(scrollView)
         scrollView.snp.remakeConstraints { $0.edges.equalToSuperview() }
+        // scrollView도 투명하게 하기 위해
+        scrollView.drawsBackground = false
     }
 }
 
@@ -85,7 +88,4 @@ extension DetailsListViewController: NSTableViewDataSource {
 }
 
 extension DetailsListViewController: NSTableViewDelegate {
-//    internal func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
-//        return 51
-//    }
 }
