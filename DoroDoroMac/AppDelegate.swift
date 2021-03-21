@@ -10,7 +10,8 @@ import Cocoa
 internal final class AppDelegate: NSObject, NSApplicationDelegate {
     
     internal func applicationDidFinishLaunching(_ aNotification: Notification) {
-        configureSearchWindow()
+        configureMenu()
+        showSearchWindow()
     }
 
     internal func applicationWillBecomeActive(_ notification: Notification) {
@@ -18,9 +19,24 @@ internal final class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     @discardableResult
-    private func configureSearchWindow() -> SearchWindow {
+    internal func showSearchWindow() -> SearchWindow {
         let searchWindow: SearchWindow = .init()
         searchWindow.makeKeyAndOrderFront(nil)
         return searchWindow
+    }
+    
+    @discardableResult
+    internal func showAboutWindow() -> AboutWindow? {
+        guard NSApplication.shared.windows.filter({ $0 is AboutWindow }).isEmpty else {
+            return nil
+        }
+        
+        let aboutWindow: AboutWindow = .init()
+        aboutWindow.makeKeyAndOrderFront(nil)
+        return aboutWindow
+    }
+    
+    private func configureMenu() {
+        NSApp.mainMenu = CustomMenu(title: "")
     }
 }

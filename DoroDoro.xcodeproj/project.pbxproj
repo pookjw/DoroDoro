@@ -253,7 +253,7 @@
 		F3D760E726063FBD00461F70 /* DetailsMapResultItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D760E626063FBD00461F70 /* DetailsMapResultItem.swift */; };
 		F3D760EB2606456600461F70 /* DetailsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D760EA2606456600461F70 /* DetailsListViewController.swift */; };
 		F3D760ED2607796200461F70 /* DetailsMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D760EC2607796200461F70 /* DetailsMapViewController.swift */; };
-		F3D760F0260796EA00461F70 /* SearchMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D760EE2607964700461F70 /* SearchMenu.swift */; };
+		F3D760F0260796EA00461F70 /* CustomMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D760EE2607964700461F70 /* CustomMenu.swift */; };
 		F3D760F326079C8A00461F70 /* AboutWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D760F226079C8A00461F70 /* AboutWindow.swift */; };
 		F3D760F526079DF400461F70 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D760F426079DF400461F70 /* AboutViewController.swift */; };
 		F3D760F92607A5E900461F70 /* NSWindow+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D760F82607A5E900461F70 /* NSWindow+Ext.swift */; };
@@ -675,7 +675,7 @@
 		F3D760E626063FBD00461F70 /* DetailsMapResultItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsMapResultItem.swift; sourceTree = "<group>"; };
 		F3D760EA2606456600461F70 /* DetailsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsListViewController.swift; sourceTree = "<group>"; };
 		F3D760EC2607796200461F70 /* DetailsMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsMapViewController.swift; sourceTree = "<group>"; };
-		F3D760EE2607964700461F70 /* SearchMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMenu.swift; sourceTree = "<group>"; };
+		F3D760EE2607964700461F70 /* CustomMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMenu.swift; sourceTree = "<group>"; };
 		F3D760F226079C8A00461F70 /* AboutWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutWindow.swift; sourceTree = "<group>"; };
 		F3D760F426079DF400461F70 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		F3D760F82607A5E900461F70 /* NSWindow+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSWindow+Ext.swift"; sourceTree = "<group>"; };
@@ -1182,6 +1182,7 @@
 		F375B72B25FDF1560075C3AE /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				F3D760EE2607964700461F70 /* CustomMenu.swift */,
 				F375B72C25FDF1680075C3AE /* SpinnerView.swift */,
 			);
 			path = Component;
@@ -1602,7 +1603,6 @@
 				F3E24D4825FDB06E00123E3B /* SearchViewController.swift */,
 				F3E24D8225FDC04300123E3B /* SearchTableCellView.xib */,
 				F3E24D8B25FDC0C600123E3B /* SearchTableCellView.swift */,
-				F3D760EE2607964700461F70 /* SearchMenu.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -2579,7 +2579,7 @@
 				F3BF54D825FD98D200A5097B /* AppDelegate.swift in Sources */,
 				F37A035B25FDF7580036E489 /* NSApplication+Ext.swift in Sources */,
 				F3E24D4925FDB06E00123E3B /* SearchViewController.swift in Sources */,
-				F3D760F0260796EA00461F70 /* SearchMenu.swift in Sources */,
+				F3D760F0260796EA00461F70 /* CustomMenu.swift in Sources */,
 				F3E24CC125FDAD4A00123E3B /* Localizable.swift in Sources */,
 				F3D760F526079DF400461F70 /* AboutViewController.swift in Sources */,
 				F3E24CFC25FDADFB00123E3B /* CloudService.swift in Sources */,

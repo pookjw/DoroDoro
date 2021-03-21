@@ -33,18 +33,10 @@ internal final class SearchWindow: NSWindow {
         
         setCenter(offset: size)
     }
-    
-    private func configureMenu() {
-        NSApp.mainMenu = SearchMenu(title: "")
-    }
 }
 
 extension SearchWindow: NSWindowDelegate {
     internal func windowDidResize(_ notification: Notification) {
         resizeEvent.send(frame)
-    }
-    
-    internal func windowDidBecomeMain(_ notification: Notification) {
-        configureMenu()
     }
 }
