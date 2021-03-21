@@ -16,8 +16,11 @@ internal final class SearchWindow: NSWindow {
                   styleMask:  [.miniaturizable, .closable, .resizable, .titled],
                   backing: .buffered,
                   defer: false)
+        let searchVC: SearchViewController = .init()
+        searchVC.searchWindow = self
+        
         contentMinSize = CGSize(width: 400, height: 400)
-        contentViewController = SearchViewController()
+        contentViewController = searchVC
         title = Localizable.DORODORO.string
         titlebarAppearsTransparent = true
         titleVisibility = .visible
@@ -29,9 +32,6 @@ internal final class SearchWindow: NSWindow {
 
 extension SearchWindow: NSWindowDelegate {
     internal func windowDidResize(_ notification: Notification) {
-        guard let searchWindow: SearchWindow = notification.object as? SearchWindow else {
-            return
-        }
-        searchWindow.resizeEvent.send(searchWindow.frame)
+        resizeEvent.send(frame)
     }
 }

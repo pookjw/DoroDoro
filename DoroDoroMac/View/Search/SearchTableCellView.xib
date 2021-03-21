@@ -10,14 +10,14 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="vjx-S9-bOz" customClass="SearchTableCellView" customModule="DoroDoroMac" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="310" height="70"/>
+            <rect key="frame" x="0.0" y="0.0" width="300" height="86"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <stackView distribution="fillProportionally" orientation="horizontal" alignment="centerY" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vmm-EX-fgQ">
-                    <rect key="frame" x="0.0" y="0.0" width="310" height="70"/>
+                    <rect key="frame" x="0.0" y="10" width="300" height="66"/>
                     <subviews>
                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eKv-pC-gdR">
-                            <rect key="frame" x="0.0" y="16.5" width="28.5" height="38"/>
+                            <rect key="frame" x="0.0" y="14.5" width="28.5" height="38"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="28" id="Ctn-cQ-kpK"/>
                                 <constraint firstAttribute="height" constant="28" id="PK6-Gg-XQu"/>
@@ -27,14 +27,17 @@
                             </imageCell>
                         </imageView>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5lM-8O-T9H">
-                            <rect key="frame" x="26" y="27" width="286" height="16"/>
-                            <textFieldCell key="cell" lineBreakMode="truncatingTail" alignment="left" title="서울특별시 강남구 가로수길 5 (신사동)" id="hvV-ep-bIh">
+                            <rect key="frame" x="26" y="25" width="276" height="16"/>
+                            <textFieldCell key="cell" alignment="left" title="서울특별시 강남구 가로수길 5 (신사동)" id="hvV-ep-bIh">
                                 <font key="font" usesAppearanceFont="YES"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
                     </subviews>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="300" id="Ahz-Ad-NrG"/>
+                    </constraints>
                     <visibilityPriorities>
                         <integer value="1000"/>
                         <integer value="1000"/>
@@ -46,16 +49,17 @@
                 </stackView>
             </subviews>
             <constraints>
-                <constraint firstItem="Vmm-EX-fgQ" firstAttribute="top" secondItem="vjx-S9-bOz" secondAttribute="top" id="N7v-tC-97O"/>
+                <constraint firstItem="Vmm-EX-fgQ" firstAttribute="top" secondItem="vjx-S9-bOz" secondAttribute="top" constant="10" id="N7v-tC-97O"/>
                 <constraint firstAttribute="trailing" secondItem="Vmm-EX-fgQ" secondAttribute="trailing" id="YA2-7J-Rhx"/>
                 <constraint firstItem="Vmm-EX-fgQ" firstAttribute="leading" secondItem="vjx-S9-bOz" secondAttribute="leading" id="YCT-XM-gU0"/>
-                <constraint firstAttribute="bottom" secondItem="Vmm-EX-fgQ" secondAttribute="bottom" id="ncO-dD-FpC"/>
+                <constraint firstAttribute="bottom" secondItem="Vmm-EX-fgQ" secondAttribute="bottom" constant="10" id="ncO-dD-FpC"/>
             </constraints>
             <connections>
                 <outlet property="imageView" destination="eKv-pC-gdR" id="sce-Mw-0zH"/>
+                <outlet property="mainStackViewWidthLayout" destination="Ahz-Ad-NrG" id="Q0W-f9-PIN"/>
                 <outlet property="textLabel" destination="5lM-8O-T9H" id="zjz-12-XCj"/>
             </connections>
-            <point key="canvasLocation" x="2.5" y="208"/>
+            <point key="canvasLocation" x="39" y="216"/>
         </customView>
     </objects>
     <resources>

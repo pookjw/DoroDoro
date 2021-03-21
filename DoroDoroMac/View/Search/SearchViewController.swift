@@ -11,6 +11,7 @@ import SnapKit
 import DoroDoroMacAPI
 
 internal final class SearchViewController: NSViewController {
+    internal weak var searchWindow: SearchWindow? = nil
     private weak var visualEffectView: NSVisualEffectView? = nil
     private weak var searchField: NSSearchField? = nil
     private weak var separatorView: NSView? = nil
@@ -95,6 +96,7 @@ internal final class SearchViewController: NSViewController {
         tableView.layer?.backgroundColor = .clear
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.usesAutomaticRowHeights = true
         
         if tableView.headerView == nil {
             tableView.headerView = .init()
@@ -109,7 +111,6 @@ internal final class SearchViewController: NSViewController {
         self.searchIdentifier = searchIdentifier
         let searchColumn: NSTableColumn = .init(identifier: searchIdentifier)
         self.searchColumn = searchColumn
-//        searchColumn.minWidth = 400
         searchColumn.title = ""
         tableView.addTableColumn(searchColumn)
         tableView.register(NSNib(nibNamed: SearchTableCellView.className, bundle: .main), forIdentifier: searchIdentifier)
@@ -183,14 +184,13 @@ internal final class SearchViewController: NSViewController {
                 .store(in: &cancellableBag)
         }
         
-//        if let searchWindow: SearchWindow = window as? SearchWindow {
-//            searchWindow.resizeEvent
-//                .receive(on: DispatchQueue.main)
-//                .sink(receiveValue: { [weak self] rect in
-//                    self?.searchColumn?.minWidth = rect.width
-//                })
-//                .store(in: &cancellableBag)
-//        }
+        searchWindow?.resizeEvent
+            .debounce(for: 0.05, scheduler: DispatchQueue.global(qos: .userInteractive))
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] rect in
+                self?.tableView?.reloadData()
+            })
+            .store(in: &cancellableBag)
     }
     
     private func updateColumnTitle(for text: String) {
@@ -260,7 +260,7 @@ internal final class SearchViewController: NSViewController {
         vc.loadViewIfNeeded()
         vc.setLinkJusoData(data)
 //        vc.setRoadAddr(data.roadAddr)
-        vc.preferredContentSize = .init(width: 400, height: 500)
+        vc.preferredContentSize = .init(width: 450, height: 600)
         popover.contentViewController = vc
         popover.behavior = .semitransient
         popover.delegate = self
@@ -290,17 +290,14 @@ extension SearchViewController: NSTableViewDataSource {
             return nil
         }
         
-        cell.configure(text: viewModel.addrLinkJusoData[row].roadAddr)
+        cell.configure(text: viewModel.addrLinkJusoData[row].roadAddr,
+                       width: view.bounds.width)
         
         return cell
     }
 }
 
 extension SearchViewController: NSTableViewDelegate {
-    internal func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
-        return 40
-    }
-    
     internal func tableViewSelectionDidChange(_ notification: Notification) {
         guard let viewModel: SearchViewModel = viewModel,
               let clickedRow: Int = tableView?.selectedRow,

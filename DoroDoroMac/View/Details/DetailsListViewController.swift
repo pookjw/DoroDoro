@@ -31,7 +31,7 @@ internal final class DetailsListViewController: NSViewController {
     private func configureTableView() {
         let tableView: NSTableView = .init()
         self.tableView = tableView
-        tableView.style = .inset
+        tableView.style = .plain
         tableView.wantsLayer = true
         tableView.layer?.backgroundColor = .clear
         tableView.dataSource = self
@@ -76,7 +76,9 @@ extension DetailsListViewController: NSTableViewDataSource {
             return nil
         }
         
-        cell.configure(mainText: dataSource[row].text, subText: dataSource[row].secondaryText)
+        cell.configure(mainText: dataSource[row].text,
+                       subText: dataSource[row].secondaryText,
+                       width: view.bounds.width)
         
         return cell
     }

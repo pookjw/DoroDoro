@@ -12,6 +12,7 @@ class SearchTableCellView: NSView {
 
     @IBOutlet private weak var imageView: NSImageView!
     @IBOutlet private weak var textLabel: NSTextField!
+    @IBOutlet weak var mainStackViewWidthLayout: NSLayoutConstraint!
     private var cancellableBag: Set<AnyCancellable> = .init()
     
     internal override func awakeFromNib() {
@@ -20,8 +21,9 @@ class SearchTableCellView: NSView {
         bind()
     }
     
-    internal func configure(text: String) {
+    internal func configure(text: String, width: CGFloat) {
         textLabel.stringValue = text
+        updateWidthConstraint(width: width)
     }
     
     private func setAttributes() {
@@ -70,5 +72,10 @@ class SearchTableCellView: NSView {
     private func whenResignActive() {
         imageView?.layer?.opacity = 0.5
         textLabel?.textColor = .gray
+    }
+    
+    private func updateWidthConstraint(width: CGFloat) {
+        // 50을 빼서 크기를 여유롭게 잡아준다
+        mainStackViewWidthLayout.constant = width - 50
     }
 }
