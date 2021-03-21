@@ -135,6 +135,10 @@ extension DetailsListViewController: NSMenuDelegate {
         
         menu.items.removeAll()
         
+        guard selectedString != Localizable.NO_DATA.string else {
+            return
+        }
+        
         menu.addItem(NSMenuItem(title: Localizable.COPY.string,
                                 action: #selector(copyRoadAddr(_:)),
                                 keyEquivalent: ""))
