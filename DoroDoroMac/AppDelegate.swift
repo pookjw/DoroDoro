@@ -9,6 +9,7 @@ import Cocoa
 
 internal final class AppDelegate: NSObject, NSApplicationDelegate {
     private lazy var statusItem: NSStatusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+    private weak var popover: NSPopover? = nil
     
     internal func applicationDidFinishLaunching(_ aNotification: Notification) {
         configureMenu()
@@ -49,11 +50,18 @@ internal final class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     @objc private func showBookmarksPopover(_ sender: NSStatusBarButton) {
+        // 이미 열려 있으면 닫는다
+        guard popover == nil else {
+            popover?.close()
+            return
+        }
+        
         let vc: BookmarksViewController = .init()
         let popover: NSPopover = .init()
+        self.popover = popover
         vc.preferredContentSize = .init(width: 400, height: 600)
         popover.contentViewController = vc
-        popover.behavior = .transient
+        popover.behavior = .semitransient
         popover.show(relativeTo: sender.bounds, of: sender, preferredEdge: .maxY)
     }
 }
