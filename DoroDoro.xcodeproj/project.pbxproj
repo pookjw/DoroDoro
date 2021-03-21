@@ -253,6 +253,10 @@
 		F3D760E726063FBD00461F70 /* DetailsMapResultItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D760E626063FBD00461F70 /* DetailsMapResultItem.swift */; };
 		F3D760EB2606456600461F70 /* DetailsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D760EA2606456600461F70 /* DetailsListViewController.swift */; };
 		F3D760ED2607796200461F70 /* DetailsMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D760EC2607796200461F70 /* DetailsMapViewController.swift */; };
+		F3D760F0260796EA00461F70 /* SearchMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D760EE2607964700461F70 /* SearchMenu.swift */; };
+		F3D760F326079C8A00461F70 /* AboutWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D760F226079C8A00461F70 /* AboutWindow.swift */; };
+		F3D760F526079DF400461F70 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D760F426079DF400461F70 /* AboutViewController.swift */; };
+		F3D760F92607A5E900461F70 /* NSWindow+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D760F82607A5E900461F70 /* NSWindow+Ext.swift */; };
 		F3E24C2425FDAC1900123E3B /* DoroDoroMacAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = F3E24C2225FDAC1900123E3B /* DoroDoroMacAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F3E24C2725FDAC1900123E3B /* DoroDoroMacAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3E24C2025FDAC1900123E3B /* DoroDoroMacAPI.framework */; };
 		F3E24C2825FDAC1900123E3B /* DoroDoroMacAPI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F3E24C2025FDAC1900123E3B /* DoroDoroMacAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -671,6 +675,10 @@
 		F3D760E626063FBD00461F70 /* DetailsMapResultItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsMapResultItem.swift; sourceTree = "<group>"; };
 		F3D760EA2606456600461F70 /* DetailsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsListViewController.swift; sourceTree = "<group>"; };
 		F3D760EC2607796200461F70 /* DetailsMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsMapViewController.swift; sourceTree = "<group>"; };
+		F3D760EE2607964700461F70 /* SearchMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMenu.swift; sourceTree = "<group>"; };
+		F3D760F226079C8A00461F70 /* AboutWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutWindow.swift; sourceTree = "<group>"; };
+		F3D760F426079DF400461F70 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		F3D760F82607A5E900461F70 /* NSWindow+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSWindow+Ext.swift"; sourceTree = "<group>"; };
 		F3E24C2025FDAC1900123E3B /* DoroDoroMacAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DoroDoroMacAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3E24C2225FDAC1900123E3B /* DoroDoroMacAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DoroDoroMacAPI.h; sourceTree = "<group>"; };
 		F3E24C2325FDAC1900123E3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1532,6 +1540,15 @@
 			path = Entity;
 			sourceTree = "<group>";
 		};
+		F3D760F126079B1500461F70 /* About */ = {
+			isa = PBXGroup;
+			children = (
+				F3D760F226079C8A00461F70 /* AboutWindow.swift */,
+				F3D760F426079DF400461F70 /* AboutViewController.swift */,
+			);
+			path = About;
+			sourceTree = "<group>";
+		};
 		F3E24C2125FDAC1900123E3B /* DoroDoroMacAPI */ = {
 			isa = PBXGroup;
 			children = (
@@ -1571,6 +1588,7 @@
 			isa = PBXGroup;
 			children = (
 				F375B72B25FDF1560075C3AE /* Component */,
+				F3D760F126079B1500461F70 /* About */,
 				F3E24D3725FDB04800123E3B /* Search */,
 				F305B34426044BE8002F878A /* Details */,
 			);
@@ -1584,6 +1602,7 @@
 				F3E24D4825FDB06E00123E3B /* SearchViewController.swift */,
 				F3E24D8225FDC04300123E3B /* SearchTableCellView.xib */,
 				F3E24D8B25FDC0C600123E3B /* SearchTableCellView.swift */,
+				F3D760EE2607964700461F70 /* SearchMenu.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -1597,6 +1616,7 @@
 				F375B75525FDF3450075C3AE /* NSViewController+SpinnerView.swift */,
 				F375B75E25FDF6A40075C3AE /* NSAppearance+Ext.swift */,
 				F37A035A25FDF7580036E489 /* NSApplication+Ext.swift */,
+				F3D760F82607A5E900461F70 /* NSWindow+Ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -2546,6 +2566,7 @@
 				F3D760E326063DF200461F70 /* DetailsListResultItem.swift in Sources */,
 				F3E24D0525FDADFF00123E3B /* BookmarksService.swift in Sources */,
 				F375B72D25FDF1680075C3AE /* SpinnerView.swift in Sources */,
+				F3D760F92607A5E900461F70 /* NSWindow+Ext.swift in Sources */,
 				F3E24CDA25FDAD5200123E3B /* AddrLinkAPIError+LocalizedError.swift in Sources */,
 				F3E24DC025FDE8F300123E3B /* NSTableView+scrollToTop.swift in Sources */,
 				F3E24CDB25FDAD5200123E3B /* AddrCoordAPIError+LocalizedError.swift in Sources */,
@@ -2558,7 +2579,9 @@
 				F3BF54D825FD98D200A5097B /* AppDelegate.swift in Sources */,
 				F37A035B25FDF7580036E489 /* NSApplication+Ext.swift in Sources */,
 				F3E24D4925FDB06E00123E3B /* SearchViewController.swift in Sources */,
+				F3D760F0260796EA00461F70 /* SearchMenu.swift in Sources */,
 				F3E24CC125FDAD4A00123E3B /* Localizable.swift in Sources */,
+				F3D760F526079DF400461F70 /* AboutViewController.swift in Sources */,
 				F3E24CFC25FDADFB00123E3B /* CloudService.swift in Sources */,
 				F305B35126044C29002F878A /* DetailsViewController.swift in Sources */,
 				F3E24D1025FDAE3700123E3B /* BookmarksData.swift in Sources */,
@@ -2566,6 +2589,7 @@
 				F3E24DB725FDCA7100123E3B /* SearchViewModel.swift in Sources */,
 				F3E24CDC25FDAD5200123E3B /* KakaoAddressAPIError+LocalizedError.swift in Sources */,
 				F3E24D8C25FDC0C600123E3B /* SearchTableCellView.swift in Sources */,
+				F3D760F326079C8A00461F70 /* AboutWindow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

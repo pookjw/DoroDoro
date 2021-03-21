@@ -11,4 +11,8 @@ extension NSApplication {
     internal var isDarkAquaMode: Bool {
         return effectiveAppearance.isDarkAquaMode
     }
+    
+    internal var applicationName: String {
+        return ProcessInfo.processInfo.processName
+    }
 }

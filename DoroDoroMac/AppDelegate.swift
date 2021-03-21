@@ -20,10 +20,7 @@ internal final class AppDelegate: NSObject, NSApplicationDelegate {
     @discardableResult
     private func configureSearchWindow() -> SearchWindow {
         let searchWindow: SearchWindow = .init()
-        // https://stackoverflow.com/q/12216637
-        searchWindow.isReleasedWhenClosed = false
         searchWindow.makeKeyAndOrderFront(nil)
         return searchWindow
     }
 }
-
