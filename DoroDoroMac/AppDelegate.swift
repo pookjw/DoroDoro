@@ -20,6 +20,17 @@ internal final class AppDelegate: NSObject, NSApplicationDelegate {
     internal func applicationWillBecomeActive(_ notification: Notification) {
         CloudService.shared.synchronize()
     }
+    
+    /// Dock 아이콘 눌렀을 때
+    internal func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
+        guard sender.windows.filter({ $0 is SearchWindow }).isEmpty else {
+            return true
+        }
+        showSearchWindow()
+        return true
+    }
+    
+    //
 
     @discardableResult
     internal func showSearchWindow() -> SearchWindow {
