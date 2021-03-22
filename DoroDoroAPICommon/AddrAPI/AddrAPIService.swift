@@ -140,7 +140,7 @@ public final class AddrAPIService {
             return (nil, .unknownError)
         }
         
-        let semaphore = DispatchSemaphore(value: 0)
+        let semaphore: DispatchSemaphore = .init(value: 0)
         var result: (AddrLinkResultsData?, AddrLinkAPIError?) = (nil, nil)
 
         AF.request(linkAPIURL,
@@ -316,7 +316,7 @@ public final class AddrAPIService {
             return (nil, .unknownError)
         }
         
-        let semaphore = DispatchSemaphore(value: 0)
+        let semaphore: DispatchSemaphore = .init(value: 0)
         var result: (AddrEngResultsData?, AddrEngAPIError?) = (nil, nil)
 
         AF.request(engAPIURL,
@@ -489,7 +489,7 @@ public final class AddrAPIService {
             return (nil, .unknownError)
         }
         
-        let semaphore = DispatchSemaphore(value: 0)
+        let semaphore: DispatchSemaphore = .init(value: 0)
         var result: (AddrCoordResultsData?, AddrCoordAPIError?) = (nil, nil)
 
         AF.request(coordAPIURL,
