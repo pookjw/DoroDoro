@@ -41,7 +41,7 @@ internal final class AppDelegate: NSObject, NSApplicationDelegate {
     
     @discardableResult
     internal func showAboutWindow() -> AboutWindow? {
-        guard NSApplication.shared.windows.filter({ $0 is AboutWindow }).isEmpty else {
+        guard NSApp.windows.filter({ $0 is AboutWindow }).isEmpty else {
             return nil
         }
         

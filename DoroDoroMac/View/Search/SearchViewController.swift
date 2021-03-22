@@ -28,6 +28,10 @@ internal final class SearchViewController: NSViewController {
         self.view = view
     }
     
+    deinit {
+        print("Hi!!! deinit")
+    }
+    
     internal override func viewDidLoad() {
         super.viewDidLoad()
         configureVisualEffectView()
@@ -172,6 +176,13 @@ internal final class SearchViewController: NSViewController {
             })
             .store(in: &cancellableBag)
         
+        BookmarksService.shared.dataEvent
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] _ in
+                self?.updateBookmarkMenuItem()
+            })
+            .store(in: &cancellableBag)
+        
         if let clipView: NSClipView = clipView {
             NotificationCenter.default
                 .publisher(for: NSView.boundsDidChangeNotification, object: clipView)
@@ -184,13 +195,37 @@ internal final class SearchViewController: NSViewController {
                 .store(in: &cancellableBag)
         }
         
-        searchWindow?.resizeEvent
-            .debounce(for: 0.05, scheduler: DispatchQueue.global(qos: .userInteractive))
-            .receive(on: DispatchQueue.main)
-            .sink(receiveValue: { [weak self] rect in
-                self?.tableView?.reloadData()
-            })
-            .store(in: &cancellableBag)
+        if let searchWindow: SearchWindow = searchWindow {
+            searchWindow.resizeEvent
+                .debounce(for: 0.05, scheduler: DispatchQueue.global(qos: .userInteractive))
+                .receive(on: DispatchQueue.main)
+                .sink(receiveValue: { [weak self] rect in
+                    self?.tableView?.reloadData()
+                })
+                .store(in: &cancellableBag)
+
+            NotificationCenter.default
+                .publisher(for: NSWindow.didBecomeMainNotification, object: searchWindow)
+                .receive(on: DispatchQueue.main)
+                .sink(receiveValue: { [weak self] _ in
+                    self?.updateBookmarkMenuItem()
+                })
+                .store(in: &cancellableBag)
+        }
+    }
+    
+    private func updateBookmarkMenuItem() {
+        guard let customMenu: CustomMenu = NSApp.mainMenu as? CustomMenu else {
+            return
+        }
+        
+        guard let (_, selectedMenuJusoData): (Int, AddrLinkJusoData) = getSelectedItem() else {
+            return
+        }
+        let roadAddr: String = selectedMenuJusoData.roadAddr
+        let bookmarked: Bool = BookmarksService.shared.isBookmarked(roadAddr)
+        
+        customMenu.updateBookmarkMenuItem(target: self, action: #selector(toggleRoadAddr(_:)), bookmarked: bookmarked)
     }
     
     private func updateColumnTitle(for text: String) {
@@ -221,21 +256,21 @@ internal final class SearchViewController: NSViewController {
     }
     
     @objc private func removeFromBookmarks(_ sender: NSMenuItem) {
-        guard let selectedMenuJusoData: AddrLinkJusoData = viewModel?.selectedMenuJusoData else {
+        guard let (_, selectedMenuJusoData): (Int, AddrLinkJusoData) = getClickedItem() else {
             return
         }
         BookmarksService.shared.removeBookmark(selectedMenuJusoData.roadAddr)
     }
     
     @objc private func addToBookmarks(_ sender: NSMenuItem) {
-        guard let selectedMenuJusoData: AddrLinkJusoData = viewModel?.selectedMenuJusoData else {
+        guard let (_, selectedMenuJusoData): (Int, AddrLinkJusoData) = getClickedItem() else {
             return
         }
         BookmarksService.shared.addBookmark(selectedMenuJusoData.roadAddr)
     }
     
     @objc private func copyRoadAddr(_ sender: NSMenuItem) {
-        guard let selectedMenuJusoData: AddrLinkJusoData = viewModel?.selectedMenuJusoData else {
+        guard let (_, selectedMenuJusoData): (Int, AddrLinkJusoData) = getClickedItem() else {
             return
         }
         NSPasteboard.general.declareTypes([.string], owner: nil)
@@ -243,14 +278,20 @@ internal final class SearchViewController: NSViewController {
     }
     
     @objc private func shareRoadAddr(_ sender: NSMenuItem) {
-        guard let selectedMenuJusoData: AddrLinkJusoData = viewModel?.selectedMenuJusoData,
-              let selectedMenuRow: Int = viewModel?.selectedMenuRow,
-              let cell: NSView = tableView?.rowView(atRow: selectedMenuRow, makeIfNecessary: false) else {
+        guard let (clickedRow, selectedMenuJusoData): (Int, AddrLinkJusoData) = getClickedItem(),
+              let cell: NSView = tableView?.rowView(atRow: clickedRow, makeIfNecessary: false) else {
             return
         }
         
         let picker: NSSharingServicePicker = .init(items: [selectedMenuJusoData.roadAddr])
         picker.show(relativeTo: .zero, of: cell, preferredEdge: .minY)
+    }
+    
+    @objc private func toggleRoadAddr(_ sender: NSMenuItem) {
+        guard let (_, selectedMenuJusoData): (Int, AddrLinkJusoData) = getSelectedItem() else {
+            return
+        }
+        BookmarksService.shared.toggleBookmark(selectedMenuJusoData.roadAddr)
     }
     
     private func presentDetailVC(data: AddrLinkJusoData, at view: NSView) {
@@ -265,6 +306,24 @@ internal final class SearchViewController: NSViewController {
         popover.show(relativeTo: view.bounds,
                      of: view,
                      preferredEdge: .maxX)
+    }
+    
+    private func getSelectedItem() -> (selectedRow: Int, selectedMenuJusoData: AddrLinkJusoData)? {
+        guard let viewModel: SearchViewModel = viewModel,
+              let selectedRow: Int = tableView?.selectedRow,
+              (selectedRow >= 0) && (viewModel.addrLinkJusoData.count > selectedRow)
+        else { return nil }
+        
+        return (selectedRow: selectedRow, selectedMenuJusoData: viewModel.addrLinkJusoData[selectedRow])
+    }
+    
+    private func getClickedItem() -> (clickedRow: Int, selectedMenuJusoData: AddrLinkJusoData)? {
+        guard let viewModel: SearchViewModel = viewModel,
+              let clickedRow: Int = tableView?.clickedRow,
+              (clickedRow >= 0) && (viewModel.addrLinkJusoData.count > clickedRow)
+        else { return nil }
+        
+        return (clickedRow: clickedRow, selectedMenuJusoData: viewModel.addrLinkJusoData[clickedRow])
     }
 }
 
@@ -297,19 +356,16 @@ extension SearchViewController: NSTableViewDataSource {
 
 extension SearchViewController: NSTableViewDelegate {
     internal func tableViewSelectionDidChange(_ notification: Notification) {
-        guard let viewModel: SearchViewModel = viewModel,
-              let clickedRow: Int = tableView?.selectedRow,
-              clickedRow >= 0 &&
-                viewModel.addrLinkJusoData.count > clickedRow else {
+        guard let (selectedRow, selectedMenuJusoData): (Int, AddrLinkJusoData) = getSelectedItem() else {
             return
         }
         
-        guard let tableView: NSTableView = notification.object as? NSTableView,
-              let cell: NSView = tableView.rowView(atRow: clickedRow, makeIfNecessary: false) else {
+        guard let tableView: NSTableView = tableView,
+              let cell: NSView = tableView.rowView(atRow: selectedRow, makeIfNecessary: false) else {
             return
         }
         
-        let selectedMenuJusoData: AddrLinkJusoData = viewModel.addrLinkJusoData[clickedRow]
+        updateBookmarkMenuItem()
         presentDetailVC(data: selectedMenuJusoData, at: cell)
     }
 }
@@ -329,19 +385,9 @@ extension SearchViewController: NSSearchFieldDelegate {
 
 extension SearchViewController: NSMenuDelegate {
     internal func menuWillOpen(_ menu: NSMenu) {
-        guard let viewModel: SearchViewModel = viewModel,
-              let clickedRow: Int = tableView?.clickedRow,
-              clickedRow >= 0 else {
+        guard let (_, selectedMenuJusoData): (Int, AddrLinkJusoData) = getClickedItem() else {
             return
         }
-        
-        guard viewModel.addrLinkJusoData.count > clickedRow else {
-            return
-        }
-        
-        let selectedMenuJusoData: AddrLinkJusoData = viewModel.addrLinkJusoData[clickedRow]
-        viewModel.selectedMenuJusoData = selectedMenuJusoData
-        viewModel.selectedMenuRow = clickedRow
         let roadAddr: String = selectedMenuJusoData.roadAddr
         
         menu.items.removeAll()
@@ -362,5 +408,12 @@ extension SearchViewController: NSMenuDelegate {
         menu.addItem(NSMenuItem(title: Localizable.SHARE.string,
                                 action: #selector(shareRoadAddr(_:)),
                                 keyEquivalent: ""))
+    }
+}
+
+extension SearchViewController: NSMenuItemValidation {
+    internal func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
+        // https://stackoverflow.com/a/15184735
+        return (getClickedItem() != nil) || (getSelectedItem() != nil)
     }
 }

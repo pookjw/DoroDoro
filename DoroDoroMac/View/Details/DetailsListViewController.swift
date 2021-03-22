@@ -17,8 +17,6 @@ internal final class DetailsListViewController: NSViewController {
     
     private weak var tableView: NSTableView? = nil
     private var listIdentifier: NSUserInterfaceItemIdentifier? = nil
-    private var selectedString: String? = nil
-    private var selectedMenuRow: Int? = nil
     
     internal override func loadView() {
         let view: NSView = .init()
@@ -72,7 +70,7 @@ internal final class DetailsListViewController: NSViewController {
     }
     
     @objc private func copyRoadAddr(_ sender: NSMenuItem) {
-        guard let selectedString: String = selectedString else {
+        guard let (_, selectedString): (Int, String) = getClickedItem() else {
             return
         }
         NSPasteboard.general.declareTypes([.string], owner: nil)
@@ -80,14 +78,31 @@ internal final class DetailsListViewController: NSViewController {
     }
     
     @objc private func shareRoadAddr(_ sender: NSMenuItem) {
-        guard let selectedString: String = selectedString,
-              let selectedMenuRow: Int = selectedMenuRow,
-              let cell: NSView = tableView?.rowView(atRow: selectedMenuRow, makeIfNecessary: false) else {
+        guard let (clickedRow, selectedString): (Int, String) = getClickedItem() else {
+            return
+        }
+        guard let cell: NSView = tableView?.rowView(atRow: clickedRow, makeIfNecessary: false) else {
             return
         }
         
         let picker: NSSharingServicePicker = .init(items: [selectedString])
         picker.show(relativeTo: .zero, of: cell, preferredEdge: .minY)
+    }
+    
+    private func getSelectedItem() -> (selectedRow: Int, selectedString: String)? {
+        guard let selectedRow: Int = tableView?.selectedRow,
+              (selectedRow >= 0) && (dataSource.count > selectedRow)
+        else { return nil }
+        
+        return (selectedRow: selectedRow, selectedString: dataSource[selectedRow].secondaryText)
+    }
+    
+    private func getClickedItem() -> (clickedRow: Int, selectedString: String)? {
+        guard let clickedRow: Int = tableView?.clickedRow,
+              (clickedRow >= 0) && (dataSource.count > clickedRow)
+        else { return nil }
+        
+        return (clickedRow: clickedRow, selectedString: dataSource[clickedRow].secondaryText)
     }
 }
 
@@ -120,18 +135,9 @@ extension DetailsListViewController: NSTableViewDelegate {
 
 extension DetailsListViewController: NSMenuDelegate {
     internal func menuWillOpen(_ menu: NSMenu) {
-        guard let clickedRow: Int = tableView?.clickedRow,
-              clickedRow >= 0 else {
+        guard let (_, selectedString): (Int, String) = getClickedItem() else {
             return
         }
-        
-        guard dataSource.count > clickedRow else {
-            return
-        }
-        
-        let selectedString: String = dataSource[clickedRow].secondaryText
-        self.selectedString = selectedString
-        self.selectedMenuRow = clickedRow
         
         menu.items.removeAll()
         

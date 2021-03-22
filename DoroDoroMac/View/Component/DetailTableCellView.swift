@@ -32,7 +32,7 @@ internal final class DetailTableCellView: NSView {
         imageView.wantsLayer = true
         
         subTextLabel.maximumNumberOfLines = 0
-        if NSApplication.shared.isActive {
+        if NSApp.isActive {
             whenBecomeActive()
         } else {
             whenResignActive()

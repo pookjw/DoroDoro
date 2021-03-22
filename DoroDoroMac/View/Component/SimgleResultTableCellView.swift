@@ -9,7 +9,6 @@ import Cocoa
 import Combine
 
 class SimgleResultTableCellView: NSView {
-
     @IBOutlet private weak var imageView: NSImageView!
     @IBOutlet private weak var textLabel: NSTextField!
     @IBOutlet weak var mainStackViewWidthLayout: NSLayoutConstraint!
@@ -30,7 +29,7 @@ class SimgleResultTableCellView: NSView {
         imageView.contentTintColor = NSColor.controlAccentColor
         imageView.wantsLayer = true
         
-        if NSApplication.shared.isActive {
+        if NSApp.isActive {
             whenBecomeActive()
         } else {
             whenResignActive()

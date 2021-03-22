@@ -58,7 +58,7 @@ internal final class SpinnerView: NSView {
             return
         }
 
-        if NSApplication.shared.isDarkAquaMode {
+        if NSApp.isDarkAquaMode {
             backgroundView.layer?.backgroundColor = NSColor.white.cgColor
             progressIndicator.color = .black
         } else {

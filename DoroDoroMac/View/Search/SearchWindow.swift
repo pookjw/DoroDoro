@@ -19,7 +19,7 @@ internal final class SearchWindow: NSWindow {
         let size: NSSize = .init(width: 400, height: 600)
         let searchVC: SearchViewController = .init()
         searchVC.searchWindow = self
-        searchVC.preferredContentSize = size
+//        searchVC.preferredContentSize = size
         
         contentMinSize = size
         contentViewController = searchVC
