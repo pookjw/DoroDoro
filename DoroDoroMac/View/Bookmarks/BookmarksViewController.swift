@@ -335,6 +335,6 @@ extension BookmarksViewController: NSMenuDelegate {
 extension BookmarksViewController: NSMenuItemValidation {
     internal func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
         // https://stackoverflow.com/a/15184735
-        return (getClickedItem() != nil) || (getSelectedItem() != nil)
+        return (getAnyItem() != nil)
     }
 }
