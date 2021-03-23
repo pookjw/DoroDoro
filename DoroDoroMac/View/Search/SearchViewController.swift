@@ -214,7 +214,7 @@ internal final class SearchViewController: NSViewController {
                 .receive(on: DispatchQueue.main)
                 .sink(receiveValue: { [weak self] _ in
                     // Combine의 경우 NotificationCenter의 Object를 Strong으로 붙잡는다. 따라서 직접 비워줘야 한다.
-                    self?.cancellableBag = []
+                    self?.cancellableBag.removeAll()
                     
                     if let clipView: NSClipView = self?.clipView {
                         NotificationCenter.default.removeObserver(clipView)
