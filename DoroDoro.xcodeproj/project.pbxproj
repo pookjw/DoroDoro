@@ -1509,6 +1509,7 @@
 				F3E24D9425FDC94F00123E3B /* Extension */,
 				F3E24D3625FDB04200123E3B /* View */,
 				F3E24DAE25FDCA2400123E3B /* ViewModel */,
+				F3D760BE2606318D00461F70 /* Entity */,
 				F3BF54D725FD98D200A5097B /* AppDelegate.swift */,
 				F3BF54DB25FD98D400A5097B /* Assets.xcassets */,
 				F3BF54E025FD98D400A5097B /* Info.plist */,
@@ -1659,7 +1660,6 @@
 				F37A038425FDFF760036E489 /* Search */,
 				F3D760FD2607B13400461F70 /* Bookmarks */,
 				F305B34526044BF1002F878A /* Details */,
-				F3D760BE2606318D00461F70 /* Entity */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
