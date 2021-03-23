@@ -6,6 +6,7 @@
 //
 
 import Cocoa
+import Combine
 import SnapKit
 
 internal final class DetailsListViewController: NSViewController {
@@ -15,8 +16,9 @@ internal final class DetailsListViewController: NSViewController {
         }
     }
     
-    private weak var tableView: NSTableView? = nil
+    private weak var tableView: CopyableTableView? = nil
     private var listIdentifier: NSUserInterfaceItemIdentifier? = nil
+    private var cancellableBag: Set<AnyCancellable> = .init()
     
     internal override func loadView() {
         let view: NSView = .init()
@@ -27,10 +29,11 @@ internal final class DetailsListViewController: NSViewController {
         super.viewDidLoad()
         configureTableView()
         configureMenu()
+        bind()
     }
     
     private func configureTableView() {
-        let tableView: NSTableView = .init()
+        let tableView: CopyableTableView = .init()
         self.tableView = tableView
         tableView.style = .plain
         tableView.wantsLayer = true
@@ -69,8 +72,19 @@ internal final class DetailsListViewController: NSViewController {
         tableView?.menu = menu
     }
     
+    private func bind() {
+        if let tableView: CopyableTableView = tableView {
+            tableView.copyEvent
+                .receive(on: DispatchQueue.main)
+                .sink(receiveValue: { [weak self] sender in
+                    self?.copyRoadAddr(sender)
+                })
+                .store(in: &cancellableBag)
+        }
+    }
+    
     @objc private func copyRoadAddr(_ sender: NSMenuItem) {
-        guard let (_, selectedString): (Int, String) = getClickedItem() else {
+        guard let (_, selectedString): (Int, String) = getAnyItem() else {
             return
         }
         NSPasteboard.general.declareTypes([.string], owner: nil)
@@ -78,7 +92,7 @@ internal final class DetailsListViewController: NSViewController {
     }
     
     @objc private func shareRoadAddr(_ sender: NSMenuItem) {
-        guard let (clickedRow, selectedString): (Int, String) = getClickedItem() else {
+        guard let (clickedRow, selectedString): (Int, String) = getAnyItem() else {
             return
         }
         guard let cell: NSView = tableView?.rowView(atRow: clickedRow, makeIfNecessary: false) else {
@@ -88,6 +102,8 @@ internal final class DetailsListViewController: NSViewController {
         let picker: NSSharingServicePicker = .init(items: [selectedString])
         picker.show(relativeTo: .zero, of: cell, preferredEdge: .minY)
     }
+    
+    //
     
     private func getSelectedItem() -> (selectedRow: Int, selectedString: String)? {
         guard let selectedRow: Int = tableView?.selectedRow,
@@ -103,6 +119,14 @@ internal final class DetailsListViewController: NSViewController {
         else { return nil }
         
         return (clickedRow: clickedRow, selectedString: dataSource[clickedRow].secondaryText)
+    }
+    
+    private func getAnyItem() -> (row: Int, selectedString: String)? {
+        var item: (Int, String)? = getClickedItem()
+        if item == nil {
+            item = getSelectedItem()
+        }
+        return item
     }
 }
 

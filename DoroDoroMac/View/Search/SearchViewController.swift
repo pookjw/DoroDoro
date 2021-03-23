@@ -15,7 +15,7 @@ internal final class SearchViewController: NSViewController {
     private weak var visualEffectView: NSVisualEffectView? = nil
     private weak var searchField: NSSearchField? = nil
     private weak var separatorView: NSView? = nil
-    private weak var tableView: NSTableView? = nil
+    private weak var tableView: CopyableTableView? = nil
     private weak var clipView: NSClipView? = nil
     private weak var scrollView: NSScrollView? = nil
     private var searchIdentifier: NSUserInterfaceItemIdentifier? = nil
@@ -89,7 +89,7 @@ internal final class SearchViewController: NSViewController {
         guard let visualEffectView: NSVisualEffectView = visualEffectView else {
             return
         }
-        let tableView: NSTableView = .init()
+        let tableView: CopyableTableView = .init()
         self.tableView = tableView
         tableView.style = .sourceList
         tableView.wantsLayer = true
@@ -222,6 +222,15 @@ internal final class SearchViewController: NSViewController {
                 })
                 .store(in: &cancellableBag)
         }
+        
+        if let tableView: CopyableTableView = tableView {
+            tableView.copyEvent
+                .receive(on: DispatchQueue.main)
+                .sink(receiveValue: { [weak self] sender in
+                    self?.copyRoadAddr(sender)
+                })
+                .store(in: &cancellableBag)
+        }
     }
     
     private func updateBookmarkMenuItem() {
@@ -230,12 +239,14 @@ internal final class SearchViewController: NSViewController {
         }
         
         guard let (_, selectedMenuJusoData): (Int, AddrLinkJusoData) = getSelectedItem() else {
+            customMenu.updateBookmarkMenuItem(target: nil, action: nil, bookmarked: false)
             return
         }
+        
         let roadAddr: String = selectedMenuJusoData.roadAddr
         let bookmarked: Bool = BookmarksService.shared.isBookmarked(roadAddr)
         
-        customMenu.updateBookmarkMenuItem(target: self, action: #selector(toggleRoadAddr(_:)), bookmarked: bookmarked)
+        customMenu.updateBookmarkMenuItem(target: self, action: #selector(toggleBookmarks(_:)), bookmarked: bookmarked)
     }
     
     private func updateColumnTitle(for text: String) {
@@ -266,21 +277,21 @@ internal final class SearchViewController: NSViewController {
     }
     
     @objc private func removeFromBookmarks(_ sender: NSMenuItem) {
-        guard let (_, selectedMenuJusoData): (Int, AddrLinkJusoData) = getClickedItem() else {
+        guard let (_, selectedMenuJusoData): (Int, AddrLinkJusoData) = getAnyItem() else {
             return
         }
         BookmarksService.shared.removeBookmark(selectedMenuJusoData.roadAddr)
     }
     
     @objc private func addToBookmarks(_ sender: NSMenuItem) {
-        guard let (_, selectedMenuJusoData): (Int, AddrLinkJusoData) = getClickedItem() else {
+        guard let (_, selectedMenuJusoData): (Int, AddrLinkJusoData) = getAnyItem() else {
             return
         }
         BookmarksService.shared.addBookmark(selectedMenuJusoData.roadAddr)
     }
     
     @objc private func copyRoadAddr(_ sender: NSMenuItem) {
-        guard let (_, selectedMenuJusoData): (Int, AddrLinkJusoData) = getClickedItem() else {
+        guard let (_, selectedMenuJusoData): (Int, AddrLinkJusoData) = getAnyItem() else {
             return
         }
         NSPasteboard.general.declareTypes([.string], owner: nil)
@@ -288,7 +299,7 @@ internal final class SearchViewController: NSViewController {
     }
     
     @objc private func shareRoadAddr(_ sender: NSMenuItem) {
-        guard let (clickedRow, selectedMenuJusoData): (Int, AddrLinkJusoData) = getClickedItem(),
+        guard let (clickedRow, selectedMenuJusoData): (Int, AddrLinkJusoData) = getAnyItem(),
               let cell: NSView = tableView?.rowView(atRow: clickedRow, makeIfNecessary: false) else {
             return
         }
@@ -297,8 +308,8 @@ internal final class SearchViewController: NSViewController {
         picker.show(relativeTo: .zero, of: cell, preferredEdge: .minY)
     }
     
-    @objc private func toggleRoadAddr(_ sender: NSMenuItem) {
-        guard let (_, selectedMenuJusoData): (Int, AddrLinkJusoData) = getSelectedItem() else {
+    @objc private func toggleBookmarks(_ sender: NSMenuItem) {
+        guard let (_, selectedMenuJusoData): (Int, AddrLinkJusoData) = getAnyItem() else {
             return
         }
         BookmarksService.shared.toggleBookmark(selectedMenuJusoData.roadAddr)
@@ -318,6 +329,8 @@ internal final class SearchViewController: NSViewController {
                      preferredEdge: .maxX)
     }
     
+    //
+    
     private func getSelectedItem() -> (selectedRow: Int, selectedMenuJusoData: AddrLinkJusoData)? {
         guard let viewModel: SearchViewModel = viewModel,
               let selectedRow: Int = tableView?.selectedRow,
@@ -334,6 +347,14 @@ internal final class SearchViewController: NSViewController {
         else { return nil }
         
         return (clickedRow: clickedRow, selectedMenuJusoData: viewModel.addrLinkJusoData[clickedRow])
+    }
+    
+    private func getAnyItem() -> (row: Int, selectedMenuJusoData: AddrLinkJusoData)? {
+        var item: (Int, AddrLinkJusoData)? = getClickedItem()
+        if item == nil {
+            item = getSelectedItem()
+        }
+        return item
     }
 }
 
@@ -395,7 +416,7 @@ extension SearchViewController: NSSearchFieldDelegate {
 
 extension SearchViewController: NSMenuDelegate {
     internal func menuWillOpen(_ menu: NSMenu) {
-        guard let (_, selectedMenuJusoData): (Int, AddrLinkJusoData) = getClickedItem() else {
+        guard let (_, selectedMenuJusoData): (Int, AddrLinkJusoData) = getAnyItem() else {
             return
         }
         let roadAddr: String = selectedMenuJusoData.roadAddr

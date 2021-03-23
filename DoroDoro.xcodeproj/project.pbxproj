@@ -329,6 +329,7 @@
 		F3E6881425F13E6600A619CA /* DetailedNVCSplitViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E6881325F13E6600A619CA /* DetailedNVCSplitViewControllerDelegate.swift */; };
 		F3E89B6F25F975BB00E3AC5A /* GeoAPIError+LocalizedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E89B6E25F975BB00E3AC5A /* GeoAPIError+LocalizedError.swift */; };
 		F3F2F29225EFDB74005FC9CE /* UIViewController+SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F2F29125EFDB74005FC9CE /* UIViewController+SpinnerView.swift */; };
+		F3FC9F4E260A3BEB00D6EBEF /* CopyableTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FC9F4D260A3BEB00D6EBEF /* CopyableTableView.swift */; };
 		F61DE33D8AA5EB12E735AA68 /* Pods_DoroDoroTVAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22F66F5E7D560DB71AD8FD21 /* Pods_DoroDoroTVAPI.framework */; };
 /* End PBXBuildFile section */
 
@@ -706,6 +707,7 @@
 		F3F4FAF625E8082F0077FCB5 /* AddrEngJusoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrEngJusoData.swift; sourceTree = "<group>"; };
 		F3F4FAFD25E809CD0077FCB5 /* AddrEngResultsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrEngResultsData.swift; sourceTree = "<group>"; };
 		F3F4FB0925E80A040077FCB5 /* AddrEngAPIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrEngAPIError.swift; sourceTree = "<group>"; };
+		F3FC9F4D260A3BEB00D6EBEF /* CopyableTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyableTableView.swift; sourceTree = "<group>"; };
 		F96722D4DC90CEFE9BFDBE4B /* Pods_DoroDoroMacAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoroDoroMacAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBC6FAC74664FE9723320696 /* Pods-DoroDoroWatch Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoroDoroWatch Extension.debug.xcconfig"; path = "Target Support Files/Pods-DoroDoroWatch Extension/Pods-DoroDoroWatch Extension.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1626,6 +1628,7 @@
 			children = (
 				F3E24D3825FDB06000123E3B /* SearchWindow.swift */,
 				F3E24D4825FDB06E00123E3B /* SearchViewController.swift */,
+				F3FC9F4D260A3BEB00D6EBEF /* CopyableTableView.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -2606,6 +2609,7 @@
 				F375B75625FDF3450075C3AE /* NSViewController+SpinnerView.swift in Sources */,
 				F3BF54D825FD98D200A5097B /* AppDelegate.swift in Sources */,
 				F37A035B25FDF7580036E489 /* NSApplication+Ext.swift in Sources */,
+				F3FC9F4E260A3BEB00D6EBEF /* CopyableTableView.swift in Sources */,
 				F3E24D4925FDB06E00123E3B /* SearchViewController.swift in Sources */,
 				F3D760F0260796EA00461F70 /* CustomMenu.swift in Sources */,
 				F3E24CC125FDAD4A00123E3B /* Localizable.swift in Sources */,

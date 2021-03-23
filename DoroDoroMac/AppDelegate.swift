@@ -70,6 +70,7 @@ internal final class AppDelegate: NSObject, NSApplicationDelegate {
         let vc: BookmarksViewController = .init()
         let popover: NSPopover = .init()
         self.popover = popover
+        vc.popover = popover
         vc.preferredContentSize = .init(width: 400, height: 600)
         popover.contentViewController = vc
         popover.behavior = .semitransient

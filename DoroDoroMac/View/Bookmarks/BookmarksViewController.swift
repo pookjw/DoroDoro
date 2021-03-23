@@ -11,9 +11,10 @@ import SnapKit
 import DoroDoroMacAPI
 
 internal final class BookmarksViewController: NSViewController {
+    internal weak var popover: NSPopover? = nil
     private weak var searchField: NSSearchField? = nil
     private weak var separatorView: NSView? = nil
-    private weak var tableView: NSTableView? = nil
+    private weak var tableView: CopyableTableView? = nil
     private var bookmarksIdentifier: NSUserInterfaceItemIdentifier? = nil
     private var viewModel: BookmarksViewModel? = nil
     private var cancellableBag: Set<AnyCancellable> = .init()
@@ -65,7 +66,7 @@ internal final class BookmarksViewController: NSViewController {
     }
     
     private func configureTableView() {
-        let tableView: NSTableView = .init()
+        let tableView: CopyableTableView = .init()
         self.tableView = tableView
         tableView.style = .sourceList
         tableView.wantsLayer = true
@@ -121,6 +122,52 @@ internal final class BookmarksViewController: NSViewController {
                 self?.tableView?.reloadData()
             })
             .store(in: &cancellableBag)
+        
+        if let popover: NSPopover = popover {
+            NotificationCenter.default
+                .publisher(for: NSPopover.didShowNotification, object: popover)
+                .receive(on: DispatchQueue.main)
+                .sink(receiveValue: { [weak self] _ in
+                    self?.updateBookmarkMenuItem()
+                })
+                .store(in: &cancellableBag)
+            
+            NotificationCenter.default
+                .publisher(for: NSPopover.didCloseNotification, object: popover)
+                .receive(on: DispatchQueue.main)
+                .sink(receiveValue: { [weak self] _ in
+                    self?.cancellableBag.removeAll()
+                    
+                    if let popover: NSPopover = self?.popover {
+                        NotificationCenter.default.removeObserver(popover)
+                    }
+                })
+                .store(in: &cancellableBag)
+        }
+        
+        if let tableView: CopyableTableView = tableView {
+            tableView.copyEvent
+                .receive(on: DispatchQueue.main)
+                .sink(receiveValue: { [weak self] sender in
+                    self?.copyRoadAddr(sender)
+                })
+                .store(in: &cancellableBag)
+        }
+    }
+    
+    private func updateBookmarkMenuItem() {
+        guard let customMenu: CustomMenu = NSApp.mainMenu as? CustomMenu else {
+            return
+        }
+        
+        guard let (_, selectedString): (Int, String) = getSelectedItem() else {
+            customMenu.updateBookmarkMenuItem(target: nil, action: nil, bookmarked: false)
+            return
+        }
+        
+        let bookmarked: Bool = BookmarksService.shared.isBookmarked(selectedString)
+        
+        customMenu.updateBookmarkMenuItem(target: self, action: #selector(toggleBookmarks(_:)), bookmarked: bookmarked)
     }
     
     private func presentDetailVC(roadAddr: String, at view: NSView) {
@@ -137,21 +184,28 @@ internal final class BookmarksViewController: NSViewController {
     }
     
     @objc private func removeFromBookmarks(_ sender: NSMenuItem) {
-        guard let selectedMenuRoadAddr: String = viewModel?.selectedMenuRoadAddr else {
+        guard let (_, selectedMenuRoadAddr): (Int, String) = getAnyItem() else {
             return
         }
         BookmarksService.shared.removeBookmark(selectedMenuRoadAddr)
     }
     
     @objc private func addToBookmarks(_ sender: NSMenuItem) {
-        guard let selectedMenuRoadAddr: String = viewModel?.selectedMenuRoadAddr else {
+        guard let (_, selectedMenuRoadAddr): (Int, String) = getAnyItem() else {
             return
         }
         BookmarksService.shared.addBookmark(selectedMenuRoadAddr)
     }
     
+    @objc private func toggleBookmarks(_ sender: NSMenuItem) {
+        guard let (_, selectedMenuRoadAddr): (Int, String) = getAnyItem() else {
+            return
+        }
+        BookmarksService.shared.toggleBookmark(selectedMenuRoadAddr)
+    }
+    
     @objc private func copyRoadAddr(_ sender: NSMenuItem) {
-        guard let selectedMenuRoadAddr: String = viewModel?.selectedMenuRoadAddr else {
+        guard let (_, selectedMenuRoadAddr): (Int, String) = getAnyItem() else {
             return
         }
         NSPasteboard.general.declareTypes([.string], owner: nil)
@@ -159,14 +213,39 @@ internal final class BookmarksViewController: NSViewController {
     }
     
     @objc private func shareRoadAddr(_ sender: NSMenuItem) {
-        guard let selectedMenuRoadAddr: String = viewModel?.selectedMenuRoadAddr,
-              let selectedMenuRow: Int = viewModel?.selectedMenuRow,
-              let cell: NSView = tableView?.rowView(atRow: selectedMenuRow, makeIfNecessary: false) else {
+        guard let (row, selectedMenuRoadAddr): (Int, String) = getAnyItem(),
+              let cell: NSView = tableView?.rowView(atRow: row, makeIfNecessary: false) else {
             return
         }
         
         let picker: NSSharingServicePicker = .init(items: [selectedMenuRoadAddr])
         picker.show(relativeTo: .zero, of: cell, preferredEdge: .minY)
+    }
+    
+    private func getSelectedItem() -> (selectedRow: Int, selectedString: String)? {
+        guard let viewModel: BookmarksViewModel = viewModel,
+            let selectedRow: Int = tableView?.selectedRow,
+            (selectedRow >= 0) && (viewModel.bookmarksData.count > selectedRow)
+        else { return nil }
+        
+        return (selectedRow: selectedRow, selectedString: viewModel.bookmarksData[selectedRow])
+    }
+    
+    private func getClickedItem() -> (clickedRow: Int, selectedString: String)? {
+        guard let viewModel: BookmarksViewModel = viewModel,
+            let clickedRow: Int = tableView?.clickedRow,
+              (clickedRow >= 0) && (viewModel.bookmarksData.count > clickedRow)
+        else { return nil }
+        
+        return (clickedRow: clickedRow, selectedString: viewModel.bookmarksData[clickedRow])
+    }
+    
+    private func getAnyItem() -> (row: Int, selectedString: String)? {
+        var item: (Int, String)? = getClickedItem()
+        if item == nil {
+            item = getSelectedItem()
+        }
+        return item
     }
 }
 
@@ -211,6 +290,7 @@ extension BookmarksViewController: NSTableViewDelegate {
             return
         }
         
+        updateBookmarkMenuItem()
         let selectedMenuRoadAddr: String = viewModel.bookmarksData[clickedRow]
         presentDetailVC(roadAddr: selectedMenuRoadAddr, at: cell)
     }
@@ -227,19 +307,9 @@ extension BookmarksViewController: NSSearchFieldDelegate {
 
 extension BookmarksViewController: NSMenuDelegate {
     internal func menuWillOpen(_ menu: NSMenu) {
-        guard let viewModel: BookmarksViewModel = viewModel,
-              let clickedRow: Int = tableView?.clickedRow,
-              clickedRow >= 0 else {
+        guard let (_, selectedMenuRoadAddr): (Int, String) = getAnyItem() else {
             return
         }
-        
-        guard viewModel.bookmarksData.count > clickedRow else {
-            return
-        }
-        
-        let selectedMenuRoadAddr: String = viewModel.bookmarksData[clickedRow]
-        viewModel.selectedMenuRoadAddr = selectedMenuRoadAddr
-        viewModel.selectedMenuRow = clickedRow
         
         menu.items.removeAll()
         
@@ -259,5 +329,12 @@ extension BookmarksViewController: NSMenuDelegate {
         menu.addItem(NSMenuItem(title: Localizable.SHARE.string,
                                 action: #selector(shareRoadAddr(_:)),
                                 keyEquivalent: ""))
+    }
+}
+
+extension BookmarksViewController: NSMenuItemValidation {
+    internal func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
+        // https://stackoverflow.com/a/15184735
+        return (getClickedItem() != nil) || (getSelectedItem() != nil)
     }
 }

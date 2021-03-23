@@ -13,8 +13,6 @@ internal final class BookmarksViewModel {
     @Published internal var searchEvent: String? = nil
     internal let bookmarksDataEvent: CurrentValueSubject<[String], Never> = .init([])
     internal private(set) var bookmarksData: [String] = []
-    internal var selectedMenuRow: Int? = nil
-    internal var selectedMenuRoadAddr: String? = nil
     private var cancellableBag: Set<AnyCancellable> = .init()
     
     internal init() {

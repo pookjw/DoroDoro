@@ -105,6 +105,9 @@ internal final class CustomMenu: NSMenu {
         let copyMenuItem: NSMenuItem = .init(title: "복사 (번역)",
                                              action: #selector(NSText.copy(_:)),
                                              keyEquivalent: "c")
+        let pasteMenuItem: NSMenuItem = .init(title: "붙여놓기 (번역)",
+                                              action: #selector(NSText.paste(_:)),
+                                              keyEquivalent: "v")
         let deleteMenuItem: NSMenuItem = .init(title: "삭제 (번역)",
                                                action: #selector(NSText.delete(_:)),
                                                keyEquivalent: String(describing: Character(UnicodeScalar(0x0008))))
@@ -120,6 +123,7 @@ internal final class CustomMenu: NSMenu {
         editSubMenu.items = [
             cutMenuItem,
             copyMenuItem,
+            pasteMenuItem,
             deleteMenuItem,
             .separator(),
             selectAllMenuItem,
