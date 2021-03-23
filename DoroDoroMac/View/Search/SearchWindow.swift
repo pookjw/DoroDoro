@@ -10,6 +10,7 @@ import Combine
 
 internal final class SearchWindow: NSWindow {
     internal let resizeEvent: PassthroughSubject<NSRect, Never> = .init()
+    private weak var searchViewController: SearchViewController? = nil
     
     internal convenience init() {
         self.init(contentRect: .zero,
@@ -17,12 +18,12 @@ internal final class SearchWindow: NSWindow {
                   backing: .buffered,
                   defer: false)
         let size: NSSize = .init(width: 400, height: 600)
-        let searchVC: SearchViewController = .init()
-        searchVC.searchWindow = self
-//        searchVC.preferredContentSize = size
+        let searchViewController: SearchViewController = .init()
+        self.searchViewController = searchViewController
+        searchViewController.searchWindow = self
         
         contentMinSize = size
-        contentViewController = searchVC
+        contentViewController = searchViewController
         title = Localizable.DORODORO.string
         titlebarAppearsTransparent = true
         titleVisibility = .visible
@@ -32,6 +33,11 @@ internal final class SearchWindow: NSWindow {
         isReleasedWhenClosed = false
         
         setCenter(offset: size)
+    }
+    
+    internal override func close() {
+        super.close()
+        NotificationCenter.default.removeObserver(self)
     }
 }
 

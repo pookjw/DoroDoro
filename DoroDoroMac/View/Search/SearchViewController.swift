@@ -28,10 +28,6 @@ internal final class SearchViewController: NSViewController {
         self.view = view
     }
     
-    deinit {
-        print("Hi!!! deinit")
-    }
-    
     internal override func viewDidLoad() {
         super.viewDidLoad()
         configureVisualEffectView()
@@ -209,6 +205,20 @@ internal final class SearchViewController: NSViewController {
                 .receive(on: DispatchQueue.main)
                 .sink(receiveValue: { [weak self] _ in
                     self?.updateBookmarkMenuItem()
+                })
+                .store(in: &cancellableBag)
+            
+            // searchWindow 간의 순환참조 문제를 없애준다.
+            NotificationCenter.default
+                .publisher(for: NSWindow.willCloseNotification, object: searchWindow)
+                .receive(on: DispatchQueue.main)
+                .sink(receiveValue: { [weak self] _ in
+                    // Combine의 경우 NotificationCenter의 Object를 Strong으로 붙잡는다. 따라서 직접 비워줘야 한다.
+                    self?.cancellableBag = []
+                    
+                    if let clipView: NSClipView = self?.clipView {
+                        NotificationCenter.default.removeObserver(clipView)
+                    }
                 })
                 .store(in: &cancellableBag)
         }
