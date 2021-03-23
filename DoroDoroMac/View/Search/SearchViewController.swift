@@ -13,7 +13,7 @@ import DoroDoroMacAPI
 internal final class SearchViewController: NSViewController {
     internal weak var searchWindow: SearchWindow? = nil
     private weak var visualEffectView: NSVisualEffectView? = nil
-    private weak var searchField: NSSearchField? = nil
+    private weak var searchField: UndoableSearchField? = nil
     private weak var separatorView: NSView? = nil
     private weak var tableView: CopyableTableView? = nil
     private weak var clipView: NSClipView? = nil
@@ -52,7 +52,7 @@ internal final class SearchViewController: NSViewController {
             return
         }
         
-        let searchField: NSSearchField = .init()
+        let searchField: UndoableSearchField = .init()
         self.searchField = searchField
         searchField.delegate = self
         searchField.translatesAutoresizingMaskIntoConstraints = false

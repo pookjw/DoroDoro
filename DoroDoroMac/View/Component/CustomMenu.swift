@@ -8,6 +8,8 @@
 import Cocoa
 
 internal final class CustomMenu: NSMenu {
+    private weak var undoMenuItem: NSMenuItem? = nil
+    private weak var redoMenuItem: NSMenuItem? = nil
     private weak var bookmarkMenuItem: NSMenuItem? = nil
     
     internal override init(title: String) {
@@ -27,6 +29,14 @@ internal final class CustomMenu: NSMenu {
         bookmarkMenuItem?.action = action
         
         bookmarkMenuItem?.title = bookmarked ? Localizable.REMOVE_FROM_BOOKMARKS.string : Localizable.ADD_TO_BOOKMARKS.string
+    }
+    
+    internal func isUndoMenuItem(_ compareToItem: NSMenuItem) -> Bool {
+        return undoMenuItem == compareToItem
+    }
+    
+    internal func isRedoMenuItem(_ compareToItem: NSMenuItem) -> Bool {
+        return redoMenuItem == compareToItem
     }
     
     private func configureAppMenuItem() {
@@ -99,6 +109,12 @@ internal final class CustomMenu: NSMenu {
         let editMenuItem: NSMenuItem = .init()
         let editSubMenu: NSMenu = .init(title: "편집 (번역)")
         
+        let undoMenuItem: NSMenuItem = .init(title: "취소 (번역)",
+                                             action: Selector(("undoFromMenu:")),
+                                             keyEquivalent: "z")
+        let redoMenuItem: NSMenuItem = .init(title: "되돌리기 (번역)",
+                                             action: Selector(("redoFromMenu:")),
+                                             keyEquivalent: "z")
         let cutMenuItem: NSMenuItem = .init(title: "잘라내기 (번역)",
                                             action: #selector(NSText.cut(_:)),
                                             keyEquivalent: "x")
@@ -117,10 +133,16 @@ internal final class CustomMenu: NSMenu {
         let bookmarkMenuItem: NSMenuItem = .init(title: "책갈피 추가/삭제 (번역)",
                                                  action: nil,
                                                  keyEquivalent: "b")
+        
+        self.undoMenuItem = undoMenuItem
+        self.redoMenuItem = redoMenuItem
         self.bookmarkMenuItem = bookmarkMenuItem
         
         editMenuItem.submenu = editSubMenu
         editSubMenu.items = [
+            undoMenuItem,
+            redoMenuItem,
+            .separator(),
             cutMenuItem,
             copyMenuItem,
             pasteMenuItem,
@@ -132,6 +154,8 @@ internal final class CustomMenu: NSMenu {
         ]
         
         items.append(editMenuItem)
+        
+        redoMenuItem.keyEquivalentModifierMask = [.shift, .command]
     }
     
     private func configureHelpMenuItem() {

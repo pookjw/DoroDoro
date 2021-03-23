@@ -12,7 +12,7 @@ import DoroDoroMacAPI
 
 internal final class BookmarksViewController: NSViewController {
     internal weak var popover: NSPopover? = nil
-    private weak var searchField: NSSearchField? = nil
+    private weak var searchField: UndoableSearchField? = nil
     private weak var separatorView: NSView? = nil
     private weak var tableView: CopyableTableView? = nil
     private var bookmarksIdentifier: NSUserInterfaceItemIdentifier? = nil
@@ -35,7 +35,7 @@ internal final class BookmarksViewController: NSViewController {
     }
     
     private func configureSearchField() {
-        let searchField: NSSearchField = .init()
+        let searchField: UndoableSearchField = .init()
         self.searchField = searchField
         searchField.delegate = self
         searchField.translatesAutoresizingMaskIntoConstraints = false

@@ -11,6 +11,7 @@ import Combine
 internal final class SearchWindow: NSWindow {
     internal let resizeEvent: PassthroughSubject<NSRect, Never> = .init()
     private weak var searchViewController: SearchViewController? = nil
+    private var customUndoManager: UndoManager = .init()
     
     internal convenience init() {
         self.init(contentRect: .zero,
@@ -44,5 +45,9 @@ internal final class SearchWindow: NSWindow {
 extension SearchWindow: NSWindowDelegate {
     internal func windowDidResize(_ notification: Notification) {
         resizeEvent.send(frame)
+    }
+    
+    internal func windowWillReturnUndoManager(_ window: NSWindow) -> UndoManager? {
+        return customUndoManager
     }
 }
