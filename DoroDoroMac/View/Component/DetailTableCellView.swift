@@ -12,8 +12,22 @@ internal final class DetailTableCellView: NSView {
     @IBOutlet private weak var imageView: NSImageView!
     @IBOutlet private weak var mainTextLabel: NSTextField!
     @IBOutlet private weak var subTextLabel: NSTextField!
-    @IBOutlet weak var mainStackViewWidthLayout: NSLayoutConstraint!
+    @IBOutlet private weak var mainStackViewWidthLayout: NSLayoutConstraint!
     private var cancellableBag: Set<AnyCancellable> = .init()
+    
+    internal var chageUIWhenActiveAppStatusChanged: Bool = false {
+        didSet {
+            if chageUIWhenActiveAppStatusChanged {
+                if NSApp.isActive {
+                    whenBecomeActive()
+                } else {
+                    whenResignActive()
+                }
+            } else {
+                whenBecomeActive()
+            }
+        }
+    }
     
     internal override func awakeFromNib() {
         super.awakeFromNib()
@@ -42,15 +56,26 @@ internal final class DetailTableCellView: NSView {
     private func bind() {
         NotificationCenter.default
             .publisher(for: NSApplication.didBecomeActiveNotification)
+            .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] _ in
-                self?.whenBecomeActive()
+                guard let self = self,
+                      self.chageUIWhenActiveAppStatusChanged else {
+                    return
+                }
+                
+                self.whenBecomeActive()
             })
             .store(in: &cancellableBag)
         
         NotificationCenter.default
             .publisher(for: NSApplication.didResignActiveNotification)
+            .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] _ in
-                self?.whenResignActive()
+                guard let self = self,
+                      self.chageUIWhenActiveAppStatusChanged else {
+                    return
+                }
+                self.whenResignActive()
             })
             .store(in: &cancellableBag)
     }

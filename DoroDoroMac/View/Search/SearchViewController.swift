@@ -426,7 +426,7 @@ extension SearchViewController: NSTableViewDataSource {
         
         cell.configure(text: viewModel.addrLinkJusoData[row].roadAddr,
                        width: view.bounds.width)
-        
+        cell.chageUIWhenActiveAppStatusChanged = true
         return cell
     }
 }
