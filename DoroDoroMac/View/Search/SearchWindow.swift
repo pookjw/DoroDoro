@@ -34,11 +34,20 @@ internal final class SearchWindow: NSWindow {
         isReleasedWhenClosed = false
         
         setCenter(offset: size)
+        configureToolbar()
     }
     
     internal override func close() {
         super.close()
         NotificationCenter.default.removeObserver(self)
+    }
+    
+    private func configureToolbar() {
+        let toolbar: NSToolbar = .init()
+        self.toolbar = toolbar
+        
+        let currentLocationToolbarItem: NSToolbarItem = .init()
+        toolbar.insertItem(withItemIdentifier: currentLocationToolbarItem.itemIdentifier, at: 0)
     }
 }
 

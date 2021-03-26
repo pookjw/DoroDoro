@@ -15,4 +15,11 @@ extension NSWindow {
             setFrameOrigin(center)
         }
     }
+    
+    internal var topBarHeight: CGFloat {
+        guard let windowFrameHeight: CGFloat = contentView?.frame.height else {
+            return frame.height - contentRect(forFrameRect: frame).height
+        }
+        return windowFrameHeight - contentLayoutRect.height
+    }
 }

@@ -14,6 +14,7 @@ internal final class SearchViewController: NSViewController {
     internal weak var searchWindow: SearchWindow? = nil
     private weak var visualEffectView: NSVisualEffectView? = nil
     private weak var searchField: UndoableSearchField? = nil
+    private weak var searchFieldTopConstraint: Constraint? = nil
     private weak var separatorView: NSView? = nil
     private weak var tableView: CopyableTableView? = nil
     private weak var clipView: NSClipView? = nil
@@ -43,6 +44,11 @@ internal final class SearchViewController: NSViewController {
         bind()
     }
     
+    internal override func viewDidLayout() {
+        super.viewDidLayout()
+        searchFieldTopConstraint?.update(offset: searchWindow?.topBarHeight ?? 28)
+    }
+    
     private func configureVisualEffectView() {
         let visualEffectView: NSVisualEffectView = .init()
         self.visualEffectView = visualEffectView
@@ -61,8 +67,9 @@ internal final class SearchViewController: NSViewController {
         searchField.delegate = self
         searchField.translatesAutoresizingMaskIntoConstraints = false
         visualEffectView.addSubview(searchField)
-        searchField.snp.remakeConstraints { make in
-            make.top.equalToSuperview().offset(30)
+        searchField.snp.remakeConstraints { [weak self] make in
+            let top: ConstraintMakerEditable = make.top.equalToSuperview().offset(28)
+            self?.searchFieldTopConstraint = top.constraint
             make.leading.equalToSuperview().offset(10)
             make.trailing.equalToSuperview().offset(-10)
         }
