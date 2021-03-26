@@ -15,7 +15,10 @@ internal final class BookmarksViewController: NSViewController {
     private weak var searchField: UndoableSearchField? = nil
     private weak var separatorView: NSView? = nil
     private weak var tableView: CopyableTableView? = nil
+    private weak var scrollView: NSScrollView? = nil
     private var bookmarksIdentifier: NSUserInterfaceItemIdentifier? = nil
+    private weak var guideContainerView: NSView? = nil
+    private weak var guideTextField: NSTextField? = nil
     private var viewModel: BookmarksViewModel? = nil
     private var cancellableBag: Set<AnyCancellable> = .init()
     
@@ -29,7 +32,9 @@ internal final class BookmarksViewController: NSViewController {
         configureSearchField()
         configureSeparatorView()
         configureTableView()
+        configureGuideTextField()
         configureMenu()
+        toggleGuideContainerViewHiddenStatus(false)
         configureViewModel()
         bind()
     }
@@ -88,6 +93,7 @@ internal final class BookmarksViewController: NSViewController {
         clipView.postsBoundsChangedNotifications = true
 
         let scrollView: NSScrollView = .init()
+        self.scrollView = scrollView
         scrollView.contentView = clipView
         scrollView.autohidesScrollers = true
         scrollView.hasVerticalScroller = true
@@ -104,6 +110,38 @@ internal final class BookmarksViewController: NSViewController {
         }
     }
     
+    private func configureGuideTextField() {
+        guard let separatorView: NSView = separatorView else {
+            return
+        }
+        
+        let guideContainerView: NSView = .init()
+        self.guideContainerView = guideContainerView
+        guideContainerView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(guideContainerView)
+        guideContainerView.snp.remakeConstraints { [weak separatorView] make in
+            guard let separatorView: NSView = separatorView else {
+                return
+            }
+            make.top.equalTo(separatorView.snp.bottom)
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.bottom.equalToSuperview()
+        }
+        
+        let guideTextField: NSTextField = .init(wrappingLabelWithString: Localizable.SEARCH_GUIDE_LABEL.string)
+        self.guideTextField = guideTextField
+        guideTextField.translatesAutoresizingMaskIntoConstraints = false
+        guideContainerView.addSubview(guideTextField)
+        guideTextField.snp.remakeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.leading.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().offset(-20)
+        }
+        guideTextField.setLabelStyle()
+        guideTextField.alignment = .center
+    }
+    
     private func configureMenu() {
         let menu: NSMenu = .init()
         menu.delegate = self
@@ -116,10 +154,11 @@ internal final class BookmarksViewController: NSViewController {
     }
     
     private func bind() {
-        viewModel?.bookmarksDataEvent
+        viewModel?.refreshedEvent
             .receive(on: DispatchQueue.main)
-            .sink(receiveValue: { [weak self] _ in
+            .sink(receiveValue: { [weak self] (_, hasData) in
                 self?.tableView?.reloadData()
+                self?.toggleGuideContainerViewHiddenStatus(hasData)
             })
             .store(in: &cancellableBag)
         
@@ -181,6 +220,11 @@ internal final class BookmarksViewController: NSViewController {
         popover.show(relativeTo: view.bounds,
                      of: view,
                      preferredEdge: .maxX)
+    }
+    
+    private func toggleGuideContainerViewHiddenStatus(_ hidden: Bool) {
+        guideContainerView?.isHidden = hidden
+        scrollView?.isHidden = !hidden
     }
     
     @objc private func removeFromBookmarks(_ sender: NSMenuItem) {

@@ -94,6 +94,7 @@ internal final class SearchViewModel {
         } else {
             newJusoData.append(contentsOf: data.juso)
         }
+        
         refreshedEvent.send(
             (
                 data: newJusoData,

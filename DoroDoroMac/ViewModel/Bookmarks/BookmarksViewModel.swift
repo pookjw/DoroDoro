@@ -11,7 +11,7 @@ import DoroDoroMacAPI
 
 internal final class BookmarksViewModel {
     @Published internal var searchEvent: String? = nil
-    internal let bookmarksDataEvent: CurrentValueSubject<[String], Never> = .init([])
+    internal let refreshedEvent: CurrentValueSubject<(data: [String], hasData: Bool), Never> = .init((data: [], hasData: false))
     internal private(set) var bookmarksData: [String] = []
     private var cancellableBag: Set<AnyCancellable> = .init()
     
@@ -35,7 +35,7 @@ internal final class BookmarksViewModel {
                 return roadAddr
             }
         
-        bookmarksDataEvent.send(items)
+        refreshedEvent.send((data: items, hasData: !items.isEmpty))
     }
     
     private func bind() {
@@ -46,8 +46,8 @@ internal final class BookmarksViewModel {
             })
             .store(in: &cancellableBag)
         
-        bookmarksDataEvent
-            .sink(receiveValue: { [weak self] data in
+        refreshedEvent
+            .sink(receiveValue: { [weak self] (data, _) in
                 self?.bookmarksData = data
             })
             .store(in: &cancellableBag)
