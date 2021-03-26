@@ -16,6 +16,8 @@
 		D8C84073ADE3808F2A421FFF /* Pods_DoroDoroAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5309ED33327A32D8822CF4CC /* Pods_DoroDoroAPI.framework */; };
 		F305B34726044C18002F878A /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F305B34626044C18002F878A /* DetailsViewModel.swift */; };
 		F305B35126044C29002F878A /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F305B34F26044C29002F878A /* DetailsViewController.swift */; };
+		F331B235260E39A800551E64 /* BookmarksGuideLabelTextState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F331B234260E39A800551E64 /* BookmarksGuideLabelTextState.swift */; };
+		F331B237260E39A800551E64 /* BookmarksGuideLabelTextState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F331B234260E39A800551E64 /* BookmarksGuideLabelTextState.swift */; };
 		F332741825EFF1CF00417437 /* CloudService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F332741725EFF1CF00417437 /* CloudService.swift */; };
 		F332742025EFF71100417437 /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F332741F25EFF71100417437 /* SettingsService.swift */; };
 		F332742725EFF7E500417437 /* SettingsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F332742625EFF7E500417437 /* SettingsData.swift */; };
@@ -492,6 +494,7 @@
 		F305B34626044C18002F878A /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
 		F305B34F26044C29002F878A /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		F31F908CAD8875E972E2A171 /* Pods-DoroDoroWatchAPI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoroDoroWatchAPI.debug.xcconfig"; path = "Target Support Files/Pods-DoroDoroWatchAPI/Pods-DoroDoroWatchAPI.debug.xcconfig"; sourceTree = "<group>"; };
+		F331B234260E39A800551E64 /* BookmarksGuideLabelTextState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksGuideLabelTextState.swift; sourceTree = "<group>"; };
 		F332741725EFF1CF00417437 /* CloudService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudService.swift; sourceTree = "<group>"; };
 		F332741F25EFF71100417437 /* SettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
 		F332742625EFF7E500417437 /* SettingsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsData.swift; sourceTree = "<group>"; };
@@ -1397,6 +1400,7 @@
 			isa = PBXGroup;
 			children = (
 				F38128FB25F028F800C36F7B /* BookmarksData.swift */,
+				F331B234260E39A800551E64 /* BookmarksGuideLabelTextState.swift */,
 			);
 			path = Bookmarks;
 			sourceTree = "<group>";
@@ -2558,6 +2562,7 @@
 				F371F07225F52E9F00E003E8 /* UIDevice+Ext.swift in Sources */,
 				F3E6881025F122E200A619CA /* String+choseongContains.swift in Sources */,
 				F33BB10425ED268D00BC5772 /* MapViewController.swift in Sources */,
+				F331B235260E39A800551E64 /* BookmarksGuideLabelTextState.swift in Sources */,
 				F3A3DF2225F4398700E8F2F0 /* KeyboardEvent.swift in Sources */,
 				F3A3DEF025F41D4000E8F2F0 /* KakaoCoord2AddressAPIError+LocalizedError.swift in Sources */,
 				F3E6881425F13E6600A619CA /* DetailedNVCSplitViewControllerDelegate.swift in Sources */,
@@ -2599,6 +2604,7 @@
 				F3D761012607B2D800461F70 /* String+choseongContains.swift in Sources */,
 				F375B75F25FDF6A40075C3AE /* NSAppearance+Ext.swift in Sources */,
 				F3E24DA625FDC9E500123E3B /* NSObject+Ext.swift in Sources */,
+				F331B237260E39A800551E64 /* BookmarksGuideLabelTextState.swift in Sources */,
 				F3E24DC925FDEDAF00123E3B /* NSViewController+Ext.swift in Sources */,
 				F3E24CD625FDAD5200123E3B /* AddrEngAPIError+LocalizedError.swift in Sources */,
 				F3524FBE260E2469009A9C7E /* NSTextField+setLabelStyle.swift in Sources */,

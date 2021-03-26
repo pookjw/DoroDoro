@@ -140,6 +140,7 @@ internal final class BookmarksViewController: NSViewController {
         }
         guideTextField.setLabelStyle()
         guideTextField.alignment = .center
+        updateGuideLabelText(state: .noBookmarks)
     }
     
     private func configureMenu() {
@@ -156,9 +157,15 @@ internal final class BookmarksViewController: NSViewController {
     private func bind() {
         viewModel?.refreshedEvent
             .receive(on: DispatchQueue.main)
-            .sink(receiveValue: { [weak self] (_, hasData) in
+            .sink(receiveValue: { [weak self] (_, hasData, hasResult) in
                 self?.tableView?.reloadData()
                 self?.toggleGuideContainerViewHiddenStatus(hasData)
+                
+                if let hasResult: Bool = hasResult, !hasResult {
+                    self?.updateGuideLabelText(state: .noSearchResults)
+                } else {
+                    self?.updateGuideLabelText(state: .noBookmarks)
+                }
             })
             .store(in: &cancellableBag)
         
@@ -220,6 +227,15 @@ internal final class BookmarksViewController: NSViewController {
         popover.show(relativeTo: view.bounds,
                      of: view,
                      preferredEdge: .maxX)
+    }
+    
+    private func updateGuideLabelText(state: BookmarksGuideLabelTextState) {
+        switch state {
+        case .noBookmarks:
+            guideTextField?.stringValue = Localizable.BOOKMARK_GUIDE_LABEL.string
+        case .noSearchResults:
+            guideTextField?.stringValue = Localizable.NO_SEARCH_RESULTS.string
+        }
     }
     
     private func toggleGuideContainerViewHiddenStatus(_ hidden: Bool) {

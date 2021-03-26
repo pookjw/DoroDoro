@@ -43,6 +43,7 @@ internal enum Localizable: String {
     case MAP
     case COPY
     case SHARE
+    case NO_SEARCH_RESULTS
     case EMAIL_ERROR_NO_REGISTERED_EMAILS_ON_DEVICE
     case EMAIL_TITLE
     case EMAIL_APP_INFO

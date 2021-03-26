@@ -11,7 +11,7 @@ import DoroDoroMacAPI
 
 internal final class BookmarksViewModel {
     @Published internal var searchEvent: String? = nil
-    internal let refreshedEvent: CurrentValueSubject<(data: [String], hasData: Bool), Never> = .init((data: [], hasData: false))
+    internal let refreshedEvent: CurrentValueSubject<(data: [String], hasData: Bool, hasResult: Bool?), Never> = .init((data: [], hasData: false, hasResult: nil))
     internal private(set) var bookmarksData: [String] = []
     private var cancellableBag: Set<AnyCancellable> = .init()
     
@@ -20,7 +20,10 @@ internal final class BookmarksViewModel {
     }
     
     private func updateBookmarksData(_ bookmarksData: BookmarksData, searchText: String? = nil) {
-        let items: [String] = bookmarksData.bookmarkedRoadAddrs
+        
+        let originalItems: [String: Date] = bookmarksData.bookmarkedRoadAddrs
+        
+        let filteredItems: [String] = originalItems
             .filter({ (roadAddr, _) in
                 guard let text: String = searchText,
                       !text.isEmpty else {
@@ -35,7 +38,24 @@ internal final class BookmarksViewModel {
                 return roadAddr
             }
         
-        refreshedEvent.send((data: items, hasData: !items.isEmpty))
+        let hasData: Bool = !filteredItems.isEmpty
+        
+        let hasResult: Bool? = {
+            // 책갈피 데이터 자체가 없을 경우
+            guard !originalItems.isEmpty else {
+                return nil
+            }
+            
+            // 검색 모드가 아닐 경우
+            guard let text: String = searchText,
+                  !text.isEmpty else {
+                return nil
+            }
+            
+            return !filteredItems.isEmpty
+        }()
+        
+        refreshedEvent.send((data: filteredItems, hasData: hasData, hasResult: hasResult))
     }
     
     private func bind() {
@@ -47,7 +67,7 @@ internal final class BookmarksViewModel {
             .store(in: &cancellableBag)
         
         refreshedEvent
-            .sink(receiveValue: { [weak self] (data, _) in
+            .sink(receiveValue: { [weak self] (data, _, _) in
                 self?.bookmarksData = data
             })
             .store(in: &cancellableBag)

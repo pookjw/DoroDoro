@@ -15,7 +15,7 @@ internal final class BookmarksViewModel {
     @Published internal var searchEvent: String? = nil
     internal var contextMenuIndexPath: IndexPath? = nil
     internal var contextMenuRoadAddr: String? = nil
-    internal var refreshEvent: PassthroughSubject<Bool, Never> = .init()
+    internal var refreshEvent: PassthroughSubject<(hasData: Bool, hasResult: Bool?), Never> = .init()
     private var cancellableBag: Set<AnyCancellable> = .init()
     
     internal init() {
@@ -44,7 +44,9 @@ internal final class BookmarksViewModel {
             }
         }()
         
-        let items: [BookmarksCellItem] = bookmarksData.bookmarkedRoadAddrs
+        let originalItems: [String: Date] = bookmarksData.bookmarkedRoadAddrs
+        
+        let filteredItems: [BookmarksCellItem] = originalItems
             .filter({ (roadAddr, _) in
                 guard let text: String = searchText,
                       !text.isEmpty else {
@@ -59,11 +61,28 @@ internal final class BookmarksViewModel {
                 return .init(roadAddr: roadAddr)
             }
         
+        let hasData: Bool = !filteredItems.isEmpty
+        
+        let hasResult: Bool? = {
+            // 책갈피 데이터 자체가 없을 경우
+            guard !originalItems.isEmpty else {
+                return nil
+            }
+            
+            // 검색 모드가 아닐 경우
+            guard let text: String = searchText,
+                  !text.isEmpty else {
+                return nil
+            }
+            
+            return !filteredItems.isEmpty
+        }()
+        
         snapshot.deleteAllItems()
         snapshot.appendSections([headerItem])
-        snapshot.appendItems(items, toSection: headerItem)
+        snapshot.appendItems(filteredItems, toSection: headerItem)
         dataSource?.apply(snapshot, animatingDifferences: true)
-        refreshEvent.send(!items.isEmpty)
+        refreshEvent.send((hasData: hasData, hasResult: hasResult))
     }
     
     internal func bind() {

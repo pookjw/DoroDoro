@@ -114,6 +114,9 @@
 "SHARE" = "Share";
 
 /* */
+"NO_SEARCH_RESULTS" = "No search results";
+
+/* */
 "EMAIL_ERROR_NO_REGISTERED_EMAILS_ON_DEVICE" = "There's no any registered emails on device.";
 
 /* */

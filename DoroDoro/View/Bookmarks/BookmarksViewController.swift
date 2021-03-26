@@ -88,7 +88,7 @@ internal final class BookmarksViewController: UIViewController {
         guideLabel.font = .preferredFont(forTextStyle: .title3)
         guideLabel.adjustsFontForContentSizeCategory = true
         guideLabel.backgroundColor = .clear
-        guideLabel.text = Localizable.BOOKMARK_GUIDE_LABEL.string
+        updateGuideLabelText(state: .noBookmarks)
     }
     
     private func configureCollectionView() {
@@ -156,11 +156,26 @@ internal final class BookmarksViewController: UIViewController {
         
         viewModel?.refreshEvent
             .receive(on: DispatchQueue.main)
-            .sink(receiveValue: { [weak self] hasData in
+            .sink(receiveValue: { [weak self] (hasData, hasResult) in
                 self?.guideContainerView?.isHidden = hasData
                 self?.collectionView?.isHidden = !hasData
+                
+                if let hasResult: Bool = hasResult, !hasResult {
+                    self?.updateGuideLabelText(state: .noSearchResults)
+                } else {
+                    self?.updateGuideLabelText(state: .noBookmarks)
+                }
             })
             .store(in: &cancellableBag)
+    }
+    
+    private func updateGuideLabelText(state: BookmarksGuideLabelTextState) {
+        switch state {
+        case .noBookmarks:
+            guideLabel?.text = Localizable.BOOKMARK_GUIDE_LABEL.string
+        case .noSearchResults:
+            guideLabel?.text = Localizable.NO_SEARCH_RESULTS.string
+        }
     }
 }
 

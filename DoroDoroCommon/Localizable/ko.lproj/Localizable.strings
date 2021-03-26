@@ -114,6 +114,9 @@
 "SHARE" = "공유";
 
 /* */
+"NO_SEARCH_RESULTS" = "검색 결과 없음";
+
+/* */
 "EMAIL_ERROR_NO_REGISTERED_EMAILS_ON_DEVICE" = "기기에 등록된 이메일 주소가 없습니다.";
 
 /* */
