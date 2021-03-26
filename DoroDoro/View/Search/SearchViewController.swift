@@ -33,6 +33,7 @@ internal final class SearchViewController: UIViewController {
         configureCollectionView()
         configureSearchController()
         configureAccessiblity()
+        toggleGuideContainerViewHiddenStatus(false)
         configureViewModel()
         bind()
     }
@@ -121,7 +122,6 @@ internal final class SearchViewController: UIViewController {
         }
         
         collectionView.backgroundColor = .systemBackground
-        collectionView.isHidden = true
         collectionView.delegate = self
         
         let slackLoadingAnimator: SlackLoadingAnimator = .init()
@@ -155,6 +155,11 @@ internal final class SearchViewController: UIViewController {
         //
         
         searchController?.searchBar.searchTextField.accessibilityIdentifier = AccessibilityIdentifiers.SearchVC.searchField
+    }
+    
+    private func toggleGuideContainerViewHiddenStatus(_ hidden: Bool) {
+        guideContainerView?.isHidden = hidden
+        collectionView?.isHidden = !hidden
     }
     
     private func makeDataSource() -> SearchViewModel.DataSource {
@@ -230,14 +235,12 @@ internal final class SearchViewController: UIViewController {
                 }
                 
                 if hasData {
-                    self?.guideContainerView?.isHidden = true
-                    self?.collectionView?.isHidden = false
+                    self?.toggleGuideContainerViewHiddenStatus(true)
                     if isFirstPage {
                         self?.collectionView?.scrollToTop(animated: false)
                     }
                 } else {
-                    self?.guideContainerView?.isHidden = false
-                    self?.collectionView?.isHidden = true
+                    self?.toggleGuideContainerViewHiddenStatus(false)
                 }
                 
                 self?.removeAllSpinnerView()

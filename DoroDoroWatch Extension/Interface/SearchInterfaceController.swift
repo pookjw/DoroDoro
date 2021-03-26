@@ -46,7 +46,7 @@ internal final class SearchInterfaceController: WKInterfaceController {
     private func setAttributes() {
         setTitle(Localizable.DORODORO.string)
         textField.setPlaceholder(Localizable.SEARCH_BAR_PLACEHOLDER_WATCH.string)
-        guideLabel.setText(Localizable.SEARCH_GUIDE_WATCH.string)
+        guideLabel.setText(Localizable.SEARCH_GUIDE_LABEL_WATCH.string)
         topGroup.setHidden(false)
         tableGroup.setHidden(true)
         loadingImageView.setHidden(true)

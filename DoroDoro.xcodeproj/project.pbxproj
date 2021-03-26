@@ -95,6 +95,7 @@
 		F350297F25F2CEF70094B33D /* DetailsEngJusoObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F350297E25F2CEF70094B33D /* DetailsEngJusoObject.swift */; };
 		F350298625F2D5960094B33D /* DetailsLinkJusoIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F350298525F2D5960094B33D /* DetailsLinkJusoIndex.swift */; };
 		F350299825F2D8350094B33D /* DetailsEngJusoIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F350299725F2D8350094B33D /* DetailsEngJusoIndex.swift */; };
+		F3524FBE260E2469009A9C7E /* NSTextField+setLabelStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3524FBD260E2469009A9C7E /* NSTextField+setLabelStyle.swift */; };
 		F360D25525F57B4300CA4E93 /* AccessibilityIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F360D25425F57B4300CA4E93 /* AccessibilityIdentifiers.swift */; };
 		F360D28025F57D3E00CA4E93 /* AccessibilityIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F360D25425F57B4300CA4E93 /* AccessibilityIdentifiers.swift */; };
 		F360D28625F58E5200CA4E93 /* Pods_DoroDoro.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E86CEB0C5A70206FB9CE710D /* Pods_DoroDoro.framework */; };
@@ -585,6 +586,7 @@
 		F350297E25F2CEF70094B33D /* DetailsEngJusoObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsEngJusoObject.swift; sourceTree = "<group>"; };
 		F350298525F2D5960094B33D /* DetailsLinkJusoIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsLinkJusoIndex.swift; sourceTree = "<group>"; };
 		F350299725F2D8350094B33D /* DetailsEngJusoIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsEngJusoIndex.swift; sourceTree = "<group>"; };
+		F3524FBD260E2469009A9C7E /* NSTextField+setLabelStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextField+setLabelStyle.swift"; sourceTree = "<group>"; };
 		F360D25425F57B4300CA4E93 /* AccessibilityIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityIdentifiers.swift; sourceTree = "<group>"; };
 		F371F06D25F50F5D00E003E8 /* Pods-DoroDoro-acknowledgements.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "Pods-DoroDoro-acknowledgements.plist"; path = "Pods/Target Support Files/Pods-DoroDoro/Pods-DoroDoro-acknowledgements.plist"; sourceTree = SOURCE_ROOT; };
 		F371F06F25F513B700E003E8 /* Bundle+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Ext.swift"; sourceTree = "<group>"; };
@@ -1201,6 +1203,7 @@
 				F3FC9F4D260A3BEB00D6EBEF /* CopyableTableView.swift */,
 				F3FC9F4F260A48F800D6EBEF /* UndoableSearchField.swift */,
 				F3FC9F53260A5F6A00D6EBEF /* NSView+Ext.swift */,
+				F3524FBD260E2469009A9C7E /* NSTextField+setLabelStyle.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -2598,6 +2601,7 @@
 				F3E24DA625FDC9E500123E3B /* NSObject+Ext.swift in Sources */,
 				F3E24DC925FDEDAF00123E3B /* NSViewController+Ext.swift in Sources */,
 				F3E24CD625FDAD5200123E3B /* AddrEngAPIError+LocalizedError.swift in Sources */,
+				F3524FBE260E2469009A9C7E /* NSTextField+setLabelStyle.swift in Sources */,
 				F3E24D2725FDAFC400123E3B /* main.swift in Sources */,
 				F3D760E326063DF200461F70 /* DetailsListResultItem.swift in Sources */,
 				F3E24D0525FDADFF00123E3B /* BookmarksService.swift in Sources */,

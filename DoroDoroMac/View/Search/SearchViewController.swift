@@ -20,6 +20,8 @@ internal final class SearchViewController: NSViewController {
     private weak var scrollView: NSScrollView? = nil
     private var searchIdentifier: NSUserInterfaceItemIdentifier? = nil
     private weak var searchColumn: NSTableColumn? = nil
+    private weak var guideContainerView: NSView? = nil
+    private weak var guideTextField: NSTextField? = nil
     private var viewModel: SearchViewModel? = nil
     private var cancellableBag: Set<AnyCancellable> = .init()
     
@@ -34,7 +36,9 @@ internal final class SearchViewController: NSViewController {
         configureSearchField()
         configureSeparatorView()
         configureTableView()
+        configureGuideTextField()
         configureMenu()
+        toggleGuideContainerViewHiddenStatus(false)
         configureViewModel()
         bind()
     }
@@ -86,7 +90,8 @@ internal final class SearchViewController: NSViewController {
     }
     
     private func configureTableView() {
-        guard let visualEffectView: NSVisualEffectView = visualEffectView else {
+        guard let visualEffectView: NSVisualEffectView = visualEffectView,
+              let separatorView: NSView = separatorView else {
             return
         }
         let tableView: CopyableTableView = .init()
@@ -140,6 +145,39 @@ internal final class SearchViewController: NSViewController {
         }
     }
     
+    private func configureGuideTextField() {
+        guard let visualEffectView: NSVisualEffectView = visualEffectView,
+              let separatorView: NSView = separatorView else {
+            return
+        }
+        
+        let guideContainerView: NSView = .init()
+        self.guideContainerView = guideContainerView
+        guideContainerView.translatesAutoresizingMaskIntoConstraints = false
+        visualEffectView.addSubview(guideContainerView)
+        guideContainerView.snp.remakeConstraints { [weak separatorView] make in
+            guard let separatorView: NSView = separatorView else {
+                return
+            }
+            make.top.equalTo(separatorView.snp.bottom)
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.bottom.equalToSuperview()
+        }
+        
+        let guideTextField: NSTextField = .init(wrappingLabelWithString: Localizable.SEARCH_GUIDE_LABEL.string)
+        self.guideTextField = guideTextField
+        guideTextField.translatesAutoresizingMaskIntoConstraints = false
+        guideContainerView.addSubview(guideTextField)
+        guideTextField.snp.remakeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.leading.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().offset(-20)
+        }
+        guideTextField.setLabelStyle()
+        guideTextField.alignment = .center
+    }
+    
     private func configureMenu() {
         let menu: NSMenu = .init()
         menu.delegate = self
@@ -152,11 +190,14 @@ internal final class SearchViewController: NSViewController {
     }
     
     private func bind() {
-        viewModel?.addrLinkJusoDataEvent
+        viewModel?.refreshedEvent
             .receive(on: DispatchQueue.main)
-            .sink(receiveValue: { [weak self] (_, text, isFirstPage) in
+            .sink(receiveValue: { [weak self] (_, text, hasData, isFirstPage) in
                 self?.tableView?.reloadData()
                 self?.updateColumnTitle(for: text)
+                
+                self?.toggleGuideContainerViewHiddenStatus(hasData)
+                
                 if isFirstPage {
                     self?.tableView?.scrollToTop()
                 }
@@ -257,6 +298,11 @@ internal final class SearchViewController: NSViewController {
         tableView?.scrollToTop()
     }
     
+    private func toggleGuideContainerViewHiddenStatus(_ hidden: Bool) {
+        guideContainerView?.isHidden = hidden
+        scrollView?.isHidden = !hidden
+    }
+    
     private func determineLoadNextPage(bounds: CGRect) {
         guard let viewModel: SearchViewModel = viewModel else {
             return
@@ -315,7 +361,7 @@ internal final class SearchViewController: NSViewController {
         BookmarksService.shared.toggleBookmark(selectedMenuJusoData.roadAddr)
     }
     
-    private func presentDetailVC(data: AddrLinkJusoData, at view: NSView) {
+    private func presentDetailVC(data: AddrLinkJusoData, from view: NSView) {
         let popover: NSPopover = .init()
         let vc: DetailsViewController = .init()
         vc.loadViewIfNeeded()
@@ -397,7 +443,7 @@ extension SearchViewController: NSTableViewDelegate {
         }
         
         updateBookmarkMenuItem()
-        presentDetailVC(data: selectedMenuJusoData, at: cell)
+        presentDetailVC(data: selectedMenuJusoData, from: cell)
     }
 }
 

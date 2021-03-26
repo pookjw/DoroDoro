@@ -18,7 +18,7 @@ internal enum Localizable: String {
     case DONE
     case DISMISS
     case SEARCH_GUIDE_LABEL
-    case SEARCH_GUIDE_WATCH
+    case SEARCH_GUIDE_LABEL_WATCH
     case SEARCH_BAR_PLACEHOLDER_WATCH
     case BOOKMARK_GUIDE_LABEL
     case NO_DATA

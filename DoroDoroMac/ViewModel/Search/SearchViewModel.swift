@@ -11,7 +11,7 @@ import DoroDoroMacAPI
 
 internal final class SearchViewModel {
     @Published internal var searchEvent: String? = nil
-    internal let addrLinkJusoDataEvent: PassthroughSubject<(data: [AddrLinkJusoData], text: String, isFirstPage: Bool), Never> = .init()
+    internal let refreshedEvent: PassthroughSubject<(data: [AddrLinkJusoData], text: String, hasData: Bool, isFirstPage: Bool), Never> = .init()
     internal private(set) var addrLinkJusoData: [AddrLinkJusoData] = []
     internal let addrAPIService: AddrAPIService = .init()
     
@@ -76,8 +76,8 @@ internal final class SearchViewModel {
             })
             .store(in: &cancellableBag)
         
-        addrLinkJusoDataEvent
-            .sink(receiveValue: { [weak self] (data, _, _) in
+        refreshedEvent
+            .sink(receiveValue: { [weak self] (data, _, _, _) in
                 self?.addrLinkJusoData = data
             })
             .store(in: &cancellableBag)
@@ -94,6 +94,13 @@ internal final class SearchViewModel {
         } else {
             newJusoData.append(contentsOf: data.juso)
         }
-        addrLinkJusoDataEvent.send((data: newJusoData, text: searchEvent ?? "", isFirstPage: currentPage == 1))
+        refreshedEvent.send(
+            (
+                data: newJusoData,
+                text: searchEvent ?? "",
+                hasData: !newJusoData.isEmpty,
+                isFirstPage: currentPage == 1
+            )
+        )
     }
 }

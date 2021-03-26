@@ -42,7 +42,7 @@
 "SEARCH_BAR_PLACEHOLDER_WATCH" = "🔎 Search...";
 
 /* */
-"SEARCH_GUIDE_WATCH" = "Enter a keyword.";
+"SEARCH_GUIDE_LABEL_WATCH" = "Enter a keyword.";
 
 /* */
 "BOOKMARK_GUIDE_LABEL" = "Bookmarks are synced by iCloud.";
