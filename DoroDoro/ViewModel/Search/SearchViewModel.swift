@@ -38,9 +38,13 @@ internal final class SearchViewModel {
         bind()
     }
     
-    internal func requestGeoEvent() {
+    internal func requestGeoEventIfAvailable() -> Bool {
+        guard !isGeoSearching else {
+            return false
+        }
         isGeoSearching = true
         geoAPIService.requestCurrentCoord()
+        return true
     }
     
     internal func requestNextPageIfAvailable() {

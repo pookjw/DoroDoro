@@ -66,12 +66,15 @@ internal final class SearchViewController: UIViewController {
     
     private func getGeoBarButtonAction() -> UIAction {
         return .init { [weak self] _ in
-            guard let isGeoSearching: Bool = self?.viewModel?.isGeoSearching,
-                  !isGeoSearching else {
+            guard let viewModel: SearchViewModel = self?.viewModel else {
                 return
             }
-            self?.showSpinnerView()
-            self?.viewModel?.requestGeoEvent()
+            
+            let requested: Bool = viewModel.requestGeoEventIfAvailable()
+            
+            if requested {
+                self?.showSpinnerView()
+            }
         }
     }
     

@@ -49,6 +49,19 @@ internal final class SearchViewController: NSViewController {
         searchFieldTopConstraint?.update(offset: searchWindow?.topBarHeight ?? 28)
     }
     
+    @objc internal func clickedCurrentLocationToolbarItem(_ sender: NSToolbarItem) {
+        guard let viewModel: SearchViewModel = viewModel else {
+            return
+        }
+        
+        let requested: Bool = viewModel.requestGeoEventIfAvailable()
+        
+        if requested {
+            showSpinnerView()
+            searchWindow?.toggleLocationToolbarItemStatus(isSearching: true)
+        }
+    }
+    
     private func configureVisualEffectView() {
         let visualEffectView: NSVisualEffectView = .init()
         self.visualEffectView = visualEffectView
@@ -217,6 +230,38 @@ internal final class SearchViewController: NSViewController {
             .sink(receiveValue: { [weak self] error in
                 self?.showErrorAlert(for: error)
                 self?.removeAllSpinnerView()
+            })
+            .store(in: &cancellableBag)
+        
+        viewModel?.geoAPIService.coordErrorEvent
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] error in
+                self?.showErrorAlert(for: error)
+                self?.removeAllSpinnerView()
+            })
+            .store(in: &cancellableBag)
+        
+        viewModel?.kakaoAPIService.coord2AddressErrorEvent
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] error in
+                self?.showErrorAlert(for: error)
+                self?.removeAllSpinnerView()
+            })
+            .store(in: &cancellableBag)
+        
+        viewModel?.$isGeoSearching
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] isGeoSearching in
+                self?.searchWindow?.toggleLocationToolbarItemStatus(isSearching: isGeoSearching)
+            })
+            .store(in: &cancellableBag)
+        
+        viewModel?.geoEvent
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] roadAddr in
+                guard let self = self else { return }
+                self.removeAllSpinnerView()
+                self.presentDetailVC(roadAddr: roadAddr, from: self.view)
             })
             .store(in: &cancellableBag)
         
@@ -408,6 +453,19 @@ internal final class SearchViewController: NSViewController {
         vc.loadViewIfNeeded()
         vc.setLinkJusoData(data)
 //        vc.setRoadAddr(data.roadAddr)
+        vc.preferredContentSize = .init(width: 450, height: 600)
+        popover.contentViewController = vc
+        popover.behavior = .semitransient
+        popover.show(relativeTo: view.bounds,
+                     of: view,
+                     preferredEdge: .maxX)
+    }
+    
+    private func presentDetailVC(roadAddr: String, from view: NSView) {
+        let popover: NSPopover = .init()
+        let vc: DetailsViewController = .init()
+        vc.loadViewIfNeeded()
+        vc.setRoadAddr(roadAddr)
         vc.preferredContentSize = .init(width: 450, height: 600)
         popover.contentViewController = vc
         popover.behavior = .semitransient
