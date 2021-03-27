@@ -7,7 +7,13 @@
 
 import Foundation
 
-internal struct DetailsListResultItem {
-    internal let text: String
-    internal let secondaryText: String
+internal final class DetailsListResultItem: NSObject {
+    internal private(set) var text: String?
+    internal private(set) var secondaryText: String?
+    
+    internal convenience init(text: String, secondaryText: String) {
+        self.init()
+        self.text = text
+        self.secondaryText = secondaryText
+    }
 }

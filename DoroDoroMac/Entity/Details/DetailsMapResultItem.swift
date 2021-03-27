@@ -7,8 +7,15 @@
 
 import Foundation
 
-internal struct DetailsMapResultItem {
-    internal let latitude: Double
-    internal let longitude: Double
-    internal let locationTitle: String
+internal final class DetailsMapResultItem: NSObject {
+    internal private(set) var latitude: Double?
+    internal private(set) var longitude: Double?
+    internal private(set) var locationTitle: String?
+    
+    internal convenience init(latitude: Double, longitude: Double, locationTitle: String) {
+        self.init()
+        self.latitude = latitude
+        self.longitude = longitude
+        self.locationTitle = locationTitle
+    }
 }

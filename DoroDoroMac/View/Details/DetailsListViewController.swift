@@ -10,14 +10,15 @@ import Combine
 import SnapKit
 
 internal final class DetailsListViewController: NSViewController {
-    internal var dataSource: [DetailsListResultItem] = [] {
+    internal var resultItems: [DetailsListResultItem] = [] {
         didSet {
-            tableView?.reloadData()
+            viewModel?.updateResultItems(resultItems)
         }
     }
     
     private weak var tableView: CopyableTableView? = nil
     private var listIdentifier: NSUserInterfaceItemIdentifier? = nil
+    private var viewModel: DetailsListViewModel? = nil
     private var cancellableBag: Set<AnyCancellable> = .init()
     
     internal override func loadView() {
@@ -29,6 +30,7 @@ internal final class DetailsListViewController: NSViewController {
         super.viewDidLoad()
         configureTableView()
         configureMenu()
+        configureViewModel()
         bind()
     }
     
@@ -71,6 +73,26 @@ internal final class DetailsListViewController: NSViewController {
         tableView?.menu = menu
     }
     
+    private func configureViewModel() {
+        let viewModel: DetailsListViewModel = .init(dataSource: makeDataSource())
+        self.viewModel = viewModel
+    }
+    
+    private func makeDataSource() -> DetailsListViewModel.DataSource {
+        guard let tableView: CopyableTableView = tableView else {
+            fatalError("TableView does not exists!")
+        }
+        
+        let dataSource: DetailsListViewModel.DataSource = .init(tableView: tableView) { [weak self] (tableView, column, row, item) -> NSView in
+            guard let self = self,
+                  let item: DetailsListResultItem = item as? DetailsListResultItem
+            else { return .init() }
+            return self.getTableViewCellView(tableView, viewFor: column, row: row, item: item)
+        }
+        
+        return dataSource
+    }
+    
     private func bind() {
         if let tableView: CopyableTableView = tableView {
             tableView.copyEvent
@@ -106,18 +128,18 @@ internal final class DetailsListViewController: NSViewController {
     
     private func getSelectedItem() -> (selectedRow: Int, selectedString: String)? {
         guard let selectedRow: Int = tableView?.selectedRow,
-              (selectedRow >= 0) && (dataSource.count > selectedRow)
+              (selectedRow >= 0) && (resultItems.count > selectedRow)
         else { return nil }
         
-        return (selectedRow: selectedRow, selectedString: dataSource[selectedRow].secondaryText ?? "")
+        return (selectedRow: selectedRow, selectedString: resultItems[selectedRow].secondaryText ?? "")
     }
     
     private func getClickedItem() -> (clickedRow: Int, selectedString: String)? {
         guard let clickedRow: Int = tableView?.clickedRow,
-              (clickedRow >= 0) && (dataSource.count > clickedRow)
+              (clickedRow >= 0) && (resultItems.count > clickedRow)
         else { return nil }
         
-        return (clickedRow: clickedRow, selectedString: dataSource[clickedRow].secondaryText ?? "")
+        return (clickedRow: clickedRow, selectedString: resultItems[clickedRow].secondaryText ?? "")
     }
     
     private func getAnyItem() -> (row: Int, selectedString: String)? {
@@ -128,19 +150,19 @@ internal final class DetailsListViewController: NSViewController {
         return item
     }
     
-    internal func getTableViewCellView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int, item: DetailsListResultItem) -> NSView? {
+    internal func getTableViewCellView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int, item: DetailsListResultItem) -> NSView {
         guard let listIdentifier: NSUserInterfaceItemIdentifier = listIdentifier,
               let cell: DetailTableCellView = tableView.makeView(withIdentifier: listIdentifier, owner: self) as? DetailTableCellView
         else {
-            return nil
+            fatalError("Failed to get cell view.")
         }
         
-        guard dataSource.count > row else {
-            return nil
+        guard resultItems.count > row else {
+            fatalError("Failed to get cell view.")
         }
         
-        cell.configure(mainText: dataSource[row].text ?? "",
-                       subText: dataSource[row].secondaryText ?? "",
+        cell.configure(mainText: resultItems[row].text ?? "",
+                       subText: resultItems[row].secondaryText ?? "",
                        width: view.bounds.width)
         
         return cell

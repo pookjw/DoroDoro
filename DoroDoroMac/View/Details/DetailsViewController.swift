@@ -135,7 +135,7 @@ internal final class DetailsViewController: NSViewController {
         
         let vc: DetailsListViewController = .init()
         vc.loadViewIfNeeded()
-        vc.dataSource = items
+        vc.resultItems = items
         
         let linkResultTabViewItem: NSTabViewItem = .init(viewController: vc)
         self.linkResultTabViewItem = linkResultTabViewItem
@@ -153,7 +153,7 @@ internal final class DetailsViewController: NSViewController {
         
         let vc: DetailsListViewController = .init()
         vc.loadViewIfNeeded()
-        vc.dataSource = items
+        vc.resultItems = items
         
         let engResultTabViewItem: NSTabViewItem = .init(viewController: vc)
         self.engResultTabViewItem = engResultTabViewItem
