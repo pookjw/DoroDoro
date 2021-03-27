@@ -39,7 +39,6 @@ internal final class DetailsListViewController: NSViewController {
         tableView.wantsLayer = true
         tableView.layer?.backgroundColor = .clear
         tableView.backgroundColor = .clear
-        tableView.dataSource = self
         tableView.delegate = self
         tableView.headerView = nil
         tableView.usesAutomaticRowHeights = true
@@ -110,7 +109,7 @@ internal final class DetailsListViewController: NSViewController {
               (selectedRow >= 0) && (dataSource.count > selectedRow)
         else { return nil }
         
-        return (selectedRow: selectedRow, selectedString: dataSource[selectedRow].secondaryText)
+        return (selectedRow: selectedRow, selectedString: dataSource[selectedRow].secondaryText ?? "")
     }
     
     private func getClickedItem() -> (clickedRow: Int, selectedString: String)? {
@@ -118,7 +117,7 @@ internal final class DetailsListViewController: NSViewController {
               (clickedRow >= 0) && (dataSource.count > clickedRow)
         else { return nil }
         
-        return (clickedRow: clickedRow, selectedString: dataSource[clickedRow].secondaryText)
+        return (clickedRow: clickedRow, selectedString: dataSource[clickedRow].secondaryText ?? "")
     }
     
     private func getAnyItem() -> (row: Int, selectedString: String)? {
@@ -128,14 +127,8 @@ internal final class DetailsListViewController: NSViewController {
         }
         return item
     }
-}
-
-extension DetailsListViewController: NSTableViewDataSource {
-    internal func numberOfRows(in tableView: NSTableView) -> Int {
-        return dataSource.count
-    }
     
-    internal func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+    internal func getTableViewCellView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int, item: DetailsListResultItem) -> NSView? {
         guard let listIdentifier: NSUserInterfaceItemIdentifier = listIdentifier,
               let cell: DetailTableCellView = tableView.makeView(withIdentifier: listIdentifier, owner: self) as? DetailTableCellView
         else {
@@ -146,8 +139,8 @@ extension DetailsListViewController: NSTableViewDataSource {
             return nil
         }
         
-        cell.configure(mainText: dataSource[row].text,
-                       subText: dataSource[row].secondaryText,
+        cell.configure(mainText: dataSource[row].text ?? "",
+                       subText: dataSource[row].secondaryText ?? "",
                        width: view.bounds.width)
         
         return cell

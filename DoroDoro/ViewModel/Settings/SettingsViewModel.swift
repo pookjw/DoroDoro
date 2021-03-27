@@ -14,24 +14,21 @@ internal final class SettingsViewModel {
     private var cancellableBag: Set<AnyCancellable> = .init()
     
     internal var contextMenuIndexPath: IndexPath? = nil
-    internal var dataSource: DataSource? = nil
+    private var dataSource: DataSource
     
-    internal init() {
+    internal init(dataSource: DataSource) {
+        self.dataSource = dataSource
         bind()
     }
     
     internal func getCellItem(from indexPath: IndexPath) -> SettingCellItem? {
-        guard let sectionIdentifiers: [SettingHeaderItem] = dataSource?.snapshot().sectionIdentifiers else {
-            return nil
-        }
+        let sectionIdentifiers: [SettingHeaderItem] = dataSource.snapshot().sectionIdentifiers
         
         guard sectionIdentifiers.count > indexPath.section else {
             return nil
         }
         
-        guard let cellItems: [SettingCellItem] = dataSource?.snapshot().itemIdentifiers(inSection: sectionIdentifiers[indexPath.section]) else {
-            return nil
-        }
+        let cellItems: [SettingCellItem] = dataSource.snapshot().itemIdentifiers(inSection: sectionIdentifiers[indexPath.section])
         
         guard cellItems.count > indexPath.row else {
             return nil
@@ -40,10 +37,8 @@ internal final class SettingsViewModel {
         return cellItems[indexPath.row]
     }
     
-    internal func getSectionHeaderItem(from indexPath: IndexPath) -> SettingHeaderItem? {
-        guard let sectionIdentifiers: [SettingHeaderItem] = dataSource?.snapshot().sectionIdentifiers else {
-            return nil
-        }
+    internal func getHeaderItem(from indexPath: IndexPath) -> SettingHeaderItem? {
+        let sectionIdentifiers: [SettingHeaderItem] = dataSource.snapshot().sectionIdentifiers
         guard sectionIdentifiers.count > indexPath.section else {
             return nil
         }
@@ -63,9 +58,7 @@ internal final class SettingsViewModel {
     }
     
     private func updateMapSelectionItem(_ selected: SettingsMapSelectionType) {
-        guard var snapshot: Snapshot = dataSource?.snapshot() else {
-            return
-        }
+        var snapshot: Snapshot = dataSource.snapshot()
         
         let mapHeaderItem: SettingHeaderItem = {
             if let mapHeaderItem: SettingHeaderItem = snapshot.sectionIdentifiers.first(where: { $0.headerType == .map }) {
@@ -86,13 +79,11 @@ internal final class SettingsViewModel {
 
         snapshot.appendItems(items, toSection: mapHeaderItem)
         sortSnapshot(&snapshot)
-        dataSource?.apply(snapshot, animatingDifferences: true)
+        dataSource.apply(snapshot, animatingDifferences: true)
     }
     
     private func updateContributorItem() {
-        guard var snapshot: Snapshot = dataSource?.snapshot() else {
-            return
-        }
+        var snapshot: Snapshot = dataSource.snapshot()
         
         let contributorHeaderItem: SettingHeaderItem = {
             if let contributorHeaderItem: SettingHeaderItem = snapshot.sectionIdentifiers.first(where: { $0.headerType == .contributor }) {
@@ -113,13 +104,11 @@ internal final class SettingsViewModel {
         
         snapshot.appendItems(items, toSection: contributorHeaderItem)
         sortSnapshot(&snapshot)
-        dataSource?.apply(snapshot, animatingDifferences: true)
+        dataSource.apply(snapshot, animatingDifferences: true)
     }
     
     private func updateAboutItem() {
-        guard var snapshot: Snapshot = dataSource?.snapshot() else {
-            return
-        }
+        var snapshot: Snapshot = dataSource.snapshot()
         
         let aboutHeaderItem: SettingHeaderItem = {
             if let aboutHeaderItem: SettingHeaderItem = snapshot.sectionIdentifiers.first(where: { $0.headerType == .about }) {
@@ -140,7 +129,7 @@ internal final class SettingsViewModel {
         
         snapshot.appendItems(items, toSection: aboutHeaderItem)
         sortSnapshot(&snapshot)
-        dataSource?.apply(snapshot, animatingDifferences: true)
+        dataSource.apply(snapshot, animatingDifferences: true)
     }
     
     private func sortSnapshot(_ snapshot: inout Snapshot)  {

@@ -43,8 +43,8 @@ internal final class SettingsViewController: UIViewController {
     }
     
     private func configureViewModel() {
-        viewModel = .init()
-        viewModel?.dataSource = makeDataSource()
+        let viewModel: SettingsViewModel = .init(dataSource: makeDataSource())
+        self.viewModel = viewModel
     }
     
     private func configureCollectionView() {
@@ -107,10 +107,7 @@ internal final class SettingsViewController: UIViewController {
     
     private func getHeaderCellRegisteration() -> UICollectionView.SupplementaryRegistration<UICollectionViewListCell> {
         return .init(elementKind: UICollectionView.elementKindSectionHeader) { [weak self] (headerView, elementKind, indexPath) in
-            guard let dataSource: SettingsViewModel.DataSource = self?.viewModel?.dataSource else { return }
-            guard dataSource.snapshot().sectionIdentifiers.count > indexPath.section else { return }
-            
-            guard let headerItem: SettingHeaderItem = self?.viewModel?.getSectionHeaderItem(from: indexPath) else {
+            guard let headerItem: SettingHeaderItem = self?.viewModel?.getHeaderItem(from: indexPath) else {
                 return
             }
             
@@ -130,12 +127,7 @@ internal final class SettingsViewController: UIViewController {
     
     private func getFooterCellRegisteration() -> UICollectionView.SupplementaryRegistration<UICollectionViewListCell> {
         return .init(elementKind: UICollectionView.elementKindSectionFooter) { [weak self] (footerView, elementKind, indexPath) in
-            guard let dataSource: SettingsViewModel.DataSource = self?.viewModel?.dataSource else {
-                return
-            }
-            guard dataSource.snapshot().sectionIdentifiers.count > indexPath.section else { return }
-            
-            guard let headerItem: SettingHeaderItem = self?.viewModel?.getSectionHeaderItem(from: indexPath) else {
+            guard let headerItem: SettingHeaderItem = self?.viewModel?.getHeaderItem(from: indexPath) else {
                 return
             }
             

@@ -49,8 +49,8 @@ internal final class SearchViewController: UIViewController {
     }
     
     private func configureViewModel() {
-        viewModel = .init()
-        viewModel?.dataSource = makeDataSource()
+        let viewModel: SearchViewModel = .init(dataSource: makeDataSource())
+        self.viewModel = viewModel
     }
     
     private func setAttributes() {
@@ -195,10 +195,9 @@ internal final class SearchViewController: UIViewController {
     
     private func getHeaderCellRegisteration() -> UICollectionView.SupplementaryRegistration<UICollectionViewListCell> {
         return .init(elementKind: UICollectionView.elementKindSectionHeader) { [weak self] (headerView, elementKind, indexPath) in
-            guard let dataSource: SearchViewModel.DataSource = self?.viewModel?.dataSource else { return }
-            guard dataSource.snapshot().sectionIdentifiers.count > indexPath.section else { return }
-            
-            let headerItem: SearchHeaderItem = dataSource.snapshot().sectionIdentifiers[indexPath.section]
+            guard let headerItem: SearchHeaderItem = self?.viewModel?.getHeaderItem(from: indexPath) else {
+                return
+            }
             
             var configuration: UIListContentConfiguration = headerView.defaultContentConfiguration()
             configuration.text = headerItem.title

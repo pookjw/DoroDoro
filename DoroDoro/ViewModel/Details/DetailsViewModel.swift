@@ -13,7 +13,7 @@ internal final class DetailsViewModel {
     internal typealias DataSource = UICollectionViewDiffableDataSource<DetailHeaderItem, DetailResultItem>
     private typealias Snapshot = NSDiffableDataSourceSnapshot<DetailHeaderItem, DetailResultItem>
     
-    internal var dataSource: DataSource? = nil
+    private var dataSource: DataSource
     internal var refreshedEvent: PassthroughSubject<Void, Never> = .init()
     internal var bookmarkEvent: PassthroughSubject<Bool, Never> = .init()
     internal let addrAPIService: AddrAPIService = .init()
@@ -21,7 +21,8 @@ internal final class DetailsViewModel {
     private var roadAddr: String? = nil
     private var cancellableBag: Set<AnyCancellable> = .init()
     
-    internal init() {
+    internal init(dataSource: DataSource) {
+        self.dataSource = dataSource
         bind()
     }
     
@@ -30,34 +31,27 @@ internal final class DetailsViewModel {
         BookmarksService.shared.toggleBookmark(roadAddr)
     }
     
-    internal func getResultItem(from indexPath: IndexPath) -> DetailResultItem? {
-        guard let sectionIdentifiers: [DetailHeaderItem] = dataSource?.snapshot().sectionIdentifiers else {
+    internal func getHeaderItem(from indexPath: IndexPath) -> DetailHeaderItem? {
+        guard dataSource.snapshot().numberOfSections > indexPath.section else {
             return nil
         }
+        return dataSource.snapshot().sectionIdentifiers[indexPath.section]
+    }
+    
+    internal func getResultItem(from indexPath: IndexPath) -> DetailResultItem? {
+        let sectionIdentifiers: [DetailHeaderItem] = dataSource.snapshot().sectionIdentifiers
         
         guard sectionIdentifiers.count > indexPath.section else {
             return nil
         }
         
-        guard let resultItems: [DetailResultItem] = dataSource?.snapshot().itemIdentifiers(inSection: sectionIdentifiers[indexPath.section]) else {
-            return nil
-        }
+        let resultItems: [DetailResultItem] = dataSource.snapshot().itemIdentifiers(inSection: sectionIdentifiers[indexPath.section])
         
         guard resultItems.count > indexPath.row else {
             return nil
         }
         
         return resultItems[indexPath.row]
-    }
-    
-    internal func getSectionHeaderItem(from indexPath: IndexPath) -> DetailHeaderItem? {
-        guard let sectionIdentifiers: [DetailHeaderItem] = dataSource?.snapshot().sectionIdentifiers else {
-            return nil
-        }
-        guard sectionIdentifiers.count > indexPath.section else {
-            return nil
-        }
-        return sectionIdentifiers[indexPath.section]
     }
     
     internal func loadData(_ linkJusoData: AddrLinkJusoData) {
@@ -77,17 +71,13 @@ internal final class DetailsViewModel {
     }
     
     private func deleteAllItems() {
-        guard var snapshot: Snapshot = dataSource?.snapshot() else {
-            return
-        }
+        var snapshot: Snapshot = dataSource.snapshot()
         snapshot.deleteAllItems()
-        dataSource?.apply(snapshot, animatingDifferences: true)
+        dataSource.apply(snapshot, animatingDifferences: true)
     }
     
     private func updateLinkItems(_ linkJusoData: AddrLinkJusoData) {
-        guard var snapshot: Snapshot = dataSource?.snapshot() else {
-            return
-        }
+        var snapshot: Snapshot = dataSource.snapshot()
         
         // 도로명주소 데이터 생성
         let linkHeaderItem: DetailHeaderItem = {
@@ -133,14 +123,12 @@ internal final class DetailsViewModel {
         
         snapshot.appendItems(items, toSection: linkHeaderItem)
         sortSnapshot(&snapshot)
-        dataSource?.apply(snapshot, animatingDifferences: true)
+        dataSource.apply(snapshot, animatingDifferences: true)
         refreshedEvent.send()
     }
     
     private func updateEngItems(_ engJusoData: AddrEngJusoData) {
-        guard var snapshot: Snapshot = dataSource?.snapshot() else {
-            return
-        }
+        var snapshot: Snapshot = dataSource.snapshot()
         
         // 세부정보 데이터 생성
         let engHeaderItem: DetailHeaderItem = {
@@ -168,17 +156,18 @@ internal final class DetailsViewModel {
         
         snapshot.appendItems(items, toSection: engHeaderItem)
         sortSnapshot(&snapshot)
-        dataSource?.apply(snapshot, animatingDifferences: false)
+        dataSource.apply(snapshot, animatingDifferences: false)
         refreshedEvent.send()
     }
     
     private func updateMapItems(_ addressDocumentData: KakaoAddressDocumentData) {
-        guard var snapshot: Snapshot = dataSource?.snapshot(),
-            let latitude: Double = Double(addressDocumentData.y),
+        guard let latitude: Double = Double(addressDocumentData.y),
             let longitude: Double = Double(addressDocumentData.x)
         else {
             return
         }
+        
+        var snapshot: Snapshot = dataSource.snapshot()
         
         // 세부정보 데이터 생성
         let coordHeaderItem: DetailHeaderItem = {
@@ -202,7 +191,7 @@ internal final class DetailsViewModel {
         
         snapshot.appendItems(items, toSection: coordHeaderItem)
         sortSnapshot(&snapshot)
-        dataSource?.apply(snapshot, animatingDifferences: false)
+        dataSource.apply(snapshot, animatingDifferences: false)
         refreshedEvent.send()
     }
     

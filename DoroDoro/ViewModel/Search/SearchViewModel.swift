@@ -18,7 +18,7 @@ internal final class SearchViewModel {
     internal let addrAPIService: AddrAPIService = .init()
     internal let geoAPIService: GeoAPIService = .init()
     internal let kakaoAPIService: KakaoAPIService = .init()
-    internal var dataSource: DataSource? = nil
+    private var dataSource: DataSource
     internal let refreshedEvent: PassthroughSubject<(canLoadMore: Bool, hasData: Bool, isFirstPage: Bool), Never> = .init()
     internal let geoEvent: PassthroughSubject<String, Never> = .init()
     @Published internal private(set) var isGeoSearching: Bool = false
@@ -33,7 +33,8 @@ internal final class SearchViewModel {
     }
     private var cancellableBag: Set<AnyCancellable> = .init()
     
-    internal init() {
+    internal init(dataSource: DataSource) {
+        self.dataSource = dataSource
         bind()
     }
     
@@ -53,9 +54,16 @@ internal final class SearchViewModel {
         addrAPIService.requestLinkEvent(keyword: text, currentPage: currentPage, countPerPage: countPerPage)
     }
     
+    internal func getHeaderItem(from indexPath: IndexPath) -> SearchHeaderItem? {
+        guard dataSource.snapshot().numberOfSections > indexPath.section else {
+            return nil
+        }
+        return dataSource.snapshot().sectionIdentifiers[indexPath.section]
+    }
+    
     internal func getResultItem(from indexPath: IndexPath) -> SearchResultItem? {
-        guard let items: [SearchResultItem] = dataSource?.snapshot().itemIdentifiers,
-              items.count > indexPath.row else {
+        let items: [SearchResultItem] = dataSource.snapshot().itemIdentifiers
+        guard items.count > indexPath.row else {
             return nil
         }
         return items[indexPath.row]
@@ -68,10 +76,7 @@ internal final class SearchViewModel {
     }
     
     private func updateResultItems(_ result: AddrLinkResultsData, text: String) {
-        guard var snapshot: Snapshot = dataSource?.snapshot() else {
-            return
-        }
-        
+        var snapshot: Snapshot = dataSource.snapshot()
         totalCount = Int(result.common.totalCount) ?? 1
         
         let headerItem: SearchHeaderItem = {
@@ -95,7 +100,7 @@ internal final class SearchViewModel {
         }
         
         snapshot.appendItems(items, toSection: headerItem)
-        dataSource?.apply(snapshot, animatingDifferences: true)
+        dataSource.apply(snapshot, animatingDifferences: true)
         refreshedEvent.send((canLoadMore: canLoadMore, hasData: !items.isEmpty, isFirstPage: currentPage == 1))
     }
     

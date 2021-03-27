@@ -169,9 +169,15 @@ internal final class DetailsViewController: NSViewController {
         }
         
         let vc: DetailsMapViewController = .init()
-        vc.latitude = item.latitude
-        vc.longitude = item.longitude
-        vc.locationTitle = item.locationTitle
+        
+        if let latitude: Double = item.latitude,
+           let longitude: Double = item.longitude,
+           let locationTitle: String = item.locationTitle {
+            vc.latitude = latitude
+            vc.longitude = longitude
+            vc.locationTitle = locationTitle
+        }
+        
         vc.loadViewIfNeeded()
         
         let mapResultTabViewItem: NSTabViewItem = .init(viewController: vc)

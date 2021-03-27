@@ -57,8 +57,8 @@ internal final class DetailsViewController: UIViewController {
     }
     
     private func configureViewModel() {
-        viewModel = .init()
-        viewModel?.dataSource = makeDataSource()
+        let viewModel: DetailsViewModel = .init(dataSource: makeDataSource())
+        self.viewModel = viewModel
     }
     
     private func configureBookmarkButton() {
@@ -138,12 +138,8 @@ internal final class DetailsViewController: UIViewController {
     
     private func getHeaderCellRegisteration() -> UICollectionView.SupplementaryRegistration<UICollectionViewListCell> {
         return .init(elementKind: UICollectionView.elementKindSectionHeader) { [weak self] (headerView, elementKind, indexPath) in
-            guard let dataSource: DetailsViewModel.DataSource = self?.viewModel?.dataSource else {
-                return
-            }
-            guard dataSource.snapshot().sectionIdentifiers.count > indexPath.section else { return }
             
-            guard let headerItem: DetailHeaderItem = self?.viewModel?.getSectionHeaderItem(from: indexPath) else {
+            guard let headerItem: DetailHeaderItem = self?.viewModel?.getHeaderItem(from: indexPath) else {
                 return
             }
             
@@ -164,12 +160,8 @@ internal final class DetailsViewController: UIViewController {
     
     private func getFooterCellRegisteration() -> UICollectionView.SupplementaryRegistration<UICollectionViewListCell> {
         return .init(elementKind: UICollectionView.elementKindSectionFooter) { [weak self] (footerView, elementKind, indexPath) in
-            guard let dataSource: DetailsViewModel.DataSource = self?.viewModel?.dataSource else {
-                return
-            }
-            guard dataSource.snapshot().sectionIdentifiers.count > indexPath.section else { return }
             
-            guard let headerItem: DetailHeaderItem = self?.viewModel?.getSectionHeaderItem(from: indexPath) else {
+            guard let headerItem: DetailHeaderItem = self?.viewModel?.getHeaderItem(from: indexPath) else {
                 return
             }
             
@@ -257,7 +249,7 @@ internal final class DetailsViewController: UIViewController {
 
 extension DetailsViewController: UICollectionViewDelegate {
     internal func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        guard let headerItem: DetailHeaderItem = viewModel?.getSectionHeaderItem(from: indexPath) else {
+        guard let headerItem: DetailHeaderItem = viewModel?.getHeaderItem(from: indexPath) else {
             return false
         }
         return headerItem.headerType == .map
@@ -277,7 +269,7 @@ extension DetailsViewController: UICollectionViewDelegate {
     
     internal func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         
-        guard let headerItem: DetailHeaderItem = viewModel?.getSectionHeaderItem(from: indexPath) else {
+        guard let headerItem: DetailHeaderItem = viewModel?.getHeaderItem(from: indexPath) else {
             return nil
         }
         
