@@ -272,7 +272,7 @@ internal final class SearchViewController: NSViewController {
                 })
                 .store(in: &cancellableBag)
             
-            // searchWindow 간의 순환참조 문제를 없애준다.
+            // cancellableBag 때문에 생기는 searchWindow 간의 순환참조 문제를 없애준다.
             NotificationCenter.default
                 .publisher(for: NSWindow.willCloseNotification, object: searchWindow)
                 .receive(on: DispatchQueue.main)
