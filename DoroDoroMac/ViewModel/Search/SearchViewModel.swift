@@ -121,8 +121,7 @@ internal final class SearchViewModel {
             }
         
         snapshot.appendItems(withIdentifiers: items, intoSectionWithIdentifier: headerItem)
-        // macOS 버그 때문인지 animatingDifferences을 true로 하면 간혹 런타임 크래시
-        dataSource.applySnapshot(snapshot, animatingDifferences: false)
+        dataSource.applySnapshot(snapshot, animatingDifferences: true)
         
         refreshedEvent.send((text: searchEvent ?? "",hasData: !items.isEmpty, isFirstPage: currentPage == 1))
     }
