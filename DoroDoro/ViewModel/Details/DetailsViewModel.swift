@@ -11,7 +11,7 @@ import DoroDoroAPI
 
 internal final class DetailsViewModel {
     internal typealias DataSource = UICollectionViewDiffableDataSource<DetailHeaderItem, DetailResultItem>
-    internal typealias Snapshot = NSDiffableDataSourceSnapshot<DetailHeaderItem, DetailResultItem>
+    private typealias Snapshot = NSDiffableDataSourceSnapshot<DetailHeaderItem, DetailResultItem>
     
     internal var dataSource: DataSource? = nil
     internal var refreshedEvent: PassthroughSubject<Void, Never> = .init()

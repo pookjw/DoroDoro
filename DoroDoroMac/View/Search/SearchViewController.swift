@@ -106,7 +106,6 @@ internal final class SearchViewController: NSViewController {
         tableView.style = .sourceList
         tableView.wantsLayer = true
         tableView.layer?.backgroundColor = .clear
-        tableView.dataSource = self
         tableView.delegate = self
         tableView.usesAutomaticRowHeights = true
         
@@ -194,14 +193,15 @@ internal final class SearchViewController: NSViewController {
     private func configureViewModel() {
         let viewModel: SearchViewModel = .init()
         self.viewModel = viewModel
+        viewModel.dataSource = makeDataSource()
     }
     
     private func bind() {
         viewModel?.refreshedEvent
             .receive(on: DispatchQueue.main)
-            .sink(receiveValue: { [weak self] (_, text, hasData, isFirstPage) in
+            .sink(receiveValue: { [weak self] (hasData, isFirstPage) in
                 self?.tableView?.reloadData()
-                self?.updateColumnTitle(for: text)
+//                self?.updateColumnTitle(for: text)
                 
                 self?.toggleGuideContainerViewHiddenStatus(hasData)
                 
@@ -281,6 +281,17 @@ internal final class SearchViewController: NSViewController {
         }
     }
     
+    private func makeDataSource() -> SearchViewModel.DataSource {
+        guard let tableView: CopyableTableView = tableView else { return .init() }
+        
+        let dataSource: SearchViewModel.DataSource = .init(tableView: tableView) { [weak self] (tableView, column, row, item) in
+            guard let self = self else { return .init() }
+            return self.getTableViewCellView(tableView, viewFor: column, row: row, item: item)
+        }
+        
+        return dataSource
+    }
+    
     private func updateBookmarkMenuItem() {
         guard let customMenu: CustomMenu = NSApp.mainMenu as? CustomMenu else {
             return
@@ -311,17 +322,18 @@ internal final class SearchViewController: NSViewController {
     }
     
     private func determineLoadNextPage(bounds: CGRect) {
-        guard let viewModel: SearchViewModel = viewModel else {
-            return
-        }
-        
         let maxPoint: CGPoint = .init(x: bounds.origin.x, y: bounds.maxY)
         
         guard let currentRow: Int = tableView?.row(at: maxPoint) else {
             return
         }
         
-        if currentRow == -1 || (currentRow + 1) == viewModel.addrLinkJusoData.count {
+        guard let viewModel: SearchViewModel = viewModel,
+              let countOfResultItems: Int = viewModel.getResultItems()?.count else {
+            return
+        }
+        
+        if currentRow == -1 || (currentRow + 1) == countOfResultItems {
             let requested: Bool = viewModel.requestNextPageIfAvailable()
             if requested {
                 showSpinnerView()
@@ -387,19 +399,21 @@ internal final class SearchViewController: NSViewController {
     private func getSelectedItem() -> (selectedRow: Int, selectedMenuJusoData: AddrLinkJusoData)? {
         guard let viewModel: SearchViewModel = viewModel,
               let selectedRow: Int = tableView?.selectedRow,
-              (selectedRow >= 0) && (viewModel.addrLinkJusoData.count > selectedRow)
+              let resultItem: SearchResultItem = viewModel.getResultItem(row: selectedRow),
+              (selectedRow >= 0)
         else { return nil }
         
-        return (selectedRow: selectedRow, selectedMenuJusoData: viewModel.addrLinkJusoData[selectedRow])
+        return (selectedRow: selectedRow, selectedMenuJusoData: resultItem.linkJusoData)
     }
     
     private func getClickedItem() -> (clickedRow: Int, selectedMenuJusoData: AddrLinkJusoData)? {
         guard let viewModel: SearchViewModel = viewModel,
               let clickedRow: Int = tableView?.clickedRow,
-              (clickedRow >= 0) && (viewModel.addrLinkJusoData.count > clickedRow)
+              let resultItem: SearchResultItem = viewModel.getResultItem(row: clickedRow),
+              (clickedRow >= 0)
         else { return nil }
         
-        return (clickedRow: clickedRow, selectedMenuJusoData: viewModel.addrLinkJusoData[clickedRow])
+        return (clickedRow: clickedRow, selectedMenuJusoData: resultItem.linkJusoData)
     }
     
     private func getAnyItem() -> (row: Int, selectedMenuJusoData: AddrLinkJusoData)? {
@@ -409,29 +423,19 @@ internal final class SearchViewController: NSViewController {
         }
         return item
     }
-}
-
-extension SearchViewController: NSTableViewDataSource {
-    internal func numberOfRows(in tableView: NSTableView) -> Int {
-        guard let viewModel: SearchViewModel = viewModel else {
-            return 0
-        }
-        return viewModel.addrLinkJusoData.count
-    }
     
-    internal func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        guard let viewModel: SearchViewModel = viewModel,
-              let searchIdentifier: NSUserInterfaceItemIdentifier = searchIdentifier,
+    private func getTableViewCellView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int, item: SearchResultItem) -> NSView {
+        guard let searchIdentifier: NSUserInterfaceItemIdentifier = searchIdentifier,
               let cell: SimgleResultTableCellView = tableView.makeView(withIdentifier: searchIdentifier, owner: self) as? SimgleResultTableCellView
         else {
-            return nil
+            return .init()
         }
         
-        guard viewModel.addrLinkJusoData.count > row else {
-            return nil
+        guard let resultItem: SearchResultItem = viewModel?.getResultItem(row: row) else {
+            return .init()
         }
         
-        cell.configure(text: viewModel.addrLinkJusoData[row].roadAddr,
+        cell.configure(text: resultItem.linkJusoData.roadAddr,
                        width: view.bounds.width)
         cell.chageUIWhenActiveAppStatusChanged = true
         return cell

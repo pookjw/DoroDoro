@@ -10,7 +10,7 @@ import Combine
 
 internal final class SettingsViewModel {
     internal typealias DataSource = UICollectionViewDiffableDataSource<SettingHeaderItem, SettingCellItem>
-    internal typealias Snapshot = NSDiffableDataSourceSnapshot<SettingHeaderItem, SettingCellItem>
+    private typealias Snapshot = NSDiffableDataSourceSnapshot<SettingHeaderItem, SettingCellItem>
     private var cancellableBag: Set<AnyCancellable> = .init()
     
     internal var contextMenuIndexPath: IndexPath? = nil

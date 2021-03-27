@@ -11,7 +11,7 @@ import DoroDoroAPI
 
 internal final class SearchViewModel {
     internal typealias DataSource = UICollectionViewDiffableDataSource<SearchHeaderItem, SearchResultItem>
-    internal typealias Snapshot = NSDiffableDataSourceSnapshot<SearchHeaderItem, SearchResultItem>
+    private typealias Snapshot = NSDiffableDataSourceSnapshot<SearchHeaderItem, SearchResultItem>
     
     internal var contextMenuIndexPath: IndexPath? = nil
     internal var contextMenuLinkJusoData: AddrLinkJusoData? = nil
@@ -68,11 +68,11 @@ internal final class SearchViewModel {
     }
     
     private func updateResultItems(_ result: AddrLinkResultsData, text: String) {
-        totalCount = Int(result.common.totalCount) ?? 1
-        
         guard var snapshot: Snapshot = dataSource?.snapshot() else {
             return
         }
+        
+        totalCount = Int(result.common.totalCount) ?? 1
         
         let headerItem: SearchHeaderItem = {
             // 이미 기존에 생성된 Header가 있고, 1페이지가 아닌 경우 기존 Header를 그대로 쓴다.
@@ -89,10 +89,9 @@ internal final class SearchViewModel {
             }
         }()
         
-        var items: [SearchResultItem] = []
-        result.juso.forEach { data in
+        let items: [SearchResultItem] = result.juso.map { data -> SearchResultItem in
             let result: SearchResultItem = .init(linkJusoData: data)
-            items.append(result)
+            return result
         }
         
         snapshot.appendItems(items, toSection: headerItem)

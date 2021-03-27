@@ -25,7 +25,7 @@ internal final class SearchWindow: NSWindow {
         
         contentMinSize = size
         contentViewController = searchViewController
-        title = Localizable.DORODORO.string
+        title = Localizable.SEARCH.string
         titlebarAppearsTransparent = true
         titleVisibility = .visible
         isMovableByWindowBackground = true

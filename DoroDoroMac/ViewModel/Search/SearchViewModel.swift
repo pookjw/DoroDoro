@@ -5,14 +5,16 @@
 //  Created by Jinwoo Kim on 3/14/21.
 //
 
-import Foundation
+import Cocoa
 import Combine
 import DoroDoroMacAPI
 
 internal final class SearchViewModel {
+    internal typealias DataSource = NSTableViewDiffableDataSource<SearchHeaderItem, SearchResultItem>
+    private typealias Snapshot = NSDiffableDataSourceSnapshot<SearchHeaderItem, SearchResultItem>
+    internal var dataSource: DataSource? = nil
     @Published internal var searchEvent: String? = nil
-    internal let refreshedEvent: PassthroughSubject<(data: [AddrLinkJusoData], text: String, hasData: Bool, isFirstPage: Bool), Never> = .init()
-    internal private(set) var addrLinkJusoData: [AddrLinkJusoData] = []
+    internal let refreshedEvent: PassthroughSubject<(hasData: Bool, isFirstPage: Bool), Never> = .init()
     internal let addrAPIService: AddrAPIService = .init()
     
     private var currentPage: Int = 1
@@ -27,6 +29,18 @@ internal final class SearchViewModel {
     
     internal init() {
         bind()
+    }
+    
+    internal func getResultItem(row: Int) -> SearchResultItem? {
+        guard let items: [SearchResultItem] = dataSource?.snapshot().itemIdentifiers,
+              (row >= 0 && items.count > row) else {
+            return nil
+        }
+        return items[row]
+    }
+    
+    internal func getResultItems() -> [SearchResultItem]? {
+        return dataSource?.snapshot().itemIdentifiers
     }
     
     @discardableResult
@@ -65,7 +79,7 @@ internal final class SearchViewModel {
                     return
                 }
                 self?.isLoading = false
-                self?.updateJusoData(data)
+                self?.updateJusoData(data, text: self?.searchEvent ?? "")
             })
             .store(in: &cancellableBag)
         
@@ -75,33 +89,48 @@ internal final class SearchViewModel {
                 self?.isLoading = false
             })
             .store(in: &cancellableBag)
-        
-        refreshedEvent
-            .sink(receiveValue: { [weak self] (data, _, _, _) in
-                self?.addrLinkJusoData = data
-            })
-            .store(in: &cancellableBag)
     }
     
-    private func updateJusoData(_ data: AddrLinkResultsData) {
-        totalCount = Int(data.common.totalCount) ?? 1
+    private func updateJusoData(_ result: AddrLinkResultsData, text: String) {
+        guard var snapshot: Snapshot = dataSource?.snapshot() else {
+            return
+        }
+        
+        totalCount = Int(result.common.totalCount) ?? 1
+        
+        let headerItem: SearchHeaderItem = {
+            // 이미 기존에 생성된 Header가 있고, 1페이지가 아닌 경우 기존 Header를 그대로 쓴다.
+            if let headerItem: SearchHeaderItem = snapshot.sectionIdentifiers.first,
+               currentPage != 1 {
+                return headerItem
+            } else {
+                // 기존에 생성된 Header가 없거나 1페이지일 경우 Header를 새로 만든다.
+                let headerItem: SearchHeaderItem = .init(title: String(format: Localizable.RESULTS_FOR_ADDRESS.string, text))
+                snapshot.deleteAllItems()
+                snapshot.appendSections([headerItem])
+                
+                return headerItem
+            }
+        }()
+        
+        let items: [SearchResultItem] = result.juso
+            .map { data -> SearchResultItem in
+                let result: SearchResultItem = .init(linkJusoData: data)
+                return result
+            }
+        
+        snapshot.appendItems(items, toSection: headerItem)
+        print("Noti!!! \(snapshot.itemIdentifiers.count)")
+        dataSource?.apply(snapshot, animatingDifferences: false)
         
         //
         
-        var newJusoData: [AddrLinkJusoData] = addrLinkJusoData
-        if currentPage == 1 {
-            newJusoData = data.juso
-        } else {
-            newJusoData.append(contentsOf: data.juso)
-        }
-        
-        refreshedEvent.send(
-            (
-                data: newJusoData,
-                text: searchEvent ?? "",
-                hasData: !newJusoData.isEmpty,
-                isFirstPage: currentPage == 1
-            )
-        )
+//        var newJusoData: [AddrLinkJusoData] = addrLinkJusoData
+//        if currentPage == 1 {
+//            newJusoData.removeAll()
+//        }
+//        newJusoData.append(contentsOf: data.juso)
+//
+        refreshedEvent.send((hasData: !items.isEmpty, isFirstPage: currentPage == 1))
     }
 }

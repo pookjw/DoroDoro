@@ -10,7 +10,7 @@ import Combine
 
 internal final class BookmarksViewModel {
     internal typealias DataSource = UICollectionViewDiffableDataSource<BookmarksHeaderItem, BookmarksCellItem>
-    internal typealias Snapshot = NSDiffableDataSourceSnapshot<BookmarksHeaderItem, BookmarksCellItem>
+    private typealias Snapshot = NSDiffableDataSourceSnapshot<BookmarksHeaderItem, BookmarksCellItem>
     internal var dataSource: DataSource? = nil
     @Published internal var searchEvent: String? = nil
     internal var contextMenuIndexPath: IndexPath? = nil
