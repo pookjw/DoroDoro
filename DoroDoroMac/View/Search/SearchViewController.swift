@@ -199,14 +199,15 @@ internal final class SearchViewController: NSViewController {
     private func bind() {
         viewModel?.refreshedEvent
             .receive(on: DispatchQueue.main)
-            .sink(receiveValue: { [weak self] (hasData, isFirstPage) in
-                self?.tableView?.reloadData()
-//                self?.updateColumnTitle(for: text)
-                
+            .sink(receiveValue: { [weak self] (text, hasData, isFirstPage) in
+                self?.updateColumnTitle(for: text)
                 self?.toggleGuideContainerViewHiddenStatus(hasData)
                 
                 if isFirstPage {
                     self?.tableView?.scrollToTop()
+                    
+                    // headerView reload 용도
+                    self?.tableView?.reloadData()
                 }
                 self?.removeAllSpinnerView()
             })
@@ -227,11 +228,26 @@ internal final class SearchViewController: NSViewController {
             })
             .store(in: &cancellableBag)
         
-        if let clipView: NSClipView = clipView {
+//        if let clipView: NSClipView = clipView {
+//            NotificationCenter.default
+//                .publisher(for: NSView.boundsDidChangeNotification, object: clipView)
+//                .throttle(for: .seconds(1), scheduler: DispatchQueue.global(qos: .userInteractive), latest: false)
+//                .receive(on: DispatchQueue.main)
+//                .sink(receiveValue: { [weak self] notification in
+//                    guard let bounds: CGRect = (notification.object as? NSClipView)?.bounds else {
+//                        return
+//                    }
+//                    self?.determineLoadNextPage(bounds: bounds)
+//                })
+//                .store(in: &cancellableBag)
+//        }
+        
+        // 스크롤이 끝났을 때만 다음 페이지를 불러온다
+        if let scrollView: NSScrollView = scrollView {
             NotificationCenter.default
-                .publisher(for: NSView.boundsDidChangeNotification, object: clipView)
-                .sink(receiveValue: { [weak self] notification in
-                    guard let bounds: CGRect = (notification.object as? NSClipView)?.bounds else {
+                .publisher(for: NSScrollView.didEndLiveScrollNotification, object: scrollView)
+                .sink(receiveValue: { [weak self] _ in
+                    guard let bounds: CGRect = self?.clipView?.bounds else {
                         return
                     }
                     self?.determineLoadNextPage(bounds: bounds)
@@ -264,8 +280,11 @@ internal final class SearchViewController: NSViewController {
                     // Combine의 경우 NotificationCenter의 Object를 Strong으로 붙잡는다. 따라서 직접 비워줘야 한다.
                     self?.cancellableBag.removeAll()
                     
-                    if let clipView: NSClipView = self?.clipView {
-                        NotificationCenter.default.removeObserver(clipView)
+//                    if let clipView: NSClipView = self?.clipView {
+//                        NotificationCenter.default.removeObserver(clipView)
+//                    }
+                    if let scrollView: NSScrollView = self?.scrollView {
+                        NotificationCenter.default.removeObserver(scrollView)
                     }
                 })
                 .store(in: &cancellableBag)
@@ -282,10 +301,14 @@ internal final class SearchViewController: NSViewController {
     }
     
     private func makeDataSource() -> SearchViewModel.DataSource {
-        guard let tableView: CopyableTableView = tableView else { return .init() }
+        guard let tableView: CopyableTableView = tableView else {
+            fatalError("TableView does not exists!")
+        }
         
         let dataSource: SearchViewModel.DataSource = .init(tableView: tableView) { [weak self] (tableView, column, row, item) in
-            guard let self = self else { return .init() }
+            guard let self = self,
+                  let item: SearchResultItem = item as? SearchResultItem
+                  else { return .init() }
             return self.getTableViewCellView(tableView, viewFor: column, row: row, item: item)
         }
         
@@ -400,20 +423,22 @@ internal final class SearchViewController: NSViewController {
         guard let viewModel: SearchViewModel = viewModel,
               let selectedRow: Int = tableView?.selectedRow,
               let resultItem: SearchResultItem = viewModel.getResultItem(row: selectedRow),
+              let linkJusoData: AddrLinkJusoData = resultItem.linkJusoData,
               (selectedRow >= 0)
         else { return nil }
         
-        return (selectedRow: selectedRow, selectedMenuJusoData: resultItem.linkJusoData)
+        return (selectedRow: selectedRow, selectedMenuJusoData: linkJusoData)
     }
     
     private func getClickedItem() -> (clickedRow: Int, selectedMenuJusoData: AddrLinkJusoData)? {
         guard let viewModel: SearchViewModel = viewModel,
               let clickedRow: Int = tableView?.clickedRow,
               let resultItem: SearchResultItem = viewModel.getResultItem(row: clickedRow),
+              let linkJusoData: AddrLinkJusoData = resultItem.linkJusoData,
               (clickedRow >= 0)
         else { return nil }
         
-        return (clickedRow: clickedRow, selectedMenuJusoData: resultItem.linkJusoData)
+        return (clickedRow: clickedRow, selectedMenuJusoData: linkJusoData)
     }
     
     private func getAnyItem() -> (row: Int, selectedMenuJusoData: AddrLinkJusoData)? {
@@ -431,11 +456,12 @@ internal final class SearchViewController: NSViewController {
             return .init()
         }
         
-        guard let resultItem: SearchResultItem = viewModel?.getResultItem(row: row) else {
+        guard let resultItem: SearchResultItem = viewModel?.getResultItem(row: row),
+              let linkJusoData: AddrLinkJusoData = resultItem.linkJusoData else {
             return .init()
         }
         
-        cell.configure(text: resultItem.linkJusoData.roadAddr,
+        cell.configure(text: linkJusoData.roadAddr,
                        width: view.bounds.width)
         cell.chageUIWhenActiveAppStatusChanged = true
         return cell

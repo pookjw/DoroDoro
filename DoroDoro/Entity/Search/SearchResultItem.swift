@@ -6,15 +6,7 @@
 //
 
 import Foundation
-#if os(watchOS)
-import DoroDoroWatchAPI
-#elseif os(tvOS)
-import DoroDoroTVAPI
-#elseif os(macOS)
-import DoroDoroMacAPI
-#else
 import DoroDoroAPI
-#endif
 
 internal struct SearchResultItem: Hashable, Equatable {
     internal let linkJusoData: AddrLinkJusoData

@@ -10,11 +10,14 @@ import Combine
 import DoroDoroMacAPI
 
 internal final class SearchViewModel {
-    internal typealias DataSource = NSTableViewDiffableDataSource<SearchHeaderItem, SearchResultItem>
-    private typealias Snapshot = NSDiffableDataSourceSnapshot<SearchHeaderItem, SearchResultItem>
+    /*
+     Swift struct로 구현된 놈은 버그가 있길래... Objective-C로 된거롤 쓴다. (macOS 11.2.3, 11.3 기준)
+     */
+    internal typealias DataSource = NSTableViewDiffableDataSourceReference<SearchHeaderItem, SearchResultItem>
+    private typealias Snapshot = NSDiffableDataSourceSnapshotReference
     internal var dataSource: DataSource? = nil
     @Published internal var searchEvent: String? = nil
-    internal let refreshedEvent: PassthroughSubject<(hasData: Bool, isFirstPage: Bool), Never> = .init()
+    internal let refreshedEvent: PassthroughSubject<(text: String, hasData: Bool, isFirstPage: Bool), Never> = .init()
     internal let addrAPIService: AddrAPIService = .init()
     
     private var currentPage: Int = 1
@@ -32,7 +35,7 @@ internal final class SearchViewModel {
     }
     
     internal func getResultItem(row: Int) -> SearchResultItem? {
-        guard let items: [SearchResultItem] = dataSource?.snapshot().itemIdentifiers,
+        guard let items: [SearchResultItem] = dataSource?.snapshot().itemIdentifiers as? [SearchResultItem],
               (row >= 0 && items.count > row) else {
             return nil
         }
@@ -40,7 +43,7 @@ internal final class SearchViewModel {
     }
     
     internal func getResultItems() -> [SearchResultItem]? {
-        return dataSource?.snapshot().itemIdentifiers
+        return dataSource?.snapshot().itemIdentifiers as? [SearchResultItem]
     }
     
     @discardableResult
@@ -92,7 +95,7 @@ internal final class SearchViewModel {
     }
     
     private func updateJusoData(_ result: AddrLinkResultsData, text: String) {
-        guard var snapshot: Snapshot = dataSource?.snapshot() else {
+        guard let snapshot: Snapshot = dataSource?.snapshot() else {
             return
         }
         
@@ -100,14 +103,14 @@ internal final class SearchViewModel {
         
         let headerItem: SearchHeaderItem = {
             // 이미 기존에 생성된 Header가 있고, 1페이지가 아닌 경우 기존 Header를 그대로 쓴다.
-            if let headerItem: SearchHeaderItem = snapshot.sectionIdentifiers.first,
+            if let headerItem: SearchHeaderItem = snapshot.sectionIdentifiers.first as? SearchHeaderItem,
                currentPage != 1 {
                 return headerItem
             } else {
                 // 기존에 생성된 Header가 없거나 1페이지일 경우 Header를 새로 만든다.
                 let headerItem: SearchHeaderItem = .init(title: String(format: Localizable.RESULTS_FOR_ADDRESS.string, text))
                 snapshot.deleteAllItems()
-                snapshot.appendSections([headerItem])
+                snapshot.appendSections(withIdentifiers: [headerItem])
                 
                 return headerItem
             }
@@ -119,18 +122,8 @@ internal final class SearchViewModel {
                 return result
             }
         
-        snapshot.appendItems(items, toSection: headerItem)
-        print("Noti!!! \(snapshot.itemIdentifiers.count)")
-        dataSource?.apply(snapshot, animatingDifferences: false)
-        
-        //
-        
-//        var newJusoData: [AddrLinkJusoData] = addrLinkJusoData
-//        if currentPage == 1 {
-//            newJusoData.removeAll()
-//        }
-//        newJusoData.append(contentsOf: data.juso)
-//
-        refreshedEvent.send((hasData: !items.isEmpty, isFirstPage: currentPage == 1))
+        snapshot.appendItems(withIdentifiers: items, intoSectionWithIdentifier: headerItem)
+        dataSource?.applySnapshot(snapshot, animatingDifferences: true)
+        refreshedEvent.send((text: searchEvent ?? "",hasData: !items.isEmpty, isFirstPage: currentPage == 1))
     }
 }
