@@ -189,6 +189,8 @@
 		F384137C25F006B10078334A /* SettingHeaderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F384137B25F006B10078334A /* SettingHeaderItem.swift */; };
 		F3909160260F61D4006A4E34 /* SearchHeaderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F390915F260F61D4006A4E34 /* SearchHeaderItem.swift */; };
 		F3909169260F6381006A4E34 /* SearchResultItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3909168260F6381006A4E34 /* SearchResultItem.swift */; };
+		F3909173260F6C4D006A4E34 /* BookmarksCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3909172260F6C4D006A4E34 /* BookmarksCellItem.swift */; };
+		F3909183260F6CB1006A4E34 /* BookmarksHeaderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3909182260F6CB0006A4E34 /* BookmarksHeaderItem.swift */; };
 		F3A3DEF025F41D4000E8F2F0 /* KakaoCoord2AddressAPIError+LocalizedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A3DEEF25F41D4000E8F2F0 /* KakaoCoord2AddressAPIError+LocalizedError.swift */; };
 		F3A3DEF925F4209A00E8F2F0 /* GeoInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A3DEF725F4209A00E8F2F0 /* GeoInterfaceController.swift */; };
 		F3A3DF0525F4210B00E8F2F0 /* GeoInterfaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A3DF0425F4210B00E8F2F0 /* GeoInterfaceModel.swift */; };
@@ -653,6 +655,8 @@
 		F384137B25F006B10078334A /* SettingHeaderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingHeaderItem.swift; sourceTree = "<group>"; };
 		F390915F260F61D4006A4E34 /* SearchHeaderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHeaderItem.swift; sourceTree = "<group>"; };
 		F3909168260F6381006A4E34 /* SearchResultItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultItem.swift; sourceTree = "<group>"; };
+		F3909172260F6C4D006A4E34 /* BookmarksCellItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksCellItem.swift; sourceTree = "<group>"; };
+		F3909182260F6CB0006A4E34 /* BookmarksHeaderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksHeaderItem.swift; sourceTree = "<group>"; };
 		F3987A0D25FB56EA00727095 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		F3A3DEEF25F41D4000E8F2F0 /* KakaoCoord2AddressAPIError+LocalizedError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KakaoCoord2AddressAPIError+LocalizedError.swift"; sourceTree = "<group>"; };
 		F3A3DEF725F4209A00E8F2F0 /* GeoInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoInterfaceController.swift; sourceTree = "<group>"; };
@@ -1455,6 +1459,15 @@
 			path = Search;
 			sourceTree = "<group>";
 		};
+		F3909171260F6C35006A4E34 /* Bookmarks */ = {
+			isa = PBXGroup;
+			children = (
+				F3909182260F6CB0006A4E34 /* BookmarksHeaderItem.swift */,
+				F3909172260F6C4D006A4E34 /* BookmarksCellItem.swift */,
+			);
+			path = Bookmarks;
+			sourceTree = "<group>";
+		};
 		F3A3DF2025F4397300E8F2F0 /* Keyboard */ = {
 			isa = PBXGroup;
 			children = (
@@ -1583,6 +1596,7 @@
 			isa = PBXGroup;
 			children = (
 				F390915E260F61BF006A4E34 /* Search */,
+				F3909171260F6C35006A4E34 /* Bookmarks */,
 				F390915D260F61B8006A4E34 /* Details */,
 			);
 			path = Entity;
@@ -2622,6 +2636,7 @@
 			files = (
 				F3D760FC2607AC2F00461F70 /* BookmarksViewController.swift in Sources */,
 				F3D760ED2607796200461F70 /* DetailsMapViewController.swift in Sources */,
+				F3909173260F6C4D006A4E34 /* BookmarksCellItem.swift in Sources */,
 				F3E24D3925FDB06000123E3B /* SearchWindow.swift in Sources */,
 				F3D761012607B2D800461F70 /* String+choseongContains.swift in Sources */,
 				F375B75F25FDF6A40075C3AE /* NSAppearance+Ext.swift in Sources */,
@@ -2634,6 +2649,7 @@
 				F3E24D2725FDAFC400123E3B /* main.swift in Sources */,
 				F3D760E326063DF200461F70 /* DetailsListResultItem.swift in Sources */,
 				F3E24D0525FDADFF00123E3B /* BookmarksService.swift in Sources */,
+				F3909183260F6CB1006A4E34 /* BookmarksHeaderItem.swift in Sources */,
 				F375B72D25FDF1680075C3AE /* SpinnerView.swift in Sources */,
 				F3D760F92607A5E900461F70 /* NSWindow+Ext.swift in Sources */,
 				F3E24CDA25FDAD5200123E3B /* AddrLinkAPIError+LocalizedError.swift in Sources */,

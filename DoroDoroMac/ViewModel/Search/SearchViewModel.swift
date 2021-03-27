@@ -15,7 +15,7 @@ internal final class SearchViewModel {
      */
     internal typealias DataSource = NSTableViewDiffableDataSourceReference<SearchHeaderItem, SearchResultItem>
     private typealias Snapshot = NSDiffableDataSourceSnapshotReference
-    internal var dataSource: DataSource? = nil
+    internal var dataSource: DataSource
     @Published internal var searchEvent: String? = nil
     internal let refreshedEvent: PassthroughSubject<(text: String, hasData: Bool, isFirstPage: Bool), Never> = .init()
     internal let addrAPIService: AddrAPIService = .init()
@@ -30,12 +30,13 @@ internal final class SearchViewModel {
     private var isLoading: Bool = false
     private var cancellableBag: Set<AnyCancellable> = .init()
     
-    internal init() {
+    internal init(dataSource: DataSource) {
+        self.dataSource = dataSource
         bind()
     }
     
     internal func getResultItem(row: Int) -> SearchResultItem? {
-        guard let items: [SearchResultItem] = dataSource?.snapshot().itemIdentifiers as? [SearchResultItem],
+        guard let items: [SearchResultItem] = dataSource.snapshot().itemIdentifiers as? [SearchResultItem],
               (row >= 0 && items.count > row) else {
             return nil
         }
@@ -43,7 +44,7 @@ internal final class SearchViewModel {
     }
     
     internal func getResultItems() -> [SearchResultItem]? {
-        return dataSource?.snapshot().itemIdentifiers as? [SearchResultItem]
+        return dataSource.snapshot().itemIdentifiers as? [SearchResultItem]
     }
     
     @discardableResult
@@ -95,10 +96,7 @@ internal final class SearchViewModel {
     }
     
     private func updateJusoData(_ result: AddrLinkResultsData, text: String) {
-        guard let snapshot: Snapshot = dataSource?.snapshot() else {
-            return
-        }
-        
+        let snapshot: Snapshot = dataSource.snapshot()
         totalCount = Int(result.common.totalCount) ?? 1
         
         let headerItem: SearchHeaderItem = {
@@ -123,7 +121,9 @@ internal final class SearchViewModel {
             }
         
         snapshot.appendItems(withIdentifiers: items, intoSectionWithIdentifier: headerItem)
-        dataSource?.applySnapshot(snapshot, animatingDifferences: true)
+        // macOS 버그 때문인지 animatingDifferences을 true로 하면 간혹 런타임 크래시
+        dataSource.applySnapshot(snapshot, animatingDifferences: false)
+        
         refreshedEvent.send((text: searchEvent ?? "",hasData: !items.isEmpty, isFirstPage: currentPage == 1))
     }
 }

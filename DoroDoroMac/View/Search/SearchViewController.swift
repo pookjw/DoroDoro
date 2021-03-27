@@ -191,9 +191,8 @@ internal final class SearchViewController: NSViewController {
     }
     
     private func configureViewModel() {
-        let viewModel: SearchViewModel = .init()
+        let viewModel: SearchViewModel = .init(dataSource: makeDataSource())
         self.viewModel = viewModel
-        viewModel.dataSource = makeDataSource()
     }
     
     private func bind() {
@@ -453,12 +452,12 @@ internal final class SearchViewController: NSViewController {
         guard let searchIdentifier: NSUserInterfaceItemIdentifier = searchIdentifier,
               let cell: SimgleResultTableCellView = tableView.makeView(withIdentifier: searchIdentifier, owner: self) as? SimgleResultTableCellView
         else {
-            return .init()
+            fatalError("Failed to get cell view.")
         }
         
         guard let resultItem: SearchResultItem = viewModel?.getResultItem(row: row),
               let linkJusoData: AddrLinkJusoData = resultItem.linkJusoData else {
-            return .init()
+            fatalError("Failed to get cell view.")
         }
         
         cell.configure(text: linkJusoData.roadAddr,

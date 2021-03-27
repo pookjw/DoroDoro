@@ -11,29 +11,30 @@ import Combine
 internal final class BookmarksViewModel {
     internal typealias DataSource = UICollectionViewDiffableDataSource<BookmarksHeaderItem, BookmarksCellItem>
     private typealias Snapshot = NSDiffableDataSourceSnapshot<BookmarksHeaderItem, BookmarksCellItem>
-    internal var dataSource: DataSource? = nil
+    internal var dataSource: DataSource
     @Published internal var searchEvent: String? = nil
     internal var contextMenuIndexPath: IndexPath? = nil
     internal var contextMenuRoadAddr: String? = nil
     internal var refreshEvent: PassthroughSubject<(hasData: Bool, hasResult: Bool?), Never> = .init()
     private var cancellableBag: Set<AnyCancellable> = .init()
     
-    internal init() {
-//        bind()
+    internal init(dataSource: DataSource) {
+        self.dataSource = dataSource
+        bind()
     }
     
     internal func getCellItem(from indexPath: IndexPath) -> BookmarksCellItem? {
-        guard let items: [BookmarksCellItem] = dataSource?.snapshot().itemIdentifiers,
-              items.count > indexPath.row else {
+        let items: [BookmarksCellItem] = dataSource.snapshot().itemIdentifiers
+        
+        guard items.count > indexPath.row else {
             return nil
         }
+        
         return items[indexPath.row]
     }
     
     private func updateCellItems(_ bookmarksData: BookmarksData, searchText: String? = nil) {
-        guard var snapshot: Snapshot = dataSource?.snapshot() else {
-            return
-        }
+        var snapshot: Snapshot = dataSource.snapshot()
         
         let headerItem: BookmarksHeaderItem = {
             if let headerItem: BookmarksHeaderItem = snapshot.sectionIdentifiers.first {
@@ -81,11 +82,11 @@ internal final class BookmarksViewModel {
         snapshot.deleteAllItems()
         snapshot.appendSections([headerItem])
         snapshot.appendItems(filteredItems, toSection: headerItem)
-        dataSource?.apply(snapshot, animatingDifferences: true)
+        dataSource.apply(snapshot, animatingDifferences: true)
         refreshEvent.send((hasData: hasData, hasResult: hasResult))
     }
     
-    internal func bind() {
+    private func bind() {
         BookmarksService.shared.dataEvent
             .combineLatest($searchEvent)
             .receive(on: DispatchQueue.main)

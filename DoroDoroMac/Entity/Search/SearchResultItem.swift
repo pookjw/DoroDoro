@@ -9,7 +9,7 @@ import Foundation
 import DoroDoroMacAPI
 
 internal final class SearchResultItem: NSObject {
-    internal var linkJusoData: AddrLinkJusoData? = nil
+    internal private(set) var linkJusoData: AddrLinkJusoData? = nil
     
     internal convenience init(linkJusoData: AddrLinkJusoData) {
         self.init()

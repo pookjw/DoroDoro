@@ -76,7 +76,6 @@ internal final class BookmarksViewController: NSViewController {
         tableView.style = .sourceList
         tableView.wantsLayer = true
         tableView.layer?.backgroundColor = .clear
-        tableView.dataSource = self
         tableView.delegate = self
         tableView.usesAutomaticRowHeights = true
         tableView.headerView = nil
@@ -150,15 +149,14 @@ internal final class BookmarksViewController: NSViewController {
     }
     
     private func configureViewModel() {
-        let viewModel: BookmarksViewModel = .init()
+        let viewModel: BookmarksViewModel = .init(dataSource: makeDataSource())
         self.viewModel = viewModel
     }
     
     private func bind() {
         viewModel?.refreshedEvent
             .receive(on: DispatchQueue.main)
-            .sink(receiveValue: { [weak self] (_, hasData, hasResult) in
-                self?.tableView?.reloadData()
+            .sink(receiveValue: { [weak self] (hasData, hasResult) in
                 self?.toggleGuideContainerViewHiddenStatus(hasData)
                 
                 if let hasResult: Bool = hasResult, !hasResult {
@@ -199,6 +197,21 @@ internal final class BookmarksViewController: NSViewController {
                 })
                 .store(in: &cancellableBag)
         }
+    }
+    
+    private func makeDataSource() -> BookmarksViewModel.DataSource {
+        guard let tableView: CopyableTableView = tableView else {
+            fatalError("TableView does not exists!")
+        }
+        
+        let dataSource: BookmarksViewModel.DataSource = .init(tableView: tableView) { [weak self] (tableView, column, row, item) in
+            guard let self = self,
+                  let item: BookmarksCellItem = item as? BookmarksCellItem
+                  else { return .init() }
+            return self.getTableViewCellView(tableView, viewFor: column, row: row, item: item)
+        }
+        
+        return dataSource
     }
     
     private func updateBookmarkMenuItem() {
@@ -283,21 +296,19 @@ internal final class BookmarksViewController: NSViewController {
     }
     
     private func getSelectedItem() -> (selectedRow: Int, selectedString: String)? {
-        guard let viewModel: BookmarksViewModel = viewModel,
-            let selectedRow: Int = tableView?.selectedRow,
-            (selectedRow >= 0) && (viewModel.bookmarksData.count > selectedRow)
+        guard let selectedRow: Int = tableView?.selectedRow,
+              let cellItem: BookmarksCellItem = viewModel?.getCellItem(row: selectedRow)
         else { return nil }
         
-        return (selectedRow: selectedRow, selectedString: viewModel.bookmarksData[selectedRow])
+        return (selectedRow: selectedRow, selectedString: cellItem.roadAddr ?? "")
     }
     
     private func getClickedItem() -> (clickedRow: Int, selectedString: String)? {
-        guard let viewModel: BookmarksViewModel = viewModel,
-            let clickedRow: Int = tableView?.clickedRow,
-              (clickedRow >= 0) && (viewModel.bookmarksData.count > clickedRow)
+        guard let clickedRow: Int = tableView?.clickedRow,
+              let cellItem: BookmarksCellItem = viewModel?.getCellItem(row: clickedRow)
         else { return nil }
         
-        return (clickedRow: clickedRow, selectedString: viewModel.bookmarksData[clickedRow])
+        return (clickedRow: clickedRow, selectedString: cellItem.roadAddr ?? "")
     }
     
     private func getAnyItem() -> (row: Int, selectedString: String)? {
@@ -307,29 +318,19 @@ internal final class BookmarksViewController: NSViewController {
         }
         return item
     }
-}
-
-extension BookmarksViewController: NSTableViewDataSource {
-    internal func numberOfRows(in tableView: NSTableView) -> Int {
-        guard let viewModel: BookmarksViewModel = viewModel else {
-            return 0
-        }
-        return viewModel.bookmarksData.count
-    }
     
-    internal func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        guard let viewModel: BookmarksViewModel = viewModel,
-              let bookmarksIdentifier: NSUserInterfaceItemIdentifier = bookmarksIdentifier,
+    internal func getTableViewCellView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int, item: BookmarksCellItem) -> NSView {
+        guard let bookmarksIdentifier: NSUserInterfaceItemIdentifier = bookmarksIdentifier,
               let cell: SimgleResultTableCellView = tableView.makeView(withIdentifier: bookmarksIdentifier, owner: self) as? SimgleResultTableCellView
         else {
-            return nil
+            fatalError("Failed to get cell view.")
         }
         
-        guard viewModel.bookmarksData.count > row else {
-            return nil
+        guard let cellItem: BookmarksCellItem = viewModel?.getCellItem(row: row) else {
+            fatalError("Failed to get cell view.")
         }
         
-        cell.configure(text: viewModel.bookmarksData[row],
+        cell.configure(text: cellItem.roadAddr ?? "",
                        width: view.bounds.width)
         
         return cell
@@ -338,21 +339,16 @@ extension BookmarksViewController: NSTableViewDataSource {
 
 extension BookmarksViewController: NSTableViewDelegate {
     internal func tableViewSelectionDidChange(_ notification: Notification) {
-        guard let viewModel: BookmarksViewModel = viewModel,
-              let clickedRow: Int = tableView?.selectedRow,
-              clickedRow >= 0 &&
-                viewModel.bookmarksData.count > clickedRow else {
+        guard let (selectedRow, selectedString): (Int, String) = getSelectedItem() else {
             return
         }
         
-        guard let tableView: NSTableView = notification.object as? NSTableView,
-              let cell: NSView = tableView.rowView(atRow: clickedRow, makeIfNecessary: false) else {
+        guard let cell: NSView = tableView?.rowView(atRow: selectedRow, makeIfNecessary: false) else {
             return
         }
         
         updateBookmarkMenuItem()
-        let selectedMenuRoadAddr: String = viewModel.bookmarksData[clickedRow]
-        presentDetailVC(roadAddr: selectedMenuRoadAddr, at: cell)
+        presentDetailVC(roadAddr: selectedString, at: cell)
     }
 }
 

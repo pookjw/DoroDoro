@@ -8,7 +8,7 @@
 import Foundation
 
 internal final class SearchHeaderItem: NSObject {
-    internal var title: String?
+    internal private(set) var title: String?
     
     internal convenience init(title: String) {
         self.init()

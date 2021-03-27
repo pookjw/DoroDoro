@@ -54,9 +54,8 @@ internal final class BookmarksViewController: UIViewController {
     }
     
     private func configureViewModel() {
-        viewModel = .init()
-        viewModel?.dataSource = makeDataSource()
-        viewModel?.bind()
+        let viewModel: BookmarksViewModel = .init(dataSource: makeDataSource())
+        self.viewModel = viewModel
     }
     
     private func configureGuideLabel() {

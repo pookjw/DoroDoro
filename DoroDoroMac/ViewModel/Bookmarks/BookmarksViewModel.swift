@@ -5,25 +5,54 @@
 //  Created by Jinwoo Kim on 3/22/21.
 //
 
-import Foundation
+import Cocoa
 import Combine
 import DoroDoroMacAPI
 
 internal final class BookmarksViewModel {
+    /*
+     Swift struct로 구현된 놈은 버그가 있길래... Objective-C로 된거롤 쓴다. (macOS 11.2.3, 11.3 기준)
+     */
+    internal typealias DataSource = NSTableViewDiffableDataSourceReference<BookmarksHeaderItem, BookmarksCellItem>
+    private typealias Snapshot = NSDiffableDataSourceSnapshotReference
+    
     @Published internal var searchEvent: String? = nil
-    internal let refreshedEvent: CurrentValueSubject<(data: [String], hasData: Bool, hasResult: Bool?), Never> = .init((data: [], hasData: false, hasResult: nil))
-    internal private(set) var bookmarksData: [String] = []
+    internal var dataSource: DataSource
+    internal let refreshedEvent: CurrentValueSubject<(hasData: Bool, hasResult: Bool?), Never> = .init((hasData: false, hasResult: nil))
     private var cancellableBag: Set<AnyCancellable> = .init()
     
-    internal init() {
+    internal init(dataSource: DataSource) {
+        self.dataSource = dataSource
         bind()
     }
     
+    internal func getCellItem(row: Int) -> BookmarksCellItem? {
+        guard let items: [BookmarksCellItem] = dataSource.snapshot().itemIdentifiers as? [BookmarksCellItem],
+              (row >= 0 && items.count > row) else {
+            return nil
+        }
+        return items[row]
+    }
+    
+    internal func getCelltems() -> [BookmarksCellItem]? {
+        return dataSource.snapshot().itemIdentifiers as? [BookmarksCellItem]
+    }
+    
     private func updateBookmarksData(_ bookmarksData: BookmarksData, searchText: String? = nil) {
+        let snapshot: Snapshot = dataSource.snapshot()
+        
+        let headerItem: BookmarksHeaderItem = {
+            if let headerItem: BookmarksHeaderItem = snapshot.sectionIdentifiers.first as? BookmarksHeaderItem {
+                return headerItem
+            } else {
+                let headerItem: BookmarksHeaderItem = .init()
+                return headerItem
+            }
+        }()
         
         let originalItems: [String: Date] = bookmarksData.bookmarkedRoadAddrs
         
-        let filteredItems: [String] = originalItems
+        let filteredItems: [BookmarksCellItem] = originalItems
             .filter({ (roadAddr, _) in
                 guard let text: String = searchText,
                       !text.isEmpty else {
@@ -34,8 +63,8 @@ internal final class BookmarksViewModel {
             .sorted { (first, second) in
                 return first.value > second.value
             }
-            .map { (roadAddr, _) -> String in
-                return roadAddr
+            .map { (roadAddr, _) -> BookmarksCellItem in
+                return .init(roadAddr: roadAddr)
             }
         
         let hasData: Bool = !filteredItems.isEmpty
@@ -55,7 +84,13 @@ internal final class BookmarksViewModel {
             return !filteredItems.isEmpty
         }()
         
-        refreshedEvent.send((data: filteredItems, hasData: hasData, hasResult: hasResult))
+        snapshot.deleteAllItems()
+        snapshot.appendSections(withIdentifiers: [headerItem])
+        snapshot.appendItems(withIdentifiers: filteredItems, intoSectionWithIdentifier: headerItem)
+        // macOS 버그 때문인지 animatingDifferences을 true로 하면 간혹 런타임 크래시
+        dataSource.applySnapshot(snapshot, animatingDifferences: false)
+        
+        refreshedEvent.send((hasData: hasData, hasResult: hasResult))
     }
     
     private func bind() {
@@ -63,12 +98,6 @@ internal final class BookmarksViewModel {
             .combineLatest($searchEvent)
             .sink(receiveValue: { [weak self] (data, text) in
                 self?.updateBookmarksData(data, searchText: text)
-            })
-            .store(in: &cancellableBag)
-        
-        refreshedEvent
-            .sink(receiveValue: { [weak self] (data, _, _) in
-                self?.bookmarksData = data
             })
             .store(in: &cancellableBag)
     }
