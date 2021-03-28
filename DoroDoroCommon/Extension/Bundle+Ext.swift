@@ -15,4 +15,12 @@ extension Bundle {
     internal var buildVersionNumber: String {
         return (infoDictionary?["CFBundleVersion"] as? String) ?? Localizable.UNKNOWN.string
     }
+    
+    internal var nonOptionalBundleIdentifier: String {
+        return bundleIdentifier ?? "com.pookjw.DoroDoro"
+    }
+    
+    internal func makeCustomBundleIdentifier(_ customString: String) -> String {
+        return "\(nonOptionalBundleIdentifier).\(customString)"
+    }
 }

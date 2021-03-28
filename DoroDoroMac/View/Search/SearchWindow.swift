@@ -13,7 +13,6 @@ internal final class SearchWindow: NSWindow {
     internal let resizeEvent: PassthroughSubject<NSRect, Never> = .init()
     private weak var searchViewController: SearchViewController? = nil
     private var customUndoManager: UndoManager = .init()
-    private let locationToolbarItemIdentifier: NSToolbarItem.Identifier = .init("LocationToolbarItem")
     internal weak var locationToolbarItem: NSToolbarItem? = nil
     
     internal convenience init() {
@@ -55,12 +54,12 @@ internal final class SearchWindow: NSWindow {
         let toolbar: NSToolbar = .init()
         self.toolbar = toolbar
         toolbar.delegate = self
-        toolbar.insertItem(withItemIdentifier: locationToolbarItemIdentifier, at: 0)
+        toolbar.insertItem(withItemIdentifier: .locationIdentifier, at: 0)
         toolbar.validateVisibleItems()
     }
     
     private func getLocationToolbarItem() -> NSToolbarItem {
-        let locationToolbarItem: NSToolbarItem = .init(itemIdentifier: locationToolbarItemIdentifier)
+        let locationToolbarItem: NSToolbarItem = .init(itemIdentifier: .locationIdentifier)
         locationToolbarItem.action = #selector(clickedCurrentLocationToolbarItem(_:))
         locationToolbarItem.target = self
         locationToolbarItem.paletteLabel = "번역"
@@ -88,7 +87,7 @@ extension SearchWindow: NSWindowDelegate {
 extension SearchWindow: NSToolbarDelegate {
     internal func toolbar(_ toolbar: NSToolbar, itemForItemIdentifier itemIdentifier: NSToolbarItem.Identifier, willBeInsertedIntoToolbar flag: Bool) -> NSToolbarItem? {
         
-        if itemIdentifier == locationToolbarItemIdentifier {
+        if itemIdentifier == .locationIdentifier {
             let locationToolbarItem: NSToolbarItem = getLocationToolbarItem()
             self.locationToolbarItem = locationToolbarItem
             return locationToolbarItem
@@ -98,10 +97,10 @@ extension SearchWindow: NSToolbarDelegate {
     }
     
     internal func toolbarDefaultItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-        return [locationToolbarItemIdentifier]
+        return [.locationIdentifier]
     }
     
     internal func toolbarAllowedItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-        return [locationToolbarItemIdentifier]
+        return [.locationIdentifier]
     }
 }
