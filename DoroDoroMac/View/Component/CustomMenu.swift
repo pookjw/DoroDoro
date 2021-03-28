@@ -40,7 +40,7 @@ internal final class CustomMenu: NSMenu {
     }
     
     private func configureAppMenuItem() {
-        let appName: String = NSApp.applicationName
+        let appName: String = Localizable.DORODORO.string
         let appMenuItem: NSMenuItem = .init()
         let appSubMenu: NSMenu = .init(title: appName)
         

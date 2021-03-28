@@ -120,7 +120,10 @@
 "EMAIL_ERROR_NO_REGISTERED_EMAILS_ON_DEVICE" = "There's no any registered emails on device.";
 
 /* */
-"EMAIL_TITLE" = "DoroDoro - Bug Report";
+"EMAIL_TITLE" = "DoroDoro - App Feedback";
+
+/* */
+"EMAIL_TITLE_MAC" = "DoroDoro (Mac) - App Feedback";
 
 /* */
 "EMAIL_APP_INFO" = "App Information : %@";

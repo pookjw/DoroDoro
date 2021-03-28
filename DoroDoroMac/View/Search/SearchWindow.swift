@@ -11,7 +11,7 @@ import SnapKit
 
 internal final class SearchWindow: NSWindow {
     internal let resizeEvent: PassthroughSubject<NSRect, Never> = .init()
-    private weak var searchViewController: SearchViewController? = nil
+    private weak var searchVC: SearchViewController? = nil
     private var customUndoManager: UndoManager = .init()
     internal weak var locationToolbarItem: NSToolbarItem? = nil
     
@@ -21,12 +21,12 @@ internal final class SearchWindow: NSWindow {
                   backing: .buffered,
                   defer: false)
         let size: NSSize = .init(width: 400, height: 600)
-        let searchViewController: SearchViewController = .init()
-        self.searchViewController = searchViewController
-        searchViewController.searchWindow = self
+        let searchVC: SearchViewController = .init()
+        self.searchVC = searchVC
+        searchVC.searchWindow = self
         
         contentMinSize = size
-        contentViewController = searchViewController
+        contentViewController = searchVC
         title = Localizable.SEARCH.string
         subtitle = Localizable.DORODORO.string
         titlebarAppearsTransparent = true
@@ -70,7 +70,7 @@ internal final class SearchWindow: NSWindow {
     }
     
     @objc private func clickedCurrentLocationToolbarItem(_ sender: NSToolbarItem) {
-        searchViewController?.clickedCurrentLocationToolbarItem(sender)
+        searchVC?.clickedCurrentLocationToolbarItem(sender)
     }
 }
 

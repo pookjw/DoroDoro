@@ -8,19 +8,25 @@
 import Cocoa
 
 internal final class AboutWindow: NSWindow {
+    private weak var aboutVC: AboutViewController? = nil
+    
     internal convenience init() {
         self.init(contentRect: .zero,
-                  styleMask:  [.closable, .titled],
+                  styleMask:  [.closable, .titled, .fullSizeContentView],
                   backing: .buffered,
                   defer: false)
-        let size: NSSize = .init(width: 400, height: 400)
+        let size: NSSize = .init(width: 300, height: 300)
         let aboutVC: AboutViewController = .init()
+        self.aboutVC = aboutVC
+        aboutVC.abountWindow = self
         aboutVC.preferredContentSize = size
         
         contentViewController = aboutVC
-        titleVisibility = .visible
         title = "정보 (번역)"
         isReleasedWhenClosed = false
+        titlebarAppearsTransparent = true
+        titleVisibility = .visible
+        isMovableByWindowBackground = true
         
         setCenter(offset: size)
     }

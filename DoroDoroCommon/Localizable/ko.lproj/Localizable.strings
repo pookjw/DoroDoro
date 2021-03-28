@@ -123,7 +123,10 @@
 "EMAIL_APP_INFO" = "앱 정보 : %@";
 
 /* */
-"EMAIL_TITLE" = "도로도로 - 버그 제보";
+"EMAIL_TITLE" = "도로도로 - 피드백";
+
+/* */
+"EMAIL_TITLE_MAC" = "도로도로 (Mac) - 피드백";
 
 /* */
 "EMAIL_SYSTEM_INFO" = "시스템 정보 : %@";

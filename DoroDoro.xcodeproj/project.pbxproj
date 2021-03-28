@@ -206,6 +206,9 @@
 		F3AAE2A525E7D06800D666BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3AAE2A325E7D06800D666BD /* LaunchScreen.storyboard */; };
 		F3AE60032610B38F0024D99C /* NSToolbarItem+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AE60022610B38F0024D99C /* NSToolbarItem+Ext.swift */; };
 		F3AE60062610B42D0024D99C /* Bundle+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371F06F25F513B700E003E8 /* Bundle+Ext.swift */; };
+		F3AE60092610C7EE0024D99C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3AAE2A125E7D06800D666BD /* Assets.xcassets */; };
+		F3AE600A2610C7EF0024D99C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3AAE2A125E7D06800D666BD /* Assets.xcassets */; };
+		F3AE60142610D32E0024D99C /* HardwareService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AE60132610D32E0024D99C /* HardwareService.swift */; };
 		F3BF54D825FD98D200A5097B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BF54D725FD98D200A5097B /* AppDelegate.swift */; };
 		F3BF54DC25FD98D400A5097B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3BF54DB25FD98D400A5097B /* Assets.xcassets */; };
 		F3C2796125EEC8C40029A61E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3C2796025EEC8C40029A61E /* CloudKit.framework */; };
@@ -677,6 +680,7 @@
 		F3AAE2A425E7D06800D666BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F3AAE2A625E7D06800D666BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F3AE60022610B38F0024D99C /* NSToolbarItem+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSToolbarItem+Ext.swift"; sourceTree = "<group>"; };
+		F3AE60132610D32E0024D99C /* HardwareService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HardwareService.swift; sourceTree = "<group>"; };
 		F3B36AB225F1CA0A00B59915 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		F3BF54D525FD98D200A5097B /* DoroDoroMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoroDoroMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3BF54D725FD98D200A5097B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -964,9 +968,9 @@
 				F337B1F525EC0DC600FB0B61 /* Search */,
 				F3E24D0E25FDAE2600123E3B /* Bookmarks */,
 				F360D25325F57B2E00CA4E93 /* Accessibility */,
-				F371F06D25F50F5D00E003E8 /* Pods-DoroDoro-acknowledgements.plist */,
 				F337B1F625EC0DCE00FB0B61 /* Details */,
 				F384137825F005490078334A /* Settings */,
+				F371F06D25F50F5D00E003E8 /* Pods-DoroDoro-acknowledgements.plist */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -1545,6 +1549,22 @@
 			path = DoroDoro;
 			sourceTree = "<group>";
 		};
+		F3AE60112610D30D0024D99C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F3AE60122610D3200024D99C /* Hardware */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F3AE60122610D3200024D99C /* Hardware */ = {
+			isa = PBXGroup;
+			children = (
+				F3AE60132610D32E0024D99C /* HardwareService.swift */,
+			);
+			path = Hardware;
+			sourceTree = "<group>";
+		};
 		F3B6769725F2C13300642A96 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
@@ -1560,6 +1580,7 @@
 				F3E24D9425FDC94F00123E3B /* Extension */,
 				F3E24D3625FDB04200123E3B /* View */,
 				F3E24DAE25FDCA2400123E3B /* ViewModel */,
+				F3AE60112610D30D0024D99C /* Model */,
 				F3D760BE2606318D00461F70 /* Entity */,
 				F3BF54D725FD98D200A5097B /* AppDelegate.swift */,
 				F3BF54DB25FD98D400A5097B /* Assets.xcassets */,
@@ -2069,6 +2090,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F378B6D125E7D77200FCE546 /* Assets.xcassets in Resources */,
+				F3AE600A2610C7EF0024D99C /* Assets.xcassets in Resources */,
 				F378B6CF25E7D77100FCE546 /* Interface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2144,6 +2166,7 @@
 				F3E24D8325FDC04300123E3B /* SimgleResultTableCellView.xib in Resources */,
 				F3E24CB925FDAD4700123E3B /* Localizable.strings in Resources */,
 				F3E24CB125FDAD4000123E3B /* InfoPlist.strings in Resources */,
+				F3AE60092610C7EE0024D99C /* Assets.xcassets in Resources */,
 				F3D760BD2606292900461F70 /* DetailTableCellView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2671,6 +2694,7 @@
 				F3E24CDB25FDAD5200123E3B /* AddrCoordAPIError+LocalizedError.swift in Sources */,
 				F3D760E726063FBD00461F70 /* DetailsMapResultItem.swift in Sources */,
 				F305B34726044C18002F878A /* DetailsViewModel.swift in Sources */,
+				F3AE60142610D32E0024D99C /* HardwareService.swift in Sources */,
 				F3D760EB2606456600461F70 /* DetailsListViewController.swift in Sources */,
 				F3D760BB2606291700461F70 /* DetailTableCellView.swift in Sources */,
 				F3E24CD825FDAD5200123E3B /* GeoAPIError+LocalizedError.swift in Sources */,

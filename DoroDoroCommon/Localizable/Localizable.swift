@@ -46,6 +46,7 @@ internal enum Localizable: String {
     case NO_SEARCH_RESULTS
     case EMAIL_ERROR_NO_REGISTERED_EMAILS_ON_DEVICE
     case EMAIL_TITLE
+    case EMAIL_TITLE_MAC
     case EMAIL_APP_INFO
     case EMAIL_SYSTEM_INFO
     case EMAIL_SENT
