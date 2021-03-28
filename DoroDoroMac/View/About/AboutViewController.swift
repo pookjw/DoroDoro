@@ -143,7 +143,7 @@ internal final class AboutViewController: NSViewController {
         }
         
         openDeveloperGitHubButton.bezelStyle = .regularSquare
-        openDeveloperGitHubButton.title = "Open Developer's GitHub(번역)"
+        openDeveloperGitHubButton.title = Localizable.MAC_OPEN_DEVELOPER_GITHUB.string
         openDeveloperGitHubButton.action = #selector(clickedOpenDeveloperGitHubButton(_:))
         openDeveloperGitHubButton.target = self
     }
@@ -161,7 +161,7 @@ internal final class AboutViewController: NSViewController {
         }
         
         sendFeedbackEmailButton.bezelStyle = .regularSquare
-        sendFeedbackEmailButton.title = "피드백 이메일 보내기(번역)"
+        sendFeedbackEmailButton.title = Localizable.MAC_SEND_FEEDBACK_TO_DEVELOPER.string
         sendFeedbackEmailButton.action = #selector(clickedSendFeedbackEmailButton(_:))
         sendFeedbackEmailButton.target = self
     }
@@ -186,7 +186,7 @@ internal final class AboutViewController: NSViewController {
             return
         }
         emailService.recipients = ["kidjinwoo@me.com"]
-        emailService.subject = Localizable.EMAIL_TITLE_MAC.string
+        emailService.subject = Localizable.MAC_EMAIL_TITLE.string
         
         let body: String = """
         

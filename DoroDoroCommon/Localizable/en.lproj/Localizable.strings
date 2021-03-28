@@ -123,9 +123,6 @@
 "EMAIL_TITLE" = "DoroDoro - App Feedback";
 
 /* */
-"EMAIL_TITLE_MAC" = "DoroDoro (Mac) - App Feedback";
-
-/* */
 "EMAIL_APP_INFO" = "App Information : %@";
 
 /* */
@@ -148,6 +145,71 @@
 
 /* */
 "UNKNOWN" = "unknown";
+
+// MARK: - DoroDoroMac
+
+/* */
+"MAC_EMAIL_TITLE" = "DoroDoro (Mac) - App Feedback";
+
+/* */
+"MAC_ABOUT_TITLE" = "About %@";
+
+/* */
+"MAC_OPEN_DEVELOPER_GITHUB" = "Open Developer's GitHub";
+
+/* */
+"MAC_SEND_FEEDBACK_TO_DEVELOPER" = "Send a feedback to developer";
+
+/* */
+"MAC_MENU_ABOUT_APP" = "About %@";
+
+/* */
+"MAC_MENU_HIDE_APP" = "Hide %@";
+
+/* */
+"MAC_MENU_HIDE_OTHERS" = "Hide Others";
+
+/* */
+"MAC_MENU_QUIT_APP" = "Quit %@";
+
+/* */
+"MAC_MENU_FILE" = "File";
+
+/* */
+"MAC_MENU_NEW" = "New";
+
+/* */
+"MAC_MENU_NEW_WINDOW" = "New Window";
+
+/* */
+"MAC_MENU_CLOSE_WINDOW" = "Close Window";
+
+/* */
+"MAC_MENU_EDIT" = "Edit";
+
+/* */
+"MAC_MENU_UNDO" = "Undo";
+
+/* */
+"MAC_MENU_REDO" = "Undo";
+
+/* */
+"MAC_MENU_CUT" = "Cut";
+
+/* */
+"MAC_MENU_COPY" = "Copy";
+
+/* */
+"MAC_MENU_PASTE" = "Paste";
+
+/* */
+"MAC_MENU_SELECT_ALL" = "Select All";
+
+/* */
+"MAC_MENU_HELP" = "Help";
+
+/* */
+"MAC_MENU_APP_HELP" = "%@ Help";
 
 // MARK: - AddrLinkAPIError
 

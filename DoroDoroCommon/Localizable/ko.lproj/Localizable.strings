@@ -126,9 +126,6 @@
 "EMAIL_TITLE" = "도로도로 - 피드백";
 
 /* */
-"EMAIL_TITLE_MAC" = "도로도로 (Mac) - 피드백";
-
-/* */
 "EMAIL_SYSTEM_INFO" = "시스템 정보 : %@";
 
 /* */
@@ -148,6 +145,71 @@
 
 /* */
 "UNKNOWN" = "알 수 없음";
+
+// MARK: - DoroDoroMac
+
+/* */
+"MAC_EMAIL_TITLE" = "도로도로 (Mac) - 피드백";
+
+/* */
+"MAC_ABOUT_TITLE" = "About %@";
+
+/* */
+"MAC_OPEN_DEVELOPER_GITHUB" = "개발자의 GitHub 열기";
+
+/* */
+"MAC_SEND_FEEDBACK_TO_DEVELOPER" = "개발자에게 피드백 보내기";
+
+/* */
+"MAC_MENU_ABOUT_APP" = "%@에 관하여";
+
+/* */
+"MAC_MENU_HIDE_APP" = "%@ 가리기";
+
+/* */
+"MAC_MENU_HIDE_OTHERS" = "기타 가리기";
+
+/* */
+"MAC_MENU_QUIT_APP" = "%@ 종료";
+
+/* */
+"MAC_MENU_FILE" = "파일";
+
+/* */
+"MAC_MENU_NEW" = "새로 만들기";
+
+/* */
+"MAC_MENU_NEW_WINDOW" = "새로운 윈도우";
+
+/* */
+"MAC_MENU_CLOSE_WINDOW" = "윈도우 닫기";
+
+/* */
+"MAC_MENU_EDIT" = "편집";
+
+/* */
+"MAC_MENU_UNDO" = "실행 취소";
+
+/* */
+"MAC_MENU_REDO" = "실행 복귀";
+
+/* */
+"MAC_MENU_CUT" = "오려두기";
+
+/* */
+"MAC_MENU_COPY" = "복사";
+
+/* */
+"MAC_MENU_PASTE" = "붙여놓기";
+
+/* */
+"MAC_MENU_SELECT_ALL" = "모두 선택";
+
+/* */
+"MAC_MENU_HELP" = "도움말";
+
+/* */
+"MAC_MENU_APP_HELP" = "%@ 도움말";
 
 // MARK: - AddrLinkAPIError
 

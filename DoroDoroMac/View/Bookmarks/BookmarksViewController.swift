@@ -271,7 +271,7 @@ internal final class BookmarksViewController: NSViewController {
     }
     
     @objc private func toggleBookmarks(_ sender: NSMenuItem) {
-        guard let (_, selectedMenuRoadAddr): (Int, String) = getAnyItem() else {
+        guard let (_, selectedMenuRoadAddr): (Int, String) = getSelectedItem() else {
             return
         }
         BookmarksService.shared.toggleBookmark(selectedMenuRoadAddr)

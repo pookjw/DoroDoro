@@ -22,7 +22,7 @@ internal final class AboutWindow: NSWindow {
         aboutVC.preferredContentSize = size
         
         contentViewController = aboutVC
-        title = "정보 (번역)"
+        title = String(format: Localizable.MAC_ABOUT_TITLE.string, Localizable.DORODORO.string)
         isReleasedWhenClosed = false
         titlebarAppearsTransparent = true
         titleVisibility = .visible

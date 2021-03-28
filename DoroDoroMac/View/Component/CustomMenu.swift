@@ -44,16 +44,16 @@ internal final class CustomMenu: NSMenu {
         let appMenuItem: NSMenuItem = .init()
         let appSubMenu: NSMenu = .init(title: appName)
         
-        let aboutAppItem: NSMenuItem = .init(title: "About \(appName) (번역)",
+        let aboutAppItem: NSMenuItem = .init(title: String(format: Localizable.MAC_MENU_ABOUT_APP.string, appName),
                                              action: #selector(showAboutWindow(_:)),
                                              keyEquivalent: "")
-        let hideAppItem: NSMenuItem = .init(title: "Hide \(appName) (번역)",
+        let hideAppItem: NSMenuItem = .init(title: String(format: Localizable.MAC_MENU_HIDE_APP.string, appName),
                                             action: #selector(NSApp.hide(_:)),
                                             keyEquivalent: "h")
-        let hideOhtersItem: NSMenuItem = .init(title: "Hide Others (번역)",
+        let hideOhtersItem: NSMenuItem = .init(title: Localizable.MAC_MENU_HIDE_OTHERS.string,
                                                action: #selector(NSApp.hideOtherApplications(_:)),
                                                keyEquivalent: "h")
-        let quitAppItem: NSMenuItem = .init(title: "Quit \(appName) (번역)",
+        let quitAppItem: NSMenuItem = .init(title: String(format: Localizable.MAC_MENU_QUIT_APP.string, appName),
                                             action: #selector(NSApp.terminate(_:)),
                                             keyEquivalent: "q")
         
@@ -75,15 +75,15 @@ internal final class CustomMenu: NSMenu {
     
     private func configureFileMenuItem() {
         let fileMenuItem: NSMenuItem = .init()
-        let fileSubMenu: NSMenu = .init(title: "파일 (번역)")
+        let fileSubMenu: NSMenu = .init(title: Localizable.MAC_MENU_FILE.string)
         
         let newItem: NSMenuItem = .init()
         let newSubMenu: NSMenu = .init()
         
-        let newWindowItem: NSMenuItem = .init(title: "새 창 (번역)",
+        let newWindowItem: NSMenuItem = .init(title: Localizable.MAC_MENU_NEW_WINDOW.string,
                                               action: #selector(showSearchWindow(_:)),
                                               keyEquivalent: "n")
-        let closeWindowItem: NSMenuItem = .init(title: "창 닫기 (번역)",
+        let closeWindowItem: NSMenuItem = .init(title: Localizable.MAC_MENU_CLOSE_WINDOW.string,
                                                 action: #selector(closeWindow(_:)),
                                                 keyEquivalent: "w")
         
@@ -93,7 +93,7 @@ internal final class CustomMenu: NSMenu {
             closeWindowItem
         ]
         
-        newItem.title = "New... (번역)"
+        newItem.title = Localizable.MAC_MENU_NEW.string
         newItem.submenu = newSubMenu
         newSubMenu.items = [
             newWindowItem,
@@ -107,30 +107,30 @@ internal final class CustomMenu: NSMenu {
     
     private func configureEditMenuItem() {
         let editMenuItem: NSMenuItem = .init()
-        let editSubMenu: NSMenu = .init(title: "편집 (번역)")
+        let editSubMenu: NSMenu = .init(title: Localizable.MAC_MENU_EDIT.string)
         
-        let undoMenuItem: NSMenuItem = .init(title: "취소 (번역)",
+        let undoMenuItem: NSMenuItem = .init(title: Localizable.MAC_MENU_UNDO.string,
                                              action: Selector(("undoFromMenu:")),
                                              keyEquivalent: "z")
-        let redoMenuItem: NSMenuItem = .init(title: "되돌리기 (번역)",
+        let redoMenuItem: NSMenuItem = .init(title: Localizable.MAC_MENU_REDO.string,
                                              action: Selector(("redoFromMenu:")),
                                              keyEquivalent: "z")
-        let cutMenuItem: NSMenuItem = .init(title: "잘라내기 (번역)",
+        let cutMenuItem: NSMenuItem = .init(title: Localizable.MAC_MENU_REDO.string,
                                             action: #selector(NSText.cut(_:)),
                                             keyEquivalent: "x")
-        let copyMenuItem: NSMenuItem = .init(title: "복사 (번역)",
+        let copyMenuItem: NSMenuItem = .init(title: Localizable.MAC_MENU_COPY.string,
                                              action: #selector(NSText.copy(_:)),
                                              keyEquivalent: "c")
-        let pasteMenuItem: NSMenuItem = .init(title: "붙여놓기 (번역)",
+        let pasteMenuItem: NSMenuItem = .init(title: Localizable.MAC_MENU_PASTE.string,
                                               action: #selector(NSText.paste(_:)),
                                               keyEquivalent: "v")
-        let deleteMenuItem: NSMenuItem = .init(title: "삭제 (번역)",
-                                               action: #selector(NSText.delete(_:)),
-                                               keyEquivalent: String(describing: Character(UnicodeScalar(0x0008))))
-        let selectAllMenuItem: NSMenuItem = .init(title: "모두 선택 (번역)",
+//        let deleteMenuItem: NSMenuItem = .init(title: "삭제 (번역)",
+//                                               action: #selector(NSText.delete(_:)),
+//                                               keyEquivalent: String(describing: Character(UnicodeScalar(0x0008))))
+        let selectAllMenuItem: NSMenuItem = .init(title: Localizable.MAC_MENU_SELECT_ALL.string,
                                                   action: #selector(NSText.selectAll(_:)),
                                                   keyEquivalent: "a")
-        let bookmarkMenuItem: NSMenuItem = .init(title: "책갈피 추가/삭제 (번역)",
+        let bookmarkMenuItem: NSMenuItem = .init(title: Localizable.ADD_TO_BOOKMARKS.string,
                                                  action: nil,
                                                  keyEquivalent: "b")
         
@@ -146,7 +146,7 @@ internal final class CustomMenu: NSMenu {
             cutMenuItem,
             copyMenuItem,
             pasteMenuItem,
-            deleteMenuItem,
+//            deleteMenuItem,
             .separator(),
             selectAllMenuItem,
             .separator(),
@@ -159,10 +159,11 @@ internal final class CustomMenu: NSMenu {
     }
     
     private func configureHelpMenuItem() {
+        let appName: String = Localizable.DORODORO.string
         let helpMenuItem: NSMenuItem = .init()
-        let helpSubMenu: NSMenu = .init(title: "도움말 (번역)")
+        let helpSubMenu: NSMenu = .init(title: Localizable.MAC_MENU_HELP.string)
         
-        let showHelpMenuItem: NSMenuItem = .init(title: "도움말 (번역)",
+        let showHelpMenuItem: NSMenuItem = .init(title: String(format: Localizable.MAC_MENU_APP_HELP.string, appName),
                                              action: #selector(NSApp.showHelp(_:)),
                                              keyEquivalent: "")
         

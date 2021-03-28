@@ -441,7 +441,7 @@ internal final class SearchViewController: NSViewController {
     }
     
     @objc private func toggleBookmarks(_ sender: NSMenuItem) {
-        guard let (_, selectedMenuJusoData): (Int, AddrLinkJusoData) = getAnyItem() else {
+        guard let (_, selectedMenuJusoData): (Int, AddrLinkJusoData) = getSelectedItem() else {
             return
         }
         BookmarksService.shared.toggleBookmark(selectedMenuJusoData.roadAddr)

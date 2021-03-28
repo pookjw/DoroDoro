@@ -46,7 +46,6 @@ internal enum Localizable: String {
     case NO_SEARCH_RESULTS
     case EMAIL_ERROR_NO_REGISTERED_EMAILS_ON_DEVICE
     case EMAIL_TITLE
-    case EMAIL_TITLE_MAC
     case EMAIL_APP_INFO
     case EMAIL_SYSTEM_INFO
     case EMAIL_SENT
@@ -55,6 +54,27 @@ internal enum Localizable: String {
     case WARNING
     case ERROR_CONTACT_TO_DEVELOPER
     case UNKNOWN
+    case MAC_EMAIL_TITLE
+    case MAC_ABOUT_TITLE
+    case MAC_OPEN_DEVELOPER_GITHUB
+    case MAC_SEND_FEEDBACK_TO_DEVELOPER
+    case MAC_MENU_ABOUT_APP
+    case MAC_MENU_HIDE_APP
+    case MAC_MENU_HIDE_OTHERS
+    case MAC_MENU_QUIT_APP
+    case MAC_MENU_FILE
+    case MAC_MENU_NEW
+    case MAC_MENU_NEW_WINDOW
+    case MAC_MENU_CLOSE_WINDOW
+    case MAC_MENU_EDIT
+    case MAC_MENU_UNDO
+    case MAC_MENU_REDO
+    case MAC_MENU_CUT
+    case MAC_MENU_COPY
+    case MAC_MENU_PASTE
+    case MAC_MENU_SELECT_ALL
+    case MAC_MENU_HELP
+    case MAC_MENU_APP_HELP
     case ADDR_LINK_API_ERROR_NORMAL
     case ADDR_LINK_API_ERROR_SYSTEM_ERROR
     case ADDR_LINK_API_ERROR_UNAUTHORIZED_API_KEY
