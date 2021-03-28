@@ -30,6 +30,10 @@ internal final class SettingsViewController: UIViewController {
         }
     }
     
+    internal func scrollCollectionViewToTop() {
+        collectionView?.scrollToTop(animated: true)
+    }
+    
     private func setAttributes() {
         view.backgroundColor = .systemBackground
         title = Localizable.SETTINGS.string

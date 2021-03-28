@@ -16,11 +16,16 @@ internal final class MainTabBarController: UITabBarController {
     
     internal override func viewDidLoad() {
         super.viewDidLoad()
+        setAttributes()
         configureViewControllers()
     }
     
     internal override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+    }
+    
+    private func setAttributes() {
+        delegate = self
     }
     
     private func configureViewControllers() {
@@ -70,5 +75,35 @@ internal final class MainTabBarController: UITabBarController {
         settingsNVC.tabBarItem.selectedImage = UIImage(systemName: "gearshape.fill")
         
         setViewControllers([searchSplitVC, bookmarksSplitVC, settingsNVC], animated: false)
+    }
+}
+
+extension MainTabBarController: UITabBarControllerDelegate {
+    internal func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        // 이미 선택된 상태에서 한 번 더 눌렀을 때만
+        guard tabBarController.selectedViewController == viewController else {
+            return true
+        }
+        
+        guard let splitViewController: UISplitViewController = viewController as? UISplitViewController,
+            let primaryNavigationController: UINavigationController = splitViewController.viewControllers.first as? UINavigationController,
+              let firstViewController: UIViewController = primaryNavigationController.viewControllers.first else {
+            return true
+        }
+        
+        // Navigation Controller의 View Controller의 개수가 1개인 경우
+        if primaryNavigationController.viewControllers.count == 1 {
+            if let searchVC: SearchViewController = firstViewController as? SearchViewController {
+                searchVC.scrollCollectionViewToTop()
+            } else if let bookmarksVC: BookmarksViewController = firstViewController as? BookmarksViewController {
+                bookmarksVC.scrollCollectionViewToTop()
+            } else if let settingsVC: SettingsViewController = firstViewController as? SettingsViewController {
+                settingsVC.scrollCollectionViewToTop()
+            }
+        } else {
+            primaryNavigationController.setViewControllers([firstViewController], animated: true)
+        }
+        
+        return true
     }
 }

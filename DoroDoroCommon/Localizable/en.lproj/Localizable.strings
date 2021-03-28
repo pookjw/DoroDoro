@@ -75,7 +75,7 @@
 "KAKAO_MAP" = "KakaoMap";
 
 /* */
-"MAP_PROVIDERS_DESCRIPTION" = "Intel-based Mac, Apple Watch and Details screen only support Apple Maps.";
+"MAP_PROVIDERS_DESCRIPTION" = "Mac, Apple Watch and Details screen only support Apple Maps.";
 
 /* */
 "DATA_PROVIDER_DESCRIPTION" = "These data are procvided by 'Ministry of Public Administration and Security', 'Kakao' and 'Apple'.";

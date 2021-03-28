@@ -29,6 +29,10 @@ internal final class BookmarksViewController: UIViewController {
         bind()
     }
     
+    internal func scrollCollectionViewToTop() {
+        collectionView?.scrollToTop(animated: true)
+    }
+    
     private func setAttributes() {
         view.backgroundColor = .systemBackground
         title = Localizable.BOOKMARKS.string
