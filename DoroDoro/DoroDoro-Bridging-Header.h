@@ -9,7 +9,7 @@
 #define DoroDoro_Bridging_Header_h
 
 #include <TargetConditionals.h>
-#if (TARGET_OS_IOS && __x86_64__ && (!TARGET_OS_SIMULATOR) && (!TARGET_OS_UIKITFORMAC)) || (TARGET_OS_SIMULATOR && (__x86_64__))
+#if (TARGET_OS_IOS && __arm64__ && (!TARGET_OS_SIMULATOR) && (!TARGET_OS_UIKITFORMAC)) || (TARGET_OS_SIMULATOR && (__x86_64__))
 #import <DaumMap/MTMapView.h>
 #endif
 
