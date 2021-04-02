@@ -303,7 +303,7 @@ extension DetailsViewController: UICollectionViewDelegate {
             
             let shareAction = UIAction(title: Localizable.SHARE.string,
                                        image: UIImage(systemName: "square.and.arrow.up")) { [weak self, weak cell] action in
-                self?.share([text], sourceView: cell)
+                self?.share([text], sourceView: cell, showCompletionAlert: false)
             }
             
             return UIContextMenuConfiguration(identifier: nil,

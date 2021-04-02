@@ -225,7 +225,7 @@ extension BookmarksViewController: UICollectionViewDelegate {
         
         let shareAction: UIAction = .init(title: Localizable.SHARE.string,
                               image: UIImage(systemName: "square.and.arrow.up")) { [weak self, weak cell] action in
-            self?.share([roadAddr], sourceView: cell)
+            self?.share([roadAddr], sourceView: cell, showCompletionAlert: false)
         }
         
         viewModel?.contextMenuIndexPath = indexPath

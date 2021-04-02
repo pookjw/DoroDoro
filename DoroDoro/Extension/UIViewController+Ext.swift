@@ -105,7 +105,11 @@ extension UIViewController {
     }
     
     @discardableResult
-    internal func share(_ items: [Any], sourceView: UIView? = nil) -> UIActivityViewController {
+    internal func share(_ items: [Any],
+                        sourceView: UIView? = nil,
+                        showCompletionAlert: Bool,
+                        completion: (UIActivityViewController.CompletionWithItemsHandler)? = nil)
+    -> UIActivityViewController {
         let ac: UIActivityViewController = .init(activityItems: items, applicationActivities: nil)
         
         if let controller: UIPopoverPresentationController = ac.popoverPresentationController {
@@ -114,6 +118,17 @@ extension UIViewController {
             } else {
                 controller.sourceView = view
                 controller.sourceRect = CGRect(origin: view.center, size: .zero)
+            }
+        }
+        
+        if showCompletionAlert {
+            ac.completionWithItemsHandler = { [weak self] (type, success, items, error) in
+                if success {
+                    self?.showSuccessAlert(message: nil)
+                } else if let error: Error = error {
+                    self?.showErrorAlert(for: error)
+                }
+                completion?(type, success, items, error)
             }
         }
         
