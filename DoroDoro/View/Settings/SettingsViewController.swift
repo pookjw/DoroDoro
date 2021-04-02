@@ -105,6 +105,8 @@ internal final class SettingsViewController: UIViewController {
                 self?.setAcknowledgementsTypeCell(cell: cell)
             case .appinfo(let version, let build):
                 self?.setAppInfoCell(cell: cell, version: version, build: build)
+            case .urlSchemesGuide:
+                self?.setURLSchemesGuideCell(cell: cell)
             }
         }
     }
@@ -215,6 +217,17 @@ internal final class SettingsViewController: UIViewController {
         cell.accessories = []
     }
     
+    private func setURLSchemesGuideCell(cell: UICollectionViewListCell) {
+        var configuration: UIListContentConfiguration = cell.defaultContentConfiguration()
+        configuration.text = "URL 가이드"
+        configuration.secondaryText = "URL Schemes"
+        configuration.image = UIImage(named: "link")
+        configuration.imageProperties.cornerRadius = 25
+        configuration.imageProperties.maximumSize = .init(width: 50, height: 50)
+        cell.contentConfiguration = configuration
+        cell.accessories = [.disclosureIndicator()]
+    }
+    
     private func makeSFSafariVCPreview(url: URL) -> UIViewController {
         let vc: SFSafariViewController = .init(url: url)
         contextViewController = vc
@@ -235,6 +248,17 @@ internal final class SettingsViewController: UIViewController {
             return
         }
         let vc: AcknowListViewController = .init(plistPath: path, style: .insetGrouped)
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    private func makeURLSchemesGuideVC() -> UIViewController {
+        let vc: URLSchemesGuideViewController = .init()
+        contextViewController = vc
+        return vc
+    }
+    
+    private func presentURLSchemesGuideVC() {
+        let vc: URLSchemesGuideViewController = .init()
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -285,6 +309,8 @@ extension SettingsViewController: UICollectionViewDelegate {
             return true
         case .appinfo:
             return false
+        case .urlSchemesGuide:
+            return true
         }
     }
     
@@ -311,6 +337,8 @@ extension SettingsViewController: UICollectionViewDelegate {
             presentAcknowledgementsVC()
         case .appinfo:
             break
+        case .urlSchemesGuide:
+            presentURLSchemesGuideVC()
         }
     }
     
@@ -338,6 +366,13 @@ extension SettingsViewController: UICollectionViewDelegate {
             return .init(identifier: nil,
                          previewProvider: { [weak self] () -> UIViewController? in
                             return self?.makeAcknowledgementsVCPreview()
+                         },
+                         actionProvider: nil)
+        case .urlSchemesGuide:
+            viewModel?.contextMenuIndexPath = indexPath
+            return .init(identifier: nil,
+                         previewProvider: { [weak self] () -> UIViewController? in
+                            return self?.makeURLSchemesGuideVC()
                          },
                          actionProvider: nil)
         default:

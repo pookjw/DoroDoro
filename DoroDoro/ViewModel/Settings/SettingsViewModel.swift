@@ -124,6 +124,7 @@ internal final class SettingsViewModel {
         
         let items: [SettingCellItem] = [
             .init(cellType: .appinfo(version: Bundle.main.releaseVersionNumber, build: Bundle.main.buildVersionNumber)),
+            .init(cellType: .urlSchemesGuide),
             .init(cellType: .acknowledgements)
         ]
         

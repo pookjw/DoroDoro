@@ -55,6 +55,8 @@
 		F337B1EE25EC09F400FB0B61 /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B1ED25EC09F400FB0B61 /* DetailsViewModel.swift */; };
 		F337B1F825EC0E0F00FB0B61 /* DetailResultItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B1F725EC0E0F00FB0B61 /* DetailResultItem.swift */; };
 		F337B20025EC0E9600FB0B61 /* DetailHeaderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B1FF25EC0E9600FB0B61 /* DetailHeaderItem.swift */; };
+		F33B33D12616E650002C11A4 /* URLSchemesGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33B33D02616E650002C11A4 /* URLSchemesGuideViewController.swift */; };
+		F33B33D32616E68C002C11A4 /* URLSchemesGuideViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33B33D22616E68C002C11A4 /* URLSchemesGuideViewModel.swift */; };
 		F33BAFAC25EC239500BC5772 /* DetailsMapViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33BAFAB25EC239500BC5772 /* DetailsMapViewConfiguration.swift */; };
 		F33BAFC825ECB88700BC5772 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F33BAFC725ECB88700BC5772 /* SystemConfiguration.framework */; };
 		F33BAFCA25ECB89600BC5772 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F33BAFC925ECB89600BC5772 /* CoreLocation.framework */; };
@@ -535,6 +537,8 @@
 		F337B1ED25EC09F400FB0B61 /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
 		F337B1F725EC0E0F00FB0B61 /* DetailResultItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailResultItem.swift; sourceTree = "<group>"; };
 		F337B1FF25EC0E9600FB0B61 /* DetailHeaderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHeaderItem.swift; sourceTree = "<group>"; };
+		F33B33D02616E650002C11A4 /* URLSchemesGuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSchemesGuideViewController.swift; sourceTree = "<group>"; };
+		F33B33D22616E68C002C11A4 /* URLSchemesGuideViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSchemesGuideViewModel.swift; sourceTree = "<group>"; };
 		F33BAFAB25EC239500BC5772 /* DetailsMapViewConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsMapViewConfiguration.swift; sourceTree = "<group>"; };
 		F33BAFC525ECB87E00BC5772 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		F33BAFC725ECB88700BC5772 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
@@ -1350,6 +1354,7 @@
 			isa = PBXGroup;
 			children = (
 				F378B76E25E7F0B700FCE546 /* SettingsViewController.swift */,
+				F33B33D02616E650002C11A4 /* URLSchemesGuideViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -1448,6 +1453,7 @@
 			isa = PBXGroup;
 			children = (
 				F384137625F005030078334A /* SettingsViewModel.swift */,
+				F33B33D22616E68C002C11A4 /* URLSchemesGuideViewModel.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -2644,6 +2650,8 @@
 				F33BB10425ED268D00BC5772 /* MapViewController.swift in Sources */,
 				F331B235260E39A800551E64 /* BookmarksGuideLabelTextState.swift in Sources */,
 				F3A3DF2225F4398700E8F2F0 /* KeyboardEvent.swift in Sources */,
+				F33B33D32616E68C002C11A4 /* URLSchemesGuideViewModel.swift in Sources */,
+				F33B33D12616E650002C11A4 /* URLSchemesGuideViewController.swift in Sources */,
 				F3A3DEF025F41D4000E8F2F0 /* KakaoCoord2AddressAPIError+LocalizedError.swift in Sources */,
 				F3E6881425F13E6600A619CA /* DetailedNVCSplitViewControllerDelegate.swift in Sources */,
 				F3800A2E25F2E54100F218A1 /* AddrLinkJusoData+convertToAddrCoordSearchData.swift in Sources */,

@@ -11,8 +11,9 @@ internal struct SettingCellItem: Hashable, Equatable {
     internal enum CellType: Hashable {
         case mapSelection(mapType: SettingsMapSelectionType, selected: Bool)
         case contributor(contributorType: SettingsContributorType, url: String)
-        case acknowledgements
         case appinfo(version: String, build: String)
+        case acknowledgements
+        case urlSchemesGuide
     }
     internal let cellType: CellType
     
