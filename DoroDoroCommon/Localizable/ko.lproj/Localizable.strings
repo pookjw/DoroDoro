@@ -171,7 +171,7 @@
 "URL_GUIDE_HEADER_BOOKMAKRS" = "책갈피 화면";
 
 /* */
-"URL_GUIDE_FOOTER_SEARCH" = "이 URL이 실행되면 검색 화면을 보여줍니다.";
+"URL_GUIDE_FOOTER_SEARCH" = "이 URL이 입력되면 검색 화면을 보여줍니다.";
 
 /* */
 "URL_GUIDE_FOOTER_SEARCH_WITH_TEXT" = "이 URL이 입력되면 단어로 검색합니다. 위 예시는 'kelly'를 검색합니다.";
