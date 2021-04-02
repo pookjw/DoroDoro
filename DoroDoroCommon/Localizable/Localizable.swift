@@ -14,6 +14,7 @@ internal enum Localizable: String {
     case SETTINGS
     case DETAILS
     case LOCATION
+    case CURRENT_LOCATION
     case MAP_VIEW_CONTROLLER_TITLE
     case DONE
     case DISMISS

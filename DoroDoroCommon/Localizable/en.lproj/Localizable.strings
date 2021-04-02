@@ -27,6 +27,9 @@
 "LOCATION" = "Location";
 
 /* */
+"CURRENT_LOCATION" = "Current Location";
+
+/* */
 "MAP_VIEW_CONTROLLER_TITLE" = "Map";
 
 /* */

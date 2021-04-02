@@ -63,19 +63,19 @@ internal final class ShortcutService {
     internal static func getShortcutItems() -> [UIApplicationShortcutItem] {
         return [
             .init(type: ShortcutType.bookmarks(text: nil).description,
-                  localizedTitle: "책갈피(번역)",
+                  localizedTitle: Localizable.BOOKMARKS.string,
                   localizedSubtitle: nil,
                   icon: .init(systemImageName: "bookmark"),
                   userInfo: nil),
             
             .init(type: ShortcutType.searchCurrentLocation.description,
-                  localizedTitle: "현재 위치 검색(번역)",
+                  localizedTitle: Localizable.CURRENT_LOCATION.string,
                   localizedSubtitle: nil,
                   icon: .init(systemImageName: "location"),
                   userInfo: nil),
             
             .init(type: ShortcutType.search(text: nil).description,
-                  localizedTitle: "검색(번역)",
+                  localizedTitle: Localizable.SEARCH.string,
                   localizedSubtitle: nil,
                   icon: .init(systemImageName: "magnifyingglass"),
                   userInfo: nil)
