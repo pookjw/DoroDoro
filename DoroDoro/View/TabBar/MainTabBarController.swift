@@ -6,18 +6,23 @@
 //
 
 import UIKit
+import Combine
 
 internal final class MainTabBarController: UITabBarController {
     internal weak var searchVC: SearchViewController? = nil
     internal weak var bookmarksVC: BookmarksViewController? = nil
     internal weak var settingsVC: SettingsViewController? = nil
+    internal weak var searchSplitVC: UISplitViewController? = nil
+    internal weak var bookmarksSplitVC: UISplitViewController? = nil
     
     internal var splitVCDelegate: DetailedNVCSplitViewControllerDelegate = .init()
+    private var cancellableBag: Set<AnyCancellable> = .init()
     
     internal override func viewDidLoad() {
         super.viewDidLoad()
         setAttributes()
         configureViewControllers()
+        bind()
     }
     
     internal override func viewDidAppear(_ animated: Bool) {
@@ -43,6 +48,8 @@ internal final class MainTabBarController: UITabBarController {
         self.searchVC = searchVC
         self.bookmarksVC = bookmarksVC
         self.settingsVC = settingsVC
+        self.searchSplitVC = searchSplitVC
+        self.bookmarksSplitVC = bookmarksSplitVC
         
         searchVC.loadViewIfNeeded()
         searchPrimaryNVC.loadViewIfNeeded()
@@ -76,6 +83,50 @@ internal final class MainTabBarController: UITabBarController {
         
         setViewControllers([searchSplitVC, bookmarksSplitVC, settingsNVC], animated: false)
     }
+    
+    private func bind() {
+        ShortcutService.shared.typeEvent
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] type in
+                guard let self = self else { return }
+                switch type {
+                case .search(_), .searchCurrentLocation:
+                    guard let searchSplitVC: UISplitViewController = self.searchSplitVC else { return }
+                    self.makeFirstPage(for: searchSplitVC, select: true)
+                case .bookmark(_):
+                    guard let bookmarksSplitVC: UISplitViewController = self.bookmarksSplitVC else { return }
+                    self.makeFirstPage(for: bookmarksSplitVC, select: true)
+                }
+            })
+            .store(in: &cancellableBag)
+    }
+    
+    private func makeFirstPage(for splitViewController: UIViewController, select: Bool) {
+        guard let splitViewController: UISplitViewController = splitViewController as? UISplitViewController,
+            let primaryNavigationController: UINavigationController = splitViewController.viewControllers.first as? UINavigationController,
+              let firstViewController: UIViewController = primaryNavigationController.viewControllers.first else {
+            return
+        }
+        
+        primaryNavigationController.setViewControllers([firstViewController], animated: true)
+        selectedViewController = splitViewController
+    }
+    
+    private func scrollCollectionViewToTop(for splitViewController: UIViewController) {
+        guard let splitViewController: UISplitViewController = splitViewController as? UISplitViewController,
+            let primaryNavigationController: UINavigationController = splitViewController.viewControllers.first as? UINavigationController,
+              let firstViewController: UIViewController = primaryNavigationController.viewControllers.first else {
+            return
+        }
+        
+        if let searchVC: SearchViewController = firstViewController as? SearchViewController {
+            searchVC.scrollCollectionViewToTop()
+        } else if let bookmarksVC: BookmarksViewController = firstViewController as? BookmarksViewController {
+            bookmarksVC.scrollCollectionViewToTop()
+        } else if let settingsVC: SettingsViewController = firstViewController as? SettingsViewController {
+            settingsVC.scrollCollectionViewToTop()
+        }
+    }
 }
 
 extension MainTabBarController: UITabBarControllerDelegate {
@@ -86,22 +137,15 @@ extension MainTabBarController: UITabBarControllerDelegate {
         }
         
         guard let splitViewController: UISplitViewController = viewController as? UISplitViewController,
-            let primaryNavigationController: UINavigationController = splitViewController.viewControllers.first as? UINavigationController,
-              let firstViewController: UIViewController = primaryNavigationController.viewControllers.first else {
+              let primaryNavigationController: UINavigationController = splitViewController.viewControllers.first as? UINavigationController else {
             return true
         }
         
         // Navigation Controller의 View Controller의 개수가 1개인 경우
         if primaryNavigationController.viewControllers.count == 1 {
-            if let searchVC: SearchViewController = firstViewController as? SearchViewController {
-                searchVC.scrollCollectionViewToTop()
-            } else if let bookmarksVC: BookmarksViewController = firstViewController as? BookmarksViewController {
-                bookmarksVC.scrollCollectionViewToTop()
-            } else if let settingsVC: SettingsViewController = firstViewController as? SettingsViewController {
-                settingsVC.scrollCollectionViewToTop()
-            }
+            scrollCollectionViewToTop(for: viewController)
         } else {
-            primaryNavigationController.setViewControllers([firstViewController], animated: true)
+            makeFirstPage(for: viewController, select: false)
         }
         
         return true

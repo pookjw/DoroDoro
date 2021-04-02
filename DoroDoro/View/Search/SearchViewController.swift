@@ -220,6 +220,18 @@ internal final class SearchViewController: UIViewController {
             })
             .store(in: &cancellableBag)
         
+        ShortcutService.shared.typeEvent
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] type in
+                switch type {
+                case .search(let text):
+                    self?.search(for: text)
+                default:
+                    break
+                }
+            })
+            .store(in: &cancellableBag)
+        
         viewModel?.addrAPIService.linkErrorEvent
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] error in
@@ -308,16 +320,20 @@ internal final class SearchViewController: UIViewController {
         detailsVC.setRoadAddr(roadAddr)
         splitViewController?.showDetailViewController(detailsVC, sender: nil)
     }
+    
+    private func search(for text: String?) {
+        if let text: String = text,
+           !text.isEmpty {
+            viewModel?.searchEvent = text
+            showSpinnerView()
+        }
+    }
 }
 
 extension SearchViewController: UISearchBarDelegate {
     internal func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchController?.dismiss(animated: true, completion: nil)
-        if let text: String = searchBar.text,
-           !text.isEmpty {
-            viewModel?.searchEvent = text
-            showSpinnerView()
-        }
+        search(for: searchBar.text)
     }
 }
 
