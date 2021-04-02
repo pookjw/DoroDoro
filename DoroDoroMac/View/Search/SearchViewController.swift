@@ -206,6 +206,7 @@ internal final class SearchViewController: NSViewController {
     private func configureViewModel() {
         let viewModel: SearchViewModel = .init(dataSource: makeDataSource())
         self.viewModel = viewModel
+        tableView?.reloadData()
     }
     
     private func bind() {

@@ -76,6 +76,7 @@ internal final class DetailsListViewController: NSViewController {
     private func configureViewModel() {
         let viewModel: DetailsListViewModel = .init(dataSource: makeDataSource())
         self.viewModel = viewModel
+        tableView?.reloadData()
     }
     
     private func makeDataSource() -> DetailsListViewModel.DataSource {

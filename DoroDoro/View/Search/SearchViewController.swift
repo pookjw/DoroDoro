@@ -55,6 +55,7 @@ internal final class SearchViewController: UIViewController {
     private func configureViewModel() {
         let viewModel: SearchViewModel = .init(dataSource: makeDataSource())
         self.viewModel = viewModel
+        collectionView?.reloadData()
     }
     
     private func setAttributes() {

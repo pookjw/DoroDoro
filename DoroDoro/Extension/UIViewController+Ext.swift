@@ -33,31 +33,33 @@ extension UIViewController {
         banner.show()
     }
     
-    internal func showErrorAlert(message: String?,
+    internal func showErrorAlert(title: String? = nil,
+                                 subtitle: String? = nil,
                                  onTap: (() -> Void)? = nil,
                                  onSwipeUp: (() -> Void)? = nil)
     {
         let imageView: UIImageView = .init(image: UIImage(systemName: "xmark.octagon"))
         imageView.tintColor = .white
         
-        let banner: FloatingNotificationBanner = .init(title: Localizable.ERROR.string,
-                                               subtitle: message,
-                                               leftView: imageView,
-                                               style: .danger)
+        let banner: FloatingNotificationBanner = .init(title: title ?? Localizable.ERROR.string,
+                                                       subtitle: subtitle,
+                                                       leftView: imageView,
+                                                       style: .danger)
         banner.onTap = onTap
         banner.onSwipeUp = onSwipeUp
         banner.show()
     }
     
-    internal func showSuccessAlert(message: String?,
+    internal func showSuccessAlert(title: String? = nil,
+                                   subtitle: String? = nil,
                                    onTap: (() -> Void)? = nil,
                                    onSwipeUp: (() -> Void)? = nil)
     {
         let imageView: UIImageView = .init(image: UIImage(systemName: "checkmark.circle"))
         imageView.tintColor = .white
         
-        let banner: FloatingNotificationBanner = .init(title: Localizable.SUCCESS.string,
-                                               subtitle: message,
+        let banner: FloatingNotificationBanner = .init(title: title ?? Localizable.SUCCESS.string,
+                                               subtitle: subtitle,
                                                leftView: imageView,
                                                style: .success)
         banner.onTap = onTap
@@ -88,15 +90,16 @@ extension UIViewController {
         banner.show()
     }
     
-    internal func showWarningAlert(message: String?,
+    internal func showWarningAlert(title: String? = nil,
+        subtitle: String? = nil,
                                  onTap: (() -> Void)? = nil,
                                  onSwipeUp: (() -> Void)? = nil)
     {
         let imageView: UIImageView = .init(image: UIImage(systemName: "exclamationmark.triangle"))
         imageView.tintColor = .white
         
-        let banner: FloatingNotificationBanner = .init(title: Localizable.WARNING.string,
-                                               subtitle: message,
+        let banner: FloatingNotificationBanner = .init(title: title ?? Localizable.WARNING.string,
+                                               subtitle: subtitle,
                                                leftView: imageView,
                                                style: .warning)
         banner.onTap = onTap
@@ -124,7 +127,7 @@ extension UIViewController {
         if showCompletionAlert {
             ac.completionWithItemsHandler = { [weak self] (type, success, items, error) in
                 if success {
-                    self?.showSuccessAlert(message: nil)
+                    self?.showSuccessAlert()
                 } else if let error: Error = error {
                     self?.showErrorAlert(for: error)
                 }

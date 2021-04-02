@@ -138,6 +138,9 @@
 "SUCCESS" = "Success!";
 
 /* */
+"COPIED" = "Copied!";
+
+/* */
 "ERROR" = "ERROR!";
 
 /* */
@@ -148,6 +151,36 @@
 
 /* */
 "UNKNOWN" = "unknown";
+
+/* */
+"URL_GUIDE" = "URL Guide";
+
+/* */
+"URL_SCHEMES" = "URL Schemes";
+
+/* */
+"URL_GUIDE_HEADER_SEARCH" = "Search screen";
+
+/* */
+"URL_GUIDE_HEADER_SEARCH_WITH_TEXT" = "Search with text";
+
+/* */
+"URL_GUIDE_HEADER_SEARCH_CURRENT_LOCATION" = "Search with current location";
+
+/* */
+"URL_GUIDE_HEADER_BOOKMAKRS" = "Bookmarks screen";
+
+/* */
+"URL_GUIDE_FOOTER_SEARCH" = "If this URL was executed then will present Search screen.";
+
+/* */
+"URL_GUIDE_FOOTER_SEARCH_WITH_TEXT" = "If this URL was executed then will search with input text. This example will search 'kelly' text.";
+
+/* */
+"URL_GUIDE_FOOTER_SEARCH_CURRENT_LOCATION" = "If this URL was executed then will search with your current location.";
+
+/* */
+"URL_GUIDE_FOOTER_BOOKMARKS" = "If this URL was executed then will present Bookmarks screen.";
 
 // MARK: - DoroDoroMac
 

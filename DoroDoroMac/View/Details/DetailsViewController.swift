@@ -68,7 +68,8 @@ internal final class DetailsViewController: NSViewController {
     }
     
     private func configureViewModel() {
-        viewModel = .init()
+        let viewModel: DetailsViewModel = .init()
+        self.viewModel = viewModel
     }
     
     private func bind() {

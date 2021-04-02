@@ -151,6 +151,7 @@ internal final class BookmarksViewController: NSViewController {
     private func configureViewModel() {
         let viewModel: BookmarksViewModel = .init(dataSource: makeDataSource())
         self.viewModel = viewModel
+        tableView?.reloadData()
     }
     
     private func bind() {

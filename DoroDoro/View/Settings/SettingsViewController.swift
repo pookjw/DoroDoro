@@ -49,6 +49,7 @@ internal final class SettingsViewController: UIViewController {
     private func configureViewModel() {
         let viewModel: SettingsViewModel = .init(dataSource: makeDataSource())
         self.viewModel = viewModel
+        collectionView?.reloadData()
     }
     
     private func configureCollectionView() {
@@ -219,8 +220,8 @@ internal final class SettingsViewController: UIViewController {
     
     private func setURLSchemesGuideCell(cell: UICollectionViewListCell) {
         var configuration: UIListContentConfiguration = cell.defaultContentConfiguration()
-        configuration.text = "URL 가이드"
-        configuration.secondaryText = "URL Schemes"
+        configuration.text = Localizable.URL_GUIDE.string
+        configuration.secondaryText = Localizable.URL_SCHEMES.string
         configuration.image = UIImage(named: "link")
         configuration.imageProperties.cornerRadius = 25
         configuration.imageProperties.maximumSize = .init(width: 50, height: 50)
@@ -251,20 +252,20 @@ internal final class SettingsViewController: UIViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    private func makeURLSchemesGuideVC() -> UIViewController {
-        let vc: URLSchemesGuideViewController = .init()
+    private func makeURLGuideVC() -> UIViewController {
+        let vc: URLGuideViewController = .init()
         contextViewController = vc
         return vc
     }
     
-    private func presentURLSchemesGuideVC() {
-        let vc: URLSchemesGuideViewController = .init()
+    private func presentURLGuideVC() {
+        let vc: URLGuideViewController = .init()
         navigationController?.pushViewController(vc, animated: true)
     }
     
     private func presentMFMailComposeVC() {
         guard MFMailComposeViewController.canSendMail() else {
-            showErrorAlert(message: Localizable.EMAIL_ERROR_NO_REGISTERED_EMAILS_ON_DEVICE.string)
+            showErrorAlert(subtitle: Localizable.EMAIL_ERROR_NO_REGISTERED_EMAILS_ON_DEVICE.string)
             return
         }
         
@@ -338,7 +339,7 @@ extension SettingsViewController: UICollectionViewDelegate {
         case .appinfo:
             break
         case .urlSchemesGuide:
-            presentURLSchemesGuideVC()
+            presentURLGuideVC()
         }
     }
     
@@ -372,7 +373,7 @@ extension SettingsViewController: UICollectionViewDelegate {
             viewModel?.contextMenuIndexPath = indexPath
             return .init(identifier: nil,
                          previewProvider: { [weak self] () -> UIViewController? in
-                            return self?.makeURLSchemesGuideVC()
+                            return self?.makeURLGuideVC()
                          },
                          actionProvider: nil)
         default:
@@ -412,11 +413,11 @@ extension SettingsViewController: MFMailComposeViewControllerDelegate {
         case .cancelled:
             break
         case .failed:
-            showErrorAlert(message: Localizable.ERROR.string)
+            showErrorAlert(subtitle: Localizable.ERROR.string)
         case .saved:
             break
         case .sent:
-            showSuccessAlert(message: Localizable.EMAIL_SENT.string)
+            showSuccessAlert(subtitle: Localizable.EMAIL_SENT.string)
         @unknown default:
             break
         }

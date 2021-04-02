@@ -43,7 +43,7 @@ internal final class ShortcutService {
     }
     
     internal func handle(for url: URL) {
-        guard let components: URLComponents = .init(url: url, resolvingAgainstBaseURL: false),
+        guard let components: URLComponents = URLComponents(url: url, resolvingAgainstBaseURL: false),
               let queryItem: URLQueryItem = components.queryItems?.first else {
             return
         }

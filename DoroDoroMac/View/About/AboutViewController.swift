@@ -89,7 +89,7 @@ internal final class AboutViewController: NSViewController {
             return
         }
         
-        guard let logoImage: NSImage = .init(named: "logo") else {
+        guard let logoImage: NSImage = NSImage(named: "logo") else {
             return
         }
         
@@ -175,14 +175,14 @@ internal final class AboutViewController: NSViewController {
     }
     
     private func openDeveloperGitHub() {
-        guard let url: URL = .init(string: "https://github.com/pookjw") else {
+        guard let url: URL = URL(string: "https://github.com/pookjw") else {
             return
         }
         NSWorkspace.shared.open(url)
     }
     
     private func sendFeedbackEmail() {
-        guard let emailService: NSSharingService = .init(named: .composeEmail) else {
+        guard let emailService: NSSharingService = NSSharingService(named: .composeEmail) else {
             return
         }
         emailService.recipients = ["kidjinwoo@me.com"]

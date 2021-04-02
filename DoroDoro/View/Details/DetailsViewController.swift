@@ -59,6 +59,7 @@ internal final class DetailsViewController: UIViewController {
     private func configureViewModel() {
         let viewModel: DetailsViewModel = .init(dataSource: makeDataSource())
         self.viewModel = viewModel
+        collectionView?.reloadData()
     }
     
     private func configureBookmarkButton() {
