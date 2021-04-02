@@ -93,7 +93,7 @@ internal final class MainTabBarController: UITabBarController {
                 case .search(_), .searchCurrentLocation:
                     guard let searchSplitVC: UISplitViewController = self.searchSplitVC else { return }
                     self.makeFirstPage(for: searchSplitVC, select: true)
-                case .bookmark(_):
+                case .bookmarks(_):
                     guard let bookmarksSplitVC: UISplitViewController = self.bookmarksSplitVC else { return }
                     self.makeFirstPage(for: bookmarksSplitVC, select: true)
                 }

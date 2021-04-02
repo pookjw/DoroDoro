@@ -11,7 +11,7 @@ import Combine
 internal final class ShortcutService {
     internal enum ShortcutType: CustomStringConvertible {
         
-        case search(text: String?), searchCurrentLocation, bookmark(text: String?)
+        case search(text: String?), searchCurrentLocation, bookmarks(text: String?)
         
         internal var description: String {
             switch self {
@@ -19,8 +19,8 @@ internal final class ShortcutService {
                 return "search"
             case .searchCurrentLocation:
                 return "searchCurrentLocation"
-            case .bookmark(_):
-                return "bookmark"
+            case .bookmarks(_):
+                return "bookmarks"
             }
         }
     }
@@ -35,20 +35,34 @@ internal final class ShortcutService {
             typeEvent.send(.search(text: nil))
         case ShortcutType.searchCurrentLocation.description:
             typeEvent.send(.searchCurrentLocation)
-        case ShortcutType.bookmark(text: nil).description:
-            typeEvent.send(.bookmark(text: nil))
+        case ShortcutType.bookmarks(text: nil).description:
+            typeEvent.send(.bookmarks(text: nil))
         default:
             break
         }
     }
     
     internal func handle(for url: URL) {
+        guard let components: URLComponents = .init(url: url, resolvingAgainstBaseURL: false),
+              let queryItem: URLQueryItem = components.queryItems?.first else {
+            return
+        }
         
+        switch queryItem.name {
+        case ShortcutType.search(text: queryItem.value).description:
+            typeEvent.send(.search(text: queryItem.value))
+        case ShortcutType.searchCurrentLocation.description:
+            typeEvent.send(.searchCurrentLocation)
+        case ShortcutType.bookmarks(text: queryItem.value).description:
+            typeEvent.send(.bookmarks(text: queryItem.value))
+        default:
+            break
+        }
     }
     
     internal static func getShortcutItems() -> [UIApplicationShortcutItem] {
         return [
-            .init(type: ShortcutType.bookmark(text: nil).description,
+            .init(type: ShortcutType.bookmarks(text: nil).description,
                   localizedTitle: "책갈피(번역)",
                   localizedSubtitle: nil,
                   icon: .init(systemImageName: "bookmark"),

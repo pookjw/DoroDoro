@@ -70,15 +70,19 @@ internal final class SearchViewController: UIViewController {
     
     private func getGeoBarButtonAction() -> UIAction {
         return .init { [weak self] _ in
-            guard let viewModel: SearchViewModel = self?.viewModel else {
-                return
-            }
-            
-            let requested: Bool = viewModel.requestGeoEventIfAvailable()
-            
-            if requested {
-                self?.showSpinnerView()
-            }
+            self?.requestGeoEventIfAvailable()
+        }
+    }
+    
+    private func requestGeoEventIfAvailable() {
+        guard let viewModel: SearchViewModel = viewModel else {
+            return
+        }
+        
+        let requested: Bool = viewModel.requestGeoEventIfAvailable()
+        
+        if requested {
+            showSpinnerView()
         }
     }
     
@@ -226,6 +230,8 @@ internal final class SearchViewController: UIViewController {
                 switch type {
                 case .search(let text):
                     self?.search(for: text)
+                case .searchCurrentLocation:
+                    self?.requestGeoEventIfAvailable()
                 default:
                     break
                 }
@@ -324,6 +330,7 @@ internal final class SearchViewController: UIViewController {
     private func search(for text: String?) {
         if let text: String = text,
            !text.isEmpty {
+            searchController?.searchBar.text = text
             viewModel?.searchEvent = text
             showSpinnerView()
         }

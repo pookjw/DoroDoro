@@ -27,6 +27,10 @@ internal final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if let shortcutItem = connectionOptions.shortcutItem {
             ShortcutService.shared.handle(for: shortcutItem)
         }
+        
+        if let url: URL = connectionOptions.urlContexts.first?.url {
+            ShortcutService.shared.handle(for: url)
+        }
     }
     
     internal func sceneWillEnterForeground(_ scene: UIScene) {
@@ -35,6 +39,12 @@ internal final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     internal func sceneWillResignActive(_ scene: UIScene) {
         UIApplication.shared.shortcutItems = ShortcutService.getShortcutItems()
+    }
+    
+    internal func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        if let url: URL = URLContexts.first?.url {
+            ShortcutService.shared.handle(for: url)
+        }
     }
     
     internal func windowScene(_ windowScene: UIWindowScene, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
