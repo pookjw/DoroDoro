@@ -109,7 +109,9 @@ internal final class MainTabBarController: UITabBarController {
         }
         
         primaryNavigationController.setViewControllers([firstViewController], animated: true)
-        selectedViewController = splitViewController
+        if select {
+            selectedViewController = splitViewController
+        }
     }
     
     private func scrollCollectionViewToTop(for splitViewController: UIViewController) {
