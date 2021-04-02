@@ -17,7 +17,7 @@ internal final class MapViewController: UIViewController {
     internal var (latitude, longitude): (Double, Double) = (37.5765916191985, 126.974974825074)
     
     private weak var mapView: MKMapView? = nil
-    #if arch(arm64) || targetEnvironment(simulator)
+    #if ((os(iOS)) && (arch(arm64)) && (!(targetEnvironment(simulator))) && (!targetEnvironment(macCatalyst))) || ((targetEnvironment(simulator) && (arch(x86_64))))
     private weak var kakaoMapView: MTMapView? = nil
     #endif
     private weak var doneBarButtonItem: UIBarButtonItem? = nil
@@ -32,7 +32,7 @@ internal final class MapViewController: UIViewController {
         case .appleMaps:
             configureAppleMapsView()
         case .kakaoMap:
-            #if arch(arm64) || targetEnvironment(simulator)
+            #if ((os(iOS)) && (arch(arm64)) && (!(targetEnvironment(simulator))) && (!targetEnvironment(macCatalyst))) || ((targetEnvironment(simulator) && (arch(x86_64))))
             configureKakaoMapView()
             #else
             configureAppleMapsView()
@@ -83,7 +83,7 @@ internal final class MapViewController: UIViewController {
         mapView.addAnnotation(annotation)
     }
     
-    #if arch(arm64) || targetEnvironment(simulator)
+    #if ((os(iOS)) && (arch(arm64)) && (!(targetEnvironment(simulator))) && (!targetEnvironment(macCatalyst))) || ((targetEnvironment(simulator) && (arch(x86_64))))
     private func configureKakaoMapView() {
         let kakaoMapView: MTMapView = .init()
         self.kakaoMapView = kakaoMapView
@@ -122,7 +122,7 @@ internal final class MapViewController: UIViewController {
         
         mapView?.accessibilityLabel = Localizable.ACCESSIBILITY_MAP_GUIDE.string
         mapView?.isAccessibilityElement = true
-        #if arch(arm64) || targetEnvironment(simulator)
+        #if ((os(iOS)) && (arch(arm64)) && (!(targetEnvironment(simulator))) && (!targetEnvironment(macCatalyst))) || ((targetEnvironment(simulator) && (arch(x86_64))))
         kakaoMapView?.accessibilityLabel = Localizable.ACCESSIBILITY_MAP_GUIDE.string
         kakaoMapView?.isAccessibilityElement = true
         #endif

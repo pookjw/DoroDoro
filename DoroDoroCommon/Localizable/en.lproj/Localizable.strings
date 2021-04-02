@@ -191,7 +191,7 @@
 "MAC_MENU_UNDO" = "Undo";
 
 /* */
-"MAC_MENU_REDO" = "Undo";
+"MAC_MENU_REDO" = "Redo";
 
 /* */
 "MAC_MENU_CUT" = "Cut";
