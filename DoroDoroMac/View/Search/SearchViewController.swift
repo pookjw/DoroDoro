@@ -49,7 +49,12 @@ internal final class SearchViewController: NSViewController {
         searchFieldTopConstraint?.update(offset: searchWindow?.topBarHeight ?? 28)
     }
     
-    @objc internal func clickedCurrentLocationToolbarItem(_ sender: NSToolbarItem) {
+    internal func search(for text: String?) {
+        showSpinnerView()
+        viewModel?.searchEvent = text
+    }
+    
+    internal func requestGeoEventIfAvailable() {
         guard let viewModel: SearchViewModel = viewModel else {
             return
         }
@@ -550,8 +555,7 @@ extension SearchViewController: NSSearchFieldDelegate {
             return
         }
         
-        showSpinnerView()
-        viewModel?.searchEvent = searchField.stringValue
+        search(for: searchField.stringValue)
     }
 }
 

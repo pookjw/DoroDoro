@@ -12,6 +12,7 @@
 		4FA1207B26181CA200BA3E4A /* String+wrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA1207926181CA200BA3E4A /* String+wrap.swift */; };
 		4FA1207C26181CA200BA3E4A /* String+wrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA1207926181CA200BA3E4A /* String+wrap.swift */; };
 		4FA1207D26181CA200BA3E4A /* String+wrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA1207926181CA200BA3E4A /* String+wrap.swift */; };
+		4FA1208C2618230000BA3E4A /* ShortcutService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0F34452616997C00144B78 /* ShortcutService.swift */; };
 		4FA2087926145BB000B5C421 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA2085826145B8400B5C421 /* Keys.swift */; };
 		4FA2087A26145BB000B5C421 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA2085826145B8400B5C421 /* Keys.swift */; };
 		4FA2087B26145BB100B5C421 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA2085826145B8400B5C421 /* Keys.swift */; };
@@ -1371,7 +1372,6 @@
 		F378B79625E8005100FCE546 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				4F0F34442616995400144B78 /* Shortcut */,
 				F3A3DF2025F4397300E8F2F0 /* Keyboard */,
 				F332741625EFF1A700417437 /* Settings */,
 			);
@@ -1698,6 +1698,7 @@
 		F3E24CF325FDADE700123E3B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4F0F34442616995400144B78 /* Shortcut */,
 				F332741425EFF15500417437 /* Cloud */,
 				F332741525EFF18C00417437 /* Bookmarks */,
 			);
@@ -2741,6 +2742,7 @@
 				F3BF54D825FD98D200A5097B /* AppDelegate.swift in Sources */,
 				F3AE60032610B38F0024D99C /* NSToolbarItem+Ext.swift in Sources */,
 				F37A035B25FDF7580036E489 /* NSApplication+Ext.swift in Sources */,
+				4FA1208C2618230000BA3E4A /* ShortcutService.swift in Sources */,
 				F3FC9F4E260A3BEB00D6EBEF /* CopyableTableView.swift in Sources */,
 				F3FC9F54260A5F6A00D6EBEF /* NSView+Ext.swift in Sources */,
 				F3E24D4925FDB06E00123E3B /* SearchViewController.swift in Sources */,

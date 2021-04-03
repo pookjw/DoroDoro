@@ -6,15 +6,18 @@
 //
 
 import Cocoa
+import Combine
 
 internal final class AppDelegate: NSObject, NSApplicationDelegate {
     private lazy var statusItem: NSStatusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     private weak var popover: NSPopover? = nil
+    private var cancellableBag: Set<AnyCancellable> = .init()
     
     internal func applicationDidFinishLaunching(_ aNotification: Notification) {
         configureMenu()
         configureBookmarksStatusBarItem()
         showSearchWindow()
+        bind()
     }
 
     internal func applicationWillBecomeActive(_ notification: Notification) {
@@ -27,6 +30,13 @@ internal final class AppDelegate: NSObject, NSApplicationDelegate {
             showSearchWindow()
         }
         return true
+    }
+    
+    internal func application(_ application: NSApplication, open urls: [URL]) {
+        if let url: URL = urls.first {
+            ShortcutService.shared.handle(for: url)
+            print(url)
+        }
     }
     
     //
@@ -50,7 +60,7 @@ internal final class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     private func configureMenu() {
-        NSApp.mainMenu = CustomMenu(title: "")
+        NSApp.mainMenu = CustomMenu(title: Localizable.DORODORO.string)
     }
     
     private func configureBookmarksStatusBarItem() {
@@ -74,5 +84,40 @@ internal final class AppDelegate: NSObject, NSApplicationDelegate {
         popover.contentViewController = vc
         popover.behavior = .semitransient
         popover.show(relativeTo: sender.bounds, of: sender, preferredEdge: .maxY)
+    }
+    
+    private func bind() {
+        ShortcutService.shared.typeEvent
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] type in
+                self?.handleShortcutType(type)
+            })
+            .store(in: &cancellableBag)
+    }
+    
+    private func handleShortcutType(_ type: ShortcutService.ShortcutType) {
+        switch type {
+        case .search(let text):
+            if let searchWindow: SearchWindow = NSApp.windows.compactMap({ $0 as? SearchWindow }).last {
+                searchWindow.orderFront(nil)
+                searchWindow.searchVC?.search(for: text)
+            } else {
+                let searchWindow: SearchWindow = showSearchWindow()
+                searchWindow.searchVC?.search(for: text)
+            }
+        case .searchCurrentLocation:
+            if let searchWindow: SearchWindow = NSApp.windows.compactMap({ $0 as? SearchWindow }).last {
+                searchWindow.orderFront(nil)
+                searchWindow.searchVC?.requestGeoEventIfAvailable()
+            } else {
+                let searchWindow: SearchWindow = showSearchWindow()
+                searchWindow.searchVC?.requestGeoEventIfAvailable()
+            }
+        case .bookmarks:
+            if let button: NSStatusBarButton = statusItem.button,
+               popover == nil {
+                showBookmarksPopover(button)
+            }
+        }
     }
 }

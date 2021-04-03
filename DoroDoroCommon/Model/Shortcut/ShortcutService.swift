@@ -5,13 +5,16 @@
 //  Created by Jinwoo Kim on 4/2/21.
 //
 
+#if os(iOS)
 import UIKit
+#endif
+import Foundation
 import Combine
 
 internal final class ShortcutService {
     internal enum ShortcutType: CustomStringConvertible {
         
-        case search(text: String?), searchCurrentLocation, bookmarks(text: String?)
+        case search(text: String?), searchCurrentLocation, bookmarks
         
         internal var description: String {
             switch self {
@@ -19,7 +22,7 @@ internal final class ShortcutService {
                 return "search"
             case .searchCurrentLocation:
                 return "searchCurrentLocation"
-            case .bookmarks(_):
+            case .bookmarks:
                 return "bookmarks"
             }
         }
@@ -28,19 +31,6 @@ internal final class ShortcutService {
     internal static let shared: ShortcutService = .init()
     
     internal let typeEvent: PassthroughSubject<ShortcutType, Never> = .init()
-    
-    internal func handle(for shortcutItem: UIApplicationShortcutItem) {
-        switch shortcutItem.type {
-        case ShortcutType.search(text: nil).description:
-            typeEvent.send(.search(text: nil))
-        case ShortcutType.searchCurrentLocation.description:
-            typeEvent.send(.searchCurrentLocation)
-        case ShortcutType.bookmarks(text: nil).description:
-            typeEvent.send(.bookmarks(text: nil))
-        default:
-            break
-        }
-    }
     
     internal func handle(for url: URL) {
         guard let components: URLComponents = URLComponents(url: url, resolvingAgainstBaseURL: false),
@@ -53,8 +43,22 @@ internal final class ShortcutService {
             typeEvent.send(.search(text: queryItem.value))
         case ShortcutType.searchCurrentLocation.description:
             typeEvent.send(.searchCurrentLocation)
-        case ShortcutType.bookmarks(text: queryItem.value).description:
-            typeEvent.send(.bookmarks(text: queryItem.value))
+        case ShortcutType.bookmarks.description:
+            typeEvent.send(.bookmarks)
+        default:
+            break
+        }
+    }
+    
+    #if os(iOS)
+    internal func handle(for shortcutItem: UIApplicationShortcutItem) {
+        switch shortcutItem.type {
+        case ShortcutType.search(text: nil).description:
+            typeEvent.send(.search(text: nil))
+        case ShortcutType.searchCurrentLocation.description:
+            typeEvent.send(.searchCurrentLocation)
+        case ShortcutType.bookmarks.description:
+            typeEvent.send(.bookmarks)
         default:
             break
         }
@@ -62,7 +66,7 @@ internal final class ShortcutService {
     
     internal static func getShortcutItems() -> [UIApplicationShortcutItem] {
         return [
-            .init(type: ShortcutType.bookmarks(text: nil).description,
+            .init(type: ShortcutType.bookmarks.description,
                   localizedTitle: Localizable.BOOKMARKS.string,
                   localizedSubtitle: nil,
                   icon: .init(systemImageName: "bookmark"),
@@ -81,4 +85,5 @@ internal final class ShortcutService {
                   userInfo: nil)
         ]
     }
+    #endif
 }

@@ -11,7 +11,7 @@ import SnapKit
 
 internal final class SearchWindow: NSWindow {
     internal let resizeEvent: PassthroughSubject<NSRect, Never> = .init()
-    private weak var searchVC: SearchViewController? = nil
+    internal weak var searchVC: SearchViewController? = nil
     private var customUndoManager: UndoManager = .init()
     internal weak var locationToolbarItem: NSToolbarItem? = nil
     
@@ -24,6 +24,7 @@ internal final class SearchWindow: NSWindow {
         let searchVC: SearchViewController = .init()
         self.searchVC = searchVC
         searchVC.searchWindow = self
+        searchVC.loadViewIfNeeded()
         
         contentMinSize = size
         contentViewController = searchVC
@@ -70,7 +71,7 @@ internal final class SearchWindow: NSWindow {
     }
     
     @objc private func clickedCurrentLocationToolbarItem(_ sender: NSToolbarItem) {
-        searchVC?.clickedCurrentLocationToolbarItem(sender)
+        searchVC?.requestGeoEventIfAvailable()
     }
 }
 
