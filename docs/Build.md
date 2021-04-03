@@ -44,7 +44,7 @@ Entitlements에서 `com.apple.developer.ubiquity-kvstore-identifier`의 ID를 �
 
 ### AcknowList-AcknowListBundle 인증 문제
 
-![](/Users/pookjw/git/DoroDoro/images/1.png)
+![](../images/1.png)
 
 ```
 Signing for "AcknowList-AcknowListBundle" requires a development team. Select a development team in the Signing & Capabilities editor.

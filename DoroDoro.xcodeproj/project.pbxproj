@@ -683,7 +683,6 @@
 		F3909182260F6CB0006A4E34 /* BookmarksHeaderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksHeaderItem.swift; sourceTree = "<group>"; };
 		F3909192260F7C10006A4E34 /* DetailsListHeaderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsListHeaderItem.swift; sourceTree = "<group>"; };
 		F390919B260F7C4B006A4E34 /* DetailsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsListViewModel.swift; sourceTree = "<group>"; };
-		F3987A0D25FB56EA00727095 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		F3A3DEEF25F41D4000E8F2F0 /* KakaoCoord2AddressAPIError+LocalizedError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KakaoCoord2AddressAPIError+LocalizedError.swift"; sourceTree = "<group>"; };
 		F3A3DEF725F4209A00E8F2F0 /* GeoInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoInterfaceController.swift; sourceTree = "<group>"; };
 		F3A3DF0425F4210B00E8F2F0 /* GeoInterfaceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoInterfaceModel.swift; sourceTree = "<group>"; };
@@ -1521,7 +1520,6 @@
 		F3AAE28C25E7D06700D666BD = {
 			isa = PBXGroup;
 			children = (
-				F3987A0D25FB56EA00727095 /* README.md */,
 				F3800AB525F2E8BC00F218A1 /* DoroDoroAPICommon */,
 				F380094725F2E1E400F218A1 /* DoroDoroAPI */,
 				F3800AA225F2E89900F218A1 /* DoroDoroWatchAPI */,
