@@ -42,7 +42,7 @@ tvOS용 앱입니다. **TODO**
 
 `DoroDoro`, `DoroDoroWatch`, `DoroDoroMac`, `DoroDoroTV`가 모두 쓰는 파일들은 [DoroDoroCommon](DoroDoroCommon) 폴더에 담겨 있습니다.
 
-### APICommon에 대해
+### DoroDoroAPICommon에 대해
 
 현재 API Framework들은 `DoroDoroAPI`, `DoroDoroWatchAPI`, `DoroDoroMac`, `DoroDoroTV` 이렇게 있습니다. 이들의 공통되는 파일들은 [DoroDoroAPICommon](DoroDoroAPICommon)에 담겨 있습니다.
 
