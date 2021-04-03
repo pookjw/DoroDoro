@@ -13,21 +13,19 @@
 dorodoro://?search
 ```
 
-[실행](dorodoro://?search)
-
 ### 단어 검색
+
+▼ '가로수길' 검색
 
 ```
 dorodoro://?search=%EA%B0%80%EB%A1%9C%EC%88%98%EA%B8%B8
 ```
 
-[실행 ('가로수길' 검색)](dorodoro://?search=%EA%B0%80%EB%A1%9C%EC%88%98%EA%B8%B8)
+'kelly' 검색
 
 ```
 dorodoro://?search=kelly
 ```
-
-[실행 ('kelly' 검색)](dorodoro://?search=kelly)
 
 ### 현재 위치 검색
 
@@ -35,13 +33,8 @@ dorodoro://?search=kelly
 dorodoro://?searchCurrentLocation
 ```
 
-[실행](dorodoro://?searchCurrentLocation)
-
 ### 책갈피 화면 열기
 
 ```
 dorodoro://?bookmarks
 ```
-
-[실행](dorodoro://?bookmakrs)
-
