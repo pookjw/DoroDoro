@@ -44,7 +44,7 @@ tvOS용 앱입니다. **TODO**
 
 ### DoroDoroAPICommon에 대해
 
-현재 API Framework들은 `DoroDoroAPI`, `DoroDoroWatchAPI`, `DoroDoroMac`, `DoroDoroTV` 이렇게 있습니다. 이들의 공통되는 파일들은 [DoroDoroAPICommon](DoroDoroAPICommon)에 담겨 있습니다.
+현재 API Framework들은 `DoroDoroAPI`, `DoroDoroWatchAPI`, `DoroDoroMacAPI`, `DoroDoroTVAPI` 이렇게 있습니다. 이들의 공통되는 파일들은 [DoroDoroAPICommon](DoroDoroAPICommon)에 담겨 있습니다.
 
 ## 문서
 
