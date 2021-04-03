@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		4F0F34462616997C00144B78 /* ShortcutService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0F34452616997C00144B78 /* ShortcutService.swift */; };
+		4FA1207A26181CA200BA3E4A /* String+wrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA1207926181CA200BA3E4A /* String+wrap.swift */; };
+		4FA1207B26181CA200BA3E4A /* String+wrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA1207926181CA200BA3E4A /* String+wrap.swift */; };
+		4FA1207C26181CA200BA3E4A /* String+wrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA1207926181CA200BA3E4A /* String+wrap.swift */; };
+		4FA1207D26181CA200BA3E4A /* String+wrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA1207926181CA200BA3E4A /* String+wrap.swift */; };
 		4FA2087926145BB000B5C421 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA2085826145B8400B5C421 /* Keys.swift */; };
 		4FA2087A26145BB000B5C421 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA2085826145B8400B5C421 /* Keys.swift */; };
 		4FA2087B26145BB100B5C421 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA2085826145B8400B5C421 /* Keys.swift */; };
@@ -489,6 +493,7 @@
 		24CE4333A9C3009967DAEF3B /* Pods_DoroDoroWatchAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoroDoroWatchAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EC2710C2BECF6DD2362AAC0 /* Pods-DoroDoroMacAPI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoroDoroMacAPI.release.xcconfig"; path = "Target Support Files/Pods-DoroDoroMacAPI/Pods-DoroDoroMacAPI.release.xcconfig"; sourceTree = "<group>"; };
 		4F0F34452616997C00144B78 /* ShortcutService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutService.swift; sourceTree = "<group>"; };
+		4FA1207926181CA200BA3E4A /* String+wrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+wrap.swift"; sourceTree = "<group>"; };
 		4FA2085826145B8400B5C421 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		5309ED33327A32D8822CF4CC /* Pods_DoroDoroAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoroDoroAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		665406B7105BC1B92469065A /* Pods-DoroDoroTV.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoroDoroTV.debug.xcconfig"; path = "Target Support Files/Pods-DoroDoroTV/Pods-DoroDoroTV.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1412,6 +1417,7 @@
 				F3E89B6E25F975BB00E3AC5A /* GeoAPIError+LocalizedError.swift */,
 				F3E6880F25F122E200A619CA /* String+choseongContains.swift */,
 				F371F06F25F513B700E003E8 /* Bundle+Ext.swift */,
+				4FA1207926181CA200BA3E4A /* String+wrap.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -2542,6 +2548,7 @@
 				F3D761022607B2DA00461F70 /* String+choseongContains.swift in Sources */,
 				F3A3DF0525F4210B00E8F2F0 /* GeoInterfaceModel.swift in Sources */,
 				F350297925F2CE1E0094B33D /* DetailsLinkJusoObject.swift in Sources */,
+				4FA1207D26181CA200BA3E4A /* String+wrap.swift in Sources */,
 				F3E24CE425FDAD5400123E3B /* KakaoAddressAPIError+LocalizedError.swift in Sources */,
 				F3A3DEF925F4209A00E8F2F0 /* GeoInterfaceController.swift in Sources */,
 				F350297F25F2CEF70094B33D /* DetailsEngJusoObject.swift in Sources */,
@@ -2688,6 +2695,7 @@
 				F38128FA25F0286100C36F7B /* BookmarksViewModel.swift in Sources */,
 				F3444C9C25E8B1BB00A0706F /* Localizable.swift in Sources */,
 				F378B76F25E7F0B700FCE546 /* SettingsViewController.swift in Sources */,
+				4FA1207A26181CA200BA3E4A /* String+wrap.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2719,6 +2727,7 @@
 				F3E24CDA25FDAD5200123E3B /* AddrLinkAPIError+LocalizedError.swift in Sources */,
 				F3909169260F6381006A4E34 /* SearchResultItem.swift in Sources */,
 				F3E24DC025FDE8F300123E3B /* NSTableView+scrollToTop.swift in Sources */,
+				4FA1207C26181CA200BA3E4A /* String+wrap.swift in Sources */,
 				F3E24CDB25FDAD5200123E3B /* AddrCoordAPIError+LocalizedError.swift in Sources */,
 				F3D760E726063FBD00461F70 /* DetailsMapResultItem.swift in Sources */,
 				F305B34726044C18002F878A /* DetailsViewModel.swift in Sources */,
@@ -2757,6 +2766,7 @@
 				F3E24D0F25FDAE3600123E3B /* BookmarksData.swift in Sources */,
 				F3CB60A125FA9184004484A1 /* KakaoAddressAPIError+LocalizedError.swift in Sources */,
 				F3CB60BC25FA9192004484A1 /* Localizable.swift in Sources */,
+				4FA1207B26181CA200BA3E4A /* String+wrap.swift in Sources */,
 				F3CB60A425FA9184004484A1 /* GeoAPIError+LocalizedError.swift in Sources */,
 				F3CB60A525FA9184004484A1 /* KakaoCoord2AddressAPIError+LocalizedError.swift in Sources */,
 				F3CB600325FA8F6A004484A1 /* AppDelegate.swift in Sources */,

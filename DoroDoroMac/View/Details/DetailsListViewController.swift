@@ -132,7 +132,7 @@ internal final class DetailsListViewController: NSViewController {
               (selectedRow >= 0) && (resultItems.count > selectedRow)
         else { return nil }
         
-        return (selectedRow: selectedRow, selectedString: resultItems[selectedRow].secondaryText ?? "")
+        return (selectedRow: selectedRow, selectedString: resultItems[selectedRow].secondaryText)
     }
     
     private func getClickedItem() -> (clickedRow: Int, selectedString: String)? {
@@ -140,7 +140,7 @@ internal final class DetailsListViewController: NSViewController {
               (clickedRow >= 0) && (resultItems.count > clickedRow)
         else { return nil }
         
-        return (clickedRow: clickedRow, selectedString: resultItems[clickedRow].secondaryText ?? "")
+        return (clickedRow: clickedRow, selectedString: resultItems[clickedRow].secondaryText)
     }
     
     private func getAnyItem() -> (row: Int, selectedString: String)? {
@@ -162,8 +162,8 @@ internal final class DetailsListViewController: NSViewController {
             fatalError("Failed to get cell view.")
         }
         
-        cell.configure(mainText: resultItems[row].text ?? "",
-                       subText: resultItems[row].secondaryText ?? "",
+        cell.configure(mainText: resultItems[row].text,
+                       subText: resultItems[row].secondaryText,
                        width: view.bounds.width)
         
         return cell

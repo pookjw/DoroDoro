@@ -8,8 +8,8 @@
 import Foundation
 
 internal final class DetailsListResultItem: NSObject {
-    internal private(set) var text: String?
-    internal private(set) var secondaryText: String?
+    internal private(set) var text: String = Localizable.NO_DATA.string
+    internal private(set) var secondaryText: String = Localizable.NO_DATA.string
     
     internal convenience init(text: String, secondaryText: String) {
         self.init()

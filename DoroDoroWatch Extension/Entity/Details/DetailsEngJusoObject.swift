@@ -15,19 +15,19 @@ internal final class DetailsEngJusoObject: NSObject {
     internal func configure(data engJusoData: AddrEngJusoData, idx: DetailsEngJusoIndex?) {
         switch idx {
         case .roadAddr:
-            setLabelsText(primary: "영문 도로명주소", secondary: wrappedNoData(engJusoData.roadAddr))
+            setLabelsText(primary: "영문 도로명주소", secondary: engJusoData.roadAddr.wrappedNoData())
         case .jibunAddr:
-            setLabelsText(primary: "영문 지번주소", secondary: wrappedNoData(engJusoData.jibunAddr))
+            setLabelsText(primary: "영문 지번주소", secondary: engJusoData.jibunAddr.wrappedNoData())
         case .siNm:
-            setLabelsText(primary: "영문 시도명", secondary: wrappedNoData(engJusoData.siNm))
+            setLabelsText(primary: "영문 시도명", secondary: engJusoData.siNm.wrappedNoData())
         case .sggNm:
-            setLabelsText(primary: "영문 시군구명", secondary: wrappedNoData(engJusoData.sggNm))
+            setLabelsText(primary: "영문 시군구명", secondary: engJusoData.sggNm.wrappedNoData())
         case .emdNm:
-            setLabelsText(primary: "영문 읍면동명", secondary: wrappedNoData(engJusoData.emdNm))
+            setLabelsText(primary: "영문 읍면동명", secondary: engJusoData.emdNm.wrappedNoData())
         case .liNm:
-            setLabelsText(primary: "영문 법정리명", secondary: wrappedNoData(engJusoData.liNm))
+            setLabelsText(primary: "영문 법정리명", secondary: engJusoData.liNm.wrappedNoData())
         case .rn:
-            setLabelsText(primary:  "영문 도로명", secondary: wrappedNoData(engJusoData.rn))
+            setLabelsText(primary:  "영문 도로명", secondary: engJusoData.rn.wrappedNoData())
         default:
             setLabelsText(primary: nil, secondary: nil)
         }
@@ -36,33 +36,5 @@ internal final class DetailsEngJusoObject: NSObject {
     private func setLabelsText(primary primaryText: String?, secondary secondaryText: String?) {
         primaryLabel.setText(primaryText)
         secondaryLabel.setText(secondaryText)
-    }
-    
-    private func wrappedNoData(_ text: String?) -> String {
-        guard let text: String = text else {
-            return Localizable.NO_DATA.string
-        }
-        return text.isEmpty ? Localizable.NO_DATA.string : text
-    }
-    
-    private func wrappedBdKdcd(_ bdKdcd: String?) -> String {
-        guard let bdKdcd: String = bdKdcd else {
-            return Localizable.NO_DATA.string
-        }
-        return (bdKdcd == "0") ? "비공동주택" : "공동주택"
-    }
-    
-    private func wrappedUdrtYn(_ udrtYn: String?) -> String {
-        guard let udrtYn: String = udrtYn else {
-            return Localizable.NO_DATA.string
-        }
-        return (udrtYn == "0") ? "지상" : "지하"
-    }
-    
-    private func wrappedMtYn(_ mtYn: String?) -> String {
-        guard let mtYn: String = mtYn else {
-            return Localizable.NO_DATA.string
-        }
-        return (mtYn == "0") ? "대지" : "산"
     }
 }

@@ -38,43 +38,43 @@ internal final class DetailsViewModel {
     
     private func convertLinkData(_ linkJusoData: AddrLinkJusoData) -> [DetailsListResultItem] {
         return [
-            .init(text: "전체 도로명주소", secondaryText: wrappedNoData(linkJusoData.roadAddr)),
-            .init(text: "도로명주소", secondaryText: wrappedNoData(linkJusoData.roadAddrPart1)),
-            .init(text: "도로명주소 참고항목", secondaryText: wrappedNoData(linkJusoData.roadAddrPart2)),
-            .init(text: "지번주소", secondaryText: wrappedNoData(linkJusoData.jibunAddr)),
-            .init(text: "우편번호", secondaryText: wrappedNoData(linkJusoData.zipNo)),
-            .init(text: "행정구역코드", secondaryText: wrappedNoData(linkJusoData.admCd)),
-            .init(text: "도로명코드", secondaryText: wrappedNoData(linkJusoData.rnMgtSn)),
-            .init(text: "건물관리번호", secondaryText: wrappedNoData(linkJusoData.bdMgtSn)),
-            .init(text: "상세건물명", secondaryText: wrappedNoData(linkJusoData.detBdNmList)),
-            .init(text: "건물명", secondaryText: wrappedNoData(linkJusoData.bdNm)),
-            .init(text: "공동주택여부", secondaryText: wrappedBdKdcd(linkJusoData.bdKdcd)),
-            .init(text: "시도명", secondaryText: wrappedNoData(linkJusoData.siNm)),
-            .init(text: "시군구명", secondaryText: wrappedNoData(linkJusoData.sggNm)),
-            .init(text: "읍면동명", secondaryText: wrappedNoData(linkJusoData.emdNm)),
-            .init(text: "법정리명", secondaryText: wrappedNoData(linkJusoData.liNm)),
-            .init(text: "도로명", secondaryText: wrappedNoData(linkJusoData.rn)),
-            .init(text: "지하여부", secondaryText: wrappedUdrtYn(linkJusoData.udrtYn)),
-            .init(text: "건물본번", secondaryText: wrappedNoData(linkJusoData.buldMnnm)),
-            .init(text: "건물부번", secondaryText: wrappedNoData(linkJusoData.buldSlno)),
-            .init(text: "산여부", secondaryText: wrappedMtYn(linkJusoData.mtYn)),
-            .init(text: "지번본번(번지)", secondaryText: wrappedNoData(linkJusoData.lnbrMnnm)),
-            .init(text: "지번부번(호)", secondaryText: wrappedNoData(linkJusoData.lnbrSlno)),
-            .init(text: "읍면동일련번호", secondaryText: wrappedNoData(linkJusoData.emdNo)),
-            .init(text: "관련지번", secondaryText: wrappedNoData(linkJusoData.relJibun)),
-            .init(text: "관할주민센터(참고정보)", secondaryText: wrappedNoData(linkJusoData.hemdNm))
+            .init(text: "전체 도로명주소", secondaryText: linkJusoData.roadAddr.wrappedNoData()),
+            .init(text: "도로명주소", secondaryText: linkJusoData.roadAddrPart1.wrappedNoData()),
+            .init(text: "도로명주소 참고항목", secondaryText: linkJusoData.roadAddrPart2.wrappedNoData()),
+            .init(text: "지번주소", secondaryText: linkJusoData.jibunAddr.wrappedNoData()),
+            .init(text: "우편번호", secondaryText: linkJusoData.zipNo.wrappedNoData()),
+            .init(text: "행정구역코드", secondaryText: linkJusoData.admCd.wrappedNoData()),
+            .init(text: "도로명코드", secondaryText: linkJusoData.rnMgtSn.wrappedNoData()),
+            .init(text: "건물관리번호", secondaryText: linkJusoData.bdMgtSn.wrappedNoData()),
+            .init(text: "상세건물명", secondaryText: linkJusoData.detBdNmList.wrappedNoData()),
+            .init(text: "건물명", secondaryText: linkJusoData.bdNm.wrappedNoData()),
+            .init(text: "공동주택여부", secondaryText: linkJusoData.bdKdcd.wrappedBdKdcd()),
+            .init(text: "시도명", secondaryText: linkJusoData.siNm.wrappedNoData()),
+            .init(text: "시군구명", secondaryText: linkJusoData.sggNm.wrappedNoData()),
+            .init(text: "읍면동명", secondaryText: linkJusoData.emdNm.wrappedNoData()),
+            .init(text: "법정리명", secondaryText: linkJusoData.liNm.wrappedNoData()),
+            .init(text: "도로명", secondaryText: linkJusoData.rn.wrappedNoData()),
+            .init(text: "지하여부", secondaryText: linkJusoData.udrtYn.wrappedUdrtYn()),
+            .init(text: "건물본번", secondaryText: linkJusoData.buldMnnm.wrappedNoData()),
+            .init(text: "건물부번", secondaryText: linkJusoData.buldSlno.wrappedNoData()),
+            .init(text: "산여부", secondaryText: linkJusoData.mtYn.wrappedMtYn()),
+            .init(text: "지번본번(번지)", secondaryText: linkJusoData.lnbrMnnm.wrappedNoData()),
+            .init(text: "지번부번(호)", secondaryText: linkJusoData.lnbrSlno.wrappedNoData()),
+            .init(text: "읍면동일련번호", secondaryText: linkJusoData.emdNo.wrappedNoData()),
+            .init(text: "관련지번", secondaryText: linkJusoData.relJibun.wrappedNoData()),
+            .init(text: "관할주민센터(참고정보)", secondaryText: linkJusoData.hemdNm.wrappedNoData())
         ]
     }
     
     private func convertEngData(_ engJusoData: AddrEngJusoData) -> [DetailsListResultItem] {
         return [
-            .init(text: "영문 도로명주소", secondaryText: wrappedNoData(engJusoData.roadAddr)),
-            .init(text: "영문 지번주소", secondaryText: wrappedNoData(engJusoData.jibunAddr)),
-            .init(text: "영문 시도명", secondaryText: wrappedNoData(engJusoData.siNm)),
-            .init(text: "영문 시군구명", secondaryText: wrappedNoData(engJusoData.sggNm)),
-            .init(text: "영문 읍면동명", secondaryText: wrappedNoData(engJusoData.emdNm)),
-            .init(text: "영문 법정리명", secondaryText: wrappedNoData(engJusoData.liNm)),
-            .init(text: "영문 도로명", secondaryText: wrappedNoData(engJusoData.rn))
+            .init(text: "영문 도로명주소", secondaryText: engJusoData.roadAddr.wrappedNoData()),
+            .init(text: "영문 지번주소", secondaryText: engJusoData.jibunAddr.wrappedNoData()),
+            .init(text: "영문 시도명", secondaryText: engJusoData.siNm.wrappedNoData()),
+            .init(text: "영문 시군구명", secondaryText: engJusoData.sggNm.wrappedNoData()),
+            .init(text: "영문 읍면동명", secondaryText: engJusoData.emdNm.wrappedNoData()),
+            .init(text: "영문 법정리명", secondaryText: engJusoData.liNm.wrappedNoData()),
+            .init(text: "영문 도로명", secondaryText: engJusoData.rn.wrappedNoData())
         ]
     }
     
@@ -138,35 +138,5 @@ internal final class DetailsViewModel {
                 self?.refreshedEvent.send()
             })
             .store(in: &cancellableBag)
-    }
-    
-    //
-    
-    private func wrappedNoData(_ text: String?) -> String {
-        guard let text: String = text else {
-            return Localizable.NO_DATA.string
-        }
-        return text.isEmpty ? Localizable.NO_DATA.string : text
-    }
-    
-    private func wrappedBdKdcd(_ bdKdcd: String?) -> String {
-        guard let bdKdcd: String = bdKdcd else {
-            return Localizable.NO_DATA.string
-        }
-        return (bdKdcd == "0") ? "비공동주택" : "공동주택"
-    }
-    
-    private func wrappedUdrtYn(_ udrtYn: String?) -> String {
-        guard let udrtYn: String = udrtYn else {
-            return Localizable.NO_DATA.string
-        }
-        return (udrtYn == "0") ? "지상" : "지하"
-    }
-    
-    private func wrappedMtYn(_ mtYn: String?) -> String {
-        guard let mtYn: String = mtYn else {
-            return Localizable.NO_DATA.string
-        }
-        return (mtYn == "0") ? "대지" : "산"
     }
 }
