@@ -18,9 +18,6 @@ internal final class AppDelegate: NSObject, NSApplicationDelegate {
         configureBookmarksStatusBarItem()
         showSearchWindow()
         bind()
-    }
-
-    internal func applicationWillBecomeActive(_ notification: Notification) {
         CloudService.shared.synchronize()
     }
     
@@ -35,7 +32,6 @@ internal final class AppDelegate: NSObject, NSApplicationDelegate {
     internal func application(_ application: NSApplication, open urls: [URL]) {
         if let url: URL = urls.first {
             ShortcutService.shared.handle(for: url)
-            print(url)
         }
     }
     
