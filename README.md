@@ -2,48 +2,51 @@
 
 iOS/macOS/watchOS용 도로명 및 영문주소 검색 어플
 
-## API Key
+![](images/2.png)
 
-[gitignore](.gitignore)에 적혀 있다시피 API Key가 담긴 `Keys.swift` 파일은 Git에 업로드되지 않습니다. 따라서 아래와 같은 `Keys.swift` 파일을 [DoroDoroAPICommon](DoroDoroAPICommon)에 생성해 주셔야 하고, [DoroDoro/Info.plist](DoroDoro/Info.plist)에 본인의 `KAKAO_APP_KEY`를 써주셔야 합니다.
+## 기능
 
-```swift
-import Foundation
+- 도로명 및 영문주소 검색 지원
+- 책갈피 추가 및 iCloud 동기화 지원
+- 지도 크게 보기 지원 및 Apple Maps, 카카오맵 지원
+- URL Schemes 지원
 
-/// 도로명주소 API Keys
-internal struct AddrAPIKeys {
-    /// 도로명주소 API
-    internal static let linkAPIKey: String = "<API_KEY>"
-    
-    /// 영문주소 API
-    internal static let engAPIKey: String = "<API_KEY>"
-    
-    /// 좌표제공 API
-    internal static let coordAPIKey: String = "<API_KEY>"
-}
+## Schemes
 
-/// 카카오 API Keys
-internal struct KakaoAPIKeys {
-    /// 네이티브 앱 키
-    internal static let nativeAppKey: String = "<API_KEY>"
-    
-    /// REST API 키
-    internal static let restAPIKey: String = "<API_KEY>"
-    
-    /// JavaScript 키
-    internal static let javascriptKey: String = "<API_KEY>"
-}
-```
+### DoroDoro
 
-API Key 발급은 [도로명주소 개발자센터](https://www.juso.go.kr/addrlink/main.do?cPath=99MM)와 [Kakao Developers](https://developers.kakao.com)에서 하실 수 있습니다.
+iOS와 Mac Catalyst를 지원하는 앱입니다. 아래와 같은 특징이 있습니다.
 
-## 에러 해결
+- [UIKit](https://developer.apple.com/documentation/uikit)
+- [Combine](https://developer.apple.com/documentation/combine/)
+- [UICollectionViewDiffableDataSource](https://developer.apple.com/documentation/uikit/uicollectionviewdiffabledatasource), [NSDiffableDataSourceSnapshot](https://developer.apple.com/documentation/uikit/nsdiffabledatasourcesnapshot)
+- [UICollectionLayoutListConfiguration](https://developer.apple.com/documentation/uikit/uicollectionlayoutlistconfiguration), [UICollectionViewListCell](https://developer.apple.com/documentation/uikit/uicollectionviewlistcell)
 
-### AcknowList-AcknowListBundle 인증 문제
+### DoroDoroWatch
 
-![](images/1.png)
+watchOS용 앱입니다. [WatchKit](https://developer.apple.com/documentation/watchkit)과 [Combine](https://developer.apple.com/documentation/combine/)을 사용합니다.
 
-```
-Signing for "AcknowList-AcknowListBundle" requires a development team. Select a development team in the Signing & Capabilities editor.
-```
+### DoroDoroMac
 
-`AcknowList-AcknowListBundle`에서 Apple Developer 계정 선택해주면 됩니다.
+macOS용 앱입니다. 아래와 같은 특징이 있습니다.
+
+- [AppKit](https://developer.apple.com/documentation/appkit/)
+- [Combine](https://developer.apple.com/documentation/combine/)
+- [NSTableViewDiffableDataSourceReference](https://developer.apple.com/documentation/appkit/nstableviewdiffabledatasourcereference), [NSDiffableDataSourceSnapshotReference](https://developer.apple.com/documentation/uikit/nsdiffabledatasourcesnapshotreference) : [이걸 쓴 이유](https://pookjw.github.io/Develop/DiffableDataSource-And-Cocoa/article.html)
+
+### DoroDoroTV
+
+tvOS용 앱입니다. **TODO**
+
+### DoroDoroCommon에 대해
+
+`DoroDoro`, `DoroDoroWatch`, `DoroDoroMac`, `DoroDoroTV`가 모두 쓰는 파일들은 [DoroDoroCommon](DoroDoroCommon) 폴더에 담겨 있습니다.
+
+### APICommon에 대해
+
+현재 API Framework들은 `DoroDoroAPI`, `DoroDoroWatchAPI`, `DoroDoroMac`, `DoroDoroTV` 이렇게 있습니다. 이들의 공통되는 파일들은 [DoroDoroAPICommon](DoroDoroAPICommon)에 담겨 있습니다.
+
+## 문서
+
+- [빌드 에러 해결](docs/Build.md)
+- [URL Schemes](docs/URL.md)
