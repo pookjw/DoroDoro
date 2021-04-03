@@ -50,8 +50,11 @@ internal final class SearchViewController: NSViewController {
     }
     
     internal func search(for text: String?) {
-        showSpinnerView()
-        viewModel?.searchEvent = text
+        if let text: String = text {
+            showSpinnerView()
+            searchField?.stringValue = text
+            viewModel?.searchEvent = text
+        }
     }
     
     internal func requestGeoEventIfAvailable() {
