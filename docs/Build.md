@@ -84,5 +84,4 @@ Signing for "AcknowList-AcknowListBundle" requires a development team. Select a 
   #endif
   ```
 
-이런 분기처리는 [DoroDoro-Bridging-Header.h](DoroDoro/DoroDoro-Bridging-Header.h)와 [MapViewController.swift](DoroDoro/View/Map/MapViewController.swift)에서만 쓰이고 있습니다. 만약 사용하고 계신 환경에서 이 분기처리가 적용되지 않는다면 수정해 주세요.
-
+이런 분기처리는 [DoroDoro-Bridging-Header.h](../DoroDoro/DoroDoro-Bridging-Header.h)와 [MapViewController.swift](../DoroDoro/View/Map/MapViewController.swift)에서만 쓰이고 있습니다. 만약 사용하고 계신 환경에서 이 분기처리가 적용되지 않는다면 수정해 주세요.
