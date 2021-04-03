@@ -185,7 +185,7 @@
 // MARK: - DoroDoroMac
 
 /* */
-"MAC_EMAIL_TITLE" = "도로도로Mac - 피드백";
+"MAC_EMAIL_TITLE" = "도로도로 (Mac) - 피드백";
 
 /* */
 "MAC_ABOUT_TITLE" = "About %@";
