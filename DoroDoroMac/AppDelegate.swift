@@ -23,10 +23,9 @@ internal final class AppDelegate: NSObject, NSApplicationDelegate {
     
     /// Dock 아이콘 눌렀을 때
     internal func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
-        guard sender.windows.filter({ $0 is SearchWindow }).isEmpty else {
-            return true
+        if sender.windows.filter({ $0 is SearchWindow }).isEmpty {
+            showSearchWindow()
         }
-        showSearchWindow()
         return true
     }
     

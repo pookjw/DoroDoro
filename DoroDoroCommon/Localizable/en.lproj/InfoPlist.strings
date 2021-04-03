@@ -10,4 +10,7 @@
 "CFBundleDisplayName" = "DoroDoro";
 
 /* */
+"CFBundleName" = "DoroDoro";
+
+/* */
 "NSLocationWhenInUseUsageDescription" = "Find address using current Location.";

@@ -10,4 +10,7 @@
 "CFBundleDisplayName" = "도로도로";
 
 /* */
+"CFBundleName" = "도로도로";
+
+/* */
 "NSLocationWhenInUseUsageDescription" = "현재 위치를 통해 주소를 검색합니다.";
