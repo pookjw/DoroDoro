@@ -390,7 +390,10 @@
 "GEO_API_WARN_ALLOW_PERMISSON" = "현재 위치의 주소 정보를 얻기 위해 위치 권한을 허용해 주세요.";
 
 /* */
-"GEO_API_ERROR_PERMISSION_DENINED" = "위치 권한을 거부 당했습니다. 이 배너를 눌러서 어플 설정에서 위치 권한을 허용해 주세요.";
+"GEO_API_ERROR_PERMISSION_DENINED_IOS" = "위치 권한을 거부 당했습니다. 이 배너를 눌러서 어플 설정에서 위치 권한을 허용해 주세요.";
+
+/* */
+"GEO_API_ERROR_PERMISSION_DENINED" = "위치 권한을 거부 당했습니다. 설정에서 위치 권한을 허용해 주세요.";
 
 // MARK: - Accessibility
 

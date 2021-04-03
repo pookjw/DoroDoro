@@ -390,7 +390,10 @@
 "GEO_API_WARN_ALLOW_PERMISSON" = "Please allow location permission to get address informations of current location.";
 
 /* */
-"GEO_API_ERROR_PERMISSION_DENINED" = "Location Permission was denined. Tap this banner to go to App Settings, and please allow Location Permission.";
+"GEO_API_ERROR_PERMISSION_DENINED_IOS" = "Location Permission was denined. Tap this banner to go to App Settings, and please allow Location Permission.";
+
+/* */
+"GEO_API_ERROR_PERMISSION_DENINED" = "Location Permission was denined. Please allow Location Permission at Settings app.";
 
 // MARK: - Accessibility
 

@@ -22,7 +22,11 @@ extension GeoAPIError: LocalizedError {
         case .noLocationFound:
             return Localizable.GEO_API_ERROR_NO_LOCATION_FOUND.string
         case .permissionDenined:
+            #if os(iOS)
+            return Localizable.GEO_API_ERROR_PERMISSION_DENINED_IOS.string
+            #else
             return Localizable.GEO_API_ERROR_PERMISSION_DENINED.string
+            #endif
         case .warnAllowPermission:
             return Localizable.GEO_API_WARN_ALLOW_PERMISSON.string
         default:
