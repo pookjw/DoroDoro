@@ -11,7 +11,7 @@ iOS/macOS/watchOS용 도로명 및 영문주소 검색 어플
 - 지도 크게 보기 지원 및 Apple Maps, 카카오맵 지원
 - URL Schemes 지원
 
-## Schemes
+## Project schemes
 
 ### DoroDoro
 

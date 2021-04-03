@@ -4,7 +4,7 @@
 
 ### API Key 설정
 
-[gitignore](.gitignore)에 적혀 있다시피 API Key가 담긴 `Keys.swift` 파일은 Git에 업로드되지 않습니다. 따라서 아래와 같은 `Keys.swift` 파일을 [DoroDoroAPICommon/Keys.swift](DoroDoroAPICommon)에 생성해 주셔야 하고, [DoroDoro/Info.plist](DoroDoro/Info.plist)에 본인의 `KAKAO_APP_KEY`를 써주셔야 합니다.
+[.gitignore](../.gitignore)에 적혀 있다시피 API Key가 담긴 `Keys.swift` 파일은 Git에 업로드되지 않습니다. 따라서 아래와 같은 `Keys.swift` 파일을 [DoroDoroAPICommon/Keys.swift](DoroDoroAPICommon)에 생성해 주셔야 하고, [DoroDoro/Info.plist](DoroDoro/Info.plist)에 본인의 `KAKAO_APP_KEY`를 써주셔야 합니다.
 
 ```swift
 import Foundation
