@@ -21,7 +21,7 @@ dorodoro://?search
 dorodoro://?search=%EA%B0%80%EB%A1%9C%EC%88%98%EA%B8%B8
 ```
 
-'kelly' 검색
+▼ 'kelly' 검색
 
 ```
 dorodoro://?search=kelly
