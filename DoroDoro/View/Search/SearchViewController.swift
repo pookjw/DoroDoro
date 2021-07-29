@@ -176,18 +176,22 @@ internal final class SearchViewController: UIViewController {
     }
     
     private func makeDataSource() -> SearchViewModel.DataSource {
-        guard let collectionView: UICollectionView = collectionView else { return .init() }
+        guard let collectionView: UICollectionView = collectionView else {
+            fatalError("collectionViwe is nil!")
+        }
         
-        let dataSource: SearchViewModel.DataSource = .init(collectionView: collectionView) { [weak self] (collectionView, indexPath, result) -> UICollectionViewCell? in
-            guard let self = self else { return nil }
-            return collectionView.dequeueConfiguredReusableCell(using: self.getResultCellRegisteration(), for: indexPath, item: result)
+        let resultCellRegistration: UICollectionView.CellRegistration<UICollectionViewListCell, SearchResultItem> = getResultCellRegisteration()
+        let headerCellRegistration: UICollectionView.SupplementaryRegistration<UICollectionViewListCell> = getHeaderCellRegisteration()
+        
+        let dataSource: SearchViewModel.DataSource = .init(collectionView: collectionView) { (collectionView, indexPath, result) -> UICollectionViewCell? in
+            return collectionView.dequeueConfiguredReusableCell(using: resultCellRegistration, for: indexPath, item: result)
         }
         
         dataSource.supplementaryViewProvider = { [weak self] (collectionView, elementKind, indexPath) -> UICollectionReusableView? in
             guard let self = self else { return nil }
             
             if elementKind == UICollectionView.elementKindSectionHeader {
-                return self.collectionView?.dequeueConfiguredReusableSupplementary(using: self.getHeaderCellRegisteration(), for: indexPath)
+                return self.collectionView?.dequeueConfiguredReusableSupplementary(using: headerCellRegistration, for: indexPath)
             }
 
             return nil

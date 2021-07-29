@@ -49,21 +49,24 @@ internal final class URLGuideViewController: UIViewController {
     
     private func makeDataSource() -> URLGuideViewModel.DataSource {
         guard let collectionView: UICollectionView = collectionView else {
-            return .init()
+            fatalError("collectionViwe is nil!")
         }
         
-        let dataSource: URLGuideViewModel.DataSource = .init(collectionView: collectionView) { [weak self] (collectionView, indexPath, item) -> UICollectionViewCell? in
-            guard let self = self else { return nil }
-            return collectionView.dequeueConfiguredReusableCell(using: self.getCellRegisteration(), for: indexPath, item: item)
+        let cellRegistration: UICollectionView.CellRegistration<UICollectionViewListCell, URLGuideCellItem> = getCellRegisteration()
+        let headerCellRegistration: UICollectionView.SupplementaryRegistration<UICollectionViewListCell> = getHeaderCellRegisteration()
+        let footerCellRegistration: UICollectionView.SupplementaryRegistration<UICollectionViewListCell> = getFooterCellRegisteration()
+        
+        let dataSource: URLGuideViewModel.DataSource = .init(collectionView: collectionView) { (collectionView, indexPath, item) -> UICollectionViewCell? in
+            return collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: item)
         }
         
         dataSource.supplementaryViewProvider = { [weak self] (collectionView, elementKind, indexPath) -> UICollectionReusableView? in
             guard let self = self else { return nil }
             
             if elementKind == UICollectionView.elementKindSectionHeader {
-                return self.collectionView?.dequeueConfiguredReusableSupplementary(using: self.getHeaderCellRegisteration(), for: indexPath)
+                return self.collectionView?.dequeueConfiguredReusableSupplementary(using: headerCellRegistration, for: indexPath)
             } else if elementKind == UICollectionView.elementKindSectionFooter {
-                return self.collectionView?.dequeueConfiguredReusableSupplementary(using: self.getFooterCellRegisteration(), for: indexPath)
+                return self.collectionView?.dequeueConfiguredReusableSupplementary(using: footerCellRegistration, for: indexPath)
             }
 
             return nil

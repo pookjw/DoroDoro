@@ -123,11 +123,14 @@ internal final class BookmarksViewController: UIViewController {
     }
     
     private func makeDataSource() -> BookmarksViewModel.DataSource {
-        guard let collectionView: UICollectionView = collectionView else { return .init() }
+        guard let collectionView: UICollectionView = collectionView else {
+            fatalError("collectionViwe is nil!")
+        }
         
-        let dataSource: BookmarksViewModel.DataSource = .init(collectionView: collectionView) { [weak self] (collectionView, indexPath, result) -> UICollectionViewCell? in
-            guard let self = self else { return nil }
-            return collectionView.dequeueConfiguredReusableCell(using: self.getResultCellRegisteration(), for: indexPath, item: result)
+        let resultCellRegistration: UICollectionView.CellRegistration<UICollectionViewListCell, BookmarksCellItem> = getResultCellRegisteration()
+        
+        let dataSource: BookmarksViewModel.DataSource = .init(collectionView: collectionView) { (collectionView, indexPath, result) -> UICollectionViewCell? in
+            return collectionView.dequeueConfiguredReusableCell(using: resultCellRegistration, for: indexPath, item: result)
         }
         
         return dataSource
