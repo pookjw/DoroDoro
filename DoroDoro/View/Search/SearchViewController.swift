@@ -216,7 +216,7 @@ internal final class SearchViewController: UIViewController {
                 return
             }
             
-            var configuration: UIListContentConfiguration = headerView.defaultContentConfiguration()
+            var configuration: UIListContentConfiguration = .groupedHeader()
             configuration.text = headerItem.title
             headerView.contentConfiguration = configuration
         }

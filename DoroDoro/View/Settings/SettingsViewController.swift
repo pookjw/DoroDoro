@@ -121,7 +121,7 @@ internal final class SettingsViewController: UIViewController {
                 return
             }
             
-            var configuration: UIListContentConfiguration = headerView.defaultContentConfiguration()
+            var configuration: UIListContentConfiguration = .groupedHeader()
             
             switch headerItem.headerType {
             case .map:
@@ -143,7 +143,7 @@ internal final class SettingsViewController: UIViewController {
             
             switch headerItem.headerType {
             case .map:
-                var configuration: UIListContentConfiguration = footerView.defaultContentConfiguration()
+                var configuration: UIListContentConfiguration = .groupedFooter()
                 
                 configuration.text = Localizable.MAP_PROVIDERS_DESCRIPTION.string
                 configuration.textProperties.alignment = .center
@@ -397,8 +397,11 @@ extension SettingsViewController: UICollectionViewDelegate {
                 } else {
                     self?.navigationController?.pushViewController(vc, animated: true)
                 }
-                self?.contextViewController = nil
             }
+        }
+        
+        animator.addCompletion { [weak self] in
+            self?.contextViewController = nil
         }
     }
 }

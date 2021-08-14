@@ -147,7 +147,7 @@ internal final class DetailsViewController: UIViewController {
                 return
             }
             
-            var configuration: UIListContentConfiguration = headerView.defaultContentConfiguration()
+            var configuration: UIListContentConfiguration = .groupedHeader()
             
             switch headerItem.headerType {
             case .link:
@@ -171,7 +171,7 @@ internal final class DetailsViewController: UIViewController {
             
             switch headerItem.headerType {
             case .map:
-                var configuration: UIListContentConfiguration = footerView.defaultContentConfiguration()
+                var configuration: UIListContentConfiguration = .groupedFooter()
                 
                 configuration.text = Localizable.DATA_PROVIDER_DESCRIPTION.string
                 configuration.textProperties.alignment = .center
