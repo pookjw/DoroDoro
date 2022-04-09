@@ -198,12 +198,12 @@ internal final class DetailsViewController: UIViewController {
             })
             .store(in: &cancellableBag)
         
-        viewModel?.addrAPIService.engErrorEvent
-            .receive(on: DispatchQueue.main)
-            .sink(receiveValue: { [weak self] error in
-                self?.showErrorAlert(for: error)
-            })
-            .store(in: &cancellableBag)
+//        viewModel?.addrAPIService.engErrorEvent
+//            .receive(on: DispatchQueue.main)
+//            .sink(receiveValue: { [weak self] error in
+//                self?.showErrorAlert(for: error)
+//            })
+//            .store(in: &cancellableBag)
         
         viewModel?.kakaoAPIService.addressErrorEvent
             .receive(on: DispatchQueue.main)
