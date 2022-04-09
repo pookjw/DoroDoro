@@ -29,8 +29,8 @@ internal final class SearchViewController: UIViewController {
     internal override func viewDidLoad() {
         super.viewDidLoad()
         setAttributes()
-        configureGuideLabel()
         configureCollectionView()
+        configureGuideLabel()
         configureSearchController()
         configureAccessiblity()
         toggleGuideContainerViewHiddenStatus(false)

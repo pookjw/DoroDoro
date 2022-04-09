@@ -21,8 +21,8 @@ internal final class BookmarksViewController: UIViewController {
     internal override func viewDidLoad() {
         super.viewDidLoad()
         setAttributes()
-        configureGuideLabel()
         configureCollectionView()
+        configureGuideLabel()
         configureSearchController()
         configureAccessiblity()
         configureViewModel()
