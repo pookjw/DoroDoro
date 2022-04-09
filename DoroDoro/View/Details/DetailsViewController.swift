@@ -230,6 +230,11 @@ internal final class DetailsViewController: UIViewController {
         let mapNVC: UINavigationController = .init(rootViewController: mapVC)
         mapNVC.modalPresentationStyle = .pageSheet
         mapNVC.isModalInPresentation = true
+        
+        let appearance: UINavigationBarAppearance = .init()
+        appearance.configureWithOpaqueBackground()
+        mapNVC.navigationBar.standardAppearance = appearance
+        mapNVC.navigationBar.scrollEdgeAppearance = appearance
         mapNVC.loadViewIfNeeded()
         present(mapNVC, animated: true, completion: { [weak mapNVC] in
             mapNVC?
